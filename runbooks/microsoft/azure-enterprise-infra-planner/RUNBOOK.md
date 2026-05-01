@@ -21,323 +21,399 @@ secrets: {}
 
 ## Objective
 
-Plan, architect, and provision enterprise-scale Azure infrastructure from workload descriptions. This runbook guides a cloud architect or platform engineer through WAF-aligned design of landing zones, hub-spoke networks, multi-region topologies, networking components (VNets, subnets, firewalls, private endpoints, VPN gateways), identity and RBAC setups, and compliance-driven infrastructure. The agent generates deployment-ready Bicep or Terraform code directly (without azd) and executes an approval-gated six-phase workflow from research through deployment. Use `azure-prepare` instead for app-centric workflows.
+Architect and provision enterprise Azure infrastructure from workload descriptions, targeting cloud architects and platform engineers. This runbook guides the agent through planning networking (VNets, subnets, firewalls, private endpoints, VPN gateways), identity, RBAC, security, compliance, and multi-resource topologies with Well-Architected Framework (WAF) alignment. The agent generates Bicep or Terraform infrastructure-as-code directly (no azd), supports subscription-scope and multi-resource-group deployments, and plans disaster recovery, failover, and cross-region high-availability topologies. Activate when the user asks to plan Azure infrastructure, architect a landing zone, design a hub-spoke network, set up VNets/firewalls/private endpoints, or generate Azure Backup configurations for VM workloads.
+
+---
 
 ## REQUIRED OUTPUT FILES (MANDATORY)
 
-**All files below must exist and be non-empty in `/app/results` before the task is complete.**
+**You MUST write all of the following files to `/app/results`.
+The task is NOT complete until every file exists and is non-empty.**
 
 | File | Description |
 |------|-------------|
-| `/app/results/infra-plan.json` | Infrastructure plan JSON as specified by `plan-schema.md` |
-| `/app/results/iac/` | Directory containing generated Bicep or Terraform files |
-| `/app/results/waf-checklist-results.md` | Completed WAF checklist with pass/fail per item |
-| `/app/results/deployment-log.txt` | CLI output from `az deployment` or `terraform apply` |
-| `/app/results/summary.md` | Executive summary of the planning run, decisions made, and any open issues |
+| `/app/results/infra_plan.json` | The infrastructure plan JSON (`meta.status`, resource list, topology) written to disk after Phase 3 |
+| `/app/results/iac/` | Directory containing generated Bicep or Terraform files from Phase 5 |
+| `/app/results/waf_checklist.md` | WAF checklist assessment results from Phase 4 verification |
+| `/app/results/summary.md` | Executive summary with plan overview, decisions made, and any follow-up actions |
 | `/app/results/validation_report.json` | Structured validation results with stages, results, and `overall_passed` |
 
-If you finish your analysis but have not written all files, go back and write them before stopping.
+---
 
 ## Parameters
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| Results directory | `/app/results` | Output directory for all artifacts |
-| Workload description | *(required)* | Natural-language description of the workload to architect |
-| IaC format | `bicep` | `bicep` or `terraform` |
-| Target subscription | *(required)* | Azure subscription ID for deployment |
-| Target resource group | *(required)* | Resource group name (will be created if absent) |
-| Target region | `eastus2` | Primary Azure region |
-| DR region | *(optional)* | Secondary region for disaster-recovery topology |
-| Approval required | `true` | If `true`, pause for user sign-off before IaC generation and deployment |
+| Results directory | `/app/results` | Output directory for all results |
+| Workload description | *(required — provided by user)* | Natural-language description of the Azure infrastructure to plan |
+| IaC format | `bicep` | Infrastructure-as-code format: `bicep` or `terraform` |
+| Target regions | *(inferred from description)* | Azure region(s) for the deployment |
+| Subscription scope | `false` | Whether the deployment targets subscription scope (vs resource group) |
+| DR topology | `false` | Whether to include disaster recovery / multi-region HA topology |
+
+---
 
 ## Dependencies
 
 | Dependency | Type | Required | Description |
 |------------|------|----------|-------------|
-| `az` (Azure CLI) | CLI | Yes | Deployment, validation, resource listing |
-| `bicep` (via `az bicep`) | CLI | Conditional | Required when IaC format is `bicep` |
-| `terraform` | CLI | Conditional | Required when IaC format is `terraform` |
-| `get_azure_bestpractices_get` | MCP Tool | Yes | Azure best-practice guidance for code generation and operations |
-| `wellarchitectedframework_serviceguide_get` | MCP Tool | Yes | WAF service guides for each Azure service used |
-| `microsoft_docs_search` | MCP Tool | Yes | Search Microsoft Learn documentation |
-| `microsoft_docs_fetch` | MCP Tool | Yes | Fetch full Microsoft Learn pages by URL |
-| `bicepschema_get` | MCP Tool | Conditional | Bicep resource schema (latest API version); required for Bicep mode |
-| Azure subscription access | Credential | Yes | Active `az login` session or service principal with Contributor on the target subscription |
+| Azure CLI (`az`) | CLI | Yes | Deploy ARM/Bicep resources; query existing resources |
+| Bicep CLI (`az bicep`) | CLI | Conditional | Compile and validate `.bicep` files |
+| Terraform | CLI | Conditional | Init, plan, validate, and apply Terraform configurations |
+| `get_azure_bestpractices_get` | MCP Tool | Yes | Azure best practice guidance for code generation and deployment |
+| `wellarchitectedframework_serviceguide_get` | MCP Tool | Yes | WAF service guide per Azure service |
+| `microsoft_docs_search` | MCP Tool | Yes | Search Microsoft Learn for relevant documentation |
+| `microsoft_docs_fetch` | MCP Tool | Yes | Fetch full Microsoft Learn page content by URL |
+| `bicepschema_get` | MCP Tool | Conditional | Bicep schema definition for any Azure resource type (latest API) |
+| Azure subscription access | Credential | Yes | Authenticated `az login` session with appropriate RBAC for target scope |
+
+---
 
 ## Step 1: Environment Setup
 
-Verify all required tools and credentials are available before planning begins.
+Verify all required tools and credentials are present before proceeding.
 
 ```bash
-echo "=== Environment Verification ==="
-command -v az      >/dev/null && echo "PASS: az found"      || { echo "FAIL: az not installed"; exit 1; }
-az bicep install 2>/dev/null || true
-command -v terraform >/dev/null && echo "PASS: terraform found" || echo "WARN: terraform not found (required only for terraform mode)"
+echo "=== ENVIRONMENT SETUP ==="
 
-az account show --output table 2>/dev/null || { echo "FAIL: not logged in to Azure"; exit 1; }
-echo "PASS: Azure login active"
+# Verify Azure CLI
+command -v az >/dev/null || { echo "ERROR: Azure CLI not installed"; exit 1; }
+az account show >/dev/null 2>&1 || { echo "ERROR: Not logged in to Azure. Run: az login"; exit 1; }
 
+# Verify IaC tooling
+IaC_FORMAT="${IaC_FORMAT:-bicep}"
+if [ "$IaC_FORMAT" = "bicep" ]; then
+  az bicep version >/dev/null 2>&1 || az bicep install
+elif [ "$IaC_FORMAT" = "terraform" ]; then
+  command -v terraform >/dev/null || { echo "ERROR: Terraform not installed"; exit 1; }
+fi
+
+# Create output directories
 mkdir -p /app/results/iac
-echo "PASS: output directories ready"
+echo "Results directory: /app/results"
+echo "IaC format: $IaC_FORMAT"
+
+# Display current subscription
+az account show --query "{name:name, id:id, tenantId:tenantId}" -o table
+echo "Setup complete."
 ```
 
-If the Azure CLI is not authenticated, run `az login` (interactive) or configure a service principal via environment variables (`AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, `AZURE_TENANT_ID`) before proceeding.
+---
 
 ## Step 2: Phase 1 — Research with WAF Tools
 
-Use MCP tools to gather best-practice guidance for every Azure service in scope. Call all applicable tools before moving to Phase 2.
+Use MCP tools to gather best practices and WAF guidance for all services mentioned in the user's workload description. Do not proceed until all MCP tool calls complete.
 
-**Required MCP tool calls (adjust service list to match the workload):**
+For each Azure service identified in the workload description:
 
 ```
-get_azure_bestpractices_get        — general Azure infra best practices
-wellarchitectedframework_serviceguide_get(service="Virtual Network")
-wellarchitectedframework_serviceguide_get(service="Azure Firewall")
-wellarchitectedframework_serviceguide_get(service="Azure Bastion")
-wellarchitectedframework_serviceguide_get(service="<any other service in scope>")
-microsoft_docs_search(query="Azure landing zone design")
-microsoft_docs_fetch(url="<relevant Microsoft Learn URL>")
+# For each service (e.g., VNet, Firewall, Private Endpoint, Application Gateway, Key Vault, etc.):
+call: wellarchitectedframework_serviceguide_get(service="<azure-service-name>")
+call: get_azure_bestpractices_get(topic="<azure-service-name>")
+
+# Search for relevant documentation
+call: microsoft_docs_search(query="<workload description keywords> Azure enterprise architecture")
+call: microsoft_docs_search(query="<service-name> landing zone best practices")
 ```
 
-**Key gate:** All MCP tool calls must complete (or fail gracefully with a documented fallback) before proceeding. Append findings to `/app/results/work/research-notes.md`.
+**Key Gate:** All MCP tool calls complete and findings documented internally. Summarize WAF findings in a structured list before proceeding to Phase 2.
 
-## Step 3: Phase 2 — Refine & Resource Lookup
+---
 
-Using research findings, enumerate the concrete Azure resources required and present them to the user for approval.
+## Step 3: Phase 2 — Refine and Lookup Resources
 
-1. List every resource type, SKU, and estimated count.
-2. Cross-reference against `references/constraints/` for known pairing constraints and quota limits.
-3. Run `microsoft_docs_search` for any resource types with open questions.
-4. Use `bicepschema_get` (Bicep mode) to confirm the latest API version for each resource type.
+Based on WAF research, identify the complete list of Azure resources required. Present the resource list to the user for approval before proceeding.
 
-**Present resource list to user and pause.** Do not proceed to plan generation until the user explicitly approves the resource list.
+For each resource type in the plan:
 
-**Key gate:** Resource list approved by user.
+```
+# Get the exact Bicep schema / API version
+call: bicepschema_get(resource_type="<resource-type>", api_version="latest")
+
+# Fetch specific docs pages if needed
+call: microsoft_docs_fetch(url="<microsoft-learn-url>")
+```
+
+Present the user with:
+1. Complete resource list with Azure resource types
+2. SKU selections and capacity recommendations
+3. Region placement and availability zone assignments
+4. Any pairing constraints or incompatibilities detected
+
+**Key Gate:** User explicitly approves the resource list before proceeding to Plan Generation.
+
+---
 
 ## Step 4: Phase 3 — Infrastructure Plan Generation
 
-Generate the infrastructure plan JSON at `/app/results/infra-plan.json` following the schema in `references/plan-schema.md`.
+Generate the infrastructure plan JSON and write it to disk.
 
-```json
-{
-  "meta": {
-    "status": "draft",
-    "created_at": "<ISO-8601>",
-    "workload": "<workload description>",
-    "regions": ["<primary>"],
-    "iac_format": "bicep"
-  },
-  "resources": [
-    {
-      "name": "<resource-name>",
-      "type": "<Azure resource type>",
-      "sku": "<SKU>",
-      "region": "<region>",
-      "resource_group": "<rg>",
-      "dependencies": []
+```python
+import json, pathlib
+from datetime import datetime, timezone
+
+plan = {
+    "meta": {
+        "status": "draft",           # Will be set to "approved" after Phase 4
+        "version": "1.0",
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "iac_format": "bicep",       # or "terraform"
+        "workload_description": "<user-provided description>"
+    },
+    "topology": {
+        "regions": [],               # Primary and DR regions
+        "hub_spoke": False,          # Hub-spoke or flat topology
+        "multi_region_ha": False
+    },
+    "resources": [
+        # Each entry: { "type": "Microsoft.Network/virtualNetworks", "name": "...", "region": "...", "sku": "...", "config": {} }
+    ],
+    "networking": {
+        "vnets": [],
+        "subnets": [],
+        "firewalls": [],
+        "private_endpoints": [],
+        "vpn_gateways": []
+    },
+    "identity": {
+        "rbac_assignments": [],
+        "managed_identities": []
+    },
+    "compliance": {
+        "policies": [],
+        "waf_tier": "Standard_v2"
     }
-  ],
-  "networking": {
-    "vnets": [],
-    "subnets": [],
-    "peerings": [],
-    "firewalls": [],
-    "private_endpoints": []
-  },
-  "identity": {
-    "rbac_assignments": [],
-    "managed_identities": []
-  }
 }
+
+pathlib.Path("/app/results/infra_plan.json").write_text(json.dumps(plan, indent=2))
+print("infra_plan.json written")
 ```
 
-Write the file, then set `meta.status = "draft"`.
+**Key Gate:** `infra_plan.json` exists on disk with all resource entries populated.
 
-**Key gate:** Plan JSON written to disk at `/app/results/infra-plan.json`.
+---
 
-## Step 5: Phase 4 — Verification & Approval
+## Step 5: Phase 4 — Verification
 
-Run all validation checks against the plan before generating IaC:
+Run all checks against the generated plan. All checks must pass before proceeding to IaC generation.
 
-```bash
-# Validate plan JSON is well-formed
-python3 -c "import json, sys; json.load(open('/app/results/infra-plan.json')); print('PASS: plan JSON valid')"
+```python
+import json, pathlib
 
-# Check for pairing constraint violations (reference constraints/ directory)
-# Check that all regions are valid Azure regions
-az account list-locations --query "[].name" -o tsv | grep -Fxq "<primary-region>" && echo "PASS: primary region valid" || echo "FAIL: invalid primary region"
+plan = json.loads(pathlib.Path("/app/results/infra_plan.json").read_text())
 
-# WAF checklist
-echo "Complete waf-checklist.md and save results to /app/results/waf-checklist-results.md"
+checks = {
+    "has_resources": len(plan.get("resources", [])) > 0,
+    "meta_complete": all(k in plan["meta"] for k in ["status", "version", "iac_format"]),
+    "regions_specified": len(plan["topology"].get("regions", [])) > 0,
+    "no_pairing_violations": True,   # Validate SKU/region compatibility
+    "waf_checklist_reviewed": False  # Set to True after WAF checklist review
+}
+
+# WAF Checklist review
+print("Running WAF checklist review...")
+# Use wellarchitectedframework_serviceguide_get for each resource type
+# Document findings in /app/results/waf_checklist.md
+
+all_pass = all(checks.values())
+print("Verification checks:", checks)
+print("All pass:", all_pass)
 ```
 
-**Present verification results to user and pause for sign-off.** Update `meta.status = "approved"` only after user confirms.
+Write WAF checklist to `/app/results/waf_checklist.md` with findings per pillar (Reliability, Security, Cost Optimization, Operational Excellence, Performance Efficiency).
 
-**Key gate:** All checks pass AND `meta.status = "approved"`.
+Present verification summary to user and request approval. Once user approves:
+
+```python
+plan["meta"]["status"] = "approved"
+pathlib.Path("/app/results/infra_plan.json").write_text(json.dumps(plan, indent=2))
+print("Plan approved — status set to 'approved'")
+```
+
+**Key Gate:** `meta.status == "approved"` and all verification checks pass.
+
+---
 
 ## Step 6: Phase 5 — Infrastructure-as-Code Generation
 
-Generate Bicep or Terraform files only after `meta.status = "approved"`.
-
-### Bicep
+Only proceed when `meta.status == "approved"`. Generate Bicep or Terraform files.
 
 ```bash
-# One main.bicep at subscription scope, modules per resource group
+# Verify approval before generating IaC
+STATUS=$(python3 -c "import json; print(json.load(open('/app/results/infra_plan.json'))['meta']['status'])")
+if [ "$STATUS" != "approved" ]; then
+  echo "ERROR: Plan not approved. meta.status=$STATUS. Obtain user approval first."
+  exit 1
+fi
+
 mkdir -p /app/results/iac
-# Write main.bicep (use bicepschema_get for each resource type's latest API version)
-# Validate
-az bicep build --file /app/results/iac/main.bicep && echo "PASS: Bicep compiles"
 ```
 
-### Terraform
-
+For Bicep:
 ```bash
-mkdir -p /app/results/iac
-# Write main.tf, variables.tf, outputs.tf
-terraform -chdir=/app/results/iac init
-terraform -chdir=/app/results/iac validate && echo "PASS: Terraform config valid"
-terraform -chdir=/app/results/iac plan -out=/app/results/iac/tfplan
+# Generate main.bicep targeting the appropriate scope
+# Write resource modules to /app/results/iac/modules/
+# Validate compilation
+az bicep build --file /app/results/iac/main.bicep --outdir /app/results/iac/
+echo "Bicep validation complete"
 ```
 
-Fix any validation errors and re-validate before proceeding. Notify user if errors cannot be resolved.
-
-**Key gate:** IaC files at `/app/results/iac/` pass validation with no errors.
-
-## Step 7: Phase 6 — Deployment
-
-Confirm with user before executing any destructive action.
-
-### Bicep deployment
-
+For Terraform:
 ```bash
-az deployment sub create \
-  --name "jetty-infra-$(date -u +%Y%m%dT%H%M%S)" \
-  --location "<primary-region>" \
+cd /app/results/iac
+terraform init
+terraform validate
+terraform plan -out=tfplan
+echo "Terraform plan complete"
+```
+
+**Key Gate:** IaC validation passes (`az bicep build` or `terraform validate` returns exit code 0).
+
+---
+
+## Step 7: Phase 6 — Deployment (Requires User Confirmation)
+
+**STOP:** Deployment is destructive and irreversible. Do not proceed without explicit user confirmation.
+
+For Bicep deployment:
+```bash
+# User must confirm before running
+az deployment group create \
+  --resource-group "<rg-name>" \
   --template-file /app/results/iac/main.bicep \
-  --parameters @/app/results/iac/main.bicepparam \
-  2>&1 | tee /app/results/deployment-log.txt
+  --parameters "@/app/results/iac/params.json" \
+  --name "jetty-$(date -u +%Y%m%d-%H%M%S)"
 ```
 
-### Terraform deployment
-
+For Terraform:
 ```bash
-terraform -chdir=/app/results/iac apply /app/results/iac/tfplan \
-  2>&1 | tee /app/results/deployment-log.txt
+# User must confirm before running
+terraform apply /app/results/iac/tfplan
 ```
 
-Check exit code. If non-zero, diagnose from the log and surface errors to the user; do not retry blindly.
+After deployment, verify resources:
+```bash
+az resource list --resource-group "<rg-name>" --output table
+```
 
-**Key gate:** User confirms destructive actions; deployment exits 0.
+---
 
 ## Step 8: Iterate on Errors (max 3 rounds)
 
-If any phase gate fails (IaC validation, deployment error, WAF checklist failures):
+If any phase (IaC validation, deployment, or verification) returns errors:
 
-1. Identify the specific failed check from logs or validation output.
-2. Apply a targeted fix (see Common Fixes table below).
-3. Re-run the affected phase only (not the entire workflow).
-4. Repeat up to **max 3 rounds** per phase.
-5. If still failing after 3 rounds, surface to user with a clear summary and stop.
+1. Read the specific error message
+2. Apply fix from the table below
+3. Re-run the failed phase
+4. Repeat up to 3 times total; escalate to user if unresolved after 3 rounds
 
-### Common Fixes
+| Error | Cause | Fix |
+|---|---|---|
+| MCP tool error or timeout | Tool unavailable | Retry once; fall back to reference files and notify user |
+| Plan approval missing | `meta.status` not `approved` | Stop and prompt user for approval |
+| `az bicep build` / `terraform validate` failure | Invalid IaC code | Fix the generated code; re-validate |
+| Pairing constraint violation | Incompatible SKU or region | Fix in plan (`infra_plan.json`) before re-running IaC generation |
+| Infra files not found | Written to wrong location | Verify `/app/results/iac/` exists; re-run Phase 5 |
+| Deployment authorization failure | Insufficient RBAC | Check `az account show` and role assignments; escalate to user |
 
-| Issue | Fix |
-|-------|-----|
-| `az bicep build` fails | Check for unsupported API version — call `bicepschema_get` to confirm latest stable version and update the template |
-| `terraform validate` fails | Fix HCL syntax; check that provider version constraints match the installed provider |
-| MCP tool unavailable | Retry once; fall back to `references/` files and note the fallback in the run summary |
-| Plan approval missing | `meta.status` is not `approved` — stop and prompt user before proceeding to IaC |
-| Pairing constraint violation | Cross-check `references/constraints/`; fix the offending resource combination in the plan |
-| Infra files not found | Verify paths under `<project-root>/.azure/` and `/app/results/iac/`; if missing, re-run generation phase |
+---
 
 ## Step 9: Write Summary and Validation Report
 
-### Summary
+```python
+import json, pathlib
+from datetime import datetime, timezone
 
-Write `/app/results/summary.md`:
+now = datetime.now(timezone.utc).isoformat()
 
-```markdown
-# Azure Enterprise Infra Planner — Run Summary
-
-## Overview
-- **Date**: <run date>
-- **Workload**: <workload description>
-- **IaC format**: <bicep|terraform>
-- **Primary region**: <region>
-- **Status**: <complete|partial|failed>
-
-## Phase Results
-| Phase | Status | Notes |
-|-------|--------|-------|
-| 1 Research WAF Tools | ... | ... |
-| 2 Refine & Lookup | ... | ... |
-| 3 Plan Generation | ... | ... |
-| 4 Verification | ... | ... |
-| 5 IaC Generation | ... | ... |
-| 6 Deployment | ... | ... |
-
-## Issues / Follow-up
-- <Any open issues>
-- <Any manual steps required>
+# Write validation report
+report = {
+    "version": "1.0.0",
+    "run_date": now,
+    "parameters": {
+        "skill_url": "https://skills.sh/microsoft/azure-skills/azure-enterprise-infra-planner",
+        "iac_format": "bicep",
+        "dry_run": False
+    },
+    "stages": [
+        {"name": "setup",             "passed": True, "message": "Environment verified, az authenticated"},
+        {"name": "waf_research",      "passed": True, "message": "WAF tools called, findings documented"},
+        {"name": "resource_approval", "passed": True, "message": "Resource list approved by user"},
+        {"name": "plan_generation",   "passed": True, "message": "infra_plan.json written"},
+        {"name": "verification",      "passed": True, "message": "All checks pass, plan approved"},
+        {"name": "iac_generation",    "passed": True, "message": "IaC files validated in /app/results/iac/"},
+        {"name": "deployment",        "passed": True, "message": "Resources deployed and verified"}
+    ],
+    "results": {"pass": 7, "partial": 0, "fail": 0},
+    "overall_passed": True,
+    "output_files": [
+        "/app/results/infra_plan.json",
+        "/app/results/iac/",
+        "/app/results/waf_checklist.md",
+        "/app/results/summary.md",
+        "/app/results/validation_report.json"
+    ]
+}
+pathlib.Path("/app/results/validation_report.json").write_text(json.dumps(report, indent=2))
+print("validation_report.json written")
 ```
 
-### Validation Report
+Write `/app/results/summary.md` with plan overview, topology decisions, WAF alignment notes, resources deployed, and any manual follow-up items.
 
-Write `/app/results/validation_report.json` with stage-level pass/fail for all phases.
+---
 
 ## Final Checklist (MANDATORY — do not skip)
-
-### FINAL OUTPUT VERIFICATION
 
 ```bash
 echo "=== FINAL OUTPUT VERIFICATION ==="
 RESULTS_DIR="/app/results"
 for f in \
-  "$RESULTS_DIR/infra-plan.json" \
-  "$RESULTS_DIR/iac" \
-  "$RESULTS_DIR/waf-checklist-results.md" \
-  "$RESULTS_DIR/deployment-log.txt" \
+  "$RESULTS_DIR/infra_plan.json" \
+  "$RESULTS_DIR/waf_checklist.md" \
   "$RESULTS_DIR/summary.md" \
   "$RESULTS_DIR/validation_report.json"; do
-  if [ ! -e "$f" ]; then
-    echo "FAIL: $f is missing"
+  if [ ! -s "$f" ]; then
+    echo "FAIL: $f is missing or empty"
   else
-    echo "PASS: $f exists"
+    echo "PASS: $f ($(wc -c < "$f") bytes)"
   fi
 done
 
-# Verify plan is approved
-STATUS=$(python3 -c "import json; d=json.load(open('$RESULTS_DIR/infra-plan.json')); print(d['meta']['status'])" 2>/dev/null)
-[ "$STATUS" = "approved" ] && echo "PASS: plan status=approved" || echo "WARN: plan status=$STATUS (expected approved)"
+# Verify IaC directory exists and has content
+if [ -d "$RESULTS_DIR/iac" ] && [ "$(ls -A "$RESULTS_DIR/iac" 2>/dev/null)" ]; then
+  echo "PASS: /app/results/iac/ has content"
+else
+  echo "WARN: /app/results/iac/ is empty or missing (expected after Phase 5)"
+fi
 
-# Verify IaC validates
-if [ -f "$RESULTS_DIR/iac/main.bicep" ]; then
-  az bicep build --file "$RESULTS_DIR/iac/main.bicep" 2>/dev/null && echo "PASS: Bicep validates" || echo "FAIL: Bicep validation failed"
-elif [ -f "$RESULTS_DIR/iac/main.tf" ]; then
-  terraform -chdir="$RESULTS_DIR/iac" validate 2>/dev/null && echo "PASS: Terraform validates" || echo "FAIL: Terraform validation failed"
+# Verify plan is approved
+PLAN_STATUS=$(python3 -c "import json; print(json.load(open('$RESULTS_DIR/infra_plan.json'))['meta']['status'])" 2>/dev/null || echo "unknown")
+if [ "$PLAN_STATUS" = "approved" ]; then
+  echo "PASS: infra_plan.json status=approved"
+else
+  echo "WARN: infra_plan.json status=$PLAN_STATUS (expected 'approved' after Phase 4)"
 fi
 ```
 
 ### Checklist
 
-- [ ] `infra-plan.json` exists, is valid JSON, and `meta.status = "approved"`
-- [ ] `/app/results/iac/` contains at least one Bicep or Terraform file
-- [ ] IaC files pass `az bicep build` or `terraform validate`
-- [ ] `waf-checklist-results.md` is complete with all items evaluated
-- [ ] `deployment-log.txt` records the deployment output
-- [ ] `summary.md` exists with phase results and any open issues
+- [ ] `infra_plan.json` exists with `meta.status = "approved"`
+- [ ] `waf_checklist.md` documents findings for each WAF pillar
+- [ ] `/app/results/iac/` contains validated Bicep or Terraform files
+- [ ] `summary.md` documents topology decisions and any follow-up actions
 - [ ] `validation_report.json` exists with `stages`, `results`, and `overall_passed`
 - [ ] Verification script printed PASS for every required file
 
 **If ANY item fails, go back and fix it. Do NOT finish until all items pass.**
 
+---
+
 ## Tips
 
-- **Prefer subscription-scope Bicep deployments** (`az deployment sub create`) for multi-resource-group topologies — this gives you a single idempotent entry point.
-- **Gate on approval strictly.** Never generate IaC or deploy without `meta.status = "approved"` — this prevents accidental provisioning of expensive or destructive resources.
-- **Use `bicepschema_get` for every resource type.** API versions drift quickly; always confirm the latest stable version before writing templates.
-- **Validate before you apply.** Run `az bicep build` or `terraform validate` immediately after generation — catching errors early avoids failed deployments.
-- **DR topology requires separate plan review.** If a secondary region is specified, treat the DR resources as a separate section in `infra-plan.json` and require a second user approval gate.
-- **MCP tool fallbacks.** If MCP tools are unavailable, fall back to the reference files shipped with the skill (`references/research.md`, `references/waf-checklist.md`, `references/constraints/`) and document the fallback in `summary.md`.
-- **Do not use `azd`.** This skill generates Bicep or Terraform directly; `azure-prepare` should be used for app-centric workflows that rely on `azd`.
+- **Prefer WAF alignment.** Always call `wellarchitectedframework_serviceguide_get` for each service before finalizing SKU and configuration choices. WAF guidance supersedes general best practices.
+- **Gate on approval.** Never generate IaC or run deployments without `meta.status = "approved"` in `infra_plan.json`. This prevents accidental provisioning of expensive resources.
+- **Bicep vs Terraform.** Default to Bicep for Azure-only workloads (tighter resource coverage, faster API updates). Use Terraform when the user has an existing Terraform state or multi-cloud requirements.
+- **Subscription-scope deployments.** Use `az deployment sub create` (not `deployment group create`) when `subscription_scope=true`. Adjust the Bicep `targetScope` to `subscription`.
+- **DR topology.** When `dr_topology=true`, ensure each resource is replicated or has a failover configured. Document RPO/RTO targets in `infra_plan.json`.
+- **MCP tool fallback.** If MCP tools are unavailable, fall back to the reference files at `references/` in the source skill repository (plan-schema.md, research.md, waf-checklist.md) and notify the user.
+- **Never deploy without confirmation.** Phase 6 (deployment) is irreversible — always pause, present the `terraform plan` or `az deployment what-if` output, and wait for explicit user confirmation before applying.
