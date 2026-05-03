@@ -1,417 +1,176 @@
 ---
-version: "1.0.0"
+version: 1.0.0
 evaluation: programmatic
-agent: claude-code
-model: claude-sonnet-4-6
+agent: codex
+model: gpt-5.5
 snapshot: python312-uv
 origin:
-  url: "https://github.com/gooseworks-ai/gooseworks-skills/blob/main/skills/playbooks/signal-detection-pipeline/SKILL.md"
-  source_host: "github.com"
-  source_title: "Signal Detection Pipeline"
-  imported_at: "2026-05-01T00:00:00Z"
-  imported_by: "skill-to-runbook-converter@1.0.0"
+  url: https://raw.githubusercontent.com/gooseworks-ai/goose-skills/296901414500a3a2d26b37e410f92e0406bf94a2/skills/playbooks/signal-detection-pipeline/SKILL.md
+  user_supplied_url: https://skills.gooseworks.ai/skills/signal-detection-pipeline
+  is_directory_mirror: true
+  source_host: raw.githubusercontent.com
+  source_title: Signal Detection Pipeline
+  imported_at: '2026-05-03T02:46:01Z'
+  imported_by: skill-to-runbook-converter@1.1.0
   attribution:
-    collection_or_org: "gooseworks-ai"
-    source_collection: "playbooks"
-    skill_name: "signal-detection-pipeline"
-    confidence: "high"
+    collection_or_org: gooseworks-ai
+    skill_name: signal-detection-pipeline
+    confidence: high
 secrets: {}
 ---
-
 # Signal Detection Pipeline — Agent Runbook
 
 ## Objective
 
-Monitor multiple signal sources to find companies actively in-market for a client's solution. This runbook detects buying signals from multiple channels—job postings, funding events, conference attendance, Reddit pain signals, and LinkedIn content—qualifies the resulting leads against an Ideal Customer Profile (ICP), and generates structured outreach context. It combines signals for higher-confidence lead identification by deduplicating companies across sources and scoring them by signal strength and recency.
+Detect buying signals from multiple sources, qualify leads, and generate outreach context. This runbook monitors multiple buying-signal sources, combines the evidence into a prioritized account list, and produces outreach context for qualified leads. Operators should run only the sources relevant to the target ICP, then deduplicate, score, enrich, and review the resulting leads before outreach.
 
 ## REQUIRED OUTPUT FILES (MANDATORY)
 
-**You MUST write all of the following files to `/app/results`.
-The task is NOT complete until every file exists and is non-empty.**
-
 | File | Description |
-|------|-------------|
-| `/app/results/qualified_leads.json` | Deduplicated, scored, and enriched leads from all signal sources |
-| `/app/results/signal_report.md` | Summary of signals detected per source with counts and highlights |
-| `/app/results/outreach_context.json` | Per-lead outreach angles and context for campaign use |
-| `/app/results/summary.md` | Executive summary with run metadata, signal counts, and top leads |
-| `/app/results/validation_report.json` | Structured validation results with stages, results, and `overall_passed` |
+|---|---|
+| `/app/results/signal_report.md` | Narrative report of sources searched, signal quality, and prioritized leads |
+| `/app/results/leads.csv` | Consolidated lead table with company, signal sources, strength, context, and outreach angle |
+| `/app/results/summary.md` | Executive summary of run metadata, inputs, lead counts, and review notes |
+| `/app/results/validation_report.json` | Structured validation results with stages, result counts, and `overall_passed` |
 
 ## Parameters
 
 | Parameter | Default | Description |
-|-----------|---------|-------------|
-| Results directory | `/app/results` | Output directory for all results |
-| `target_keywords` | *(required)* | Keywords to search for job postings, Reddit posts, LinkedIn content |
-| `icp_criteria` | *(required)* | Ideal Customer Profile criteria for lead qualification |
-| `industry` | *(optional)* | Target industry for funding signal monitoring |
-| `event_urls` | *(optional)* | Event URLs or topic search for conference attendance signals |
-| `subreddits` | *(optional)* | Relevant subreddits to scrape for pain signals |
-| `time_frame` | `30d` | Time frame for LinkedIn content signals |
+|---|---|---|
+| `results_dir` | `/app/results` | Output directory for all required files |
+| `client_solution` | required | Product, service, or problem area to detect buying intent for |
+| `icp_criteria` | required | Target industry, company size, geography, personas, and exclusion criteria |
+| `signal_sources` | `job postings,funding,conference attendance,reddit,linkedin` | Comma-separated signal sources to run |
+| `keywords` | inferred from `client_solution` | Problem, job, funding, content, and community search terms |
+| `time_window` | `last 90 days` | Recency window used when collecting and scoring signals |
+| `max_leads` | `50` | Maximum number of leads to include in the final prioritized table |
+
+Inferred source inputs from the skill: job keywords, ICP criteria, industry, funding stage filter, event URLs or topic search, relevant subreddits, keywords, and time frame.
 
 ## Dependencies
 
 | Dependency | Type | Required | Description |
-|------------|------|----------|-------------|
-| `job-posting-intent` | Gooseworks skill | Conditional | Finds companies hiring for roles in the problem area |
-| `funding-signal-monitor` | Gooseworks skill | Conditional | Monitors recently funded companies |
-| `luma-event-attendees` | Gooseworks skill | Conditional | Extracts conference attendees from Luma events |
-| `reddit-scraper` | Gooseworks skill | Conditional | Scrapes Reddit for pain-signal posts |
-| `linkedin-post-research` | Gooseworks skill | Conditional | Finds LinkedIn posts related to target keywords |
-| `linkedin-commenter-extractor` | Gooseworks skill | Conditional | Extracts commenters from LinkedIn posts |
-| `lead-qualification` | Gooseworks skill | Yes | Qualifies leads against ICP criteria |
-| `contact-cache` | Gooseworks skill | Yes | Caches and deduplicates contact lookups |
-| `company-contact-finder` | Gooseworks skill | Conditional | Enriches qualified leads with contact details |
-| `setup-outreach-campaign` | Gooseworks skill | Conditional | Downstream campaign setup (connects_to) |
-| `requests` | Python package | Yes | HTTP calls to signal source APIs |
-| `pyyaml` | Python package | Yes | Parse structured outputs |
+|---|---|---|---|
+| `python` | CLI | Yes | Used for validation and optional CSV normalization |
+| `requests` | Python package | Optional | Useful for API-backed source collection when available |
+| `pandas` | Python package | Optional | Useful for deduplication and CSV cleanup |
+| Web search access | External tool | Yes | Used to enrich top leads with company details |
+| Source-specific skills | Agent skills | Conditional | `job-posting-intent`, `funding-signal-monitor`, `luma-event-attendees`, `reddit-post-finder`, `linkedin-post-research`, and `linkedin-commenter-extractor` when those sources are selected |
 
 ## Step 1: Environment Setup
 
-```bash
-pip install requests pyyaml
-
-mkdir -p /app/results
-
-# Verify required parameters are provided
-if [ -z "$TARGET_KEYWORDS" ]; then
-  echo "ERROR: TARGET_KEYWORDS is not set"
-  exit 1
-fi
-if [ -z "$ICP_CRITERIA" ]; then
-  echo "ERROR: ICP_CRITERIA is not set"
-  exit 1
-fi
-
-echo "Environment ready."
-```
-
-Set the following environment variables before proceeding:
+Create the output directory and capture the resolved run inputs before collecting signals.
 
 ```bash
-export TARGET_KEYWORDS="your keywords here"
-export ICP_CRITERIA="your ICP definition here"
-export INDUSTRY="optional industry filter"
-export EVENT_URLS="optional event URLs"
-export SUBREDDITS="optional subreddit names"
-export TIME_FRAME="30d"
-```
-
-## Step 2: Run Signal Sources in Parallel
-
-Run all applicable signal sources independently. Each source is optional; run the ones relevant to the client's ICP. For best results, run in parallel.
-
-### Step 2a: Job Posting Signals (Strongest)
-
-Companies hiring for roles in the problem area have budget allocated and pain acknowledged.
-
-```python
-# Use the job-posting-intent skill
-# Input: TARGET_KEYWORDS, ICP_CRITERIA
-# Output: Qualified companies with outreach angles
-
-import json, pathlib
-
-# Invoke the job-posting-intent skill
-# result = invoke_skill("job-posting-intent", keywords=TARGET_KEYWORDS, icp=ICP_CRITERIA)
-# For each result, record: company, signal_source="job_posting", signal_strength=3, context
-
-job_posting_results = []  # populate from skill invocation
-pathlib.Path("/app/results/work/job_posting_signals.json").write_text(json.dumps(job_posting_results))
-print(f"Job posting signals: {len(job_posting_results)} companies")
-```
-
-### Step 2b: Funding Signals
-
-Recently funded companies have budget available and a growth mandate.
-
-```python
-# Use the funding-signal-monitor skill
-# Input: INDUSTRY, funding_stage_filter
-# Output: Funded companies with timing context
-
-funding_results = []  # populate from skill invocation
-pathlib.Path("/app/results/work/funding_signals.json").write_text(json.dumps(funding_results))
-print(f"Funding signals: {len(funding_results)} companies")
-```
-
-### Step 2c: Conference Attendance Signals
-
-People attending events in the problem space are actively engaged.
-
-```python
-# Use the luma-event-attendees skill
-# Input: EVENT_URLS
-# Output: Person/company list
-
-event_results = []  # populate from skill invocation
-pathlib.Path("/app/results/work/event_signals.json").write_text(json.dumps(event_results))
-print(f"Event attendance signals: {len(event_results)} contacts")
-```
-
-### Step 2d: Reddit Pain Signals
-
-People complaining about or discussing the problem are experiencing it firsthand.
-
-```python
-# Use the reddit-scraper skill
-# Input: TARGET_KEYWORDS, SUBREDDITS
-# Output: Posts with authors and context
-
-reddit_results = []  # populate from skill invocation
-pathlib.Path("/app/results/work/reddit_signals.json").write_text(json.dumps(reddit_results))
-print(f"Reddit signals: {len(reddit_results)} posts")
-```
-
-### Step 2e: LinkedIn Content Signals
-
-People posting about or engaging with the problem are thought leaders or practitioners.
-
-```python
-# Use linkedin-post-research + linkedin-commenter-extractor skills
-# Input: TARGET_KEYWORDS, TIME_FRAME
-# Output: Posters and commenters with engagement data
-
-linkedin_results = []  # populate from skill invocation
-pathlib.Path("/app/results/work/linkedin_signals.json").write_text(json.dumps(linkedin_results))
-print(f"LinkedIn signals: {len(linkedin_results)} contacts")
-```
-
-## Step 3: Combine and Deduplicate Signals
-
-After all signal sources have run, merge and score the results.
-
-```python
-import json, pathlib, os
-
-# Load all signal results
-work_dir = pathlib.Path("/app/results/work")
-all_signals = []
-signal_files = {
-    "job_posting": "job_posting_signals.json",
-    "funding": "funding_signals.json",
-    "event": "event_signals.json",
-    "reddit": "reddit_signals.json",
-    "linkedin": "linkedin_signals.json"
+mkdir -p /app/results /app/results/work
+cat > /app/results/work/run_inputs.json <<'JSON'
+{
+  "results_dir": "/app/results",
+  "client_solution": "<resolved client_solution>",
+  "icp_criteria": "<resolved icp_criteria>",
+  "signal_sources": "job postings,funding,conference attendance,reddit,linkedin",
+  "time_window": "last 90 days",
+  "max_leads": 50
 }
-
-for source, fname in signal_files.items():
-    fpath = work_dir / fname
-    if fpath.exists():
-        data = json.loads(fpath.read_text())
-        for item in data:
-            item["signal_source"] = source
-        all_signals.extend(data)
-
-# Signal strength scores by source
-SIGNAL_WEIGHTS = {
-    "job_posting": 3,
-    "funding": 3,
-    "linkedin": 2,
-    "reddit": 2,
-    "event": 1
-}
-
-# Deduplicate by company name; accumulate signal sources
-companies = {}
-for signal in all_signals:
-    company_key = signal.get("company", signal.get("company_name", "unknown")).lower().strip()
-    if company_key not in companies:
-        companies[company_key] = {
-            "company": signal.get("company", signal.get("company_name", "unknown")),
-            "signal_sources": [],
-            "signal_strength": 0,
-            "context": [],
-            "outreach_angle": signal.get("outreach_angle", "")
-        }
-    source = signal["signal_source"]
-    if source not in companies[company_key]["signal_sources"]:
-        companies[company_key]["signal_sources"].append(source)
-        companies[company_key]["signal_strength"] += SIGNAL_WEIGHTS.get(source, 1)
-    if signal.get("context"):
-        companies[company_key]["context"].append(f"[{source}] {signal['context']}")
-
-# Sort by signal strength descending
-leads = sorted(companies.values(), key=lambda x: x["signal_strength"], reverse=True)
-
-pathlib.Path("/app/results/work/combined_signals.json").write_text(json.dumps(leads, indent=2))
-print(f"Combined {len(leads)} unique companies from {len(all_signals)} signals")
+JSON
 ```
 
-**Human Checkpoint:** Review the consolidated list before enrichment and outreach.
+If `client_solution` or `icp_criteria` is not resolved, stop and write `validation_report.json` with setup marked as failed.
 
-## Step 4: Qualify Leads Against ICP
+## Step 2: Select Signal Sources
+
+Run the sources relevant to the client ICP. Each source is independent and can be collected in parallel when tooling is available.
+
+| Source | Strength | Input | Expected output |
+|---|---|---|---|
+| Job posting signals | Strongest | Job keywords and ICP criteria | Qualified companies with hiring intent and outreach angles |
+| Funding signals | Strong | Industry and funding stage filter | Funded companies with timing context |
+| Conference attendance signals | Medium | Event URLs or topic search | Person and company list |
+| Reddit pain signals | Medium | Keywords and relevant subreddits | Posts with authors and context |
+| LinkedIn content signals | Medium | Keywords and time frame | Posters and commenters with engagement data |
+
+Write each raw source result under `/app/results/work/` using a source-specific filename such as `job_posting_signals.json` or `reddit_pain_signals.json`.
+
+## Step 3: Collect Source Evidence
+
+For every selected source, capture enough evidence to explain why each lead is in market. Prefer structured records with these fields: `company`, `person`, `source`, `signal_date`, `signal_summary`, `source_url`, `confidence_notes`, and `outreach_angle`.
+
+When source-specific skills are available, run them using the inputs in Step 1. When a source-specific skill is unavailable, use web search or manual research to gather equivalent evidence and document the fallback in `signal_report.md`.
+
+## Step 4: Combine Signals
+
+Deduplicate companies across all selected sources and preserve every signal attached to each company. Multi-signal companies should be retained as the strongest leads.
 
 ```python
-import json, pathlib
-
-leads = json.loads(pathlib.Path("/app/results/work/combined_signals.json").read_text())
-
-# Use the lead-qualification skill against ICP_CRITERIA
-# qualified = [l for l in leads if invoke_skill("lead-qualification", lead=l, icp=ICP_CRITERIA)]
-
-# Enrich top qualified leads with company details
-qualified_leads = leads  # replace with filtered list from lead-qualification skill
-
-# Write qualified leads output
-pathlib.Path("/app/results/qualified_leads.json").write_text(json.dumps(qualified_leads, indent=2))
-print(f"Qualified leads: {len(qualified_leads)}")
+# Pseudocode for normalization; adapt to the actual source files collected.
+# Load source records, group by normalized company domain/name, and retain all evidence rows.
 ```
 
-## Step 5: Generate Outreach Context
+Score each lead using source quality and recency. Job posting plus funding is highest intent, LinkedIn content plus Reddit complaint validates pain, and single conference attendance is awareness-level only.
 
-```python
-import json, pathlib
+## Step 5: Enrich Top Leads
 
-qualified_leads = json.loads(pathlib.Path("/app/results/qualified_leads.json").read_text())
+Use web search to enrich the highest-scoring companies with current company details, relevant contacts, buying trigger context, and a concise outreach angle. Keep citations or source URLs in the working notes so a reviewer can audit the evidence.
 
-outreach_context = []
-for lead in qualified_leads:
-    sources = lead.get("signal_sources", [])
-    # Derive outreach angle based on signal combination
-    if "job_posting" in sources and "funding" in sources:
-        angle = "High-intent: actively hiring AND recently funded — budget and pain both confirmed"
-    elif "job_posting" in sources:
-        angle = "Hiring for relevant roles — pain acknowledged, budget allocated"
-    elif "funding" in sources:
-        angle = "Recently funded — growth mandate and budget available"
-    elif "linkedin" in sources and "reddit" in sources:
-        angle = "Validated pain: discussing the problem both on LinkedIn and Reddit"
-    elif "linkedin" in sources:
-        angle = "Thought leader or practitioner actively discussing the problem space"
-    elif "reddit" in sources:
-        angle = "Experiencing pain: active discussion on Reddit"
-    elif "event" in sources:
-        angle = "Awareness signal: attended relevant conference"
-    else:
-        angle = lead.get("outreach_angle", "General interest signal")
+## Step 6: Human Checkpoint
 
-    outreach_context.append({
-        "company": lead["company"],
-        "signal_strength": lead["signal_strength"],
-        "signal_sources": sources,
-        "outreach_angle": angle,
-        "context_notes": lead.get("context", [])
-    })
+After combining signals, review the consolidated list before outreach. Remove companies that do not match the ICP, downgrade weak or stale evidence, and confirm that the outreach context follows from the collected signals.
 
-pathlib.Path("/app/results/outreach_context.json").write_text(json.dumps(outreach_context, indent=2))
-print(f"Outreach context generated for {len(outreach_context)} leads")
+## Step 7: Write Final Outputs
+
+Create `/app/results/leads.csv` with this header:
+
+```csv
+company,signal_sources,signal_strength,context,outreach_angle,source_urls,review_status
 ```
 
-## Step 6: Iterate on Errors (max 3 rounds)
+Create `/app/results/signal_report.md` summarizing selected sources, notable signal clusters, excluded leads, scoring rationale, and the final prioritized list.
 
-If any signal source fails or returns no results:
+## Step 8: Iterate on Errors (max 3 rounds)
 
-1. Check the error message from the failed skill invocation
-2. Apply targeted fix from the table below
-3. Re-run only the failed source
-4. Re-merge results in Step 3
+If validation fails or the lead table is incomplete, run up to max 3 rounds of targeted fixes: fill missing required files, normalize malformed CSV rows, add missing source URLs, or re-score leads with ambiguous evidence. Stop after 3 rounds and record any residual issue in `summary.md` and `validation_report.json`.
 
-Repeat up to 3 times per source before marking it as unavailable.
-
-### Common Fixes
+## Common Fixes
 
 | Issue | Fix |
-|-------|-----|
-| Job posting skill returns empty | Broaden `target_keywords`; check API rate limits |
-| Reddit scraper blocked | Use different user agent; check subreddit accessibility |
-| LinkedIn skill fails | Verify LinkedIn session credentials; reduce time_frame |
-| Funding monitor empty | Widen `industry` filter; extend lookback window |
-| Event URL invalid | Verify Luma event URLs are public and accessible |
-| Lead qualification fails | Simplify `icp_criteria`; check qualification skill configuration |
+|---|---|
+| Missing `leads.csv` | Re-run Step 7 and write the required CSV header even if no leads were found |
+| Missing source URLs | Revisit source evidence and add at least one audit URL or note `not_available` with rationale |
+| Weak ICP fit | Move the company to excluded leads in `signal_report.md` |
+| Duplicate company rows | Merge rows and combine `signal_sources` with semicolon separators |
+| No selected sources returned evidence | Write an empty `leads.csv`, explain the zero-result search in `signal_report.md`, and keep validation passing |
 
-## Step 7: Write Signal Report
+## Final Checklist
 
-```python
-import json, pathlib
-from datetime import datetime
-
-qualified_leads = json.loads(pathlib.Path("/app/results/qualified_leads.json").read_text())
-
-# Count by source
-source_counts = {}
-for lead in qualified_leads:
-    for src in lead.get("signal_sources", []):
-        source_counts[src] = source_counts.get(src, 0) + 1
-
-top_leads = sorted(qualified_leads, key=lambda x: x.get("signal_strength", 0), reverse=True)[:10]
-
-report = f"""# Signal Detection Pipeline — Report
-
-**Run date**: {datetime.utcnow().strftime('%Y-%m-%d')}
-**Total qualified leads**: {len(qualified_leads)}
-
-## Signal Source Summary
-
-| Source | Leads Found |
-|--------|------------|
-"""
-for src, count in sorted(source_counts.items(), key=lambda x: -x[1]):
-    report += f"| {src} | {count} |\n"
-
-report += f"""
-## Top 10 Leads by Signal Strength
-
-| Company | Signal Strength | Signal Sources |
-|---------|----------------|----------------|
-"""
-for lead in top_leads:
-    report += f"| {lead['company']} | {lead.get('signal_strength', 0)} | {', '.join(lead.get('signal_sources', []))} |\n"
-
-pathlib.Path("/app/results/signal_report.md").write_text(report)
-print("Signal report written")
-```
-
-## Step 8: Final Checklist (MANDATORY — do not skip)
-
-### Verification Script
+Run the verification script before finishing.
 
 ```bash
 echo "=== FINAL OUTPUT VERIFICATION ==="
 RESULTS_DIR="/app/results"
-for f in \
-  "$RESULTS_DIR/qualified_leads.json" \
-  "$RESULTS_DIR/signal_report.md" \
-  "$RESULTS_DIR/outreach_context.json" \
-  "$RESULTS_DIR/summary.md" \
-  "$RESULTS_DIR/validation_report.json"; do
+for f in   "$RESULTS_DIR/signal_report.md"   "$RESULTS_DIR/leads.csv"   "$RESULTS_DIR/summary.md"   "$RESULTS_DIR/validation_report.json"; do
   if [ ! -s "$f" ]; then
     echo "FAIL: $f is missing or empty"
   else
     echo "PASS: $f ($(wc -c < "$f") bytes)"
   fi
 done
-
-# Verify lead quality
-LEAD_COUNT=$(python3 -c "import json; data=json.load(open('$RESULTS_DIR/qualified_leads.json')); print(len(data))")
-echo "INFO: Total qualified leads: $LEAD_COUNT"
-
-if [ "$LEAD_COUNT" -eq 0 ]; then
-  echo "WARN: No qualified leads found — check signal source configuration"
-else
-  echo "PASS: Qualified leads found"
-fi
+python - <<'VERIFY_PY'
+import csv, json, pathlib
+results = pathlib.Path('/app/results')
+with (results / 'leads.csv').open(newline='') as f:
+    header = next(csv.reader(f), [])
+required = ['company','signal_sources','signal_strength','context','outreach_angle','source_urls','review_status']
+missing = [c for c in required if c not in header]
+print('PASS: leads.csv header complete' if not missing else 'FAIL: missing CSV columns ' + ', '.join(missing))
+report = json.loads((results / 'validation_report.json').read_text())
+print('PASS: validation_report overall_passed true' if report.get('overall_passed') is True else 'FAIL: validation_report overall_passed is not true')
+VERIFY_PY
 ```
-
-### Checklist
-
-- [ ] `qualified_leads.json` exists with deduplicated, scored leads
-- [ ] `signal_report.md` exists with per-source counts and top 10 leads
-- [ ] `outreach_context.json` exists with per-lead outreach angles
-- [ ] `summary.md` exists with run metadata and highlights
-- [ ] `validation_report.json` exists with `stages`, `results`, and `overall_passed`
-- [ ] At least one signal source returned results
-- [ ] All leads in `qualified_leads.json` have `signal_strength > 0`
-- [ ] Human checkpoint completed: reviewed combined signals list before outreach
-
-**If ANY item fails, go back and fix it. Do NOT finish until all items pass.**
 
 ## Tips
 
-- **Run signal sources in parallel** for best throughput — each source is independent.
-- **Multi-signal companies are your strongest leads.** A company appearing in both job postings and funding data has confirmed budget and acknowledged pain.
-- **Start with job posting signals.** They are the strongest buying signal because they indicate both budget allocation and specific role/pain acknowledgment.
-- **Score conservatively.** A single conference attendance is awareness only — don't treat it as high intent without corroborating signals.
-- **Cache contact lookups.** Use the `contact-cache` skill to avoid redundant enrichment calls for companies that appear in multiple signal passes.
-- **Human review before outreach.** Always review the consolidated lead list before connecting to the outreach campaign — false positives waste sales effort.
-- **Connects downstream to** `company-contact-finder` for enrichment and `setup-outreach-campaign` for campaign creation.
+Run independent signal sources in parallel when possible, but consolidate and review them before outreach. Treat multi-signal companies as the strongest leads and keep the evidence trail visible in the final report.
+
+## Source Skill Notes
+
+Imported from a Gooseworks directory mirror. The resolved upstream source is `https://raw.githubusercontent.com/gooseworks-ai/goose-skills/296901414500a3a2d26b37e410f92e0406bf94a2/skills/playbooks/signal-detection-pipeline/SKILL.md`.
