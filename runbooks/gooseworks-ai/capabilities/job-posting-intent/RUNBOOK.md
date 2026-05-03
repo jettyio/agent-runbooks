@@ -9,8 +9,8 @@ origin:
   user_supplied_url: https://skills.gooseworks.ai/skills/job-posting-intent
   is_directory_mirror: true
   source_host: raw.githubusercontent.com
-  source_title: job-posting-intent
-  imported_at: '2026-05-03T02:53:45Z'
+  source_title: Job Posting Intent Detection
+  imported_at: '2026-05-03T02:53:59Z'
   imported_by: skill-to-runbook-converter@1.1.0
   attribution:
     collection_or_org: gooseworks-ai
@@ -27,7 +27,7 @@ secrets:
     required: false
 ---
 
-# job-posting-intent — Agent Runbook
+# Job Posting Intent Detection — Agent Runbook
 
 ## Objective
 Detect buying intent from job postings. When a company posts a job in your problem area, they've allocated budget and are actively thinking about the problem. This skill finds those companies, qualifies them, extracts personalization context, and outputs everything to a Google Sheet. Does NOT do outreach — just delivers qualified leads with reasoning. The runbook guides an agent through configuring the required APIs, estimating search cost, running the job-posting intent search, and exporting qualified lead intelligence. It preserves the upstream workflow while adding Jetty-required outputs, bounded validation, and structured provenance.
