@@ -1,5 +1,5 @@
 ---
-version: 1.0.0
+version: "1.0.0"
 evaluation: programmatic
 agent: codex
 model: gpt-5.5
@@ -10,13 +10,13 @@ origin:
   is_directory_mirror: true
   source_host: raw.githubusercontent.com
   source_title: Launch Positioning Builder
-  imported_at: '2026-05-03T02:46:03Z'
+  imported_at: '2026-05-03T02:46:27Z'
   imported_by: skill-to-runbook-converter@1.1.0
   attribution:
     collection_or_org: gooseworks-ai
     skill_name: launch-positioning-builder
     confidence: high
-secrets: null
+secrets: {}
 ---
 
 # Launch Positioning Builder — Agent Runbook
