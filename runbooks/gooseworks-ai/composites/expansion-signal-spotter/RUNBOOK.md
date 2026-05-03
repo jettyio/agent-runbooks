@@ -9,8 +9,8 @@ origin:
   user_supplied_url: https://skills.gooseworks.ai/skills/expansion-signal-spotter
   is_directory_mirror: true
   source_host: raw.githubusercontent.com
-  source_title: expansion-signal-spotter
-  imported_at: '2026-05-03T02:54:14Z'
+  source_title: Expansion Signal Spotter
+  imported_at: '2026-05-03T02:54:33Z'
   imported_by: skill-to-runbook-converter@1.1.0
   attribution:
     collection_or_org: gooseworks-ai
@@ -19,7 +19,7 @@ origin:
 secrets: null
 ---
 
-# expansion-signal-spotter — Agent Runbook
+# Expansion Signal Spotter — Agent Runbook
 
 ## Objective
 
