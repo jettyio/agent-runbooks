@@ -10,7 +10,7 @@ origin:
   is_directory_mirror: true
   source_host: raw.githubusercontent.com
   source_title: goose-graphics
-  imported_at: '2026-05-03T02:45:42Z'
+  imported_at: '2026-05-03T02:46:00Z'
   imported_by: skill-to-runbook-converter@1.1.0
   attribution:
     collection_or_org: gooseworks-ai
@@ -19,7 +19,7 @@ origin:
 secrets: {}
 ---
 
-# goose-graphics - Agent Runbook
+# goose-graphics — Agent Runbook
 
 ## Objective
 
