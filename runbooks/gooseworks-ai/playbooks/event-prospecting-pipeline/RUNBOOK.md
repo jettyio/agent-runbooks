@@ -1,25 +1,25 @@
 ---
-version: 1.0.0
+version: "1.0.0"
 evaluation: programmatic
 agent: codex
 model: gpt-5.5
 snapshot: python312-uv
 origin:
-  url: https://raw.githubusercontent.com/gooseworks-ai/goose-skills/296901414500a3a2d26b37e410f92e0406bf94a2/skills/playbooks/event-prospecting-pipeline/SKILL.md
-  user_supplied_url: https://skills.gooseworks.ai/skills/event-prospecting-pipeline
+  url: "https://raw.githubusercontent.com/gooseworks-ai/goose-skills/296901414500a3a2d26b37e410f92e0406bf94a2/skills/playbooks/event-prospecting-pipeline/SKILL.md"
+  user_supplied_url: "https://skills.gooseworks.ai/skills/event-prospecting-pipeline"
   is_directory_mirror: true
-  source_host: raw.githubusercontent.com
-  source_title: Event Prospecting Pipeline
-  imported_at: '2026-05-03T02:45:38Z'
-  imported_by: skill-to-runbook-converter@1.1.0
+  source_host: "raw.githubusercontent.com"
+  source_title: "Event Prospecting Pipeline"
+  imported_at: "2026-05-03T02:46:08Z"
+  imported_by: "skill-to-runbook-converter@1.1.0"
   attribution:
-    collection_or_org: gooseworks-ai
-    skill_name: event-prospecting-pipeline
-    confidence: high
-secrets: null
+    collection_or_org: "gooseworks-ai"
+    skill_name: "event-prospecting-pipeline"
+    confidence: "high"
+secrets: {}
 ---
 
-# Event Prospecting Pipeline - Agent Runbook
+# Event Prospecting Pipeline — Agent Runbook
 
 ## Objective
 
