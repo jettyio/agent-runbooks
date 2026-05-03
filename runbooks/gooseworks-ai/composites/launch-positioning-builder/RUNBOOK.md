@@ -9,8 +9,8 @@ origin:
   user_supplied_url: https://skills.gooseworks.ai/skills/launch-positioning-builder
   is_directory_mirror: true
   source_host: raw.githubusercontent.com
-  source_title: launch-positioning-builder
-  imported_at: '2026-05-03T02:45:44Z'
+  source_title: Launch Positioning Builder
+  imported_at: '2026-05-03T02:46:03Z'
   imported_by: skill-to-runbook-converter@1.1.0
   attribution:
     collection_or_org: gooseworks-ai
@@ -19,7 +19,7 @@ origin:
 secrets: null
 ---
 
-# launch-positioning-builder — Agent Runbook
+# Launch Positioning Builder — Agent Runbook
 ## Objective
 
 Research competitors, analyze their messaging, and generate a positioning document with category definition, differentiation claims, value propositions, and proof points. Chains web research, competitor site analysis, and review mining to produce a positioning doc ready for website copy and sales deck use. Use when a product marketing team needs to define or refresh positioning ahead of a launch, rebrand, or competitive shift. The runbook guides an agent through intake, competitive research, positioning framework selection, a positioning map, and final document assembly. The output should be opinionated, evidence-backed, and ready for website copy, sales decks, investor materials, and launch planning.
