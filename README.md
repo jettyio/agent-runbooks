@@ -27,7 +27,7 @@ Each runbook can be executed in a container that mounts the runbook directory an
 
 Runbooks are first-class assets on [jetty.io](https://jetty.io). Upload a runbook to a collection and Jetty will orchestrate execution, capture trajectories, and surface evaluation results in the dashboard.
 
-See the [Jetty documentation](https://jetty.io/docs) for details on deploying and monitoring runbooks.
+See the [Jetty documentation](https://docs.jetty.io) for details on deploying and monitoring runbooks.
 
 ## License
 
