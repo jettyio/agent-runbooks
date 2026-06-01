@@ -83,7 +83,7 @@ mkdir -p {{results_dir}}
 
 # Verify required secret
 if [ -z "$REPLICATE_API_TOKEN" ]; then
-  echo "ERROR: REPLICATE_API_TOKEN is not set. Add it to the jettyio collection environment on Jetty (or export locally)."
+  echo "ERROR: REPLICATE_API_TOKEN is not set. Add it to the cheerios collection environment on Jetty (or export locally)."
   exit 1
 fi
 
