@@ -43,7 +43,7 @@ Generate presentation decks grounded in real GitHub projects, or walk through a 
 | Goal or update instructions | *(required)* | What to create or update — e.g. "pitch deck for ProjectX from its GitHub repo" |
 | Mode | `create` | `create` or `update` a Slidev deck project |
 | Source repo URL | *(optional)* | GitHub repository URL to base a project deck on |
-| Style preset | `default` | Visual style preset (see STYLE_PRESETS.md for options) |
+| Style preset | `auto` | Visual style preset — pass a slug from the **Style Preset Catalog** in Step 5 (e.g. `bold-signal`, `vintage-editorial`, `terminal-green`). `auto` lets the agent pick one by mood. |
 
 ## Dependencies
 
@@ -52,7 +52,6 @@ Generate presentation decks grounded in real GitHub projects, or walk through a 
 | `Node.js` / `npm` | Runtime | Yes | Required to run Slidev |
 | `@slidev/cli` | npm package | Yes | Slidev CLI for compiling and previewing decks |
 | GitHub API / `gh` | External API | Optional | Clone source repos when building project decks |
-| `STYLE_PRESETS.md` | Reference doc | Phase 4 only | Visual presets and token palettes |
 | `DECK_SPEC.md` | Reference doc | Phase 5 only | Spec schema |
 | `SLIDE_KINDS.md` | Reference doc | Phase 5 only | Slide type catalog |
 | `COMPILER_RULES.md` | Reference doc | Phase 6 only | Compilation rules |
@@ -90,7 +89,7 @@ Load reference documents **only when entering the relevant phase**. Do not load 
 | 1. Determine mode | (none) | — |
 | 2. Gather sources | `SOURCES.md` (project decks only) | Source-material lookup, extraction heuristics, through-line, project identity |
 | 3. Intake | `PRESENTATION_PHILOSOPHY.md`, `STORYTELLING.md` | Rhetorical principles, narrative structure, through-line design |
-| 4. Style direction | `STYLE_PRESETS.md` | Visual presets and token palettes |
+| 4. Style direction | (inline — Style Preset Catalog in Step 5) | Visual presets and token palettes |
 | 5. Write spec | `DECK_SPEC.md`, `SLIDE_KINDS.md` | Spec schema and slide type catalog |
 | 6. Compile | `COMPILER_RULES.md`, `SLIDEV_REFERENCE.md` | Compilation phases, Slidev features |
 | 7. Validate | `ACCEPTANCE_CHECKLIST.md`, `LLM_TELLS.md` | Quality gates |
@@ -138,11 +137,45 @@ Apply rhetorical and narrative principles to shape the deck's arc:
 
 ## Step 5: Style Direction
 
-> Load `STYLE_PRESETS.md` at this phase.
+> The full preset catalog is **inline below** — no external `STYLE_PRESETS.md` is required.
 
-Select or confirm a visual style preset. If the user specified one, apply it. Otherwise, suggest a preset based on the project identity and audience.
+Select or confirm a visual style preset:
 
-If token overrides are needed, prepare `styles/tokens.css`.
+- If the user passed a **Style preset** slug, apply that preset exactly.
+- If the value is `auto` (the default), pick a preset using the **Pick by mood** map below, then state in `summary.md` which preset you chose and why.
+
+Each preset defines a font pairing and a color palette. When you need to deviate from a preset's tokens (brand colors, a custom typeface), write the overrides to `/app/results/styles/tokens.css`.
+
+### Style Preset Catalog
+
+Pass the **slug** (first column) as the `Style preset` parameter. The default recommendation is **Bold Signal** — a versatile dark theme with strong visual hierarchy.
+
+| Slug | Preset | Theme | Vibe | Fonts (display / body) | Key colors |
+|------|--------|-------|------|------------------------|------------|
+| `bold-signal` | Bold Signal | Dark | Confident, bold, high-impact (default) | Archivo Black / Space Grotesk | bg `#1a1a1a` · accent `#FF5722` · text `#ffffff` |
+| `electric-studio` | Electric Studio | Dark | Clean, professional, high-contrast | Manrope / Manrope | bg `#0a0a0a` · accent `#4361ee` · text `#ffffff` |
+| `creative-voltage` | Creative Voltage | Dark | Creative, energetic, retro-modern | Syne / Space Mono | bg `#1a1a2e` · primary `#0066ff` · neon `#d4ff00` |
+| `dark-botanical` | Dark Botanical | Dark | Elegant, sophisticated, premium | Cormorant / IBM Plex Sans | bg `#0f0f0f` · text `#e8e4df` · accent `#d4a574` |
+| `notebook-tabs` | Notebook Tabs | Light | Editorial, organized, tactile | Bodoni Moda / DM Sans | card `#f8f6f1` · tabs `#98d4bb`→`#ffe6a7` · text `#2d2d2d` |
+| `pastel-geometry` | Pastel Geometry | Light | Friendly, modern, approachable | Plus Jakarta Sans | bg `#c8d9e6` · card `#faf9f7` · pills `#f0b4d4`→`#7c6aad` |
+| `split-pastel` | Split Pastel | Light | Playful, friendly, creative | Outfit | peach `#f5e6dc` · lavender `#e4dff0` · text `#1a1a1a` |
+| `vintage-editorial` | Vintage Editorial | Light | Witty, editorial, personality-driven | Fraunces / Work Sans | cream `#f5f3ee` · text `#1a1a1a` · accent `#e8d4c0` |
+| `neon-cyber` | Neon Cyber | Dark | Futuristic, high-energy | Space Grotesk / IBM Plex Mono | navy `#0a0f1c` · cyan + magenta neon |
+| `terminal-green` | Terminal Green | Dark | Developer / technical | IBM Plex Mono | bg `#0d1117` · terminal green `#39d353` |
+| `swiss-modern` | Swiss Modern | Light | Bauhaus, minimal, grid-driven | Helvetica Neue / Inter | black + white · red `#ff3300` |
+| `paper-and-ink` | Paper & Ink | Light | Literary, calm, editorial | Spectral / Inter | cream `#faf9f7` · charcoal · crimson `#c41e3a` |
+
+### Pick by mood
+
+When `Style preset` is `auto`, choose by the feeling the audience should leave with:
+
+- **Impressed / confident** → Bold Signal, Electric Studio, Dark Botanical
+- **Excited / energized** → Creative Voltage, Neon Cyber, Split Pastel
+- **Calm / focused** → Notebook Tabs, Paper & Ink, Swiss Modern
+- **Inspired / moved** → Dark Botanical, Vintage Editorial, Pastel Geometry
+- **Technical / developer** → Terminal Green, Electric Studio
+
+When in doubt, use **Bold Signal**.
 
 ## Step 6: Write or Revise `deck.spec.md`
 
