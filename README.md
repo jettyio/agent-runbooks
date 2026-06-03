@@ -17,6 +17,26 @@ runbooks/
 
 Every runbook lives in its own directory and is authored as a single `RUNBOOK.md` file alongside any supporting assets (datasets, prompts, fixtures).
 
+## Featured runbooks
+
+`featured.json` at the repo root defines which runbooks are showcased on the
+[runbooks directory](https://runbooks.jetty.bot) homepage. It is an ordered list
+of runbook slugs (`{collection}/{name}`); everything else stays browsable from the
+full directory at `/all`.
+
+```json
+{
+  "featured": [
+    "adewale/slide-maker",
+    "anthropics/pdf"
+  ]
+}
+```
+
+For nested runbooks (e.g. `gooseworks-ai/capabilities/competitor-post-engagers`),
+the slug joins the sub-collection with a hyphen:
+`gooseworks-ai/capabilities-competitor-post-engagers`.
+
 ## Running a runbook
 
 ### Via Docker
