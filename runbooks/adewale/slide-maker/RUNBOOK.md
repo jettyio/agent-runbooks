@@ -20,7 +20,7 @@ origin:
 
 ## Objective
 
-Generate presentation decks grounded in real GitHub projects, or walk through a structured brief-to-slides process. This skill supports creating and updating native Slidev deck projects — complete with a compiled `slides.md`, a `deck.spec.md` specification, and a project `README.md`. Use when the user asks to create a presentation, slide deck, talk, pitch, keynote, or Slidev project — especially when they want slides based on an existing codebase, architecture, or project documentation. The workflow spans eight phases: determine mode, gather sources, intake narrative principles, choose style, write the spec, compile slides, validate quality, and deliver the finished deck.
+Generate presentation decks grounded in real GitHub projects, or walk through a structured brief-to-slides process. This skill supports creating and updating native Slidev deck projects — complete with a compiled `slides.md`, a `deck.spec.md` specification, a printable `deck.pdf`, and a project `README.md`. Use when the user asks to create a presentation, slide deck, talk, pitch, keynote, or Slidev project — especially when they want slides based on an existing codebase, architecture, or project documentation. The workflow spans eight phases: determine mode, gather sources, intake narrative principles, choose style, write the spec, compile slides, validate quality, and deliver the finished deck.
 
 ## REQUIRED OUTPUT FILES (MANDATORY)
 
@@ -30,6 +30,7 @@ Generate presentation decks grounded in real GitHub projects, or walk through a 
 |------|-------------|
 | `/app/results/deck.spec.md` | The slide deck specification (always required) |
 | `/app/results/slides.md` | The compiled Slidev slides (always required) |
+| `/app/results/deck.pdf` | The compiled deck exported to PDF via `slidev export` (always required) |
 | `/app/results/README.md` | Project README for the deck (always required) |
 | `/app/results/styles/tokens.css` | CSS token overrides (when visual customization is needed) |
 | `/app/results/summary.md` | Executive summary with run metadata, mode, and any issues |
@@ -51,6 +52,7 @@ Generate presentation decks grounded in real GitHub projects, or walk through a 
 |------------|------|----------|-------------|
 | `Node.js` / `npm` | Runtime | Yes | Required to run Slidev |
 | `@slidev/cli` | npm package | Yes | Slidev CLI for compiling and previewing decks |
+| `playwright-chromium` | npm package | Yes | Headless Chromium that `slidev export` drives to render `deck.pdf` |
 | GitHub API / `gh` | External API | Optional | Clone source repos when building project decks |
 
 This runbook is **self-contained** — slide kinds, the deck-spec schema, Slidev
@@ -68,6 +70,9 @@ command -v npm  >/dev/null || { echo "ERROR: npm not installed"; exit 1; }
 
 # Install Slidev CLI if not present
 npm list -g @slidev/cli 2>/dev/null || npm install -g @slidev/cli
+
+# Install the headless Chromium that `slidev export` uses to render the PDF
+npm list -g playwright-chromium 2>/dev/null || npm install -g playwright-chromium
 
 # Create output directory
 mkdir -p /app/results/styles
@@ -93,7 +98,7 @@ all upfront.
 | 5. Write spec | Step 6 (Deck-spec schema + Slide Kinds catalog) | Spec schema and slide type catalog |
 | 6. Compile | Step 7 (Slidev reference + Compiler rules) | Compilation rules, Slidev features |
 | 7. Validate | Step 9 (Acceptance checklist + LLM tells) | Quality gates |
-| 8. Deliver | Step 10 | Final deliverables |
+| 8. Deliver | Steps 10–11 | Export the deck to PDF, then write final deliverables |
 
 ## Step 2: Determine Mode
 
@@ -332,19 +337,42 @@ Run the acceptance checklist below, then scan every slide and speaker note for t
 - Symmetry tics: every slide having exactly three bullets, or three-item lists everywhere regardless of content.
 - Design slop flagged in Step 4: default system fonts, purple-on-white gradients, cookie-cutter card grids.
 
-## Step 10: Deliver
+## Step 10: Export to PDF
+
+Print the validated deck to PDF with Slidev's built-in exporter. Run this **after** Step 9 passes so the PDF reflects the final slides.
+
+```bash
+cd /app/results
+
+# slidev export renders each slide through headless Chromium → deck.pdf
+slidev export slides.md --output deck.pdf --timeout 60000 2>&1 | tail -20
+
+# Confirm a non-empty PDF was produced
+if [ -s /app/results/deck.pdf ]; then
+  echo "PASS: deck.pdf ($(wc -c < /app/results/deck.pdf) bytes)"
+else
+  echo "FAIL: deck.pdf was not produced"
+fi
+```
+
+- One page per slide by default. To bake click-through animations into extra pages, add `--with-clicks`.
+- If export fails because Chromium is missing, run `npm install -g playwright-chromium` (Step 1 already does this) and retry once.
+- If the PDF still can't be produced after one retry, record the failure in `summary.md`, set `overall_passed=false` in `validation_report.json`, and continue — never silently skip it.
+
+## Step 11: Deliver
 
 Write the final deliverables to `/app/results/`:
 - `deck.spec.md` — approved spec
 - `slides.md` — compiled Slidev slides
+- `deck.pdf` — the deck exported to PDF
 - `README.md` — project README with deck title, through-line, how to run, slide count, preset used
 - `styles/tokens.css` — token overrides (if applicable)
 
-## Step 11: Write Validation Report
+## Step 12: Write Validation Report
 
-Write `/app/results/validation_report.json` reflecting all stage outcomes.
+Write `/app/results/validation_report.json` reflecting all stage outcomes, including the PDF export result.
 
-## Step 12: Write Executive Summary
+## Step 13: Write Executive Summary
 
 Write `/app/results/summary.md` with run metadata, mode detected, through-line, slide count, preset used, validation results, and any issues.
 
@@ -358,6 +386,7 @@ RESULTS_DIR="/app/results"
 for f in \
   "$RESULTS_DIR/deck.spec.md" \
   "$RESULTS_DIR/slides.md" \
+  "$RESULTS_DIR/deck.pdf" \
   "$RESULTS_DIR/README.md" \
   "$RESULTS_DIR/summary.md" \
   "$RESULTS_DIR/validation_report.json"; do
@@ -374,6 +403,7 @@ echo "=== VERIFICATION COMPLETE ==="
 
 - [ ] `deck.spec.md` exists with through-line and full slide list
 - [ ] `slides.md` compiles without errors via `slidev build`
+- [ ] `deck.pdf` was exported via `slidev export` and is non-empty
 - [ ] `README.md` contains deck title, through-line, and run instructions
 - [ ] `styles/tokens.css` written if visual overrides were needed
 - [ ] `summary.md` documents mode, through-line, slide count, preset, and any issues
