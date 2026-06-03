@@ -52,12 +52,10 @@ Generate presentation decks grounded in real GitHub projects, or walk through a 
 | `Node.js` / `npm` | Runtime | Yes | Required to run Slidev |
 | `@slidev/cli` | npm package | Yes | Slidev CLI for compiling and previewing decks |
 | GitHub API / `gh` | External API | Optional | Clone source repos when building project decks |
-| `DECK_SPEC.md` | Reference doc | Phase 5 only | Spec schema |
-| `SLIDE_KINDS.md` | Reference doc | Phase 5 only | Slide type catalog |
-| `COMPILER_RULES.md` | Reference doc | Phase 6 only | Compilation rules |
-| `SLIDEV_REFERENCE.md` | Reference doc | Phase 6 only | Slidev features reference |
-| `PRESENTATION_PHILOSOPHY.md` | Reference doc | Phase 3 only | Rhetorical principles |
-| `STORYTELLING.md` | Reference doc | Phase 3 only | Narrative structure |
+
+This runbook is **self-contained** — slide kinds, the deck-spec schema, Slidev
+syntax, compiler rules, and validation checklists are all inline in the steps
+that use them. There are no external reference files to fetch.
 
 ## Step 1: Environment Setup
 
@@ -82,18 +80,20 @@ fi
 echo "Environment setup complete. Mode: ${MODE:-create}"
 ```
 
-Load reference documents **only when entering the relevant phase**. Do not load all files upfront.
+The work proceeds in eight phases. Every reference each phase needs is inline in
+the step shown below — read it when you reach that step rather than loading it
+all upfront.
 
-| Phase | Load these files | Purpose |
-|-------|-----------------|---------|
-| 1. Determine mode | (none) | — |
-| 2. Gather sources | `SOURCES.md` (project decks only) | Source-material lookup, extraction heuristics, through-line, project identity |
-| 3. Intake | `PRESENTATION_PHILOSOPHY.md`, `STORYTELLING.md` | Rhetorical principles, narrative structure, through-line design |
-| 4. Style direction | (inline — Style Preset Catalog in Step 5) | Visual presets and token palettes |
-| 5. Write spec | `DECK_SPEC.md`, `SLIDE_KINDS.md` | Spec schema and slide type catalog |
-| 6. Compile | `COMPILER_RULES.md`, `SLIDEV_REFERENCE.md` | Compilation phases, Slidev features |
-| 7. Validate | `ACCEPTANCE_CHECKLIST.md`, `LLM_TELLS.md` | Quality gates |
-| 8. Deliver | (none) | — |
+| Phase | Covered by | Purpose |
+|-------|-----------|---------|
+| 1. Determine mode | Step 2 | Create vs. update |
+| 2. Gather sources | Step 3 | Source-material lookup, extraction heuristics, through-line, project identity |
+| 3. Intake | Step 4 (Presentation principles + Narrative arcs) | Rhetorical principles, narrative structure, through-line design |
+| 4. Style direction | Step 5 (Style Preset Catalog) | Visual presets and token palettes |
+| 5. Write spec | Step 6 (Deck-spec schema + Slide Kinds catalog) | Spec schema and slide type catalog |
+| 6. Compile | Step 7 (Slidev reference + Compiler rules) | Compilation rules, Slidev features |
+| 7. Validate | Step 9 (Acceptance checklist + LLM tells) | Quality gates |
+| 8. Deliver | Step 10 | Final deliverables |
 
 ## Step 2: Determine Mode
 
@@ -115,8 +115,6 @@ Unsupported: standalone HTML, PPTX, HTML-to-Slidev, non-project artifacts. If th
 
 ## Step 3: Gather Source Material (project decks only)
 
-> Load `SOURCES.md` at this phase (project decks only).
-
 For **project decks** (user provided a GitHub repo or codebase):
 - Clone or fetch the repository
 - Extract: project name, tagline, key architecture, noteworthy features, open issues, recent releases
@@ -126,14 +124,38 @@ For **project decks** (user provided a GitHub repo or codebase):
 For **brief-driven decks** (no repo):
 - Collect from the user: topic, audience, key message, desired slide count, and any existing material
 
+**Extraction heuristics**
+
+- Prefer primary sources in this order: `README` → architecture/design docs → code comments and module layout → recent commits/releases → open issues.
+- For every claim you intend to put on a slide, note the exact source (file, commit, README section, or issue number). Anything you can't trace is a candidate to cut, not to assert.
+- If the user supplied images/screenshots, inspect each one, mark it USABLE or NOT USABLE (with a reason), and let the usable set co-design the outline — e.g. 3 product screenshots naturally imply 3 feature slides.
+- Capture identity signals for Step 5: dominant brand colors, logo, tone (playful vs. enterprise), and the audience's technical depth.
+
 ## Step 4: Intake — Narrative Principles
 
-> Load `PRESENTATION_PHILOSOPHY.md` and `STORYTELLING.md` at this phase.
-
-Apply rhetorical and narrative principles to shape the deck's arc:
+Shape the deck's arc before writing any slide:
 - Establish a clear through-line (one sentence that captures the deck's core argument)
-- Map a narrative structure (e.g. problem to insight to solution to proof to call to action)
+- Map a narrative structure (see **Narrative arcs** below)
 - Identify the audience and calibrate complexity accordingly
+
+**Presentation principles**
+
+- **One idea per slide.** If a slide argues two things, split it. Large type, strong hierarchy, generous whitespace beat dense walls of text.
+- **Show, don't tell.** Prefer a diagram, a real metric, a screenshot, or a code excerpt over an abstract bullet describing it.
+- **Earn every claim.** Each factual statement should trace to a source from Step 3. Cut what you can't ground.
+- **Distinctive over generic.** Avoid "AI slop" — predictable layouts, purple-on-white gradients, and default system fonts. Commit to one cohesive aesthetic (set in Step 5) with dominant colors and sharp accents.
+- **Calibrate density to delivery.** Speaker-led decks: 1–3 bullets/slide, lots of section beats and statement slides. Read-first decks (sent async): denser, self-contained slides with 4–6 bullets or cards.
+
+**Narrative arcs** — pick the one that fits the goal:
+
+| Arc | Shape | Good for |
+|-----|-------|----------|
+| Problem → Insight → Solution → Proof → CTA | Classic persuasive build | Pitch decks, launches |
+| Context → Tension → Resolution | Story spine | Talks, keynotes |
+| What → Why it matters → How → What's next | Explainer | Teaching, internal updates |
+| Status quo → What changed → Implications | Before/after | Roadmaps, retros |
+
+Restate the through-line on the cover and call back to it on the closing slide.
 
 ## Step 5: Style Direction
 
@@ -179,30 +201,83 @@ When in doubt, use **Bold Signal**.
 
 ## Step 6: Write or Revise `deck.spec.md`
 
-> Load `DECK_SPEC.md` and `SLIDE_KINDS.md` at this phase.
+Write the slide deck specification to `/app/results/deck.spec.md`. The spec is the
+contract for Step 7 — compile only what the spec describes.
 
-Write the slide deck specification to `/app/results/deck.spec.md`. The spec must include:
-- Through-line (one sentence)
-- Slide list with: slide number, kind (from SLIDE_KINDS.md), headline, speaker notes outline
-- Visual preset selected
-- Key source references for each slide
+**Deck-spec schema.** The spec must include:
+- **Through-line** — one sentence.
+- **Meta** — selected style preset (slug from Step 5), target slide count/range, density mode (speaker-led or read-first), audience.
+- **Slide list** — one entry per slide with:
+  - `number` — sequential slide number
+  - `kind` — from the **Slide Kinds catalog** below
+  - `headline` — the slide's single claim, written out
+  - `notes` — a 1–3 line speaker-notes outline
+  - `sources` — file / commit / README section / issue backing each factual claim (project decks)
+
+### Slide Kinds catalog
+
+Each kind maps to a Slidev built-in layout (used in Step 7). Use `content` when nothing else fits.
+
+| Kind | Slidev `layout:` | Use for |
+|------|------------------|---------|
+| `cover` | `cover` | Opening slide — deck title + through-line |
+| `intro` | `intro` | Title + author/context |
+| `section` | `section` | Marks the start of a new section |
+| `content` | `default` | General point with a headline + 1–6 bullets |
+| `two-column` | `two-cols` | Side-by-side compare / text + visual |
+| `two-column-header` | `two-cols-header` | Shared header over two columns |
+| `image` | `image`, `image-left`, `image-right` | A screenshot/diagram as the focus |
+| `quote` | `quote` | A pulled quotation with prominence |
+| `statement` | `statement` | A single bold assertion |
+| `fact` | `fact` | One big metric/number with prominence |
+| `code` | `default` (fenced code block) | A code excerpt or config |
+| `full` | `full` | Edge-to-edge visual / diagram |
+| `closing` | `end` | Recap of the through-line + call to action |
 
 For **update** mode: apply only the changes indicated in the goal; preserve unchanged slides.
 
 Validation gate — do not proceed to Step 7 until:
 - [ ] Through-line is one sentence, present in the spec
-- [ ] Every slide has a kind and a headline
+- [ ] Every slide has a kind (from the catalog) and a headline
 - [ ] Slide count is within the agreed range
 
 ## Step 7: Compile the Deck
 
-> Load `COMPILER_RULES.md` and `SLIDEV_REFERENCE.md` at this phase.
+Compile `/app/results/slides.md` from the approved spec. **Do NOT add content not in the approved spec.**
 
-Compile `/app/results/slides.md` from the approved spec. Follow all compiler rules:
-- Apply the Slidev frontmatter block at the top of `slides.md`
-- Use Slidev layout directives (`layout: cover`, `layout: two-cols`, etc.) as specified
-- Apply token overrides from `styles/tokens.css` if present
-- Do NOT add content not in the approved spec
+### Slidev reference
+
+A Slidev deck is a single Markdown file. Slides are separated by a line containing only `---`. Per-slide options go in a YAML frontmatter block immediately after the separator.
+
+- **Headmatter** (the very first frontmatter block) sets deck-wide config:
+  ```yaml
+  ---
+  theme: default
+  title: <deck title>
+  transition: slide-left
+  ---
+  ```
+- **Per-slide frontmatter** sets the layout and slide options:
+  ```yaml
+  ---
+  layout: two-cols
+  class: text-center
+  background: /images/cover.png
+  ---
+  ```
+- **Common layouts** (map slide kinds → these): `cover`, `intro`, `section`, `default`, `two-cols`, `two-cols-header`, `image-left`, `image-right`, `image`, `quote`, `statement`, `fact`, `full`, `center`, `end`.
+- **Two-column** content uses a `::right::` slot divider between the left and right columns (`::left::`/`::right::` for `two-cols-header`).
+- **Speaker notes** are an HTML comment at the end of a slide: `<!-- notes here -->`.
+- **Code** uses fenced blocks with a language; line highlighting via `{2,4-6}` after the language.
+- **Styling**: apply preset token overrides from `styles/tokens.css`; per-slide tweaks via the `class:` key + UnoCSS utilities.
+
+### Compiler rules
+
+- Start `slides.md` with the headmatter block, then emit slides in spec order.
+- One spec slide → one Slidev slide. Use the `layout:` mapped from each slide's `kind`.
+- **Split, don't shrink.** If a slide's content exceeds its density budget, break it into two slides rather than cramming or reducing font size. If a change causes overflow, split automatically and note it in `summary.md`.
+- Keep every factual claim traceable to the `sources` recorded in the spec.
+- Put the speaker-notes outline into each slide's `<!-- ... -->` notes comment.
 
 ```bash
 # Verify the deck compiles without errors
@@ -221,8 +296,8 @@ If Step 6 validation or Step 7 compilation fails:
    | Issue | Fix |
    |-------|-----|
    | Through-line missing or multi-sentence | Rewrite to a single clear sentence |
-   | Unknown slide kind | Use the closest kind from `SLIDE_KINDS.md` or `content` |
-   | Slidev syntax error | Consult `SLIDEV_REFERENCE.md` for correct syntax |
+   | Unknown slide kind | Use the closest kind from the Slide Kinds catalog (Step 6) or `content` |
+   | Slidev syntax error | Consult the Slidev reference (Step 7) for correct syntax |
    | Slide count out of range | Merge or split slides to hit the target range |
    | Token CSS syntax error | Validate CSS syntax; check `styles/tokens.css` |
 
@@ -233,18 +308,29 @@ After 3 rounds, if compilation still fails, write the failure into `summary.md` 
 
 ## Step 9: Validate
 
-> Load `ACCEPTANCE_CHECKLIST.md` and `LLM_TELLS.md` at this phase.
+Run the acceptance checklist below, then scan every slide and speaker note for the **LLM tells** listed underneath.
 
-Run through the acceptance checklist. Flag any LLM tells (filler phrases, unsupported claims, generic transitions).
+**Acceptance checklist**
 
 | Gate | Criterion |
 |------|-----------|
 | Spec completeness | All slides have kind + headline + notes outline |
 | Through-line | Visible in cover slide and callback in closing slide |
 | Source grounding | Every factual claim traceable to a source reference |
-| No LLM tells | Zero instances flagged by `LLM_TELLS.md` |
+| Density | No slide exceeds its density budget; overflow was split, not shrunk |
+| No internal leakage | No slide text exposes runbook/spec internals — kind names, `layout:` values, preset slugs, file paths, "Option A/B", or the raw goal text |
+| No LLM tells | Zero instances from the list below |
 | Compilation | `slidev build` exits 0 |
 | Output files | All required outputs exist and are non-empty |
+
+**LLM tells** — find and rewrite any of these:
+
+- Filler openers/closers: "In conclusion", "In today's fast-paced world", "It's worth noting that", "At the end of the day", "Let's dive in", "Delve into".
+- Hollow intensifiers and hedges: "very", "really", "truly", "seamless", "robust", "powerful", "cutting-edge", "game-changing", "revolutionary", "leverage", "utilize" (use "use").
+- Unsupported superlatives ("the best", "the most advanced") with no source behind them.
+- Generic transitions ("Moving on", "Next up", "Now let's talk about") and empty agenda restatements.
+- Symmetry tics: every slide having exactly three bullets, or three-item lists everywhere regardless of content.
+- Design slop flagged in Step 4: default system fonts, purple-on-white gradients, cookie-cutter card grids.
 
 ## Step 10: Deliver
 
@@ -299,9 +385,9 @@ echo "=== VERIFICATION COMPLETE ==="
 
 ## Tips
 
-- **Load documents progressively.** Each reference doc is large — load only the ones relevant to the current phase. Loading them all upfront wastes context and may confuse earlier phases.
+- **Read each step when you reach it.** This runbook is self-contained — the catalogs and references (style presets, slide kinds, Slidev syntax, validation) live in the step that uses them. Don't try to fetch external docs; there are none.
 - **Through-line first.** Before writing a single slide, nail the through-line. Every slide decision flows from it.
 - **Spec before compile.** Never start `slides.md` without an approved `deck.spec.md`. The spec is the contract.
 - **Grounding over generality.** For project decks, every factual claim should trace back to a specific file, commit, README section, or issue in the source repo. Avoid generic statements.
-- **LLM tells are silent failures.** Run `LLM_TELLS.md` checks before delivery. Phrases like "In conclusion", "Delve into", or unsupported superlatives undermine credibility.
+- **LLM tells are silent failures.** Run the LLM-tells scan in Step 9 before delivery. Phrases like "In conclusion", "Delve into", or unsupported superlatives undermine credibility.
 - **`slidev build` is the ground truth.** If the build fails, the deck is not done, regardless of how good `slides.md` looks in a text editor.
