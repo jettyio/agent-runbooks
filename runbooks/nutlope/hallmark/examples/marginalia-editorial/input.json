@@ -1,0 +1,19 @@
+{
+  "title": "Marginalia \u2014 independent city quarterly",
+  "operation": "build",
+  "prompt": "A single-page site for Marginalia \u2014 an independent print quarterly about the future of cities: housing, transit, public space, and the people who shape them. Audience: urbanists, architects, and curious city-dwellers. The one action: subscribe to the next issue. Feel: editorial, warm, literary, print-rooted \u2014 long-form and text-forward, not a tech product.",
+  "params": {
+    "vars": {
+      "operation": "build",
+      "brief": "A single-page site for Marginalia \u2014 an independent print quarterly about the future of cities: housing, transit, public space, and the people who shape them. Audience: urbanists, architects, and curious city-dwellers. The one action: subscribe to the next issue. Feel: editorial, warm, literary, print-rooted \u2014 long-form and text-forward, not a tech product.",
+      "tone": "editorial",
+      "genre": "editorial",
+      "theme": "auto",
+      "target_url": ""
+    }
+  },
+  "source": {
+    "kind": "brief",
+    "note": "Brief-driven greenfield build (no repo, no uploads)."
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-06-07T12:13:13Z",
+  "parameters": {
+    "operation": "polish",
+    "target": "/app/assets/8dce2661.00.html",
+    "provider_tells": "none",
+    "max_rounds": 3,
+    "rounds_used": 2
+  },
+  "tool": {
+    "name": "impeccable detect",
+    "source": "https://github.com/pbakaus/impeccable"
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "Node 24.16.0 + npx impeccable@latest detect resolved"
+    },
+    {
+      "name": "scan_before",
+      "passed": true,
+      "message": "10 findings (exit 2)"
+    },
+    {
+      "name": "polish_round1",
+      "passed": true,
+      "message": "Rewrote palette, typography, easing, borders, copy, nested cards"
+    },
+    {
+      "name": "polish_round2",
+      "passed": true,
+      "message": "Swapped Lato \u2192 IBM Plex Sans (Lato flagged as overused)"
+    },
+    {
+      "name": "scan_after",
+      "passed": true,
+      "message": "0 remaining, exit 0"
+    },
+    {
+      "name": "no_regressions",
+      "passed": true,
+      "message": "0 regressions introduced"
+    }
+  ],
+  "results": {
+    "pass": 1,
+    "partial": 0,
+    "fail": 0
+  },
+  "before_count": 10,
+  "after_count": 0,
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/polished.html",
+    "/app/results/audit_before.json",
+    "/app/results/audit_after.json",
+    "/app/results/before_after.md",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}

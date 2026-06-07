@@ -1,0 +1,28 @@
+{
+  "collection": "jon-runbooks",
+  "task": "impeccable-deslop",
+  "trajectory_id": "2fc20cfd",
+  "workflow_id": "jon-runbooks-impeccable-deslop--2fc20cfd",
+  "url": "https://flows.jetty.io/jon-runbooks/impeccable-deslop/2fc20cfd",
+  "status": "completed",
+  "success": true,
+  "runbook_version": "1.0.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "operation": "polish",
+  "ran_at": "2026-06-07T12:09:48.196209Z",
+  "duration_seconds": 533.8,
+  "primary_files": ["polished.html"],
+  "detector": {
+    "tool": "impeccable detect",
+    "source": "https://github.com/pbakaus/impeccable",
+    "before": { "exit_code": 2, "finding_count": 22 },
+    "after": { "exit_code": 0, "finding_count": 0 },
+    "regressions": 0,
+    "clean": true
+  },
+  "eval": { "overall_passed": true, "before_count": 22, "after_count": 0 },
+  "notes": "Real Jetty production run. The agent rewrote the hero (DM Serif Display + Barlow, warm-dark palette, side-by-side icons, flat bordered cards, concrete copy) and drove all 22 production-detected anti-patterns to 0 — verified by re-scan exit 0, no regressions."
+}

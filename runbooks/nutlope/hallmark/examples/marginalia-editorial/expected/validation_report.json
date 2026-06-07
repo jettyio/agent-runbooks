@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-06-07T00:00:00Z",
+  "parameters": {
+    "operation": "build",
+    "tone": "editorial",
+    "genre": "editorial",
+    "theme": "auto (resolved: Almanac)"
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "Hallmark cloned from github.com/Nutlope/hallmark (shallow); SKILL.md read; references loaded; operation=build; no /app/assets uploads"
+    },
+    {
+      "name": "operation",
+      "passed": true,
+      "message": "Ran build per SKILL.md: pre-flight (no signals), design-context inferred (editorial/Letter/Almanac), N6 masthead + Ft4 colophon picked, genre=editorial, typography-only enrichment, page built"
+    },
+    {
+      "name": "output_contract",
+      "passed": true,
+      "message": "index.html + styles.css + tokens.css + screenshot.png written to /app/results; relative hrefs confirmed; Hallmark stamp on line 1 of styles.css; results clean (no node_modules/clone/.hallmark)"
+    },
+    {
+      "name": "render",
+      "passed": true,
+      "message": "screenshot.png rendered at 1440×900 @2× via Playwright/Chromium; warm cream paper and terracotta accent visible; Fraunces + Newsreader fonts loaded from Google Fonts; 574 166 bytes"
+    },
+    {
+      "name": "slop_test",
+      "passed": true,
+      "message": "58/58 gates passed after one revision pass (gates 24/26/27/39/41 fixed); pre-emit critique P5 H5 E4 S5 R5 V4"
+    },
+    {
+      "name": "results_hygiene",
+      "passed": true,
+      "message": "No node_modules/, no hallmark clone, no .hallmark/ directory in /app/results; all scratch work in /app/work"
+    }
+  ],
+  "results": {
+    "slop_gates_passed": 58,
+    "slop_gates_total": 58,
+    "slop_gates_fixed": [24, 26, 27, 39, 41],
+    "pre_emit_critique": "P5 H5 E4 S5 R5 V4",
+    "audit_findings": null,
+    "macrostructure": "Letter",
+    "theme": "Almanac",
+    "nav": "N6 Newspaper masthead",
+    "footer": "Ft4 Dense typographic colophon",
+    "enrichment": "none (typography only)",
+    "fonts": ["Fraunces", "Newsreader"],
+    "screenshot_bytes": 574166
+  },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/index.html",
+    "/app/results/styles.css",
+    "/app/results/tokens.css",
+    "/app/results/screenshot.png",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}

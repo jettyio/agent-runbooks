@@ -1,0 +1,200 @@
+[
+  {
+    "antipattern": "side-tab",
+    "name": "Side-tab accent border",
+    "description": "Thick colored border on one side of a card — the most recognizable tell of AI-generated UIs. Use a subtler accent or remove it entirely.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "border-left: 4px + border-radius: 16px"
+  },
+  {
+    "antipattern": "side-tab",
+    "name": "Side-tab accent border",
+    "description": "Thick colored border on one side of a card — the most recognizable tell of AI-generated UIs. Use a subtler accent or remove it entirely.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "border-left: 4px + border-radius: 16px"
+  },
+  {
+    "antipattern": "side-tab",
+    "name": "Side-tab accent border",
+    "description": "Thick colored border on one side of a card — the most recognizable tell of AI-generated UIs. Use a subtler accent or remove it entirely.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "border-left: 4px + border-radius: 16px"
+  },
+  {
+    "antipattern": "gradient-text",
+    "name": "Gradient text",
+    "description": "Gradient text is decorative rather than meaningful — a common AI tell, especially on headings and metrics. Use solid colors for text.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "background-clip: text + gradient"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "3.6:1 (need 4.5:1) — text #64748b on #111935"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "3.6:1 (need 4.5:1) — text #64748b on #111935"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "3.6:1 (need 4.5:1) — text #64748b on #111935"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "3.6:1 (need 4.5:1) — text #64748b on #111935"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "3.6:1 (need 4.5:1) — text #64748b on #111935"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "3.6:1 (need 4.5:1) — text #64748b on #111935"
+  },
+  {
+    "antipattern": "hero-eyebrow-chip",
+    "name": "Hero eyebrow / pill chip",
+    "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "eyebrow chip (tracked-caps) \"Introducing Nimbus\" above h1 \"Supercharge your team with our enterprise-grade, world-class\""
+  },
+  {
+    "antipattern": "broken-image",
+    "name": "Broken or placeholder image",
+    "description": "<img> tags with empty src, missing src, or placeholder values ship as broken-image boxes. Use real images, generated assets, or remove the tag.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "<img src=\"\">"
+  },
+  {
+    "antipattern": "extreme-negative-tracking",
+    "name": "Crushed letter spacing",
+    "description": "Letter-spacing pulled tighter than the point where characters keep their own shapes costs legibility. Tighten display type optically, not destructively.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "letter-spacing: -0.07em — \"Supercharge your team with our enterpris\""
+  },
+  {
+    "antipattern": "tight-leading",
+    "name": "Tight line height",
+    "description": "Line height below 1.3x the font size makes multi-line text hard to read. Use 1.5 to 1.7 for body text so lines have room to breathe.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "line-height 1.19x (need >=1.3)"
+  },
+  {
+    "antipattern": "oversized-h1",
+    "name": "Oversized hero headline",
+    "description": "A full-sentence headline set at display size ends up dominating the viewport, leaving no room for anything else above the fold. A punchy one- or two-word headline at that size is fine — the problem is a long headline blown up too large. Set long headlines smaller, or tighten the copy.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "84px h1, 81 chars \"Supercharge your team with our enterprise-grade, world-class\""
+  },
+  {
+    "antipattern": "overused-font",
+    "name": "Overused font",
+    "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "Primary font: inter"
+  },
+  {
+    "antipattern": "single-font",
+    "name": "Single font for everything",
+    "description": "Only one font family is used for the entire page. Pair a distinctive display font with a refined body font to create typographic hierarchy.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "only font used is inter"
+  },
+  {
+    "antipattern": "skipped-heading",
+    "name": "Skipped heading level",
+    "description": "Heading levels should not skip (e.g. h1 then h3 with no h2). Screen readers use heading hierarchy for navigation. Skipping levels breaks the document outline.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "<h1> \"Supercharge your team with our enterprise-grade, world-class\" followed by <h3> \"Automate\" (missing h2)"
+  },
+  {
+    "antipattern": "ai-color-palette",
+    "name": "AI color palette",
+    "description": "Purple/violet gradients and cyan-on-dark are the most recognizable tells of AI-generated UIs. Choose a distinctive, intentional palette.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "Purple/violet accent colors detected"
+  },
+  {
+    "antipattern": "gradient-text",
+    "name": "Gradient text",
+    "description": "Gradient text is decorative rather than meaningful — a common AI tell, especially on headings and metrics. Use solid colors for text.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "background-clip: text + gradient"
+  },
+  {
+    "antipattern": "dark-glow",
+    "name": "Dark mode with glowing accents",
+    "description": "Dark backgrounds with colored box-shadow glows are the default \"cool\" look of AI-generated UIs. Use subtle, purposeful lighting instead — or skip the dark theme entirely.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "Colored glow (rgb(124,58,237)) on dark page"
+  },
+  {
+    "antipattern": "marketing-buzzword",
+    "name": "Marketing buzzword",
+    "description": "Generic SaaS phrases (streamline / empower / supercharge / world-class / enterprise-grade / next-generation / cutting-edge / etc) are instant AI tells. Pick a specific verb and noun that says what the product literally does.",
+    "severity": "warning",
+    "file": "/app/assets/b8bda6fc.00.html",
+    "line": 0,
+    "snippet": "8 buzzword phrases: \"cing Nimbus Supercharge your team with o\""
+  }
+]

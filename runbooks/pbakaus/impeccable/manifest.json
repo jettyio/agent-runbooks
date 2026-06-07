@@ -1,0 +1,181 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "pbakaus/impeccable",
+  "title": "Impeccable — de-slop a UI",
+  "description": "Detect and remove the tells that make an interface read as AI-generated — gradient text, Inter everywhere, side-tab borders, nested cards, dark-mode glows, bounce easing, low-contrast text, placeholder images, and SaaS buzzword copy. Wraps Paul Bakaus's `impeccable detect`, using the same deterministic scanner to find the slop and to verify the fix.",
+
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "2–9 mins"
+  },
+
+  "example_outputs": [
+    {
+      "id": "saas-hero-audit",
+      "title": "Audit an AI-generated SaaS hero",
+      "summary": "Scan a textbook AI-slop landing hero — Inter, a purple→cyan gradient headline, a glowing dark theme, side-tab cards, and buzzword copy — and report all 22 anti-patterns (13 slop tells + 9 quality issues, incl. 6 WCAG contrast failures) without changing a thing.",
+      "thumbnail": "examples/saas-hero-audit/thumbnail.png",
+      "operation": "audit",
+      "capability": "detect",
+      "dir": "examples/saas-hero-audit",
+      "input": {
+        "file": "examples/saas-hero-audit/input.html",
+        "filename": "input.html",
+        "label": "Synthetic AI-generated SaaS landing hero (Nimbus) — Inter, gradient headline, glowing dark cards, side-tab borders, buzzword copy",
+        "license": "Synthetic sample (hand-authored; no third-party content)",
+        "values": { "operation": "audit", "provider_tells": "none" }
+      },
+      "primary_output": "examples/saas-hero-audit/expected/audit_report.md",
+      "outputs": [
+        { "file": "examples/saas-hero-audit/expected/audit_report.md", "role": "primary", "type": "text/markdown", "description": "Human-readable audit — verdict, per-rule table, and why each tell matters." },
+        { "file": "examples/saas-hero-audit/expected/audit_report.json", "role": "secondary", "type": "application/json", "description": "Structured findings + by_rule / by_category counts." },
+        { "file": "examples/saas-hero-audit/expected/audit_before.json", "role": "secondary", "type": "application/json", "description": "Raw detector output (the findings array)." },
+        { "file": "examples/saas-hero-audit/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Run summary." },
+        { "file": "examples/saas-hero-audit/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation (overall_passed)." }
+      ],
+      "excerpt": {
+        "label": "22 anti-patterns — 13 AI-slop tells, 9 quality issues",
+        "by_rule": { "side-tab": 3, "low-contrast": 6, "gradient-text": 2, "overused-font": 1, "single-font": 1, "ai-color-palette": 1, "dark-glow": 1, "hero-eyebrow-chip": 1, "oversized-h1": 1, "extreme-negative-tracking": 1, "marketing-buzzword": 1, "broken-image": 1, "skipped-heading": 1, "tight-leading": 1 }
+      },
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "impeccable-deslop", "trajectory_id": "b8bda6fc",
+        "url": "https://flows.jetty.io/jon-runbooks/impeccable-deslop/b8bda6fc",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T12:09:47.328198Z", "duration_seconds": 109.4,
+        "eval": { "overall_passed": true, "finding_count": 22, "by_category": { "slop": 13, "quality": 9 } }
+      }
+    },
+    {
+      "id": "saas-hero-polish",
+      "title": "Polish the same hero to zero",
+      "summary": "Take the 22-tell hero and rewrite it: a DM Serif Display + Barlow pairing, a deliberate warm-dark palette with an amber accent, side-by-side icons, flat bordered cards, and concrete copy. A re-scan exits clean — 22 → 0, no regressions.",
+      "thumbnail": "examples/saas-hero-polish/thumbnail.png",
+      "operation": "polish",
+      "capability": "fix",
+      "dir": "examples/saas-hero-polish",
+      "input": {
+        "file": "examples/saas-hero-audit/input.html",
+        "filename": "input.html",
+        "label": "Same synthetic SaaS hero as saas-hero-audit (22 anti-patterns)",
+        "license": "Synthetic sample (hand-authored; no third-party content)",
+        "shared_input": true,
+        "values": { "operation": "polish", "provider_tells": "none", "max_polish_rounds": 3 }
+      },
+      "primary_output": "examples/saas-hero-polish/expected/polished.html",
+      "outputs": [
+        { "file": "examples/saas-hero-polish/expected/polished.html", "role": "primary", "type": "text/html", "description": "The de-slopped hero — scans clean (detector exit 0)." },
+        { "file": "examples/saas-hero-polish/expected/before_after.md", "role": "secondary", "type": "text/markdown", "description": "Per-rule before/after table (22 → 0) and regression check." },
+        { "file": "examples/saas-hero-polish/expected/audit_before.json", "role": "secondary", "type": "application/json", "description": "Findings on the original (22)." },
+        { "file": "examples/saas-hero-polish/expected/audit_after.json", "role": "secondary", "type": "application/json", "description": "Findings on the polished file (0 — an empty array)." },
+        { "file": "examples/saas-hero-polish/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Run summary." },
+        { "file": "examples/saas-hero-polish/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation — gate is re-scan exit 0." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "impeccable-deslop", "trajectory_id": "2fc20cfd",
+        "url": "https://flows.jetty.io/jon-runbooks/impeccable-deslop/2fc20cfd",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T12:09:48.196209Z", "duration_seconds": 533.8,
+        "eval": { "overall_passed": true, "before_count": 22, "after_count": 0, "regressions": 0 }
+      }
+    },
+    {
+      "id": "pricing-cards-polish",
+      "title": "Polish a pricing section to zero",
+      "summary": "A second surface, different tells: Roboto, a purple page, side-tab tiers, nested panels, and bounce easing. Polished into a flat, neutral pricing table with a navy accent (seed #1d4e8f) and a featured tier — 10 → 0 in 2 rounds.",
+      "thumbnail": "examples/pricing-cards-polish/thumbnail.png",
+      "operation": "polish",
+      "capability": "fix",
+      "dir": "examples/pricing-cards-polish",
+      "input": {
+        "file": "examples/pricing-cards-polish/input.html",
+        "filename": "input.html",
+        "label": "Synthetic AI-generated pricing section (Orbit) — Roboto, purple page, side-tab tiers, nested panels, bounce easing, buzzword copy",
+        "license": "Synthetic sample (hand-authored; no third-party content)",
+        "values": { "operation": "polish", "provider_tells": "none", "max_polish_rounds": 3 }
+      },
+      "primary_output": "examples/pricing-cards-polish/expected/polished.html",
+      "outputs": [
+        { "file": "examples/pricing-cards-polish/expected/polished.html", "role": "primary", "type": "text/html", "description": "The de-slopped pricing section — scans clean (detector exit 0)." },
+        { "file": "examples/pricing-cards-polish/expected/before_after.md", "role": "secondary", "type": "text/markdown", "description": "Per-rule before/after table (10 → 0)." },
+        { "file": "examples/pricing-cards-polish/expected/audit_before.json", "role": "secondary", "type": "application/json", "description": "Findings on the original (10)." },
+        { "file": "examples/pricing-cards-polish/expected/audit_after.json", "role": "secondary", "type": "application/json", "description": "Findings on the polished file (0 — an empty array)." },
+        { "file": "examples/pricing-cards-polish/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Run summary." },
+        { "file": "examples/pricing-cards-polish/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation — gate is re-scan exit 0." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "impeccable-deslop", "trajectory_id": "8dce2661",
+        "url": "https://flows.jetty.io/jon-runbooks/impeccable-deslop/8dce2661",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T12:09:49.128529Z", "duration_seconds": 260.3,
+        "eval": { "overall_passed": true, "before_count": 10, "after_count": 0, "rounds": 2, "regressions": 0 }
+      }
+    }
+  ],
+
+  "featured_examples": ["saas-hero-audit", "saas-hero-polish", "pricing-cards-polish"],
+
+  "inputs": [
+    { "label": "Target", "type": "file", "required": true, "accept": ".html,.htm,.css,.jsx,.tsx,.vue,.svelte", "description": "The frontend artifact to de-slop. Uploaded files land in /app/assets/. A directory or an http(s):// URL also works (URLs scan in a real browser)." },
+    { "label": "Operation", "type": "select", "required": false, "default": "audit", "options": ["audit", "polish"], "description": "audit = report only (changes nothing); polish = fix every finding, then re-scan to prove zero." },
+    { "label": "Provider tells", "type": "select", "required": false, "default": "none", "options": ["none", "gpt", "gemini"], "description": "Also report a specific provider's signature tells (off by default)." },
+    { "label": "Max polish rounds", "type": "number", "required": false, "default": 3, "description": "Max fix→re-scan iterations before stopping (polish only)." },
+    { "label": "Output basename", "type": "text", "required": false, "default": "polished", "description": "Label for the run (the primary output is always polished.html)." }
+  ],
+
+  "secrets": [],
+
+  "runbook_source": "RUNBOOK.md",
+
+  "meta": {
+    "created_by": { "name": "Paul Bakaus", "source": "github", "url": "https://github.com/pbakaus/impeccable", "avatar": null },
+    "tags": ["design", "frontend", "ai-slop", "de-slop", "audit", "polish", "css", "html", "accessibility", "agent:claude-code", "programmatic"],
+    "version": "1.0.0",
+    "agent": "claude-code",
+    "model": "claude-sonnet-4-6",
+    "model_provider": "anthropic",
+    "snapshot": "python312-uv",
+    "evaluation": "programmatic",
+    "primary_outputs": ["polished.html", "audit_report.md"],
+    "license": "Apache-2.0",
+    "attribution": {
+      "skill": "impeccable",
+      "author": "Paul Bakaus",
+      "source_url": "https://github.com/pbakaus/impeccable",
+      "license": "Apache-2.0",
+      "notice": "impeccable © 2025-2026 Paul Bakaus (Apache-2.0). Builds on Anthropic's frontend-design skill (Apache-2.0, © 2025 Anthropic, PBC). Typography reference incorporates additions from ehmo's typecraft-guide-skill.",
+      "detector": { "package": "impeccable", "npm_version": "2.3.2", "command": "impeccable detect --json" }
+    },
+    "lineage": {
+      "remix_of": null,
+      "imported_from": "https://github.com/pbakaus/impeccable",
+      "imported_by": "hand-authored@jetty (de-slop capability scoped from the full 23-command skill)"
+    },
+    "share": "pbakaus/impeccable",
+    "metrics": {
+      "_note": "Live counters — supplied by the Jetty backend at render time, not authored here.",
+      "number_of_runs": null,
+      "forks": null,
+      "remixes": null
+    }
+  },
+
+  "demo_ideas": [
+    { "id": "url-audit", "operation": "audit", "title": "Audit a live URL (browser mode)", "why": "URL targets render in a real browser and catch even more layout/contrast rules. The static file scan already computes WCAG contrast; the browser engine adds render-time layout checks.", "input_suggestion": "Any public landing page you suspect is AI-generated.", "status": "suggested" },
+    { "id": "component-polish", "operation": "polish", "title": "De-slop a React/Tailwind component", "why": "Exercises the regex engine on .jsx/.tsx (not just HTML) — proves the runbook isn't HTML-only.", "input_suggestion": "A single Tailwind feature-card component with the rounded-icon-tile + gradient-text pattern.", "status": "suggested" },
+    { "id": "provider-tells", "operation": "audit", "title": "Surface GPT/Gemini signature tells", "why": "Shows the gated --gpt/--gemini rules (hairline-border-plus-wide-shadow, repeating-gradient stripes, image hover transforms) that are off by default.", "input_suggestion": "A page generated by a specific model, with provider_tells set to match.", "status": "suggested" }
+  ],
+
+  "handoff": {
+    "issue": "JET-252 (G1a-1) — launch payload",
+    "collection": "jon-runbooks",
+    "name": "impeccable-deslop",
+    "runbook_source": "agent-runbooks/runbooks/pbakaus/impeccable/RUNBOOK.md",
+    "trajectory_id": "2fc20cfd",
+    "sample_output_excerpt": "examples/saas-hero-polish/expected/polished.html",
+    "current_eval_pass_rate": 1.0,
+    "eval_runs": "3/3 production runs green on jon-runbooks/impeccable-deslop. audit b8bda6fc (22 findings reported, overall_passed), hero polish 2fc20cfd (22 → 0, no regressions), pricing polish 8dce2661 (10 → 0 in 2 rounds). The production `impeccable detect` proved more thorough than a quick local build (it computes WCAG contrast + DOM structure), and every polish run still drove the re-scan to exit 0."
+  }
+}

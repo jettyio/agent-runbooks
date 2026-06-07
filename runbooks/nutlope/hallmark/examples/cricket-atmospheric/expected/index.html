@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cricket captures the half-formed ideas you have at 2am and threads them into something you can act on by morning. A late-night voice companion for writers, founders, and makers.">
+  <title>Cricket — Nightly idea capture</title>
+
+  <!-- Web fonts -->
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link
+    href="https://api.fontshare.com/v2/css?f[]=sentient@700,400&f[]=switzer@400,350,500&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Nav: N9 edge-aligned minimal -->
+  <nav class="nav" aria-label="Main navigation">
+    <span class="nav__wordmark">Cricket</span>
+    <a href="#capture" class="nav__cta">Start capturing <span aria-hidden="true">↗</span></a>
+  </nav>
+
+  <main>
+
+    <!-- Hook: atmospheric intro -->
+    <section class="hook" aria-labelledby="hook-heading">
+      <h1 class="hook__display" id="hook-heading">
+        The idea<br>you almost lost.
+      </h1>
+      <p class="hook__lede">
+        A late-night voice companion for writers, founders, and makers who think after dark. Speak into the quiet — the shape arrives by morning.
+      </p>
+    </section>
+
+    <!-- Stage 01: Speak -->
+    <section class="stage" aria-labelledby="s01-heading">
+      <div class="stage__sep" aria-hidden="true">
+        <span class="stage__num">01</span>
+        <div class="stage__sep-line"></div>
+      </div>
+      <div class="stage__content">
+        <div class="stage__text">
+          <h2 class="stage__heading" id="s01-heading">Speak.</h2>
+          <p class="stage__body">
+            Press once. Cricket listens. No keyboard, no context-switching, no reason to second-guess the thought before it lands. Just your voice and the dark.
+          </p>
+        </div>
+        <div class="stage__visual stage__visual--waveform" aria-hidden="true">
+          <div class="waveform">
+            <span class="waveform__bar" style="--h: 8px"></span>
+            <span class="waveform__bar" style="--h: 20px"></span>
+            <span class="waveform__bar" style="--h: 12px"></span>
+            <span class="waveform__bar" style="--h: 30px"></span>
+            <span class="waveform__bar" style="--h: 10px"></span>
+            <span class="waveform__bar" style="--h: 26px"></span>
+            <span class="waveform__bar" style="--h: 6px"></span>
+            <span class="waveform__bar" style="--h: 22px"></span>
+            <span class="waveform__bar" style="--h: 14px"></span>
+            <span class="waveform__bar" style="--h: 28px"></span>
+            <span class="waveform__bar" style="--h: 8px"></span>
+            <span class="waveform__bar" style="--h: 18px"></span>
+            <span class="waveform__bar" style="--h: 10px"></span>
+          </div>
+          <p class="waveform__label">recording</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stage 02: Transcribe -->
+    <section class="stage" aria-labelledby="s02-heading">
+      <div class="stage__sep" aria-hidden="true">
+        <span class="stage__num">02</span>
+        <div class="stage__sep-line"></div>
+      </div>
+      <div class="stage__content">
+        <div class="stage__text">
+          <h2 class="stage__heading" id="s02-heading">Transcribe.</h2>
+          <p class="stage__body">
+            While you sleep, your words become text. Verbatim — the exact drift, the false starts, the thought you circled back to three times. Nothing cleaned up. Nothing paraphrased.
+          </p>
+        </div>
+        <div class="stage__visual stage__visual--transcript" aria-hidden="true">
+          <div class="transcript">
+            <span class="transcript__time">02:17</span>
+            <span class="transcript__text">The thing I keep coming back to is the feeling that the idea already exists — I just haven&#8217;t found the shape yet.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stage 03: Thread -->
+    <section class="stage" aria-labelledby="s03-heading">
+      <div class="stage__sep" aria-hidden="true">
+        <span class="stage__num">03</span>
+        <div class="stage__sep-line"></div>
+      </div>
+      <div class="stage__content">
+        <div class="stage__text">
+          <h2 class="stage__heading" id="s03-heading">Thread.</h2>
+          <p class="stage__body">
+            Cricket finds the through-line. What you said in the middle often belongs at the beginning. The idea you repeated is usually the real one. The pattern emerges from the fog.
+          </p>
+        </div>
+        <div class="stage__visual stage__visual--thread" aria-hidden="true">
+          <svg
+            class="thread-svg"
+            viewBox="0 0 140 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Three ideas connected into a thread">
+            <!-- Dashed weak connection -->
+            <line x1="18" y1="22" x2="122" y2="28"
+              stroke="currentColor" stroke-width="1"
+              stroke-dasharray="3 5" stroke-opacity="0.2"/>
+            <!-- Strong connections through the centre node -->
+            <line x1="18" y1="22" x2="70" y2="62"
+              stroke="currentColor" stroke-width="1" stroke-opacity="0.45"/>
+            <line x1="70" y1="62" x2="122" y2="28"
+              stroke="currentColor" stroke-width="1" stroke-opacity="0.45"/>
+            <!-- Outer nodes -->
+            <circle cx="18" cy="22" r="5" fill="currentColor" opacity="0.5"/>
+            <circle cx="122" cy="28" r="5" fill="currentColor" opacity="0.5"/>
+            <!-- Centre node — the real idea -->
+            <circle cx="70" cy="62" r="6" fill="var(--color-accent)"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stage 04: Act -->
+    <section class="stage" aria-labelledby="s04-heading">
+      <div class="stage__sep" aria-hidden="true">
+        <span class="stage__num">04</span>
+        <div class="stage__sep-line"></div>
+      </div>
+      <div class="stage__content">
+        <div class="stage__text">
+          <h2 class="stage__heading" id="s04-heading">Act.</h2>
+          <p class="stage__body">
+            A single document waits by morning. Not a transcript &#8212; a departure point. The structure your 2am self was reaching for, ready to take to your desk.
+          </p>
+        </div>
+        <div class="stage__visual stage__visual--doc" aria-hidden="true">
+          <div class="doc-preview">
+            <div class="doc-preview__title"></div>
+            <div class="doc-preview__line" style="width: 90%"></div>
+            <div class="doc-preview__line" style="width: 75%"></div>
+            <div class="doc-preview__line" style="width: 85%"></div>
+            <div class="doc-preview__spacer"></div>
+            <div class="doc-preview__line" style="width: 95%"></div>
+            <div class="doc-preview__line" style="width: 60%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA: Capture -->
+    <section class="capture" id="capture" aria-labelledby="capture-heading">
+      <h2 class="capture__heading" id="capture-heading">
+        Start your first<br>nightly capture.
+      </h2>
+      <p class="capture__sub">Free. No credit card. Say it once and sleep.</p>
+      <form class="capture__form" novalidate aria-describedby="capture-privacy">
+        <label class="capture__label" for="email">Your email</label>
+        <div class="capture__field">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="capture__input"
+            placeholder="you@yourdomain.com"
+            autocomplete="email"
+            required>
+          <button type="submit" class="capture__btn">
+            Start free <span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <p class="capture__privacy" id="capture-privacy" aria-live="polite"></p>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Footer: Ft2 inline single line -->
+  <!-- Knobs: order=wordmark·credits, separator=middot, density=spaced -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__row">
+      <span class="footer__brand">Cricket</span>
+      <span class="footer__sep" aria-hidden="true">·</span>
+      <span>Free during open beta</span>
+      <span class="footer__sep" aria-hidden="true">·</span>
+      <span>Quiet by design</span>
+      <span class="footer__sep" aria-hidden="true">·</span>
+      <span>2026</span>
+    </div>
+  </footer>
+
+  <script>
+    // Stage + capture reveals via IntersectionObserver (horizontal sweep per macrostructure)
+    var revealTargets = document.querySelectorAll('.stage, .capture');
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      revealTargets.forEach(function(t) { obs.observe(t); });
+    } else {
+      revealTargets.forEach(function(t) { t.classList.add('is-visible'); });
+    }
+
+    // CTA form — optimistic update
+    var form = document.querySelector('.capture__form');
+    var privacy = document.getElementById('capture-privacy');
+    if (form && privacy) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var emailVal = (form.querySelector('#email').value || '').trim();
+        if (!emailVal || emailVal.indexOf('@') === -1) {
+          privacy.textContent = 'Please enter a valid email address.';
+          return;
+        }
+        privacy.textContent = "You’re in. Cricket will send your first capture window tonight.";
+        form.querySelector('.capture__btn').disabled = true;
+        form.querySelector('#email').disabled = true;
+      });
+    }
+  </script>
+
+</body>
+</html>

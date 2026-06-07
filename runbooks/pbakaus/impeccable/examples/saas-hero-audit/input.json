@@ -1,0 +1,21 @@
+{
+  "title": "AI-generated SaaS hero → audit report",
+  "operation": "audit",
+  "prompt": "Audit this page for AI-slop anti-patterns. Report only; do not change anything.",
+  "params": {
+    "vars": {
+      "operation": "audit",
+      "provider_tells": "none",
+      "results_directory": "/app/results"
+    }
+  },
+  "files": [
+    {
+      "path": "input.html",
+      "filename": "input.html",
+      "mime_type": "text/html",
+      "label": "Synthetic AI-generated SaaS landing hero (Nimbus) — Inter, gradient headline, glowing dark cards, side-tab borders, buzzword copy",
+      "license": "Synthetic sample (hand-authored; no third-party content)"
+    }
+  ]
+}

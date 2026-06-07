@@ -1,0 +1,30 @@
+{
+  "collection": "jon-runbooks",
+  "task": "hallmark",
+  "trajectory_id": "e7dbdc23",
+  "workflow_id": "jon-runbooks-hallmark--e7dbdc23",
+  "url": "https://flows.jetty.io/jon-runbooks/hallmark/e7dbdc23",
+  "runbook_version": "1.0.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "prism-playwright",
+  "operation": "build",
+  "ran_at": "2026-06-07T12:14:36.389473Z",
+  "duration_seconds": 1549,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "screenshot.png",
+    "index.html"
+  ],
+  "eval": {
+    "overall_passed": true,
+    "slop_test": "58/58",
+    "theme": "Midnight",
+    "macrostructure": "Narrative Workflow",
+    "nav": "N9",
+    "footer": "Ft2"
+  },
+  "notes": "Atmospheric greenfield build. Theme Midnight (dark warm-amber), Narrative Workflow macrostructure (Speak/Transcribe/Thread/Act) \u2014 avoids the banned centered-hero->3-cards->CTA->footer fingerprint. Real in-sandbox screenshot; clean results (no node_modules/clone)."
+}

@@ -1,0 +1,27 @@
+{
+  "collection": "jon-runbooks",
+  "task": "hallmark",
+  "trajectory_id": "4e4867f2",
+  "workflow_id": "jon-runbooks-hallmark--4e4867f2",
+  "url": "https://flows.jetty.io/jon-runbooks/hallmark/4e4867f2",
+  "runbook_version": "1.0.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "prism-playwright",
+  "operation": "study",
+  "ran_at": "2026-06-07T13:39:57.186778Z",
+  "duration_seconds": 429,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "design.md"
+  ],
+  "eval": {
+    "overall_passed": true,
+    "slop_test": "58/58",
+    "macrostructure": "Ecosystem Index",
+    "source_mode": "url"
+  },
+  "notes": "URL-mode study of GOV.UK. Extracted a portable design.md (OKLCH tokens, GDS Transport type roles, component archetypes, motion-cut stance) with an OGL provenance block and an honest 'rhythm unknown (URL mode)' disclosure. No pixels copied."
+}

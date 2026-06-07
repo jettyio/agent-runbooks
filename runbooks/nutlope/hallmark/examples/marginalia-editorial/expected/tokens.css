@@ -1,0 +1,59 @@
+/* Marginalia · Hallmark design tokens · Almanac theme · warm terracotta anchor (30°) */
+
+:root {
+  /* ---- Color: warm-cream paper, warm near-black ink, terracotta accent ---- */
+  --color-paper:    oklch(95%  0.014 80);
+  --color-paper-2:  oklch(91%  0.018 78);
+  --color-paper-3:  oklch(85%  0.022 75);
+  --color-rule:     oklch(78%  0.015 75);
+  --color-neutral:  oklch(55%  0.012 70);
+  --color-muted:    oklch(44%  0.010 65);
+  --color-ink:      oklch(18%  0.014 55);
+  --color-accent:   oklch(48%  0.190 30);
+  --color-focus:        oklch(50%  0.200 30);
+  --color-success:      oklch(52%  0.140 155);
+  --color-accent-ink:   oklch(96%  0.010 80);
+  --color-error-glow:   oklch(48% 0.19 30 / 0.20);
+  --color-error-bg:     oklch(48% 0.19 30 / 0.08);
+
+  /* ---- Typography ---- */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:    'Newsreader', Georgia, 'Times New Roman', serif;
+
+  /* ---- Scale: major third (1.25) from 16 px base ---- */
+  --text-xs:        0.64rem;
+  --text-sm:        0.8rem;
+  --text-base:      1rem;
+  --text-md:        1.25rem;
+  --text-lg:        1.5625rem;
+  --text-xl:        1.9531rem;
+  --text-2xl:       2.4414rem;
+  --text-3xl:       3.0518rem;
+  --text-4xl:       3.8147rem;
+  --text-display-s: clamp(2rem, 3.5vw + 0.75rem, 3.5rem);
+  --text-display:   clamp(2.75rem, 5vw + 1rem, 5.25rem);
+
+  /* ---- Spacing: 4 pt scale ---- */
+  --space-xs:   0.25rem;
+  --space-sm:   0.5rem;
+  --space-md:   1rem;
+  --space-lg:   1.5rem;
+  --space-xl:   2rem;
+  --space-2xl:  3rem;
+  --space-3xl:  4.5rem;
+  --space-4xl:  6rem;
+  --space-5xl:  9rem;
+
+  /* ---- Motion ---- */
+  --dur-fast:    120ms;
+  --dur-base:    200ms;
+  --dur-slow:    350ms;
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.4, 0, 1, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ---- Misc ---- */
+  --rule-width: 1px;
+  --radius-sm:  2px;
+  --radius-md:  4px;
+}

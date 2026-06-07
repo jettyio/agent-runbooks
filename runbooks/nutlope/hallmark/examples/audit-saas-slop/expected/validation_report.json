@@ -1,0 +1,89 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-06-07T00:00:00Z",
+  "parameters": {
+    "operation": "audit",
+    "tone": "auto",
+    "genre": "auto",
+    "theme": "auto",
+    "input_file": "/app/assets/a45a609c.00.html"
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "Hallmark cloned from github.com/Nutlope/hallmark (shallow); SKILL.md, verbs/audit.md, anti-patterns.md, slop-test.md loaded; input file found at /app/assets/a45a609c.00.html"
+    },
+    {
+      "name": "operation",
+      "passed": true,
+      "message": "Ran audit per SKILL.md → verbs/audit.md: read input, applied structural-fingerprint check, named anti-pattern scoring, and full 58-gate slop-test rubric; no edits made to source"
+    },
+    {
+      "name": "output_contract",
+      "passed": true,
+      "message": "audit deliverables written: audit_report.md (ranked punch list, gate table, verdict), summary.md, validation_report.json; no other operation files present"
+    },
+    {
+      "name": "render",
+      "passed": true,
+      "message": "n/a for this operation (audit does not produce a screenshot)"
+    },
+    {
+      "name": "slop_test",
+      "passed": true,
+      "message": "58-gate slop test applied as audit grading rubric; 24 gates fail on the audited page; findings documented in audit_report.md with gate numbers"
+    },
+    {
+      "name": "results_hygiene",
+      "passed": true,
+      "message": "no node_modules, hallmark clone, or .hallmark directory in /app/results; all scratch work in /app/work"
+    }
+  ],
+  "results": {
+    "slop_gates_passed": 34,
+    "slop_gates_total": 58,
+    "slop_gates_failed": 24,
+    "audit_findings": {
+      "critical": 7,
+      "major": 9,
+      "minor": 4,
+      "total": 20,
+      "verdict": "ships as slop"
+    },
+    "audit_findings_detail": {
+      "critical": [
+        "Structural fingerprint: AI template (entire page)",
+        "The 3-column feature grid (lines 30-35, 78-82)",
+        "Purple-gradient hero and CTA band (lines 14, 26, 37)",
+        "The AI nav (lines 10-12, 49-55)",
+        "The AI footer (lines 41-45, 89-99)",
+        "Full-viewport centered hero (line 13, 57-70)",
+        "Inter-everywhere — no display/body pairing (line 9)"
+      ],
+      "major": [
+        "Re-drawn UI chrome — fake browser bar (lines 20-26, 61-69)",
+        "Italic header — em inside h1 (line 16, 58)",
+        "Invented metrics — +47%, 50000+, 10× (lines 27-29, 72-76)",
+        "Generic emoji as feature icons — 🚀 🔒 ✨ (lines 33-34, 79-81)",
+        "Mid-render token improvisation — 18 inline hex values, no CSS custom properties (lines 7-46)",
+        "Centred everything — no lateral bias on any section (lines 13, 27, 32, 36)",
+        "No interactive states — zero :hover, :focus-visible, :active, :disabled (lines 7-46)",
+        "No responsive layout — zero @media queries (lines 7-46)",
+        "Contrast failure — white text on #a78bfa in CTA band approx 2:1 (lines 37-40, 84-87)"
+      ],
+      "minor": [
+        "Startup-cliché copy — seamless, supercharges, cutting-edge, blazing-fast (lines 59, 79-81)",
+        "Emoji social icons in footer — 🐦 💼 📷 ▶️ (line 93)",
+        "Tabular data without tabular-nums — stats section (lines 27-29)",
+        "Prose max-width in px not ch — .hero p max-width: 600px ≈ 83ch (line 17)"
+      ]
+    }
+  },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/audit_report.md",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}

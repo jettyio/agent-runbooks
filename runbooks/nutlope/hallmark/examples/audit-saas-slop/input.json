@@ -1,0 +1,20 @@
+{
+  "title": "Audit a textbook AI-slop SaaS page",
+  "operation": "audit",
+  "prompt": "Audit this landing page against Hallmark's anti-pattern list. It is a typical AI-generated SaaS landing page. Return a ranked punch list grouped by severity with a count line. Do NOT edit anything.",
+  "params": {
+    "vars": {
+      "operation": "audit",
+      "brief": "Audit this landing page against Hallmark's anti-pattern list. It is a typical AI-generated SaaS landing page. Return a ranked punch list grouped by severity with a count line. Do NOT edit anything.",
+      "tone": "auto",
+      "genre": "auto",
+      "theme": "auto",
+      "target_url": ""
+    }
+  },
+  "input": {
+    "file": "input/index.html",
+    "license": "Synthetic sample (authored for this example; freely redistributable)",
+    "note": "A deliberately AI-generated SaaS landing page (Nimbus) carrying every major tell."
+  }
+}

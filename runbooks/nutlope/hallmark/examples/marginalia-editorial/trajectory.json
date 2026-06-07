@@ -1,0 +1,30 @@
+{
+  "collection": "jon-runbooks",
+  "task": "hallmark",
+  "trajectory_id": "cdbcaba1",
+  "workflow_id": "jon-runbooks-hallmark--cdbcaba1",
+  "url": "https://flows.jetty.io/jon-runbooks/hallmark/cdbcaba1",
+  "runbook_version": "1.0.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "prism-playwright",
+  "operation": "build",
+  "ran_at": "2026-06-07T13:39:55.638572Z",
+  "duration_seconds": 1019,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "screenshot.png",
+    "index.html"
+  ],
+  "eval": {
+    "overall_passed": true,
+    "slop_test": "58/58",
+    "theme": "Almanac",
+    "macrostructure": "Letter",
+    "nav": "N6",
+    "footer": "Ft4"
+  },
+  "notes": "Editorial greenfield build. Theme Almanac (warm cream), Letter macrostructure (first-person editor's note). Structurally and tonally the opposite of Cricket \u2014 the structural-variety differentiator in one gallery."
+}

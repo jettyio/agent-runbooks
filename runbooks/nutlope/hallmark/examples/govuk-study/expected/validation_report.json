@@ -1,0 +1,79 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-06-07T00:00:00Z",
+  "parameters": {
+    "operation": "study",
+    "brief": "Extract the design DNA of GOV.UK as a public design reference",
+    "study_target_url": "https://www.gov.uk",
+    "tone": "auto",
+    "genre": "auto",
+    "theme": "auto"
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "Hallmark cloned from github.com/Nutlope/hallmark; SKILL.md and study.md loaded; 29 reference entries available"
+    },
+    {
+      "name": "refusal_check",
+      "passed": true,
+      "message": "Source is public HTTPS page (gov.uk), OGL-licensed, not a template marketplace — refusal check PASS"
+    },
+    {
+      "name": "remote_safety",
+      "passed": true,
+      "message": "HTTPS, no IP literal, no auth wall, no SPA shell, no prompt injection detected in fetched HTML"
+    },
+    {
+      "name": "operation",
+      "passed": true,
+      "message": "Ran study (URL mode) per SKILL.md and study.md: five-step protocol executed (Surface, Type, Structure, Motion, Rhythm), schema filled, diagnosis produced"
+    },
+    {
+      "name": "output_contract",
+      "passed": true,
+      "message": "study deliverables written: design.md, study_diagnosis.md, summary.md, validation_report.json — no stray files in /app/results"
+    },
+    {
+      "name": "render",
+      "passed": true,
+      "message": "n/a for this operation (study does not produce index.html or screenshot.png)"
+    },
+    {
+      "name": "slop_test",
+      "passed": true,
+      "message": "Anti-pattern canon applied to studied source: gate 3 (uniform card grid) and gate 6 (centred hero) noted as carry-forward risks; both documented in study_diagnosis.md and design.md Notes section; all other gates clean on source. No invented metrics, no italic headers, correct motion-cut documentation."
+    },
+    {
+      "name": "results_hygiene",
+      "passed": true,
+      "message": "node_modules, hallmark clone, .hallmark — all contained in /app/work; /app/results has only deliverables"
+    }
+  ],
+  "results": {
+    "slop_gates_passed": 58,
+    "slop_gates_total": 58,
+    "audit_findings": null,
+    "study_source_mode": "url",
+    "study_source_url": "https://www.gov.uk",
+    "study_macrostructure": "Ecosystem Index",
+    "study_type_pairing": "single family — GDS Transport (neutral grotesque, roman only)",
+    "study_accent": "dual-semantic — #1d70b8 blue (links) + #0f7a52 green (actions)",
+    "study_paper": "light >85, neutral-cool — #ffffff body, #f4f8fb surface",
+    "study_motion": "none — zero-animation policy",
+    "study_nav": "N6 Masthead",
+    "study_footer": "Ft3 Index columns",
+    "study_anti_patterns_flagged": 2,
+    "pre_emit_critique": "P5 H4 E5 S5 R5 V5",
+    "rhythm_extracted": false,
+    "rhythm_note": "URL mode — rhythm requires screenshot for visual pass"
+  },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/design.md",
+    "/app/results/study_diagnosis.md",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}

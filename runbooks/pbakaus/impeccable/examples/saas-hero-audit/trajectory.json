@@ -1,0 +1,28 @@
+{
+  "collection": "jon-runbooks",
+  "task": "impeccable-deslop",
+  "trajectory_id": "b8bda6fc",
+  "workflow_id": "jon-runbooks-impeccable-deslop--b8bda6fc",
+  "url": "https://flows.jetty.io/jon-runbooks/impeccable-deslop/b8bda6fc",
+  "status": "completed",
+  "success": true,
+  "runbook_version": "1.0.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "operation": "audit",
+  "ran_at": "2026-06-07T12:09:47.328198Z",
+  "duration_seconds": 109.4,
+  "primary_files": ["audit_report.md"],
+  "detector": {
+    "tool": "impeccable detect",
+    "source": "https://github.com/pbakaus/impeccable",
+    "exit_code": 2,
+    "finding_count": 22,
+    "by_category": { "slop": 13, "quality": 9 },
+    "by_rule": { "ai-color-palette": 1, "broken-image": 1, "dark-glow": 1, "extreme-negative-tracking": 1, "gradient-text": 2, "hero-eyebrow-chip": 1, "low-contrast": 6, "marketing-buzzword": 1, "oversized-h1": 1, "overused-font": 1, "side-tab": 3, "single-font": 1, "skipped-heading": 1, "tight-leading": 1 }
+  },
+  "eval": { "overall_passed": true, "finding_count": 22 },
+  "notes": "Real Jetty production run. The production `impeccable detect` is more thorough than a quick local build — it computes WCAG contrast ratios and DOM structure, surfacing low-contrast (x6), skipped-heading, tight-leading, oversized-h1, etc. on top of the source-level slop tells."
+}

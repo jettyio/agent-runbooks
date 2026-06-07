@@ -1,0 +1,29 @@
+{
+  "collection": "jon-runbooks",
+  "task": "impeccable-deslop",
+  "trajectory_id": "8dce2661",
+  "workflow_id": "jon-runbooks-impeccable-deslop--8dce2661",
+  "url": "https://flows.jetty.io/jon-runbooks/impeccable-deslop/8dce2661",
+  "status": "completed",
+  "success": true,
+  "runbook_version": "1.0.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "operation": "polish",
+  "ran_at": "2026-06-07T12:09:49.128529Z",
+  "duration_seconds": 260.3,
+  "primary_files": ["polished.html"],
+  "detector": {
+    "tool": "impeccable detect",
+    "source": "https://github.com/pbakaus/impeccable",
+    "before": { "exit_code": 2, "finding_count": 10, "by_rule": { "ai-color-palette": 1, "bounce-easing": 1, "extreme-negative-tracking": 1, "low-contrast": 1, "marketing-buzzword": 1, "overused-font": 1, "side-tab": 3, "single-font": 1 } },
+    "after": { "exit_code": 0, "finding_count": 0 },
+    "rounds": 2,
+    "regressions": 0,
+    "clean": true
+  },
+  "eval": { "overall_passed": true, "before_count": 10, "after_count": 0 },
+  "notes": "Real Jetty production run. Second surface, distinct rules (bounce-easing, side-tab x3). The agent replaced the purple palette with a neutral gray bg + navy accent (seed #1d4e8f), fixed the bounce easing, and flattened the cards — 10 -> 0 in 2 rounds, no regressions."
+}

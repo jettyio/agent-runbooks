@@ -1,0 +1,31 @@
+{
+  "collection": "jon-runbooks",
+  "task": "hallmark",
+  "trajectory_id": "a45a609c",
+  "workflow_id": "jon-runbooks-hallmark--a45a609c",
+  "url": "https://flows.jetty.io/jon-runbooks/hallmark/a45a609c",
+  "runbook_version": "1.0.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "prism-playwright",
+  "operation": "audit",
+  "ran_at": "2026-06-07T13:39:56.350774Z",
+  "duration_seconds": 453,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "audit_report.md"
+  ],
+  "eval": {
+    "overall_passed": true,
+    "findings": {
+      "critical": 7,
+      "major": 9,
+      "minor": 4
+    },
+    "slop_gates_failed": 24,
+    "slop_gates_total": 58
+  },
+  "notes": "Audited a synthetic AI-slop SaaS page. Caught every planted tell (fake browser chrome, invented +47%/50,000+/10x metrics, purple gradients x3, italic header, N1a nav, 4-col footer, 18 inline hex) with file:line citations. No edits made."
+}

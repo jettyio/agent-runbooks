@@ -1,0 +1,628 @@
+/* Hallmark · pre-emit critique: P5 H5 E4 S5 R5 V4 · genre: editorial · macrostructure: Letter · theme: Almanac · tone: editorial · anchor hue: 30° warm terracotta · nav: N6 Newspaper masthead (issue-above, wordmark-3xl, double-rule) · footer: Ft4 Dense typographic colophon (serif, paragraphs) · enrichment: none (typography only) */
+
+/* ================================================================
+   Base
+   ================================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: clip;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  z-index: 100;
+  transform: translateY(-200%);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* ================================================================
+   Masthead — N6 Newspaper masthead
+   Knobs: issue-line=above-wordmark, wordmark-size=3xl, rule=double
+   ================================================================ */
+
+.masthead {
+  padding-block: var(--space-xl) 0;
+  background-color: var(--color-paper);
+}
+
+.masthead__inner {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.masthead__issue {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-variant-caps: all-small-caps;
+  color: var(--color-muted);
+  text-align: center;
+  line-height: 1;
+}
+
+.masthead__wordmark {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  line-height: 1.05;
+  text-align: center;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.masthead__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-variant-caps: all-small-caps;
+  color: var(--color-muted);
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  line-height: 1;
+}
+
+/* Double hairline rule */
+.masthead__rule-double {
+  width: 100%;
+  border-top: var(--rule-width) solid var(--color-rule);
+  padding-top: 4px;
+  border-bottom: var(--rule-width) solid var(--color-rule);
+  margin-block: 0;
+}
+
+.masthead__nav {
+  display: flex;
+  gap: var(--space-2xl);
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-block: var(--space-md);
+  border-bottom: var(--rule-width) solid var(--color-rule);
+  width: 100%;
+}
+
+.masthead__nav-link {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  font-variant-caps: all-small-caps;
+  color: var(--color-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.masthead__nav-link:hover {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--color-accent);
+}
+
+.masthead__nav-link:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+.masthead__nav-link:active {
+  color: var(--color-accent);
+}
+
+/* ================================================================
+   Letter body — macrostructure: Letter
+   Narrow measure (~54ch), paragraph spacing only as dividers
+   ================================================================ */
+
+.letter {
+  max-width: 54ch;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-3xl);
+}
+
+/* Salutation — prose element, italic allowed (not a heading) */
+.letter__salutation {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-ink);
+  margin-bottom: var(--space-xl);
+  display: block;
+  line-height: 1.3;
+}
+
+/* Lede — first paragraph, slightly larger */
+.letter__lede {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: 1.6;
+  color: var(--color-ink);
+  margin-bottom: var(--space-xl);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.letter p {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.65;
+  color: var(--color-ink);
+  margin-bottom: var(--space-xl);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.letter p:last-of-type {
+  margin-bottom: 0;
+}
+
+.letter em {
+  font-style: italic;
+  color: var(--color-ink);
+}
+
+/* Section heads: roman (not italic), emerge from prose flow */
+.letter__section-head {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: -0.015em;
+  color: var(--color-ink);
+  line-height: 1.2;
+  margin-top: var(--space-3xl);
+  margin-bottom: var(--space-xl);
+  border-top: var(--rule-width) solid var(--color-rule);
+  padding-top: var(--space-xl);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+/* Ornament divider — centered asterism */
+.letter__ornament {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-neutral);
+  text-align: center;
+  margin-block: var(--space-3xl);
+  letter-spacing: 0.3em;
+  line-height: 1;
+}
+
+/* ================================================================
+   Subscribe block — C2 Inline form as CTA
+   Knobs: field-count=1, submit=end-of-row, helper=below
+   ================================================================ */
+
+.subscribe-block {
+  max-width: 54ch;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+  padding-block: var(--space-3xl);
+  border-top: var(--rule-width) solid var(--color-rule);
+  border-bottom: var(--rule-width) solid var(--color-rule);
+  margin-bottom: var(--space-3xl);
+}
+
+.subscribe-block__lead {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: 1.5;
+  color: var(--color-ink);
+  margin-bottom: var(--space-xl);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.form-label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-variant-caps: all-small-caps;
+  color: var(--color-muted);
+  display: block;
+}
+
+.form-row {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+/* Input: 8 states */
+.form-input {
+  flex: 1 1 12rem;
+  min-width: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-ink);
+  background-color: var(--color-paper-2);
+  border: var(--rule-width) solid var(--color-rule);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  outline: 2px solid transparent;
+  outline-offset: 1px;
+  min-height: 44px;
+  transition: border-color var(--dur-base) var(--ease-out),
+              outline-color var(--dur-base) var(--ease-out);
+}
+
+.form-input::placeholder {
+  color: var(--color-neutral);
+}
+
+/* hover */
+.form-input:hover {
+  border-color: var(--color-neutral);
+}
+
+/* focus */
+.form-input:focus-visible {
+  border-color: var(--color-focus);
+  outline-color: var(--color-focus);
+}
+
+/* active (same as focus for text inputs) */
+.form-input:active {
+  border-color: var(--color-focus);
+}
+
+/* disabled */
+.form-input:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background-color: var(--color-paper-3);
+}
+
+/* error */
+.form-input[aria-invalid="true"],
+.form-input.is-error {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-error-glow);
+}
+
+/* success */
+.form-input.is-success {
+  border-color: var(--color-success);
+}
+
+/* Submit button: C1 Outlined chip */
+/* States: default · hover · focus · active · disabled · loading · error · success */
+.form-submit {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  font-style: normal;
+  color: var(--color-accent);
+  background-color: transparent;
+  border: var(--rule-width) solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-lg);
+  cursor: pointer;
+  white-space: nowrap;
+  min-height: 44px;
+  transition: background-color var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+
+/* hover */
+.form-submit:hover {
+  background-color: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+/* focus */
+.form-submit:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* active */
+.form-submit:active {
+  transform: translateY(1px);
+}
+
+/* disabled */
+.form-submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* loading state */
+.form-submit[data-state="loading"] {
+  opacity: 0.7;
+  cursor: wait;
+  transform: none;
+}
+
+/* error state */
+.form-submit[data-state="error"] {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background-color: var(--color-error-bg);
+}
+
+/* success state */
+.form-submit[data-state="success"] {
+  border-color: var(--color-success);
+  color: var(--color-success);
+  background-color: transparent;
+}
+
+.form-note {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+/* ================================================================
+   Letter close / signoff
+   ================================================================ */
+
+.letter-close {
+  max-width: 54ch;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+  padding-bottom: var(--space-4xl);
+}
+
+.letter-close__signoff {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-style: italic; /* body-level prose — italic allowed */
+  font-weight: 300;
+  color: var(--color-ink);
+  margin-bottom: var(--space-md);
+}
+
+.letter-close__sig {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 600;
+  font-style: normal;
+  color: var(--color-ink);
+  line-height: 1.4;
+}
+
+.letter-close__place {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-muted);
+  margin-top: var(--space-sm);
+  display: block;
+  letter-spacing: 0.04em;
+}
+
+/* ================================================================
+   Footer — Ft4 Dense typographic colophon
+   Knobs: family=serif, layout=paragraphs, includes=date+attribution
+   ================================================================ */
+
+.site-footer {
+  background-color: var(--color-paper-2);
+  border-top: 2px solid var(--color-rule);
+  padding-block: var(--space-3xl) var(--space-2xl);
+}
+
+.footer-inner {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: var(--space-3xl) var(--space-4xl);
+  align-items: start;
+}
+
+.footer-section-head {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-variant-caps: all-small-caps;
+  color: var(--color-muted);
+  margin-bottom: var(--space-md);
+  display: block;
+}
+
+.footer-back-issues__body {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-ink);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.footer-back-issues__body + .footer-back-issues__body {
+  margin-top: var(--space-md);
+}
+
+.footer-link {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--color-rule);
+  transition: text-decoration-color var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out);
+}
+
+.footer-link:hover {
+  text-decoration-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.footer-link:active {
+  color: var(--color-accent);
+}
+
+.footer-link:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.footer-colophon {
+  grid-column: 1 / -1;
+  border-top: var(--rule-width) solid var(--color-rule);
+  padding-top: var(--space-lg);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  line-height: 1.7;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-lg);
+  align-items: center;
+}
+
+.footer-colophon__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-style: normal;
+  font-size: var(--text-sm);
+  color: var(--color-ink);
+}
+
+.footer-colophon__sep {
+  color: var(--color-rule);
+  font-size: var(--text-xs);
+}
+
+/* ================================================================
+   Reduced motion
+   ================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 150ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  .form-submit:active {
+    transform: none;
+  }
+}
+
+/* ================================================================
+   Responsive — 60 rem layout breakpoint
+   ================================================================ */
+
+@media (max-width: 60rem) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-colophon {
+    grid-column: 1;
+  }
+}
+
+/* ================================================================
+   Responsive — 40 rem typography breakpoint (phones)
+   ================================================================ */
+
+@media (max-width: 40rem) {
+  .masthead__wordmark {
+    font-size: var(--text-2xl);
+  }
+
+  .masthead__nav {
+    gap: var(--space-lg);
+  }
+
+  .letter__section-head {
+    font-size: var(--text-lg);
+  }
+
+  .letter__lede {
+    font-size: var(--text-base);
+  }
+
+  .subscribe-block__lead {
+    font-size: var(--text-base);
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-input {
+    flex: 1 1 auto;
+  }
+
+  .form-submit {
+    width: 100%;
+    text-align: center;
+  }
+
+  .letter-close__signoff,
+  .letter-close__sig {
+    font-size: var(--text-base);
+  }
+}

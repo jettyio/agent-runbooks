@@ -1,0 +1,23 @@
+{
+  "title": "AI-generated SaaS hero → polished to zero",
+  "operation": "polish",
+  "prompt": "De-slop this page: remove every anti-pattern impeccable detects, then re-scan to confirm zero.",
+  "params": {
+    "vars": {
+      "operation": "polish",
+      "provider_tells": "none",
+      "max_polish_rounds": 3,
+      "results_directory": "/app/results"
+    }
+  },
+  "files": [
+    {
+      "path": "../saas-hero-audit/input.html",
+      "filename": "input.html",
+      "mime_type": "text/html",
+      "shared_input": true,
+      "label": "Same synthetic SaaS hero as saas-hero-audit (6 anti-patterns)",
+      "license": "Synthetic sample (hand-authored; no third-party content)"
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing — Orbit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #f5f5f5;
+      --surface:    #ffffff;
+      --ink:        #1a1a18;
+      --muted:      #5c5c58;
+      --border:     #ddddd8;
+      --accent:     #1d4e8f;
+      --accent-fg:  #ffffff;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 80px 24px; }
+    .head { text-align: center; margin-bottom: 56px; }
+    .head h2 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 2.5rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .head p {
+      color: var(--muted);
+      margin-top: 12px;
+      font-size: 1.05rem;
+    }
+    .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .tier {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      padding: 28px;
+    }
+    .tier h3 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      color: var(--ink);
+      font-size: 1.1rem;
+    }
+    .price {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 12px 0 16px;
+    }
+    .tier ul {
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+    .tier li { padding: 5px 0; }
+    .tier li::before { content: "✓\00a0"; color: var(--accent); font-weight: 700; }
+    .cta {
+      display: inline-block;
+      margin-top: 20px;
+      background: var(--accent);
+      color: var(--accent-fg);
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 180ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .cta:hover { opacity: 0.85; }
+    .logo-wrap { text-align: center; margin-top: 48px; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="head">
+      <h2>Plans that scale with you</h2>
+      <p>Three plans, one price per seat. Pick the tier that fits your team size.</p>
+    </div>
+
+    <section class="tiers">
+      <article class="tier">
+        <h3>Starter</h3>
+        <div class="price">$0</div>
+        <ul>
+          <li>Up to 3 projects</li>
+          <li>Community support</li>
+        </ul>
+        <a class="cta" href="#">Get started</a>
+      </article>
+
+      <article class="tier">
+        <h3>Growth</h3>
+        <div class="price">$29</div>
+        <ul>
+          <li>Unlimited projects</li>
+          <li>Priority support</li>
+        </ul>
+        <a class="cta" href="#">Get started</a>
+      </article>
+
+      <article class="tier">
+        <h3>Enterprise</h3>
+        <div class="price">Custom</div>
+        <ul>
+          <li>SSO &amp; audit logs</li>
+          <li>Dedicated support</li>
+        </ul>
+        <a class="cta" href="#">Contact us</a>
+      </article>
+    </section>
+
+    <div class="logo-wrap">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Orbit">
+        <circle cx="16" cy="16" r="13" stroke="#1d4e8f" stroke-width="2"/>
+        <circle cx="16" cy="16" r="5" fill="#1d4e8f"/>
+        <ellipse cx="16" cy="16" rx="13" ry="5.5" stroke="#1d4e8f" stroke-width="1.5" fill="none" transform="rotate(35 16 16)"/>
+      </svg>
+    </div>
+  </main>
+</body>
+</html>

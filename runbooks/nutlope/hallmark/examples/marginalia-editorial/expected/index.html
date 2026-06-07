@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marginalia — An Independent Print Quarterly</title>
+  <meta name="description" content="Marginalia is a quarterly print journal about cities: housing, transit, public space, and the people who shape them. Subscribe to the next issue.">
+
+  <!-- Google Fonts: Fraunces (display) + Newsreader (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- N6 · Newspaper masthead
+       Knobs: issue-line=above-wordmark, wordmark-size=3xl, rule=double -->
+  <header class="masthead" role="banner">
+    <div class="masthead__inner">
+
+      <p class="masthead__issue" aria-label="Issue and date">Issue 7 &ensp;&middot;&ensp; Summer 2026</p>
+
+      <h1 class="masthead__wordmark">Marginalia</h1>
+
+      <p class="masthead__subtitle">An Independent Print Quarterly</p>
+
+      <!-- Double hairline rule — newspaper convention -->
+      <div class="masthead__rule-double" aria-hidden="true"></div>
+
+      <nav class="masthead__nav" aria-label="Site navigation">
+        <a href="#about" class="masthead__nav-link">About</a>
+        <a href="#subscribe" class="masthead__nav-link">Subscribe</a>
+        <a href="#back-issues" class="masthead__nav-link">Back Issues</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Main content: Letter macrostructure
+       Narrow measure (~54 ch), single column, paragraph spacing as divider -->
+  <main id="main-content">
+
+    <article class="letter" id="about" aria-label="Letter from the editors">
+
+      <!-- Salutation — body-level italic, not a heading -->
+      <p class="letter__salutation">Dear reader,</p>
+
+      <p class="letter__lede">Cities are made by argument &#8212; about who belongs, what gets built, and whose idea of the future wins. <em>Marginalia</em> exists to record that argument, carefully.</p>
+
+      <p>We are a quarterly print journal about the built environment. Each issue gathers writers, architects, urban planners, historians, and the residents who live with the consequences of decisions they did not make. We do not take sides so much as we take time &#8212; the time a long piece needs to be honest about a complicated subject.</p>
+
+      <p>Our readers are people who have been let down by both the hot take and the press release. They want to understand why the corner promised a park became a parking structure, why one neighbourhood&#8217;s flood wall got funded and another&#8217;s did not, why the bus route everyone needed arrived twenty years late. We try to explain these things plainly, with evidence, and without condescension.</p>
+
+      <h2 class="letter__section-head">Housing &#8212; Transit &#8212; Public Space &#8212; The people who shape them</h2>
+
+      <p>These four threads run through every issue, not as departments but as a single sustained inquiry. Housing without transit is an island. Transit without public space is infrastructure without life. And none of it exists without the planners, politicians, advocates, and ordinary people who argue, lobby, sue, and vote. We cover the whole picture.</p>
+
+      <p>We commission long pieces &#8212; four thousand words at minimum, occasionally twelve thousand &#8212; because the subjects resist brevity. We also commission short ones, photographs, and maps, because some truths are smaller than a page and some are better drawn than written. The proportions of each issue are decided by what the stories call for, not by a template.</p>
+
+      <div class="letter__ornament" aria-hidden="true">&#42; &ensp; &#42; &ensp; &#42;</div>
+
+      <h2 class="letter__section-head" id="next-issue">In the next issue</h2>
+
+      <p>Issue 8 arrives in September. It gathers around a single question: <em>Who gets to stay?</em> &#8212; displacement not as a policy failure but as a policy choice, made city by city, ward by ward, building by building.</p>
+
+      <p>This issue carries a piece on architects who design affordable housing and the compromises they are quietly forced to accept. A long conversation with a transit planner who has watched three rail proposals die in committee over eighteen years. A portrait of a single block in a mid-size city that has changed hands eight times in forty years, told through its current and former residents. And a short essay on the public bench &#8212; specifically on the armrest placed where a person might otherwise sleep.</p>
+
+      <p>We print in a limited run. When they are gone, they are gone.</p>
+
+    </article>
+
+    <!-- Subscribe block — C2 Inline form as CTA
+         Knobs: field-count=1, submit=end-of-row, helper=below -->
+    <section class="subscribe-block" id="subscribe" aria-labelledby="subscribe-head">
+
+      <p class="subscribe-block__lead" id="subscribe-head">Issue 8 ships in September. Four issues a year, by post.</p>
+
+      <form class="subscribe-form" action="#" method="post" novalidate>
+        <label for="sub-email" class="form-label">Your email address</label>
+        <div class="form-row">
+          <input
+            type="email"
+            id="sub-email"
+            name="email"
+            class="form-input"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+            aria-describedby="form-help"
+          >
+          <button type="submit" class="form-submit">Subscribe &#8594;</button>
+        </div>
+        <p class="form-note" id="form-help">One confirmation email, then a note before each issue ships. Nothing else.</p>
+      </form>
+
+    </section>
+
+    <!-- Letter close / Ft6-flavoured signoff -->
+    <div class="letter-close">
+      <p class="letter-close__signoff">Yours,</p>
+      <p class="letter-close__sig">
+        The Editors
+        <span class="letter-close__place">Marginalia &ensp;&middot;&ensp; Summer 2026</span>
+      </p>
+    </div>
+
+  </main>
+
+  <!-- Ft4 · Dense typographic colophon (serif, paragraphs, date + attribution)
+       Back issues info + publication details -->
+  <footer class="site-footer" id="back-issues" role="contentinfo">
+    <div class="footer-inner">
+
+      <div class="footer-back-issues">
+        <span class="footer-section-head">Back issues</span>
+        <p class="footer-back-issues__body">
+          Issues 1&#8211;7 are available while stock lasts.
+          Write to <a href="/cdn-cgi/l/email-protection#7f171a1313103f121e0d1816111e13161e520e0a1e0d0b1a0d1306511c1012" class="footer-link">hello@marginalia&#8203;-quarterly.com</a> to enquire about individual copies or complete sets.
+          Institutions and libraries are welcome to contact us about deposit copies.
+        </p>
+      </div>
+
+      <div class="footer-about">
+        <span class="footer-section-head">Publication</span>
+        <p class="footer-back-issues__body">
+          <em>Marginalia</em> is an independent quarterly published with no advertising, no grants, and no institutional backing. It is supported entirely by its subscribers and readers.
+        </p>
+      </div>
+
+      <div class="footer-colophon">
+        <span class="footer-colophon__name">Marginalia</span>
+        <span class="footer-colophon__sep">&middot;</span>
+        <span>Published seasonally since 2022</span>
+        <span class="footer-colophon__sep">&middot;</span>
+        <span>ISSN &#8212; applied for</span>
+        <span class="footer-colophon__sep">&middot;</span>
+        <a href="#" class="footer-link">Privacy</a>
+        <span class="footer-colophon__sep">&middot;</span>
+        <span>&copy; 2026 Marginalia</span>
+      </div>
+
+    </div>
+  </footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

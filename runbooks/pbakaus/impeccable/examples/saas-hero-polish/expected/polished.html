@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nimbus — AI Workflow Orchestration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Barlow:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:      #0e1015;
+      --surface: #171a22;
+      --border:  #252932;
+      --ink:     #f2f0ec;
+      --muted:   #b0aca7;
+      --accent:  #d4752a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Barlow', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 96px 24px; }
+    h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 3.25rem;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 20px;
+      max-width: 22ch;
+    }
+    .sub {
+      font-size: 1.05rem;
+      max-width: 64ch;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 64px;
+    }
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      padding: 28px 24px;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .card-icon { color: var(--accent); flex-shrink: 0; }
+    .card h2 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .card p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+    .card .detail { color: var(--muted); font-size: 0.9rem; line-height: 1.55; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Orchestrate AI workflows across your stack</h1>
+    <p class="sub">
+      Nimbus connects your models, data pipelines, and services into repeatable workflows.
+      Write the logic once and deploy anywhere. No infrastructure glue code required.
+    </p>
+
+    <section class="cards" aria-label="Features">
+      <article class="card">
+        <div class="card-header">
+          <svg class="card-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="11" y="2" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="2" y="11" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="11" y="11" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          <h2>Schedule jobs</h2>
+        </div>
+        <p>Set triggers on any schedule, webhook, or queue.</p>
+        <hr class="divider" />
+        <p class="detail">Jobs retry automatically on failure with configurable back-off.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <svg class="card-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 10h12M13 7l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h2>Route between models</h2>
+        </div>
+        <p>Send each request to the right model for the task.</p>
+        <hr class="divider" />
+        <p class="detail">Swap providers without touching application code.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <svg class="card-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <polyline points="2,14 6,9 10,12 14,6 18,8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="18" cy="8" r="1.5" fill="currentColor"/>
+          </svg>
+          <h2>Observe every run</h2>
+        </div>
+        <p>Inspect logs, latency, and cost for each step.</p>
+        <hr class="divider" />
+        <p class="detail">Set threshold alerts before users notice problems.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

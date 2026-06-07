@@ -1,0 +1,19 @@
+{
+  "title": "Cricket \u2014 nocturnal AI voice app",
+  "operation": "build",
+  "prompt": "A landing page for Cricket \u2014 a late-night AI voice companion that captures, transcribes, and threads the half-formed ideas you have at 2am into something you can act on by morning. Audience: writers, founders, and makers who think after dark. The one action: start a free nightly capture. Feel: calm, atmospheric, nocturnal \u2014 not another loud SaaS hero.",
+  "params": {
+    "vars": {
+      "operation": "build",
+      "brief": "A landing page for Cricket \u2014 a late-night AI voice companion that captures, transcribes, and threads the half-formed ideas you have at 2am into something you can act on by morning. Audience: writers, founders, and makers who think after dark. The one action: start a free nightly capture. Feel: calm, atmospheric, nocturnal \u2014 not another loud SaaS hero.",
+      "tone": "austere",
+      "genre": "atmospheric",
+      "theme": "auto",
+      "target_url": ""
+    }
+  },
+  "source": {
+    "kind": "brief",
+    "note": "Brief-driven greenfield build (no repo, no uploads)."
+  }
+}

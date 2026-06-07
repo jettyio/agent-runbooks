@@ -1,0 +1,44 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-06-07T00:00:00Z",
+  "parameters": {
+    "operation": "audit",
+    "target": "/app/assets/b8bda6fc.00.html",
+    "provider_tells": "none"
+  },
+  "tool": {
+    "name": "impeccable detect",
+    "source": "https://github.com/pbakaus/impeccable"
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "Node 24.16.0 + impeccable detect resolved via npx"
+    },
+    {
+      "name": "scan_before",
+      "passed": true,
+      "message": "22 findings, exit 2"
+    },
+    {
+      "name": "report",
+      "passed": true,
+      "message": "audit_report.{json,md} written"
+    }
+  ],
+  "results": {
+    "pass": 3,
+    "partial": 0,
+    "fail": 0
+  },
+  "before_count": 22,
+  "after_count": null,
+  "overall_passed": true,
+  "output_files": [
+    "audit_report.json",
+    "audit_report.md",
+    "summary.md",
+    "validation_report.json"
+  ]
+}

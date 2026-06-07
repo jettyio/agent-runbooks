@@ -1,0 +1,21 @@
+{
+  "title": "Study GOV.UK \u2014 extract a portable design.md",
+  "operation": "study",
+  "prompt": "Extract the design DNA of GOV.UK as a public design reference (the OGL-licensed GOV.UK Design System) \u2014 its macrostructure, type-pairing roles, colour anchor, and component archetypes \u2014 and lock it into a portable design.md. Structure only, never pixels or copy.",
+  "params": {
+    "vars": {
+      "operation": "study",
+      "brief": "Extract the design DNA of GOV.UK as a public design reference (the OGL-licensed GOV.UK Design System) \u2014 its macrostructure, type-pairing roles, colour anchor, and component archetypes \u2014 and lock it into a portable design.md. Structure only, never pixels or copy.",
+      "tone": "auto",
+      "genre": "auto",
+      "theme": "auto",
+      "target_url": "https://www.gov.uk"
+    }
+  },
+  "source": {
+    "kind": "url",
+    "url": "https://www.gov.uk",
+    "license": "OGL v3.0 (public reference \u2014 DNA extraction only, no pixels/copy)",
+    "note": "URL-mode study of a public, OGL-licensed design system."
+  }
+}
