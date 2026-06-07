@@ -1,0 +1,39 @@
+{
+  "collection": "jon-runbooks",
+  "task": "gstack-benchmark-models",
+  "trajectory_id": "3d17a697",
+  "workflow_id": "jon-runbooks-gstack-benchmark-models--3d17a697",
+  "url": "https://flows.jetty.io/jon-runbooks/gstack-benchmark-models/3d17a697",
+  "runbook_version": "1.0.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T12:07:46.480693Z",
+  "duration_seconds": 177,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "benchmark.md"
+  ],
+  "models": [
+    "claude-sonnet-4-6",
+    "gpt-4o",
+    "gemini/gemini-2.5-flash"
+  ],
+  "eval": {
+    "overall_passed": true,
+    "models_ran": 3,
+    "quality": {
+      "claude-sonnet-4-6": 10,
+      "gpt-4o": 10,
+      "gemini/gemini-2.5-flash": 9
+    },
+    "recommendation": {
+      "fastest": "gpt-4o",
+      "cheapest": "gpt-4o",
+      "highest_quality": "claude-sonnet-4-6"
+    }
+  },
+  "notes": "All 3 models ran. gpt-4o fastest (2.39s) + cheapest; claude/gpt tied on quality (10); gemini-2.5-flash verbose (2740 tok) and slower. Agent auto-corrected gemini-2.0-flash to 2.5-flash."
+}

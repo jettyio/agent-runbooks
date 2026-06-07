@@ -1,0 +1,46 @@
+{
+  "prompt_chars": 228,
+  "models": [
+    {
+      "model": "claude-sonnet-4-6",
+      "ok": true,
+      "latency_s": 4.95,
+      "prompt_tokens": 66,
+      "completion_tokens": 161,
+      "total_tokens": 227,
+      "cost_usd": null,
+      "output": "# Jetty is live.\n\nJetty runs your AI agent workflows in managed sandboxes — isolated, reproducible environments where agents can execute code, call tools, and interact with the filesystem without touching your infrastructure.\n\nEvery run is logged, diffed, and scored against criteria you define. You get structured output, not just a terminal dump. Debugging a failing agent means inspecting exactly what it did, step by step.\n\nNo configuration sprawl. No surprise cloud bills from runaway processes. Sandboxes spin up in seconds and terminate cleanly when the job is done.\n\nBuilt for developers who need reliable evals, not just demos.\n\n**Try Jetty at jetty.dev — your first 500 runs are free.**",
+      "judge_score": 9,
+      "judge_reason": "The announcement is concrete, developer-focused, avoids hype, clearly explains what Jetty does and its key benefits, and ends with a strong one-line call to action — slightly over 100 words but otherwise excellent."
+    },
+    {
+      "model": "gpt-4o",
+      "ok": true,
+      "latency_s": 1.71,
+      "prompt_tokens": 59,
+      "completion_tokens": 118,
+      "total_tokens": 177,
+      "cost_usd": 0.001328,
+      "output": "We are excited to announce the launch of Jetty, a powerful platform designed to streamline the execution and evaluation of AI agent workflows within managed sandboxes. With Jetty, developers can run simulations securely, ensuring accuracy and integrity without the need for extensive infrastructure setup. Our platform supports a wide range of AI models and offers real-time feedback, enabling efficient debugging and optimization. Jetty's user-friendly interface and robust APIs make integration seamless. Get started with Jetty today and elevate your AI development workflow to new heights of precision and efficiency. Explore Jetty's capabilities and start your free trial now.",
+      "judge_score": 3,
+      "judge_reason": "The response exceeds 100 words, uses multiple hype phrases explicitly banned by the prompt ('powerful', 'elevate to new heights', 'seamless', 'excited to announce'), and lacks the concrete, developer-focused tone requested, though it does cover the basic product description and ends with a call to action."
+    },
+    {
+      "model": "gemini/gemini-2.5-flash",
+      "ok": true,
+      "latency_s": 13.04,
+      "prompt_tokens": 56,
+      "completion_tokens": 2775,
+      "total_tokens": 2831,
+      "cost_usd": 0.006954,
+      "output": "Jetty is live: The platform for running and evaluating AI agent workflows. We provide managed, isolated sandboxes, guaranteeing consistent execution and reproducible results. Developers can define complex multi-agent interactions and precise evaluation metrics, free from infrastructure overhead and dependency conflicts. Focus on agent logic; Jetty handles dynamic compute scaling for stable development and production environments. Gain clear performance insights, accelerate iteration, and streamline your entire agent development lifecycle.\n\nExplore Jetty today.",
+      "judge_score": 7,
+      "judge_reason": "The announcement is clear, well-targeted at developers, and avoids most hype language, but it runs noticeably short of 100 words and uses some vague phrases like 'streamline your entire agent development lifecycle' that lack the concrete specificity requested."
+    }
+  ],
+  "recommendation": {
+    "fastest": "gpt-4o",
+    "cheapest": "gpt-4o",
+    "highest_quality": "claude-sonnet-4-6"
+  }
+}

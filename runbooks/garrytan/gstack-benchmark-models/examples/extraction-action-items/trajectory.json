@@ -1,0 +1,39 @@
+{
+  "collection": "jon-runbooks",
+  "task": "gstack-benchmark-models",
+  "trajectory_id": "f7a86295",
+  "workflow_id": "jon-runbooks-gstack-benchmark-models--f7a86295",
+  "url": "https://flows.jetty.io/jon-runbooks/gstack-benchmark-models/f7a86295",
+  "runbook_version": "1.0.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T12:11:55.996095Z",
+  "duration_seconds": 113,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "benchmark.md"
+  ],
+  "models": [
+    "claude-sonnet-4-6",
+    "gpt-4o",
+    "gemini/gemini-2.5-flash"
+  ],
+  "eval": {
+    "overall_passed": true,
+    "models_ran": 3,
+    "quality": {
+      "claude-sonnet-4-6": 10,
+      "gpt-4o": 10,
+      "gemini/gemini-2.5-flash": 9
+    },
+    "recommendation": {
+      "fastest": "gpt-4o",
+      "cheapest": "gpt-4o",
+      "highest_quality": "claude-sonnet-4-6"
+    }
+  },
+  "notes": "Structured-extraction prompt. All 3 ran; gpt-4o fastest (1.52s) + cheapest; claude/gpt tied at quality 10."
+}

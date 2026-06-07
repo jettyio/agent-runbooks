@@ -1,0 +1,8 @@
+{
+  "title": "Coding — merge overlapping intervals",
+  "task_type": "code",
+  "prompt": "Implement a Python function `merge_intervals(intervals)` that takes a list of",
+  "params": { "vars": { "models": "claude-sonnet-4-6,gpt-4o,gemini/gemini-2.0-flash", "judge": "true", "judge_model": "claude-sonnet-4-6" } },
+  "input_file": "prompt.md",
+  "note": "Benchmarks the same prompt across Claude / GPT / Gemini via litellm (latency, tokens, cost, LLM-judge quality)."
+}

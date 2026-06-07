@@ -1,0 +1,8 @@
+{
+  "title": "Extraction — meeting notes → JSON action items",
+  "task_type": "extraction",
+  "prompt": "Extract every action item from the meeting notes below as a JSON array of objects with",
+  "params": { "vars": { "models": "claude-sonnet-4-6,gpt-4o,gemini/gemini-2.0-flash", "judge": "true", "judge_model": "claude-sonnet-4-6" } },
+  "input_file": "prompt.md",
+  "note": "Benchmarks the same prompt across Claude / GPT / Gemini via litellm (latency, tokens, cost, LLM-judge quality)."
+}

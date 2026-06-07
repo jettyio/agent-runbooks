@@ -1,0 +1,8 @@
+{
+  "title": "Writing — 100-word product launch blurb",
+  "task_type": "writing",
+  "prompt": "Write a 100-word launch announcement for \"Jetty\", a platform that runs and evaluates",
+  "params": { "vars": { "models": "claude-sonnet-4-6,gpt-4o,gemini/gemini-2.0-flash", "judge": "true", "judge_model": "claude-sonnet-4-6" } },
+  "input_file": "prompt.md",
+  "note": "Benchmarks the same prompt across Claude / GPT / Gemini via litellm (latency, tokens, cost, LLM-judge quality)."
+}

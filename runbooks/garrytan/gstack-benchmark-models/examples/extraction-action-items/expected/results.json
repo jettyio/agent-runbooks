@@ -1,0 +1,47 @@
+{
+  "prompt_chars": 476,
+  "prompt_source": "/app/assets/f7a86295.00.md",
+  "models": [
+    {
+      "model": "claude-sonnet-4-6",
+      "ok": true,
+      "latency_s": 2.47,
+      "prompt_tokens": 129,
+      "completion_tokens": 161,
+      "total_tokens": 290,
+      "cost_usd": null,
+      "output": "```json\n[\n  {\n    \"owner\": \"Priya\",\n    \"task\": \"Ship the billing migration\",\n    \"due\": \"Friday\"\n  },\n  {\n    \"owner\": \"Marcus\",\n    \"task\": \"Own and complete the on-call rotation doc\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Dana\",\n    \"task\": \"Email the vendor about the SLA\",\n    \"due\": \"End of month\"\n  },\n  {\n    \"owner\": \"Priya\",\n    \"task\": \"Circulate draft of Q3 board deck\",\n    \"due\": \"Monday\"\n  }\n]\n```",
+      "judge_score": 10,
+      "judge_reason": "All four action items are correctly extracted with accurate owners, well-described tasks, and appropriate due dates (including null where none was given), and the response contains only valid JSON as instructed."
+    },
+    {
+      "model": "gpt-4o",
+      "ok": true,
+      "latency_s": 1.52,
+      "prompt_tokens": 115,
+      "completion_tokens": 131,
+      "total_tokens": 246,
+      "cost_usd": 0.001598,
+      "output": "```json\n[\n    {\n        \"owner\": \"Priya\",\n        \"task\": \"ship the billing migration\",\n        \"due\": \"Friday\"\n    },\n    {\n        \"owner\": \"Marcus\",\n        \"task\": \"own the on-call rotation doc\",\n        \"due\": null\n    },\n    {\n        \"owner\": \"Dana\",\n        \"task\": \"email the vendor about the SLA\",\n        \"due\": \"end of month\"\n    },\n    {\n        \"owner\": \"Priya\",\n        \"task\": \"circulate draft of the Q3 board deck review\",\n        \"due\": \"Monday\"\n    }\n]\n```",
+      "judge_score": 10,
+      "judge_reason": "All four action items are correctly extracted with accurate owners, clear task descriptions, and appropriate due dates (including null for Marcus), and the response contains only valid JSON as instructed."
+    },
+    {
+      "model": "gemini/gemini-2.5-flash",
+      "ok": true,
+      "latency_s": 4.81,
+      "prompt_tokens": 114,
+      "completion_tokens": 877,
+      "total_tokens": 991,
+      "cost_usd": 0.002227,
+      "output": "```json\n[\n  {\n    \"owner\": \"Priya\",\n    \"task\": \"ship the billing migration\",\n    \"due\": \"Friday\"\n  },\n  {\n    \"owner\": \"Marcus\",\n    \"task\": \"own the on-call rotation doc\",\n    \"due\": null\n  },\n  {\n    \"owner\": \"Dana\",\n    \"task\": \"email the vendor about the SLA\",\n    \"due\": \"end of month\"\n  },\n  {\n    \"owner\": \"Priya\",\n    \"task\": \"circulate draft\",\n    \"due\": \"Monday\"\n  }\n]\n```",
+      "judge_score": 9,
+      "judge_reason": "All four action items are correctly extracted with accurate owners, tasks, and due dates (including nulls where appropriate), though the Q3 board deck review event itself (next Tuesday) could arguably be included as a separate item, and 'circulate draft' could be more descriptive as 'circulate Q3 board deck draft'."
+    }
+  ],
+  "recommendation": {
+    "fastest": "gpt-4o",
+    "cheapest": "gpt-4o",
+    "highest_quality": "claude-sonnet-4-6"
+  }
+}

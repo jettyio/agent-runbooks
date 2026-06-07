@@ -1,0 +1,147 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "garrytan/gstack-benchmark-models",
+  "title": "Cross-Model Benchmark",
+  "description": "Run the same prompt through Claude, GPT, and Gemini side by side and compare latency, tokens, cost, and LLM-judged quality. Answers 'which model is actually best for this task?' with data instead of vibes.",
+
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "2–4 mins"
+  },
+
+  "example_outputs": [
+    {
+      "id": "coding-merge-intervals",
+      "title": "Coding prompt — merge intervals",
+      "summary": "Three models implement merge_intervals(). gpt-4o fastest + cheapest; claude and gpt tie at quality 10; gemini-2.5-flash verbose and slower.",
+      "thumbnail": "examples/coding-merge-intervals/thumbnail.png",
+      "operation": "benchmark",
+      "task_type": "code",
+      "capability": "coding",
+      "dir": "examples/coding-merge-intervals",
+      "input": { "file": "examples/coding-merge-intervals/prompt.md", "license": "Synthetic sample", "values": { "models": "claude-sonnet-4-6,gpt-4o,gemini/gemini-2.5-flash", "judge": "true" } },
+      "primary_output": "examples/coding-merge-intervals/expected/benchmark.md",
+      "outputs": [
+        { "file": "examples/coding-merge-intervals/expected/benchmark.md", "role": "primary", "type": "text/markdown", "description": "The comparison report (table + recommendation + per-model outputs)." },
+        { "file": "examples/coding-merge-intervals/expected/results.json", "role": "secondary", "type": "application/json", "description": "Full per-model metrics + raw outputs + judge scores." },
+        { "file": "examples/coding-merge-intervals/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Run summary + best-overall tradeoff." },
+        { "file": "examples/coding-merge-intervals/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "gstack-benchmark-models", "trajectory_id": "3d17a697",
+        "url": "https://flows.jetty.io/jon-runbooks/gstack-benchmark-models/3d17a697",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T12:07:46.480693Z", "duration_seconds": 177, "eval": { "overall_passed": true, "models_ran": 3, "quality": { "claude-sonnet-4-6": 10, "gpt-4o": 10, "gemini/gemini-2.5-flash": 9 } }
+      }
+    },
+    {
+      "id": "extraction-action-items",
+      "title": "Extraction prompt — notes → JSON",
+      "summary": "Three models extract action items from meeting notes into JSON. gpt-4o fastest (1.52s) + cheapest; claude and gpt tie at quality 10.",
+      "thumbnail": "examples/extraction-action-items/thumbnail.png",
+      "operation": "benchmark",
+      "task_type": "extraction",
+      "capability": "structured-extraction",
+      "dir": "examples/extraction-action-items",
+      "input": { "file": "examples/extraction-action-items/prompt.md", "license": "Synthetic sample", "values": { "models": "claude-sonnet-4-6,gpt-4o,gemini/gemini-2.5-flash", "judge": "true" } },
+      "primary_output": "examples/extraction-action-items/expected/benchmark.md",
+      "outputs": [
+        { "file": "examples/extraction-action-items/expected/benchmark.md", "role": "primary", "type": "text/markdown", "description": "The comparison report." },
+        { "file": "examples/extraction-action-items/expected/results.json", "role": "secondary", "type": "application/json", "description": "Per-model metrics + outputs + judge scores." },
+        { "file": "examples/extraction-action-items/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Summary." },
+        { "file": "examples/extraction-action-items/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "gstack-benchmark-models", "trajectory_id": "f7a86295",
+        "url": "https://flows.jetty.io/jon-runbooks/gstack-benchmark-models/f7a86295",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T12:11:55.996095Z", "duration_seconds": 113, "eval": { "overall_passed": true, "models_ran": 3, "quality": { "claude-sonnet-4-6": 10, "gpt-4o": 10, "gemini/gemini-2.5-flash": 9 } }
+      }
+    },
+    {
+      "id": "writing-launch-blurb",
+      "title": "Writing prompt — launch blurb",
+      "summary": "The differentiating run: on a 100-word launch brief, gpt-4o was fastest + cheapest but scored only 3/10 (missed the no-hype constraint) while claude scored 9. Speed is not quality.",
+      "thumbnail": "examples/writing-launch-blurb/thumbnail.png",
+      "operation": "benchmark",
+      "task_type": "writing",
+      "capability": "writing",
+      "dir": "examples/writing-launch-blurb",
+      "input": { "file": "examples/writing-launch-blurb/prompt.md", "license": "Synthetic sample", "values": { "models": "claude-sonnet-4-6,gpt-4o,gemini/gemini-2.5-flash", "judge": "true" } },
+      "primary_output": "examples/writing-launch-blurb/expected/benchmark.md",
+      "outputs": [
+        { "file": "examples/writing-launch-blurb/expected/benchmark.md", "role": "primary", "type": "text/markdown", "description": "The comparison report." },
+        { "file": "examples/writing-launch-blurb/expected/results.json", "role": "secondary", "type": "application/json", "description": "Per-model metrics + outputs + judge scores." },
+        { "file": "examples/writing-launch-blurb/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Summary." },
+        { "file": "examples/writing-launch-blurb/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "gstack-benchmark-models", "trajectory_id": "1b299910",
+        "url": "https://flows.jetty.io/jon-runbooks/gstack-benchmark-models/1b299910",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T12:11:56.794333Z", "duration_seconds": 131, "eval": { "overall_passed": true, "models_ran": 3, "quality": { "claude-sonnet-4-6": 9, "gpt-4o": 3, "gemini/gemini-2.5-flash": 7 } }
+      }
+    }
+  ],
+
+  "featured_examples": ["writing-launch-blurb", "coding-merge-intervals", "extraction-action-items"],
+
+  "inputs": [
+    { "label": "Prompt", "type": "file", "required": true, "accept": ".txt,.md", "description": "The prompt to benchmark (uploaded file). Or pass it inline via the Prompt parameter." },
+    { "label": "Models", "type": "text", "required": false, "default": "claude-sonnet-4-6,gpt-4o,gemini/gemini-2.0-flash", "description": "Comma-separated litellm model ids. Models with no provider key are skipped cleanly." },
+    { "label": "Judge", "type": "select", "required": false, "default": "true", "options": ["true", "false"], "description": "Score each output 0–10 with an LLM judge (adds a little cost)." },
+    { "label": "System prompt", "type": "text", "required": false, "description": "Optional system prompt sent identically to every model." }
+  ],
+
+  "secrets": [
+    { "label": "Provider key (≥1)", "env": "ANTHROPIC_API_KEY | OPENAI_API_KEY | GEMINI_API_KEY | OPENROUTER_API_KEY", "required": true, "description": "At least one provider key. Jetty trial keys cover Anthropic/OpenAI/Gemini on the platform." }
+  ],
+
+  "runbook_source": "RUNBOOK.md",
+
+  "meta": {
+    "created_by": { "name": "garrytan", "source": "github", "url": "https://github.com/garrytan/gstack", "avatar": null },
+    "tags": ["llm", "benchmark", "model-comparison", "litellm", "cost", "latency", "eval", "agent:claude-code", "programmatic"],
+    "version": "1.0.0",
+    "agent": "claude-code",
+    "model": "claude-sonnet-4-6",
+    "model_provider": "anthropic",
+    "snapshot": "python312-uv",
+    "evaluation": "programmatic",
+    "primary_outputs": ["benchmark.md"],
+    "lineage": {
+      "remix_of": null,
+      "imported_from": "https://github.com/garrytan/gstack/tree/main/benchmark-models",
+      "imported_by": "skill-to-runbook-converter@1.0.0"
+    },
+    "attribution": {
+      "author": "Garry Tan (github.com/garrytan) — gstack",
+      "source_skill": "garrytan/gstack · benchmark-models",
+      "license": "MIT",
+      "note": "The gstack skill wraps the gstack-model-benchmark binary + Claude/Codex/Gemini CLIs; this runbook re-implements the same idea provider-agnostically via litellm so it runs on Jetty."
+    },
+    "share": "garrytan/gstack-benchmark-models",
+    "metrics": { "_note": "Live counters — backend-sourced.", "number_of_runs": null, "forks": null, "remixes": null }
+  },
+
+  "caveats": [
+    "Cost is null for models litellm has no pricing for (e.g. claude-sonnet-4-6) — a known gap, reported honestly, not a failure.",
+    "Quality is LLM-judged (claude as judge), so scores are directional, not absolute. Best-overall is a stated tradeoff, not a formula.",
+    "Trial Gemini keys can hit zero quota; the runbook skips unauthed/over-quota models cleanly and still reports the rest."
+  ],
+
+  "handoff": {
+    "issue": "JET-252 (G1a-1)",
+    "collection": "jon-runbooks",
+    "name": "gstack-benchmark-models",
+    "runbook_source": "agent-runbooks/runbooks/garrytan/gstack-benchmark-models/RUNBOOK.md",
+    "trajectory_id": "3d17a697",
+    "sample_output_excerpt": "examples/coding-merge-intervals/expected/benchmark.md",
+    "current_eval_pass_rate": 1.0,
+    "eval_runs": "3/3 production runs green (3d17a697, f7a86295, 1b299910); all 9 model-runs (3 models × 3 prompts) succeeded"
+  }
+}

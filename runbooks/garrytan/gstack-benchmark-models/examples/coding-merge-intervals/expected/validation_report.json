@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-06-07T12:10:28.586049Z",
+  "parameters": {
+    "models": "claude-sonnet-4-6,gpt-4o,gemini/gemini-2.5-flash",
+    "judge": "true"
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "litellm installed; 4 provider keys present"
+    },
+    {
+      "name": "preflight",
+      "passed": true,
+      "message": "3 models authed, 0 skipped (no key); gemini model id corrected in retry"
+    },
+    {
+      "name": "run",
+      "passed": true,
+      "message": "3 models ran, 0 errored (gemini-2.0-flash retired, retried as gemini-2.5-flash)"
+    },
+    {
+      "name": "judge",
+      "passed": true,
+      "message": "Scored 3 outputs"
+    },
+    {
+      "name": "report",
+      "passed": true,
+      "message": "benchmark.md, results.json, summary.md, validation_report.json written"
+    }
+  ],
+  "results": {
+    "models_requested": 3,
+    "models_ran": 3,
+    "models_errored": 0,
+    "judge_enabled": true,
+    "benchmark_cost_usd": 0.008867
+  },
+  "overall_passed": true
+}

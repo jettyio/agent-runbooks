@@ -1,0 +1,47 @@
+{
+  "prompt_chars": 330,
+  "prompt_source": "/app/assets/3d17a697.00.md",
+  "models": [
+    {
+      "model": "claude-sonnet-4-6",
+      "ok": true,
+      "latency_s": 3.32,
+      "prompt_tokens": 85,
+      "completion_tokens": 211,
+      "total_tokens": 296,
+      "cost_usd": null,
+      "output": "```python\ndef merge_intervals(intervals):\n    \"\"\"Merge overlapping intervals and return sorted non-overlapping intervals.\"\"\"\n    if not intervals:\n        return []\n    sorted_intervals = sorted(intervals, key=lambda x: x[0])\n    merged = [sorted_intervals[0]]\n    for start, end in sorted_intervals[1:]:\n        if start <= merged[-1][1]:\n            merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start, end])\n    return merged\n\n\nassert merge_intervals([]) == []\nassert merge_intervals([[1, 3]]) == [[1, 3]]\nassert merge_intervals([[1, 3], [2, 6], [8, 10], [15, 18]]) == [[1, 6], [8, 10], [15, 18]]\n```",
+      "judge_score": 10,
+      "judge_reason": "The implementation is correct, complete, and clear: it handles empty input, single intervals, and overlapping intervals correctly, includes a one-line docstring, and provides exactly 3 assert statements that demonstrate all required cases."
+    },
+    {
+      "model": "gpt-4o",
+      "ok": true,
+      "latency_s": 2.39,
+      "prompt_tokens": 79,
+      "completion_tokens": 198,
+      "total_tokens": 277,
+      "cost_usd": 0.002178,
+      "output": "```python\ndef merge_intervals(intervals):\n    \"\"\"Merge and return non-overlapping intervals sorted by start.\"\"\"\n    if not intervals:\n        return []\n    \n    # Sort intervals by starting time\n    intervals.sort(key=lambda x: x[0])\n    merged = [intervals[0]]\n\n    for current in intervals[1:]:\n        prev = merged[-1]\n        if current[0] <= prev[1]:  # There is an overlap\n            # Merge the current interval with the previous one\n            prev[1] = max(prev[1], current[1])\n        else:\n            merged.append(current)\n\n    return merged\n\n# Example assert statements\nassert merge_intervals([]) == []\nassert merge_intervals([[1, 3]]) == [[1, 3]]\nassert merge_intervals([[1, 4], [2, 5], [7, 8]]) == [[1, 5], [7, 8]]\n```",
+      "judge_score": 10,
+      "judge_reason": "The implementation is correct, handles empty input and single interval, includes a one-line docstring, has exactly 3 assert statements, and the merging logic properly handles overlapping intervals by sorting and comparing boundaries."
+    },
+    {
+      "model": "gemini/gemini-2.5-flash",
+      "ok": true,
+      "latency_s": 12.52,
+      "prompt_tokens": 73,
+      "completion_tokens": 2667,
+      "total_tokens": 2740,
+      "cost_usd": 0.006689,
+      "output": "```python\ndef merge_intervals(intervals):\n    \"\"\"Merges overlapping intervals and returns them sorted by start.\"\"\"\n    if not intervals:\n        return []\n\n    intervals.sort(key=lambda x: x[0])\n    \n    merged = []\n    for interval in intervals:\n        # If the merged list is empty or the current interval does not overlap with the last merged interval,\n        # simply append it.\n        if not merged or interval[0] > merged[-1][1]:\n            merged.append(interval)\n        # Otherwise, there is an overlap, so merge the current and previous intervals.\n        # Update the end time of the last merged interval if the current interval extends further.\n        else:\n            merged[-1][1] = max(merged[-1][1], interval[1])\n            \n    return merged\n\nassert merge_intervals([[1, 3], [2, 6], [8, 10], [15, 18]]) == [[1, 6], [8, 10], [15, 18]]\nassert merge_intervals([[1, 4], [4, 5]]) == [[1, 5]]\nassert merge_intervals([[1, 4], [0, 4]]) == [[0, 4]]\n```",
+      "judge_score": 9,
+      "judge_reason": "The function is correct, complete, and clear with a proper docstring, handles empty input and single intervals, and includes exactly 3 valid assert statements; the only minor note is that it mutates the input list via sort, but this doesn't affect correctness of the output."
+    }
+  ],
+  "recommendation": {
+    "fastest": "gpt-4o",
+    "cheapest": "gpt-4o",
+    "highest_quality": "claude-sonnet-4-6"
+  }
+}

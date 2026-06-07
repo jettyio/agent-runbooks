@@ -1,0 +1,39 @@
+{
+  "collection": "jon-runbooks",
+  "task": "gstack-benchmark-models",
+  "trajectory_id": "1b299910",
+  "workflow_id": "jon-runbooks-gstack-benchmark-models--1b299910",
+  "url": "https://flows.jetty.io/jon-runbooks/gstack-benchmark-models/1b299910",
+  "runbook_version": "1.0.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T12:11:56.794333Z",
+  "duration_seconds": 131,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "benchmark.md"
+  ],
+  "models": [
+    "claude-sonnet-4-6",
+    "gpt-4o",
+    "gemini/gemini-2.5-flash"
+  ],
+  "eval": {
+    "overall_passed": true,
+    "models_ran": 3,
+    "quality": {
+      "claude-sonnet-4-6": 9,
+      "gpt-4o": 3,
+      "gemini/gemini-2.5-flash": 7
+    },
+    "recommendation": {
+      "fastest": "gpt-4o",
+      "cheapest": "gpt-4o",
+      "highest_quality": "claude-sonnet-4-6"
+    }
+  },
+  "notes": "The differentiating example: on the writing brief gpt-4o was fastest+cheapest but scored only 3/10 (missed the no-hype constraint) while claude scored 9. Speed is not quality."
+}
