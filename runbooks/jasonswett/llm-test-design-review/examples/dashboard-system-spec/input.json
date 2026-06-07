@@ -1,0 +1,9 @@
+{
+  "title": "Review an RSpec system spec",
+  "language": "Ruby / RSpec",
+  "spec_type": "system / feature",
+  "prompt": "Review dashboard_system_spec.rb against the test-design guidelines.",
+  "params": { "vars": { "focus_guideline": "" } },
+  "input_file": "dashboard_system_spec.rb",
+  "planted_violations": ["describe-the-essence", "avoid-forward-reference", "high-level-of-abstraction", "no-have-current-path", "no-instance-variable-set", "no-speculative-coding"]
+}

@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-06-07T00:00:00Z",
+  "parameters": { "focus_guideline": "" },
+  "stages": [
+    { "name": "setup",      "passed": true, "message": "Input file resolved: cdfa87cc.00.rb (19 lines)" },
+    { "name": "review",     "passed": true, "message": "Reviewed 1 file against all 17 catalog guidelines" },
+    { "name": "findings",   "passed": true, "message": "Wrote 3 findings; all required fields present; all guideline ids in catalog" },
+    { "name": "review_doc", "passed": true, "message": "review.md grouped by guideline with offending code and concrete fixes" },
+    { "name": "report",     "passed": true, "message": "All 4 output files written and non-empty" }
+  ],
+  "results": {
+    "files_reviewed": 1,
+    "findings": 3,
+    "by_guideline": {
+      "test-ends-not-means": 1,
+      "no-tight-coupling": 1,
+      "describe-the-essence": 1
+    }
+  },
+  "overall_passed": true
+}

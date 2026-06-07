@@ -1,0 +1,143 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "jasonswett/llm-test-design-review",
+  "title": "Test Design Review",
+  "description": "Review test code for design quality against Jason Swett's test-design guidelines — tests as executable specifications. For each violation it shows the offending code, why it violates the guideline, and a concrete fix, grouped by guideline.",
+
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "2–4 mins"
+  },
+
+  "example_outputs": [
+    {
+      "id": "orders-request-spec",
+      "title": "RSpec request spec",
+      "summary": "A request spec with a vague name, `.last`, a redundant assertion, a mock-based assertion, and `described_class` — 6 findings.",
+      "thumbnail": "examples/orders-request-spec/thumbnail.png",
+      "operation": "review",
+      "language": "Ruby / RSpec",
+      "capability": "request-spec",
+      "dir": "examples/orders-request-spec",
+      "input": { "file": "examples/orders-request-spec/order_request_spec.rb", "license": "Synthetic sample", "values": { "focus_guideline": "" } },
+      "primary_output": "examples/orders-request-spec/expected/review.md",
+      "outputs": [
+        { "file": "examples/orders-request-spec/expected/review.md", "role": "primary", "type": "text/markdown", "description": "The review, grouped by guideline, with offending code + fixes." },
+        { "file": "examples/orders-request-spec/expected/findings.json", "role": "secondary", "type": "application/json", "description": "Structured findings (guideline, severity, file, lines, code, fix)." },
+        { "file": "examples/orders-request-spec/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Per-guideline counts + overall assessment." },
+        { "file": "examples/orders-request-spec/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation (structure + guideline-id check)." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "llm-test-design-review", "trajectory_id": "d0436129",
+        "url": "https://flows.jetty.io/jon-runbooks/llm-test-design-review/d0436129",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T11:48:49.393187Z", "duration_seconds": 184, "eval": { "overall_passed": true, "findings": 6, "planted_recall": "4/5" }
+      }
+    },
+    {
+      "id": "dashboard-system-spec",
+      "title": "RSpec system spec",
+      "summary": "A feature spec with `have_current_path`, a forward reference, `instance_variable_set`, a cargo-culted `wait: 3`, and a code-token describe — 8 findings.",
+      "thumbnail": "examples/dashboard-system-spec/thumbnail.png",
+      "operation": "review",
+      "language": "Ruby / RSpec",
+      "capability": "system-spec",
+      "dir": "examples/dashboard-system-spec",
+      "input": { "file": "examples/dashboard-system-spec/dashboard_system_spec.rb", "license": "Synthetic sample", "values": { "focus_guideline": "" } },
+      "primary_output": "examples/dashboard-system-spec/expected/review.md",
+      "outputs": [
+        { "file": "examples/dashboard-system-spec/expected/review.md", "role": "primary", "type": "text/markdown", "description": "The review grouped by guideline." },
+        { "file": "examples/dashboard-system-spec/expected/findings.json", "role": "secondary", "type": "application/json", "description": "Structured findings." },
+        { "file": "examples/dashboard-system-spec/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Summary." },
+        { "file": "examples/dashboard-system-spec/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "llm-test-design-review", "trajectory_id": "78d5514b",
+        "url": "https://flows.jetty.io/jon-runbooks/llm-test-design-review/78d5514b",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T11:53:23.094133Z", "duration_seconds": 204, "eval": { "overall_passed": true, "findings": 8, "planted_recall": "5/6" }
+      }
+    },
+    {
+      "id": "caching-model-spec",
+      "title": "RSpec model spec",
+      "summary": "A model spec that asserts on the caching mechanism (`Rails.cache.read`) and couples to a JSON internal — the means-vs-ends smells. 3 findings.",
+      "thumbnail": "examples/caching-model-spec/thumbnail.png",
+      "operation": "review",
+      "language": "Ruby / RSpec",
+      "capability": "model-spec",
+      "dir": "examples/caching-model-spec",
+      "input": { "file": "examples/caching-model-spec/caching_model_spec.rb", "license": "Synthetic sample", "values": { "focus_guideline": "" } },
+      "primary_output": "examples/caching-model-spec/expected/review.md",
+      "outputs": [
+        { "file": "examples/caching-model-spec/expected/review.md", "role": "primary", "type": "text/markdown", "description": "The review grouped by guideline." },
+        { "file": "examples/caching-model-spec/expected/findings.json", "role": "secondary", "type": "application/json", "description": "Structured findings." },
+        { "file": "examples/caching-model-spec/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Summary." },
+        { "file": "examples/caching-model-spec/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "llm-test-design-review", "trajectory_id": "cdfa87cc",
+        "url": "https://flows.jetty.io/jon-runbooks/llm-test-design-review/cdfa87cc",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T11:53:23.860168Z", "duration_seconds": 130, "eval": { "overall_passed": true, "findings": 3, "planted_recall": "2/2" }
+      }
+    }
+  ],
+
+  "featured_examples": ["orders-request-spec", "dashboard-system-spec", "caching-model-spec"],
+
+  "inputs": [
+    { "label": "Code under review", "type": "file", "required": true, "accept": ".rb,.rs,.py,.diff,.patch", "description": "The test file(s) or a diff to review. If a diff is given, only changed lines are reviewed." },
+    { "label": "Focus guideline", "type": "select", "required": false, "default": "",
+      "options": ["", "specification-format", "behavior-not-implementation", "describe-the-essence", "avoid-arbitrariness", "essential-not-incidental", "one-level-of-abstraction", "avoid-forward-reference", "no-have-current-path", "observable-not-method-calls", "test-ends-not-means", "high-level-of-abstraction", "no-private-method-hacks", "no-tight-coupling", "arrange-act-assert", "no-speculative-coding", "no-instance-variable-set", "no-described-class"],
+      "description": "Optionally restrict the review to one guideline. Empty = all guidelines." }
+  ],
+
+  "secrets": [],
+
+  "runbook_source": "RUNBOOK.md",
+
+  "meta": {
+    "created_by": { "name": "jasonswett", "source": "github", "url": "https://github.com/jasonswett", "avatar": null },
+    "tags": ["testing", "code-review", "rspec", "ruby", "test-design", "quality", "agent:claude-code", "programmatic"],
+    "version": "1.0.0",
+    "agent": "claude-code",
+    "model": "claude-sonnet-4-6",
+    "model_provider": "anthropic",
+    "snapshot": "python312-uv",
+    "evaluation": "programmatic",
+    "primary_outputs": ["review.md"],
+    "lineage": {
+      "remix_of": null,
+      "imported_from": "https://github.com/jasonswett/llm-skills/blob/main/test-design-review/SKILL.md",
+      "imported_by": "skill-to-runbook-converter@1.0.0"
+    },
+    "attribution": {
+      "author": "Jason Swett (github.com/jasonswett)",
+      "source_skill": "jasonswett/llm-skills · test-design-review",
+      "license": "unspecified by source repo — converted to a runbook with attribution; the review guidelines are the author's work"
+    },
+    "share": "jasonswett/llm-test-design-review",
+    "metrics": { "_note": "Live counters — backend-sourced.", "number_of_runs": null, "forks": null, "remixes": null }
+  },
+
+  "caveats": [
+    "The review is LLM-judgment: across the three samples it caught 11/13 planted violations (~85% recall) and added a few legitimate extra findings. Treat it as a strong first-pass reviewer, not an exhaustive linter.",
+    "Most guidelines are Ruby/RSpec-flavored (the source skill's domain); the principles generalize, but Ruby-only ids (e.g. no-described-class) won't apply to other languages."
+  ],
+
+  "handoff": {
+    "issue": "JET-252 (G1a-1)",
+    "collection": "jon-runbooks",
+    "name": "llm-test-design-review",
+    "runbook_source": "agent-runbooks/runbooks/jasonswett/llm-test-design-review/RUNBOOK.md",
+    "trajectory_id": "d0436129",
+    "sample_output_excerpt": "examples/orders-request-spec/expected/review.md",
+    "current_eval_pass_rate": 1.0,
+    "eval_runs": "3/3 production runs green (d0436129, 78d5514b, cdfa87cc); 11/13 planted violations caught across the samples"
+  }
+}

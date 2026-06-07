@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-06-07T00:00:00Z",
+  "parameters": { "focus_guideline": "" },
+  "stages": [
+    { "name": "setup",      "passed": true, "message": "Input file resolved: d0436129.00.rb (21 lines)" },
+    { "name": "review",     "passed": true, "message": "Reviewed 1 file against all 17 catalog guidelines" },
+    { "name": "findings",   "passed": true, "message": "Wrote 6 findings; all fields present; all guideline ids in catalog" },
+    { "name": "review_doc", "passed": true, "message": "review.md grouped by guideline with offending code and suggested fix for each finding" },
+    { "name": "report",     "passed": true, "message": "All 4 output files written: review.md, findings.json, summary.md, validation_report.json" }
+  ],
+  "results": {
+    "files_reviewed": 1,
+    "findings": 6,
+    "by_guideline": {
+      "specification-format": 1,
+      "avoid-arbitrariness": 1,
+      "observable-not-method-calls": 1,
+      "describe-the-essence": 1,
+      "no-described-class": 1,
+      "no-tight-coupling": 1
+    }
+  },
+  "overall_passed": true
+}

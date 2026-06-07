@@ -1,0 +1,32 @@
+[
+  {
+    "guideline": "test-ends-not-means",
+    "severity": "high",
+    "file": "cdfa87cc.00.rb",
+    "line_start": 7,
+    "line_end": 8,
+    "offending_code": "order.total\nexpect(Rails.cache.read(\"order/#{order.id}/total\")).not_to be_nil",
+    "why": "The test asserts on the caching mechanism itself (Rails.cache.read with a hard-coded key) rather than any observable behavioral outcome, so it is tightly coupled to the implementation of caching and will break if the cache key changes even if caching still works correctly.",
+    "suggested_fix": "Assert the observable end: that the second call to #total does not perform an extra database query.\n\n  it \"caches the result\" do\n    order = create(:order, :with_line_items)\n    order.total  # warm the cache\n    expect { order.total }.not_to make_database_queries\n  end\n\n(Use a query-count helper such as the `db-query-matchers` gem, or `expect { order.total }.to make_queries(0)`.)"
+  },
+  {
+    "guideline": "no-tight-coupling",
+    "severity": "medium",
+    "file": "cdfa87cc.00.rb",
+    "line_start": 15,
+    "line_end": 15,
+    "offending_code": "task.update!(json_output: { \"summary\" => { \"ok\" => true } }.to_json)",
+    "why": "The test sets up state by writing directly to the internal JSON shape of json_output. If the serialisation format or key names change, the test breaks even when the observable behaviour (display_status returning \"Finished\") remains correct.",
+    "suggested_fix": "Express the scenario through a higher-level factory trait or a domain method that encodes what 'finished' means, hiding the internal shape:\n\n  it \"shows the finished status\" do\n    task = create(:task, :finished)   # factory trait encapsulates the JSON\n    expect(task.display_status).to eq(\"Finished\")\n  end\n\nIf a dedicated trait isn't feasible, use the model's own completion method:\n\n  task.mark_finished!(summary: { ok: true })"
+  },
+  {
+    "guideline": "describe-the-essence",
+    "severity": "low",
+    "file": "cdfa87cc.00.rb",
+    "line_start": 4,
+    "line_end": 4,
+    "offending_code": "describe \"#total\" do",
+    "why": "The describe label is a raw code token (the method name) rather than a meaningful description of the scenario or capability being exercised.",
+    "suggested_fix": "Name what the block describes in terms of intent:\n\n  describe \"computing the order total\" do"
+  }
+]

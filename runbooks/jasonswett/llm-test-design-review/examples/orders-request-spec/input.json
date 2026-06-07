@@ -1,0 +1,9 @@
+{
+  "title": "Review an RSpec request spec",
+  "language": "Ruby / RSpec",
+  "spec_type": "request",
+  "prompt": "Review order_request_spec.rb against the test-design guidelines.",
+  "params": { "vars": { "focus_guideline": "" } },
+  "input_file": "order_request_spec.rb",
+  "planted_violations": ["no-described-class", "specification-format", "avoid-arbitrariness", "essential-not-incidental", "observable-not-method-calls"]
+}

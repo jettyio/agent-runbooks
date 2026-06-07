@@ -1,0 +1,9 @@
+{
+  "title": "Review an RSpec model spec",
+  "language": "Ruby / RSpec",
+  "spec_type": "model",
+  "prompt": "Review caching_model_spec.rb against the test-design guidelines.",
+  "params": { "vars": { "focus_guideline": "" } },
+  "input_file": "caching_model_spec.rb",
+  "planted_violations": ["test-ends-not-means", "no-tight-coupling"]
+}

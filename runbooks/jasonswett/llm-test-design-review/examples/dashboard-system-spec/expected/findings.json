@@ -1,0 +1,82 @@
+[
+  {
+    "guideline": "describe-the-essence",
+    "severity": "medium",
+    "file": "78d5514b.00.rb",
+    "line_start": 4,
+    "line_end": 4,
+    "offending_code": "describe \"scope=active\" do",
+    "why": "The label is a raw query-string token, not a description of the business scenario under test; a reader cannot infer the situation being exercised.",
+    "suggested_fix": "describe \"when viewing active orders\" do"
+  },
+  {
+    "guideline": "describe-the-essence",
+    "severity": "low",
+    "file": "78d5514b.00.rb",
+    "line_start": 5,
+    "line_end": 5,
+    "offending_code": "context \"redirect\" do",
+    "why": "\"redirect\" names the mechanism, not the precondition or scenario, so the reader does not know when or why a redirect occurs.",
+    "suggested_fix": "context \"when an authenticated customer visits the root path\" do"
+  },
+  {
+    "guideline": "avoid-forward-reference",
+    "severity": "high",
+    "file": "78d5514b.00.rb",
+    "line_start": 6,
+    "line_end": 7,
+    "offending_code": "let!(:order) { create(:order, customer: customer) }\nlet!(:customer) { create(:customer) }",
+    "why": ":order is declared with let! before :customer is defined, so when RSpec eagerly evaluates :order the :customer memoization does not yet exist, causing a NameError or incorrect fixture.",
+    "suggested_fix": "let!(:customer) { create(:customer) }\nlet!(:order)    { create(:order, customer: customer) }"
+  },
+  {
+    "guideline": "no-have-current-path",
+    "severity": "medium",
+    "file": "78d5514b.00.rb",
+    "line_start": 19,
+    "line_end": 19,
+    "offending_code": "expect(page).to have_current_path(orders_path)",
+    "why": "Asserting on the URL couples the test to routing details; if the route path changes while the page content stays identical, the test breaks falsely.",
+    "suggested_fix": "expect(page).to have_content(\"Your Orders\")"
+  },
+  {
+    "guideline": "no-instance-variable-set",
+    "severity": "high",
+    "file": "78d5514b.00.rb",
+    "line_start": 23,
+    "line_end": 23,
+    "offending_code": "controller.instance_variable_set(:@order_count, 5)",
+    "why": "Forcing a controller ivar bypasses the real code path that produces @order_count; bugs in that path are invisible to this test.",
+    "suggested_fix": "Remove instance_variable_set and create the orders through the factory so the controller computes the count naturally:\n\n4.times { create(:order, customer: customer) }  # one already exists from let!(:order)\nvisit dashboard_path\nexpect(page).to have_content(\"5 orders\")"
+  },
+  {
+    "guideline": "no-tight-coupling",
+    "severity": "high",
+    "file": "78d5514b.00.rb",
+    "line_start": 23,
+    "line_end": 25,
+    "offending_code": "controller.instance_variable_set(:@order_count, 5)\nvisit dashboard_path\nexpect(page).to have_content(\"5 orders\", wait: 3)",
+    "why": "The test injects a value directly into the controller's internal state instead of deriving it from real data, so it does not exercise the actual order-counting logic.",
+    "suggested_fix": "5.times { create(:order, customer: customer) }\nvisit dashboard_path\nexpect(page).to have_content(\"5 orders\")"
+  },
+  {
+    "guideline": "no-tight-coupling",
+    "severity": "medium",
+    "file": "78d5514b.00.rb",
+    "line_start": 13,
+    "line_end": 13,
+    "offending_code": "allow_any_instance_of(User).to receive(:can_view?).and_return(true)",
+    "why": "Stubbing the internal authorization predicate couples both tests to the private method name; if the authorization model is restructured the stub silently passes without testing real access control.",
+    "suggested_fix": "Remove the stub and set up the user in a state where can_view? returns true through real data or a public permission API:\n\ncustomer.user.grant_permission(:dashboard)  # or the equivalent for this app's auth system"
+  },
+  {
+    "guideline": "no-speculative-coding",
+    "severity": "low",
+    "file": "78d5514b.00.rb",
+    "line_start": 25,
+    "line_end": 25,
+    "offending_code": "expect(page).to have_content(\"5 orders\", wait: 3)",
+    "why": "The magic wait: 3 has no justification; if the page renders synchronously the wait is unnecessary noise.",
+    "suggested_fix": "Drop the timeout if the page is synchronous:\n\nexpect(page).to have_content(\"5 orders\")\n\nIf the page genuinely has an async operation, document why:\n\nexpect(page).to have_content(\"5 orders\", wait: 3)  # order-count widget polls every 2 s"
+  }
+]

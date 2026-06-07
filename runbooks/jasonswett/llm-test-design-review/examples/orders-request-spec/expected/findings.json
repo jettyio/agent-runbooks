@@ -1,0 +1,62 @@
+[
+  {
+    "guideline": "no-described-class",
+    "severity": "medium",
+    "file": "d0436129.00.rb",
+    "line_start": 3,
+    "line_end": 3,
+    "offending_code": "RSpec.describe described_class do",
+    "why": "`described_class` adds obscurity because the reader cannot tell which class is under test without context; the actual class name makes it self-documenting.",
+    "suggested_fix": "RSpec.describe OrdersController do"
+  },
+  {
+    "guideline": "describe-the-essence",
+    "severity": "medium",
+    "file": "d0436129.00.rb",
+    "line_start": 4,
+    "line_end": 4,
+    "offending_code": "describe \"POST /orders\" do",
+    "why": "\"POST /orders\" is a code token (HTTP verb + path) that names the mechanism, not the scenario's meaning; it doesn't say what the group of tests is about from the user's perspective.",
+    "suggested_fix": "describe \"placing an order\" do"
+  },
+  {
+    "guideline": "specification-format",
+    "severity": "high",
+    "file": "d0436129.00.rb",
+    "line_start": 5,
+    "line_end": 10,
+    "offending_code": "it \"works\" do",
+    "why": "\"works\" is maximally vague — it doesn't describe any scenario or expected outcome, so the test name gives no information about what is being specified.",
+    "suggested_fix": "it \"creates an order with the given SKU\" do"
+  },
+  {
+    "guideline": "avoid-arbitrariness",
+    "severity": "high",
+    "file": "d0436129.00.rb",
+    "line_start": 7,
+    "line_end": 7,
+    "offending_code": "order = Order.last",
+    "why": "`.last` depends on insertion order; if any other code path creates an order (a before-hook, a factory, another test leaking state) this silently retrieves the wrong record.",
+    "suggested_fix": "expect { post orders_path, params: { sku: \"ABC-1\", qty: 2 } }\n  .to change { Order.where(sku: \"ABC-1\").count }.by(1)"
+  },
+  {
+    "guideline": "observable-not-method-calls",
+    "severity": "high",
+    "file": "d0436129.00.rb",
+    "line_start": 12,
+    "line_end": 19,
+    "offending_code": "gateway = instance_double(PaymentGateway, charge: true)\nallow(PaymentGateway).to receive(:new).and_return(gateway)\n\npost orders_path, params: { sku: \"ABC-1\", qty: 2 }\n\nexpect(gateway).to have_received(:charge).with(amount: 1998)",
+    "why": "`have_received(:charge)` asserts that a specific method was invoked — it tests the means (the implementation) rather than the observable end (the customer was charged). If the controller is refactored to call a different method or delegate charging differently, this test breaks even if the customer is still charged correctly.",
+    "suggested_fix": "# If a Charge record is persisted:\nexpect { post orders_path, params: { sku: \"ABC-1\", qty: 2 } }\n  .to change { Charge.where(amount_cents: 1998).count }.by(1)\n\n# Or, if using a test-mode gateway that records calls:\nexpect(PaymentGateway.test_charges.last[:amount]).to eq(1998)"
+  },
+  {
+    "guideline": "no-tight-coupling",
+    "severity": "medium",
+    "file": "d0436129.00.rb",
+    "line_start": 13,
+    "line_end": 14,
+    "offending_code": "gateway = instance_double(PaymentGateway, charge: true)\nallow(PaymentGateway).to receive(:new).and_return(gateway)",
+    "why": "Stubbing `PaymentGateway.new` couples the test to the controller's internal instantiation mechanism: if the controller switches to `PaymentGateway.for_environment` or a dependency-injected collaborator, the test breaks without the behavior changing.",
+    "suggested_fix": "# Prefer a test-mode gateway configured at the class level rather than\n# intercepting .new in the test:\nPaymentGateway.test_mode!\n\npost orders_path, params: { sku: \"ABC-1\", qty: 2 }\n\n# Then assert on the observable result (see observable-not-method-calls)"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "collection": "jon-runbooks", "task": "llm-test-design-review", "trajectory_id": "cdfa87cc",
+  "workflow_id": "jon-runbooks-llm-test-design-review--cdfa87cc",
+  "url": "https://flows.jetty.io/jon-runbooks/llm-test-design-review/cdfa87cc",
+  "runbook_version": "1.0.0", "agent": "claude-code", "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic", "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T11:53:23.860168Z", "duration_seconds": 130, "status": "completed", "success": true,
+  "primary_files": ["review.md"],
+  "eval": { "overall_passed": true, "findings": 3, "planted_recall": "2/2" },
+  "notes": "Caught both planted smells: caching mechanism assertion (test-ends-not-means) and json_output coupling (no-tight-coupling)."
+}

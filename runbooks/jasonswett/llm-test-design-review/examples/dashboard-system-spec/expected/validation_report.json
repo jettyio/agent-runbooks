@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-06-07T00:00:00Z",
+  "parameters": {
+    "focus_guideline": ""
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "Input file resolved: /app/assets/78d5514b.00.rb (29 lines)"
+    },
+    {
+      "name": "review",
+      "passed": true,
+      "message": "Reviewed 1 file against all 17 catalog guidelines; 8 violations found across 6 guidelines"
+    },
+    {
+      "name": "findings",
+      "passed": true,
+      "message": "Wrote 8 findings; all required fields present; all guideline ids verified against catalog"
+    },
+    {
+      "name": "review_doc",
+      "passed": true,
+      "message": "review.md groups findings by guideline with offending code and suggested fix for each"
+    },
+    {
+      "name": "report",
+      "passed": true,
+      "message": "All four output files written: review.md, findings.json, summary.md, validation_report.json"
+    }
+  ],
+  "results": {
+    "files_reviewed": 1,
+    "findings": 8,
+    "by_guideline": {
+      "describe-the-essence": 2,
+      "avoid-forward-reference": 1,
+      "no-have-current-path": 1,
+      "no-instance-variable-set": 1,
+      "no-tight-coupling": 2,
+      "no-speculative-coding": 1
+    }
+  },
+  "overall_passed": true
+}

@@ -1,0 +1,11 @@
+{
+  "collection": "jon-runbooks", "task": "llm-test-design-review", "trajectory_id": "78d5514b",
+  "workflow_id": "jon-runbooks-llm-test-design-review--78d5514b",
+  "url": "https://flows.jetty.io/jon-runbooks/llm-test-design-review/78d5514b",
+  "runbook_version": "1.0.0", "agent": "claude-code", "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic", "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T11:53:23.094133Z", "duration_seconds": 204, "status": "completed", "success": true,
+  "primary_files": ["review.md"],
+  "eval": { "overall_passed": true, "findings": 8, "planted_recall": "5/6" },
+  "notes": "Caught have_current_path, forward reference, instance_variable_set, the speculative wait:3, and the code-token describe; missed the dense-setup abstraction finding."
+}

@@ -1,0 +1,11 @@
+{
+  "collection": "jon-runbooks", "task": "llm-test-design-review", "trajectory_id": "d0436129",
+  "workflow_id": "jon-runbooks-llm-test-design-review--d0436129",
+  "url": "https://flows.jetty.io/jon-runbooks/llm-test-design-review/d0436129",
+  "runbook_version": "1.0.0", "agent": "claude-code", "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic", "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T11:48:49.393187Z", "duration_seconds": 184, "status": "completed", "success": true,
+  "primary_files": ["review.md"],
+  "eval": { "overall_passed": true, "findings": 6, "planted_recall": "4/5" },
+  "notes": "Caught .last (avoid-arbitrariness), described_class, the have_received mock assertion (observable-not-method-calls), and the vague test name (specification-format); missed the redundant be_successful; added 2 legitimate extras (describe-the-essence, coupling to PaymentGateway.new)."
+}
