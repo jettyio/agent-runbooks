@@ -1,0 +1,222 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "anthropics/pdf",
+  "title": "PDF Processing Guide",
+  "description": "Extract, merge, split, OCR, watermark, author and transform PDFs. One toolkit reads a messy PDF into clean structured data, modifies a document, or generates a brand-new PDF from scratch.",
+
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "1–2 mins"
+  },
+
+  "example_outputs": [
+    {
+      "id": "pubmed-tables-to-json",
+      "title": "Research-paper tables → JSON",
+      "summary": "Extract every table from a 20-page PLOS Medicine article into one strictly-valid JSON file (empty cells null, word spacing recovered).",
+      "thumbnail": "examples/pubmed-tables-to-json/thumbnail.png",
+      "operation": "extract-tables",
+      "capability": "extract",
+      "dir": "examples/pubmed-tables-to-json",
+      "input": {
+        "file": "examples/pubmed-tables-to-json/input.pdf",
+        "filename": "ssb-tax-oakland-plos-med-2023.pdf",
+        "pages": 20,
+        "label": "Evaluation of the sugar-sweetened beverage tax in Oakland, United States, 2015–2019",
+        "citation": "White JS, Basu S, Kaplan S, Madsen KA, Villas-Boas SB, Schillinger D (2023). PLOS Medicine 20(4): e1004212.",
+        "source_url": "https://doi.org/10.1371/journal.pmed.1004212",
+        "license": "CC BY 4.0",
+        "values": { "operation": "extract every table into JSON" }
+      },
+      "primary_output": "examples/pubmed-tables-to-json/expected/extracted_tables.json",
+      "outputs": [
+        { "file": "examples/pubmed-tables-to-json/expected/extracted_tables.json", "role": "primary", "type": "application/json", "description": "Every table as a strict-JSON array (source_page, table_index, headers, rows, row_count)." },
+        { "file": "examples/pubmed-tables-to-json/expected/extracted_tables.xlsx", "role": "secondary", "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "description": "The same tables as an Excel workbook." },
+        { "file": "examples/pubmed-tables-to-json/expected/extracted_text.txt", "role": "secondary", "type": "text/plain", "description": "Full extracted article text." },
+        { "file": "examples/pubmed-tables-to-json/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Human-readable run summary." },
+        { "file": "examples/pubmed-tables-to-json/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation (overall_passed)." }
+      ],
+      "excerpt": {
+        "label": "Page 9 — adjusted difference-in-differences model (1 of 5 tables)",
+        "source_page": 9,
+        "headers": ["No. UPCs", "Adjusted Difference-in-Differences Model", "col_2"],
+        "rows": [
+          { "No. UPCs": "3,451", "Adjusted Difference-in-Differences Model": "−452.20 (−656.67 to −247.73)", "col_2": "<0.001" },
+          { "No. UPCs": "6,768", "Adjusted Difference-in-Differences Model": "−154.99 (−584.86 to 274.88)", "col_2": "0.21" },
+          { "No. UPCs": "1,477", "Adjusted Difference-in-Differences Model": "−86.64 (−122.44 to −50.81)", "col_2": "<0.001" }
+        ]
+      },
+      "trajectory": {
+        "collection": "jon-runbooks",
+        "task": "pdf-amber-hawk",
+        "trajectory_id": "6c756bcf",
+        "url": "https://flows.jetty.io/jon-runbooks/pdf-amber-hawk/6c756bcf",
+        "agent": "claude-code",
+        "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T01:11:23.312480Z",
+        "duration_seconds": 122.5,
+        "eval": { "overall_passed": true, "pass": 7, "partial": 0, "fail": 0 }
+      }
+    },
+    {
+      "id": "watermark-confidential",
+      "title": "Stamp a PDF CONFIDENTIAL",
+      "summary": "Overlay a bold diagonal CONFIDENTIAL watermark on all 20 pages and emit a single watermarked PDF — and only that PDF.",
+      "thumbnail": "examples/watermark-confidential/thumbnail.png",
+      "operation": "watermark",
+      "capability": "modify",
+      "dir": "examples/watermark-confidential",
+      "input": {
+        "file": "examples/pubmed-tables-to-json/input.pdf",
+        "filename": "ssb-tax-oakland-plos-med-2023.pdf",
+        "pages": 20,
+        "label": "Evaluation of the sugar-sweetened beverage tax in Oakland (same CC BY source PDF)",
+        "source_url": "https://doi.org/10.1371/journal.pmed.1004212",
+        "license": "CC BY 4.0",
+        "shared_input": true,
+        "values": { "operation": "watermark — stamp every page with a large diagonal semi-transparent CONFIDENTIAL watermark and save as output.pdf" }
+      },
+      "primary_output": "examples/watermark-confidential/expected/output.pdf",
+      "outputs": [
+        { "file": "examples/watermark-confidential/expected/output.pdf", "role": "primary", "type": "application/pdf", "description": "All 20 pages stamped with a diagonal red CONFIDENTIAL watermark." },
+        { "file": "examples/watermark-confidential/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Run summary." },
+        { "file": "examples/watermark-confidential/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation (overall_passed)." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks",
+        "task": "pdf-amber-hawk",
+        "trajectory_id": "0e7dcb7b",
+        "url": "https://flows.jetty.io/jon-runbooks/pdf-amber-hawk/0e7dcb7b",
+        "agent": "claude-code",
+        "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T02:44:11.582050Z",
+        "duration_seconds": 51.7,
+        "eval": { "overall_passed": true, "pass": 4, "partial": 0, "fail": 0 }
+      }
+    },
+    {
+      "id": "create-summary-pdf",
+      "title": "Author a one-page summary PDF",
+      "summary": "Generate a clean, branded one-page Document Summary PDF from scratch — source title, page count and table count — proving the toolkit authors PDFs, not just consumes them.",
+      "thumbnail": "examples/create-summary-pdf/thumbnail.png",
+      "operation": "create",
+      "capability": "author",
+      "dir": "examples/create-summary-pdf",
+      "input": {
+        "file": "examples/pubmed-tables-to-json/input.pdf",
+        "filename": "ssb-tax-oakland-plos-med-2023.pdf",
+        "pages": 20,
+        "label": "Source document the summary describes (same CC BY source PDF)",
+        "source_url": "https://doi.org/10.1371/journal.pmed.1004212",
+        "license": "CC BY 4.0",
+        "shared_input": true,
+        "values": { "operation": "create a clean one-page summary PDF titled Document Summary listing the source PDF title, page count and number of tables; save as output.pdf" }
+      },
+      "primary_output": "examples/create-summary-pdf/expected/output.pdf",
+      "outputs": [
+        { "file": "examples/create-summary-pdf/expected/output.pdf", "role": "primary", "type": "application/pdf", "description": "A newly authored one-page summary PDF (title, page count, table count)." },
+        { "file": "examples/create-summary-pdf/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Run summary." },
+        { "file": "examples/create-summary-pdf/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation (overall_passed)." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks",
+        "task": "pdf-amber-hawk",
+        "trajectory_id": "7f700569",
+        "url": "https://flows.jetty.io/jon-runbooks/pdf-amber-hawk/7f700569",
+        "agent": "claude-code",
+        "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T02:45:40.360559Z",
+        "duration_seconds": 86.3,
+        "eval": { "overall_passed": true, "pass": 5, "partial": 0, "fail": 0 }
+      }
+    }
+  ],
+
+  "inputs": [
+    { "label": "Input PDF(s)", "type": "file", "required": true, "accept": ".pdf", "multiple": true, "description": "One or more PDF files. Uploaded files land in /app/assets/." },
+    { "label": "Operation", "type": "select", "required": true, "default": "extract-tables",
+      "options": ["merge", "split", "extract-text", "extract-tables", "rotate", "watermark", "create", "encrypt", "decrypt", "ocr", "extract-images", "fill-form"],
+      "description": "Pick an operation, or describe it in natural language (e.g. \"extract the tables into JSON\", \"stamp every page CONFIDENTIAL\"). Honored as of runbook v1.2.0 — the runbook runs ONLY the chosen operation and emits only its deliverables." },
+    { "label": "Output filename", "type": "text", "required": false, "default": "output.pdf", "description": "Name for the primary output PDF (structural / create operations)." },
+    { "label": "Page range", "type": "text", "required": false, "placeholder": "1-5", "description": "Page range for split/extract operations." },
+    { "label": "Rotation degrees", "type": "number", "required": false, "default": 90, "description": "Degrees to rotate (rotate operation)." },
+    { "label": "Password", "type": "password", "required": false, "description": "Password for encrypt/decrypt operations." }
+  ],
+
+  "secrets": [],
+
+  "runbook_source": "RUNBOOK.md",
+
+  "meta": {
+    "created_by": { "name": "anthropics", "source": "skills.sh", "url": "https://skills.sh/anthropics/skills/pdf", "avatar": null },
+    "tags": ["pdf", "extraction", "tables", "ocr", "watermark", "anthropics", "agent:claude-code", "programmatic"],
+    "version": "1.2.1",
+    "agent": "claude-code",
+    "model": "claude-sonnet-4-6",
+    "model_provider": "anthropic",
+    "snapshot": "python312-uv",
+    "evaluation": "programmatic",
+    "primary_outputs": ["extracted_tables.json", "output.pdf", "extracted_text.txt"],
+    "lineage": {
+      "remix_of": null,
+      "imported_from": "https://skills.sh/anthropics/skills/pdf",
+      "imported_by": "skill-to-runbook-converter@1.0.0"
+    },
+    "share": "anthropics/pdf",
+    "metrics": {
+      "_note": "Live counters — supplied by the Jetty backend at render time, not authored here.",
+      "number_of_runs": null,
+      "forks": null,
+      "remixes": null
+    }
+  },
+
+  "demo_ideas": [
+    {
+      "id": "gov-form-extract",
+      "operation": "extract-text",
+      "title": "Government form → extracted fields",
+      "why": "Forms are the #1 real-world PDF pain. A US federal form (IRS W-9 / 1040, public domain) reads as instantly legitimate and shows field/label extraction without licensing risk.",
+      "input_suggestion": "IRS W-9 or 1040 blank form (public domain, irs.gov).",
+      "status": "suggested"
+    },
+    {
+      "id": "scanned-ocr",
+      "operation": "ocr",
+      "title": "Scanned document → searchable text (OCR)",
+      "why": "Exercises the tesseract/pdf2image path that text extraction can't touch. A scanned historical document is a visually obvious image-in / text-out payoff. Requires tesseract in the snapshot.",
+      "input_suggestion": "A public-domain scanned document (Library of Congress / archive.org / a US gov scan).",
+      "status": "suggested"
+    },
+    {
+      "id": "merge-documents",
+      "operation": "merge",
+      "title": "Merge several PDFs into one",
+      "why": "The canonical 'combine documents' use case — e.g. assemble per-client invoices into one packet. Verifiable (page count = sum).",
+      "input_suggestion": "2–3 small PDFs (can be generated with the create operation).",
+      "status": "suggested"
+    },
+    {
+      "id": "extract-figures",
+      "operation": "extract-images",
+      "title": "Pull every figure out of a PDF",
+      "why": "High visual payoff (a gallery of figures) — BUT only works on PDFs with embedded raster images. The PLOS article's figures are vector, so it yields nothing; pick a PDF with real embedded images.",
+      "input_suggestion": "A report or slide-export PDF with embedded raster charts/photos.",
+      "status": "suggested"
+    }
+  ],
+
+  "handoff": {
+    "issue": "JET-252 (G1a-1)",
+    "collection": "jon-runbooks",
+    "name": "pdf-amber-hawk",
+    "runbook_source": "agent-runbooks/runbooks/anthropics/pdf/RUNBOOK.md",
+    "trajectory_id": "6c756bcf",
+    "sample_output_excerpt": "examples/pubmed-tables-to-json/expected/extracted_tables.json",
+    "current_eval_pass_rate": 1.0,
+    "eval_runs": "6/6 completed production runs green (fc3722a6, 5999951a, 6c756bcf, 6b149fd9, 0e7dcb7b, 7f700569)"
+  }
+}

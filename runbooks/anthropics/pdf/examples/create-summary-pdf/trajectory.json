@@ -1,0 +1,19 @@
+{
+  "collection": "jon-runbooks",
+  "task": "pdf-amber-hawk",
+  "trajectory_id": "7f700569",
+  "workflow_id": "jon-runbooks-pdf-amber-hawk--7f700569",
+  "url": "https://flows.jetty.io/jon-runbooks/pdf-amber-hawk/7f700569",
+  "runbook_version": "1.2.1",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T02:45:40.360559Z",
+  "duration_seconds": 86.3,
+  "status": "completed",
+  "success": true,
+  "primary_files": ["output.pdf"],
+  "eval": { "overall_passed": true, "pass": 5, "partial": 0, "fail": 0 },
+  "notes": "Operation routing (v1.2.x): produced ONLY a newly authored one-page output.pdf (+ summary/validation). The summary lists the source title, page count (20) and table count (5)."
+}

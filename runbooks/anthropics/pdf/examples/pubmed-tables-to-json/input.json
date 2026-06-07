@@ -1,0 +1,23 @@
+{
+  "title": "PubMed research article → tables as JSON",
+  "operation": "extract-tables",
+  "prompt": "Extract every table into JSON.",
+  "params": {
+    "vars": {
+      "operation": "extract every table into JSON",
+      "results_directory": "/app/results"
+    }
+  },
+  "files": [
+    {
+      "path": "input.pdf",
+      "filename": "ssb-tax-oakland-plos-med-2023.pdf",
+      "mime_type": "application/pdf",
+      "pages": 20,
+      "label": "Evaluation of the sugar-sweetened beverage tax in Oakland, United States, 2015–2019",
+      "citation": "White JS, Basu S, Kaplan S, Madsen KA, Villas-Boas SB, Schillinger D (2023). PLOS Medicine 20(4): e1004212.",
+      "source_url": "https://doi.org/10.1371/journal.pmed.1004212",
+      "license": "CC BY 4.0"
+    }
+  ]
+}

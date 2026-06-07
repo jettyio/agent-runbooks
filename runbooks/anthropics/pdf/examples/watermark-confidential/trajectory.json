@@ -1,0 +1,19 @@
+{
+  "collection": "jon-runbooks",
+  "task": "pdf-amber-hawk",
+  "trajectory_id": "0e7dcb7b",
+  "workflow_id": "jon-runbooks-pdf-amber-hawk--0e7dcb7b",
+  "url": "https://flows.jetty.io/jon-runbooks/pdf-amber-hawk/0e7dcb7b",
+  "runbook_version": "1.2.1",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T02:44:11.582050Z",
+  "duration_seconds": 51.7,
+  "status": "completed",
+  "success": true,
+  "primary_files": ["output.pdf"],
+  "eval": { "overall_passed": true, "pass": 4, "partial": 0, "fail": 0 },
+  "notes": "Operation routing (v1.2.x): the run produced ONLY output.pdf (+ summary/validation) — no extraction files — confirming the operation-conditional outputs. A bold diagonal red CONFIDENTIAL was stamped on all 20 pages."
+}

@@ -1,0 +1,45 @@
+{
+  "version": "1.1.0",
+  "run_date": "2026-06-07T02:44:54.665570Z",
+  "parameters": {
+    "skill_url": "https://skills.sh/anthropics/skills/pdf",
+    "operation": "watermark",
+    "input_files": [
+      "/app/assets/0e7dcb7b.00.pdf"
+    ],
+    "watermark_text": "CONFIDENTIAL"
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "pypdf, pdfplumber, reportlab installed"
+    },
+    {
+      "name": "validation",
+      "passed": true,
+      "message": "Input file verified: 656272 bytes, 20 pages"
+    },
+    {
+      "name": "execution",
+      "passed": true,
+      "message": "CONFIDENTIAL watermark stamped on all 20 pages"
+    },
+    {
+      "name": "output_check",
+      "passed": true,
+      "message": "output.pdf: 917355 bytes"
+    }
+  ],
+  "results": {
+    "pass": 4,
+    "partial": 0,
+    "fail": 0
+  },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/output.pdf",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}

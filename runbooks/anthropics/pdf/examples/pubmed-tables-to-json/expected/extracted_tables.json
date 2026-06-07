@@ -1,0 +1,376 @@
+[
+  {
+    "source_page": 8,
+    "table_index": 0,
+    "headers": [
+      "col_0",
+      "col_1",
+      "col_2",
+      "col_3",
+      "col_4",
+      "col_5",
+      "col_6"
+    ],
+    "rows": [
+      {
+        "col_0": "Number of stores",
+        "col_1": null,
+        "col_2": "All beverages",
+        "col_3": null,
+        "col_4": null,
+        "col_5": null,
+        "col_6": null
+      },
+      {
+        "col_0": "City limits",
+        "col_1": "Border areas",
+        "col_2": "Oz, in mil",
+        "col_3": "$, in mil",
+        "col_4": null,
+        "col_5": "Oz, in mil",
+        "col_6": "$, in mil"
+      },
+      {
+        "col_0": "42",
+        "col_1": "98",
+        "col_2": "5.71",
+        "col_3": "0.73",
+        "col_4": null,
+        "col_5": "1.90",
+        "col_6": "0.21"
+      },
+      {
+        "col_0": "1",
+        "col_1": "28",
+        "col_2": null,
+        "col_3": null,
+        "col_4": null,
+        "col_5": null,
+        "col_6": null
+      },
+      {
+        "col_0": "11",
+        "col_1": "6",
+        "col_2": null,
+        "col_3": null,
+        "col_4": null,
+        "col_5": null,
+        "col_6": null
+      },
+      {
+        "col_0": "19",
+        "col_1": "42",
+        "col_2": null,
+        "col_3": null,
+        "col_4": null,
+        "col_5": null,
+        "col_6": null
+      },
+      {
+        "col_0": "11",
+        "col_1": "22",
+        "col_2": null,
+        "col_3": null,
+        "col_4": null,
+        "col_5": null,
+        "col_6": null
+      },
+      {
+        "col_0": "9",
+        "col_1": "24",
+        "col_2": "7.82",
+        "col_3": "0.84",
+        "col_4": null,
+        "col_5": "2.56",
+        "col_6": "0.29"
+      },
+      {
+        "col_0": "3",
+        "col_1": "5",
+        "col_2": null,
+        "col_3": null,
+        "col_4": null,
+        "col_5": null,
+        "col_6": null
+      },
+      {
+        "col_0": "2",
+        "col_1": "1",
+        "col_2": null,
+        "col_3": null,
+        "col_4": null,
+        "col_5": null,
+        "col_6": null
+      },
+      {
+        "col_0": "3",
+        "col_1": "11",
+        "col_2": null,
+        "col_3": null,
+        "col_4": null,
+        "col_5": null,
+        "col_6": null
+      },
+      {
+        "col_0": "1",
+        "col_1": "7",
+        "col_2": null,
+        "col_3": null,
+        "col_4": null,
+        "col_5": null,
+        "col_6": null
+      },
+      {
+        "col_0": "223",
+        "col_1": "83",
+        "col_2": "9.25",
+        "col_3": "1.09",
+        "col_4": null,
+        "col_5": "3.38",
+        "col_6": "0.30"
+      },
+      {
+        "col_0": "32",
+        "col_1": "10",
+        "col_2": null,
+        "col_3": null,
+        "col_4": null,
+        "col_5": null,
+        "col_6": null
+      },
+      {
+        "col_0": "26",
+        "col_1": "9",
+        "col_2": null,
+        "col_3": null,
+        "col_4": null,
+        "col_5": null,
+        "col_6": null
+      },
+      {
+        "col_0": "110",
+        "col_1": "43",
+        "col_2": null,
+        "col_3": null,
+        "col_4": null,
+        "col_5": null,
+        "col_6": null
+      },
+      {
+        "col_0": "61",
+        "col_1": "21",
+        "col_2": null,
+        "col_3": null,
+        "col_4": null,
+        "col_5": null,
+        "col_6": null
+      },
+      {
+        "col_0": "128",
+        "col_1": null,
+        "col_2": null,
+        "col_3": null,
+        "col_4": null,
+        "col_5": "1.81",
+        "col_6": "0.21"
+      },
+      {
+        "col_0": "174",
+        "col_1": "142",
+        "col_2": "6.0",
+        "col_3": "0.75",
+        "col_4": null,
+        "col_5": "2.01",
+        "col_6": "0.22"
+      },
+      {
+        "col_0": "403",
+        "col_1": "225",
+        "col_2": "8.6",
+        "col_3": "1.03",
+        "col_4": null,
+        "col_5": "3.12",
+        "col_6": "0.29"
+      }
+    ],
+    "row_count": 20
+  },
+  {
+    "source_page": 9,
+    "table_index": 0,
+    "headers": [
+      "No. UPCs",
+      "Adjusted Difference-in-Differences Model",
+      "col_2"
+    ],
+    "rows": [
+      {
+        "No. UPCs": null,
+        "Adjusted Difference-in-Differences Model": "a\nEstimate (95% CI), in 100s oz",
+        "col_2": "b\nP value"
+      },
+      {
+        "No. UPCs": null,
+        "Adjusted Difference-in-Differences Model": null,
+        "col_2": null
+      },
+      {
+        "No. UPCs": "3,451",
+        "Adjusted Difference-in-Differences Model": "−452.20 (−656.67 to −247.73)",
+        "col_2": "<0.001"
+      },
+      {
+        "No. UPCs": "6,768",
+        "Adjusted Difference-in-Differences Model": "−154.99 (−584.86 to 274.88)",
+        "col_2": "0.21"
+      },
+      {
+        "No. UPCs": null,
+        "Adjusted Difference-in-Differences Model": null,
+        "col_2": null
+      },
+      {
+        "No. UPCs": "1,477",
+        "Adjusted Difference-in-Differences Model": "−86.64 (−122.44 to −50.81)",
+        "col_2": "<0.001"
+      },
+      {
+        "No. UPCs": "473",
+        "Adjusted Difference-in-Differences Model": "−83.83 (−141.14 to −26.54)",
+        "col_2": "0.006"
+      },
+      {
+        "No. UPCs": "263",
+        "Adjusted Difference-in-Differences Model": "−214.15 (−318.83 to −109.49)",
+        "col_2": "<0.001"
+      },
+      {
+        "No. UPCs": "93",
+        "Adjusted Difference-in-Differences Model": "−3.44 (−10.19 to 3.32)",
+        "col_2": "0.16"
+      },
+      {
+        "No. UPCs": "320",
+        "Adjusted Difference-in-Differences Model": "−0.75 (−6.40 to 4.93)",
+        "col_2": "0.31"
+      },
+      {
+        "No. UPCs": "504",
+        "Adjusted Difference-in-Differences Model": "−74.84 (−117.13 to −32.56)",
+        "col_2": "0.003"
+      },
+      {
+        "No. UPCs": "103",
+        "Adjusted Difference-in-Differences Model": "2.26 (1.24 to 3.29)",
+        "col_2": "<0.001"
+      },
+      {
+        "No. UPCs": null,
+        "Adjusted Difference-in-Differences Model": null,
+        "col_2": null
+      },
+      {
+        "No. UPCs": "3,451",
+        "Adjusted Difference-in-Differences Model": "−51.31 (−110.91 to 8.28)",
+        "col_2": "0.06"
+      },
+      {
+        "No. UPCs": "3,451",
+        "Adjusted Difference-in-Differences Model": "−17.72 (−70.74 to 3.531)",
+        "col_2": "0.22"
+      },
+      {
+        "No. UPCs": "3,451",
+        "Adjusted Difference-in-Differences Model": "−1,837.67 (−2,298.94 to −1,376.40)",
+        "col_2": "<0.001"
+      },
+      {
+        "No. UPCs": null,
+        "Adjusted Difference-in-Differences Model": null,
+        "col_2": null
+      },
+      {
+        "No. UPCs": "2,083",
+        "Adjusted Difference-in-Differences Model": "−262.96 (−382.21 to −143.72)",
+        "col_2": "<0.001"
+      },
+      {
+        "No. UPCs": "1,368",
+        "Adjusted Difference-in-Differences Model": "−190.52 (−289.36 to −91.68)",
+        "col_2": "<0.001"
+      },
+      {
+        "No. UPCs": null,
+        "Adjusted Difference-in-Differences Model": null,
+        "col_2": null
+      },
+      {
+        "No. UPCs": "3,451",
+        "Adjusted Difference-in-Differences Model": "−309.02 (−395.33 to −222.72)",
+        "col_2": "0.003"
+      },
+      {
+        "No. UPCs": "3,451",
+        "Adjusted Difference-in-Differences Model": "−570.12 (−926.24 to −214.00)",
+        "col_2": "0.003"
+      },
+      {
+        "No. UPCs": "3,810",
+        "Adjusted Difference-in-Differences Model": "−30.55 (−479.61 to 418.51)",
+        "col_2": "0.33"
+      },
+      {
+        "No. UPCs": "5,130",
+        "Adjusted Difference-in-Differences Model": "0.38 (−5.10 to 5.86)",
+        "col_2": "0.33"
+      }
+    ],
+    "row_count": 24
+  },
+  {
+    "source_page": 10,
+    "table_index": 0,
+    "headers": [
+      "col_0",
+      "Start of tax"
+    ],
+    "rows": [
+      {
+        "col_0": "Effect estimate:\n−26.8% (−39.0, −14.7), p < 0.001",
+        "Start of tax": null
+      }
+    ],
+    "row_count": 1
+  },
+  {
+    "source_page": 11,
+    "table_index": 0,
+    "headers": [
+      "col_0",
+      "Start of tax"
+    ],
+    "rows": [
+      {
+        "col_0": "Effect estimate:\n−22.4% (−41.7, −3.0), p = 0.04",
+        "Start of tax": null
+      }
+    ],
+    "row_count": 1
+  },
+  {
+    "source_page": 12,
+    "table_index": 0,
+    "headers": [
+      "−$106,108 (−$10,739 to −\n$251,453)"
+    ],
+    "rows": [
+      {
+        "−$106,108 (−$10,739 to −\n$251,453)": "−$102,154 (−$6,785 to −$247,589)"
+      },
+      {
+        "−$106,108 (−$10,739 to −\n$251,453)": "94.0 (5.2 to 235.8)"
+      }
+    ],
+    "row_count": 2
+  }
+]

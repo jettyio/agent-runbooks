@@ -1,0 +1,22 @@
+{
+  "title": "Stamp a PDF with a CONFIDENTIAL watermark",
+  "operation": "watermark",
+  "prompt": "Stamp every page with a large diagonal semi-transparent CONFIDENTIAL watermark and save as output.pdf.",
+  "params": {
+    "vars": {
+      "operation": "watermark — stamp every page with a large diagonal semi-transparent CONFIDENTIAL watermark and save as output.pdf"
+    }
+  },
+  "shared_input": true,
+  "files": [
+    {
+      "path": "../pubmed-tables-to-json/input.pdf",
+      "filename": "ssb-tax-oakland-plos-med-2023.pdf",
+      "mime_type": "application/pdf",
+      "pages": 20,
+      "label": "Evaluation of the sugar-sweetened beverage tax in Oakland, United States, 2015–2019",
+      "source_url": "https://doi.org/10.1371/journal.pmed.1004212",
+      "license": "CC BY 4.0"
+    }
+  ]
+}

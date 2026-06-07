@@ -1,0 +1,24 @@
+{
+  "collection": "jon-runbooks",
+  "task": "pdf-amber-hawk",
+  "trajectory_id": "6c756bcf",
+  "workflow_id": "jon-runbooks-pdf-amber-hawk--6c756bcf",
+  "url": "https://flows.jetty.io/jon-runbooks/pdf-amber-hawk/6c756bcf",
+  "runbook_version": "1.1.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T01:11:23.312480Z",
+  "duration_seconds": 122.5,
+  "status": "completed",
+  "success": true,
+  "primary_files": ["extracted_tables.json", "output.pdf", "extracted_text.txt"],
+  "eval": {
+    "overall_passed": true,
+    "pass": 7,
+    "partial": 0,
+    "fail": 0
+  },
+  "notes": "Produced from the optimized v1.1.0 runbook. extracted_tables.json is strictly-valid JSON (no NaN). The agent also emitted a passthrough output.pdf, which is not a meaningful deliverable for table extraction and is excluded from expected/."
+}

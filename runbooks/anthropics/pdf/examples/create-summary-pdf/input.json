@@ -1,0 +1,23 @@
+{
+  "title": "Author a one-page summary PDF",
+  "operation": "create",
+  "prompt": "Create a clean one-page summary PDF titled Document Summary listing the source PDF title, page count and number of tables; save as output.pdf.",
+  "params": {
+    "vars": {
+      "operation": "create a clean one-page summary PDF titled Document Summary listing the source PDF title, page count and number of tables; save as output.pdf"
+    }
+  },
+  "shared_input": true,
+  "files": [
+    {
+      "path": "../pubmed-tables-to-json/input.pdf",
+      "filename": "ssb-tax-oakland-plos-med-2023.pdf",
+      "mime_type": "application/pdf",
+      "pages": 20,
+      "label": "Evaluation of the sugar-sweetened beverage tax in Oakland, United States, 2015–2019",
+      "source_url": "https://doi.org/10.1371/journal.pmed.1004212",
+      "license": "CC BY 4.0",
+      "note": "Used as the source document the summary PDF describes."
+    }
+  ]
+}

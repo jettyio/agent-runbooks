@@ -1,0 +1,62 @@
+{
+  "version": "1.1.0",
+  "run_date": "2026-06-07T01:13:14.919339Z",
+  "parameters": {
+    "skill_url": "https://skills.sh/anthropics/skills/pdf",
+    "operation": "extract-text + extract-tables",
+    "input_files": [
+      "/app/assets/6c756bcf.00.pdf"
+    ]
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "pypdf, pdfplumber, pandas, openpyxl installed"
+    },
+    {
+      "name": "validation",
+      "passed": true,
+      "message": "Input file verified: 656,272 bytes, 20 pages"
+    },
+    {
+      "name": "extract_text",
+      "passed": true,
+      "message": "74,208 characters extracted across 20 pages -> extracted_text.txt"
+    },
+    {
+      "name": "extract_tables",
+      "passed": true,
+      "message": "5 tables extracted -> extracted_tables.xlsx + extracted_tables.json"
+    },
+    {
+      "name": "json_valid",
+      "passed": true,
+      "message": "extracted_tables.json parses as strictly-valid JSON (allow_nan=False)"
+    },
+    {
+      "name": "output_pdf",
+      "passed": true,
+      "message": "output.pdf written: 666,330 bytes"
+    },
+    {
+      "name": "output_check",
+      "passed": true,
+      "message": "All output files non-empty"
+    }
+  ],
+  "results": {
+    "pass": 7,
+    "partial": 0,
+    "fail": 0
+  },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/output.pdf",
+    "/app/results/extracted_text.txt",
+    "/app/results/extracted_tables.xlsx",
+    "/app/results/extracted_tables.json",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}
