@@ -1,0 +1,49 @@
+{
+  "fills": [
+    {
+      "sheet": "Order",
+      "table_range": [
+        "A4",
+        "D9"
+      ],
+      "header": [
+        "SKU",
+        "Item",
+        "Qty",
+        "Unit Price"
+      ],
+      "rows": [
+        [
+          "SKU-1001",
+          "Servo motor, 24V high-torque",
+          12,
+          48.5
+        ],
+        [
+          "SKU-2310",
+          "Aluminium chassis plate",
+          8,
+          22.75
+        ],
+        [
+          "SKU-0440",
+          "LiDAR sensor module 2D",
+          3,
+          310.0
+        ],
+        [
+          "SKU-7782",
+          "Cable harness (10-pack)",
+          15,
+          9.95
+        ],
+        [
+          "SKU-5050",
+          "Firmware integration (hrs)",
+          20,
+          120.0
+        ]
+      ]
+    }
+  ]
+}

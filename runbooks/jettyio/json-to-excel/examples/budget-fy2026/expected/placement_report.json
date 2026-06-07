@@ -1,0 +1,155 @@
+[
+  {
+    "fill_index": 0,
+    "mode": "match_label+values",
+    "match_label": "Salaries",
+    "dest_row": 5,
+    "status": "PASS",
+    "cells_written": [
+      "B5",
+      "C5",
+      "D5",
+      "E5"
+    ],
+    "labels_preserved": 0,
+    "match_score": 1.0,
+    "overflowed": false,
+    "strategy_applied": null
+  },
+  {
+    "fill_index": 1,
+    "mode": "match_label+values",
+    "match_label": "Benefits",
+    "dest_row": 6,
+    "status": "PASS",
+    "cells_written": [
+      "B6",
+      "C6",
+      "D6",
+      "E6"
+    ],
+    "labels_preserved": 0,
+    "match_score": 1.0,
+    "overflowed": false,
+    "strategy_applied": null
+  },
+  {
+    "fill_index": 2,
+    "mode": "match_label+values",
+    "match_label": "Contractors",
+    "dest_row": 7,
+    "status": "PASS",
+    "cells_written": [
+      "B7",
+      "C7",
+      "D7",
+      "E7"
+    ],
+    "labels_preserved": 0,
+    "match_score": 1.0,
+    "overflowed": false,
+    "strategy_applied": null
+  },
+  {
+    "fill_index": 3,
+    "mode": "match_label+values",
+    "match_label": "Software & SaaS",
+    "dest_row": 9,
+    "status": "PASS",
+    "cells_written": [
+      "B9",
+      "C9",
+      "D9",
+      "E9"
+    ],
+    "labels_preserved": 0,
+    "match_score": 1.0,
+    "overflowed": false,
+    "strategy_applied": null
+  },
+  {
+    "fill_index": 4,
+    "mode": "match_label+values",
+    "match_label": "Cloud Infrastructure",
+    "dest_row": 10,
+    "status": "PASS",
+    "cells_written": [
+      "B10",
+      "C10",
+      "D10",
+      "E10"
+    ],
+    "labels_preserved": 0,
+    "match_score": 1.0,
+    "overflowed": false,
+    "strategy_applied": null
+  },
+  {
+    "fill_index": 5,
+    "mode": "match_label+values",
+    "match_label": "Office & Facilities",
+    "dest_row": 11,
+    "status": "PASS",
+    "cells_written": [
+      "B11",
+      "C11",
+      "D11",
+      "E11"
+    ],
+    "labels_preserved": 0,
+    "match_score": 1.0,
+    "overflowed": false,
+    "strategy_applied": null
+  },
+  {
+    "fill_index": 6,
+    "mode": "match_label+values",
+    "match_label": "Paid Advertising",
+    "dest_row": 13,
+    "status": "PASS",
+    "cells_written": [
+      "B13",
+      "C13",
+      "D13",
+      "E13"
+    ],
+    "labels_preserved": 0,
+    "match_score": 1.0,
+    "overflowed": false,
+    "strategy_applied": null
+  },
+  {
+    "fill_index": 7,
+    "mode": "match_label+values",
+    "match_label": "Events & Conferences",
+    "dest_row": 14,
+    "status": "PASS",
+    "cells_written": [
+      "B14",
+      "C14",
+      "D14",
+      "E14"
+    ],
+    "labels_preserved": 0,
+    "match_score": 1.0,
+    "overflowed": false,
+    "strategy_applied": null
+  },
+  {
+    "fill_index": 8,
+    "mode": "match_label+values",
+    "match_label": "Content & Design",
+    "dest_row": 15,
+    "status": "PASS",
+    "cells_written": [
+      "B15",
+      "C15",
+      "D15",
+      "E15"
+    ],
+    "labels_preserved": 0,
+    "match_score": 1.0,
+    "overflowed": false,
+    "strategy_applied": null
+  }
+]

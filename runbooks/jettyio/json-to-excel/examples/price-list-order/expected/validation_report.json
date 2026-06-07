@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-06-07T04:17:05.592444Z",
+  "parameters": {
+    "output_basename": "price-list-order",
+    "overflow_strategy": "alert",
+    "max_overflow_inserts": 50
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "Inputs resolved (48359a63.00.xlsx, 48359a63.01.json); deps installed (openpyxl, beautifulsoup4, lxml)"
+    },
+    {
+      "name": "plan",
+      "passed": true,
+      "message": "Built 1 placement plan: table_range A4:D9, 5 data rows, header mapped via Jaccard"
+    },
+    {
+      "name": "placement",
+      "passed": true,
+      "message": "Placed 1 fill (20 cells written), skipped 0, failed 0"
+    },
+    {
+      "name": "overflow_handling",
+      "passed": true,
+      "message": "0 overflow events \u2014 5 data rows fit within 6 available rows under alert strategy"
+    },
+    {
+      "name": "label_preservation",
+      "passed": true,
+      "message": "All label/formula cells preserved: True (A1, A3:E3, D10, E4:E10 verified)"
+    },
+    {
+      "name": "save",
+      "passed": true,
+      "message": "Workbook saved to filled_workbook.xlsx and reopened cleanly"
+    },
+    {
+      "name": "report_generation",
+      "passed": true,
+      "message": "All 6 output files written: filled_workbook.xlsx, overflow_report.json, skipped_fills.json, placement_report.json, summary.md, validation_report.json"
+    }
+  ],
+  "results": {
+    "pass": 1,
+    "partial": 0,
+    "fail": 0,
+    "skipped": 0,
+    "overflow_events": 0,
+    "labels_preserved_total": 14
+  },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/filled_workbook.xlsx",
+    "/app/results/overflow_report.json",
+    "/app/results/skipped_fills.json",
+    "/app/results/placement_report.json",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}

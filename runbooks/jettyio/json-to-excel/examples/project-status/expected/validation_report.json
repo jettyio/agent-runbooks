@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-06-07T04:16:30.411872Z",
+  "parameters": {
+    "output_basename": "project-status",
+    "overflow_strategy": "alert",
+    "max_overflow_inserts": 50
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "Inputs resolved, deps installed"
+    },
+    {
+      "name": "plan",
+      "passed": true,
+      "message": "Built 4 placement plans"
+    },
+    {
+      "name": "placement",
+      "passed": true,
+      "message": "Placed 4, skipped 0, failed 0"
+    },
+    {
+      "name": "overflow_handling",
+      "passed": true,
+      "message": "0 overflow events handled via alert"
+    },
+    {
+      "name": "label_preservation",
+      "passed": true,
+      "message": "All label/formula cells preserved"
+    },
+    {
+      "name": "save",
+      "passed": true,
+      "message": "Workbook saved and reopened cleanly"
+    },
+    {
+      "name": "report_generation",
+      "passed": true,
+      "message": "All output files written"
+    }
+  ],
+  "results": {
+    "pass": 4,
+    "partial": 0,
+    "fail": 0,
+    "skipped": 0,
+    "overflow_events": 0,
+    "labels_preserved_total": 0
+  },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/filled_workbook.xlsx",
+    "/app/results/overflow_report.json",
+    "/app/results/skipped_fills.json",
+    "/app/results/placement_report.json",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}

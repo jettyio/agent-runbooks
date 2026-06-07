@@ -1,0 +1,66 @@
+[
+  {
+    "fill_index": 0,
+    "mode": "match_label+values",
+    "sheet": "Status",
+    "match_label": "Auth service migration",
+    "match_score": 1.0,
+    "status": "PASS",
+    "cells_written": [
+      "B4",
+      "C4",
+      "D4"
+    ],
+    "labels_preserved": [],
+    "overflowed": false,
+    "strategy_applied": null
+  },
+  {
+    "fill_index": 1,
+    "mode": "match_label+values",
+    "sheet": "Status",
+    "match_label": "Billing rework",
+    "match_score": 1.0,
+    "status": "PASS",
+    "cells_written": [
+      "B5",
+      "C5",
+      "D5"
+    ],
+    "labels_preserved": [],
+    "overflowed": false,
+    "strategy_applied": null
+  },
+  {
+    "fill_index": 2,
+    "mode": "match_label+values",
+    "sheet": "Status",
+    "match_label": "Search relevance",
+    "match_score": 1.0,
+    "status": "PASS",
+    "cells_written": [
+      "B6",
+      "C6",
+      "D6"
+    ],
+    "labels_preserved": [],
+    "overflowed": false,
+    "strategy_applied": null
+  },
+  {
+    "fill_index": 3,
+    "mode": "match_label+values",
+    "sheet": "Status",
+    "match_label": "Mobile release",
+    "match_score": 1.0,
+    "status": "PASS",
+    "cells_written": [
+      "B7",
+      "C7",
+      "D7"
+    ],
+    "labels_preserved": [],
+    "overflowed": false,
+    "strategy_applied": null
+  }
+]

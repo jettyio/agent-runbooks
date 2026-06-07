@@ -1,0 +1,11 @@
+{
+  "title": "Department budget — fill quarterly figures",
+  "domain": "Finance / FP&A",
+  "targeting_mode": "match_label + header-keyed values",
+  "prompt": "Fill the FY2026 budget template from the category figures in data.json (alert overflow).",
+  "params": { "vars": { "output_basename": "budget-fy2026", "overflow_strategy": "alert" } },
+  "files": [
+    { "path": "template.xlsx", "role": "template", "note": "Empty budget: section labels, Q1-Q4 placeholder cells, FY Total = SUM() formulas (synthetic sample)." },
+    { "path": "data.json", "role": "data", "note": "9 category fills, each with Q1-Q4 values keyed by column header." }
+  ]
+}

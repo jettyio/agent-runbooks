@@ -1,0 +1,54 @@
+[
+  {
+    "fill_index": 0,
+    "mode": "table_range",
+    "sheet": "Order",
+    "table_range": [
+      "A4",
+      "D9"
+    ],
+    "status": "PASS",
+    "cells_written": [
+      "A4",
+      "B4",
+      "C4",
+      "D4",
+      "A5",
+      "B5",
+      "C5",
+      "D5",
+      "A6",
+      "B6",
+      "C6",
+      "D6",
+      "A7",
+      "B7",
+      "C7",
+      "D7",
+      "A8",
+      "B8",
+      "C8",
+      "D8"
+    ],
+    "labels_preserved": [
+      "A3",
+      "B3",
+      "C3",
+      "D3",
+      "E3",
+      "D10",
+      "A1",
+      "E4",
+      "E5",
+      "E6",
+      "E7",
+      "E8",
+      "E9",
+      "E10"
+    ],
+    "match_score": 1.0,
+    "overflowed": false,
+    "strategy_applied": null,
+    "note": "5 data rows written into 6 available placeholder rows (A4:D9). Row 9 left empty. Column E formulas (=C*D) and =SUM(E4:E9) untouched."
+  }
+]

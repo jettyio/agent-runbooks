@@ -1,0 +1,11 @@
+{
+  "title": "Weekly status report — fill RAG, %, and updates",
+  "domain": "Project / Program management",
+  "targeting_mode": "match_label + header-keyed values (dropdown + percent + text)",
+  "prompt": "Fill the weekly status template from data.json — RAG dropdown, % complete, and update text per workstream.",
+  "params": { "vars": { "output_basename": "project-status", "overflow_strategy": "alert" } },
+  "files": [
+    { "path": "template.xlsx", "role": "template", "note": "Workstream labels, a RAG data-validation dropdown ('please select'), an 'X%' percent placeholder, and a '[Leave blank]' text cell (synthetic sample)." },
+    { "path": "data.json", "role": "data", "note": "4 workstream fills; exercises dropdown coercion + percent number_format + free text." }
+  ]
+}

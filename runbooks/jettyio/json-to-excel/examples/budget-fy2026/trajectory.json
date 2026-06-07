@@ -1,0 +1,11 @@
+{
+  "collection": "jon-runbooks", "task": "json-to-excel", "trajectory_id": "4fa49a03",
+  "workflow_id": "jon-runbooks-json-to-excel--4fa49a03",
+  "url": "https://flows.jetty.io/jon-runbooks/json-to-excel/4fa49a03",
+  "runbook_version": "1.0.0", "agent": "claude-code", "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic", "snapshot": "python312-uv-office",
+  "ran_at": "2026-06-07T04:10:30.736941Z", "duration_seconds": 163, "status": "completed", "success": true,
+  "primary_files": ["filled_workbook.xlsx"],
+  "eval": { "overall_passed": true, "pass": 9, "fail": 0, "labels_formulas_clobbered": 0, "labels_preserved_total": 0 },
+  "notes": "match_label + header-keyed values; 36 quarterly figures placed, section labels + FY-Total SUM() formulas preserved, dimensions unchanged."
+}

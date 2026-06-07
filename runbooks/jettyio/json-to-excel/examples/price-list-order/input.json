@@ -1,0 +1,11 @@
+{
+  "title": "Purchase order — fill a line-item table",
+  "domain": "Procurement / Sales",
+  "targeting_mode": "table_range + rows",
+  "prompt": "Fill the order template's line-item table from the products in data.json.",
+  "params": { "vars": { "output_basename": "price-list-order", "overflow_strategy": "alert" } },
+  "files": [
+    { "path": "template.xlsx", "role": "template", "note": "Empty PO: SKU/Item/Qty/Unit Price headers, Line Total = C*D formulas, Subtotal = SUM() (synthetic sample)." },
+    { "path": "data.json", "role": "data", "note": "One table_range fill with 5 product rows; Line Total/Subtotal formulas must be preserved." }
+  ]
+}

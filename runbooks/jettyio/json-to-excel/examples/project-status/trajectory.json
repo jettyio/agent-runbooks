@@ -1,0 +1,11 @@
+{
+  "collection": "jon-runbooks", "task": "json-to-excel", "trajectory_id": "bc354d46",
+  "workflow_id": "jon-runbooks-json-to-excel--bc354d46",
+  "url": "https://flows.jetty.io/jon-runbooks/json-to-excel/bc354d46",
+  "runbook_version": "1.0.0", "agent": "claude-code", "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic", "snapshot": "python312-uv-office",
+  "ran_at": "2026-06-07T04:14:28.062431Z", "duration_seconds": 142, "status": "completed", "success": true,
+  "primary_files": ["filled_workbook.xlsx"],
+  "eval": { "overall_passed": true, "pass": 4, "fail": 0, "labels_formulas_clobbered": 0, "labels_preserved_total": 0 },
+  "notes": "match_label + values; RAG dropdown coerced (Green/Amber/Red), percent '85%' coerced to 0.85 float, free-text updates placed."
+}

@@ -1,0 +1,94 @@
+{
+  "fills": [
+    {
+      "sheet": "FY2026 Budget",
+      "match_label": "Salaries",
+      "values": {
+        "Q1": 120000,
+        "Q2": 120000,
+        "Q3": 126000,
+        "Q4": 126000
+      }
+    },
+    {
+      "sheet": "FY2026 Budget",
+      "match_label": "Benefits",
+      "values": {
+        "Q1": 34000,
+        "Q2": 34000,
+        "Q3": 36000,
+        "Q4": 36000
+      }
+    },
+    {
+      "sheet": "FY2026 Budget",
+      "match_label": "Contractors",
+      "values": {
+        "Q1": 18000,
+        "Q2": 22000,
+        "Q3": 15000,
+        "Q4": 12000
+      }
+    },
+    {
+      "sheet": "FY2026 Budget",
+      "match_label": "Software & SaaS",
+      "values": {
+        "Q1": 9500,
+        "Q2": 9500,
+        "Q3": 10200,
+        "Q4": 10200
+      }
+    },
+    {
+      "sheet": "FY2026 Budget",
+      "match_label": "Cloud Infrastructure",
+      "values": {
+        "Q1": 27000,
+        "Q2": 31000,
+        "Q3": 35500,
+        "Q4": 40000
+      }
+    },
+    {
+      "sheet": "FY2026 Budget",
+      "match_label": "Office & Facilities",
+      "values": {
+        "Q1": 14000,
+        "Q2": 14000,
+        "Q3": 14000,
+        "Q4": 14000
+      }
+    },
+    {
+      "sheet": "FY2026 Budget",
+      "match_label": "Paid Advertising",
+      "values": {
+        "Q1": 45000,
+        "Q2": 52000,
+        "Q3": 60000,
+        "Q4": 75000
+      }
+    },
+    {
+      "sheet": "FY2026 Budget",
+      "match_label": "Events & Conferences",
+      "values": {
+        "Q1": 8000,
+        "Q2": 40000,
+        "Q3": 12000,
+        "Q4": 30000
+      }
+    },
+    {
+      "sheet": "FY2026 Budget",
+      "match_label": "Content & Design",
+      "values": {
+        "Q1": 11000,
+        "Q2": 11000,
+        "Q3": 13000,
+        "Q4": 13000
+      }
+    }
+  ]
+}

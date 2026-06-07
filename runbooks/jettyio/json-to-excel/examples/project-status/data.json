@@ -1,0 +1,40 @@
+{
+  "fills": [
+    {
+      "sheet": "Status",
+      "match_label": "Auth service migration",
+      "values": {
+        "RAG": "Green",
+        "% Complete": "85%",
+        "Update": "Cutover done; monitoring error rates."
+      }
+    },
+    {
+      "sheet": "Status",
+      "match_label": "Billing rework",
+      "values": {
+        "RAG": "Amber",
+        "% Complete": "60%",
+        "Update": "Proration edge cases under review with finance."
+      }
+    },
+    {
+      "sheet": "Status",
+      "match_label": "Search relevance",
+      "values": {
+        "RAG": "Red",
+        "% Complete": "30%",
+        "Update": "Re-ranking model regressed; rolling back."
+      }
+    },
+    {
+      "sheet": "Status",
+      "match_label": "Mobile release",
+      "values": {
+        "RAG": "Green",
+        "% Complete": "95%",
+        "Update": "In store review; ship Thursday."
+      }
+    }
+  ]
+}

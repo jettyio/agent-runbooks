@@ -1,0 +1,147 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "jettyio/json-to-excel",
+  "title": "JSON → Excel",
+  "description": "Fill an Excel template from a JSON of structured values — preserving every label, header, merged cell, and formula. The domain-agnostic engine behind budgets, price lists, status reports, scorecards, and intake forms.",
+
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "2–4 mins"
+  },
+
+  "example_outputs": [
+    {
+      "id": "budget-fy2026",
+      "title": "Department budget → filled quarterly figures",
+      "summary": "Match 9 budget categories by row label and write Q1–Q4 figures into the placeholder cells — section labels and FY-Total SUM() formulas preserved.",
+      "thumbnail": "examples/budget-fy2026/thumbnail.png",
+      "operation": "fill",
+      "targeting_mode": "match_label + header-keyed values",
+      "capability": "finance",
+      "dir": "examples/budget-fy2026",
+      "input": {
+        "template": "examples/budget-fy2026/template.xlsx",
+        "data": "examples/budget-fy2026/data.json",
+        "license": "Synthetic sample",
+        "values": { "output_basename": "budget-fy2026", "overflow_strategy": "alert" }
+      },
+      "primary_output": "examples/budget-fy2026/expected/filled_workbook.xlsx",
+      "outputs": [
+        { "file": "examples/budget-fy2026/expected/filled_workbook.xlsx", "role": "primary", "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "description": "The filled budget — labels + SUM formulas intact, Q1–Q4 figures placed." },
+        { "file": "examples/budget-fy2026/expected/placement_report.json", "role": "report", "type": "application/json", "description": "Per-fill placement record." },
+        { "file": "examples/budget-fy2026/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Run summary." },
+        { "file": "examples/budget-fy2026/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation (label-preservation + dimension audits)." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "json-to-excel", "trajectory_id": "4fa49a03",
+        "url": "https://flows.jetty.io/jon-runbooks/json-to-excel/4fa49a03",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T04:10:30.736941Z", "duration_seconds": 163, "eval": { "overall_passed": true, "pass": 9, "fail": 0, "labels_formulas_clobbered": 0 }
+      }
+    },
+    {
+      "id": "price-list-order",
+      "title": "Purchase order → filled line-item table",
+      "summary": "Write a 5-row product table into the order template's line-item range — Line-Total (C*D) and Subtotal SUM() formulas preserved.",
+      "thumbnail": "examples/price-list-order/thumbnail.png",
+      "operation": "fill",
+      "targeting_mode": "table_range + rows",
+      "capability": "procurement",
+      "dir": "examples/price-list-order",
+      "input": {
+        "template": "examples/price-list-order/template.xlsx",
+        "data": "examples/price-list-order/data.json",
+        "license": "Synthetic sample",
+        "values": { "output_basename": "price-list-order", "overflow_strategy": "alert" }
+      },
+      "primary_output": "examples/price-list-order/expected/filled_workbook.xlsx",
+      "outputs": [
+        { "file": "examples/price-list-order/expected/filled_workbook.xlsx", "role": "primary", "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "description": "The filled order — 5 product rows placed, Line-Total/Subtotal formulas intact." },
+        { "file": "examples/price-list-order/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Run summary." },
+        { "file": "examples/price-list-order/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "json-to-excel", "trajectory_id": "48359a63",
+        "url": "https://flows.jetty.io/jon-runbooks/json-to-excel/48359a63",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T04:14:27.170180Z", "duration_seconds": 176, "eval": { "overall_passed": true, "pass": 1, "fail": 0, "labels_formulas_clobbered": 0, "labels_preserved_total": 14 }
+      }
+    },
+    {
+      "id": "project-status",
+      "title": "Weekly status report → RAG, %, and updates",
+      "summary": "Fill a per-workstream status report — a RAG data-validation dropdown, a percent-formatted cell, and free-text updates — matched by workstream label.",
+      "thumbnail": "examples/project-status/thumbnail.png",
+      "operation": "fill",
+      "targeting_mode": "match_label + header-keyed values (dropdown + percent + text)",
+      "capability": "project-management",
+      "dir": "examples/project-status",
+      "input": {
+        "template": "examples/project-status/template.xlsx",
+        "data": "examples/project-status/data.json",
+        "license": "Synthetic sample",
+        "values": { "output_basename": "project-status", "overflow_strategy": "alert" }
+      },
+      "primary_output": "examples/project-status/expected/filled_workbook.xlsx",
+      "outputs": [
+        { "file": "examples/project-status/expected/filled_workbook.xlsx", "role": "primary", "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "description": "The filled status report — dropdown values, percents, and updates placed." },
+        { "file": "examples/project-status/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Run summary." },
+        { "file": "examples/project-status/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "json-to-excel", "trajectory_id": "bc354d46",
+        "url": "https://flows.jetty.io/jon-runbooks/json-to-excel/bc354d46",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T04:14:28.062431Z", "duration_seconds": 142, "eval": { "overall_passed": true, "pass": 4, "fail": 0, "labels_formulas_clobbered": 0 }
+      }
+    }
+  ],
+
+  "featured_examples": ["budget-fy2026", "price-list-order", "project-status"],
+
+  "inputs": [
+    { "label": "Template workbook", "type": "file", "required": true, "accept": ".xlsx", "description": "The empty .xlsx template (labels, headers, placeholder cells)." },
+    { "label": "Fill data", "type": "file", "required": true, "accept": ".json", "description": "JSON with a `fills` array describing the values to insert." },
+    { "label": "Notes", "type": "file", "required": false, "accept": ".md", "description": "Optional notes — intentional blanks, dropdown caveats, sheets to drop." },
+    { "label": "Output basename", "type": "text", "required": false, "default": "workbook", "description": "Label for the run (the output is always filled_workbook.xlsx)." },
+    { "label": "Overflow strategy", "type": "select", "required": false, "default": "alert", "options": ["alert", "insert", "both"], "description": "How to handle answers larger than their range: alert (truncate + flag), insert (add rows), or both." }
+  ],
+
+  "secrets": [],
+
+  "runbook_source": "RUNBOOK.md",
+
+  "meta": {
+    "created_by": { "name": "jettyio", "source": "internal", "url": null, "avatar": null },
+    "tags": ["excel", "xlsx", "openpyxl", "data-entry", "templates", "automation", "agent:claude-code", "programmatic"],
+    "version": "1.0.0",
+    "agent": "claude-code",
+    "model": "claude-sonnet-4-6",
+    "model_provider": "anthropic",
+    "snapshot": "python312-uv-office",
+    "evaluation": "programmatic",
+    "primary_outputs": ["filled_workbook.xlsx"],
+    "lineage": {
+      "remix_of": null,
+      "derived_from": "governgpt/RUNBOOK.md (internal) — generalized from a due-diligence-questionnaire filler into a domain-agnostic Excel template engine",
+      "imported_by": null
+    },
+    "share": "jettyio/json-to-excel",
+    "metrics": { "_note": "Live counters — backend-sourced.", "number_of_runs": null, "forks": null, "remixes": null }
+  },
+
+  "handoff": {
+    "issue": "JET-252 (G1a-1)",
+    "collection": "jon-runbooks",
+    "name": "json-to-excel",
+    "runbook_source": "agent-runbooks/runbooks/jettyio/json-to-excel/RUNBOOK.md",
+    "trajectory_id": "4fa49a03",
+    "sample_output_excerpt": "examples/budget-fy2026/expected/filled_workbook.xlsx",
+    "current_eval_pass_rate": 1.0,
+    "eval_runs": "3/3 production runs green (4fa49a03, 48359a63, bc354d46), 0 labels/formulas clobbered across all three"
+  }
+}
