@@ -1,0 +1,65 @@
+[
+  {
+    "issue": "No topical content clusters or pillar pages — content is organized only by date and section",
+    "impact": "Medium",
+    "evidence": "Homepage groups posts by year (2026, 2025, 2024...). Navigation exposes only three sections: main blog, Inside Rust (/inside-rust/), and Releases (/releases/). No tag pages, topic clusters, or category landing pages exist. 724 posts are essentially a flat chronological list.",
+    "fix": "Create topic cluster pages for major themes: 'Rust Releases', 'Memory Safety', 'Async Rust', 'Cargo & Tooling', 'WebAssembly', 'Embedded Rust', 'Rust Edition Guide'. Each cluster page acts as a pillar linking to relevant posts. This signals topical authority to Google and improves discoverability.",
+    "priority": 2
+  },
+  {
+    "issue": "No keyword-targeting strategy is evident — posts target natural topics but not SEO-focused query intent",
+    "impact": "Medium",
+    "evidence": "Post titles like 'Announcing Rust 1.85.0 and Rust 2024' serve existing community (navigational/brand queries) but miss informational queries like 'what is new in Rust 1.85', 'Rust 2024 edition features', or 'rust async closures'. The blog commands strong brand authority but may underperform on educational/informational searches.",
+    "fix": "For major release posts, expand the title and intro to target secondary informational queries. Add a 'TL;DR / What's New' section at the top with the most searched-for feature names. Consider supplementary posts targeting 'how to use [feature]' queries that link back to the release announcement.",
+    "priority": 3
+  },
+  {
+    "issue": "Release posts have moderate content depth but lack introductory context for newcomers",
+    "impact": "Low",
+    "evidence": "Post /2026/05/28/Rust-1.96.0/: ~834 estimated words. Posts dive directly into technical changelog items with limited setup for readers unfamiliar with Rust. This is appropriate for the core audience but limits appeal for informational search queries from developers evaluating Rust.",
+    "fix": "Add a brief 2–3 sentence intro to each release post summarizing the overall theme and significance of the release (e.g. 'This release focuses on...'). This helps both readers and search engines understand the page's main topic.",
+    "priority": 4
+  },
+  {
+    "issue": "E-E-A-T — Experience and Expertise signals are weak at the individual author level",
+    "impact": "Medium",
+    "evidence": "Posts name teams ('The Rust Release Team', 'Funding team') rather than individuals. No author bio pages exist. No individual contributor credentials are surfaced. However, site-level authority is high (official language project, linked from rust-lang.org).",
+    "fix": "Add author bio pages for regular contributors. Even a brief 2–3 sentence bio with a link to GitHub establishes individual expertise. For team-authored posts, linking to the team's governance page is acceptable. This matters more for the Rust Foundation and community posts than release notes.",
+    "priority": 3
+  },
+  {
+    "issue": "E-E-A-T — Authoritativeness is strong (positive finding)",
+    "impact": "High",
+    "evidence": "blog.rust-lang.org is the official Rust Programming Language blog, linked directly from rust-lang.org's top navigation. The Rust Foundation, GitHub, Mozilla, and major publications link to this domain. The site represents the definitive source for Rust announcements.",
+    "fix": "No action required. This is a major SEO asset — the domain authority from rust-lang.org's internal link alone is significant. Ensure the footer link from rust-lang.org remains in place.",
+    "priority": 0
+  },
+  {
+    "issue": "E-E-A-T — Trustworthiness signals are present but could be strengthened",
+    "impact": "Low",
+    "evidence": "HTTPS is active. Footer includes 'Code of Conduct', 'Licenses', 'Security policy', 'Privacy notice'. Contact email (core-team@rust-lang.org) is present. Privacy policy and terms exist. These are solid trust signals.",
+    "fix": "Consider adding a brief 'About this blog' page explaining its purpose, the team behind it, and how to submit corrections or contact the team. Linking the footer CoC and Security links more prominently would reinforce trust.",
+    "priority": 4
+  },
+  {
+    "issue": "No tag pages or taxonomy — readers cannot browse posts by topic (e.g. 'async', 'cargo', 'embedded')",
+    "impact": "Medium",
+    "evidence": "No tag-based navigation exists based on site crawl. Cross-linking between posts on the same topic is sparse (typical post has 1–3 content internal links). This fragments topical authority across 724 unconnected posts.",
+    "fix": "Implement tag or category pages. Each post should have 1–3 tags. Tag pages list all posts with that tag and include a short descriptive paragraph — this makes tag pages independently rankable (not thin). Avoid creating tags with fewer than 3 posts as these create thin content.",
+    "priority": 2
+  },
+  {
+    "issue": "Content is English-only with no internationalization (acceptable for this site type)",
+    "impact": "Low",
+    "evidence": "og:locale='en_US', no hreflang tags. The official Rust blog is intentionally English-only; community blogs in other languages exist separately.",
+    "fix": "No action required for hreflang — a single-language site does not need hreflang. Documenting this decision in robots.txt or a blog policy page would be helpful transparency for the community, but has no SEO impact.",
+    "priority": 0
+  },
+  {
+    "issue": "Inside Rust posts lack dedicated SEO treatment — same meta description issues, section not prominently surfaced",
+    "impact": "Medium",
+    "evidence": "The Inside Rust section (/inside-rust/) covers internal Rust team processes, which has strong long-tail search potential for developers interested in Rust governance and internals. However, it shares the same meta description and H1 problems as the main blog, and is listed only in the secondary nav.",
+    "fix": "Apply all meta description and H1 fixes to the Inside Rust section. Consider adding an 'Inside Rust' category to the homepage sidebar or adding the last 3 Inside Rust posts to the main homepage listing. These posts contain unique informational content that could rank for niche developer queries.",
+    "priority": 3
+  }
+]

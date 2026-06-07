@@ -1,0 +1,58 @@
+[
+  {
+    "issue": "E-E-A-T signals are exceptionally strong — official UK government authority",
+    "impact": "None",
+    "evidence": "GOV.UK is the official website of the UK Government, operated by the Government Digital Service (GDS). It carries the highest possible authoritative weight in its domain (government services and information). Publishing organisation is attributed in metadata: <meta name=\"govuk:primary-publishing-organisation\" content=\"Government Digital Service\">. HTTPS enforced. Privacy policy, cookies, and accessibility statement present.",
+    "fix": "No action needed. E-E-A-T signals are best-in-class for a government portal.",
+    "priority": 5
+  },
+  {
+    "issue": "Content freshness is strong — sitemaps updated daily with June 2026 lastmod timestamps",
+    "impact": "None",
+    "evidence": "Sitemap index lastmod: 2026-06-07T02:50:02+00:00. Sub-sitemap pages show lastmod dates in 2025–2026. GOV.UK updated-at metadata on homepage: 2026-02-18T13:00:24+00:00.",
+    "fix": "No action needed. Content is actively maintained.",
+    "priority": 5
+  },
+  {
+    "issue": "Welsh-language content exists but is not well-linked from the English homepage",
+    "impact": "Medium",
+    "evidence": "/cymraeg exists as the Welsh-language landing page. No homepage link to Welsh content was observed in the static HTML. Without hreflang and visible navigation links, Welsh-language users and Googlebot may not discover Welsh content efficiently.",
+    "fix": "Add a visible Welsh language toggle/link on the English homepage and inner pages. Implement hreflang pairs to help Google understand and index the bilingual structure correctly (see Technical findings).",
+    "priority": 2
+  },
+  {
+    "issue": "Homepage content depth is intentionally shallow — appropriate for a portal",
+    "impact": "None",
+    "evidence": "The homepage functions as a categorical navigator, not a content destination. Primary content is navigation links (16 topic categories), a search bar, and a handful of featured service cards. This is appropriate for a government portal whose goal is task completion, not long-form content.",
+    "fix": "No action needed. Thin homepage content is by design and appropriate for the site type.",
+    "priority": 5
+  },
+  {
+    "issue": "Service guide pages demonstrate strong content depth — pass example",
+    "impact": "None",
+    "evidence": "/universal-credit page properly describes the service with a clear H1, meta description, canonical URL, and tabbed subsections ('What Universal Credit is', 'Eligibility', 'How to claim', etc.). Content satisfies informational and transactional intent for users seeking Universal Credit information.",
+    "fix": "No action needed on tested guide pages. Recommend auditing thin or outdated pages within /government/publications and /government/statistics for content freshness and value.",
+    "priority": 5
+  },
+  {
+    "issue": "Backlink profile and domain authority not evaluable in this audit",
+    "impact": "High",
+    "evidence": "No access to Ahrefs, Semrush, or Majestic. GOV.UK is widely expected to have an exceptional backlink profile given its status as the official UK government domain, but this cannot be verified in this audit.",
+    "fix": "Requires external access — not evaluated. Use Ahrefs or Semrush to audit: referring domains, anchor text distribution, toxic link profile, and competitor gap analysis.",
+    "priority": 1
+  },
+  {
+    "issue": "Google Search Console coverage and indexation data not evaluable",
+    "impact": "High",
+    "evidence": "No Search Console access. Cannot verify: total indexed URL count vs. sitemap URL count, crawl errors, Coverage report status, Core Web Vitals field data, or any manual actions.",
+    "fix": "Requires external access — not evaluated. GDS team should review Search Console Coverage report for excluded/error URLs, and Core Web Vitals report for field data segmented by page type.",
+    "priority": 1
+  },
+  {
+    "issue": "Accessibility features support SEO — positive signal",
+    "impact": "None",
+    "evidence": "Skip-to-content link present. ARIA labels on navigation. Visually-hidden text for screen readers. Cookie consent with accessible button controls. Responsive viewport meta tag configured. These accessibility patterns align with Core Web Vitals (INP, CLS) best practices.",
+    "fix": "No action needed. Accessible markup correlates positively with Google's quality signals.",
+    "priority": 5
+  }
+]

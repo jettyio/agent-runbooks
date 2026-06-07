@@ -1,0 +1,8 @@
+{
+  "title": "Audit djangoproject.com (an open-source framework site)",
+  "target_url": "https://www.djangoproject.com",
+  "site_type": "open-source framework / docs",
+  "prompt": "Run a full SEO audit of https://www.djangoproject.com",
+  "params": { "vars": { "target_url": "https://www.djangoproject.com", "scope": "full", "site_type": "auto-detect", "competitor_urls": "" } },
+  "note": "Static SEO audit (curl-able HTML): robots.txt, sitemaps, titles/meta/H1s, canonicals, hreflang, internal links, alt text, HTTPS. Live CWV / JS-schema / Search Console are flagged as requires-external-tool."
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "issue": "HTTP does not redirect to HTTPS",
+    "impact": "High",
+    "evidence": "curl -sI 'http://www.djangoproject.com/' returns HTTP/1.1 200 OK with no Location header; full HTML content served over plain HTTP despite HSTS header being present",
+    "fix": "Configure nginx to issue a 301 redirect from http:// to https:// for all traffic. HSTS alone does not protect first-time visitors or crawlers that follow HTTP links.",
+    "priority": 1
+  },
+  {
+    "issue": "Sitemap URL not referenced in robots.txt",
+    "impact": "Medium",
+    "evidence": "robots.txt contains only two Disallow rules and no Sitemap directive. The sitemap at https://www.djangoproject.com/sitemap.xml is accessible (975 URLs) but undiscoverable via robots.txt.",
+    "fix": "Add 'Sitemap: https://www.djangoproject.com/sitemap.xml' to robots.txt. Also submit the sitemap directly in Google Search Console.",
+    "priority": 2
+  },
+  {
+    "issue": "Sitemap includes dashboard subdomain URLs",
+    "impact": "Medium",
+    "evidence": "sitemap.xml contains <loc>https://dashboard.djangoproject.com/</loc> and <loc>https://dashboard.djangoproject.com/metric/</loc>. These appear to be non-public tool pages and should not be indexed.",
+    "fix": "Remove dashboard.djangoproject.com URLs from the sitemap. Verify those pages return 200 and are intended for public indexation, or add noindex headers to them.",
+    "priority": 2
+  },
+  {
+    "issue": "H2 element appears before H1 in DOM on multiple pages",
+    "impact": "Medium",
+    "evidence": "On the homepage (line ~76 in HTML): <h2>Django Developer Survey</h2> banner appears before the <h1>Meet Django</h1>. Same pattern on /start/overview/ (H2 'Django Developer Survey' at line 145, H1 'Why Django?' at line 163). Parser reads headings in DOM order, so heading hierarchy starts at H2.",
+    "fix": "Change the sitewide announcement banner to use a <p>, <div>, or <aside> element rather than an H2, or restructure the template so the H1 always precedes any H2 in DOM order.",
+    "priority": 3
+  },
+  {
+    "issue": "No structured data / schema markup detected in static HTML",
+    "impact": "Medium",
+    "evidence": "grep for 'application/ld+json' and '@type' across homepage and blog post HTML returned no matches. No microdata (itemtype/itemscope) found. Note: JavaScript-injected schema cannot be confirmed via static fetch; verification via Google Rich Results Test (https://search.google.com/test/rich-results) or browser tool is required to confirm.",
+    "fix": "Add JSON-LD structured data: SoftwareApplication or WebSite schema on the homepage, BlogPosting schema on weblog posts (with author, datePublished, headline, description), and BreadcrumbList on interior pages. This enables rich results in SERPs.",
+    "priority": 3
+  },
+  {
+    "issue": "Static assets not lazy-loaded (images on homepage use SVG inline, no img lazy loading)",
+    "impact": "Low",
+    "evidence": "No loading='lazy' attribute found on any element in homepage HTML. The page uses inline SVG and CSS for icons rather than <img> tags, which is acceptable, but any future img elements should include lazy loading.",
+    "fix": "Add loading='lazy' to all below-the-fold <img> elements. No change needed for inline SVGs used as icons.",
+    "priority": 5
+  },
+  {
+    "issue": "No canonical tag on any page",
+    "impact": "Medium",
+    "evidence": "grep for 'canonical' in homepage HTML returned no <link rel='canonical'> tag. The og:url tag provides a partial signal but rel=canonical is the authoritative indexation signal for Google.",
+    "fix": "Add <link rel='canonical' href='https://www.djangoproject.com/'> (self-referencing) to every page. For paginated pages (/weblog/?page=2), canonical should point to the paginated URL itself, not the first page.",
+    "priority": 2
+  },
+  {
+    "issue": "Core Web Vitals not verified — requires external tool",
+    "impact": "High",
+    "evidence": "PageSpeed Insights (https://pagespeed.web.dev/) is not available in this environment. LCP, INP, and CLS scores for the homepage, /start/, and a weblog post cannot be measured statically.",
+    "fix": "Requires external tool — not evaluated. Run PageSpeed Insights on at minimum: homepage, /start/overview/, and a recent /weblog/ post. Pay particular attention to LCP (the sitewide announcement banner image/content) and CLS from above-the-fold layout shifts.",
+    "priority": 1
+  },
+  {
+    "issue": "No privacy policy or terms of service page at standard URLs",
+    "impact": "Medium",
+    "evidence": "curl returns 404 for /privacy-policy/, /privacy/, /terms/, and /contact/. These are standard E-E-A-T trust signals expected by Google's Quality Raters Guidelines.",
+    "fix": "Create a Privacy Policy page and link it from the footer. If a privacy policy exists elsewhere (e.g., on the DSF website), add a footer link. Also add a contact page or clear contact information.",
+    "priority": 3
+  },
+  {
+    "issue": "HSTS header present on HTTP response (minor misconfiguration)",
+    "impact": "Low",
+    "evidence": "The HTTP (non-TLS) response includes 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload'. Per RFC 6797, HSTS headers on HTTP connections must be ignored by browsers. The header is not harmful but indicates the redirect to HTTPS is not enforced at the server layer before the HSTS header is applied.",
+    "fix": "Fix the HTTP→HTTPS redirect at the nginx level so the HSTS header is only ever served over HTTPS.",
+    "priority": 4
+  }
+]

@@ -1,0 +1,143 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "marketingskills/seo-audit",
+  "title": "SEO Audit",
+  "description": "A systematic, prioritized SEO audit of any live site — crawlability, technical foundations, on-page optimization, content quality, and authority — producing an evidence-backed report with a prioritized action plan. Adapts to the site type (SaaS, e-commerce, blog, multilingual, local).",
+
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "6–9 mins"
+  },
+
+  "example_outputs": [
+    {
+      "id": "govuk-audit",
+      "title": "gov.uk — government portal",
+      "summary": "A strong, server-rendered government site. Health: Good. Real gaps (no English↔Welsh hreflang, short homepage meta) plus honest 'requires external tool' flags for Core Web Vitals / schema / Search Console.",
+      "thumbnail": "examples/govuk-audit/thumbnail.png",
+      "operation": "audit",
+      "site_type": "government / institutional",
+      "overall_health": "Good",
+      "capability": "institutional",
+      "dir": "examples/govuk-audit",
+      "input": { "target_url": "https://www.gov.uk", "values": { "target_url": "https://www.gov.uk", "scope": "full", "site_type": "auto-detect" } },
+      "primary_output": "examples/govuk-audit/expected/seo_audit_report.md",
+      "outputs": [
+        { "file": "examples/govuk-audit/expected/seo_audit_report.md", "role": "primary", "type": "text/markdown", "description": "Full audit + prioritized action plan." },
+        { "file": "examples/govuk-audit/expected/technical_findings.json", "role": "secondary", "type": "application/json", "description": "Structured technical findings (issue/impact/evidence/fix/priority)." },
+        { "file": "examples/govuk-audit/expected/onpage_findings.json", "role": "secondary", "type": "application/json", "description": "On-page findings." },
+        { "file": "examples/govuk-audit/expected/content_findings.json", "role": "secondary", "type": "application/json", "description": "Content findings." },
+        { "file": "examples/govuk-audit/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Top priority issues + quick wins." },
+        { "file": "examples/govuk-audit/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "seo-audit-safe-valley", "trajectory_id": "3d7d8b05",
+        "url": "https://flows.jetty.io/jon-runbooks/seo-audit-safe-valley/3d7d8b05",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T19:21:45.831838Z", "duration_seconds": 367, "eval": { "overall_passed": true, "overall_health": "Good", "findings": 26 }
+      }
+    },
+    {
+      "id": "django-audit",
+      "title": "djangoproject.com — framework site",
+      "summary": "An open-source framework site. Health: Needs Attention (28 findings). Top concrete finding: HTTP does not redirect to HTTPS.",
+      "thumbnail": "examples/django-audit/thumbnail.png",
+      "operation": "audit",
+      "site_type": "open-source framework / docs",
+      "overall_health": "Needs Attention",
+      "capability": "framework-docs",
+      "dir": "examples/django-audit",
+      "input": { "target_url": "https://www.djangoproject.com", "values": { "target_url": "https://www.djangoproject.com", "scope": "full", "site_type": "auto-detect" } },
+      "primary_output": "examples/django-audit/expected/seo_audit_report.md",
+      "outputs": [
+        { "file": "examples/django-audit/expected/seo_audit_report.md", "role": "primary", "type": "text/markdown", "description": "Full audit + action plan." },
+        { "file": "examples/django-audit/expected/technical_findings.json", "role": "secondary", "type": "application/json", "description": "Technical findings." },
+        { "file": "examples/django-audit/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Summary." },
+        { "file": "examples/django-audit/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "seo-audit-safe-valley", "trajectory_id": "6044edc3",
+        "url": "https://flows.jetty.io/jon-runbooks/seo-audit-safe-valley/6044edc3",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T19:28:50.614551Z", "duration_seconds": 497, "eval": { "overall_passed": true, "overall_health": "Needs Attention", "findings": 28 }
+      }
+    },
+    {
+      "id": "rust-blog-audit",
+      "title": "blog.rust-lang.org — developer blog",
+      "summary": "A developer blog (content site type). Health: Needs Attention (30 findings across technical / on-page / content).",
+      "thumbnail": "examples/rust-blog-audit/thumbnail.png",
+      "operation": "audit",
+      "site_type": "blog / content",
+      "overall_health": "Needs Attention",
+      "capability": "blog-content",
+      "dir": "examples/rust-blog-audit",
+      "input": { "target_url": "https://blog.rust-lang.org", "values": { "target_url": "https://blog.rust-lang.org", "scope": "full", "site_type": "auto-detect" } },
+      "primary_output": "examples/rust-blog-audit/expected/seo_audit_report.md",
+      "outputs": [
+        { "file": "examples/rust-blog-audit/expected/seo_audit_report.md", "role": "primary", "type": "text/markdown", "description": "Full audit + action plan." },
+        { "file": "examples/rust-blog-audit/expected/technical_findings.json", "role": "secondary", "type": "application/json", "description": "Technical findings." },
+        { "file": "examples/rust-blog-audit/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Summary." },
+        { "file": "examples/rust-blog-audit/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "seo-audit-safe-valley", "trajectory_id": "a73e0ed1",
+        "url": "https://flows.jetty.io/jon-runbooks/seo-audit-safe-valley/a73e0ed1",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T19:28:51.201962Z", "duration_seconds": 419, "eval": { "overall_passed": true, "overall_health": "Needs Attention", "findings": 30 }
+      }
+    }
+  ],
+
+  "featured_examples": ["govuk-audit", "django-audit", "rust-blog-audit"],
+
+  "inputs": [
+    { "label": "Target URL", "type": "url", "required": true, "description": "The root URL of the site to audit (e.g. https://example.com)." },
+    { "label": "Scope", "type": "select", "required": false, "default": "full", "options": ["full", "technical", "on-page", "content"], "description": "Full audit or a focused area." },
+    { "label": "Site type", "type": "select", "required": false, "default": "auto-detect", "options": ["auto-detect", "saas", "ecommerce", "blog", "multilingual", "local"], "description": "Drives the site-type common-issues checklist (auto-detected from the homepage if not set)." },
+    { "label": "Competitor URLs", "type": "text", "required": false, "description": "Comma-separated top organic competitors (optional)." }
+  ],
+
+  "secrets": [],
+
+  "runbook_source": "RUNBOOK.md",
+
+  "meta": {
+    "created_by": { "name": "marketingskills", "source": "skills.sh", "url": "https://skills.sh/coreyhaines31/marketingskills/seo-audit", "avatar": null },
+    "tags": ["seo", "marketing", "audit", "technical-seo", "content", "agent:claude-code", "programmatic"],
+    "version": "1.1.0",
+    "agent": "claude-code",
+    "model": "claude-sonnet-4-6",
+    "model_provider": "anthropic",
+    "snapshot": "python312-uv",
+    "evaluation": "programmatic",
+    "primary_outputs": ["seo_audit_report.md"],
+    "lineage": {
+      "remix_of": null,
+      "imported_from": "https://skills.sh/coreyhaines31/marketingskills/seo-audit",
+      "imported_by": "skill-to-runbook-converter@1.0.0"
+    },
+    "share": "marketingskills/seo-audit",
+    "metrics": { "_note": "Live counters — backend-sourced.", "number_of_runs": null, "forks": null, "remixes": null }
+  },
+
+  "caveats": [
+    "The sandbox has curl/HTTP but not PageSpeed Insights, the Rich Results Test, Search Console, Screaming Frog, or Ahrefs — so Core Web Vitals (field data), JavaScript-rendered schema, indexation coverage, and backlinks are flagged 'requires external tool', not guessed. This is a thorough STATIC audit (robots/sitemaps, titles/meta/H1s, canonicals, hreflang, internal links, alt text, HTTPS).",
+    "Audits a live site, so findings reflect the site as fetched on the run date and can change as the site changes."
+  ],
+
+  "handoff": {
+    "issue": "JET-252 (G1a-1)",
+    "collection": "jon-runbooks",
+    "name": "seo-audit-safe-valley",
+    "runbook_source": "agent-runbooks/runbooks/marketingskills/seo-audit/RUNBOOK.md",
+    "trajectory_id": "3d7d8b05",
+    "sample_output_excerpt": "examples/govuk-audit/expected/seo_audit_report.md",
+    "current_eval_pass_rate": 1.0,
+    "eval_runs": "3/3 optimized v1.1.0 runs green (3d7d8b05, 6044edc3, a73e0ed1), each producing seo_audit_report.md as the primary deliverable"
+  }
+}

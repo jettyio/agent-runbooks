@@ -1,0 +1,158 @@
+{
+  "audit_target": "https://www.djangoproject.com",
+  "audit_date": "2026-06-07",
+  "overall_passed": true,
+  "stages": [
+    {
+      "stage": "environment_setup",
+      "status": "passed",
+      "results": {
+        "site_reachable": true,
+        "http_status": 200,
+        "results_dir_created": true
+      }
+    },
+    {
+      "stage": "crawlability",
+      "status": "passed_with_issues",
+      "results": {
+        "robots_txt_accessible": true,
+        "robots_txt_blocks_critical_content": false,
+        "sitemap_accessible": true,
+        "sitemap_url_count": 975,
+        "sitemap_referenced_in_robots": false,
+        "sitemap_includes_non_www_urls": true,
+        "notes": "sitemap.xml exists and is well-populated but is not referenced in robots.txt; sitemap contains dashboard subdomain URLs that may not be intended for indexation"
+      }
+    },
+    {
+      "stage": "indexation",
+      "status": "passed_with_issues",
+      "results": {
+        "canonical_tags_present": false,
+        "noindex_on_important_pages": false,
+        "www_redirect": true,
+        "trailing_slash_consistency": true,
+        "noted_issue": "No rel=canonical tags found on any page; og:url present but not a canonical substitute"
+      }
+    },
+    {
+      "stage": "security_https",
+      "status": "failed",
+      "results": {
+        "https_operational": true,
+        "hsts_present": true,
+        "hsts_max_age": 31536000,
+        "hsts_preload": true,
+        "http_to_https_redirect": false,
+        "mixed_content_detected": false,
+        "noted_issue": "HTTP returns 200 OK with content; no 301 redirect to HTTPS"
+      }
+    },
+    {
+      "stage": "on_page_seo",
+      "status": "failed",
+      "results": {
+        "meta_descriptions_populated": false,
+        "pages_checked": [
+          {"url": "/", "meta_description": "empty", "title": "The web framework for perfectionists with deadlines | Django", "h1": "Meet Django"},
+          {"url": "/start/", "meta_description": "empty", "title": "Getting started with Django | Django", "h1": "Getting started with Django"},
+          {"url": "/start/overview/", "meta_description": "empty", "title": "Django overview | Django", "h1": "Why Django?"},
+          {"url": "/download/", "meta_description": "empty", "title": "Download Django | Django", "h1": "How to get Django"},
+          {"url": "/community/", "meta_description": "empty", "title": "Django Community | Django", "h1": "Community"},
+          {"url": "/foundation/", "meta_description": "empty", "title": "About the Django Software Foundation | Django", "h1": "About the Django Software Foundation"},
+          {"url": "/weblog/", "meta_description": "empty", "title": "News & Events | Django", "h1": "News & Events"},
+          {"url": "/weblog/2026/jun/03/security-releases/", "meta_description": "Posted by Natalia Bidart on June 3, 2026", "title": "Django security releases issued: 6.0.6 and 5.2.15 | Weblog | Django", "h1": "Django security releases issued: 6.0.6 and 5.2.15"}
+        ],
+        "h1_before_h2_in_dom": false,
+        "noted_issues": [
+          "Meta descriptions empty on all primary pages",
+          "Blog post meta descriptions are author bylines, not content summaries",
+          "H2 element appears before H1 in DOM on homepage and /start/overview/ due to announcement banner",
+          "Title and H1 misaligned on homepage and /start/overview/",
+          "Outdated keywords meta tag present sitewide"
+        ]
+      }
+    },
+    {
+      "stage": "structured_data",
+      "status": "requires_external_tool",
+      "results": {
+        "json_ld_found_in_static_html": false,
+        "microdata_found": false,
+        "verification_method": "static_curl_fetch",
+        "limitation": "JavaScript-rendered schema cannot be detected via static fetch. Verify at https://search.google.com/test/rich-results for definitive result.",
+        "recommendation": "If no schema found via Rich Results Test, add WebSite + SoftwareApplication to homepage; BlogPosting to weblog posts"
+      }
+    },
+    {
+      "stage": "core_web_vitals",
+      "status": "requires_external_tool",
+      "results": {
+        "tool_required": "Google PageSpeed Insights",
+        "tool_url": "https://pagespeed.web.dev/",
+        "static_proxy_signals": {
+          "cdn_detected": true,
+          "cdn_provider": "Varnish/Fastly",
+          "static_asset_caching": "max-age=315360000 (10 years)",
+          "html_cache_control": "max-age=300",
+          "cache_hit_confirmed": true,
+          "response_time_proxy": "fast (cache HIT, age=178s at time of audit)",
+          "lazy_loading_present": false,
+          "webp_images_detected": false,
+          "render_blocking_scripts": "none detected in static HTML"
+        },
+        "lcp": "requires_external_tool",
+        "inp": "requires_external_tool",
+        "cls": "requires_external_tool"
+      }
+    },
+    {
+      "stage": "content_quality",
+      "status": "passed_with_issues",
+      "results": {
+        "eeeat_signals": "strong",
+        "blog_content_quality": "high",
+        "thin_pages_identified": ["/start/"],
+        "missing_content_types": ["comparison pages", "case studies", "author bio pages", "privacy policy", "contact page"],
+        "internal_linking_from_blog": "not_observed"
+      }
+    },
+    {
+      "stage": "output_files",
+      "status": "passed",
+      "results": {
+        "files_written": [
+          "/app/results/seo_audit_report.md",
+          "/app/results/technical_findings.json",
+          "/app/results/onpage_findings.json",
+          "/app/results/content_findings.json",
+          "/app/results/summary.md",
+          "/app/results/validation_report.json"
+        ]
+      }
+    }
+  ],
+  "checks_requiring_external_tools": [
+    {
+      "check": "Core Web Vitals (LCP, INP, CLS)",
+      "tool": "Google PageSpeed Insights — https://pagespeed.web.dev/"
+    },
+    {
+      "check": "Schema markup (JavaScript-rendered)",
+      "tool": "Google Rich Results Test — https://search.google.com/test/rich-results"
+    },
+    {
+      "check": "Index coverage and crawl errors",
+      "tool": "Google Search Console"
+    },
+    {
+      "check": "Backlink profile and domain authority",
+      "tool": "Ahrefs or Semrush"
+    },
+    {
+      "check": "Current keyword rankings",
+      "tool": "Google Search Console or rank tracking tool"
+    }
+  ]
+}

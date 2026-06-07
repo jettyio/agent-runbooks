@@ -1,0 +1,58 @@
+[
+  {
+    "issue": "Homepage content is strong but search-intent alignment could be sharper",
+    "impact": "Medium",
+    "evidence": "The homepage accurately describes Django ('high-level Python web framework that encourages rapid development and clean, pragmatic design') and hits core value propositions (fast, secure, scalable). However, primary user search intents — 'python web framework comparison', 'django vs fastapi', 'best python web framework' — are not addressed on any page visible in the sitemap.",
+    "fix": "Create a Django alternatives/comparison page targeting navigational and comparison intent (e.g., '/start/overview/why-django/' or a blog post). This is a high-volume query category for developer frameworks that djangoproject.com currently cedes to third-party review sites.",
+    "priority": 3
+  },
+  {
+    "issue": "Blog post content is high quality but meta presentation undercuts SERP CTR",
+    "impact": "High",
+    "evidence": "Individual weblog posts (e.g., security releases, release announcements) contain technically detailed, authoritative content. However, meta descriptions show only 'Posted by [Author] on [Date]', which gives Google and users no preview of the content value. This directly suppresses click-through rate from search results.",
+    "fix": "See onpage_findings.json — fix the meta description template for blog posts to pull the first sentence or a dedicated excerpt field. Priority: immediate.",
+    "priority": 1
+  },
+  {
+    "issue": "No topical cluster content for core Django use cases",
+    "impact": "Medium",
+    "evidence": "The primary site (djangoproject.com) has limited informational content beyond the weblog. High-volume informational queries like 'how to build a REST API with Django', 'Django ORM tutorial', 'Django authentication', 'Django deployment' are entirely served by docs.djangoproject.com (a subdomain) rather than integrated into the main site's content strategy.",
+    "fix": "Consider whether docs.djangoproject.com pages pass link equity to www.djangoproject.com. If the subdomain is treated as a separate entity by Google, a topical cluster on www (linking to docs) would strengthen www's topical authority. At minimum, ensure docs pages link back to www for key pages.",
+    "priority": 4
+  },
+  {
+    "issue": "E-E-A-T signals are strong but not surfaced on SEO-relevant pages",
+    "impact": "Medium",
+    "evidence": "The Django Software Foundation is a recognized non-profit with clear authoritativeness in the Python ecosystem. However: (1) no author bio pages exist on www.djangoproject.com, (2) no citation of Django's usage by major organizations appears on SEO-critical pages like /start/overview/, (3) the 'Sites Using Django' section exists on overview but uses icon-only logos without accessible organization names in text form.",
+    "fix": "(1) When blog posts mention security researchers or contributors, link their names to a profile or the DSF author page. (2) On /start/overview/, add a text-readable 'Used by: Instagram, Pinterest, Disqus, Mozilla, Bitbucket' list alongside any logo grid. (3) Add a 'Maintained by the Django Software Foundation since 2005' trust statement to the footer.",
+    "priority": 4
+  },
+  {
+    "issue": "Content is English-only; no i18n/localization content strategy",
+    "impact": "Low",
+    "evidence": "The site serves Content-Language: en header and the sitemap contains no hreflang attributes. Django documentation is available in multiple languages on docs.djangoproject.com, but the main site is English-only. This is appropriate for an open-source project homepage but means non-English developer search traffic is not captured on www.",
+    "fix": "Not a required fix for the current scope. If international growth is a goal for adoption metrics or donations, consider translating the /start/ and homepage into high-Django-adoption locales (Brazil/Portuguese, India/Hindi, China/Simplified Chinese). The infrastructure (Django's own i18n) makes this technically feasible.",
+    "priority": 5
+  },
+  {
+    "issue": "Weblog content is not internally linked to product and feature pages",
+    "impact": "Medium",
+    "evidence": "Review of the security release blog post shows it describes CVE details but does not link to the /security/ page, /download/ page for the patched release, or /start/ for new users who may find it via search. Blog content is a prime opportunity to drive internal links toward high-value conversion pages.",
+    "fix": "Establish a content template practice: each blog post links to at least one relevant product page (/download/ for release posts, /start/ for tutorial posts, /community/ for event posts). This distributes PageRank from frequently updated content to core pages.",
+    "priority": 3
+  },
+  {
+    "issue": "No case studies or in-depth 'Built with Django' content on main site",
+    "impact": "Medium",
+    "evidence": "The /start/overview/ page lists logo icons of sites using Django but links to an external page (Instagram, Pinterest, Bitbucket). No dedicated case study or success story content exists on djangoproject.com to support experience (E-E-A-T) and capture 'Django case studies' or '[Company] uses Django' queries.",
+    "fix": "Create a /success-stories/ or /built-with-django/ section with 4–8 short case study pages (300–600 words each) covering how major organizations use Django. These pages build topical authority and capture high-intent, bottom-of-funnel queries from developers evaluating frameworks.",
+    "priority": 4
+  },
+  {
+    "issue": "Content freshness signal is strong for weblog but weak for feature/overview pages",
+    "impact": "Low",
+    "evidence": "The /start/overview/ page describes Django's features without visible date stamps or 'last updated' indicators. Django 6.0 is current but the overview content may not reflect recent features. Stale feature pages can lose rankings to updated competitor pages.",
+    "fix": "Add a 'Last reviewed: [date]' or 'Updated for Django 6.0' note to key static pages like /start/overview/ and /start/. Review and refresh feature descriptions with each major release.",
+    "priority": 5
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "issue": "Meta description is empty on all primary site pages",
+    "impact": "High",
+    "evidence": "grep for 'meta.*description' returned content=\"\" (empty string) on: homepage, /start/, /start/overview/, /download/, /community/, /foundation/, /weblog/. Google will auto-generate snippets from page text, which are typically less click-worthy than crafted descriptions.",
+    "fix": "Write unique, compelling meta descriptions (150–160 characters) for each page incorporating the primary keyword and a clear value proposition. Example for homepage: 'Django is a high-level Python web framework for rapid, secure, scalable development. Free and open source. Get started in minutes.'",
+    "priority": 1
+  },
+  {
+    "issue": "Blog post meta descriptions are author bylines, not content summaries",
+    "impact": "High",
+    "evidence": "The weblog post https://www.djangoproject.com/weblog/2026/jun/03/security-releases/ has meta description = 'Posted by Natalia Bidart on June 3, 2026'. The same pattern applies sitewide to blog posts. This wastes the SERP snippet and provides no reason to click.",
+    "fix": "Populate the blog post meta description with the first 150–160 characters of meaningful post content, or add a dedicated 'excerpt' or 'description' field to the weblog post model and template.",
+    "priority": 1
+  },
+  {
+    "issue": "Title tags are generic and miss keyword opportunities",
+    "impact": "Medium",
+    "evidence": "Observed titles: 'The web framework for perfectionists with deadlines | Django' (homepage), 'Django overview | Django' (overview), 'Download Django | Django' (download), 'Getting started with Django | Django' (start), 'Django Community | Django' (community). Multiple pages repeat 'Django' in both the page name and brand suffix. 'Django overview' is vague when 'Python Web Framework Features & Overview' would target search intent.",
+    "fix": "Revise title tags to lead with the primary keyword phrase and remove redundant 'Django | Django' patterns. Examples: Homepage: 'Django: The Python Web Framework | Free & Open Source' | Overview: 'Django Features & Architecture | High-Level Python Web Framework' | Download: 'Download Django | Latest Stable Python Web Framework Release'",
+    "priority": 2
+  },
+  {
+    "issue": "H1 and title tag are misaligned on key pages",
+    "impact": "Medium",
+    "evidence": "Homepage: title starts with 'The web framework for perfectionists with deadlines' but H1 is 'Meet Django' — different keyword signals. Overview page: title is 'Django overview' but H1 is 'Why Django?' Google looks for alignment between title, H1, and URL as a targeting signal.",
+    "fix": "Align the H1 with the primary keyword phrase used in the title tag. For the homepage, choose one clear primary keyword target (e.g., 'Python Web Framework') and reflect it in both the title and H1.",
+    "priority": 2
+  },
+  {
+    "issue": "/start/ page (Getting Started) has thin, low-depth content",
+    "impact": "Medium",
+    "evidence": "Extracting page text reveals ~305 content words including navigation and footer. The main content area is primarily a list of links to tutorials with minimal explanatory text. For a query like 'how to get started with Django,' this page is unlikely to satisfy search intent against competitors with step-by-step guides.",
+    "fix": "Expand the /start/ page with: (1) a brief 2–3 sentence introduction to what Django is for, (2) a structured getting-started path with each step described in 2–3 sentences, (3) a code snippet showing the first Django command. Target 500–700 words of unique content.",
+    "priority": 3
+  },
+  {
+    "issue": "Outdated meta keywords tag in use",
+    "impact": "Low",
+    "evidence": "<meta name='keywords' content='Python, Django, framework, open-source' /> found on all pages. Google has publicly ignored this tag since 2009. Bing also ignores it. It adds noise to the HTML and could theoretically hint to competitors about targeted terms.",
+    "fix": "Remove the keywords meta tag from the base template. It provides no SEO value and is dead markup.",
+    "priority": 5
+  },
+  {
+    "issue": "OG description is identical across most pages",
+    "impact": "Low",
+    "evidence": "og:description is 'The web framework for perfectionists with deadlines.' on homepage, /start/overview/, /start/, /foundation/, /weblog/, and more. Each page should have a unique, relevant OG description for social sharing differentiation.",
+    "fix": "Set og:description to be the same value as the meta description (once those are populated with unique content). Use the CMS template to pull from the page-level description field.",
+    "priority": 4
+  },
+  {
+    "issue": "Alt text missing on most images; site relies heavily on inline SVG without text equivalents",
+    "impact": "Medium",
+    "evidence": "Only one <img> tag found on homepage: the fundraising heart SVG (has alt='Support Django!'). All other icons are inline SVG with aria-hidden='true'. The Discord/GitHub SVG icons are inline and hidden from accessibility tree — no keyword signals from these.",
+    "fix": "Inline SVGs used as standalone icons should have aria-label or a visible/visually-hidden text label if they convey meaningful content (e.g., Discord community link). For any future <img> elements, always include descriptive alt text. Current implementation is acceptable for icon-only SVGs.",
+    "priority": 4
+  },
+  {
+    "issue": "Internal anchor text uses generic labels for some key links",
+    "impact": "Low",
+    "evidence": "Footer navigation anchor text for docs links includes 'Django documentation' (good), but nav items use plain labels like 'Overview', 'Download', 'News', 'Code', 'Issues' without adjacent keyword context. Internal linking anchor text from blog posts to key product pages is not observed.",
+    "fix": "Where natural, ensure blog posts and documentation pages link back to key site pages (/start/, /start/overview/, /download/) using descriptive anchor text like 'Django web framework documentation' rather than just 'Documentation'.",
+    "priority": 5
+  },
+  {
+    "issue": "Weblog index page H1 is 'News & Events' — low keyword value",
+    "impact": "Low",
+    "evidence": "grep on /weblog/ returned <h1>News &amp; Events</h1>. For users searching 'Django blog', 'Django release notes', or 'Django news', 'News & Events' is a match but misses 'Django releases', 'Django changelog', and similar high-value developer queries.",
+    "fix": "Consider retitling to 'Django News & Releases' or 'Django Blog — Framework Updates & Community News' to capture release-focused search intent. Update both H1 and title tag.",
+    "priority": 5
+  }
+]

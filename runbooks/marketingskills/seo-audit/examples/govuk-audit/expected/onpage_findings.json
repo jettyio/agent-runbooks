@@ -1,0 +1,58 @@
+[
+  {
+    "issue": "Homepage meta description too short (62 chars vs 150–160 recommended)",
+    "impact": "Medium",
+    "evidence": "Observed: 'GOV.UK - The best place to find government services and information.' Google may substitute its own snippet. Short descriptions reduce click-through rate from SERP when the auto-generated snippet is a poor match.",
+    "fix": "Expand to ~150 characters. Suggested: 'GOV.UK is the official website of the UK government. Find services and information on benefits, tax, passports, visas, driving, employment, and more — all in one place.'",
+    "priority": 3
+  },
+  {
+    "issue": "Homepage title tag uses a non-standard lang attribute and minimal keyword coverage",
+    "impact": "Low",
+    "evidence": "<title lang=\"en\">Welcome to GOV.UK</title> — 20 chars. The title is on-brand but below the 50–60 char sweet spot. 'Welcome to' adds no SEO value. A second <title>GOV.UK</title> exists inside the inline SVG logo — this is an SVG <title> element, not an HTML page title, so it does not affect SERP display but may confuse SEO tools.",
+    "fix": "Consider updating to 'GOV.UK — Official UK Government Website' (~44 chars) or 'GOV.UK: Government Services and Information' (~45 chars) to include a keyword signal while remaining branded. Remove lang attribute from <title> — it is not a standard HTML attribute for that element.",
+    "priority": 4
+  },
+  {
+    "issue": "Homepage H1 is descriptive but generic, not keyword-targeted",
+    "impact": "Low",
+    "evidence": "H1: 'The best place to find government services and information'. While accurate, it does not include primary navigational keywords (e.g. 'UK government', 'GOV.UK'). For a homepage ranking primarily for branded queries this is low risk, but could be improved for non-branded discovery.",
+    "fix": "Minor improvement only — the homepage is a navigational destination and brand-dominated. If changing, consider: 'Find UK government services and information'. This is low-priority.",
+    "priority": 5
+  },
+  {
+    "issue": "Inner guide pages may render multiple H1 elements without JavaScript",
+    "impact": "Low",
+    "evidence": "Static fetch of /universal-credit returns two H1 elements: 'Universal Credit' and 'What Universal Credit is'. GOV.UK guide pages are multi-section tabbed documents. Without JavaScript, all tab sections may render simultaneously, each with its own H1. The JavaScript-rendered view likely shows only one H1 at a time.",
+    "fix": "Confirm via a browser/rendered fetch that Google sees only one H1 per URL. If tabs are rendered server-side and Google can see multiple H1s in one fetch, change subsection headings to H2 to maintain hierarchy and avoid the multiple-H1 signal.",
+    "priority": 3
+  },
+  {
+    "issue": "Canonical tags confirmed correct on tested pages",
+    "impact": "None",
+    "evidence": "Homepage canonical: <link rel=\"canonical\" href=\"https://www.gov.uk/\"> — self-referencing, correct. /universal-credit canonical: <link rel=\"canonical\" href=\"https://www.gov.uk/universal-credit\"> — self-referencing, correct. HTTP→HTTPS and non-www→www canonicalization enforced by 301 redirects.",
+    "fix": "No action needed.",
+    "priority": 5
+  },
+  {
+    "issue": "Inner page meta descriptions are well-written — pass",
+    "impact": "None",
+    "evidence": "/browse/benefits: 'Includes eligibility, appeals, tax credits and Universal Credit' — concise, topically relevant. /universal-credit: 'Universal Credit is replacing 6 other benefits with a single monthly payment if you're out of work or on a low income - eligibility, how to prepare.' — 155 chars, keyword-rich, action-oriented.",
+    "fix": "No action needed. Meta descriptions on content pages follow best practice.",
+    "priority": 5
+  },
+  {
+    "issue": "Internal linking structure is well-organised — pass",
+    "impact": "None",
+    "evidence": "Navigation menu covers 16 top-level topic areas. Footer mirrors navigation links. Browse pages (/browse/*) link to subcategories. Homepage links key services directly (Universal Credit sign-in, Personal Tax Account, State Pension check). No orphan pages observed at homepage level.",
+    "fix": "No action needed at the top level. For deep content pages, run a Screaming Frog crawl to identify orphaned URLs with zero inlinks.",
+    "priority": 5
+  },
+  {
+    "issue": "URL structure is clean and consistent — pass",
+    "impact": "None",
+    "evidence": "Observed URL patterns: /universal-credit, /browse/benefits, /government/organisations, /search/news-and-communications. All lowercase, hyphen-separated, descriptive, no parameters in permanent content URLs.",
+    "fix": "No action needed.",
+    "priority": 5
+  }
+]

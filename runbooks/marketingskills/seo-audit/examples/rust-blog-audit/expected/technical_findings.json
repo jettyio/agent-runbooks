@@ -1,0 +1,75 @@
+[
+  {
+    "issue": "No H1 tag on any page — posts use H2 as post title, homepage has no heading above H3",
+    "impact": "High",
+    "evidence": "curl https://blog.rust-lang.org — H1 count: 0. curl https://blog.rust-lang.org/2025/02/20/Rust-1.85.0/ — H1 count: 0, post article title rendered as <h2>. curl https://blog.rust-lang.org/2026/05/28/Rust-1.96.0/ — H1: 0, H2: 3, H3: 6.",
+    "fix": "Set the post title as an <h1> on every post page. On the homepage, add an <h1> (e.g. 'The Rust Programming Language Blog' or a keyword-rich variant). Adjust CSS to preserve visual appearance while using correct semantic HTML.",
+    "priority": 1
+  },
+  {
+    "issue": "Identical meta description across all 724+ pages — site-wide tagline used everywhere",
+    "impact": "High",
+    "evidence": "meta name='description' content='Empowering everyone to build reliable and efficient software.' appears on homepage, /2025/02/20/Rust-1.85.0/, /2026/05/28/Rust-1.96.0/, /2025/01/09/Rust-1.84.0/ — all return the same tagline. Twitter:description and og:description also replicate the tagline on all posts.",
+    "fix": "Generate a unique meta description per post from the post's excerpt or first paragraph (ideally 150–160 characters summarizing the post content). Also populate twitter:description and og:description with the same post-specific text.",
+    "priority": 1
+  },
+  {
+    "issue": "No canonical link tags on blog posts",
+    "impact": "Medium",
+    "evidence": "grep for 'canonical' on /2025/02/20/Rust-1.85.0/ returns no output. Homepage also lacks a canonical self-reference.",
+    "fix": "Add <link rel='canonical' href='[page-url]'> to every page (self-referencing canonical). This prevents duplicate-content issues if the blog is ever scraped, syndicated, or accessed via different URL variants.",
+    "priority": 2
+  },
+  {
+    "issue": "Sitemap.xml lacks lastmod, changefreq, and priority metadata",
+    "impact": "Medium",
+    "evidence": "724 <url> entries found; Python check: has_lastmod=False, has_changefreq=False, has_priority=False.",
+    "fix": "Add <lastmod> to each sitemap entry using the post's publish date (or last-modified date from git). This helps Googlebot prioritize crawling of new/updated content, which matters as the archive grows past 700+ posts.",
+    "priority": 2
+  },
+  {
+    "issue": "No HSTS (HTTP Strict Transport Security) header",
+    "impact": "Medium",
+    "evidence": "curl -sI https://blog.rust-lang.org — no Strict-Transport-Security header in response. HTTP→HTTPS 301 redirect is present (curl -sI http://blog.rust-lang.org returns Location: https://...), but first-visit HTTP requests are still possible.",
+    "fix": "Add Strict-Transport-Security: max-age=31536000; includeSubDomains header. For GitHub Pages, this requires a custom domain configured through a CDN/proxy layer (Cloudflare, Fastly) as GitHub Pages itself doesn't expose HSTS configuration.",
+    "priority": 3
+  },
+  {
+    "issue": "No structured data / schema markup found in static HTML",
+    "impact": "Medium",
+    "evidence": "grep for 'ld+json', 'schema.org', 'itemtype', 'itemscope' on homepage and /2025/02/20/Rust-1.85.0/ — no results. Note: JavaScript-rendered schema requires Rich Results Test (https://search.google.com/test/rich-results) for conclusive verification — this check is limited to static HTML only.",
+    "fix": "Add JSON-LD structured data: WebSite schema on homepage (with SearchAction for sitelinks searchbox), Article or BlogPosting schema on each post (with headline, datePublished, dateModified, author, image), and Organization schema site-wide. This enables rich results in SERPs.",
+    "priority": 2,
+    "requires_external_tool": "Rich Results Test for conclusive schema verification"
+  },
+  {
+    "issue": "Short cache TTL (max-age=600 — 10 minutes) for a static blog",
+    "impact": "Low",
+    "evidence": "cache-control: max-age=600 in response headers. The blog is rendered as static HTML on GitHub Pages via Fastly CDN.",
+    "fix": "GitHub Pages caps cache at 600 seconds; to increase this, a custom CDN configuration (e.g. Cloudflare with custom cache rules) would be required. Low impact since the CDN is still serving cached content regardless.",
+    "priority": 4
+  },
+  {
+    "issue": "Non-trailing-slash URLs return 200 instead of redirecting to canonical trailing-slash form",
+    "impact": "Low",
+    "evidence": "curl -sIL https://blog.rust-lang.org/2025/02/20/Rust-1.85.0 (no trailing slash) returns HTTP/2 200 with no redirect — both URL forms serve content. This risks duplicate content without canonical tags.",
+    "fix": "Implement canonical tags (see #3 above) to designate the trailing-slash URL as canonical on all post pages. Alternatively, configure GitHub Pages or CDN to 301-redirect no-trailing-slash to trailing-slash form.",
+    "priority": 3
+  },
+  {
+    "issue": "Core Web Vitals not evaluated",
+    "impact": "Unknown",
+    "evidence": "requires_external_tool: Google PageSpeed Insights (https://pagespeed.web.dev/) — cannot evaluate LCP, INP, CLS, or TTFB via static HTML fetch.",
+    "fix": "Run PageSpeed Insights on: (1) homepage, (2) a release announcement, (3) an Inside Rust post. GitHub Pages serves static files so performance is likely good, but image optimization and font loading should be verified.",
+    "priority": 0,
+    "requires_external_tool": "Google PageSpeed Insights"
+  },
+  {
+    "issue": "Search Console Coverage, indexation status, and crawl errors not evaluated",
+    "impact": "Unknown",
+    "evidence": "requires_external_access: Google Search Console — no access provided.",
+    "fix": "Verify via Search Console > Coverage report that all 724 sitemap URLs are indexed and no important pages are in 'Excluded' or 'Error' states.",
+    "priority": 0,
+    "requires_external_tool": "Google Search Console"
+  }
+]

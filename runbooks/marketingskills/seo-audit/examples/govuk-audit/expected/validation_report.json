@@ -1,0 +1,150 @@
+{
+  "audit_target": "https://www.gov.uk",
+  "audit_date": "2026-06-07",
+  "overall_passed": true,
+  "stages": [
+    {
+      "stage": "environment_setup",
+      "description": "Site reachability and output directory creation",
+      "result": "passed",
+      "details": "HTTP 200 returned from https://www.gov.uk. /app/results directory created."
+    },
+    {
+      "stage": "crawlability_audit",
+      "result": "passed",
+      "details": "robots.txt accessible and well-formed. Sitemap index at /sitemap.xml references 35 sub-sitemaps with daily lastmod. No unintentional blocking of important content. Print variants and search result pages correctly blocked. Sitemap URL referenced in robots.txt."
+    },
+    {
+      "stage": "https_and_redirects",
+      "result": "passed",
+      "details": "HTTP→HTTPS 301 redirect confirmed. Non-www→www 301 redirect confirmed. HSTS with preload present on HTTPS responses. Valid TLS in use. Minor: HSTS max-age differs between www (31536000) and non-www (63072000)."
+    },
+    {
+      "stage": "canonicalisation",
+      "result": "passed",
+      "details": "Self-referencing canonical confirmed on homepage (<link rel=\"canonical\" href=\"https://www.gov.uk/\">) and /universal-credit. No canonical inconsistency detected on tested pages."
+    },
+    {
+      "stage": "site_speed",
+      "result": "passed_with_caveat",
+      "details": "TTFB 25–34ms (CDN-cached, Fastly). HTTP/2 confirmed. Link preload headers for CSS and JS present. Lazy-loading images confirmed. Core Web Vitals (LCP/INP/CLS) could not be measured — requires PageSpeed Insights.",
+      "requires_external_tool": "PageSpeed Insights / CrUX"
+    },
+    {
+      "stage": "mobile_friendliness",
+      "result": "passed",
+      "details": "Viewport meta tag present. Responsive design via GOV.UK Design System. No m. subdomain. Lazy-loaded images."
+    },
+    {
+      "stage": "security_headers",
+      "result": "passed",
+      "details": "Content-Security-Policy with nonce-based scripts. X-Content-Type-Options: nosniff. Referrer-Policy: strict-origin-when-cross-origin. Permissions-Policy: interest-cohort=(). X-Frame-Options: SAMEORIGIN."
+    },
+    {
+      "stage": "hreflang_international_seo",
+      "result": "failed",
+      "details": "Zero hreflang tags found on homepage, /universal-credit, or /cymraeg. Welsh-language content exists but no language annotation implemented. Google cannot reliably serve correct language version to Welsh-speaking users.",
+      "recommendation": "Implement hreflang=\"en-GB\" and hreflang=\"cy\" pairs with x-default across bilingual page pairs."
+    },
+    {
+      "stage": "schema_markup",
+      "result": "unverifiable",
+      "details": "No <script type=\"application/ld+json\"> detected in static HTML of homepage or /universal-credit. JavaScript-rendered schema cannot be detected via curl. Cannot confirm pass/fail.",
+      "requires_external_tool": "Google Rich Results Test (https://search.google.com/test/rich-results)"
+    },
+    {
+      "stage": "title_tags",
+      "result": "passed_with_recommendations",
+      "details": "Homepage title: 'Welcome to GOV.UK' (20 chars) — within limit but below 50–60 char optimum. Non-standard lang attribute present on <title>. Inner page titles (e.g. 'Benefits - GOV.UK') follow correct pattern. SVG <title> element inside logo is not an HTML page title duplicate."
+    },
+    {
+      "stage": "meta_descriptions",
+      "result": "partial_pass",
+      "details": "Homepage: 62 chars — below 150–160 recommendation. Inner pages pass (e.g. /universal-credit: 155 chars, keyword-rich).",
+      "issue": "Homepage meta description too short"
+    },
+    {
+      "stage": "heading_structure",
+      "result": "passed_with_caveat",
+      "details": "Homepage H1 present and descriptive. Inner guide pages show multiple H1 elements in static HTML due to JavaScript tab rendering — requires browser-rendered fetch to confirm Google's view. Cookie banner uses H2 (correct)."
+    },
+    {
+      "stage": "image_optimisation",
+      "result": "partial_pass",
+      "details": "Lazy loading implemented. Images use fixed dimensions. Homepage feature images (4 images) have alt=\"\" — borderline if images convey content meaning beyond adjacent text.",
+      "issue": "Homepage feature images have empty alt text"
+    },
+    {
+      "stage": "url_structure",
+      "result": "passed",
+      "details": "All observed URLs lowercase, hyphen-separated, descriptive, no unnecessary parameters."
+    },
+    {
+      "stage": "internal_linking",
+      "result": "passed",
+      "details": "16-category header navigation. Footer navigation mirrors header. Homepage links key services directly. No orphan pages detected at homepage/browse level."
+    },
+    {
+      "stage": "content_quality",
+      "result": "passed",
+      "details": "E-E-A-T signals exceptional (official government site). Content freshness confirmed (daily sitemap updates, June 2026 lastmod). Guide pages demonstrate sufficient depth (multi-section tabbed structure). Trust signals present (privacy, cookies, contact, accessibility pages)."
+    },
+    {
+      "stage": "backlink_profile",
+      "result": "unverifiable",
+      "details": "No Ahrefs or Semrush access. GOV.UK is presumed to have an authoritative backlink profile given its status as the official UK government domain.",
+      "requires_external_tool": "Ahrefs / Semrush"
+    },
+    {
+      "stage": "search_console_coverage",
+      "result": "unverifiable",
+      "details": "No Search Console access. Indexed URL count, crawl errors, Coverage report, and Core Web Vitals field data not available.",
+      "requires_external_tool": "Google Search Console"
+    },
+    {
+      "stage": "output_files_written",
+      "result": "passed",
+      "details": "All six required output files written to /app/results: seo_audit_report.md, technical_findings.json, onpage_findings.json, content_findings.json, summary.md, validation_report.json."
+    }
+  ],
+  "results": {
+    "passed": 10,
+    "passed_with_caveat": 3,
+    "partial_pass": 2,
+    "failed": 1,
+    "unverifiable_requires_external_tool": 3
+  },
+  "critical_blockers_found": false,
+  "top_issues": [
+    {
+      "rank": 1,
+      "issue": "Core Web Vitals not evaluated — requires PageSpeed Insights",
+      "impact": "High",
+      "action": "Run https://pagespeed.web.dev/ on homepage, /browse/benefits, /universal-credit"
+    },
+    {
+      "rank": 2,
+      "issue": "No hreflang for English↔Welsh bilingual content",
+      "impact": "Medium",
+      "action": "Implement hreflang=\"en-GB\" + hreflang=\"cy\" pairs with x-default across bilingual page templates"
+    },
+    {
+      "rank": 3,
+      "issue": "Schema markup not verifiable via static fetch",
+      "impact": "Medium",
+      "action": "Test at https://search.google.com/test/rich-results; implement WebSite+SearchAction and BreadcrumbList if absent"
+    },
+    {
+      "rank": 4,
+      "issue": "Homepage meta description too short (62 chars)",
+      "impact": "Low",
+      "action": "Expand to ~150 chars in CMS"
+    },
+    {
+      "rank": 5,
+      "issue": "Homepage feature images have empty alt text",
+      "impact": "Low",
+      "action": "Audit each image; add descriptive alt where it adds meaning"
+    }
+  ]
+}

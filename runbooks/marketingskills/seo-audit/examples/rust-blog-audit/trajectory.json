@@ -1,0 +1,28 @@
+{
+  "collection": "jon-runbooks",
+  "task": "seo-audit-safe-valley",
+  "trajectory_id": "a73e0ed1",
+  "workflow_id": "jon-runbooks-seo-audit-safe-valley--a73e0ed1",
+  "url": "https://flows.jetty.io/jon-runbooks/seo-audit-safe-valley/a73e0ed1",
+  "runbook_version": "1.1.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T19:28:51.201962Z",
+  "duration_seconds": 419,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "seo_audit_report.md"
+  ],
+  "target_url": "https://blog.rust-lang.org",
+  "eval": {
+    "overall_passed": true,
+    "overall_health": "Needs Attention",
+    "findings": {
+      "total": 30
+    }
+  },
+  "notes": "Developer blog. Health: Needs Attention; 30 findings across technical/on-page/content."
+}

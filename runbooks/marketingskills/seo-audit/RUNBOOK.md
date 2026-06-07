@@ -1,9 +1,13 @@
 ---
-version: "1.0.0"
+version: "1.1.0"
 evaluation: programmatic
 agent: claude-code
 model: claude-sonnet-4-6
+model_provider: anthropic
 snapshot: python312-uv
+# The headline deliverable — the full audit report.
+primary_outputs:
+  - seo_audit_report.md
 origin:
   url: "https://skills.sh/coreyhaines31/marketingskills/seo-audit"
   source_host: "skills.sh"
@@ -18,6 +22,28 @@ secrets: {}
 ---
 
 # SEO Audit — Agent Runbook
+
+> **EXECUTE THIS RUNBOOK NOW.** Audit the site with tools and write every deliverable to
+> `/app/results`. This is a task to perform, not a document to summarize. Your first action
+> is a tool call (Step 1).
+
+## Inputs (already provided — do NOT ask the user)
+
+Audit with the values below. **Do not pause to interview the user** — infer the site type
+from the homepage, and for anything you can't determine (Search Console data, analytics,
+backlinks), mark it "requires external access — not evaluated" in the report rather than
+asking or guessing.
+
+- **Target URL:** {{target_url}}
+- **Scope:** {{scope}} (default `full`)
+- **Site type:** {{site_type}} (default: auto-detect from the homepage)
+- **Competitor URLs:** {{competitor_urls}}
+
+> **Sandbox tooling note.** This run has `curl`/HTTP fetch but **not** PageSpeed Insights,
+> the Rich Results Test, Search Console, Screaming Frog, or Ahrefs. Do a thorough
+> **static** audit (robots.txt, sitemaps, titles/meta/H1s, canonicals, hreflang, internal
+> links, alt text, HTTPS) and explicitly flag the checks that need those external tools as
+> "requires external tool" — never report a pass/fail you could not actually verify.
 
 ## Objective
 
@@ -72,10 +98,11 @@ If you finish your analysis but have not written all files, go back and write th
 ## Step 1: Environment Setup
 
 ```bash
-# Verify required inputs
-SITE_URL="${SITE_URL:-}"
-if [ -z "$SITE_URL" ]; then
-  echo "ERROR: SITE_URL parameter is required"
+# The target URL comes from the Inputs block above (substituted from the run parameters),
+# NOT from an environment variable.
+SITE_URL="{{target_url}}"
+if [ -z "$SITE_URL" ] || [ "$SITE_URL" = "{{target_url}}" ]; then
+  echo "ERROR: no target_url was provided to this run"
   exit 1
 fi
 
@@ -92,25 +119,15 @@ echo "Auditing: $SITE_URL"
 echo "HTTP status: $HTTP_STATUS"
 ```
 
-**Check for product marketing context first:**
-If `.agents/product-marketing-context.md` exists (or `.claude/product-marketing-context.md` in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
+**Establish context from the site itself (do not ask the user):**
 
-Before proceeding, gather:
-
-1. **Site Context**
-   - What type of site? (SaaS, e-commerce, blog, etc.)
-   - What is the primary business goal for SEO?
-   - What keywords/topics are priorities?
-
-2. **Current State**
-   - Any known issues or concerns?
-   - Current organic traffic level?
-   - Recent changes or migrations?
-
-3. **Scope**
-   - Full site audit or specific pages?
-   - Technical + on-page, or one focus area?
-   - Access to Google Search Console / analytics?
+1. **Site type** — infer from the homepage (`{{site_type}}` if provided, else auto-detect:
+   SaaS, e-commerce, blog/content, multilingual, local). This drives the Step 5 checklist.
+2. **Scope** — `{{scope}}` (default `full`: technical + on-page + content).
+3. **Priorities & competitors** — use `{{competitor_urls}}` if provided; otherwise infer
+   the primary topics from the homepage and key pages.
+4. **External data** — Search Console / analytics / backlink tools are not available in this
+   run; mark any check that needs them "requires external access — not evaluated."
 
 ---
 
@@ -456,7 +473,10 @@ pathlib.Path("/app/results/onpage_findings.json").write_text(json.dumps(onpage_f
 pathlib.Path("/app/results/content_findings.json").write_text(json.dumps(content_findings, indent=2))
 ```
 
-Write `/app/results/seo_audit_report.md` with this structure:
+Write the report to **exactly** `/app/results/seo_audit_report.md` (that literal filename —
+not `audit_report.md` or any other name; it is the declared primary deliverable). Fold the
+prioritized action plan into this single file rather than emitting a separate one. Use this
+structure:
 
 ```markdown
 # SEO Audit Report — <site_url>

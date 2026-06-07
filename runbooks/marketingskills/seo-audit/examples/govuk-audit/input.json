@@ -1,0 +1,8 @@
+{
+  "title": "Audit gov.uk (a strong, server-rendered government site)",
+  "target_url": "https://www.gov.uk",
+  "site_type": "government / institutional",
+  "prompt": "Run a full SEO audit of https://www.gov.uk",
+  "params": { "vars": { "target_url": "https://www.gov.uk", "scope": "full", "site_type": "auto-detect", "competitor_urls": "" } },
+  "note": "Static SEO audit (curl-able HTML): robots.txt, sitemaps, titles/meta/H1s, canonicals, hreflang, internal links, alt text, HTTPS. Live CWV / JS-schema / Search Console are flagged as requires-external-tool."
+}

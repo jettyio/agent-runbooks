@@ -1,0 +1,28 @@
+{
+  "collection": "jon-runbooks",
+  "task": "seo-audit-safe-valley",
+  "trajectory_id": "6044edc3",
+  "workflow_id": "jon-runbooks-seo-audit-safe-valley--6044edc3",
+  "url": "https://flows.jetty.io/jon-runbooks/seo-audit-safe-valley/6044edc3",
+  "runbook_version": "1.1.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T19:28:50.614551Z",
+  "duration_seconds": 497,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "seo_audit_report.md"
+  ],
+  "target_url": "https://www.djangoproject.com",
+  "eval": {
+    "overall_passed": true,
+    "overall_health": "Needs Attention",
+    "findings": {
+      "total": 28
+    }
+  },
+  "notes": "Open-source framework site. Health: Needs Attention. Top concrete finding: HTTP does not redirect to HTTPS."
+}

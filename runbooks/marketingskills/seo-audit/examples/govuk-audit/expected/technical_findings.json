@@ -1,0 +1,72 @@
+[
+  {
+    "issue": "No hreflang tags linking English and Welsh language pages",
+    "impact": "Medium",
+    "evidence": "Homepage (/), inner pages (/universal-credit), and Welsh landing page (/cymraeg) all return zero hreflang attributes in static HTML. The site produces Welsh-language content but no hreflang annotations signal the language relationship to Google.",
+    "fix": "Add hreflang pairs to every English page that has a Welsh equivalent, and vice versa. Each page must carry a self-referencing entry plus a reciprocal pointer. Add x-default to fallback pages. Example: <link rel=\"alternate\" hreflang=\"en-GB\" href=\"https://www.gov.uk/universal-credit\"> and <link rel=\"alternate\" hreflang=\"cy\" href=\"https://www.gov.uk/credyd-cynhwysol\">.",
+    "priority": 2
+  },
+  {
+    "issue": "Schema markup not detectable via static fetch — requires external verification",
+    "impact": "Medium",
+    "evidence": "No <script type=\"application/ld+json\"> blocks appear in the static HTML of the homepage or /universal-credit. GOV.UK's publishing pipeline may inject structured data via JavaScript. Cannot confirm pass/fail without Rich Results Test or browser rendering.",
+    "fix": "Verify via https://search.google.com/test/rich-results for the homepage, a guide page (e.g. /universal-credit), and a publication page. If no schema is found, implement WebSite (with SearchAction sitelinks searchbox), BreadcrumbList on interior pages, and GovernmentOrganization on department pages.",
+    "priority": 2
+  },
+  {
+    "issue": "Homepage meta description is significantly below recommended length",
+    "impact": "Low",
+    "evidence": "Meta description: 'GOV.UK - The best place to find government services and information.' = ~62 characters. Recommended range is 150–160 characters. Short descriptions may be overridden by Google with auto-generated snippets that misrepresent the page.",
+    "fix": "Expand the homepage meta description to ~150 characters covering the site's primary value proposition and top service categories (e.g. tax, benefits, driving, passports, visas). Example: 'GOV.UK is the official website of the UK government. Find government services and information — benefits, tax, driving licences, passports, visas, and more.'",
+    "priority": 3
+  },
+  {
+    "issue": "Homepage feature images have empty alt attributes",
+    "impact": "Low",
+    "evidence": "Four homepage feature images (Find a Job, National Insurance, Cost of Living, GOV.UK App) all carry alt=\"\". These images accompany named service links and carry contextual meaning. Empty alt is appropriate only for purely decorative images.",
+    "fix": "Add descriptive alt text to images that supplement link text and provide content value. If the images are truly decorative (redundant to adjacent text), empty alt is acceptable — but audit each image in the context of a screen reader experience to confirm.",
+    "priority": 3
+  },
+  {
+    "issue": "DeepCrawl bot fully blocked in robots.txt",
+    "impact": "Low",
+    "evidence": "robots.txt contains: User-agent: deepcrawl / Disallow: /. This blocks an enterprise SEO crawl tool, limiting the ability for GDS teams or agency partners to run full-site technical audits.",
+    "fix": "Consider whether this block is still necessary. If it was added to reduce server load, work with DeepCrawl to set a crawl-delay rather than a full block. If it remains intentional, document the reason in robots.txt comments.",
+    "priority": 5
+  },
+  {
+    "issue": "Core Web Vitals not evaluable in this audit — requires PageSpeed Insights",
+    "impact": "High",
+    "evidence": "TTFB measured at 25–34ms (served from Fastly CDN cache), indicating excellent server response time. However, LCP, INP, and CLS cannot be assessed without PageSpeed Insights or Chrome User Experience Report (CrUX) data. The site uses JavaScript-heavy rendering for some elements.",
+    "fix": "Run https://pagespeed.web.dev/ against the homepage, a browse/category page (e.g. /browse/benefits), and a guide page (e.g. /universal-credit). Target: LCP < 2.5s, INP < 200ms, CLS < 0.1. Pay particular attention to LCP on pages with hero images and INP on pages with cookie banners and interactive components.",
+    "priority": 1
+  },
+  {
+    "issue": "HTTPS redirect from non-www (https://gov.uk) performs redirect to https://www.gov.uk — correct, but HSTS max-age differs",
+    "impact": "Low",
+    "evidence": "HTTP→HTTPS: 301 redirect in place (correct). non-www→www: 301 redirect in place (correct). www HSTS max-age=31536000 (1 year) with preload. non-www HSTS max-age=63072000 (2 years) with preload — different values on the two domains.",
+    "fix": "Normalise HSTS max-age across www and non-www domains. Both should use at least max-age=31536000; includeSubDomains; preload for HSTS preload list eligibility.",
+    "priority": 4
+  },
+  {
+    "issue": "Sitemap index uses non-root path (/sitemaps/sitemap_N.xml) — correctly referenced but monitor for consistency",
+    "impact": "Low",
+    "evidence": "sitemap.xml is a sitemap index at the root. Sub-sitemaps live at /sitemaps/sitemap_1.xml through /sitemaps/sitemap_35.xml. All are referenced correctly in the index. Sub-sitemap URLs observed appear to be canonical, indexable pages (e.g. article, publication, news URLs).",
+    "fix": "No immediate action needed. Periodically validate that sub-sitemaps do not include redirected, noindex, or 404 URLs — common as content ages. Can be automated by comparing sitemap URL status codes with a Screaming Frog crawl.",
+    "priority": 5
+  },
+  {
+    "issue": "Search results pages blocked (/search/all*) — intentional and correct",
+    "impact": "None",
+    "evidence": "robots.txt: Disallow: /search/all*. This prevents Google from indexing paginated search result pages, which is correct practice — search results pages provide no unique, crawlable value and waste crawl budget.",
+    "fix": "No action needed. This is best practice confirmed.",
+    "priority": 5
+  },
+  {
+    "issue": "Print URL variants disallowed in robots.txt — intentional and correct",
+    "impact": "None",
+    "evidence": "Disallow: /*/print$ prevents indexation of printer-friendly page variants, avoiding near-duplicate content from polluting the index.",
+    "fix": "No action needed. This is best practice confirmed.",
+    "priority": 5
+  }
+]

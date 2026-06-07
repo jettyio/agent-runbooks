@@ -1,0 +1,8 @@
+{
+  "title": "Audit blog.rust-lang.org (a developer blog)",
+  "target_url": "https://blog.rust-lang.org",
+  "site_type": "blog / content",
+  "prompt": "Run a full SEO audit of https://blog.rust-lang.org",
+  "params": { "vars": { "target_url": "https://blog.rust-lang.org", "scope": "full", "site_type": "auto-detect", "competitor_urls": "" } },
+  "note": "Static SEO audit (curl-able HTML): robots.txt, sitemaps, titles/meta/H1s, canonicals, hreflang, internal links, alt text, HTTPS. Live CWV / JS-schema / Search Console are flagged as requires-external-tool."
+}

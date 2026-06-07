@@ -1,0 +1,30 @@
+{
+  "collection": "jon-runbooks",
+  "task": "seo-audit-safe-valley",
+  "trajectory_id": "3d7d8b05",
+  "workflow_id": "jon-runbooks-seo-audit-safe-valley--3d7d8b05",
+  "url": "https://flows.jetty.io/jon-runbooks/seo-audit-safe-valley/3d7d8b05",
+  "runbook_version": "1.1.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T19:21:45.831838Z",
+  "duration_seconds": 367,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "seo_audit_report.md"
+  ],
+  "target_url": "https://www.gov.uk",
+  "eval": {
+    "overall_passed": true,
+    "overall_health": "Good",
+    "findings": {
+      "technical": 10,
+      "onpage": 8,
+      "content": 8
+    }
+  },
+  "notes": "Strong, server-rendered government portal. Health: Good. Real findings: no English-Welsh hreflang, short homepage meta. Correctly flagged Core Web Vitals / schema / Search Console as requires-external-tool."
+}

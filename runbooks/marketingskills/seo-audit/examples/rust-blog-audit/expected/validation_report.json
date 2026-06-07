@@ -1,0 +1,159 @@
+{
+  "audit_target": "https://blog.rust-lang.org",
+  "audit_date": "2026-06-07",
+  "overall_passed": true,
+  "stages": [
+    {
+      "stage": "environment_setup",
+      "status": "pass",
+      "results": {
+        "site_reachable": true,
+        "http_status": 200,
+        "results_dir_created": true,
+        "http_to_https_redirect": "301 Moved Permanently"
+      }
+    },
+    {
+      "stage": "crawlability_audit",
+      "status": "pass",
+      "results": {
+        "robots_txt_accessible": true,
+        "robots_txt_blocks_important_paths": false,
+        "sitemap_in_robots_txt": true,
+        "sitemap_accessible": true,
+        "sitemap_url": "https://blog.rust-lang.org/sitemap.xml",
+        "sitemap_url_count": 724,
+        "sitemap_has_lastmod": false,
+        "sitemap_has_changefreq": false,
+        "sitemap_has_priority": false,
+        "search_console_submission": "requires_external_access"
+      }
+    },
+    {
+      "stage": "indexation_audit",
+      "status": "warn",
+      "results": {
+        "canonical_tags_present": false,
+        "noindex_directives_found": false,
+        "trailing_slash_consistency": "both_forms_return_200_no_redirect",
+        "search_console_coverage": "requires_external_access"
+      }
+    },
+    {
+      "stage": "https_security_audit",
+      "status": "warn",
+      "results": {
+        "https_active": true,
+        "http_to_https_redirect": true,
+        "hsts_header_present": false,
+        "access_control_header": "access-control-allow-origin: *",
+        "cdn_in_use": true,
+        "cdn_provider": "Fastly via GitHub Pages"
+      }
+    },
+    {
+      "stage": "on_page_audit",
+      "status": "fail",
+      "results": {
+        "h1_on_homepage": false,
+        "h1_on_post_pages": false,
+        "unique_title_per_page": true,
+        "unique_meta_description_per_page": false,
+        "meta_description_issue": "All pages share identical tagline: 'Empowering everyone to build reliable and efficient software.'",
+        "unique_og_description_per_page": false,
+        "unique_twitter_description_per_page": false,
+        "inside_rust_twitter_description_empty": true,
+        "releases_og_description_empty": true,
+        "releases_twitter_description_empty": true,
+        "viewport_meta_tag_present": true,
+        "og_title_unique_per_page": true,
+        "twitter_title_unique_per_page": true,
+        "internal_links_per_post_avg": "2-4",
+        "author_bio_pages": false
+      }
+    },
+    {
+      "stage": "structured_data_audit",
+      "status": "warn",
+      "results": {
+        "json_ld_in_static_html": false,
+        "microdata_in_static_html": false,
+        "schema_org_references_in_static_html": false,
+        "note": "Full verification requires Rich Results Test (https://search.google.com/test/rich-results) as JS-rendered schema cannot be detected via static HTML fetch",
+        "requires_external_tool": "Google Rich Results Test"
+      }
+    },
+    {
+      "stage": "content_quality_audit",
+      "status": "pass",
+      "results": {
+        "eeat_experience": "moderate — team-level attribution only, no individual author bios",
+        "eeat_expertise": "high — official project blog with deep technical content",
+        "eeat_authoritativeness": "excellent — official rust-lang.org blog, linked from primary nav",
+        "eeat_trustworthiness": "good — HTTPS, CoC, Privacy Policy, Security Policy, contact info present",
+        "topical_clusters_implemented": false,
+        "tag_taxonomy_present": false,
+        "content_freshness": "active — posts through June 2026",
+        "duplicate_content_risk": "low — post titles are unique; body content is unique per post"
+      }
+    },
+    {
+      "stage": "site_type_checklist",
+      "status": "pass",
+      "results": {
+        "site_type": "blog",
+        "outdated_content_handling": "not_implemented",
+        "keyword_cannibalization_check": "requires_search_console",
+        "topical_clusters": false,
+        "pillar_pages": false,
+        "internal_linking_quality": "sparse"
+      }
+    },
+    {
+      "stage": "output_file_verification",
+      "status": "pass",
+      "results": {
+        "seo_audit_report_md": "present",
+        "technical_findings_json": "present",
+        "onpage_findings_json": "present",
+        "content_findings_json": "present",
+        "summary_md": "present",
+        "validation_report_json": "present"
+      }
+    }
+  ],
+  "checks_requiring_external_tools": [
+    {
+      "check": "Core Web Vitals (LCP, INP, CLS)",
+      "tool": "Google PageSpeed Insights",
+      "url": "https://pagespeed.web.dev/"
+    },
+    {
+      "check": "Schema markup / structured data (JavaScript-rendered)",
+      "tool": "Google Rich Results Test",
+      "url": "https://search.google.com/test/rich-results"
+    },
+    {
+      "check": "Search Console Coverage report (indexation status)",
+      "tool": "Google Search Console",
+      "url": "https://search.google.com/search-console"
+    },
+    {
+      "check": "Backlink profile and competitor analysis",
+      "tool": "Ahrefs or Semrush",
+      "url": null
+    },
+    {
+      "check": "Keyword cannibalization across 724 posts",
+      "tool": "Google Search Console + manual review",
+      "url": null
+    }
+  ],
+  "top_issues": [
+    {"priority": 1, "issue": "No H1 tags on any page", "impact": "High"},
+    {"priority": 1, "issue": "Duplicate meta descriptions sitewide", "impact": "High"},
+    {"priority": 2, "issue": "No canonical link tags", "impact": "Medium"},
+    {"priority": 2, "issue": "No structured data in static HTML", "impact": "Medium"},
+    {"priority": 2, "issue": "No topical content clusters or tag taxonomy", "impact": "Medium"}
+  ]
+}

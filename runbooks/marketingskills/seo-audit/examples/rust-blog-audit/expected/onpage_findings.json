@@ -1,0 +1,79 @@
+[
+  {
+    "issue": "Missing H1 tags on all pages — posts use <h2> as article title, homepage has no heading above H3",
+    "impact": "High",
+    "evidence": "Homepage: H1=0, H2=0, H3=13 (year groupings). Post /2025/02/20/Rust-1.85.0/: H1=0, post title 'Announcing Rust 1.85.0 and Rust 2024' rendered as <h2>. Post /2026/05/28/Rust-1.96.0/: H1=0, H2=3, H3=6.",
+    "fix": "Change the post title element from <h2> to <h1> in the blog template. Add an <h1> to the homepage (e.g. wrapping the site title 'Rust Blog' or 'Official Rust Programming Language Blog'). Adjust CSS accordingly.",
+    "priority": 1
+  },
+  {
+    "issue": "Meta descriptions are identical across all pages — not unique per post",
+    "impact": "High",
+    "evidence": "All sampled pages return: meta name='description' content='Empowering everyone to build reliable and efficient software.' — same text on homepage and all release posts. This is the brand tagline, not post-specific content.",
+    "fix": "Template the meta description field to use the first 150 characters of the post body, or a dedicated 'description' front matter field. Each post should have a unique, compelling summary that entices clicks from SERP.",
+    "priority": 1
+  },
+  {
+    "issue": "Open Graph and Twitter Card descriptions use the site tagline, not post-specific content",
+    "impact": "High",
+    "evidence": "og:description='Empowering everyone to build reliable and efficient software.' and twitter:description='Empowering everyone to build reliable and efficient software.' on all sampled posts including /2025/02/20/Rust-1.85.0/ and /2026/05/28/Rust-1.96.0/.",
+    "fix": "Set og:description and twitter:description per post using the post excerpt or first paragraph. This affects social sharing CTR directly — a generic tagline is wasted real estate when shared on Twitter/X, LinkedIn, or Mastodon.",
+    "priority": 1
+  },
+  {
+    "issue": "Inside Rust index page has an empty twitter:description",
+    "impact": "Medium",
+    "evidence": "curl https://blog.rust-lang.org/inside-rust/ — twitter:description is an empty string (''), though og:description has 'Want to follow along with Rust development?...'",
+    "fix": "Sync the twitter:description value with og:description on the Inside Rust index page.",
+    "priority": 3
+  },
+  {
+    "issue": "Releases index page has empty og:description and twitter:description",
+    "impact": "Medium",
+    "evidence": "curl https://blog.rust-lang.org/releases/ — og:description='' and twitter:description=''. meta description also uses the generic tagline.",
+    "fix": "Add a meaningful description for the Releases index page, e.g. 'All official Rust release announcements, from Rust 1.0 through the latest stable release.'",
+    "priority": 3
+  },
+  {
+    "issue": "Homepage title is generic and not keyword-optimized",
+    "impact": "Low",
+    "evidence": "title='The Rust Programming Language Blog' (34 chars) — below the 50–60 char optimal range. Does not include high-value terms like 'official', 'announcements', or 'news'.",
+    "fix": "Consider a more descriptive title such as 'Rust Blog — Official Announcements & Updates | Rust Programming Language' (64 chars — slightly over; trim as needed). The current title leaves keyword opportunity on the table.",
+    "priority": 3
+  },
+  {
+    "issue": "Post titles omit 'Rust' in some cases and don't consistently front-load the primary keyword",
+    "impact": "Low",
+    "evidence": "Titles like 'Announcing Rust 1.96.0 | Rust Blog' are reasonable (34 chars), but some posts use titles like 'crates.io: Dropping support for non-canonical downloads' which may not surface the Rust brand prominently.",
+    "fix": "Establish a title template: '[Post Title] | Rust Blog' — ensure each post title is descriptive enough to stand alone in a SERP, with the key topic in the first 50 characters.",
+    "priority": 4
+  },
+  {
+    "issue": "Internal linking within posts is sparse — most posts only link back to 1–3 related posts",
+    "impact": "Medium",
+    "evidence": "Post /2026/05/28/Rust-1.96.0/ contains only 3 internal content links (HOME + 2 CVE posts). Internal links in the <main> content area are minimal, limiting PageRank flow to related articles.",
+    "fix": "Add 3–5 contextual internal links per post to related content (e.g. the previous release post, an Inside Rust post about the same feature, or the edition guide). Use descriptive anchor text (not 'click here' or bare numbers).",
+    "priority": 2
+  },
+  {
+    "issue": "Anchor text quality is inconsistent — 'previously announced' is weak; numerical CVE identifiers are acceptable but not optimal",
+    "impact": "Low",
+    "evidence": "From /2026/05/28/Rust-1.96.0/: anchor 'previously announced' links to a WebAssembly target changes post. 'CVE-2026-5223' links to the CVE post. Better anchors would describe the topic.",
+    "fix": "Prefer descriptive anchors like 'WebAssembly target handling changes' over 'previously announced'. For CVE posts, 'CVE-2026-5223 (integer overflow in regex)' is more informative than a bare ID.",
+    "priority": 4
+  },
+  {
+    "issue": "Author attribution is team-level only — no individual author bio pages or author profile links",
+    "impact": "Medium",
+    "evidence": "Posts show bylines like 'Feb. 20, 2025 · The Rust Release Team' and 'June 2, 2026 · Funding team on behalf of Leadership Council'. No individual authors named or linked. No /author/ pages exist.",
+    "fix": "Where posts have identifiable individual authors (especially for non-release posts), add individual author bylines with links to an author page listing their credentials, GitHub profile, or short bio. This strengthens E-E-A-T signals for Google's quality raters.",
+    "priority": 3
+  },
+  {
+    "issue": "No related posts / content recommendation section",
+    "impact": "Low",
+    "evidence": "Post pages end with the contributor list and no further navigation to related content. Homepage shows posts only grouped by year, not by topic.",
+    "fix": "Add a 'Related Posts' section at the bottom of each post (previous/next release, or topically related Inside Rust posts). This improves pages-per-session, reduces bounce rate, and distributes PageRank to older posts.",
+    "priority": 4
+  }
+]
