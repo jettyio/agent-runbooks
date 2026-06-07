@@ -1,0 +1,440 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "nutlope/hallmark",
+  "title": "Hallmark",
+  "description": "Generate web UI that refuses to look AI-generated. Drives the Nutlope/hallmark design skill \u2014 a tight anti-slop rule set (21 macrostructures, a 20-theme catalog, OKLCH tokens, a 58-gate slop test) \u2014 across four verbs: build a page, audit one, redesign one, or study a reference into a portable design.md.",
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "build/redesign 15\u201325 mins \u00b7 audit/study ~7 mins"
+  },
+  "example_outputs": [
+    {
+      "id": "cricket-atmospheric",
+      "title": "Atmospheric AI app landing (build)",
+      "summary": "A nocturnal landing page for a 2am voice-notes app \u2014 Midnight theme, a four-stage Narrative Workflow macrostructure, real CSS-art. 58/58 slop gates.",
+      "thumbnail": "examples/cricket-atmospheric/thumbnail.png",
+      "operation": "build",
+      "capability": "build",
+      "dir": "examples/cricket-atmospheric",
+      "input": {
+        "kind": "brief",
+        "values": {
+          "operation": "build",
+          "brief": "A landing page for Cricket \u2014 a late-night AI voice companion that captures, transcribes, and threads the half-formed ideas you have at 2am into something you can act on by morning. Audience: writers, founders, and makers who think after dark. The one action: start a free nightly capture. Feel: calm, atmospheric, nocturnal \u2014 not another loud SaaS hero.",
+          "tone": "austere",
+          "genre": "atmospheric",
+          "theme": "auto",
+          "target_url": ""
+        }
+      },
+      "primary_output": "examples/cricket-atmospheric/expected/screenshot.png",
+      "outputs": [
+        {
+          "file": "examples/cricket-atmospheric/expected/screenshot.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "Full-page render of the built page (the gallery hero)."
+        },
+        {
+          "file": "examples/cricket-atmospheric/expected/index.html",
+          "role": "primary",
+          "type": "text/html",
+          "description": "The standalone page \u2014 links styles.css + tokens.css by relative href."
+        },
+        {
+          "file": "examples/cricket-atmospheric/expected/styles.css",
+          "role": "secondary",
+          "type": "text/css",
+          "description": "Component styles; references tokens by name, Hallmark stamp on line 1."
+        },
+        {
+          "file": "examples/cricket-atmospheric/expected/tokens.css",
+          "role": "secondary",
+          "type": "text/css",
+          "description": "OKLCH token system (palette, type scale, spacing, motion)."
+        },
+        {
+          "file": "examples/cricket-atmospheric/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Run summary (inferred design context / findings / DNA)."
+        },
+        {
+          "file": "examples/cricket-atmospheric/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Programmatic validation (stages + overall_passed)."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks",
+        "task": "hallmark",
+        "trajectory_id": "e7dbdc23",
+        "url": "https://flows.jetty.io/jon-runbooks/hallmark/e7dbdc23",
+        "agent": "claude-code",
+        "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T12:14:36.389473Z",
+        "duration_seconds": 1549,
+        "eval": {
+          "overall_passed": true,
+          "slop_test": "58/58",
+          "theme": "Midnight",
+          "macrostructure": "Narrative Workflow",
+          "nav": "N9",
+          "footer": "Ft2"
+        }
+      }
+    },
+    {
+      "id": "marginalia-editorial",
+      "title": "Editorial city quarterly (build)",
+      "summary": "A warm, text-forward subscriber page for an independent print magazine \u2014 Almanac theme, Letter macrostructure. Structurally the opposite of Cricket from the same runbook.",
+      "thumbnail": "examples/marginalia-editorial/thumbnail.png",
+      "operation": "build",
+      "capability": "build",
+      "dir": "examples/marginalia-editorial",
+      "input": {
+        "kind": "brief",
+        "values": {
+          "operation": "build",
+          "brief": "A single-page site for Marginalia \u2014 an independent print quarterly about the future of cities: housing, transit, public space, and the people who shape them. Audience: urbanists, architects, and curious city-dwellers. The one action: subscribe to the next issue. Feel: editorial, warm, literary, print-rooted \u2014 long-form and text-forward, not a tech product.",
+          "tone": "editorial",
+          "genre": "editorial",
+          "theme": "auto",
+          "target_url": ""
+        }
+      },
+      "primary_output": "examples/marginalia-editorial/expected/screenshot.png",
+      "outputs": [
+        {
+          "file": "examples/marginalia-editorial/expected/screenshot.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "Full-page render of the built page (the gallery hero)."
+        },
+        {
+          "file": "examples/marginalia-editorial/expected/index.html",
+          "role": "primary",
+          "type": "text/html",
+          "description": "The standalone page \u2014 links styles.css + tokens.css by relative href."
+        },
+        {
+          "file": "examples/marginalia-editorial/expected/styles.css",
+          "role": "secondary",
+          "type": "text/css",
+          "description": "Component styles; references tokens by name, Hallmark stamp on line 1."
+        },
+        {
+          "file": "examples/marginalia-editorial/expected/tokens.css",
+          "role": "secondary",
+          "type": "text/css",
+          "description": "OKLCH token system (palette, type scale, spacing, motion)."
+        },
+        {
+          "file": "examples/marginalia-editorial/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Run summary (inferred design context / findings / DNA)."
+        },
+        {
+          "file": "examples/marginalia-editorial/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Programmatic validation (stages + overall_passed)."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks",
+        "task": "hallmark",
+        "trajectory_id": "cdbcaba1",
+        "url": "https://flows.jetty.io/jon-runbooks/hallmark/cdbcaba1",
+        "agent": "claude-code",
+        "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T13:39:55.638572Z",
+        "duration_seconds": 1019,
+        "eval": {
+          "overall_passed": true,
+          "slop_test": "58/58",
+          "theme": "Almanac",
+          "macrostructure": "Letter",
+          "nav": "N6",
+          "footer": "Ft4"
+        }
+      }
+    },
+    {
+      "id": "audit-saas-slop",
+      "title": "Audit a textbook AI-slop page (audit)",
+      "summary": "Scores a deliberately AI-generated SaaS page against the 58-gate canon: 7 critical \u00b7 9 major \u00b7 4 minor, each with a file:line citation. No edits.",
+      "thumbnail": "examples/audit-saas-slop/thumbnail.png",
+      "operation": "audit",
+      "capability": "audit",
+      "dir": "examples/audit-saas-slop",
+      "input": {
+        "file": "examples/audit-saas-slop/input/index.html",
+        "license": "Synthetic sample (authored for this example; freely redistributable)",
+        "values": {
+          "operation": "audit",
+          "brief": "Audit this landing page against Hallmark's anti-pattern list. It is a typical AI-generated SaaS landing page. Return a ranked punch list grouped by severity with a count line. Do NOT edit anything.",
+          "tone": "auto",
+          "genre": "auto",
+          "theme": "auto",
+          "target_url": ""
+        }
+      },
+      "primary_output": "examples/audit-saas-slop/expected/audit_report.md",
+      "outputs": [
+        {
+          "file": "examples/audit-saas-slop/expected/audit_report.md",
+          "role": "primary",
+          "type": "text/markdown",
+          "description": "Ranked anti-pattern punch list grouped by severity, with file:line citations."
+        },
+        {
+          "file": "examples/audit-saas-slop/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Run summary (inferred design context / findings / DNA)."
+        },
+        {
+          "file": "examples/audit-saas-slop/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Programmatic validation (stages + overall_passed)."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks",
+        "task": "hallmark",
+        "trajectory_id": "a45a609c",
+        "url": "https://flows.jetty.io/jon-runbooks/hallmark/a45a609c",
+        "agent": "claude-code",
+        "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T13:39:56.350774Z",
+        "duration_seconds": 453,
+        "eval": {
+          "overall_passed": true,
+          "findings": {
+            "critical": 7,
+            "major": 9,
+            "minor": 4
+          },
+          "slop_gates_failed": 24,
+          "slop_gates_total": 58
+        }
+      }
+    },
+    {
+      "id": "govuk-study",
+      "title": "Study GOV.UK \u2192 a portable design.md (study)",
+      "summary": "URL-mode DNA extraction of the OGL-licensed GOV.UK Design System into a portable design.md \u2014 tokens, type roles, archetypes. Structure only, never pixels.",
+      "thumbnail": "examples/govuk-study/thumbnail.png",
+      "operation": "study",
+      "capability": "study",
+      "dir": "examples/govuk-study",
+      "input": {
+        "kind": "url",
+        "license": "OGL v3.0 (public reference \u2014 DNA extraction only, no pixels/copy)",
+        "url": "https://www.gov.uk",
+        "values": {
+          "operation": "study",
+          "brief": "Extract the design DNA of GOV.UK as a public design reference (the OGL-licensed GOV.UK Design System) \u2014 its macrostructure, type-pairing roles, colour anchor, and component archetypes \u2014 and lock it into a portable design.md. Structure only, never pixels or copy.",
+          "tone": "auto",
+          "genre": "auto",
+          "theme": "auto",
+          "target_url": "https://www.gov.uk"
+        }
+      },
+      "primary_output": "examples/govuk-study/expected/design.md",
+      "outputs": [
+        {
+          "file": "examples/govuk-study/expected/design.md",
+          "role": "primary",
+          "type": "text/markdown",
+          "description": "Portable design DNA \u2014 tokens, type roles, archetypes, motion stance, provenance."
+        },
+        {
+          "file": "examples/govuk-study/expected/study_diagnosis.md",
+          "role": "secondary",
+          "type": "text/markdown",
+          "description": "The one-page 'what you're looking at' diagnosis report."
+        },
+        {
+          "file": "examples/govuk-study/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Run summary (inferred design context / findings / DNA)."
+        },
+        {
+          "file": "examples/govuk-study/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Programmatic validation (stages + overall_passed)."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks",
+        "task": "hallmark",
+        "trajectory_id": "4e4867f2",
+        "url": "https://flows.jetty.io/jon-runbooks/hallmark/4e4867f2",
+        "agent": "claude-code",
+        "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T13:39:57.186778Z",
+        "duration_seconds": 429,
+        "eval": {
+          "overall_passed": true,
+          "slop_test": "58/58",
+          "macrostructure": "Ecosystem Index",
+          "source_mode": "url"
+        }
+      }
+    }
+  ],
+  "featured_examples": [
+    "cricket-atmospheric",
+    "audit-saas-slop",
+    "govuk-study",
+    "marginalia-editorial"
+  ],
+  "inputs": [
+    {
+      "label": "Operation",
+      "type": "select",
+      "required": true,
+      "default": "build",
+      "options": [
+        "build",
+        "audit",
+        "redesign",
+        "study"
+      ],
+      "description": "build a new page \u00b7 audit an existing one \u00b7 redesign one \u00b7 study a reference into a design.md."
+    },
+    {
+      "label": "Brief / instructions",
+      "type": "text",
+      "required": false,
+      "description": "What to design or rebuild \u2014 audience, purpose, content, any brand colour/vibe. Required for build/redesign."
+    },
+    {
+      "label": "Study target URL",
+      "type": "url",
+      "required": false,
+      "description": "study URL-mode: a public page whose DNA to extract. Omit for image-mode (screenshot upload)."
+    },
+    {
+      "label": "Tone",
+      "type": "select",
+      "required": false,
+      "default": "auto",
+      "options": [
+        "auto",
+        "editorial",
+        "brutalist",
+        "soft",
+        "utilitarian",
+        "luxury",
+        "playful",
+        "technical",
+        "austere"
+      ],
+      "description": "One extreme. `auto` infers from the brief."
+    },
+    {
+      "label": "Genre",
+      "type": "select",
+      "required": false,
+      "default": "auto",
+      "options": [
+        "auto",
+        "editorial",
+        "modern-minimal",
+        "atmospheric",
+        "playful"
+      ],
+      "description": "Scopes themes + slop gates. `auto` picks by signal."
+    },
+    {
+      "label": "Theme",
+      "type": "text",
+      "required": false,
+      "default": "auto",
+      "description": "A catalog theme slug (Specimen, Terminal, Bloom, \u2026) or `custom`. `auto` rotates by genre."
+    },
+    {
+      "label": "Uploaded inputs",
+      "type": "file",
+      "required": false,
+      "accept": ".html,.css,.png,.jpg",
+      "description": "audit/redesign: the page(s) to read. study image-mode: a screenshot."
+    }
+  ],
+  "secrets": [],
+  "runbook_source": "RUNBOOK.md",
+  "meta": {
+    "created_by": {
+      "name": "Nutlope",
+      "source": "github",
+      "url": "https://github.com/Nutlope/hallmark",
+      "avatar": null
+    },
+    "tags": [
+      "design",
+      "frontend",
+      "html",
+      "css",
+      "anti-slop",
+      "landing-page",
+      "audit",
+      "design-system",
+      "agent:claude-code",
+      "programmatic"
+    ],
+    "version": "1.0.0",
+    "agent": "claude-code",
+    "model": "claude-sonnet-4-6",
+    "model_provider": "anthropic",
+    "snapshot": "prism-playwright",
+    "evaluation": "programmatic",
+    "primary_outputs": [
+      "screenshot.png",
+      "index.html",
+      "audit_report.md",
+      "design.md"
+    ],
+    "lineage": {
+      "remix_of": null,
+      "imported_from": "https://github.com/Nutlope/hallmark",
+      "imported_by": "skill-to-runbook-converter@1.0.0",
+      "upstream_license": "MIT",
+      "upstream_version": "hallmark SKILL.md v1.1.0"
+    },
+    "share": "nutlope/hallmark",
+    "metrics": {
+      "_note": "Live counters \u2014 supplied by the Jetty backend at render time, not authored here.",
+      "number_of_runs": null,
+      "forks": null,
+      "remixes": null
+    }
+  },
+  "handoff": {
+    "collection": "jon-runbooks",
+    "name": "hallmark",
+    "runbook_source": "agent-runbooks/runbooks/nutlope/hallmark/RUNBOOK.md",
+    "trajectory_id": "e7dbdc23",
+    "sample_output_excerpt": "examples/cricket-atmospheric/expected/screenshot.png",
+    "current_eval_pass_rate": 1.0,
+    "eval_runs": "4/4 production runs green (e7dbdc23 build, cdbcaba1 build, a45a609c audit, 4e4867f2 study); all operation-clean, no scratch pollution; two builds at 58/58 slop gates."
+  },
+  "caveats": [
+    "Build/redesign need the prism-playwright snapshot for the in-sandbox screenshot.png hero; on a non-browser snapshot the page still builds but the render degrades to PARTIAL.",
+    "Web fonts (Fontshare/Google) load at render time over the network; offline sandboxes fall back to system stacks in each theme's font-stack.",
+    "study URL-mode can't judge visual rhythm from HTML alone and says so; JS-only SPA shells / auth walls fall back to a screenshot request.",
+    "The non-interactive override disables Hallmark's design-context question; the agent infers audience/use/tone and states the inferences in summary.md."
+  ]
+}
