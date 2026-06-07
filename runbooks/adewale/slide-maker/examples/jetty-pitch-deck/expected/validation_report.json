@@ -1,0 +1,63 @@
+{
+  "run_metadata": {
+    "goal": "investor pitch deck for Jetty (jetty.io), the agentic evaluation platform for AI/ML workflows",
+    "mode": "create",
+    "style_preset": "bold-signal",
+    "slide_count": 16,
+    "source_repo": "jettyio/jettyio-skills",
+    "run_date": "2026-06-07"
+  },
+  "stages": [
+    {
+      "name": "spec_completeness",
+      "passed": true,
+      "message": "All 16 slides have kind, headline, speaker notes, and source references"
+    },
+    {
+      "name": "through_line",
+      "passed": true,
+      "message": "Through-line present in cover slide (slide 1) and called back in closing slide (slide 16)"
+    },
+    {
+      "name": "source_grounding",
+      "passed": true,
+      "message": "All factual claims traced to jetty.io, jettyio-skills README, QUICKSTART, and pricing page"
+    },
+    {
+      "name": "density",
+      "passed": true,
+      "message": "All slides within speaker-led budget (1-3 bullets); no overflow splits required"
+    },
+    {
+      "name": "no_internal_leakage",
+      "passed": true,
+      "message": "No runbook/spec internals (kind names, layout values, preset slugs, file paths) in slide text"
+    },
+    {
+      "name": "no_llm_tells",
+      "passed": true,
+      "message": "No hollow intensifiers, generic transitions, filler openers, or unsupported superlatives found"
+    },
+    {
+      "name": "compilation",
+      "passed": true,
+      "message": "slidev build exited 0; two upstream @vueuse/core annotation warnings did not affect output"
+    },
+    {
+      "name": "pdf_export",
+      "passed": true,
+      "message": "deck.pdf produced successfully (176494 bytes) via slidev export"
+    },
+    {
+      "name": "results_hygiene",
+      "passed": true,
+      "message": "No node_modules/, dist/, or package*.json in /app/results; all build work confined to /app/work"
+    },
+    {
+      "name": "output_files",
+      "passed": true,
+      "message": "All required deliverables present and non-empty: deck.spec.md, slides.md, deck.pdf, README.md, styles/tokens.css, summary.md, validation_report.json"
+    }
+  ],
+  "overall_passed": true
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Investor pitch deck for Jetty",
+  "operation": "create",
+  "prompt": "investor pitch deck for Jetty (jetty.io), the agentic evaluation platform for AI/ML workflows",
+  "params": {
+    "vars": {
+      "mode": "create",
+      "style_preset": "bold-signal",
+      "source_repo_url": "jettyio/jettyio-skills",
+      "goal_or_update_instructions": "investor pitch deck for Jetty (jetty.io), the agentic evaluation platform for AI/ML workflows"
+    }
+  },
+  "source": {
+    "kind": "github-repo",
+    "repo": "jettyio/jettyio-skills",
+    "note": "Project deck grounded in the Jetty MCP skills repo."
+  }
+}

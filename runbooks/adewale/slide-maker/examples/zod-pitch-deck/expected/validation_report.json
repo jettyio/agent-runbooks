@@ -1,0 +1,60 @@
+{
+  "run_date": "2026-06-07",
+  "mode": "create",
+  "style_preset": "terminal-green",
+  "slide_count": 13,
+  "source_repo": "colinhacks/zod",
+  "stages": [
+    {
+      "name": "spec_completeness",
+      "passed": true,
+      "message": "All 13 slides have kind, headline, notes, and sources"
+    },
+    {
+      "name": "through_line",
+      "passed": true,
+      "message": "Through-line present in cover slide and recalled in closing slide"
+    },
+    {
+      "name": "source_grounding",
+      "passed": true,
+      "message": "All factual claims traced to colinhacks/zod README, v4 release notes, npm API, GitHub API"
+    },
+    {
+      "name": "density",
+      "passed": true,
+      "message": "Speaker-led density throughout; no overflow required splitting"
+    },
+    {
+      "name": "no_internal_leakage",
+      "passed": true,
+      "message": "No runbook internals, layout names, or spec slugs exposed in slide text"
+    },
+    {
+      "name": "llm_tells",
+      "passed": true,
+      "message": "No filler openers, hollow intensifiers, or unsupported superlatives detected"
+    },
+    {
+      "name": "compilation",
+      "passed": true,
+      "message": "slidev build exited 0; INVALID_ANNOTATION warnings are from @vueuse/core and do not affect output"
+    },
+    {
+      "name": "pdf_export",
+      "passed": true,
+      "message": "deck.pdf produced via slidev export (335871 bytes)"
+    },
+    {
+      "name": "results_hygiene",
+      "passed": true,
+      "message": "No node_modules/, dist/, or package*.json in /app/results"
+    },
+    {
+      "name": "output_files",
+      "passed": true,
+      "message": "All required deliverables present and non-empty: deck.spec.md, slides.md, deck.pdf, README.md, styles/tokens.css, summary.md, validation_report.json"
+    }
+  ],
+  "overall_passed": true
+}

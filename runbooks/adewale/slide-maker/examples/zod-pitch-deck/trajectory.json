@@ -1,0 +1,21 @@
+{
+  "collection": "jon-runbooks",
+  "task": "slide-maker-crisp-vine",
+  "trajectory_id": "224baedb",
+  "workflow_id": "jon-runbooks-slide-maker-crisp-vine--224baedb",
+  "url": "https://flows.jetty.io/jon-runbooks/slide-maker-crisp-vine/224baedb",
+  "runbook_version": "1.2.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T03:39:58.248382Z",
+  "duration_seconds": 491,
+  "status": "completed",
+  "success": true,
+  "primary_files": ["deck.pdf", "slides.md"],
+  "slide_count": 14,
+  "eval": { "overall_passed": true, "pdf_export": true, "results_hygiene": true },
+  "thumbnail_page": 3,
+  "notes": "Optimized v1.2.0 run: produced a real deck.pdf (primary), 7 clean deliverables, no node_modules/dist pollution. Cover slides render sparse and dark-preset palettes apply inconsistently (Slidev theming limitation, documented in Common Fixes) — the thumbnail uses a content slide."
+}

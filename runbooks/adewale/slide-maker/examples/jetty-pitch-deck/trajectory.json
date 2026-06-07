@@ -1,0 +1,21 @@
+{
+  "collection": "jon-runbooks",
+  "task": "slide-maker-grand-pearl",
+  "trajectory_id": "3d528c58",
+  "workflow_id": "jon-runbooks-slide-maker-grand-pearl--3d528c58",
+  "url": "https://flows.jetty.io/jon-runbooks/slide-maker-grand-pearl/3d528c58",
+  "runbook_version": "1.2.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T03:39:56.978344Z",
+  "duration_seconds": 430,
+  "status": "completed",
+  "success": true,
+  "primary_files": ["deck.pdf", "slides.md"],
+  "slide_count": 16,
+  "eval": { "overall_passed": true, "pdf_export": true, "results_hygiene": true },
+  "thumbnail_page": 2,
+  "notes": "Optimized v1.2.0 run: produced a real deck.pdf (primary), 7 clean deliverables, no node_modules/dist pollution. Cover slides render sparse and dark-preset palettes apply inconsistently (Slidev theming limitation, documented in Common Fixes) — the thumbnail uses a content slide."
+}

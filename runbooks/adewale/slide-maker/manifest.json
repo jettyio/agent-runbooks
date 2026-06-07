@@ -1,0 +1,157 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "adewale/slide-maker",
+  "title": "Slide maker",
+  "description": "Generate presentation decks grounded in real GitHub projects, or walk through a structured brief-to-slides process. Produces a Slidev deck — spec, compiled slides, and a printable deck.pdf.",
+
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "8–15 mins"
+  },
+
+  "example_outputs": [
+    {
+      "id": "jetty-pitch-deck",
+      "title": "Investor pitch deck for Jetty",
+      "summary": "A bold-signal pitch deck grounded in the Jetty MCP skills repo — exported to a printable deck.pdf.",
+      "thumbnail": "examples/jetty-pitch-deck/thumbnail.png",
+      "operation": "create",
+      "style_preset": "bold-signal",
+      "dir": "examples/jetty-pitch-deck",
+      "input": {
+        "kind": "github-repo",
+        "repo": "jettyio/jettyio-skills",
+        "values": { "mode": "create", "style_preset": "bold-signal", "source_repo_url": "jettyio/jettyio-skills", "goal_or_update_instructions": "investor pitch deck for Jetty (jetty.io), the agentic evaluation platform for AI/ML workflows" }
+      },
+      "primary_output": "examples/jetty-pitch-deck/expected/deck.pdf",
+      "outputs": [
+        { "file": "examples/jetty-pitch-deck/expected/deck.pdf", "role": "primary", "type": "application/pdf", "description": "The rendered deck (one page per slide)." },
+        { "file": "examples/jetty-pitch-deck/expected/slides.md", "role": "secondary", "type": "text/markdown", "description": "The compiled Slidev source." },
+        { "file": "examples/jetty-pitch-deck/expected/deck.spec.md", "role": "secondary", "type": "text/markdown", "description": "The deck specification (through-line + slide list)." },
+        { "file": "examples/jetty-pitch-deck/expected/README.md", "role": "report", "type": "text/markdown", "description": "Project README for the deck." },
+        { "file": "examples/jetty-pitch-deck/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Run summary." },
+        { "file": "examples/jetty-pitch-deck/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation (incl. pdf_export gate)." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "slide-maker-grand-pearl", "trajectory_id": "3d528c58",
+        "url": "https://flows.jetty.io/jon-runbooks/slide-maker-grand-pearl/3d528c58",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T03:39:56.978344Z", "duration_seconds": 430, "slide_count": 16, "eval": { "overall_passed": true, "pdf_export": true, "results_hygiene": true }
+      }
+    },
+    {
+      "id": "zod-pitch-deck",
+      "title": "Developer pitch deck for Zod",
+      "summary": "A terminal-green developer deck grounded in a popular public repo (colinhacks/zod).",
+      "thumbnail": "examples/zod-pitch-deck/thumbnail.png",
+      "operation": "create",
+      "style_preset": "terminal-green",
+      "dir": "examples/zod-pitch-deck",
+      "input": {
+        "kind": "github-repo",
+        "repo": "colinhacks/zod",
+        "values": { "mode": "create", "style_preset": "terminal-green", "source_repo_url": "colinhacks/zod", "goal_or_update_instructions": "developer pitch deck for Zod, the TypeScript-first schema validation library" }
+      },
+      "primary_output": "examples/zod-pitch-deck/expected/deck.pdf",
+      "outputs": [
+        { "file": "examples/zod-pitch-deck/expected/deck.pdf", "role": "primary", "type": "application/pdf", "description": "The rendered deck." },
+        { "file": "examples/zod-pitch-deck/expected/slides.md", "role": "secondary", "type": "text/markdown", "description": "Compiled Slidev source." },
+        { "file": "examples/zod-pitch-deck/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Run summary." },
+        { "file": "examples/zod-pitch-deck/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "slide-maker-crisp-vine", "trajectory_id": "224baedb",
+        "url": "https://flows.jetty.io/jon-runbooks/slide-maker-crisp-vine/224baedb",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T03:39:58.248382Z", "duration_seconds": 491, "slide_count": 14, "eval": { "overall_passed": true, "pdf_export": true, "results_hygiene": true }
+      }
+    },
+    {
+      "id": "verification-keynote",
+      "title": "Conference keynote (brief-driven)",
+      "summary": "A dark-botanical keynote built from a brief alone (no repo) — exercises the runbook's non-project path.",
+      "thumbnail": "examples/verification-keynote/thumbnail.png",
+      "operation": "create",
+      "style_preset": "dark-botanical",
+      "dir": "examples/verification-keynote",
+      "input": {
+        "kind": "brief",
+        "repo": null,
+        "values": { "mode": "create", "style_preset": "dark-botanical", "source_repo_url": "", "goal_or_update_instructions": "conference keynote: The verification gap in AI agents. 10-12 slides for an engineering audience." }
+      },
+      "primary_output": "examples/verification-keynote/expected/deck.pdf",
+      "outputs": [
+        { "file": "examples/verification-keynote/expected/deck.pdf", "role": "primary", "type": "application/pdf", "description": "The rendered deck." },
+        { "file": "examples/verification-keynote/expected/slides.md", "role": "secondary", "type": "text/markdown", "description": "Compiled Slidev source." },
+        { "file": "examples/verification-keynote/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Run summary." },
+        { "file": "examples/verification-keynote/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "slide-maker-tender-trail", "trajectory_id": "24390596",
+        "url": "https://flows.jetty.io/jon-runbooks/slide-maker-tender-trail/24390596",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T03:39:59.464265Z", "duration_seconds": 307, "slide_count": 12, "eval": { "overall_passed": true, "pdf_export": true, "results_hygiene": true }
+      }
+    }
+  ],
+
+  "featured_examples": ["jetty-pitch-deck", "zod-pitch-deck", "verification-keynote"],
+
+  "inputs": [
+    { "label": "Goal or update instructions", "type": "text", "required": true, "description": "What to create or update — e.g. \"pitch deck for ProjectX from its GitHub repo\"." },
+    { "label": "Mode", "type": "select", "required": false, "default": "create", "options": ["create", "update"], "description": "Create a new deck or update an existing one." },
+    { "label": "Source repo URL", "type": "url", "required": false, "description": "GitHub repository to ground a project deck on. Omit for a brief-driven deck." },
+    { "label": "Style preset", "type": "select", "required": true, "default": "auto",
+      "options": ["auto", "bold-signal", "electric-studio", "creative-voltage", "dark-botanical", "notebook-tabs", "pastel-geometry", "split-pastel", "vintage-editorial", "neon-cyber", "terminal-green", "swiss-modern", "paper-and-ink"],
+      "description": "Visual style preset (slug). `auto` lets the agent pick by mood." }
+  ],
+
+  "secrets": [
+    { "label": "GitHub personal access token", "env": "GITHUB_PAT", "required": false, "description": "May be required to clone private source repos. Public repos need none." }
+  ],
+
+  "runbook_source": "RUNBOOK.md",
+
+  "meta": {
+    "created_by": { "name": "adewale", "source": "skills.sh", "url": "https://skills.sh/adewale/slide-maker/slide-maker", "avatar": null },
+    "tags": ["design", "github", "slidev", "presentation", "deck", "agent:claude-code", "programmatic"],
+    "version": "1.2.0",
+    "agent": "claude-code",
+    "model": "claude-sonnet-4-6",
+    "model_provider": "anthropic",
+    "snapshot": "python312-uv",
+    "evaluation": "programmatic",
+    "primary_outputs": ["deck.pdf", "slides.md"],
+    "lineage": {
+      "remix_of": null,
+      "imported_from": "https://skills.sh/adewale/slide-maker/slide-maker",
+      "imported_by": "skill-to-runbook-converter@1.0.0"
+    },
+    "share": "adewale/slide-maker",
+    "metrics": {
+      "_note": "Live counters — supplied by the Jetty backend at render time, not authored here.",
+      "number_of_runs": null,
+      "forks": null,
+      "remixes": null
+    }
+  },
+
+  "handoff": {
+    "issue": "JET-252 (G1a-1)",
+    "collection": "jon-runbooks",
+    "name": "slide-maker-grand-pearl",
+    "runbook_source": "agent-runbooks/runbooks/adewale/slide-maker/RUNBOOK.md",
+    "trajectory_id": "3d528c58",
+    "sample_output_excerpt": "examples/jetty-pitch-deck/expected/deck.pdf",
+    "current_eval_pass_rate": 1.0,
+    "eval_runs": "3/3 optimized v1.2.0 runs green (3d528c58, 224baedb, 24390596). Pre-v1.2.0 runs failed: the runbook read the goal from an unset $GOAL env var and the agent asked the user instead of proceeding — fixed via the {{...}} Inputs block."
+  },
+  "caveats": [
+    "Thumbnails use a representative content slide, not the cover: cover/first slides can render sparse in `slidev export`.",
+    "Dark style presets (e.g. bold-signal) do not always apply their page background — `styles/tokens.css` overrides are honored inconsistently by the default Slidev theme. Documented in the runbook's Common Fixes."
+  ]
+}

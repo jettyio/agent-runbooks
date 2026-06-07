@@ -1,9 +1,14 @@
 ---
-version: 1.0.0
+version: "1.2.0"
 evaluation: programmatic
 agent: claude-code
 model: claude-sonnet-4-6
 snapshot: python312-uv
+# Headline deliverables, resolved by Mise to outputs.primary_files in order.
+# deck.pdf (the rendered slides) is the gallery hero; slides.md is the source.
+primary_outputs:
+  - deck.pdf
+  - slides.md
 origin:
   url: https://skills.sh/adewale/slide-maker/slide-maker
   source_host: skills.sh
@@ -17,6 +22,25 @@ origin:
 ---
 
 # slide-maker — Agent Runbook
+
+> **EXECUTE THIS RUNBOOK NOW.** Begin immediately with Step 1 and work through the
+> steps in order, running the shell commands and writing every deliverable to
+> `/app/results`. This is a task to perform with tools, **not** a document to read
+> back or summarize. Your first action is a tool call (Step 1: Environment Setup).
+> The run is complete only when a non-empty `deck.pdf` and the other deliverables
+> exist in `/app/results`.
+
+## Inputs (already provided — do NOT ask the user)
+
+These values come from the run parameters. **Proceed with them immediately — never
+pause to ask the user for a goal, topic, mode, or style.** If a value below still shows
+its raw `{{...}}` placeholder, treat it as: goal → stop with an error; mode → `create`;
+style → `auto`; source repo → none (brief-driven).
+
+- **Goal / update instructions:** {{goal_or_update_instructions}}
+- **Mode:** {{mode}}
+- **Style preset:** {{style_preset}}
+- **Source repo URL:** {{source_repo_url}}
 
 ## Objective
 
@@ -35,6 +59,16 @@ Generate presentation decks grounded in real GitHub projects, or walk through a 
 | `/app/results/styles/tokens.css` | CSS token overrides (when visual customization is needed) |
 | `/app/results/summary.md` | Executive summary with run metadata, mode, and any issues |
 | `/app/results/validation_report.json` | Structured validation results with stages, results, and `overall_passed` |
+
+> **`deck.pdf` is the headline deliverable and a hard gate.** `slidev build`
+> (a static site) is NOT a substitute for `slidev export` (the PDF). A run with
+> no non-empty `deck.pdf` is a **failure** — set `overall_passed=false`; do not
+> report success.
+>
+> **`/app/results` must contain ONLY the deliverables above.** Do all Slidev
+> project setup (`npm install`, `slidev build`) in **`/app/work`**, never in
+> `/app/results` — `node_modules/`, `dist/`, and `package*.json` must never land
+> in `/app/results` (everything there is persisted as a run output).
 
 ## Parameters
 
@@ -74,15 +108,23 @@ npm list -g @slidev/cli 2>/dev/null || npm install -g @slidev/cli
 # Install the headless Chromium that `slidev export` uses to render the PDF
 npm list -g playwright-chromium 2>/dev/null || npm install -g playwright-chromium
 
-# Create output directory
-mkdir -p /app/results/styles
+# Create the deliverables dir AND an isolated build dir.
+# Slidev project setup (npm install, build) happens in /app/work so that
+# node_modules/, dist/, and package*.json never pollute /app/results.
+mkdir -p /app/results/styles /app/work
 
-# Verify required inputs are provided
-if [ -z "$GOAL" ]; then
-  echo "ERROR: GOAL (goal or update instructions) is not set"
+# The goal/mode/style come from the Inputs block above (substituted from the run
+# parameters), NOT from environment variables. Read them from there.
+GOAL="{{goal_or_update_instructions}}"
+MODE="{{mode}}"; [ -z "$MODE" ] || [ "$MODE" = "{{mode}}" ] && MODE="create"
+STYLE="{{style_preset}}"; [ -z "$STYLE" ] || [ "$STYLE" = "{{style_preset}}" ] && STYLE="auto"
+REPO="{{source_repo_url}}"; [ "$REPO" = "{{source_repo_url}}" ] && REPO=""
+
+if [ -z "$GOAL" ] || [ "$GOAL" = "{{goal_or_update_instructions}}" ]; then
+  echo "ERROR: no goal/update instructions were provided to this run"
   exit 1
 fi
-echo "Environment setup complete. Mode: ${MODE:-create}"
+echo "Setup complete. GOAL=$GOAL | MODE=$MODE | STYLE=$STYLE | REPO=${REPO:-<none, brief-driven>}"
 ```
 
 The work proceeds in eight phases. Every reference each phase needs is inline in
@@ -285,8 +327,11 @@ A Slidev deck is a single Markdown file. Slides are separated by a line containi
 - Put the speaker-notes outline into each slide's `<!-- ... -->` notes comment.
 
 ```bash
-# Verify the deck compiles without errors
-cd /app/results && slidev build --out dist/ 2>&1 | tail -20
+# Build in the isolated /app/work dir — never in /app/results (keeps node_modules/
+# dist out of the persisted outputs). slides.md itself stays a deliverable in /app/results.
+cp /app/results/slides.md /app/work/slides.md
+cp -r /app/results/styles /app/work/styles 2>/dev/null || true
+cd /app/work && slidev build slides.md --out /app/work/dist 2>&1 | tail -20
 ```
 
 Compilation must exit 0. If it fails, fix compiler errors before proceeding (max 3 rounds).
@@ -305,15 +350,17 @@ If Step 6 validation or Step 7 compilation fails:
    | Slidev syntax error | Consult the Slidev reference (Step 7) for correct syntax |
    | Slide count out of range | Merge or split slides to hit the target range |
    | Token CSS syntax error | Validate CSS syntax; check `styles/tokens.css` |
+   | Dark preset renders on a white background | `styles/tokens.css` vars do NOT reliably override the default theme's page background. For dark presets (`bold-signal`, `dark-botanical`, etc.) set the background globally — a `background:` in the headmatter and/or a global `<style>` block setting `--slidev-theme` / the slide `background-color` — not tokens alone |
+   | Cover/first slide renders blank in `deck.pdf` | `slidev export` can rasterize the first slide before the theme/fonts finish loading; give the cover explicit, high-contrast title text and re-export. Verify by rendering `deck.pdf` page 1, not by trusting the build |
 
 3. Re-run the failed step and overwrite the output
 4. Repeat up to 3 times total
 
 After 3 rounds, if compilation still fails, write the failure into `summary.md` and set `overall_passed=false` in `validation_report.json`.
 
-## Step 9: Validate
+## Step 9: Validate & Evaluate Quality
 
-Run the acceptance checklist below, then scan every slide and speaker note for the **LLM tells** listed underneath.
+Evaluate the deck against the acceptance checklist below, then scan every slide and speaker note for the **LLM tells** listed underneath.
 
 **Acceptance checklist**
 
@@ -326,6 +373,8 @@ Run the acceptance checklist below, then scan every slide and speaker note for t
 | No internal leakage | No slide text exposes runbook/spec internals — kind names, `layout:` values, preset slugs, file paths, "Option A/B", or the raw goal text |
 | No LLM tells | Zero instances from the list below |
 | Compilation | `slidev build` exits 0 |
+| PDF export | `slidev export` produced a **non-empty `deck.pdf`** — `slidev build` alone does NOT satisfy this gate |
+| Results hygiene | `/app/results` contains only deliverables — no `node_modules/`, `dist/`, or `package*.json` |
 | Output files | All required outputs exist and are non-empty |
 
 **LLM tells** — find and rewrite any of these:
@@ -342,16 +391,24 @@ Run the acceptance checklist below, then scan every slide and speaker note for t
 Print the validated deck to PDF with Slidev's built-in exporter. Run this **after** Step 9 passes so the PDF reflects the final slides.
 
 ```bash
-cd /app/results
+cd /app/work
 
-# slidev export renders each slide through headless Chromium → deck.pdf
-slidev export slides.md --output deck.pdf --timeout 60000 2>&1 | tail -20
+# slidev export renders each slide through headless Chromium → the deck.pdf hero deliverable.
+slidev export slides.md --output /app/results/deck.pdf --timeout 60000 2>&1 | tail -20
 
-# Confirm a non-empty PDF was produced
+# If Chromium is missing, install it and retry export ONCE.
+if [ ! -s /app/results/deck.pdf ]; then
+  npm install -g playwright-chromium 2>&1 | tail -3
+  (cd /app/work && slidev export slides.md --output /app/results/deck.pdf --timeout 60000 2>&1 | tail -20)
+fi
+
+# HARD GATE — a non-empty deck.pdf is mandatory.
 if [ -s /app/results/deck.pdf ]; then
   echo "PASS: deck.pdf ($(wc -c < /app/results/deck.pdf) bytes)"
 else
-  echo "FAIL: deck.pdf was not produced"
+  echo "FAIL: deck.pdf was NOT produced. This run is a FAILURE — record the export"
+  echo "error in summary.md and set overall_passed=false in validation_report.json."
+  echo "Do NOT report success. 'slidev build' (a static site) is NOT a substitute."
 fi
 ```
 
@@ -370,7 +427,22 @@ Write the final deliverables to `/app/results/`:
 
 ## Step 12: Write Validation Report
 
-Write `/app/results/validation_report.json` reflecting all stage outcomes, including the PDF export result.
+Write `/app/results/validation_report.json` reflecting all stage outcomes. It MUST
+include an explicit `pdf_export` stage and a `results_hygiene` stage:
+
+```json
+{
+  "stages": [
+    { "name": "compilation",      "passed": true,  "message": "slidev build exited 0" },
+    { "name": "pdf_export",       "passed": true,  "message": "deck.pdf produced (NNN bytes)" },
+    { "name": "results_hygiene",  "passed": true,  "message": "no node_modules/dist in /app/results" },
+    { "name": "output_files",     "passed": true,  "message": "all deliverables present and non-empty" }
+  ],
+  "overall_passed": true
+}
+```
+
+`overall_passed` MUST be `false` if `pdf_export` did not produce a non-empty `deck.pdf`.
 
 ## Step 13: Write Executive Summary
 
@@ -381,8 +453,18 @@ Write `/app/results/summary.md` with run metadata, mode detected, through-line, 
 ### Verification Script
 
 ```bash
-echo "=== FINAL OUTPUT VERIFICATION ==="
 RESULTS_DIR="/app/results"
+
+echo "=== RESULTS HYGIENE (scrub build scaffolding — safety net) ==="
+rm -rf "$RESULTS_DIR/node_modules" "$RESULTS_DIR/dist" "$RESULTS_DIR/.slidev" \
+       "$RESULTS_DIR/package.json" "$RESULTS_DIR/package-lock.json"
+if [ -d "$RESULTS_DIR/node_modules" ] || [ -d "$RESULTS_DIR/dist" ]; then
+  echo "FAIL: build scaffolding still present in /app/results"
+else
+  echo "PASS: /app/results is clean (deliverables only)"
+fi
+
+echo "=== FINAL OUTPUT VERIFICATION ==="
 for f in \
   "$RESULTS_DIR/deck.spec.md" \
   "$RESULTS_DIR/slides.md" \
@@ -396,6 +478,8 @@ for f in \
     echo "PASS: $f ($(wc -c < "$f") bytes)"
   fi
 done
+# deck.pdf is the hard gate — build is not a substitute for export.
+[ -s "$RESULTS_DIR/deck.pdf" ] || echo "CRITICAL: deck.pdf missing — overall_passed MUST be false"
 echo "=== VERIFICATION COMPLETE ==="
 ```
 
@@ -420,4 +504,5 @@ echo "=== VERIFICATION COMPLETE ==="
 - **Spec before compile.** Never start `slides.md` without an approved `deck.spec.md`. The spec is the contract.
 - **Grounding over generality.** For project decks, every factual claim should trace back to a specific file, commit, README section, or issue in the source repo. Avoid generic statements.
 - **LLM tells are silent failures.** Run the LLM-tells scan in Step 9 before delivery. Phrases like "In conclusion", "Delve into", or unsupported superlatives undermine credibility.
-- **`slidev build` is the ground truth.** If the build fails, the deck is not done, regardless of how good `slides.md` looks in a text editor.
+- **`deck.pdf` is the ground truth, not `slides.md` or `slidev build`.** `slidev build` produces a static *website* (`dist/`); only `slidev export` produces the `deck.pdf` the deck is judged on. A run without a non-empty `deck.pdf` has failed, however good `slides.md` looks.
+- **Build in `/app/work`, deliver to `/app/results`.** Run every `npm install` / `slidev build` in `/app/work` so `node_modules/`, `dist/`, and `package*.json` never get persisted as run outputs. `/app/results` holds only the deliverables (`deck.spec.md`, `slides.md`, `deck.pdf`, `README.md`, `styles/`, the two reports).

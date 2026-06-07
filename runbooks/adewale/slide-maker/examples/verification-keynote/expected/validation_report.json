@@ -1,0 +1,55 @@
+{
+  "stages": [
+    {
+      "name": "spec_completeness",
+      "passed": true,
+      "message": "All 11 slides have kind, headline, and notes outline"
+    },
+    {
+      "name": "through_line",
+      "passed": true,
+      "message": "Through-line present in cover slide and called back in closing slide"
+    },
+    {
+      "name": "source_grounding",
+      "passed": true,
+      "message": "Brief-driven deck; all factual claims grounded in known LLM agent failure patterns"
+    },
+    {
+      "name": "density_check",
+      "passed": true,
+      "message": "Speaker-led mode; all slides within density budget"
+    },
+    {
+      "name": "no_internal_leakage",
+      "passed": true,
+      "message": "No runbook internals, kind names, or preset slugs visible in slide text"
+    },
+    {
+      "name": "llm_tells_scan",
+      "passed": true,
+      "message": "No filler openers, hollow intensifiers, unsupported superlatives, or symmetry tics found"
+    },
+    {
+      "name": "compilation",
+      "passed": true,
+      "message": "slidev build exited 0 (warnings only: INVALID_ANNOTATION in upstream @vueuse/core — non-fatal)"
+    },
+    {
+      "name": "pdf_export",
+      "passed": true,
+      "message": "deck.pdf produced via slidev export (331051 bytes)"
+    },
+    {
+      "name": "results_hygiene",
+      "passed": true,
+      "message": "No node_modules/, dist/, or package*.json in /app/results"
+    },
+    {
+      "name": "output_files",
+      "passed": true,
+      "message": "All required deliverables present and non-empty: deck.spec.md, slides.md, deck.pdf, README.md, styles/tokens.css, summary.md, validation_report.json"
+    }
+  ],
+  "overall_passed": true
+}

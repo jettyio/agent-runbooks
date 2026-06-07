@@ -1,0 +1,18 @@
+{
+  "title": "Developer pitch deck for Zod",
+  "operation": "create",
+  "prompt": "developer pitch deck for Zod, the TypeScript-first schema validation library",
+  "params": {
+    "vars": {
+      "mode": "create",
+      "style_preset": "terminal-green",
+      "source_repo_url": "colinhacks/zod",
+      "goal_or_update_instructions": "developer pitch deck for Zod, the TypeScript-first schema validation library"
+    }
+  },
+  "source": {
+    "kind": "github-repo",
+    "repo": "colinhacks/zod",
+    "note": "Project deck grounded in a popular public open-source repo; developer-styled (terminal-green)."
+  }
+}

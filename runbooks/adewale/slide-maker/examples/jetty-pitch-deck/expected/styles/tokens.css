@@ -1,0 +1,161 @@
+/* Bold Signal preset — Jetty investor pitch */
+/* bg #1a1a1a · accent #FF5722 · text #ffffff */
+
+:root {
+  --slidev-theme-primary: #FF5722;
+  --slidev-theme-background: #1a1a1a;
+  --slidev-theme-foreground: #ffffff;
+  --jetty-accent: #FF5722;
+  --jetty-accent-dim: #cc4318;
+  --jetty-bg: #1a1a1a;
+  --jetty-surface: #242424;
+  --jetty-surface-raised: #2e2e2e;
+  --jetty-text: #ffffff;
+  --jetty-text-muted: #a0a0a0;
+  --jetty-border: #333333;
+}
+
+/* Deck-wide typography */
+.slidev-layout {
+  background-color: var(--jetty-bg);
+  color: var(--jetty-text);
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+}
+
+/* Display headings */
+h1 {
+  font-family: 'Archivo Black', 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--jetty-text);
+}
+
+h2, h3 {
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  color: var(--jetty-text);
+}
+
+/* Accent underline for key terms */
+strong, b {
+  color: var(--jetty-accent);
+  font-weight: 700;
+}
+
+/* Cover slide */
+.slidev-layout.cover {
+  background: linear-gradient(135deg, #1a1a1a 0%, #1e1a18 60%, #2a1a10 100%);
+}
+
+.slidev-layout.cover h1 {
+  font-size: 3.5rem;
+  line-height: 1.05;
+  background: linear-gradient(90deg, #ffffff 0%, #FF8C66 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.slidev-layout.cover p {
+  color: var(--jetty-text-muted);
+  font-size: 1.25rem;
+}
+
+/* Statement slides — big bold assertion */
+.slidev-layout.statement {
+  background-color: var(--jetty-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slidev-layout.statement h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+  text-align: center;
+  max-width: 80%;
+  border-left: 6px solid var(--jetty-accent);
+  padding-left: 1.5rem;
+  text-align: left;
+}
+
+/* Fact slides — big metric */
+.slidev-layout.fact {
+  background-color: var(--jetty-surface);
+}
+
+.slidev-layout.fact h1 {
+  font-size: 4rem;
+  color: var(--jetty-accent);
+}
+
+/* Section dividers */
+.slidev-layout.section {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a1a10 100%);
+}
+
+.slidev-layout.section h1 {
+  font-size: 2.5rem;
+  border-bottom: 3px solid var(--jetty-accent);
+  padding-bottom: 0.5rem;
+}
+
+/* Default/content slides */
+.slidev-layout.default {
+  background-color: var(--jetty-bg);
+}
+
+.slidev-layout.default h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Two-column */
+.slidev-layout.two-cols {
+  background-color: var(--jetty-bg);
+}
+
+.slidev-layout.two-cols h1 {
+  font-size: 2rem;
+  border-bottom: 2px solid var(--jetty-accent);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* End/closing slide */
+.slidev-layout.end {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a1a10 100%);
+}
+
+.slidev-layout.end h1 {
+  font-size: 2.75rem;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul li {
+  padding: 0.35rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+ul li::before {
+  content: '→';
+  color: var(--jetty-accent);
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+}
+
+/* Divider accent line */
+.accent-bar {
+  width: 60px;
+  height: 4px;
+  background: var(--jetty-accent);
+  margin: 0.75rem 0 1.25rem 0;
+  border-radius: 2px;
+}

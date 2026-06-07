@@ -1,0 +1,17 @@
+{
+  "title": "Conference keynote (brief-driven, no repo)",
+  "operation": "create",
+  "prompt": "conference keynote: The verification gap in AI agents — generation got cheap, checking did not.",
+  "params": {
+    "vars": {
+      "mode": "create",
+      "style_preset": "dark-botanical",
+      "source_repo_url": "",
+      "goal_or_update_instructions": "conference keynote: The verification gap in AI agents — generation got cheap, checking did not. 10-12 slides for an engineering audience."
+    }
+  },
+  "source": {
+    "kind": "brief",
+    "note": "Brief-driven deck (no GitHub repo) — exercises the runbook's non-project path; elegant dark-botanical style."
+  }
+}

@@ -1,0 +1,131 @@
+/* Dark Botanical — token overrides for Slidev default theme */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,600;0,700;1,400;1,600&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Palette */
+  --slidev-theme-background:   #0f0f0f;
+  --slidev-theme-color:        #e8e4df;
+  --slidev-theme-accent:       #d4a574;
+  --slidev-theme-secondary:    #8fad91;   /* muted botanical green */
+  --slidev-theme-muted:        #5a5550;
+  --slidev-theme-surface:      #1a1a18;
+  --slidev-theme-border:       #2e2e2a;
+
+  /* Typography */
+  --slidev-theme-font-sans:    'IBM Plex Sans', sans-serif;
+  --slidev-theme-font-serif:   'Cormorant', Georgia, serif;
+  --slidev-theme-font-mono:    'IBM Plex Mono', 'Fira Code', monospace;
+
+  /* Layout */
+  --slidev-theme-roundness:    2px;
+}
+
+/* Slide canvas */
+.slidev-layout {
+  background-color: var(--slidev-theme-background);
+  color: var(--slidev-theme-color);
+  font-family: var(--slidev-theme-font-sans);
+}
+
+/* Display headings use serif */
+h1, h2 {
+  font-family: var(--slidev-theme-font-serif);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--slidev-theme-color);
+}
+
+h3, h4, h5 {
+  font-family: var(--slidev-theme-font-sans);
+  font-weight: 500;
+  color: var(--slidev-theme-accent);
+}
+
+/* Accent line under h1 on cover */
+.slidev-layout.cover h1::after {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 2px;
+  background: var(--slidev-theme-accent);
+  margin-top: 0.75rem;
+}
+
+/* Bullet spacing */
+ul, ol {
+  line-height: 1.7;
+}
+
+li + li {
+  margin-top: 0.4rem;
+}
+
+/* Code blocks */
+code, pre {
+  font-family: var(--slidev-theme-font-mono);
+  background: #141410;
+  border: 1px solid var(--slidev-theme-border);
+  border-radius: var(--slidev-theme-roundness);
+}
+
+/* Inline code */
+p code, li code {
+  color: var(--slidev-theme-accent);
+  padding: 0.1em 0.35em;
+  font-size: 0.9em;
+}
+
+/* Two-column divider */
+.slidev-layout.two-cols .col-right {
+  border-left: 1px solid var(--slidev-theme-border);
+  padding-left: 2rem;
+}
+
+/* Statement slide — large centered text */
+.slidev-layout.statement h1 {
+  font-size: 2.8rem;
+  line-height: 1.15;
+  max-width: 18ch;
+  margin: auto;
+  text-align: center;
+}
+
+/* Fact / number emphasis */
+.fact-number {
+  font-family: var(--slidev-theme-font-serif);
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--slidev-theme-accent);
+  line-height: 1;
+}
+
+/* Section slide accent */
+.slidev-layout.section h1 {
+  font-size: 3rem;
+  border-left: 4px solid var(--slidev-theme-accent);
+  padding-left: 1.5rem;
+  color: var(--slidev-theme-color);
+}
+
+/* Closing / end slide */
+.slidev-layout.end h1 {
+  font-family: var(--slidev-theme-font-serif);
+  font-size: 2.4rem;
+  color: var(--slidev-theme-accent);
+}
+
+/* Muted subtitle / subhead */
+.subtitle, .subtext {
+  font-size: 1rem;
+  color: var(--slidev-theme-muted);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Horizontal rule as subtle divider */
+hr {
+  border: none;
+  border-top: 1px solid var(--slidev-theme-border);
+  margin: 1.5rem 0;
+}
