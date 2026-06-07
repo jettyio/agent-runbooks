@@ -1,0 +1,19 @@
+{
+  "collection": "jon-runbooks",
+  "task": "pdf-amber-hawk",
+  "trajectory_id": "598fbc1c",
+  "workflow_id": "jon-runbooks-pdf-amber-hawk--598fbc1c",
+  "url": "https://flows.jetty.io/jon-runbooks/pdf-amber-hawk/598fbc1c",
+  "runbook_version": "1.2.1",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T03:05:59.393462Z",
+  "duration_seconds": 77.4,
+  "status": "completed",
+  "success": true,
+  "primary_files": ["extracted_text.txt"],
+  "eval": { "overall_passed": true, "pass": 4, "partial": 0, "fail": 0 },
+  "notes": "Robustness test on a 66-page federal RFP. extract-text recovered 184,033 characters across all 66 pages; body clauses are clean. The SF-33 cover form interleaves overlapping text runs (e.g. ORDER/UNDER) — inherent to the form layout, not fixable by tolerance; documented in the runbook Common Fixes."
+}

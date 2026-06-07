@@ -1,0 +1,44 @@
+{
+  "version": "1.1.0",
+  "run_date": "2026-06-07T03:07:05.148718+00:00",
+  "parameters": {
+    "skill_url": "https://skills.sh/anthropics/skills/pdf",
+    "operation": "extract-text",
+    "input_files": [
+      "/app/assets/598fbc1c.00.pdf"
+    ]
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "pypdf, pdfplumber, reportlab installed"
+    },
+    {
+      "name": "validation",
+      "passed": true,
+      "message": "Input file verified: 930096 bytes"
+    },
+    {
+      "name": "execution",
+      "passed": true,
+      "message": "184033 characters extracted from 66 pages"
+    },
+    {
+      "name": "output_check",
+      "passed": true,
+      "message": "extracted_text.txt is non-empty"
+    }
+  ],
+  "results": {
+    "pass": 4,
+    "partial": 0,
+    "fail": 0
+  },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/extracted_text.txt",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}

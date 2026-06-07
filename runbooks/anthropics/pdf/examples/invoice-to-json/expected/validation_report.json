@@ -1,0 +1,50 @@
+{
+  "version": "1.1.0",
+  "run_date": "2026-06-07T03:07:17.734057Z",
+  "parameters": {
+    "skill_url": "https://skills.sh/anthropics/skills/pdf",
+    "operation": "extract-tables",
+    "input_files": [
+      "/app/assets/3bc97289.00.pdf"
+    ]
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "pypdf, pdfplumber, pandas, openpyxl installed"
+    },
+    {
+      "name": "validation",
+      "passed": true,
+      "message": "Input file verified: 3202 bytes, 1 page"
+    },
+    {
+      "name": "execution",
+      "passed": true,
+      "message": "1 table extracted (6 rows, 5 columns) from page 1"
+    },
+    {
+      "name": "output_check",
+      "passed": true,
+      "message": "extracted_tables.json and extracted_tables.xlsx written and non-empty"
+    },
+    {
+      "name": "json_valid",
+      "passed": true,
+      "message": "extracted_tables.json passes strict JSON validation (allow_nan=False)"
+    }
+  ],
+  "results": {
+    "pass": 5,
+    "partial": 0,
+    "fail": 0
+  },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/extracted_tables.json",
+    "/app/results/extracted_tables.xlsx",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}

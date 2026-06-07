@@ -1,0 +1,58 @@
+[
+  {
+    "source_page": 1,
+    "table_index": 0,
+    "headers": [
+      "Item",
+      "Description",
+      "Qty",
+      "Unit Price",
+      "Amount"
+    ],
+    "rows": [
+      {
+        "Item": "SKU-1001",
+        "Description": "Servo motor, 24V high-torque",
+        "Qty": "12",
+        "Unit Price": "$48.50",
+        "Amount": "$582.00"
+      },
+      {
+        "Item": "SKU-2310",
+        "Description": "Aluminium chassis plate, 300x200mm",
+        "Qty": "8",
+        "Unit Price": "$22.75",
+        "Amount": "$182.00"
+      },
+      {
+        "Item": "SKU-0440",
+        "Description": "LiDAR sensor module, 2D",
+        "Qty": "3",
+        "Unit Price": "$310.00",
+        "Amount": "$930.00"
+      },
+      {
+        "Item": "SKU-7782",
+        "Description": "Cable harness, shielded (10-pack)",
+        "Qty": "15",
+        "Unit Price": "$9.95",
+        "Amount": "$149.25"
+      },
+      {
+        "Item": "SKU-5050",
+        "Description": "Firmware integration service (hours)",
+        "Qty": "20",
+        "Unit Price": "$120.00",
+        "Amount": "$2,400.00"
+      },
+      {
+        "Item": "SKU-9001",
+        "Description": "Expedited freight",
+        "Qty": "1",
+        "Unit Price": "$185.40",
+        "Amount": "$185.40"
+      }
+    ],
+    "row_count": 6
+  }
+]

@@ -476,6 +476,7 @@ After 3 rounds, if the output is still invalid, record the failure in `summary.m
 | Empty extracted text (not scanned) | Try pdfplumber instead of pypdf for text extraction |
 | Empty extracted text (scanned PDF) | Install tesseract and use OCR workflow (Step 3g) |
 | Words run together (e.g. `Numberofstores`) | Lower the text tolerance: `extract_text(x_tolerance=1)` / `text_x_tolerance` in table settings |
+| Interleaved characters on dense forms (e.g. `OUNRDDEERR` for "ORDER"/"UNDER") | The source overlaps two text runs on one baseline; no `x/y_tolerance` fixes it. Body text is unaffected; if the form layer matters, OCR those pages (Step 3g) |
 | `ValueError: Out of range float values are not JSON compliant` | A `NaN` reached `json.dumps`; map blanks/NaN to `None` first (the `_clean` helper in 3d) and pass `allow_nan=False` |
 | ReportLab renders black boxes for subscripts | Replace Unicode sub/superscript chars with `<sub>` / `<super>` XML tags |
 | `qpdf` or `pdftotext` not found | Install system packages: `apt-get install -y qpdf poppler-utils pdftk` |

@@ -1,0 +1,17 @@
+{
+  "title": "Invoice line items → JSON",
+  "operation": "extract-tables",
+  "prompt": "Extract every table into JSON.",
+  "params": { "vars": { "operation": "extract every table into JSON" } },
+  "files": [
+    {
+      "path": "input.pdf",
+      "filename": "northwind-invoice-INV-2026-0476.pdf",
+      "mime_type": "application/pdf",
+      "pages": 1,
+      "label": "Sample commercial invoice (Northwind Trading Co. → Acme Robotics), 6 line items",
+      "license": "Synthetic sample (fictitious company/data) — generated for this demo, free to use",
+      "note": "Representative of a digitally-generated invoice (clean gridded line-items table)."
+    }
+  ]
+}

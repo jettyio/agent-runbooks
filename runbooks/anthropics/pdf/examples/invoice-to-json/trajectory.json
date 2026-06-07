@@ -1,0 +1,19 @@
+{
+  "collection": "jon-runbooks",
+  "task": "pdf-amber-hawk",
+  "trajectory_id": "3bc97289",
+  "workflow_id": "jon-runbooks-pdf-amber-hawk--3bc97289",
+  "url": "https://flows.jetty.io/jon-runbooks/pdf-amber-hawk/3bc97289",
+  "runbook_version": "1.2.1",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-06-07T03:05:58.374055Z",
+  "duration_seconds": 98.1,
+  "status": "completed",
+  "success": true,
+  "primary_files": ["extracted_tables.json"],
+  "eval": { "overall_passed": true, "pass": 5, "partial": 0, "fail": 0 },
+  "notes": "Robustness test on a digitally-generated invoice. The 6-row line-items table (Item/Description/Qty/Unit Price/Amount) extracted cleanly into strictly-valid JSON; operation routing produced only the table deliverables."
+}

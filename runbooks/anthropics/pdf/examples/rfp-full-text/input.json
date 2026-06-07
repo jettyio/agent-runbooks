@@ -1,0 +1,18 @@
+{
+  "title": "Federal RFP → full text",
+  "operation": "extract-text",
+  "prompt": "Extract all text from the document into extracted_text.txt.",
+  "params": { "vars": { "operation": "extract all text from the document into extracted_text.txt" } },
+  "files": [
+    {
+      "path": "input.pdf",
+      "filename": "disa-rfp-HC1047-05-R-4009.pdf",
+      "mime_type": "application/pdf",
+      "pages": 66,
+      "label": "Defense Information Systems Agency — Request for Proposal HC1047-05-R-4009 (SF-33 solicitation)",
+      "source_url": "https://buy.gsa.gov/api/system/files/documents/DISAESEservices_0.pdf",
+      "license": "Public domain (work of the U.S. federal government)",
+      "note": "A 66-page text-heavy federal solicitation. extract-text is the right operation; the SF-33 cover form is dense/overlapping (inherently hard), but the body clauses extract cleanly."
+    }
+  ]
+}

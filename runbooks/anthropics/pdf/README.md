@@ -21,6 +21,12 @@ pdf/
     create-summary-pdf/                   # EXAMPLE 3 — author
       input.json  trajectory.json  thumbnail.png
       expected/  output.pdf (primary) · summary.md · validation_report.json
+    invoice-to-json/                      # robustness — a commercial invoice
+      input.pdf (synthetic sample)  input.json  trajectory.json  thumbnail.png
+      expected/  extracted_tables.json (primary) · .xlsx · summary.md · validation_report.json
+    rfp-full-text/                        # robustness — a 66-page federal RFP
+      input.pdf (DISA HC1047-05-R-4009, public domain)  input.json  trajectory.json  thumbnail.png
+      expected/  extracted_text.txt (primary) · summary.md · validation_report.json
 ```
 
 ## The gallery: one PDF, three capabilities (extract → modify → author)
@@ -34,6 +40,16 @@ sugar-sweetened beverage tax in Oakland* (White et al., **PLOS Medicine 20(4): e
 | 1 | **Extract** | `extract-tables` | `extracted_tables.json` — every table as strict JSON | `6c756bcf` | 7/7 ✓ |
 | 2 | **Modify** | `watermark` | `output.pdf` — every page stamped CONFIDENTIAL | `0e7dcb7b` | 4/4 ✓ |
 | 3 | **Author** | `create` | `output.pdf` — a new one-page Document Summary | `7f700569` | 5/5 ✓ |
+
+### Robustness across document types
+
+Beyond the featured arc, the same runbook was run on two very different real-world
+inputs to confirm it holds up:
+
+| Doc | Operation | Output | Trajectory | Eval | Result |
+|-----|-----------|--------|-----------|------|--------|
+| **Commercial invoice** (1pp) | `extract-tables` | `extracted_tables.json` | `3bc97289` | 5/5 ✓ | Flawless — 6 line items (item/qty/unit price/amount) into clean JSON |
+| **Federal RFP** (66pp, DISA HC1047-05-R-4009, public domain) | `extract-text` | `extracted_text.txt` | `598fbc1c` | 4/4 ✓ | All 66 pages / ~184k chars; body clauses clean. The dense SF-33 cover form interleaves overlapping text (`ORDER`/`UNDER`) — inherent to the form, no extractor setting fixes it; documented in Common Fixes |
 
 The hero (example 1) turns a messy two-column research PDF into clean structured data.
 The cleanest table (page 9) reads verbatim from `expected/extracted_tables.json`:

@@ -1,0 +1,2249 @@
+=== Page 1 ===
+1. THIS CONTRACT IS A RATED RATING PAGE OF PAGES
+SOLICITATION, OFFER AND
+OUNRDDEERR DPAS (15 CFR 700) DO-A7 1 66
+AWARD
+2. CONTRACT 3. SOLICITATION 4. TYPE OF 5. DATE ISSUED 6. REQUISITION/PURCHASE
+NO. NO. S[ O L]ICSIETAALTEIODN BID (IFB) NO.
+HC1047-05-R-4009 17 Dec 2004
+[ X ] NEGOTIATED (RFP)
+7. ISSUED BY CODE HC1047 8. ADDRESS OFFER (If other than Item CODE HC 1001
+DEFENSE INFORMATION SYSTEMS AGENCY TJOOINT SPECTRUM CENTER 7)
+5111 LEESBURG PIKE 2004 TURBOT LANDING
+FALLS CHURCH VA 22041 ANNAPOLIS MD 21402-5064
+TEL: 703-681- TEL:
+FAX:700338-0681- FAX:
+0347
+NOTE: In sealed bid solicitations "offer" and "offeror" mean "bid" and "bidder".
+SOLICITATION
+9. Sealed offers in original copies for furnishing the supplies or services in the Schedule will be received at the place specified in Item
+ahnadndcarried, in the depository locat8e,d or if until local time
+in (Hour) (Date)
+CAUTION - LATE Submissions, Modifications, and Withdrawals: See Section L, Provision No. 52.214-7 or 52.215-1. All offers are subject to all
+tceornmdsit aionnds contained in this
+s10o.l FicOiRta ItNioFnO.RMATIONA. NAME B. TELEPHONE (Include area (NO COLLECT CALLS) C. E-MAIL ADDRESS
+CALL: FRANKLIN WHEELER, JR. cod4e1)0-293- franklin.wheeler@disa.mil
+2354
+11. TABLE OF CONTENTS
+(X) SEC. DESCRIPTION PAGE(S) (X) SEC. DESCRIPTION PAGE(S)
+PART I - THE PART II - CONTRACT
+X A SOLICITASTCIOHNE/D CUOLNETRACT FORM 1 X I CONTRACTC LCALAUUSESSES 22 - 29
+X B SUPPLIES OR SERVICES AND PRICES/ 2 - 3 PART III - LIST OF DOCUMENTS, EXHIBITS AND OTHER
+X C CDOESSCTRSIPTION/ SPECS./ WORK 4 - 7 ATXTACJHMLIESNTT OSF ATTACHMENTS 30
+X D SPATACTKEAMGEINNGT AND MARKING 8 PART IV - REPRESENTATIONS AND
+X E INSPECTION AND ACCEPTANCE 9 RINESPTRRESUECNTTIAOTNISONS, CERTIFICATIONS
+X F DELIVERIES OR 10 - 11 X K AOTNHDER STATEMENTS OF 31 - 37
+X G PCEORNFTORRAMCATN ACDEMINISTRATION DATA 12 - 13 X L OINFSFTERRSO.,R CSONDS., AND NOTICES TO 38 - 57
+X H SPECIAL CONTRACT 14 - 21 X M OEVFFAELRUOARTSION FACTORS FOR 58 - 65
+REQUIREMENTS OFFER (Must be fully cAoWmAplReDted by offeror)
+NOTE: Item 12 does not apply if the solicitation includes the provisions at 52.214-16, Minimum Bid Acceptance
+P12e.r iIond c. ompliance with the above, the undersigned agrees, if this offer is accepted calendar days (60 calendar days unless a different
+wiist hininserted by the offeror) from the date for receipt of offers specified above, to furnish any or aplelr iitoedms upon which prices are offered at the price set
+oeapcpho siitteem, delivered at the designated point(s), within the time specified in the
+1s3c. hDeIdSuCleO. UNT FOR PROMPT PAYMENT
+(See Section I, Clause No. 52.232-
+14. 8A)CKNOWLEDGMENT OF AMENDMENTS AMENDMENT NO. DATE AMENDMENT NO. DATE
+(The offeror acknowledges receipt of
+atom tehned SmOeLntIsCITATION for offerors and related
+documents numbered and
+15Ad.a NteAd)M: E CODE FACILITY 16. NAME AND TITLE OF PERSON AUTHORIZED
+AND TO
+SIGN OFFER (Type or print)
+ADDRESS
+OF
+OFFEROR
+15B. TELEPHONE NO (Include area code) 15C. CHECK IF REMITTANCE 17. SIGNATURE 18. OFFER DATE
+ADDRIESS DSIFFERENT FROM ABOVE -
+ESUNCTEHR ADDRESS IN
+SCHEDAUWLEA. RD (To be completed by Government)
+19. ACCEPTED AS TO ITEMS 20. AMOUNT 21. ACCOUNTING AND
+NUMBERED APPROPRIATION
+22. AUTHORITY FOR USING OTHER THAN FULL AND OPEN 23. SUBMIT INVOICES TO ADDRESS SHOWN ITEM
+COMPETITIO1N0: U.S.C. 2304(c)( 41 U.S.C. 253(c)( (I4N copies unless otherwise specified)
+) )
+24. ADMINISTERED BY (If other than Item CODE 25. PAYMENT WILL BE MADE CODE
+7) BY
+26. NAME OF CONTRACTING OFFICER (Type or 27. UNITED STATES OF 28. AWARD DATE
+print) AMERICA
+TEL: EMAIL (Signature of Contracting
+IMPORTANT - Award will be made o : n this Form, or on Standard Form 26, or by otherO afuficthero)rized official written
+nProevtiiocuse E. dition is Unusable 33-134 STANDARD FORM 33 (REV. 9-97)
+Prescribed by GSA
+FAR (48 CFR) 53.214(c)
+
+=== Page 2 ===
+HC1047-05-R-4009
+Page 2 of 66
+Section B - Supplies or Services and Prices
+SERVICES AND PRICE
+B.1 SERVICES TO BE ACQUIRED
+The contractor shall furnish the necessary management, personnel, facilities, and equipment (unless provided by the
+Government) to provide Performance-Based Technical Services, to support the Joint Spectrum Center in the areas of
+operational spectrum support, E3 and spectrum engineering, modeling and simulation, information management,
+research and evaluate emerging technologies, and provide technical advice to policy makers on spectrum issues as
+stated in the Statement of Objectives, Section C.
+Services will be defined and priced on individual task orders. Task orders may be firm fixed priced (FFP) or cost plus
+incentive fee (CPIF). Since this is a performance-based contract, incentives and disincentives shall be proposed by
+the contractor and negotiated/accepted by the government for each task order.
+B.2 CONTRACT TYPE
+This is an Indefinite Delivery, Indefinite Quantity (IDIQ) type contract for services. The Contracting Officer will
+determine task order type on a case-by-case basis. The period of performance for this contract has a Base period of
+three (3) years and two (2) one-year option periods. The period of performance, including all options is as follows:
+Base period, 15June2005 to 14June2008
+Option period 1, 15June2008 to 14June2009
+Option period 2, 15June2009 to 14June2010
+B.3 CONTRACT MINIMUM/MAXIMUM
+During the period specified in the ORDERING Clause (FAR 52.216-18), the Government shall place orders totaling a
+minimum of $1,000,000.00. The amount of all orders shall not exceed $311,605,000.00. This contract ceiling includes
+the Base period and any awarded Option periods.
+B.4 FIRM FIXED PRICED AND COST PLUS INCENTIVE FEE TASK ORDERS
+In the performance of task orders designated as FFP, the contractor shall propose a total firm fixed price and include
+incentives and disincentives as described above. In the performance of task orders designated as CPIF, the
+contractor shall propose a Target Cost, Target Fee, Minimum Fee, Maximum Fee, and Optimistic Cost Estimate, and a
+Pessimistic Cost Estimate. Additionally, a Fee Adjustment Formula, above and below the Target Cost, shall be
+proposed and negotiated/accepted by the Government. The Fee Adjustment Formula represents the allocation of
+cost risk with the Government in under and overrun situations.
+B.5 RATE SCHEDULE FOR BASE AND OPTION PERIODS
+In order to facilitate the negotiation of task orders, the contractor shall propose a set of FFP rates and CPIF rates for
+each labor category, indirect rates, and profit. The rates shall be fixed for the Base period with an escalation rate for
+each Option period. In order to aid the Government in its evaluation of the proposed rates, all offerors shall provide
+cost and pricing data to demonstrate how the rates were determined.
+
+=== Page 3 ===
+HC1047-05-R-4009
+Page 3 of 66
+CONTRACT MINIMUM/MAXIMUM QUANTITY AND CONTRACT VALUE
+The minimum quantity and contract value for all orders issued against this contract shall not be less than
+the minimum quantity and contract value stated in the following table. The maximum quantity and
+contract value for all orders issued against this contract shall not exceed the maximum quantity and
+contract value stated in the following table.
+MINIMUM MINIMUM MAXIMUM MAXIMUM
+QUANTITY AMOUNT QUANTITY AMOUNT
+12,355.00 $1,000,000.00 3,850,000.00 $311,605,000.00
+
+=== Page 4 ===
+HC1047-05-R-4009
+Page 4 of 66
+Section C - Descriptions and Specifications
+STATEMENT OF OBJECTIVES
+1.0 BACKGROUND
+The Joint Spectrum Center (JSC) is a technically oriented center for all electromagnetic (EM) spectrum
+matters supporting the Department of Defense. The JSC mission is to enable effective and efficient use of the
+electromagnetic spectrum and control of electromagnetic environmental effects (E3) supporting national security
+and military objectives. Additionally, JSC supports the EM/E3 analytical needs of Defense components and
+other organizations on a reimbursable basis. These responsibilities include the following task areas:
+1. Operational Spectrum Support – deploying qualified spectrum managers in support of Combatant
+Command (COCOM) or Joint Task Force (JTF) contingencies; deploying technical experts to take field measurements
+and analyze incidents of electromagnetic interference (EMI), determine causes, and recommend methods of
+resolution; and developing, operating, and maintaining DoD’s standard spectrum management systems.
+2. E3 and Spectrum Engineering – coordinating electromagnetic compatibility (EMC) standards; analyzing
+equipment and systems for potential E3 problems and recommending solutions; performing RF measurements;
+developing and conducting E3 training; assisting the acquisition community by assessing E3; determining
+operational frequency bands; and providing assistance in acquiring host nation approval for equipment operation.
+3. Modeling and Simulation – developing and maintaining spectrum management automated tools and
+analytical models to perform EMC analyses.
+4. Information Management – collecting and maintaining extensive data on spectrum dependent equipment
+and spectrum usage to support tactical, training, or sustaining-base operations, operational assessments, and
+research and development efforts; and providing and maintaining a capability to store and retrieve documents such
+as technical reports, project notebooks, and other related technical documents.
+5. Research and Evaluate Emerging Technologies – determining electromagnetic spectrum implications and
+opportunities for exploitation by DoD.
+6. Technical Advice – analyzing national and international electromagnetic spectrum issues and advising
+executive decision-makers on the technical viability of policy and implementation options.
+2.0 PURPOSE
+The purpose of this acquisition is to provide the JSC with engineering services to facilitate improved mission
+effectiveness. The JSC vision is to be recognized as the DoD technical center of excellence and provider of choice for
+electromagnetic spectrum management and E3 expertise.
+3.0 SCOPE
+This acquisition provides a full range of electromagnetic spectrum technical services, to include engineering
+and analysis; data management; standards development and application; measurement, testing and evaluation;
+modeling and simulation; research and evaluation of emerging technologies; interference resolution; and ordnance
+risk assessment. Services are provided to the JSC in support of the Warfighter, Federal and non-Federal agencies,
+allied Governments, NATO, and the private sector. The total estimated value of this effort over its potential five year
+duration is $311M.
+4.0 PERIOD OF PERFORMANCE
+The contract will be awarded for a base period of three years. Based on contractor performance, two one-year
+options may be granted. If permitted by the FAR, it is the Government’s intent to award a base period of three years
+with seven one year options.
+5.0 PLACE OF PERFORMANCE
+
+=== Page 5 ===
+HC1047-05-R-4009
+Page 5 of 66
+Limited office space and equipment is available in the Government facility located at 2004 Turbot Landing,
+Annapolis, Maryland, for approximately 50 contractor personnel. This acquisition requires the contractor to be
+responsible for furnishing additional office space and equipment for its employees, a measurement lab and document
+storage. Contractor is required to have a TOP SECRET facility clearance and to provide appropriate classified
+document storage and control. Performance under this contract will require worldwide travel, and may include
+regions of armed conflict.
+6.0 OBJECTIVES
+6.1 The JSC strives to improve and expand the E3 and spectrum management support it provides to the DoD
+community and the other users of JSC services. The JSC contractor’s objective will be to consistently; (1) Provide
+responsive, value added, E3 and spectrum management analysis and engineering support for the operational, and
+research and development communities; (2) Provide access to accurate and comprehensive EM spectrum
+information; and (3) Develop and maintain analytical capabilities that will permit the timely and accurate assessment
+of E3 to ensure the effective use of the EM spectrum.
+6.2 Complementing the aforementioned, the JSC's contractor must also focus on the following objectives: (1)
+Enhance the warfighter's ability to dynamically link and completely integrate electromagnetic spectrum use with
+battlefield operations through a set of distributed and automated electromagnetic spectrum capabilities; (2) Improve
+the quality of JSC information resources and provide real-time accessibility to those resources in a network-centric
+environment; (3) Provide analytic capabilities that will enable the operational and acquisition communities to
+adequately address spectrum management (SM) and E3 in the requirement's generation and acquisition processes to
+ensure effective operations; (4) Improve spectrum and E3 knowledge of policy makers, the development community
+and the warfighter; and (5) Advance the art and science of SM and E3 engineering.
+6.3 The JSC requires a verifiable quality control program that provides an accurate assessment of performance
+objectives.
+6.4 The JSC requires that all contractors communicate, coordinate and cooperate to ensure harmonious and
+effective performance to meet the JSC mission.
+7.0 MANAGEMENT/TECHNICAL CONSTRAINTS
+7.1 Automated capabilities must conform to the architectural and/or interoperability standards set forth in the
+Joint Technical Architecture (JTA); Net-Centric Enterprise Services (NCES); Command, Control, Communications,
+Computers, Intelligence, Surveillance and Reconnaissance Architecture Framework; High Level Architecture (HLA);
+or other applicable guidance.
+7.2 All contractor personnel must obtain and maintain at least a SECRET clearance. In addition, some projects
+require the involved staff to hold sensitive compartmented information (SCI) clearances based on current single-
+scope background investigations. Currently 70 contractors fill SCI billets. Some special projects must be
+accomplished in the JSC SCI facility. Access to SCI material is mandatory to perform Information Operations (IO)
+tasks. All contractor staff providing IO support must obtain and maintain SCI clearances. Contractor staff may be
+required to undergo polygraph examinations based on specific project requirements. The JSC and the contractor
+must also comply with applicable DoD, DISA, NSA, CIA, and DIA security regulations as well as the appropriate
+industrial security regulation.
+7.3 Contractor access to vendor proprietary data may be required. Proprietary information obtained under
+this contract will not be used for any purpose other than that for which it was intended. Contractor will be required
+to provide an Organizational Conflict of Interest Plan that clearly describes the organization’s roles and
+responsibilities and strategies to avoid/mitigate potential conflicts of interest.
+7.4 Contractor must provide Internet and SIPRNET access within their own facility as required.
+
+=== Page 6 ===
+HC1047-05-R-4009
+Page 6 of 66
+7.5 Transition planning is required at the beginning and end of this contract. Transition execution shall not
+adversely impact the Center’s operation.
+7.6 The contractor must be able to provide on-call operational support on a 24/7/365 basis. In addition, the
+contractor may be required to provide limited, on-site, surge 24/7 operational support.
+7.7 The contractor must have the capability to participate in frequent face-to-face coordination meetings with
+the staff located at the JSC facility in Annapolis, MD.
+7.8 The JSC is required to operate in accordance with various mission related DoD, Joint Staff, DISA and JSC
+directives/policies/instructions. The pertinent documents will be available for review on the JSC web page and on the
+“virtual reading room” CD that will be available to prospective offerors.
+8.0 CONTRACT DATA REQUIREMENTS
+8.1 Major Task Area Support: Provides for the performance of studies and analyses as assigned in
+support of the task areas as described in 1.0 BACKGROUND. These efforts vary significantly in size, scope, and
+duration. The primary focus of these efforts is to enable systems developers, acquirers, architects, operational
+forces, and others to successfully design, acquire, build, test, integrate, and operate systems compatibly in their
+intended operational EM environments, taking all factors into account. In support of these efforts the contractor
+will provide Contract Data in the following areas:
+8.1.1 Task Orders: In response to the government’s statement of objectives, the contractor shall submit
+proposals with details of the proposed product, schedule, deliverables and projected cost of each task performed
+under this Contract. The contractor shall not begin a task until the Task Order has been awarded.
+8.1.2 Project Documentation: Project accomplishments and results shall be documented in JSC reports as
+directed.
+8.1.3 Software Documentation: The contractor shall provide complete documentation of all software
+products supporting the operation of the JSC and copies of all software products developed or modified under
+this contract.
+8.1.4 Contract Management: The contractor shall report financial data under this contract using a
+formal financial system and operating in accordance with accepted commercial accounting standards. Preferably
+the contractor will provide this data electronically. Reportable data will include, but is not limited to, performance
+metrics and EVMS-like system data. The contractor shall provide any additional data/reports in accordance with
+CDRLs identified in the final contract.
+8.2 Government Furnished Information (GFI): The contractor shall utilize and maintain approximately 150,000
+items of GFI (software, manuals, microfiche, drawings, reports, etc.) that will transfer “as is” from the current JSC
+engineering support services contract. A listing of the transferred GFI is attached to Section J of the contract. Items
+of transferred GFI will be identified as Y2K compliant, non-compliant, or not applicable. The contractor shall
+periodically provide an updated list of GFI. When the contract ends, all GFI will be reported to the COR for
+disposition.
+8.3 Government Furnished Property (GFP): The contractor may chose to utilize extensive GFP. The
+Contractor shall maintain overall inventory control of GFP in accordance with FAR 45.5. Contractor compliance
+with FAR requirements will be reviewed periodically by Defense Logistics Agency, Defense Contract
+
+=== Page 7 ===
+HC1047-05-R-4009
+Page 7 of 66
+Management Command, the designated Government Property Administration Office. The contractor shall
+periodically provide an updated list of GFP. When the contract ends, all GFP and purchases made under this
+contract will be reported to the COR for disposition. Copies of the Contract Property reports (DD1662 or SF 122)
+shall be provided to DISA Logistics Division ATTN: D422.
+
+=== Page 8 ===
+HC1047-05-R-4009
+Page 8 of 66
+Section D - Packaging and Marking
+CLAUSES INCORPORATED BY FULL TEXT
+52.214-9100 PACKAGING AND MARKING OF DELIVERABLES
+(IAW FAR 14.201-2(d))
+a. Packaging and marking of all deliverables shall be in accordance with the best commercial practice necessary to
+ensure safe and timely delivery at destination, in accordance with the applicable security requirements.
+b. All data and correspondence submitted to the Contracting Officer or the Contracting Officer's Representative
+(COR) shall reference the contract number and the name of the Contract Specialist and/or COR as appropriate. A
+copy of all correspondence sent to the COR shall be provided to the Contracting Officer.
+
+=== Page 9 ===
+HC1047-05-R-4009
+Page 9 of 66
+Section E - Inspection and Acceptance
+CLAUSES INCORPORATED BY REFERENCE
+52.246-5 Inspection Of Services Cost-Reimbursement APR 1984
+52.246-8 Inspection Of Research And Development Cost MAY 2001
+Reimbursement
+52.246-9 Inspection Of Research And Development (Short Form) APR 1984
+52.246-16 Responsibility For Supplies APR 1984
+252.246-7000 Material Inspection And Receiving Report MAR 2003
+CLAUSES INCORPORATED BY FULL TEXT
+52.246-9100 INSPECTION AND ACCEPTANCE
+(IAW FAR 46.401(b) and 46.503)
+Final inspection and acceptance of all work, performance, reports, and other deliverables required under this contract
+shall be performed at place of delivery by the Contracting Officer's Representative (COR).
+
+=== Page 10 ===
+HC1047-05-R-4009
+Page 10 of 66
+Section F - Deliveries or Performance
+DELIVERY INFORMATION
+CLIN DELIVERY DATE QUANTITY SHIP TO ADDRESS UIC
+CLAUSES INCORPORATED BY REFERENCE
+52.242-15 Stop-Work Order AUG 1989
+52.242-15 Alt I Stop-Work Order (Aug 1989) - Alternate I APR 1984
+52.247-34 F.O.B. Destination NOV 1991
+CLAUSES INCORPORATED BY FULL TEXT
+52.211-9101 PLACE OF PERFORMANCE
+(IAW FAR 11.401(a))
+Services under this contract are required to be performed at the following location(s):
+See the Section C, Statement of Objectives, paragraph 5.0
+52.211-9102 PERIOD OF PERFORMANCE FOR OPTIONS
+(IAW FAR 11.401(a) and 15.204-2(f))
+The period of performance for the options, if exercised, shall be as follows:
+a. Option 1 performance period is twelve months following the Basic Period.
+b. Option 2 performance period is twelve months following Option Period 1.
+52.211-9103 DELIVERY SCHEDULE FOR REPORTS AND OTHER DELIVERABLES
+(IAW FAR 11.401(a) and 15.204-2(f)))
+The work and services required under the basic contract and options, if exercised, shall be completed and delivered in
+accordance with the delivery dates contained in the Performance Work Statement (PWS) and in the Contract Data
+Requirements Lists (CDRL).
+52.211-9104 PLACE OF DELIVERY
+(IAW FAR 11.401(a) and 15.204-2(f)))
+The work and services required under this contract shall be delivered as follows:
+
+=== Page 11 ===
+HC1047-05-R-4009
+Page 11 of 66
+a. Deliverables and/or reports to the Contracting Officer's Representative shall be sent to:
+Defense Information Systems Agency
+Joint Spectrum Center
+2004 Turbot Landing
+Annapolis, MD 21402
+b. Required copies of Monthly Progress Reports and cover letters, transmitting final submissions only of
+technical deliverables, shall be sent to the Contracting Officer at the address indicated in the payment block on the
+front page of this document.
+52.211-9108 PARTIAL EXERCISE OF OPTIONS
+The Government reserves the right to partially exercise option items within each contract year. Written notice of
+intent to exercise the option item will be provided in accordance with FAR clause 52.217-7. The balance of any
+partially exercised option may be exercised only within the same contract period stipulated in Section B.
+
+=== Page 12 ===
+HC1047-05-R-4009
+Page 12 of 66
+Section G - Contract Administration Data
+CLAUSES INCORPORATED BY FULL TEXT
+52.201-9200 CONTRACTING AND ADMINISTRATIVE AUTHORITY (JUN 1996)
+(G500 Previously)
+a. The contract will be administered by the Defense Information Technology Contracting Organization (DITCO).
+The Contracting Officer (CO) is the only person authorized to approve changes or modify any of the requirements
+contained elsewhere in this contract; the said authority remains solely in the CO. In the event the contractor effects
+any such change at the direction of any other person other than the CO, the change will be considered to have been
+made without authority and no adjustment will be made in the contract costs to cover any increase incurred as a
+result thereof.
+b. The contractor shall submit requests for modifications of this contract to the CO with a copy of the request to
+the CO's representative as designated in the CO’s representative appointment letter.
+c. Contractual problems, of any nature, that may arise during the life of this contract must be handled in
+conformance with very specific public laws and regulations (i.e., Federal Acquisition Regulation). Only the CO is
+authorized to formally resolve such problems. Therefore, the contractor is hereby directed to bring all such
+contractual problems to the immediate attention of the CO.
+d. Request for information on matters related to this contract, such as explanation of terms and contract
+interpretation, shall be submitted to the CO.
+52.242-9100 PREPARATION OF VOUCHERS
+(IAW FAR 42.703)
+a. Pursuant to the provisions of FAR 42.7 and 42.8, responsibility for cost administration of this contract is
+assigned to the cognizant Defense Contract Audit Agency (DCAA), as follows:
+Defense Contract Audit Agency
+[DCAA OFFICE AND ADDRESS]
+(to be inserted at time of award)
+b. Vouchers shall be forwarded to the assigned DCAA Auditor for administrative review, provisional approval and
+transmission to the Finance Office shown on the front page of this contract for payment. On delivery/task orders,
+vouchers shall delineate costs by delivery/task order and corresponding accounting and appropriation data.
+252.201-9100 CONTRACT MANAGEMENT
+(IAW DFARS 201.602-2)
+Notwithstanding the Contractor's responsibility for total management during the performance of this contract, the
+administration of the contract will require maximum coordination between the Government and the Contractor. The
+following individuals will be the Government points of contact during the performance of the contract:
+a. Contracting Officer. All contract administration will be effected by the Contracting Officer. Communications
+pertaining to contractual administrative matters will be addressed to the Contracting Officer. No changes in or
+
+=== Page 13 ===
+HC1047-05-R-4009
+Page 13 of 66
+deviation from the scope of work shall be effected without a written modification to the contract executed by the
+Contracting Officer authorizing such changes.
+b. Contracting Officer's Representative (COR): A COR will be designated on authority of the Contracting
+Officer to monitor and coordinate all technical aspects and assist in the administration of the contract. All contacts
+with all agencies of the Government and interfacing with other contractors required in the performance of this
+contract will be accomplished only through the direction and with the coordination of the COR. A letter of
+designation will be issued to the COR with a copy supplied to the Contractor, stating the responsibilities and
+limitations of the COR.
+
+=== Page 14 ===
+HC1047-05-R-4009
+Page 14 of 66
+Section H - Special Contract Requirements
+CLAUSES INCORPORATED BY REFERENCE
+52.251-1 Government Supply Sources APR 1984
+CLAUSES INCORPORATED BY FULL TEXT
+52.203-9100 NONDISCLOSURE OF SENSITIVE AND/OR PROPRIETARY DATA
+(IAW FAR 3.104)
+The Contractor recognizes that in the performance of this contract it may receive or have access to certain sensitive
+information, including information provided on a proprietary basis by other contractors, equipment manufacturers
+and other private or public entities. The Contractor agrees to use and examine this information exclusively in the
+performance of this contract and to take the necessary steps in accordance with Government regulations to prevent
+disclosure of such information to any party outside the Government or Government designated support contractors
+possessing appropriate proprietary agreements, as listed in paragraphs (A) through (D) below.
+A. Indoctrination of Personnel. The Contractor agrees to indoctrinate its personnel who have access as to the
+sensitive nature of the information and the relationship under which the contractor has possession of or access to
+the information. Contractor personnel shall not engage in any other action, venture or employment wherein sensitive
+information will be used for the profit of any party other than those furnishing the information. The Nondisclosure
+Agreement for Contractor Employees as shown below shall be signed by all indoctrinated personnel and forwarded
+to the COR for retention, prior to work commencing. The Contractor shall restrict access to sensitive/proprietary
+information to the minimum number of employees necessary for contract performance.
+DEFENSE INFORMATION SYSTEMS AGENCY
+NONDISCLOSURE AGREEMENT FOR CONTRACTOR EMPLOYEES
+THIS CERTIFICATION CONCERNS A MATTER WITHIN THE JURISDICTION OF AN AGENCY OF THE UNITED
+STATES AND THE MAKING OF A FALSE, FICTITIOUS, OR FRAUDULENT CERTIFICATION MAY RENDER THE
+MAKER SUBJECT TO PROSECUTION UNDER TITLE 18, UNITED STATES CODE, SECTION 1001.
+I, (print or type name), as an employee of (insert name of company), a
+contractor performing under contract to the (insert organization/directorate, pursuant to contract number DCA100-
+9X-X-XXXX, agree not to disclose to any individual, business entity or anyone within (insert name of employee
+company) or outside of the company who has not signed a nondisclosure agreement for the purposes of performing
+this contract: (1) any planning, programming, and budgeting system (PPBS) information, or (2) sensitive, proprietary
+or source selection information contained in or accessible through the this project. Proprietary information/data will
+be handled in accordance with Government regulations.
+I understand that information/data I may be aware of, or possess, as a result of my assignment under this contract
+may be considered sensitive or proprietary. The Contractor's responsibility for proper use and protection from
+unauthorized disclosure of sensitive, proprietary and source selection information is described in Federal Acquisition
+Regulation (FAR) section 3.104-5(b). Pursuant to FAR 3.104-5, I agree not to appropriate such information for my
+own use or to release or discuss it with third parties unless specifically authorized in writing to do so, as provided
+above.
+
+=== Page 15 ===
+HC1047-05-R-4009
+Page 15 of 66
+This agreement shall continue for a term of five (5) years from the date upon which I last have access to the
+information therefrom. Upon expiration of this agreement, I have a continuing obligation not to disclose sensitive,
+proprietary, or source selection information to any person or legal entity unless that person or legal entity is
+authorized by the head of the agency or the contracting agency or the contracting officer to receive such information.
+I understand violations of this agreement are subject to administrative, civil and criminal sanctions.
+(Signature of Contractor Employee) Date
+(Contractor) (Telephone No.)
+B. Signed Agreements.
+1. The Contractor further agrees to sign an agreement to this effect with carriers, and other private or public
+entities providing proprietary data for performance under this contract. As part of this agreement, the
+Contractor will inform all parties of its agreement to allow certain Government designated contractors access
+to all data as described in paragraph (c) below. One copy of each signed agreement shall be forwarded to the
+KO. These shall be signed prior to work commencing.
+2. In addition the Contractor shall be required to coordinate and exchange directly with other contractors as
+designated by the Government for information pertinent and essential to performance of task orders issued
+under this contract. The contractor shall discuss and attempt to resolve any problems between the
+Contractor and those contractors designated by the Government. The Contracting Officer shall be notified in
+writing of any disagreement (s) which has (have) not been resolved in a timely manner. Furnish the
+Contracting Officer copies of communications between the Contractor and associate contractor(s) relative to
+contract performance. Further, the close interchange with between contractor(s) may require access to or
+release of proprietary data. In such an event, the Contractor shall enter into agreement(s) with the
+Government designated Contractor (s) to adequately protect such proprietary data from unauthorized use or
+disclosure so long as it remains proprietary. A copy of such agreement shall be provided to the Contracting
+Officer.
+C. Government Designated Contractors. The Contractor agrees to allow the below listed Government-designated
+support contractors, possessing appropriate nondisclosure agreements and retained by the Government to advise
+the Government on cost, schedule and technical matters pertaining to this acquisition, access to any unlimited rights
+data (as defined in DFARS 252.227-7013) acquired under the terms and conditions of this contract and to sign
+reciprocal nondisclosure agreements with them. One copy of each signed agreement shall be forwarded to the KO.
+List designated contractors:
+All Government-designated contractors stated herein, or added at a future date shall also enter into nondisclosure
+agreements with all parties providing proprietary information to the contractor, and the nondisclosure agreements
+shall
+be signed before work commences.
+D. Remedy for Breach. The Contractor agrees that any breach or violation of the certifications or restrictions of this
+clause shall constitute a material and substantial breach of the terms, conditions and provisions of the contract and
+that the Government may, in addition to any other remedy available, terminate this contract for default in accordance
+with the provisions of FAR 52.249-6. Nothing in this clause or contract shall be construed to mean that the
+Government shall be liable to the owners of proprietary information in any way for the unauthorized release or use of
+proprietary information by this contractor or its subcontractors.
+
+=== Page 16 ===
+HC1047-05-R-4009
+Page 16 of 66
+52.204-9100 SECURITY
+(IAW FAR 4.403(c))
+This document is unclassified, however a Top Secret Facility Clearance is required for the performance under this
+contract. The work to be performed and the products to be delivered under this contract shall be accomplished in
+accordance with the Contract Security Classification Specification, DD Form 254, pertaining to this contract. The
+Contractor shall conscientiously follow the security guidance provided in the DD Form 254, the Classification Guide,
+and other guidance that may be established in writing by the Contracting Officer's Representative (COR).
+52.208-9100 LIMITATION OF PRINTING, DUPLICATIONS, AND OTHER REPRODUCTIONS
+(IAW FAR 8.801 & 8.802)
+The Contractor shall deliver only the minimum number of copies required by the Government to either
+accept or reject a particular deliverable as specified on the Contract Data Requirements List (CDRL).
+Additional copies shall not be reproduced by the Contractor. For example, the Contractor shall not
+duplicate the brochure for further distribution. The Government will not reimburse contractor charges for
+copies/reproduction unless a waiver has been approved by the Contracting Officer.
+Printing of materials in excess of the above quantities require compliance with "Government Printing and
+Binding Regulations". (The "Government Printing and Binding Regulations" is published by the
+Congressional Joint Committee on Printing (JCP)). Copies of this publication (S. Pub 101-9) are available
+from the Superintendent of Documents, U.S. Government Printing Office, Washington, D.C. 20402. These
+regulations do not preclude the writing, editing, preparation of manuscript or related illustrative material, if
+required as part of this contract. They do not apply to the printing or duplicating required by contractors
+for their own use in complying with the contract.
+52.209-9100 CONFLICT OF INTEREST
+(IAW FAR 9.5)
+It is understood and agreed that the Contractor, under the terms of this contract, or through the performance of the
+Statement of Work made a part of this contract, is neither obligated nor expected to deliver or provide material or
+perform work, which will place the Contractor in an organizational conflict of interest, which could serve as a basis for
+excluding the Contractor from supplying products or services to the Defense Information Systems Agency (DISA).
+Further, during the course of this contract, the Contracting Officer will not knowingly unilaterally direct the
+Contractor to perform work, in contravention of the above understanding. It will be the Contractor's responsibility to
+identify any situation in which the potential for an organizational conflict of interest exists. However, if the
+Contracting Officer discerns the potential for an organizational conflict of interest prior to the execution of any task or
+amendment thereto, the Contracting Officer shall notify the Contractor, and the parties shall mutually take action to
+resolve any potential organizational conflict of interest. For the purposes of this clause, an organizational conflict of
+interest is understood to include tasking which involves the preparation of a complete specification of materials
+leading directly and predictably to competitive procurement of a system. This clause shall be included in any
+subcontracts awarded under this contract.
+52.215-9114 TRAVEL
+(IAW FAR 15.204-2(h))
+
+=== Page 17 ===
+HC1047-05-R-4009
+Page 17 of 66
+The prior approval of the Contracting Officer's Representative is required for travel performed in connection with this
+contract other than in the Washington, D.C., Metropolitan Area.
+52.215-9117 KEY PERSONNEL
+The Contractor shall notify the Contracting Officer's Representative (COR) at least thirty (30) days prior to making
+any changes in key personnel. Key personnel are defined as follows:
+a. Personnel identified in the proposal as key individuals to be assigned for participation in the performance of
+the contract;
+b. Individuals designated as key personnel by agreement of the Government and the Contractor during
+negotiations.
+The Contractor must demonstrate that the qualifications of prospective personnel are equal to or better than the
+qualifications of the personnel being replaced. Notwithstanding any of the foregoing provisions, key personnel shall
+be furnished unless the Contractor has demonstrated to the satisfaction of the COR that the qualifications of the
+proposed substitute personnel are equal to or better than the qualifications of the personnel being replaced.
+52.215-9118 MATERIAL PURCHASES
+(IAW FAR 15.204-2(h))
+Except for those items proposed by the Contractor and agreed upon by the Government and Contractor during
+negotiations, any material purchased by the Contractor for use under this contract must be approved by the
+Contracting Officer prior to its purchase. The Government shall not be liable for material purchased without the
+Contracting Officer's prior consent.
+52.232-9100 NOTIFICATION UNDER A COST-REIMBURSEMENT CONTRACT
+(IAW FAR 52.232-20)
+The notification required by the "Limitation of Cost" clause, FAR 52.232-20, paragraph (b), shall be accomplished
+only by separate correspondence directed to the Contracting Officer; no other form of "notification" (e.g., mention in
+any type of monthly progress or status report) will effect compliance. Further, notification to any individual other
+than the Contracting Officer SHALL NOT constitute compliance with this requirement. Separate notification is
+required for O&M and RDT&E appropriations.
+52.245-9100 GOVERNMENT PROPERTY
+(IAW FAR 45.103(c))
+a. Government Furnished Equipment: Government furnished equipment, data, or services as set forth in the SOW.
+b. Contractor Acquired Property: In the event the Contractor is required to purchase property in the performance
+of this contract, compliance with the procedures of FAR Part 45 is required.
+
+=== Page 18 ===
+HC1047-05-R-4009
+Page 18 of 66
+c. Disposition of Government Property: Thirty (30) days prior to the end of the period of performance, or upon
+termination of the contract, the Contractor shall furnish to the Contracting Officer a complete inventory of all
+Government Property in his possession under this contract that has not been tested to destruction, completely
+expended in performance, or incorporated and made a part of a deliverable end item. The Contracting Officer will
+furnish disposition instructions on all listed property which was furnished or purchased under this contract.
+d. Risk of Loss: The Contractor assumes full responsibility for and shall indemnify the Government for any and all
+loss or damage of whatsoever kind and nature to any and all Government property, including any equipment,
+supplies, accessories, or parts furnished, while in his custody and care for storage, repairs, or services to be
+performed under the terms of this contract, resulting in whole or in part from the negligent acts or omissions of the
+Contractor, subcontractor, or any employee, agent, or representative of the Contractor or subcontractor.
+ADDITIONAL DISA INFORMATION, CLAUSES, AND INSTRUCTIONS:
+1. POINTS OF CONTACT: Agency contacts can be reached at the following phone numbers or e-mail addresses:
+Contracting Officer: Arthur S. Block 703-681-1255 arthur.block@disa.mil
+Contract Specialist: Franklin Wheeler, Jr. 410-293-2354 franklin.wheeler@disa.mil
+Contracting Officer’s
+Representative, Richard B. Larson 410-293-2354 rlarson@jsc.mil
+Invoice/Acceptance Officer: Doria L. Schauer 410-293-2354 schauer@jsc.mil
+Payment Office: DFAS Indianapolis Center, 1-888-332-7366
+2. ADDITIONAL CLAUSES:
+a. The following DISA clauses are incorporated in full text:
+252.232-9100 WIDE AREA WORKFLOW-RECEIPT AND ACCEPTANCE (WAWF-RA) (MAY 2004)
+As prescribed in DFARS clause 252.232-7003 Electronic Submission of Payment Requests (Jan 2004),
+Contractors must submit invoice payment requests in electronic form; paper copies will no longer be accepted
+or processed for payment. To facilitate this electronic submission, the Defense Information Systems Agency
+(DISA) has implemented the DOD sanctioned Wide Area WorkFlow-Receipt and Acceptance (WAWF-RA) to
+process invoice payments. Contractor’s invoice payment requests must be electronically routed in WAWF-RA
+to the Invoice/Acceptance Officer identified below. For payment problems related to WAWF-RA, contact the
+Invoice/Acceptance Officer.
+Invoice/Acceptance Officer: Doria L. Schauer
+Phone Number: 410-293-2354
+E-Mail Address: schauer@jsc.mil
+Ship To DoDAAC: HC1001
+NOTE 1: For increased efficiency and less data entry, DISA highly encourages the use of the “Combo”
+form (Combination Invoice and Receiving Report) in WAWF for payment requests on fixed price type
+contracts.
+NOTE 2: Additional information may be obtained from the sources shown below:
+q WAWF-RA Production Website: https://wawf.eb.mil
+
+=== Page 19 ===
+HC1047-05-R-4009
+Page 19 of 66
+q Vendor Guide and Links to Registration and Training:
+http://www.disa.mil/acq/wawf/index.html
+q WAWF Help Desk: DISA WESTHEM
+Area Command Ogden
+Customer Service Center
+CONUS ONLY 1-866-618-5988
+COMMERCIAL: 801-605-7095
+DSN: 388-7095
+FAX COMMERCIAL: 801-605-7453
+FAX DSN: 388-7453
+cscassig@ogden.disa.mil
+
+=== Page 20 ===
+HC1047-05-R-4009
+Page 20 of 66
+b. The following DOD clauses are incorporated by reference, with the same force and effect as if they were given
+in full text. The full text of each clause may be accessed electronically at this Internet address:
+http://farsite.hill.af.mil/
+252.204-7004 Alt A Required Central Contractor Registration, (Nov 2003)
+Alternate A
+252.232-7003 Electronic Submission of Payment Requests (Jan 2004)
+3. SHIPPING INSTRUCTIONS:
+a. The shipping label must include the contract/order number (Block 4 of the SF 1449 cover sheet) and the
+Invoice/Acceptance Officer’s name and phone number.
+b. The contractor must comply with the following instructions for delivery to be made at the DISA
+Headquarters Compound in Arlington, VA. The following information must be faxed to the
+Invoice/Acceptance Officer as soon as a delivery date is established.
+1. Company Name
+2. Date of Delivery
+3. Approximate Time of Delivery
+4. Contents of Items being Delivered (e.g. computers, printers)
+5. Purpose of delivery
+6. Name and phone number of DISA Invoice/Acceptance Officer
+c. DISA’s Request for Delivery Form is attached at the end of this section. Delivery attempts without prior
+approval from the Security Operations Center will be denied access to the DISA Headquarters compound.
+Redelivery will be at no additional cost to the Government.
+d. Should the delivery schedule change, the contractor must notify the Invoice/Acceptance Officer
+immediately. Upon establishment of a new delivery date, the contractor must fax a new delivery form to the
+Invoice/Acceptance Officer.
+f. Invoice/Acceptance Officer must comply with the following instructions:
+1. The Invoice/Acceptance Officer must call the contractor to acknowledge receipt of
+the Request for Delivery form.
+2. The Invoice/Acceptance Officer must provide the Request for Delivery Form to the Security Operations
+Center at least 24 hours in advance of delivery. Requests for delivery may be hand carried or faxed to
+the DISA Security Operations Center at 703 607-4717. To verify receipt of fax, call (703) 607-6492.
+Questions may be directed to the Security Operations Center at 703 607-6496.
+3. Should the delivery schedule change, the contractor must notify Invoice/Acceptance Officer
+immediately. Upon establishment of a new delivery date, the contractor must fax a new delivery form to
+the Invoice/Acceptance Officer who must acknowledge receipt.
+
+=== Page 21 ===
+HC1047-05-R-4009
+Page 21 of 66
+Request for Delivery
+ALL deliveries to the DISA HQs Compound must be reported to Security. The following information must
+be provided to the Invoice/Acceptance Officer at least 24 hours in advance of delivery. Please type or print
+legibly
+Company Name: _____________________________________________
+Date of Delivery: _____________________________________________
+Approximate Time of Delivery: __________________________________
+Drivers Name: ___________________________________________________
+Truck Tag Number: _______________________________________________
+Contents (e.g. Cafeteria food supplies, computers, printers etc.):
+________________________________________________________________
+________________________________________________________________
+Purpose of Delivery: _______________________________________________
+________________________________________________________________
+DISA Invoice/Acceptance Officer and phone number: (____) __________________
+________________________________________________________________
+E-mail this information to the Invoice/Acceptance Officer at the e-mail address provided in this
+order. Questions may be addressed to the Invoice/Acceptance Officer at the number provided.
+Delivery attempts without prior approval from the Security Operations Center will be denied. Redelivery will
+be at no additional cost to the Government.
+Approved by: _________________________________________ Date: ___________
+(Invoice/Acceptance Officer, Name, and Position)
+Approved by: _______________________________ Date: ___________ Time: _________
+(DISA Security, Type/Print name and Sign)
+
+=== Page 22 ===
+HC1047-05-R-4009
+Page 22 of 66
+Section I - Contract Clauses
+CLAUSES INCORPORATED BY REFERENCE
+52.203-3 Gratuities APR 1984
+52.203-6 Alt I Restrictions On Subcontractor Sales To The Government (Jul OCT 1995
+1995) -- Alternate I
+52.204-4 Printed or Copied Double-Sided on Recycled Paper AUG 2000
+52.209-6 Protecting the Government's Interest When Subcontracting JUL 1995
+With Contractors Debarred, Suspended, or Proposed for
+Debarment
+52.212-4 Contract Terms and Conditions--Commercial Items OCT 2003
+52.215-17 Waiver of Facilities Capital Cost of Money OCT 1997
+52.219-3 Notice of Total HUBZone Set-Aide JAN 1999
+52.219-8 Utilization of Small Business Concerns MAY 2004
+52.219-9 Small Business Subcontracting Plan JAN 2002
+52.219-14 Limitations On Subcontracting DEC 1996
+52.219-16 Liquidated Damages-Subcontracting Plan JAN 1999
+52.219-23 Notice of Price Evaluation Adjustment for Small JUN 2003
+Disadvantaged Business Concerns
+52.222-3 Convict Labor JUN 2003
+52.222-21 Prohibition Of Segregated Facilities FEB 1999
+52.222-26 Equal Opportunity APR 2002
+52.222-35 Equal Opportunity For Special Disabled Veterans, Veterans of DEC 2001
+the Vietnam Era, and Other Eligible Veterans
+52.222-36 Affirmative Action For Workers With Disabilities JUN 1998
+52.222-37 Employment Reports On Special Disabled Veterans, Veterans DEC 2001
+Of The Vietnam Era, and Other Eligible Veterans
+52.227-1 Alt I Authorization And Consent (Jul 1995) - Alternate I APR 1984
+52.227-2 Notice And Assistance Regarding Patent And Copyright AUG 1996
+Infringement
+52.228-3 Worker's Compensation Insurance (Defense Base Act) APR 1984
+52.228-4 Workers' Compensation and War-Hazard Insurance Overseas APR 1984
+52.228-7 Insurance--Liability To Third Persons MAR 1996
+52.232-20 Limitation Of Cost APR 1984
+52.232-20 Limitation Of Cost APR 1984
+52.233-3 Protest After Award AUG 1996
+52.233-3 Alt I Protest After Award (Aug 1996) - Alternate I JUN 1985
+52.237-3 Continuity Of Services JAN 1991
+52.242-1 Notice of Intent to Disallow Costs APR 1984
+52.242-4 Certification of Final Indirect Costs JAN 1997
+52.242-13 Bankruptcy JUL 1995
+52.243-2 Alt I Changes--Cost-Reimbursement (Aug 1987) - Alternate I APR 1984
+52.243-2 Alt II Changes--Cost Reimbursement (Aug 1987) - Alternate II APR 1984
+52.243-2 Alt V Changes--Cost-Reimbursement (Aug 1987) - Alternate V APR 1984
+52.243-5 Changes and Changed Conditions APR 1984
+52.244-2 Alt I Subcontracts (Aug 1998) - Alternate I AUG 1998
+52.245-5 Dev Government Property (Cost-Reimbursement, Time-and- MAY 2004
+Material, or Labor-Hour Contracts) Deviation
+52.246-1 Contractor Inspection Requirements APR 1984
+52.249-6 Termination (Cost Reimbursement) MAY 2004
+52.249-6 Alt IV Termination (Cost Reimbursement) (May 2004) - Alternate IV SEP 1996
+
+=== Page 23 ===
+HC1047-05-R-4009
+Page 23 of 66
+52.249-14 Excusable Delays APR 1984
+52.253-1 Computer Generated Forms JAN 1991
+252.203-7002 Display Of DOD Hotline Poster DEC 1991
+252.204-7003 Control Of Government Personnel Work Product APR 1992
+252.204-7004 Alt A Required Central Contractor Registration Alternate A NOV 2003
+252.205-7000 Provision Of Information To Cooperative Agreement Holders DEC 1991
+252.209-7004 Subcontracting With Firms That Are Owned or Controlled By MAR 1998
+The Government of a Terrorist Country
+252.211-7003 Item Identification and Valuation JAN 2004
+252.219-7003 Small, Small Disadvantaged and Women-Owned Small APR 1996
+Business Subcontracting Plan (DOD Contracts)
+252.219-7011 Notification to Delay Performance JUN 1998
+252.222-7002 Compliance With Local Labor Laws (Overseas) JUN 1997
+252.225-7001 Buy American Act And Balance Of Payments Program APR 2003
+252.225-7002 Qualifying Country Sources As Subcontractors APR 2003
+252.225-7003 Report of Intended Performance Outside the United States APR 2003
+252.225-7012 Preference For Certain Domestic Commodities JUN 2004
+252.225-7013 Duty-Free Entry JAN 2004
+252.225-7016 Restriction On Acquisition Of Ball and Roller Bearings MAY 2004
+252.225-7021 Trade Agreements JUN 2004
+252.227-7020 Rights In Data--Special Works JUN 1995
+252.232-7003 Electronic Submission of Payment Requests JAN 2004
+252.235-7010 Acknowledgment of Support and Disclaimer MAY 1995
+252.235-7011 Final Scientific or Technical Report SEP 1999
+252.243-7001 Pricing Of Contract Modifications DEC 1991
+252.243-7002 Requests for Equitable Adjustment MAR 1998
+252.247-7023 Transportation of Supplies by Sea MAY 2002
+252.247-7024 Notification Of Transportation Of Supplies By Sea MAR 2000
+CLAUSES INCORPORATED BY FULL TEXT
+52.212-5 CONTRACT TERMS AND CONDITIONS REQUIRED TO IMPLEMENT STATUTES OR EXECUTIVE
+ORDERS--COMMERCIAL ITEMS (OCT 2004) (DEVIATION)
+(a) Comptroller General Examination of Record. The Contractor agrees to comply with the provisions of this
+paragraph (a) if the contract was awarded using other than sealed bid, is in excess of the simplified acquisition
+threshold, and does not contain the clause at 52.215-2, Audit and Records-Negotiation.
+(1) The Comptroller General of the United States, or an authorized representative of the Comptroller General, shall
+have access to the right to examine any of the Contractor's directly pertinent records involving transactions related to
+this contract.
+(2) The Contractor shall make available at its offices at all reasonable times, the records, materials, and other evidence
+for examination, audit, or reproduction, until 3 years after final payment under this contract or for any shorter period
+specified in FAR Subpart 4.7, Contractor Records Retention, of the other clauses of this contract. If this contract is
+completely or partially terminated, the records relating to the work terminated shall be made available for 3 years after
+any resulting final termination settlement. Records relating to appeals under the disputes clause or to litigation or the
+settlement of claims arising under or relating to this contract shall be made available until such appeals, litigation, or
+claims are finally resolved.
+
+=== Page 24 ===
+HC1047-05-R-4009
+Page 24 of 66
+(3) As used in this clause, records include books, documents, accounting procedures and practices, and other data,
+regardless of form. This does not require the Contractor to create or maintain any record that the Contractor does not
+maintain in the ordinary course of business or pursuant to a provision of law.
+(b) Notwithstanding the requirements of any other clause in this contract, the Contractor is not required to flow down
+any FAR clause, other than those in paragraphs (i) through (vi) of this paragraph in a subcontract for commercial
+items. Unless otherwise indicated below, the extent of the flow down shall be as required by the clause--
+(i) 52.219-8, Utilization of Small Business Concerns (October 2000) (15 U.S.C. 637(d)(2) and (3)), in all subcontracts
+that offer further subcontracting opportunities. If the subcontract (except subcontracts to small business concerns)
+exceeds $500,000 ($1,000,000 for construction of any public facility), the subcontractor must include 52.219-8 in lower
+tier subcontracts that offer subcontracting opportunities.
+(ii) 52.222-26, Equal Opportunity (Apr 2002) (E.O. 11246).
+(iii) 52.222-35, Equal Opportunity for Special Disabled Veterans, Veterans of the Vietnam Era, and Other Eligible
+Veterans (Dec 2001) (38 U.S.C. 4212).
+(iv) 52.222-36, Affirmative Action for Workers with Disabilities (Jun 1998) (29 U.S.C. 793).
+(v) 52.222-41, Service Contract Act of 1965, as Amended (May 1989), flow down required for all subcontracts subject
+to the Service Contract Act of 1965 (41 U.S.C. 351, et seq.).
+(vi) 52.247-64, Preference for Privately Owned U.S.-Flag Commercial Vessels (Apr 2003) (46 U.S.C. Appx 1241 and 10
+U.S.C. 2631). Flow down required in accordance with paragraph (d) of FAR clause 52.247-64.
+(c) While not required, the contractor May include in its subcontracts for commercial items a minimal number of
+additional clauses necessary to satisfy its contractual obligations.
+(End of clause)
+52.216-18 ORDERING. (OCT 1995)
+(a) Any supplies and services to be furnished under this contract shall be ordered by issuance of delivery orders or
+task orders by the individuals or activities designated in the Schedule. Such orders may be issued from 15Jun2005
+through 14Jun2008 for the Base period, 15Jun2008 through 14June2009 for Option period 1, and 15Jun2009 through
+14June2010 for Option period 2.
+(b) All delivery orders or task orders are subject to the terms and conditions of this contract. In the event of conflict
+between a delivery order or task order and this contract, the contract shall control.
+(c) If mailed, a delivery order or task order is considered "issued" when the Government deposits the order in the
+mail. Orders may be issued orally, by facsimile, or by electronic commerce methods only if authorized in the Schedule.
+(End of clause)
+52.216-22 INDEFINITE QUANTITY. (OCT 1995)
+(a) This is an indefinite-quantity contract for the supplies or services specified, and effective for the period stated, in
+
+=== Page 25 ===
+HC1047-05-R-4009
+Page 25 of 66
+the Schedule. The quantities of supplies and services specified in the Schedule are estimates only and are not
+purchased by this contract.
+(b) Delivery or performance shall be made only as authorized by orders issued in accordance with the Ordering
+clause. The Contractor shall furnish to the Government, when and if ordered, the supplies or services specified in the
+Schedule up to and including the quantity designated in the Schedule as the "maximum". The Government shall
+order at least the quantity of supplies or services designated in the Schedule as the "minimum".
+(c) Except for any limitations on quantities in the Order Limitations clause or in the Schedule, there is no limit on the
+number of orders that may be issued. The Government may issue orders requiring delivery to multiple destinations or
+performance at multiple locations.
+(d) Any order issued during the effective period of this contract and not completed within that period shall be
+completed by the Contractor within the time specified in the order. The contract shall govern the Contractor's and
+Government's rights and obligations with respect to that order to the same extent as if the order were completed
+during the contract's effective period; provided, that the Contractor shall not be required to make any deliveries
+under this contract 6 months after the base period or any awarded option period.
+(End of clause)
+52.222-2 PAYMENT FOR OVERTIME PREMIUMS (JUL 1990)
+(a) The use of overtime is authorized under this contract if the overtime premium cost does not exceed 0 or the
+overtime premium is paid for work --
+(1) Necessary to cope with emergencies such as those resulting from accidents, natural disasters, breakdowns of
+production equipment, or occasional production bottlenecks of a sporadic nature;
+(2) By indirect-labor employees such as those performing duties in connection with administration, protection,
+transportation, maintenance, standby plant protection, operation of utilities, or accounting;
+(3) To perform tests, industrial processes, laboratory procedures, loading or unloading of transportation
+conveyances, and operations in flight or afloat that are continuous in nature and cannot reasonably be interrupted or
+completed otherwise; or
+(4) That will result in lower overall costs to the Government.
+(b) Any request for estimated overtime premiums that exceeds the amount specified above shall include all estimated
+overtime for contract completion and shall--
+(1) Identify the work unit; e.g., department or section in which the requested overtime will be used, together with
+present workload, staffing, and other data of the affected unit sufficient to permit the Contracting Officer to evaluate
+the necessity for the overtime;
+(2) Demonstrate the effect that denial of the request will have on the contract delivery or performance schedule;
+(3) Identify the extent to which approval of overtime would affect the performance or payments in connection with
+other Government contracts, together with identification of each affected contract; and
+(4) Provide reasons why the required work cannot be performed by using multishift operations or by employing
+additional personnel.
+
+=== Page 26 ===
+HC1047-05-R-4009
+Page 26 of 66
+(End of clause)
+52.228-9100 WORK ON A GOVERNMENT INSTALLATION
+(IAW FAR 28.307-2)
+In performing work under this contract on a Government installation or in a Government building, the Contractor
+shall:
+a. Obtain and maintain the minimum kinds and amounts of insurance specified by FAR 28.307-2.
+b. Conform to the specific safety requirements established by this contract.
+c. Comply with the safety rules of the Government installation that concern related activities not directly
+addressed in this contract.
+d. Take all reasonable steps and precautions to prevent accidents and preserve the life and health of
+Contractor and Government personnel connected in any way with performance under this contract.
+e. Take such additional immediate precautions as the Contracting Officer or Contracting Officer’s
+Representative (COR) may reasonably require for safety and accident prevention purposes.
+52.232-19 AVAILABILITY OF FUNDS FOR THE NEXT FISCAL YEAR (APR 1984)
+Funds are not presently available for performance under this contract beyond 30 September 2005. The Government's
+obligation for performance of this contract beyond that date is contingent upon the availability of appropriated funds
+from which payment for contract purposes can be made. No legal liability on the part of the Government for any
+payment may arise for performance under this contract beyond 30 September 2005, until funds are made available to
+the Contracting Officer for performance and until the Contractor receives notice of availability, to be confirmed in
+writing by the Contracting Officer.
+(End of clause)
+52.244-2 SUBCONTRACTS (AUG 1998)
+(a) Definitions. As used in this clause--
+Approved purchasing system means a Contractor's purchasing system that has been reviewed and approved in
+accordance with Part 44 of the Federal Acquisition Regulation (FAR).
+Consent to subcontract means the Contracting Officer's written consent for the Contractor to enter into a particular
+subcontract.
+Subcontract means any contract, as defined in FAR Subpart 2.1, entered into by a subcontractor to furnish supplies
+or services for performance of the prime contract or a subcontract. It includes, but is not limited to, purchase orders,
+and changes and modifications to purchase orders.
+
+=== Page 27 ===
+HC1047-05-R-4009
+Page 27 of 66
+(b) This clause does not apply to subcontracts for special test equipment when the contract contains the clause at
+FAR 52.245-18, Special Test Equipment.
+(c) When this clause is included in a fixed-price type contract, consent to subcontract is required only on unpriced
+contract actions (including unpriced modifications or unpriced delivery orders), and only if required in accordance
+with paragraph (d) or (e) of this clause.
+(d) If the Contractor does not have an approved purchasing system, consent to subcontract is required for any
+subcontract that--
+(1) Is of the cost-reimbursement, time-and-materials, or labor-hour type; or
+(2) Is fixed-price and exceeds--
+(i) For a contract awarded by the Department of Defense, the Coast Guard, or the National Aeronautics and Space
+Administration, the greater of the simplified acquisition threshold or 5 percent of the total estimated cost of the
+contract; or
+(ii) For a contract awarded by a civilian agency other than the Coast Guard and the National Aeronautics and Space
+Administration, either the simplified acquisition threshold or 5 percent of the total estimated cost of the contract.
+(e) If the Contractor has an approved purchasing system, the Contractor nevertheless shall obtain the Contracting
+Officer's written consent before placing the following subcontracts:
+_____________________
+______________________
+(f)(1) The Contractor shall notify the Contracting Officer reasonably in advance of placing any subcontract or
+modification thereof for which consent is required under paragraph (c), (d), or (e) of this clause, including the
+following information:
+(i) A description of the supplies or services to be subcontracted.
+(ii) Identification of the type of subcontract to be used.
+(iii) Identification of the proposed subcontractor.
+(iv) The proposed subcontract price.
+(v) The subcontractor's current, complete, and accurate cost or pricing data and Certificate of Current Cost or Pricing
+Data, if required by other contract provisions.
+(vi) The subcontractor's Disclosure Statement or Certificate relating to Cost Accounting Standards when such data
+are required by other provisions of this contract.
+(vii) A negotiation memorandum reflecting--
+(A) The principal elements of the subcontract price negotiations;
+(B) The most significant considerations controlling establishment of initial or revised prices;
+(C) The reason cost or pricing data were or were not required;
+
+=== Page 28 ===
+HC1047-05-R-4009
+Page 28 of 66
+(D) The extent, if any, to which the Contractor did not rely on the subcontractor's cost or pricing data in determining
+the price objective and in negotiating the final price;
+(E) The extent to which it was recognized in the negotiation that the subcontractor's cost or pricing data were not
+accurate, complete, or current; the action taken by the Contractor and the subcontractor; and the effect of any such
+defective data on the total price negotiated;
+(F) The reasons for any significant difference between the Contractor's price objective and the price negotiated; and
+(G) A complete explanation of the incentive fee or profit plan when incentives are used. The explanation shall identify
+each critical performance element, management decisions used to quantify each incentive element, reasons for the
+incentives, and a summary of all trade-off possibilities considered.
+(2) The Contractor is not required to notify the Contracting Officer in advance of entering into any subcontract for
+which consent is not required under paragraph (c), (d), or (e) of this clause.
+(g) Unless the consent or approval specifically provides otherwise, neither consent by the Contracting Officer to any
+subcontract nor approval of the Contractor's purchasing system shall constitute a determination--
+(1) Of the acceptability of any subcontract terms or conditions;
+(2) Of the allowability of any cost under this contract; or
+(3) To relieve the Contractor of any responsibility for performing this contract.
+(h) No subcontract or modification thereof placed under this contract shall provide for payment on a cost-plus-a-
+percentage-of-cost basis, and any fee payable under cost-reimbursement type subcontracts shall not exceed the fee
+limitations in FAR 15.404-4(c)(4)(i).
+(i) The Contractor shall give the Contracting Officer immediate written notice of any action or suit filed and prompt
+notice of any claim made against the Contractor by any subcontractor or vendor that, in the opinion of the
+Contractor, may result in litigation related in any way to this contract, with respect to which the Contractor may be
+entitled to reimbursement from the Government.
+(j) The Government reserves the right to review the Contractor's purchasing system as set forth in FAR Subpart 44.3.
+(k) Paragraphs (d) and (f) of this clause do not apply to the following subcontracts, which were evaluated during
+negotiations:
+____________________
+_____________________
+(End of clause)
+52.252-2 CLAUSES INCORPORATED BY REFERENCE (FEB 1998)
+This contract incorporates one or more clauses by reference, with the same force and effect as if they were given in
+full text. Upon request, the Contracting Officer will make their full text available. Also, the full text of a clause may be
+accessed electronically at this/these address(es):
+http://farsite.hill.af.mil/
+
+=== Page 29 ===
+HC1047-05-R-4009
+Page 29 of 66
+(End of clause)
+52.252-6 AUTHORIZED DEVIATIONS IN CLAUSES (APR 1984)
+(a) The use in this solicitation or contract of any Federal Acquisition Regulation (48 CFR Chapter 1) clause with an
+authorized deviation is indicated by the addition of "(DEVIATION)" after the date of the clause.
+(b) The use in this solicitation or contract of any (48 CFR) clause with an authorized deviation is indicated by the
+addition of "(DEVIATION)" after the name of the regulation.
+(End of clause)
+252.212-7001 CONTRACT TERMS AND CONDITIONS REQUIRED TO IMPLEMENT STATUTES OR EXECUTIVE
+ORDERS APPLICABLE TO DEFENSE ACQUISITIONS OF COMMERCIAL ITEMS (SEP 2004) (DEVIATION)
+(a) In addition to the clauses listed in paragraph (b) of the Contract Terms and Conditions Required to Implement
+Statutes or Executive Orders--Commercial Items clause of this contract(FAR 52.212-5 (APR 2004) (DEVIATION), the
+Contractor shall include the terms of the following clause, if applicable, in subcontracts for commercial items or
+commercial components, awarded at any tier under this contract:
+252.225-7014 Preference for Domestic Specialty Metals, Alternate I (APR 2003) (10
+U.S.C. 2533a).
+252.247-7023 Transportation of Supplies by Sea (MAY 2002) (10 U.S.C. 2631)
+252.247-7024 Notification of Transportation of Supplies by Sea (MAR 2000) (10
+U.S.C. 2631)
+(End of clause)
+
+=== Page 30 ===
+HC1047-05-R-4009
+Page 30 of 66
+Section J - List of Documents, Exhibits and Other Attachments
+ATTACHMENTS
+J-1, DD254
+J-2, Cost Plus Incentive Fee Plan and Samples (in Final RFP after PWS review)
+J-3, List of GFI and URL (see Virtual Reading Room)
+J-4, List of GFP (see Virtual Reading Room)
+J-5, List of Job Codes/Titles and Descriptions (provided by the offeror)
+J-6, Subcontracting Plan (provided by the offeror)
+J-7, Register of Wage Determinations under the Service Contract Act
+J-8, Data Item Descriptions
+J-9, Contract Data Requirements List
+
+=== Page 31 ===
+HC1047-05-R-4009
+Page 31 of 66
+Section K - Representations, Certifications and Other Statements of Offerors
+CLAUSES INCORPORATED BY REFERENCE
+52.203-2 Certificate Of Independent Price Determination APR 1985
+52.204-3 Taxpayer Identification OCT 1998
+52.209-5 Certification Regarding Debarment, Suspension, Proposed DEC 2001
+Debarment, And Other Responsibility Matters
+52.212-3 Alt I Offeror Representations and Certifications--Commercial Items APR 2002
+(May 2004) Alternate I
+52.222-22 Previous Contracts And Compliance Reports FEB 1999
+52.222-25 Affirmative Action Compliance APR 1984
+252.209-7001 Disclosure of Ownership or Control by the Government of a SEP 2004
+Terrorist Country
+252.225-7000 Buy American Act--Balance Of Payments Program Certificate APR 2003
+CLAUSES INCORPORATED BY FULL TEXT
+52.204-9102 EVIDENCE OF AUTHORITY TO SIGN OFFERS
+(IAW FAR 4.102)
+In accordance with FAR 4.102, evidence of the authority of individuals signing offers to submit firm offers on behalf
+of the offeror is required except for the owner in the case of sole proprietorships. Failure to submit with the offer
+satisfactory evidence of authority of all other persons may be cause for rejection of the offer as unacceptable or
+non-responsive.
+When Contractor is a corporation, complete this certificate:
+CERTIFICATE OF CORPORATE OFFICIAL/AGENT'S AUTHORITY TO BIND CORPORATION
+I, , Secretary of , a corporation created and organized under the law of the State of
+, do hereby certify that is an official/agent of said corporation and is empowered to represent, bind,
+and execute contracts on behalf of said corporation, subject to the following limitations:
+(If none, so state)
+Witness, my hand and the corporate seal of said corporation that day of , 19 .
+(Corporate Seal)
+Secretary
+When Contractor is a partnership, unincorporated firm or a corporation for which completion of the first statement
+would be impracticable, complete the following statement:
+CERTIFICATE OF AUTHORITY TO BIND PARTNERSHIP
+We, the undersigned, comprising the total membership of , a partnership/unincorporated firm doing
+business at
+, do hereby certify that , is a of said partnership/unincorporated firm
+and is empowered to represent, bind and execute contracts on behalf of said partnership/unincorporated firm.
+
+=== Page 32 ===
+HC1047-05-R-4009
+Page 32 of 66
+Witness our signatures, this day of , 19 .
+Member of partnership/unincorporated firm:
+_______________________________________________
+_______________________________________________
+_______________________________________________
+52.215-6 PLACE OF PERFORMANCE (OCT 1997)
+(a) The offeror or respondent, in the performance of any contract resulting from this solicitation, ( ) intends, ( ) does
+not intend (check applicable block) to use one or more plants or facilities located at a different address from the
+address of the offeror or respondent as indicated in this proposal or response to request for information.
+(b) If the offeror or respondent checks “intends” in paragraph (a) of this provision, it shall insert in the following
+spaces the required information:
+Place of Performance(Street Address, City, State, Name and Address of Owner and Operator of the Plant
+County, Zip Code) or Facility if Other Than Offeror or Respondent
+(End of provision)
+52.219-1 SMALL BUSINESS PROGRAM REPRESENTATIONS (MAY 2004) - ALTERNATE I (APR 2002)
+(a)(1) The North American Industry Classification System (NAICS) code for this acquisition is 541710.
+(2) The small business size standard is 500 employees.
+(3) The small business size standard for a concern which submits an offer in its own name, other than on a
+construction or service contract, but which proposes to furnish a product which it did not itself manufacture, is 500
+employees.
+(b) Representations. (1) The offeror represents as part of its offer that it ( ) is, ( ) is not a small business concern.
+(2) (Complete only if the offeror represented itself as a small business concern in paragraph (b)(1) of this provision.)
+The offeror represents, for general statistical purposes, that it ( ) is, ( ) is not a small disadvantaged business
+concern as defined in 13 CFR 124.1002.
+(3) (Complete only if the offeror represented itself as a small business concern in paragraph (b)(1) of this provision.)
+The offeror represents as part of its offer that it ( ) is, ( ) is not a women-owned small business concern.
+(4) (Complete only if the offeror represented itself as a small business concern in paragraph (b)(1) of this provision.)
+The offeror represents as part of its offer that it ( ) is, ( ) is not a veteran-owned small business concern.
+
+=== Page 33 ===
+HC1047-05-R-4009
+Page 33 of 66
+(5) (Complete only if the offeror represented itself as a veteran-owned small business concern in paragraph (b)(4) of
+this provision.) The offeror represents as part of its offer that it ( ) is, ( ) is not a service-disabled veteran-owned
+small business concern.
+(6) [Complete only if the offeror represented itself as a small business concern in paragraph (b)(1) of this provision.]
+The offeror represents, as part of its offer, that--
+(i) It ( ) is, ( ) is not a HUBZone small business concern listed, on the date of this representation, on the List of
+Qualified HUBZone Small Business Concerns maintained by the Small Business Administration, and no material
+change in ownership and control, principal office, or HUBZone employee percentage has occurred since it was
+certified by the Small Business Administration in accordance with 13 CFR part 126; and
+(ii) It ( ) is, ( ) is not a joint venture that complies with the requirements of 13 CFR part 126, and the representation in
+paragraph (b)(6)(i) of this provision is accurate for the HUBZone small business concern or concerns that are
+participating in the joint venture. (The offeror shall enter the name or names of the HUBZone small business concern
+or concerns that are participating in the joint venture:____________.) Each HUBZone small business concern
+participating in the joint venture shall submit a separate signed copy of the HUBZone representation.
+(7) (Complete if offeror represented itself as disadvantaged in paragraph (b)(2) of this provision.) The offeror shall
+check the category in which its ownership falls:
+____ Black American.
+____ Hispanic American.
+____ Native American (American Indians, Eskimos, Aleuts, or Native Hawaiians).
+____ Asian-Pacific American (persons with origins from Burma, Thailand, Malaysia, Indonesia, Singapore, Brunei,
+Japan, China, Taiwan, Laos, Cambodia (Kampuchea), Vietnam, Korea, The Philippines, U.S. Trust Territory of the
+Pacific Islands (Republic of Palau), Republic of the Marshall Islands, Federated States of Micronesia, the
+Commonwealth of the Northern Mariana Islands, Guam, Samoa, Macao, Hong Kong, Fiji, Tonga, Kiribati, Tuvalu, or
+Nauru).
+____ Subcontinent Asian (Asian-Indian) American (persons with origins from India, Pakistan, Bangladesh, Sri Lanka,
+Bhutan, the Maldives Islands, or Nepal).
+____ Individual/concern, other than one of the preceding.
+(c) Definitions. As used in this provision--
+Service-disabled veteran-owned small business concern--
+(1) Means a small business concern--
+(i) Not less than 51 percent of which is owned by one or more service-disabled veterans or, in the case of any
+publicly owned business, not less than 51 percent of the stock of which is owned by one or more service-disabled
+veterans; and
+(ii) The management and daily business operations of which are controlled by one or more service-disabled veterans
+or, in the case of a service-disabled veteran with permanent and severe disability, the spouse or permanent caregiver
+of such veteran.
+
+=== Page 34 ===
+HC1047-05-R-4009
+Page 34 of 66
+(2) Service-disabled veteran means a veteran, as defined in 38 U.S.C. 101(2), with a disability that is service-
+connected, as defined in 38 U.S.C. 101(16).
+"Small business concern," means a concern, including its affiliates, that is independently owned and operated, not
+dominant in the field of operation in which it is bidding on Government contracts, and qualified as a small business
+under the criteria in 13 CFR Part 121 and the size standard in paragraph (a) of this provision.
+Veteran-owned small business concern means a small business concern--
+(1) Not less than 51 percent of which is owned by one or more veterans (as defined at 38 U.S.C. 101(2)) or, in the case
+of any publicly owned business, not less than 51 percent of the stock of which is owned by one or more veterans;
+and
+(2) The management and daily business operations of which are controlled by one or more veterans.
+"Women-owned small business concern," means a small business concern --
+(1) That is at least 51 percent owned by one or more women or, in the case of any publicly owned business, at least
+51 percent of the stock of which is owned by one or more women; or
+(2) Whose management and daily business operations are controlled by one or more women.
+(d) Notice.
+(1) If this solicitation is for supplies and has been set aside, in whole or in part, for small business concerns, then the
+clause in this solicitation providing notice of the set-aside contains restrictions on the source of the end items to be
+furnished.
+(2) Under 15 U.S.C. 645(d), any person who misrepresents a firm's status as a small, HUBZone small, small
+disadvantaged, or women-owned small business concern in order to obtain a contract to be awarded under the
+preference programs established pursuant to section 8(a), 8(d), 9, or 15 of the Small Business Act or any other
+provision of Federal law that specifically references section 8(d) for a definition of program eligibility, shall--
+(i) Be punished by imposition of fine, imprisonment, or both;
+(ii) Be subject to administrative remedies, including suspension and debarment; and
+(iii) Be ineligible for participation in programs conducted under the authority of the Act.
+(End of provision)
+52.226-2 HISTORICALLY BLACK COLLEGE OR UNIVERSITY AND MINORITY INSTITUTION
+REPRESENTATION (MAY 2001)
+(a) Definitions. As used in this provision--
+Historically black college or university means an institution determined by the Secretary of Education to meet the
+requirements of 34 CFR 608.2. For the Department of Defense, the National Aeronautics and Space Administration,
+and the Coast Guard, the term also includes any nonprofit research institution that was an integral part of such a
+college or university before November 14, 1986.
+
+=== Page 35 ===
+HC1047-05-R-4009
+Page 35 of 66
+Minority institution means an institution of higher education meeting the requirements of Section 1046(3) of the
+Higher Education Act of 1965 (20 U.S.C. 1067k, including a Hispanic-serving institution of higher education, as
+defined in Section 316(b)(1) of the Act (20 U.S.C. 1101a)).
+(b) Representation. The offeror represents that it--
+( ) is ( ) is not a historically black college or university;
+( ) is ( ) is not a minority institution.
+(End of provision)
+252.212-7000 OFFEROR REPRESENTATIONS AND CERTIFICATIONS- COMMERCIAL ITEMS. (NOV 1995)
+(a) Definitions.
+As used in this clause-
+(1) Foreign person means any person other than a United States person as defined in Section 16(2) of the Export
+Administration Act of 1979 (50 U.S.C. App. Sec. 2415).
+(2) United States person is defined in Section 16(2) of the Export Administration Act of 1979 and means any United
+States resident or national (other than an individual resident outside the United States and employed by other than a
+United States person), any domestic concern (including any permanent domestic establishment of any foreign
+concern), and any foreign subsidiary or affiliate (including any permanent foreign establishment) of any domestic
+concern which is controlled in fact by such domestic concern, as determined under regulations of the President.
+(b) Certification.
+By submitting this offer, the Offeror, if a foreign person, company or entity, certifies that it -
+(1) Does not comply with the Secondary Arab Boycott of Israel; and
+(2) Is not taking or knowingly agreeing to take any action, with respect to the Secondary Boycott of Israel by Arab
+countries, which 50 U.S.C. App. Sec. 2407(a) prohibits a United States person from taking.
+(c) Representation of Extent of Transportation by Sea. (This representation does not apply to solicitations for the
+direct purchase of ocean transportation services).
+(1) The Offeror shall indicate by checking the appropriate blank in paragraph (c)(2) of this provision whether
+transportation of supplies by sea is anticipated under the resultant contract. The term "supplies" is defined in the
+Transportation of Supplies by Sea clause of this solicitation.
+(2) Representation.
+The Offeror represents that it-
+___Does anticipate that supplies will be transported by sea in the performance of any contract or subcontract
+resulting from this solicitation.
+
+=== Page 36 ===
+HC1047-05-R-4009
+Page 36 of 66
+___Does not anticipate that supplies will be transported by sea in the performance of any contract or subcontract
+resulting from this solicitation.
+(3) Any contract resulting from this solicitation will include the Transportation of Supplies by Sea Clause. If the
+Offeror represents that it will not use ocean transportation, the resulting contract will also include the Defense
+Federal Acquisition Regulation Supplement clause at 252.247-7024, Notification of Transportation of Supplies by Sea.
+(End of clause)
+252.225-7000 BUY AMERICAN ACT--BALANCE OF PAYMENTS PROGRAM CERTIFICATE (APR 2003)
+(a) Definitions. Domestic end product, foreign end product, qualifying country, and qualifying country end product
+have the meanings given in the Buy American Act and Balance of Payments Program clause of this solicitation.
+(b) Evaluation. The Government--
+(1) Will evaluate offers in accordance with the policies and procedures of Part 225 of the Defense Federal Acquisition
+Regulation Supplement; and
+(2) Will evaluate offers of qualifying country end products without regard to the restrictions of the Buy American
+Act or the Balance of Payments Program.
+(c) Certifications and identification of country of origin.
+(1) For all line items subject to the Buy American Act and Balance of Payments Program clause of this solicitation, the
+offeror certifies that--
+(i) Each end product, except those listed in paragraph (c)(2) or (3) of this provision, is a domestic end product; and
+(ii) Components of unknown origin are considered to have been mined, produced, or manufactured outside the
+United States or a qualifying country.
+(2) The offeror certifies that the following end products are qualifying country end products:
+-----------------------------------------------------------------------
+(Line Item Number Country of Origin)
+-----------------------------------------------------------------------
+(Country of Origin)
+(3) The following end products are other foreign end products:
+-----------------------------------------------------------------------
+(Line Item Number)
+-----------------------------------------------------------------------
+(Country of Origin) (If known)
+(End of provision)
+
+=== Page 37 ===
+HC1047-05-R-4009
+Page 37 of 66
+252.225-7020 TRADE AGREEMENTS CERTIFICATE (JAN 2004)
+(a) Definitions. Caribbean Basin country end product, designated country end product, Free Trade Agreement
+country end product, nondesignated country end product, qualifying country end product, and U.S. -made end
+product have the meanings given in the Trade Agreements clause of this solicitation.
+(b) Evaluation. The Government--
+(1) Will evaluate offers in accordance with the policies and procedures of Part 225 of the Defense Federal Acquisition
+Regulation Supplement; and
+(2) Will consider only offers of end products that are U.S.-made, qualifying country, designated country, Caribbean
+Basin country, or Free Trade Agreement country end products, unless the Government determines that--
+(i) There are no offers of such end products;
+(ii) The offers of such end products are insufficient to fulfill the Government's requirements; or
+(iii) A national interest exception to the Trade Agreements Act applies.
+(c) Certification and identification of country of origin.
+(1) For all line items subject to the Trade Agreements clause of this solicitation, the offeror certifies that each end
+product to be delivered under this contract, except those listed in paragraph (c)(2) of this provision, is a U.S.-made,
+qualifying country, designated country, Caribbean Basin country, or Free Trade Agreement country end product.
+(2) The following supplies are other nondesignated country end products:
+-----------------------------------------------------------------------
+(Line Item Number)
+-----------------------------------------------------------------------
+(Country of Origin)
+(End of provision)
+
+=== Page 38 ===
+HC1047-05-R-4009
+Page 38 of 66
+Section L - Instructions, Conditions and Notices to Bidders
+CLAUSES INCORPORATED BY REFERENCE
+52.204-6 Data Universal Numbering System (DUNS) Number OCT 2003
+52.214-34 Submission Of Offers In The English Language APR 1991
+52.214-35 Submission Of Offers In U.S. Currency APR 1991
+52.215-1 Instructions to Offerors--Competitive Acquisition JAN 2004
+52.215-8 Order of Precedence--Uniform Contract Format OCT 1997
+52.215-16 Facilities Capital Cost of Money JUN 2003
+52.216-27 Single or Multiple Awards OCT 1995
+52.222-24 Preaward On-Site Equal Opportunity Compliance Evaluation FEB 1999
+52.222-24 Preaward On-Site Equal Opportunity Compliance Evaluation FEB 1999
+52.222-46 Evaluation Of Compensation For Professional Employees FEB 1993
+52.222-46 Evaluation Of Compensation For Professional Employees FEB 1993
+52.232-28 Invitation to Propose Performance-Based Payments MAR 2000
+52.232-28 Invitation to Propose Performance-Based Payments MAR 2000
+52.237-1 Site Visit APR 1984
+52.237-10 Identification of Uncompensated Overtime OCT 1997
+CLAUSES INCORPORATED BY FULL TEXT
+52.211-14 NOTICE OF PRIORITY RATING FOR NATIONAL DEFENSE USE (SEP 1990)
+Any contract awarded as a result of this solicitation will be a DO-A7 rated order certified for national defense use
+under the Defense Priorities and Allocations System (DPAS) (15 CFR 700), and the Contractor will be required to
+follow all of the requirements of this regulation. [Contracting Officer check appropriate box.]
+(End of provision)
+52.233-2 SERVICE OF PROTEST (AUG 1996)
+(a) Protests, as defined in section 33.101 of the Federal Acquisition Regulation, that are filed directly with an agency,
+and copies of any protests that are filed with the General Accounting Office (GAO), shall be served on the
+Contracting Officer by obtaining written and dated acknowledgment of receipt from the Contracting Officer.
+(b) The copy of any protest shall be received in the office designated above within one day of filing a protest with
+the GAO.
+(End of provision)
+52.252-1 SOLICITATION PROVISIONS INCORPORATED BY REFERENCE (FEB 1998)
+This solicitation incorporates one or more solicitation provisions by reference, with the same force and effect as if
+they were given in full text. Upon request, the Contracting Officer will make their full text available. The offeror is
+cautioned that the listed provisions may include blocks that must be completed by the offeror and submitted with its
+
+=== Page 39 ===
+HC1047-05-R-4009
+Page 39 of 66
+quotation or offer. In lieu of submitting the full text of those provisions, the offeror may identify the provision by
+paragraph identifier and provide the appropriate information with its quotation or offer. Also, the full text of a
+solicitation provision may be accessed electronically at this/these address(es):
+http://farsite.hill.af.mil/
+(End of provision
+52.252-5 AUTHORIZED DEVIATIONS IN PROVISIONS (APR 1984)
+(a) The use in this solicitation of any Federal Acquisition Regulation (48 CFR Chapter 1) provision with an authorized
+deviation is indicated by the addition of"(DEVIATION)" after the date of the provision.
+52 The use in this solicitation of any (48 CFR Chapter) provision with an authorized deviation is indicated by
+the addition of "(DEVIATION)" after the name of the regulation.
+(End of provision)
+INSTRUCTIONS FOR PROPOSAL PREP
+IINNSSTTRRUUCCTTIIOONNSS FFOORR PPRROOPPOOSSAALL PPRREEPPAARRAATTIIOONN
+FFOORR
+EELLEECCTTRROOMMAAGGNNEETTIICC SSPPEECCTTRRUUMM EENNGGIINNEEEERRIINNGG SSEERRVVIICCEESS
+FFOORR
+DDEEPPAARRTTMMEENNTT OOFF DDEEFFEENNSSEE
+JJOOIINNTT SSPPEECCTTRRUUMM CCEENNTTEERR ((JJSSCC))
+TTAABBLLEE OOFF CCOONNTTEENNTTSS
+11..00 GGEENNEERRAALL IINNSSTTRRUUCCTTIIOONNSS
+11..11 GGuuiiddeelliinneess
+11..22 PPrrooppoossaall FFoorrmmaatt
+11..33 GGuuiiddeelliinneess ffoorr CCoonntteenntt
+22..00 VVOOLLUUMMEE II PPAASSTT PPEERRFFOORRMMAANNCCEE IINNFFOORRMMAATTIIOONN
+22..11 TTaabb AA PPaasstt PPeerrffoorrmmaannccee IInnffoorrmmaattiioonn
+33..00 VVOOLLUUMMEE IIII TTEECCHHNNIICCAALL PPRROOPPOOSSAALL66
+33..11 TTaabb BB:: TTeecchhnniiccaall AApppprrooaacchh
+33..22 TTaabb CC:: MMaannaaggeemmeenntt PPllaann
+33..33 TTaabb DD:: TTrraannssiittiioonn PPllaann
+33..44 TTaabb EE:: OOrrggaanniizzaattiioonnaall SSttrraatteeggiicc QQuuaalliittyy AAssssuurraannccee PPllaann
+
+=== Page 40 ===
+HC1047-05-R-4009
+Page 40 of 66
+44..00 VVOOLLUUMMEE IIIIII BBUUSSIINNEESSSS PPRROOPPOOSSAALL
+44..11 TTaabb FF:: CCoosstt//PPrriiccee PPrrooppoossaall
+55..00 OOTTHHEERR IINNFFOORRMMAATTIIOONN RREEQQUUIIRREEDD
+AAPPPPEENNDDIICCEESS::
+AA.. PPaasstt PPeerrffoorrmmaannccee QQuueessttiioonnnnaaiirree
+BB.. SSaammppllee TTaasskk OOrrddeerr:: EEmmeerrggiinngg SSppeeccttrruumm TTeecchhnnoollooggyy
+CC.. SSaammppllee TTaasskk OOrrddeerr:: NNeettwwoorrkk CCeennttrriicc WWaarrffaarree
+DD.. KKeeyy PPeerrssoonnnneell QQuuaalliiffiiccaattiioonnss SSuummmmaarryy
+
+=== Page 41 ===
+HC1047-05-R-4009
+Page 41 of 66
+11..00 GGEENNEERRAALL IINNSSTTRRUUCCTTIIOONNSS
+11..11 GGuuiiddeelliinneess
+aa.. TThhiiss sseeccttiioonn ooff tthhee IInnssttrruuccttiioonn ffoorr PPrrooppoossaall PPrreeppaarraattiioonn ((IIFFPPPP)) pprroovviiddeess ggeenneerraall gguuiiddaannccee ffoorr pprreeppaarriinngg
+pprrooppoossaallss aass wweellll aass ssppeecciiffiicc iinnssttrruuccttiioonnss oonn tthhee ffoorrmmaatt aanndd ccoonntteenntt ooff tthhee pprrooppoossaall.. TThhee ooffffeerroorr''ss pprrooppoossaall mmuusstt
+iinncclluuddee aallll ddaattaa aanndd iinnffoorrmmaattiioonn rreeqquueesstteedd bbyy tthhee IIFFPPPP aanndd mmuusstt bbee ssuubbmmiitttteedd iinn aaccccoorrddaannccee wwiitthh tthheessee iinnssttrruuccttiioonnss..
+TThhee ooffffeerroorr sshhaallll bbee ccoommpplliiaanntt wwiitthh tthhee rreeqquuiirreemmeennttss aass ssttaatteedd iinn tthhee ssoolliicciittaattiioonn.. TThhee GGoovveerrnnmmeenntt wwiillll rreeaadd oonnllyy tthhee
+mmaaxxiimmuumm nnuummbbeerr ooff ppaaggeess aalllloowweedd wwhhiillee eevvaalluuaattiinngg pprrooppoossaallss.. NNoonn ccoonnffoorrmmaannccee wwiitthh tthhee ssppeecciiffiieedd oorrggaanniizzaattiioonn,,
+ccoonntteenntt,, aanndd ppaaggee lliimmiittaattiioonnss mmaayy rreessuulltt iinn aann iinnccoorrrreecctt eevvaalluuaattiioonn ooff tthhee pprrooppoossaall.. AAllll ccaappaabbiilliittiieess ccllaaiimmeedd ttoo mmeeeett
+tthhee rreeqquuiirreemmeennttss sshhaallll bbee rreeaalliissttiicc aanndd aarree ssuubbjjeecctt ttoo vveerriiffiiccaattiioonn bbyy tthhee GGoovveerrnnmmeenntt..
+bb.. TThhee GGoovveerrnnmmeenntt rreesseerrvveess tthhee rriigghhtt ttoo aawwaarrdd aa ccoonnttrraacctt wwiitthhoouutt ddiissccuussssiioonnss.. OOffffeerroorrss pprrooppoossaallss sshhaallll bbee
+cclleeaarr,, ccoonncciissee,, aanndd sshhaallll iinncclluuddee ssuuffffiicciieenntt ddeettaaiill ffoorr eeffffeeccttiivvee eevvaalluuaattiioonn aanndd ffoorr ssuubbssttaannttiiaattiinngg tthhee vvaalliiddiittyy ooff ssttaatteedd
+ccllaaiimmss.. PPrrooppoossaallss sshhoouulldd nnoott ssiimmppllyy rreepphhrraassee oorr rreessttaattee tthhee GGoovveerrnnmmeenntt''ss rreeqquuiirreemmeennttss,, bbuutt rraatthheerr sshhoouulldd pprroovviiddee
+ccoonnvviinncciinngg rraattiioonnaallee ttoo aassssuurree tthhee GGoovveerrnnmmeenntt tthhaatt tthhee ooffffeerroorr ffuullllyy uunnddeerrssttaannddss aanndd iiss ccaappaabbllee ooff mmeeeettiinngg tthhee
+rreeqquuiirreemmeennttss aanndd ppeerrffoorrmmaannccee oobbjjeeccttiivveess ssttaatteedd iinn tthhee ssoolliicciittaattiioonn.. OOffffeerroorrss sshhoouulldd aassssuummee tthhaatt tthhee GGoovveerrnnmmeenntt hhaass
+nnoo pprriioorr kknnoowwlleeddggee ooff tthheeiirr ffaacciilliittiieess aanndd eexxppeerriieennccee,, aanndd wwiillll bbaassee iittss eevvaalluuaattiioonn oonn tthhee iinnffoorrmmaattiioonn pprreesseenntteedd iinn tthhee
+ooffffeerroorr''ss pprrooppoossaallss.. IIff iinnffoorrmmaattiioonn rreeqquuiirreedd ffoorr pprrooppoossaall eevvaalluuaattiioonn iiss nnoott ffoouunndd iinn tthhee sseeccttiioonn ddeessiiggnnaatteedd ffoorr iittss
+pprreesseennttaattiioonn,, iitt mmaayy rreessuulltt iinn aann iinnccoorrrreecctt eevvaalluuaattiioonn ooff tthhee ooffffeerroorr''ss pprrooppoossaall..
+cc.. EEaacchh vvoolluummee sshhaallll bbee wwrriitttteenn ttoo tthhee ggrreeaatteesstt eexxtteenntt ppoossssiibbllee oonn aa ssttaanndd--aalloonnee bbaassiiss ssoo tthhaatt iittss ccoonntteennttss
+mmaayy bbee eevvaalluuaatteedd wwiitthh aa mmiinniimmuumm ooff ccrroossss rreeffeerreenncciinngg ttoo ootthheerr vvoolluummeess ooff tthhee pprrooppoossaall..
+dd.. TThhee pprrooppoossaall sshhaallll bbee vvaalliidd ffoorr nnoo lleessss tthhaann 118800 ddaayyss ffrroomm tthhee rreeqquuiirreedd ssuubbmmiissssiioonn ddaattee..
+ee.. PPrrooppoossaallss sshhaallll bbee ssuubbmmiitttt oonnee ((11)) eelleeccttrroonniicc aanndd ttwwoo ((22)) hhaarrdd ccooppiieess ttoo tthhee PPrrooccuurriinngg CCoonnttrraaccttiinngg OOffffiicceerr
+((PPCCOO)) aatt DDIISSAA iinn aa ffoorrmmaatt ccoommppaattiibbllee wwiitthh MMSS OOffffiiccee 22000000.. TThhee eelleeccttrroonniicc ccooppyy wwiillll bbee ccoonnssiiddeerreedd tthhee ooffffiicciiaall ccooppyy
+aanndd wwiillll ttaakkee pprreecceeddeennccee oovveerr aannyy hhaarrdd ccooppyy iinn ccaassee ooff aannyy ddiissccrreeppaanncciieess..
+ff.. TThhee GGoovveerrnnmmeenntt aannttiicciippaatteess aallll pprrooppoossaallss ttoo bbee UUNNCCLLAASSSSIIFFIIEEDD.. IIff aann ooffffeerroorr''ss pprrooppoossaall ccoonnttaaiinnss
+ccllaassssiiffiieedd iinnffoorrmmaattiioonn,, tthhee ccllaassssiiffiieedd ppoorrttiioonn sshhaallll bbee sseeggrreeggaatteedd iinnttoo aa sseeppaarraattee ccllaassssiiffiieedd aappppeennddiixx ffoorr tthhee
+aapppprroopprriiaattee VVoolluummee((ss)) aanndd sshhaallll bbee mmaarrkkeedd wwiitthh aapppprroopprriiaattee sseeccuurriittyy mmaarrkkiinnggss.. TThhee hhiigghheesstt lleevveell ooff ccllaassssiiffiiccaattiioonn
+aalllloowweedd iiss SSEECCRREETT.. TThhee nnuummbbeerr ooff ppaaggeess ffoorr tthhee ccllaassssiiffiieedd ppoorrttiioonnss iiss ttoo bbee iinncclluuddeedd wwiitthhiinn tthhee ppaaggee lliimmiittaattiioonnss iinn
+ppaarraaggrraapphh 11..33..
+gg.. EEaacchh VVoolluummee sshhaallll ccoonnttaaiinn aa gglloossssaarryy ooff aallll aabbbbrreevviiaattiioonnss aanndd aaccrroonnyymmss uusseedd,, wwiitthh aann eexxppllaannaattiioonn ffoorr
+eeaacchh.. GGlloossssaarriieess ddoo nnoott ccoouunntt aaggaaiinnsstt tthhee ppaaggee lliimmiittss ffoorr tthheeiirr rreessppeeccttiivvee vvoolluummeess..
+hh.. AA ccoosstt rreeaalliissmm aannaallyyssiiss sshhaallll bbee ppeerrffoorrmmeedd ttoo eevvaalluuaattee ppeerrffoorrmmaannccee aanndd sscchheedduullee rriisskk..
+FFaaiilluurree ttoo pprroovviiddee tthhiiss iinnffoorrmmaattiioonn mmaayy iimmppaacctt tthhee GGoovveerrnnmmeenntt''ss eevvaalluuaattiioonn ooff CCoonnttrraaccttoorr pprrooppoossaallss.. IIff tthhiiss
+iinnffoorrmmaattiioonn iiss pprroopprriieettaarryy ttoo ssuubbccoonnttrraaccttoorrss,, iitt mmaayy bbee pprroovviiddeedd uunnddeerr sseeppaarraattee ccoovveerr;; hhoowweevveerr,, iitt mmuusstt bbee eeaassiillyy
+iiddeennttiiffiiaabbllee aanndd rreeaaddiillyy ccoommbbiinneedd wwiitthh tthhee rreesstt ooff tthhee pprrooppoossaall..
+11..22 PPrrooppoossaall FFoorrmmaatt
+aa.. TThhee ooffffeerroorr sshhaallll ssuubbmmiitt iittss pprrooppoossaall iinn tthhee ffoolllloowwiinngg iinnddeexxeedd ffoorrmmaatt::
+11)) TTiittllee:: VVOOLLUUMMEE II PPaasstt PPeerrffoorrmmaannccee IInnffoorrmmaattiioonn
+TTAABB AA PPaasstt PPeerrffoorrmmaannccee IInnffoorrmmaattiioonn
+
+=== Page 42 ===
+HC1047-05-R-4009
+Page 42 of 66
+22)) TTiittllee:: VVOOLLUUMMEE IIII TTeecchhnniiccaall PPrrooppoossaall
+TTAABB BB TTeecchhnniiccaall AApppprrooaacchh
+TTAABB CC MMaannaaggeemmeenntt PPllaann
+TTAABB DD TTrraannssiittiioonn PPllaann
+TTAABB EE OOrrggaanniizzaattiioonnaall SSttrraatteeggiicc QQuuaalliittyy AAssssuurraannccee PPllaann
+33)) TTiittllee:: VVOOLLUUMMEE IIIIII BBuussiinneessss PPrrooppoossaall
+TTAABB FF CCoosstt//PPrriiccee PPrrooppoossaall
+11..33 GGuuiiddeelliinneess FFoorr CCoonntteenntt
+aa.. EEaacchh vvoolluummee mmuusstt bbee ssuubbmmiitttteedd aass aa sseeppaarraattee ffoollddeerr aanndd iinncclluuddee aann eexxeeccuuttiivvee ssuummmmaarryy oouuttlliinniinngg tthhee
+ssiiggnniiffiiccaanntt aattttrriibbuutteess ooff tthhee vvoolluummee.. TThhee ttoottaall ppaaggee ccoouunntt ffoorr tthhee wwrriitttteenn ppoorrttiioonn ooff tthhee TTeecchhnniiccaall PPrrooppoossaall wwiillll bbee
+lliimmiitteedd ttoo oonnee hhuunnddrreedd ffiiffttyy ((115500)) ppaaggeess ooff pprriinntteedd tteexxtt,, aass ddeessccrriibbeedd bbeellooww.. TThhee ppaaggee lliimmiitt iinncclluuddeess ffuullll ppaaggee ffiigguurreess
+aanndd ffuullll ppaaggee ttaabblleess aanndd ddiiaaggrraammss,, hhoowweevveerr tthheeyy sshhaallll bbee nnoo llaarrggeerr tthhaann 88..55 xx 1144 iinncchheess wwhheenn pprriinntteedd.. TTeexxtt ppaaggeess aarree
+ttoo bbee pprriinnttaabbllee oonn 88..55 xx 1111 iinncchh ppaappeerr,, wwiitthh 11 iinncchh ttoopp//bboottttoomm//ssiiddee mmaarrggiinnss,, ssiinnggllee ssppaacceedd,, wwiitthh ffoonntt ssiizzee nnoo ssmmaalllleerr
+tthhaann 1122 ppooiinntt wwiitthh pprrooppoorrttiioonnaall ssppaacciinngg.. TThhee ppaaggeess sshhaallll bbee nnuummbbeerreedd aanndd eeaacchh vvoolluummee sshhaallll ccoonnttaaiinn aa TTaabbllee ooff
+CCoonntteennttss..
+bb.. SSuuggggeesstteedd ppaaggee lliimmiittaattiioonnss aarree pprroovviiddeedd ffoorr eeaacchh TTaabb ooff tthhee TTeecchhnniiccaall PPrrooppoossaall,, hhoowweevveerr tthhee ooffffeerroorr mmaayy
+pprroovviiddee ffeewweerr,, oorr aaddddiittiioonnaall,, ppaaggeess iinn aa ppaarrttiiccuullaarr TTaabb,, pprroovviiddeedd tthhee oovveerraallll ppaaggee ccoouunntt ooff tthhee TTeecchhnniiccaall PPrrooppoossaall
+ddooeess nnoott eexxcceeeedd 115500 ppaaggeess aass ddeessccrriibbeedd aabboovvee..
+22..00 VVOOLLUUMMEE II –– PPAASSTT PPEEFFOORRMMAANNCCEE IINNFFOORRMMAATTIIOONN
+22..11 TTaabb AA:: PPaasstt PPeerrffoorrmmaannccee IInnffoorrmmaattiioonn
+aa.. TTaabb AA,, PPaasstt PPeerrffoorrmmaannccee,, ddooccuummeennttss tthhee ooffffeerroorr’’ss ppaasstt ppeerrffoorrmmaannccee oonn eeffffoorrttss oonn tthhee ffoouurr mmoosstt rreecceenntt
+ccoonnttrraaccttss ppeerrffoorrmmeedd wwiitthhiinn tthhee llaasstt tthhrreeee yyeeaarrss,, oorr oonnggooiinngg,, hhaavviinngg ttaasskk rreeqquuiirreemmeennttss ssiimmiillaarr iinn ssiizzee,, ssccooppee,, aanndd
+ccoommpplleexxiittyy ttoo tthhee JJSSCC EEnnggiinneeeerriinngg SSuuppppoorrtt SSeerrvviicceess rreeqquuiirreemmeennttss.. AA PPaasstt PPeerrffoorrmmaannccee qquueessttiioonnnnaaiirree,, AAppppeennddiixx AA,,
+sshhaallll bbee pprroovviiddeedd bbyy tthhee ooffffeerroorr ttoo tthhee PPrrooggrraamm MMaannaaggeerr ffoorr eeaacchh rreecceenntt ppaasstt ppeerrffoorrmmaannccee eeffffoorrtt iiddeennttiiffiieedd bbyy tthhee
+ooffffeerroorr.. TThhee ooffffeerroorr sshhaallll rreeqquueesstt tthhaatt tthhee ddaattaa sshheeeett bbee ccoommpplleetteedd bbyy tthhee PPrrooggrraamm MMaannaaggeerr aanndd rreettuurrnneedd ttoo tthhee
+CCoonnttrraaccttiinngg OOffffiicceerr.. OOffffeerroorrss wwiillll nnoott bbee ppeennaalliizzeedd iiff PPrrooggrraamm MMaannaaggeerrss ffaaiill ttoo rreessppoonndd wwiitthhiinn tthhee aalllloowweedd ttiimmee..
+bb.. OOffffeerroorrss wwiitthh nnoo rreeccoorrdd ooff rreelleevvaanntt ppaasstt ppeerrffoorrmmaannccee,, oorr ffoorr wwhhoomm ppaasstt ppeerrffoorrmmaannccee iiss nnoott aavvaaiillaabbllee,, mmaayy
+ssuubbmmiitt ppaasstt ppeerrffoorrmmaannccee iinnffoorrmmaattiioonn oonn pprreeddeecceessssoorr ccoommppaanniieess aanndd kkeeyy ppeerrssoonnnneell wwhhoo hhaavvee rreelleevvaanntt eexxppeerriieennccee..
+OOnnee AAppppeennddiixx AA ffoorrmm wwiillll bbee ccoommpplleetteedd ffoorr eeaacchh rreeffeerreennccee ssuubbmmiitttteedd.. OOffffeerroorrss wwhhoo hhaavvee nnoo rreeccoorrdd ooff ppaasstt
+ppeerrffoorrmmaannccee ((ee..gg..,, nneeww bbuussiinneesssseess)) mmuusstt ssuubbmmiitt aa ssiiggnneedd aanndd ddaatteedd cceerrttiiffiiccaattiioonn ssttaatteemmeenntt ttoo tthhaatt eeffffeecctt..
+cc.. IItt iiss iinnccuummbbeenntt oonn ooffffeerroorrss ttoo pprroovviiddee ccuurrrreenntt ppooiinnttss ooff ccoonnttaacctt,, iinncclluuddiinngg pphhoonnee nnuummbbeerrss aanndd eemmaaiill
+aaddddrreesssseess,, ffoorr tthhee GGoovveerrnnmmeenntt’’ss uussee iinn vveerriiffyyiinngg PPaasstt PPeerrffoorrmmaannccee ddaattaa ssuubbmmiitttteedd..
+dd.. TThhee ffoolllloowwiinngg ffaaccttoorrss wwiillll bbee aasssseesssseedd::
+11)) TThhee aabbiilliittyy ttoo mmeeeett oobbjjeeccttiivveess aanndd mmiissssiioonn rreeqquuiirreemmeennttss oonn EEnnggiinneeeerriinngg SSuuppppoorrtt SSeerrvviicceess ttaasskkss
+ssiimmiillaarr ttoo tthhee ssiizzee,, ssccooppee,, aanndd ccoommpplleexxiittyy ooff tthhee TTaasskk AArreeaass ddeessccrriibbeedd iinn tthhee SSttaatteemmeenntt ooff OObbjjeeccttiivveess,, SSeeccttiioonn CC ooff tthhee
+ssoolliicciittaattiioonn..
+
+=== Page 43 ===
+HC1047-05-R-4009
+Page 43 of 66
+22)) TThhee aabbiilliittyy ttoo ffoorreeccaasstt aanndd ccoonnttrrooll ccoonnttrraacctt ccoossttss aanndd eevvaalluuaattee tthhee ccaauussee ooff aannyy vvaarriiaanncceess iinn tthhee
+ccoonnttrraacctt aawwaarrdd aammoouunnttss aanndd tthhee aammoouunnttss aatt ccoommpplleettiioonn ((oorr eessttiimmaatteedd ttoo ccoommpplleettee)) ttoo ddeetteerrmmiinnee tthhee eexxtteenntt ttoo wwhhiicchh
+ccoossttss wweerree ccoonnttrroolllleedd..
+33)) TThhee aabbiilliittyy ttoo aaddhheerree ttoo sscchheedduullee rreeqquuiirreemmeennttss.. CCaauusseess ffoorr sscchheedduullee vvaarriiaanncceess aarree iiddeennttiiffiieedd..
+44)) TThhee aabbiilliittyy ttoo rreeccooggnniizzee aanndd mmaannaaggee rriisskk..
+55)) TThhee aabbiilliittyy ttoo pprroovviiddee qquuaalliittyy pprroodduuccttss..
+66)) TThhee aacchhiieevveemmeenntt ooff ssoocciiooeeccoonnoommiicc ggooaallss.. CCiirrccuummssttaanncceess tthhaatt nneeggaattiivveellyy iimmppaacctteedd tthhee ooffffeerroorr’’ss
+aabbiilliittyy ttoo ccoonnssiisstteennttllyy mmeeeett oorr eexxcceeeedd ssmmaallll bbuussiinneessss ssuubbccoonnttrraaccttiinngg ggooaallss aarree iiddeennttiiffiieedd..
+77)) TThhee aabbiilliittyy ttoo mmaannaaggee ssuubbccoonnttrraaccttiinngg eeffffoorrttss.. SSiiggnniiffiiccaanntt ssuubbccoonnttrraaccttiinngg iissssuueess tthhaatt rreessuulltteedd iinn
+ccoonnttrraacctt ccoosstt,, sscchheedduullee,, oorr ppeerrffoorrmmaannccee pprroobblleemmss,, aanndd ssuubbsseeqquueenntt ccoorrrreeccttiivvee aaccttiioonnss,, aarree iiddeennttiiffiieedd..
+88)) TThhee ddeemmoonnssttrraattiioonn ooff bbuussiinneessss--lliikkee ccoonncceerrnn ffoorr tthhee iinntteerreesstt ooff tthhee ccuussttoommeerr,, aa ccoommmmiittmmeenntt ttoo
+ccuussttoommeerr ssaattiissffaaccttiioonn,, aanndd rreeaassoonnaabbllee aanndd ccooooppeerraattiivvee bbeehhaavviioorr wwiitthh tthhee GGoovveerrnnmmeenntt aanndd ootthheerr ccoonnttrraaccttoorrss..
+ee.. OOffffeerroorrss aarree rreemmiinnddeedd tthhaatt bbootthh iinnddeeppeennddeenntt ddaattaa aanndd ddaattaa pprroovviiddeedd bbyy ooffffeerroorrss iinn tthheeiirr pprrooppoossaallss mmaayy
+bbee uusseedd ttoo eevvaalluuaattee ppaasstt ppeerrffoorrmmaannccee.. SSiinnccee tthhee GGoovveerrnnmmeenntt mmaayy nnoott nneecceessssaarriillyy iinntteerrvviieeww aallll ooff tthhee ssoouurrcceess
+pprroovviiddeedd bbyy tthhee ooffffeerroorr,, iitt iiss iinnccuummbbeenntt uuppoonn tthhee ooffffeerroorr ttoo eexxppllaaiinn tthhee rreelleevvaannccee ooff tthhee ddaattaa pprroovviiddeedd.. TThhee
+GGoovveerrnnmmeenntt ddooeess nnoott aassssuummee tthhee dduuttyy ttoo sseeaarrcchh ffoorr ddaattaa ttoo ccuurree pprroobblleemmss iitt ffiinnddss iinn pprrooppoossaallss.. TThhee bbuurrddeenn ooff
+pprroovviiddiinngg tthhoorroouugghh aanndd ccoommpplleettee ppaasstt ppeerrffoorrmmaannccee iinnffoorrmmaattiioonn rreemmaaiinnss wwiitthh tthhee ooffffeerroorrss..
+33..00 VVOOLLUUMMEE IIII -- TTEECCHHNNIICCAALL PPRROOPPOOSSAALL
+aa.. TThhee TTeecchhnniiccaall PPrrooppoossaall sshhaallll bbee ssuuffffiicciieennttllyy ssppeecciiffiicc,, ddeettaaiilleedd,, aanndd ccoommpplleettee ttoo ddeemmoonnssttrraattee cclleeaarrllyy aanndd
+ffuullllyy tthhaatt tthhee ooffffeerroorr uunnddeerrssttaannddss tthhee JJSSCC ppeerrffoorrmmaannccee oobbjjeeccttiivveess aanndd hhaass aa tthhoorroouugghh uunnddeerrssttaannddiinngg ooff tthhee
+rreeqquuiirreemmeennttss ffoorr,, aanndd tteecchhnniiccaall pprroobblleemmss iinnhheerreenntt iinn,, aaccccoommpplliisshhiinngg tthhee JJSSCC mmiissssiioonn.. TThhee TTeecchhnniiccaall PPrrooppoossaall mmuusstt
+ddeessccrriibbee tthhee ccaappaabbiilliittyy ooff tthhee ooffffeerroorr’’ss oorrggaanniizzaattiioonn ttoo ppeerrffoorrmm tthhiiss ccoonnttrraacctt.. TTeecchhnniiccaall PPrrooppoossaallss mmuusstt aallssoo aaddddrreessss
+rriisskkss aassssoocciiaatteedd wwiitthh tthhee ooffffeerroorr’’ss pprrooppoosseedd aapppprrooaacchh..
+bb.. TThhee TTeecchhnniiccaall PPrrooppoossaall sshhaallll ccoonnssiisstt ooff tthhee iinnffoorrmmaattiioonn ssppeecciiffiieedd ffoorr eeaacchh eelleemmeenntt iinn tthhee pprrooggrraamm aarreeaass
+lliisstteedd bbeellooww.. VVoolluummee IIII,, TTeecchhnniiccaall PPrrooppoossaall ccoonnssiissttss ooff ffoouurr ssuubbsseeccttiioonnss.. TThhee ttooppiiccss ttoo bbee aaddddrreesssseedd aarree oouuttlliinneedd iinn
+TTaabbss BB tthhrroouugghh EE aass sseett ffoorrtthh bbeellooww.. NNoo ccoosstt oorr pprriicciinngg iinnffoorrmmaattiioonn sshhaallll bbee iinncclluuddeedd iinn tthhee TTeecchhnniiccaall PPrrooppoossaall..
+33..11 TTaabb BB:: TTeecchhnniiccaall AApppprrooaacchh
+aa.. TThhee ssuuggggeesstteedd ppaaggee ccoouunntt ffoorr tthhee TTeecchhnniiccaall AApppprrooaacchh iiss sseevveennttyy ffiivvee ((7755)) ppaaggeess.. TThhiiss sseeccttiioonn sshhaallll
+sshhooww tthhaatt tthhee ooffffeerroorr ffuullllyy uunnddeerrssttaannddss tthhee ssppeecciiffiicc aanndd uunniiqquuee pprrooggrraamm rreeqquuiirreemmeennttss ooff tthhee JJSSCC bbyy ddiissccuussssiinngg hhooww
+tthhee ooffffeerroorr pprrooppoosseess ttoo ssaattiissffyy tthhee JJSSCC mmiissssiioonn rreeqquuiirreemmeennttss aanndd SSttaatteemmeenntt ooff OObbjjeeccttiivveess.. PPrrooppoossaallss sshhoouulldd
+ddeemmoonnssttrraattee ssoouunndd tteecchhnniiccaall ccoommppeetteennccyy iinn ssuuppppoorrtt ooff kkeeyy mmiissssiioonn aarreeaass aanndd JJSSCC ppeerrffoorrmmaannccee oobbjjeeccttiivveess.. TThhee
+ooffffeerroorr mmuusstt pprroovviiddee hhiiss aapppprrooaacchh ttoo tthhee ffoolllloowwiinngg kkeeyy mmiissssiioonn aarreeaass aass ddeessccrriibbeedd iinn tthhee JJSSCC SSttaatteemmeenntt ooff OObbjjeeccttiivveess::
+OOppeerraattiioonnaall SSppeeccttrruumm SSuuppppoorrtt,, EElleeccttrroommaaggnneettiicc EEnnvviirroonnmmeennttaall EEffffeeccttss ((EE33)) aanndd EElleeccttrroommaaggnneettiicc SSppeeccttrruumm
+EEnnggiinneeeerriinngg,, MMooddeelliinngg aanndd SSiimmuullaattiioonn,, IInnffoorrmmaattiioonn MMaannaaggeemmeenntt,, RReesseeaarrcchh aanndd EEvvaalluuaattiioonn ooff EEmmeerrggiinngg
+TTeecchhnnoollooggiieess,, aanndd pprroovviiddiinngg TTeecchhnniiccaall AAddvviiccee aass iitt aapppplliieess ttoo tthhee mmiissssiioonn aarreeaass.. IInn aaddddiittiioonn,, ooffffeerroorrss wwiillll pprroovviiddee aa
+ttaasskk oorrddeerr tthhaatt ccoonnttaaiinnss aa ddeettaaiilleedd tteecchhnniiccaall aapppprrooaacchh,, pprrooppoosseedd llaabboorr mmiixx,, pprrooggrraamm mmaannaaggeemmeenntt ppllaann,, aanndd qquuaalliittyy
+aassssuurraannccee ppllaann ffoorr tthhee ttwwoo rreepprreesseennttaattiivvee SSaammppllee PPeerrffoorrmmaannccee WWoorrkk SSttaatteemmeennttss..
+bb.. TThhee TTeecchhnniiccaall AApppprrooaacchh ccoonnssiissttss ooff tthhrreeee ssuubbsseeccttiioonnss::
+· SSuubbsseeccttiioonn 11 –– TTeecchhnniiccaall AApppprrooaacchh ttoo SSuuppppoorrttiinngg JJSSCC MMiissssiioonn AArreeaass aanndd OObbjjeeccttiivveess
+
+=== Page 44 ===
+HC1047-05-R-4009
+Page 44 of 66
+· SSuubbsseeccttiioonn 22 –– TTaasskk OOrrddeerr PPrrooppoossaall ffoorr EEmmeerrggiinngg SSppeeccttrruumm TTeecchhnnoollooggyy
+· SSuubbsseeccttiioonn 33 –– TTaasskk OOrrddeerr PPrrooppoossaall ffoorr NNeettwwoorrkk CCeennttrriicc WWaarrffaarree
+cc.. SSuuffffiicciieenntt ddeettaaiillss mmuusstt bbee pprroovviiddeedd ffoorr aallll mmiissssiioonn aarreeaass cciitteedd iinn tthhee pprreecceeddiinngg ppaarraaggrraapphhss ttoo ppeerrmmiitt tthhee
+GGoovveerrnnmmeenntt ttoo ffuullllyy eevvaalluuaattee tthhee ooffffeerroorr’’ss tteecchhnniiccaall aapppprrooaacchh.. TThhee ffoolllloowwiinngg ffaaccttoorrss wwiillll bbee aasssseesssseedd ffoorr SSuubbsseeccttiioonn
+11::
+11)) UUnnddeerrssttaannddiinngg tthhee SSttaatteemmeenntt ooff OObbjjeeccttiivveess..
+22)) VVaalliiddiittyy,, ffeeaassiibbiilliittyy,, aanndd rriisskk ooff pprrooppoosseedd aapppprrooaacchh..
+33)) DDeemmoonnssttrraatteedd eexxppeerriieennccee aanndd eexxppeerrttiissee iinn kkeeyy mmiissssiioonn aarreeaass..
+dd.. OOffffeerroorrss sshhaallll ssuubbmmiitt aa ttaasskk oorrddeerr pprrooppoossaall iinn rreessppoonnssee ttoo tthhee ssaammppllee ppeerrffoorrmmaannccee wwoorrkk ssttaatteemmeennttss..
+SSeeppaarraattee pprrooppoossaallss aarree rreeqquuiirreedd ffoorr eeaacchh ssaammppllee ppeeffoorrmmaannccee wwoorrkk ssttaatteemmeenntt.. TThhee ffoolllloowwiinngg ffaaccttoorrss ooff tthhee ttaasskk oorrddeerr
+pprrooppoossaallss wwiillll bbee aasssseesssseedd ffoorr SSuubbsseeccttiioonnss 22 aanndd 33::
+11)) UUnnddeerrssttaannddiinngg tthhee rreeqquuiirreemmeenntt..
+22)) VVaalliiddiittyy aanndd ffeeaassiibbiilliittyy ooff pprrooppoosseedd aapppprrooaacchh..
+33)) PPrrooppoosseedd pprrooggrraamm mmaannaaggeemmeenntt ppllaann,, iinncclluuddiinngg pprrooppoosseedd mmeettrriiccss..
+44)) PPrrooppoosseedd llaabboorr mmiixx..
+55)) PPrrooppoosseedd QQuuaalliittyy AAssssuurraannccee PPllaann..
+33..22 TTaabb CC:: MMaannaaggeemmeenntt PPllaann
+aa.. TThhee ssuuggggeesstteedd ppaaggee ccoouunntt ffoorr tthhee MMaannaaggeemmeenntt PPllaann iiss ttwweennttyy ffiivvee ((2255)) ppaaggeess.. TThhee ppllaann sshhaallll iinncclluuddee
+iinnffoorrmmaattiioonn rreeggaarrddiinngg tthhee pprrooppoosseedd oorrggaanniizzaattiioonnaall cchhaarrtt,, iinncclluuddiinngg mmaajjoorr ssuubbccoonnttrraaccttoorrss,, aanndd tthhee ooffffeerroorr’’ss aapppprrooaacchh
+ttoo ccoonnttrraacctt ppeerrffoorrmmaannccee mmaannaaggeemmeenntt.. TThhee ppllaann mmuusstt iinnddiiccaattee hhooww tthhee ooffffeerroorr wwiillll mmaannaaggee kkeeyy ooppeerraattiioonnaall ffuunnccttiioonnss
+ssuucchh aass:: wwoorrkk ffllooww,, ssttaaffffiinngg ooff mmuullttiippllee ttaasskkss,, ccoosstt ccoonnttrrooll,, rriisskk mmaannaaggeemmeenntt,, ccoooorrddiinnaattiioonn//ccooooppeerraattiioonn wwiitthh ootthheerr JJSSCC
+ccoonnttrraaccttoorrss,, aanndd ssttaattuuss rreeppoorrttiinngg ttoo tthhee GGoovveerrnnmmeenntt.. TThhee ppllaann mmuusstt aaddddrreessss hhooww tthhee ooffffeerroorr wwiillll mmaannaaggee iittss eeffffoorrtt iinn
+aann iinntteeggrraatteedd,, aanndd ccoosstt eeffffeeccttiivvee mmaannnneerr tthhaatt wwiillll pprroovviiddee tthhee bbeesstt vvaalluuee ttoo tthhee GGoovveerrnnmmeenntt.. TThhee ooffffeerroorr sshhaallll aallssoo
+pprroovviiddee aann OOrrggaanniizzaattiioonnaall CCoonnfflliicctt ooff IInntteerreesstt PPllaann tthhaatt iinncclluuddeess iinnffoorrmmaattiioonn oonn tthhee ccoonnttrraaccttoorr’’ss rreessppoonnssiibbiilliittiieess aanndd
+hhooww tthhee ccoonnttrraaccttoorr wwiillll aavvooiidd aanndd mmiittiiggaattee ppootteennttiiaall ccoonnfflliiccttss ooff iinntteerreesstt.. TThhee ooffffeerroorr sshhaallll ccoommpplleettee aa KKeeyy PPeerrssoonnnneell
+QQuuaalliiffiiccaattiioonn SSuummmmaarryy,, AAppppeennddiixx DD,, ffoorr aallll kkeeyy ppeerrssoonnnneell ppeerrffoorrmmiinngg oonn tthhiiss ccoonnttrraacctt,, nnoott ttoo eexxcceeeedd tteenn ssuummmmaarriieess..
+NNeeiitthheerr tthhee OOrrggaanniizzaattiioonnaall CCoonnfflliicctt ooff IInntteerreesstt PPllaann nnoorr tthhee KKeeyy PPeerrssoonnnneell QQuuaalliiffiiccaattiioonn SSuummmmaarryy wwiillll ccoouunntt ttoowwaarrddss
+tthhee ttoottaall nnuummbbeerr ooff ppaaggeess ppeerrmmiitttteedd ffoorr tthhee pprrooppoossaall..
+bb.. TThhee MMaannaaggeemmeenntt PPllaann ccoonnssiissttss ooff ssiixx ssuubbsseeccttiioonnss;;
+· Subsection 1 – Organizational Structure and Management Approach
+· SSuubbsseeccttiioonn 22 –– CCeerrttiiffiiccaattiioonnss aanndd AAwwaarrddss
+· SSuubbsseeccttiioonn 33 –– PPllaann ttoo AAccqquuiirree,, TTrraaiinn,, aanndd MMaaiinnttaaiinn HHiigghh--QQuuaalliittyy SSttaaffff
+· SSuubbsseeccttiioonn 44 –– PPllaann ttoo MMaaiinnttaaiinn JJSSCC EExxiissttiinngg AAnnaallyyttiiccaall CCaappaabbiilliittiieess
+
+=== Page 45 ===
+HC1047-05-R-4009
+Page 45 of 66
+· SSuubbsseeccttiioonn 55 –– OOrrggaanniizzaattiioonnaall CCoonnfflliicctt ooff IInntteerreesstt PPllaann
+· SSuubbsseeccttiioonn 66 –– KKeeyy PPeerrssoonnnneell QQuuaalliiffiiccaattiioonn SSuummmmaarryy
+cc.. TThhee ffoolllloowwiinngg ffaaccttoorrss wwiillll bbee aasssseesssseedd::
+11)) OOffffeerroorr ddeemmoonnssttrraatteess aann oorrggaanniizzaattiioonnaall ssttrruuccttuurree rreellaattiivvee ttoo tthhiiss ccoonnttrraacctt wwhhiicchh pprroovviiddeess ffoorr
+aaccccoommpplliisshhmmeenntt ooff tthhee rreeqquuiirreedd eeffffoorrtt//ttaasskkiinngg aanndd cclleeaarrllyy iiddeennttiiffiieess tthhee ppooiinntt((ss)) ooff ccoonnttaacctt ttoo iinntteerrffaaccee wwiitthh tthhee
+GGoovveerrnnmmeenntt CCoonnttrraaccttiinngg OOffffiicceerr,, CCoonnttrraaccttiinngg OOffffiicceerr’’ss RReepprreesseennttaattiivvee,, TTeecchhnniiccaall PPooiinnttss ooff CCoonnttaacctt,, FFiinnaanncciiaall PPooiinnttss
+ooff CCoonnttaacctt,, aanndd aannyy ootthheerr GGoovveerrnnmmeenntt ppeerrssoonnnneell iinnvvoollvveedd iinn tthhee ffuullffiillllmmeenntt ooff ccoonnttrraacctt dduuttiieess..
+22)) OOffffeerroorr ddeemmoonnssttrraatteess aa ssoouunndd aapppprrooaacchh ttoo pprrooggrraamm mmaannaaggeemmeenntt tthhaatt cclleeaarrllyy iiddeennttiiffiieess hhooww tthhee
+ooffffeerroorr wwiillll mmaannaaggee tthhee eeffffoorrtt ttoo pprroodduuccee tthhee bbeesstt vvaalluuee ffoorr tthhee GGoovveerrnnmmeenntt..
+33)) OOffffeerroorr ddeemmoonnssttrraatteess rreeccooggnniittiioonn aanndd aacchhiieevveemmeenntt ooff pprrooffeessssiioonnaall cceerrttiiffiiccaattiioonnss.. ((AAwwaarrddss,,
+cceerrttiiffiiccaattiioonnss aanndd//oorr iinnddeeppeennddeenntt eevvaalluuaattiioonnss,, ssuucchh aass tthhee SSooffttwwaarree EEnnggiinneeeerriinngg IInnssttiittuuttee’’ss CCaappaabbiilliittyy MMaattuurriittyy
+MMooddeell--IInntteeggrraatteedd ((CCMMMMII)) oorr PPrrooggrraamm//PPrroojjeecctt MMaannaaggeemmeenntt cceerrttiiffiiccaattiioonn mmaayy sseerrvvee aass eevviiddeennccee ooff aacchhiieevveemmeenntt..))
+44)) OOffffeerroorr ddeemmoonnssttrraatteess aann aapppprrooaacchh ttoo mmaaiinnttaaiinn JJSSCC aannaallyyttiiccaall ccaappaabbiilliittiieess iinn ccoooorrddiinnaattiioonn wwiitthh
+JJSSCC ssttaaffff.. PPllaann sshhoouulldd aaddddrreessss ssooffttwwaarree ccuurrrreennccyy aanndd oovveerraallll tteecchhnniiccaall ccaappaabbiilliittyy..
+55)) OOffffeerroorr ddeemmoonnssttrraatteess aabbiilliittyy aanndd wwiilllliinnggnneessss ttoo wwoorrkk aass ppaarrtt ooff aann iinntteeggrraatteedd tteeaamm wwiitthh tthhee
+GGoovveerrnnmmeenntt aanndd ootthheerr JJSSCC ccoonnttrraaccttoorrss ttoo eennssuurree rreeqquuiirreemmeennttss aarree mmeett..
+66)) OOffffeerroorr ddeemmoonnssttrraatteess aa ppllaann ttoo aaccqquuiirree,, ttrraaiinn aanndd mmaaiinnttaaiinn tteecchhnniiccaall ccuurrrreennccyy ooff ssttaaffff..
+77)) OOffffeerroorr pprroovviiddeess aann aacccceeppttaabbllee OOrrggaanniizzaattiioonnaall CCoonnfflliicctt OOff IInntteerreesstt PPllaann tthhaatt cclleeaarrllyy ddeessccrriibbeess tthhee
+oorrggaanniizzaattiioonn’’ss rroolleess aanndd rreessppoonnssiibbiilliittiieess aanndd ssttrraatteeggiieess ttoo aavvooiidd//mmiittiiggaattee ppootteennttiiaall ccoonnfflliiccttss ooff iinntteerreesstt..
+8) Offeror provides up to ten resumes for key personnel. Resumes shall address each individual’s
+experience, education, unique skills and current and past duties as they relate to the JSC requirement.
+33..33 TTaabb DD:: TTrraannssiittiioonn PPllaann
+aa.. TThhee ssuuggggeesstteedd ppaaggee ccoouunntt ffoorr tthhee TTrraannssiittiioonn PPllaann iiss ttwweennttyy ffiivvee ((2255)) ppaaggeess.. TThhee ppllaann sshhaallll iinncclluuddee
+iinnffoorrmmaattiioonn rreeggaarrddiinngg tthhee ddeelliinneeaattiioonn ooff rreeqquuiirreedd ttiimmee aanndd eeffffoorrttss ttoo pprreeppaarree ffoorr aassssuummiinngg aanndd rreelliinnqquuiisshhiinngg ffuullll
+pprrooggrraamm rreessppoonnssiibbiilliittiieess wwiitthh mmiinniimmuumm iimmppaacctt ttoo JJSSCC ooppeerraattiioonnss.. TThhee eennttrryy sseeccttiioonn ooff tthhee ppllaann mmuusstt ddeessccrriibbee hhooww
+tthhee ooffffeerroorr wwiillll aarrrraannggee ffoorr tthhee aaccqquuiissiittiioonn ooff ffaacciilliittiieess aanndd ootthheerr mmaatttteerrss nneecceessssaarryy ttoo ttaakkee oovveerr tthhee ffuullll rreessppoonnssiibbiilliittiieess
+aanndd dduuttiieess ooff tthhee eennggiinneeeerriinngg ssuuppppoorrtt sseerrvviicceess ccoonnttrraaccttoorr aass ssttiippuullaatteedd iinn tthhee ssoolliicciittaattiioonn.. TThhee ooffffeerroorr sshhaallll aallssoo
+iiddeennttiiffyy tthhee ssoouurrccee ooff tthhee ooffffeerroorr’’ss pprrooppoosseedd ssttaaffffiinngg ((ee..gg.. iinn--hhoouussee ssttaaffff,, iinnccuummbbeenntt hhiirree,, nneeww hhiirree,, eettcc)) bbrrookkeenn ddoowwnn
+bbyy ggeenneerraall llaabboorr ccaatteeggoorriieess.. ee..gg.. eennggiinneeeerr,, pprrooggrraammmmeerr,, aanndd tteecchhnniicciiaann.. TThhee llooccaattiioonn ooff tthhee ccoonnttrraaccttoorr ffaacciilliittyy mmuusstt
+bbee iinncclluuddeedd iinn tthhee ttrraannssiittiioonn ppllaann.. TThhee eexxiitt sseeccttiioonn ooff tthhee ppllaann mmuusstt ddeessccrriibbee hhooww tthhee ooffffeerroorr wwiillll ccooooppeerraattee wwiitthh tthhee
+ssuucccceessssoorr ccoonnttrraaccttoorr ttoo hhaannddooffff rreessppoonnssiibbiilliittiieess wwiitthh mmiinniimmaall iimmppaacctt ttoo JJSSCC ooppeerraattiioonnss.. AA ggeenneerraall oouuttlliinnee ooff tthhee eexxiitt
+sseeccttiioonn iiss rreeqquuiirreedd wwiitthh pprrooppoossaall ssuubbmmiissssiioonn.. DDeettaaiilleedd eexxiitt pprroocceedduurreess wwiillll bbee rreeqquuiirreedd aass aa ccoonnttrraacctt ddeelliivveerraabbllee..
+PPootteennttiiaall rriisskkss aanndd rriisskk mmiittiiggaattiioonn aapppprrooaacchh,, iinnhheerreenntt iinn tthhee ooffffeerroorr’’ss TTrraannssiittiioonn PPllaann,, mmuusstt bbee iiddeennttiiffiieedd..
+bb.. TThhee TTrraannssiittiioonn PPllaann sshhaallll ccoonnssiisstt ooff ttwwoo ssuubbsseeccttiioonnss;;
+· Subsection 1 – Transition Planning (entry and exit)
+· SSuubbsseeccttiioonn 22 –– MMiittiiggaattiioonn ooff IImmppaacctt ttoo OOnn--GGooiinngg OOppeerraattiioonnss
+
+=== Page 46 ===
+HC1047-05-R-4009
+Page 46 of 66
+cc.. TThhee ffoolllloowwiinngg ffaaccttoorrss wwiillll bbee aasssseesssseedd::
+11)) OOffffeerroorr ddeemmoonnssttrraatteess aa ppllaann ttoo eeffffiicciieennttllyy aanndd eeffffeeccttiivveellyy bbootthh ttaakkee oovveerr aanndd hhaanndd--ooffff tthhee ddaayy--
+ttoo--ddaayy ooppeerraattiioonn ooff tthhee JJSSCC.. TThhee ppllaann mmuusstt ddeemmoonnssttrraattee aa ssmmooootthh ttrraannssiittiioonn bbeettwweeeenn tthhee pprreeddeecceessssoorr aanndd ssuucccceessssoorr
+ccoonnttrraaccttoorrss..
+22)) OOffffeerroorr ddeemmoonnssttrraatteess aann uunnddeerrssttaannddiinngg ooff iinnhheerreenntt rriisskkss iinn ttrraannssiittiioonn aapppprrooaacchh..
+33)) OOffffeerroorr ddeemmoonnssttrraatteess aa ppllaann tthhaatt mmaaxxiimmiizzeess iinnffoorrmmaattiioonn ffllooww bbeettwweeeenn tthhee ooffffeerroorr,, tthhee iinnccuummbbeenntt
+ccoonnttrraaccttoorr,, aanndd tthhee GGoovveerrnnmmeenntt..
+44)) OOffffeerroorr ddeemmoonnssttrraatteess aa ppllaann ttoo aaccqquuiirree aaddeeqquuaattee tteecchhnniiccaall ssttaaffff..
+55)) OOffffeerroorr ddeemmoonnssttrraatteess aa ppllaann ttoo pprroovviiddee mmeeaassuurreemmeenntt llaabb sseerrvviicceess..
+33..44 TTaabb EE:: OOrrggaanniizzaattiioonnaall SSttrraatteeggiicc QQuuaalliittyy AAssssuurraannccee PPllaann
+aa.. TThhee ssuuggggeesstteedd ppaaggee ccoouunntt ffoorr tthhee OOrrggaanniizzaattiioonnaall SSttrraatteeggiicc QQuuaalliittyy AAssssuurraannccee PPllaann iiss ttwweennttyy ffiivvee ((2255))
+ppaaggeess.. TThhee ppllaann sshhaallll aaddddrreessss tthhee ooffffeerroorr’’ss qquuaalliittyy aassssuurraannccee aapppprrooaacchh ffoorr eeaacchh ooff tthhee JJSSCC kkeeyy mmiissssiioonn aarreeaass.. TThhee
+ooffffeerroorr sshhaallll pprrooppoossee mmeettrriiccss,, iinncclluuddiinngg kkeeyy ppeerrffoorrmmaannccee mmeeaassuurreess aanndd ppeerrffoorrmmaannccee ggooaallss,, aanndd aapppplliiccaabbllee pprroocceesssseess
+tthhaatt wwiillll eennssuurree ddeelliivveerryy ooff pprrooppoosseedd rreessuullttss oonn sscchheedduullee,, ssuuppppoorrtt mmaannaaggeemmeenntt aanndd ddeecciissiioonn mmaakkiinngg,, ffaacciilliittaattee
+ccoommmmuunniiccaattiioonnss aanndd mmoottiivvaattee hhiigghh ppeerrffoorrmmaannccee.. TThhee ooffffeerroorr sshhaallll pprrooppoossee oovveerraallll ccoonnttrraacctt iinncceennttiivveess,, bbootthh ppoossiittiivvee
+aanndd nneeggaattiivvee.. TThhee ppllaann mmuusstt ddeemmoonnssttrraattee aa lliinnkk ttoo tthhee JJSSCC SSttaatteemmeenntt ooff OObbjjeeccttiivveess.. IItt iiss tthhee GGoovveerrnnmmeenntt’’ss iinntteenntt ttoo
+iinnccoorrppoorraattee tthhee OOrrggaanniizzaattiioonnaall QQuuaalliittyy AAssssuurraannccee PPllaann iinnttoo tthhee ccoonnttrraacctt..
+bb.. TThhee ffoolllloowwiinngg ffaaccttoorrss wwiillll bbee aasssseesssseedd::
+11)) OOffffeerroorr ddeemmoonnssttrraatteess aa ppllaann tthhaatt cclleeaarrllyy iiddeennttiiffiieess aanndd ddeessccrriibbeess tthhee pprrooppoosseedd mmeetthhoodd ooff
+aassssuurriinngg ppeerrffoorrmmaannccee ggooaallss aarree aattttaaiinneedd.. TThhee ppllaann cclleeaarrllyy iiddeennttiiffiieess hhooww tthhee ooffffeerroorr wwiillll aassssuurree ssuubbccoonnttrraaccttoorrss
+aaddhheerree ttoo ccoosstt,, ppeerrffoorrmmaannccee,, sscchheedduullee,, aanndd qquuaalliittyy mmeeaassuurreess..
+22)) OOffffeerroorr ddeemmoonnssttrraatteess aa ppllaann tthhaatt pprrooppoosseess mmeeaanniinnggffuull mmeettrriiccss ttoo mmeeaassuurree ppeerrffoorrmmaannccee aanndd
+pprroodduucctt qquuaalliittyy,, ddeemmoonnssttrraattee rreessuullttss aacchhiieevveedd aanndd pprroovviiddee tthhaatt iinnffoorrmmaattiioonn ttoo tthhee GGoovveerrnnmmeenntt..
+33)) OOffffeerroorr ddeemmoonnssttrraatteess aa ppllaann ffoorr ccoonnttiinnuuoouuss ppeerrffoorrmmaannccee aanndd//oorr bbuussiinneessss pprroocceessss iimmpprroovveemmeenntt..
+44..00 VVOOLLUUMMEE IIIIII -- BBuussiinneessss PPrrooppoossaall
+TThhee GGoovveerrnnmmeenntt eessttiimmaatteedd ggeenneerraall aannnnuuaall lleevveell ooff eeffffoorrtt ((iinn hhoouurrss)) iiss sshhoowwnn iinn tthhee ffoolllloowwiinngg ttaabbllee..
+Engineer Programmer Technician Total
+368,000 222,000 180,000 770,000
+NNoottee:: TThhiiss aannnnuuaall eessttiimmaattee,, wwhhiicchh iiss bbaasseedd oonn hhiissttoorriiccaall ddaattaa,, iiss pprroovviiddeedd ffoorr
+pprreeppaarraattiioonn ooff ccoosstt pprrooppoossaallss ppuurrppoosseess oonnllyy aanndd mmaayy nnoott rreefflleecctt aaccttuuaall hhoouurrss rreeqquuiirreedd..
+44..11 TTaabb FF:: CCoosstt//PPrriiccee PPrrooppoossaall
+aa.. TThhee ooffffeerroorr’’ss CCoosstt//PPrriiccee PPrrooppoossaall sshhaallll ccoonnssiisstt ooff tthhee ffoolllloowwiinngg::
+11)) SSiiggnneedd aanndd ccoommpplleetteedd ssoolliicciittaattiioonn ppaacckkaaggee,, iinncclluuddiinngg aallll aammeennddmmeennttss
+
+=== Page 47 ===
+HC1047-05-R-4009
+Page 47 of 66
+22)) TThhee pprriicciinngg ssttrruuccttuurree ffoorr SSeeccttiioonn BB ooff tthhee RRFFPP ttoo iinncclluuddee aallll pprrooppoosseedd llaabboorr ccaatteeggoorriieess.. PPrroovviiddee
+ffiixxeedd llaabboorr rraatteess ffoorr aallll ffiivvee ccoonnttrraacctt yyeeaarrss..
+33)) TThhee pprrooppoosseedd ccoonnttrraacctt ccoosstt,, bbaasseedd oonn eessttiimmaatteedd mmaann--hhoouurrss sshhoowwnn iinn ppaarraaggrraapphh 44..00,, ffoorr tthhee
+bbaassee aanndd ooppttiioonn ppeerriiooddss.. IInn aaddddiittiioonn ttoo tthhee pprrooppoosseedd tteecchhnniiccaall llaabboorr ccoosstt,, ooffffeerroorrss mmuusstt iiddeennttiiffyy aallll ootthheerr eessttiimmaatteedd
+ccoossttss aanndd mmaarrkk--uupp ppeerrcceennttaaggeess aassssoocciiaatteedd wwiitthh ddeelliivveerryy ooff tthhee pprrooppoosseedd tteecchhnniiccaall eeffffoorrtt.. AAtt aa mmiinniimmuumm tthhee ffoolllloowwiinngg
+ccoosstt ccaatteeggoorriieess wwiillll bbee iiddeennttiiffiieedd:: ootthheerr ddiirreecctt ccoossttss ((OODDCC)),, ggeenneerraall aanndd aaddmmiinniissttrraattiivvee ((GG&&AA)),, ssaallaarryy rreellaatteedd ccoossttss
+((SSRRCC)),, oovveerrhheeaadd ((OOVVHHDD)),, aanndd pprrooffiitt..
+44)) AAllll rreepprreesseennttaattiioonnss aanndd cceerrttiiffiiccaattiioonnss,, eexxeeccuutteedd aass rreeqquuiirreedd bbyy SSeeccttiioonn KK..
+55)) IIddeennttiiffiiccaattiioonn ooff ccooggnniizzaanntt DDCCAAAA,, DDCCMMCC aanndd DDFFAASS ooffffiicceess iinncclluuddiinngg ffaacciilliittyy ccooddeess,, aaddddrreesssseess,,
+tteelleepphhoonnee aanndd ffaaxx nnuummbbeerrss aanndd eemmaaiill aaddddrreesssseess.. AAllssoo iinnllccuuddee tthhee nnaammee aanndd tteelleepphhoonnee nnuummbbeerr ooff tthhee AAddmmiinniissttrraattiivvee
+CCoonnttrraaccttiinngg OOffffiicceerr..
+66)) CCoosstt pprrooppoossaallss sshhoouulldd iinncclluuddee pprroovviissiioonnss ffoorr mmeeaassuurreemmeenntt llaabb ssuuppppoorrtt aanndd ddooccuummeenntt ssttoorraaggee
+aanndd rreettrriieevvaall..
+55..00 OOTTHHEERR IINNFFOORRMMAATTIIOONN RREEQQUUIIRREEDD
+TThhee ooffffeerroorr’’ss pprrooppoossaall sshhaallll bbee vvaalliidd ffoorr nnoo lleessss tthhaann 118800 ddaayyss ffrroomm tthhee rreeqquuiirreedd pprrooppoossaall dduuee ddaattee..
+
+=== Page 48 ===
+HC1047-05-R-4009
+Page 48 of 66
+APPENDIX A
+PAST PERFRMANCE QUESTIONNAIRE
+PPaasstt ppeerrffoorrmmaannccee iinnffoorrmmaattiioonn iiss bbeeiinngg rreeqquueesstteedd rreeggaarrddiinngg tthhee ppeerrffoorrmmaannccee ooff ____________________________________________________ oonn
+ccoonnttrraacctt nnuummbbeerr ________________________________________________________..
+PPlleeaassee ccoommpplleettee tthhiiss ffoorrmm ffoorr tthhee ccoonnttrraacctt iiddeennttiiffiieedd aabboovvee.. PPrroovviiddee ffrraannkk,, ccoonncciissee ssttaatteemmeennttss rreeggaarrddiinngg ccoonnttrraaccttoorr
+ppeerrffoorrmmaannccee.. TThhiiss iinnffoorrmmaattiioonn wwiillll bbee uusseedd ttoo aassssiisstt tthhee GGoovveerrnnmmeenntt iinn ddeetteerrmmiinniinngg tthhee bbeesstt vvaalluuee ffoorr aawwaarrdd ooff tthhee
+ccoonnttrraacctt ttoo pprroovviiddee eennggiinneeeerriinngg ssuuppppoorrtt sseerrvviicceess ttoo tthhee JJooiinntt SSppeeccttrruumm CCeenntteerr..
+PPlleeaassee rraattee tthhee ccoonnttrraaccttoorr aass ““eexxcceelllleenntt”” ((EE)),, ““vveerryy ggoooodd”” ((VVGG)),, ““ssaattiissffaaccttoorryy”” ((SS)),, ““mmaarrggiinnaall”” ((MM)),, ““uunnssaattiissffaaccttoorryy””
+((UU)),, oorr nnoott aapppplliiccaabbllee ((NN//AA))iinn tthhee eevvaalluuaattiioonn bbeellooww.. PPlleeaassee ggiivvee aa sshhoorrtt nnaarrrraattiivvee aass ttoo wwhhyy yyoouu cchhoossee tthhee aaddjjeeccttiivvee
+yyoouu ddiidd..
+EExxcceelllleenntt ((EE)) –– PPeerrffoorrmmaannccee mmeeeettss ccoonnttrraaccttuuaall rreeqquuiirreemmeennttss aanndd eexxcceeeeddss mmaannyy ttoo tthhee GGoovveerrnnmmeenntt’’ss bbeenneeffiitt.. TThhee
+ccoonnttrraaccttuuaall ppeerrffoorrmmaannccee ooff tthhee eelleemmeenntt oorr ssuubb--eelleemmeenntt bbeeiinngg aasssseesssseedd wwaass aaccccoommpplliisshheedd wwiitthh ffeeww mmiinnoorr pprroobblleemmss
+ffoorr wwhhiicchh ccoorrrreeccttiivvee aaccttiioonnss ttaakkeenn bbyy tthhee ccoonnttrraaccttoorr wweerree hhiigghhllyy eeffffeeccttiivvee..
+VVeerryy GGoooodd ((VVGG)) –– PPeerrffoorrmmaannccee mmeeeettss ccoonnttrraaccttuuaall rreeqquuiirreemmeennttss aanndd eexxcceeeeddss ssoommee ttoo tthhee GGoovveerrnnmmeenntt’’ss bbeenneeffiitt.. TThhee
+ccoonnttrraaccttuuaall ppeerrffoorrmmaannccee ooff tthhee eelleemmeenntt oorr ssuubb--eelleemmeenntt bbeeiinngg aasssseesssseedd wwaass aaccccoommpplliisshheedd wwiitthh ssoommee mmiinnoorr pprroobblleemmss
+ffoorr wwhhiicchh ccoorrrreeccttiivvee aaccttiioonnss ttaakkeenn bbyy tthhee ccoonnttrraaccttoorr wweerree eeffffeeccttiivvee..
+SSaattiissffaaccttoorryy ((SS)) -- PPeerrffoorrmmaannccee mmeeeettss ccoonnttrraaccttuuaall rreeqquuiirreemmeennttss.. TThhee ccoonnttrraaccttuuaall ppeerrffoorrmmaannccee ooff tthhee eelleemmeenntt oorr ssuubb--
+eelleemmeenntt bbeeiinngg aasssseesssseedd ccoonnttaaiinnss ssoommee mmiinnoorr pprroobblleemmss ffoorr wwhhiicchh ccoorrrreeccttiivvee aaccttiioonnss ttaakkeenn bbyy tthhee ccoonnttrraaccttoorr wweerree
+ssaattiissffaaccttoorryy..
+MMaarrggiinnaall ((MM)) -- PPeerrffoorrmmaannccee ddooeess nnoott mmeeeett ssoommee ccoonnttrraaccttuuaall rreeqquuiirreemmeennttss.. TThhee ccoonnttrraaccttuuaall ppeerrffoorrmmaannccee ooff tthhee
+eelleemmeenntt oorr ssuubb--eelleemmeenntt bbeeiinngg aasssseesssseedd rreefflleeccttss aa sseerriioouuss pprroobblleemm ffoorr wwhhiicchh tthhee ccoonnttrraaccttoorr hhaass nnoott yyeett iiddeennttiiffiieedd
+ccoorrrreeccttiivvee aaccttiioonnss.. TThhee ccoonnttrraaccttoorr’’ss pprrooppoosseedd aaccttiioonnss aappppeeaarr oonnllyy mmaarrggiinnaallllyy eeffffeeccttiivvee oorr wweerree nnoott ffuullllyy
+iimmpplleemmeenntteedd..
+UUnnssaattiissffaaccttoorryy ((UU)) -- PPeerrffoorrmmaannccee ddooeess nnoott mmeeeett ssoommee ccoonnttrraaccttuuaall rreeqquuiirreemmeennttss aanndd rreeccoovveerryy iiss nnoott lliikkeellyy iinn ttiimmeellyy
+mmaannnneerr.. TThhee ccoonnttrraaccttuuaall ppeerrffoorrmmaannccee ooff tthhee eelleemmeenntt oorr ssuubb--eelleemmeenntt bbrriinngg aasssseesssseedd ccoonnttaaiinnss sseerriioouuss pprroobblleemm((ss)) ffoorr
+wwhhiicchh tthhee ccoonnttrraaccttoorr’’ss ccoorrrreeccttiivvee aaccttiioonn aappppeeaarr oorr wweerree iinneeffffeeccttiivvee..
+TThhiiss qquueessttiioonnnnaaiirree sshhoouulldd bbee rreettuurrnneedd ttoo::
+JJooiinntt SSppeeccttrruumm CCeenntteerr // JJSS77
+AAttttnn:: MMrr.. FFrraannkklliinn WWhheeeelleerr,, JJrr..
+22000044 TTuurrbboott LLaannddiinngg
+AAnnnnaappoolliiss,, MMDD 2211440022
+
+=== Page 49 ===
+HC1047-05-R-4009
+Page 49 of 66
+EEVVAALLUUAATTIIOONN::
+11.. DDeessccrriibbee tthhee pprroodduucctt//sseerrvviiccee pprroovviiddeedd uunnddeerr tthhee ccoonnttrraacctt..
+__________________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________________
+________________
+22.. DDoollllaarr vvaalluuee ooff ccoonnttrraacctt..__________________________________ NNuummbbeerr ooff tteecchhnniiccaall llaabboorr hhoouurrss aaccqquuiirreedd bbyy ccoonnttrraacctt..
+________________________________________________
+33.. QQuuaalliittyy ooff tthhee pprroodduucctt//sseerrvviiccee pprroovviiddeedd uunnddeerr tthhee ccoonnttrraacctt ccoonnffoorrmmeedd ttoo ccoonnttrraacctt ssppeecciiffiiccaattiioonnss..
+RRaattiinngg ______________________________
+CCoommmmeenntt::
+__________________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________________
+________________
+44.. CCoonnttrraaccttoorr ccoommpplliieedd wwiitthh sscchheedduullee rreeqquuiirreemmeennttss ((mmiilleessttoonneess,, ddeelliivveerryy sscchheedduulleess,, eettcc..))..
+RRaattiinngg __________________________________
+CCoommmmeenntt::
+__________________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________________
+________________
+55.. CCoonnttrraaccttoorr wwaass eeffffeeccttiivvee iinn ffoorreeccaassttiinngg,, mmaannaaggiinngg,, aanndd ccoonnttrroolllliinngg ccoossttss..
+RRaattiinngg __________________________________
+CCoommmmeenntt::
+__________________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________________
+________________
+66.. CCoonnttrraaccttoorr aaccttiivveellyy iinntteeggrraatteedd aanndd ccoooorrddiinnaatteedd aallll aaccttiivviittiieess nneeeeddeedd ttoo eexxeeccuuttee tthhee ccoonnttrraacctt ((ttiimmeelliinneessss,,
+qquuaalliittyy,, ccoorrrreeccttiivvee aaccttiioonnss,, ccooooppeerraattiivvee bbeehhaavviioorr,, ccuussttoommeerr ssaattiissffaaccttiioonn,, mmaannaaggeemmeenntt ooff ssuubbccoonnttrraaccttoorrss,, aanndd
+aacchhiieevviinngg SSBB//SSDDBB//WWOOSSBB//HHUUBB ZZoonnee//HHBBCCUU//MMII ggooaallss))..
+RRaattiinngg ________________________
+CCoommmmeenntt::
+__________________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________________
+________________
+77.. CCoonnttrraaccttoorr wwaass aabbllee ttoo sseelleecctt,, rreettaaiinn,, aanndd rreeppllaaccee wwhheenn nneecceessssaarryy,, kkeeyy ppeerrssoonnnneell..
+RRaattiinngg __________________________________
+CCoommmmeenntt::
+__________________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________________
+
+=== Page 50 ===
+HC1047-05-R-4009
+Page 50 of 66
+__________________________________________________________________________________________________________________________________________________________________________________
+________________
+88.. CCoonnttrraaccttoorr rreessppoonnddeedd iinn aa ccrreeddiibbllee mmaannnneerr ttoo eemmeerrggeennccyy//hhiigghh pprriioorriittyy ssiittuuaattiioonnss..
+RRaattiinngg __________________________________
+CCoommmmeenntt::
+__________________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________________
+________________
+
+=== Page 51 ===
+HC1047-05-R-4009
+Page 51 of 66
+99.. PPaarrttiiccuullaarr ssttrroonngg//wweeaakk ppooiinnttss ooff ccoonnttrraaccttoorr’’ss ppeerrffoorrmmaannccee..
+CCoommmmeenntt::
+__________________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________________
+________________
+1100.. WWoouulldd yyoouu ddoo bbuussiinneessss wwiitthh tthhiiss ccoonnttrraaccttoorr aaggaaiinn,, iiff yyoouu hhaadd aa cchhooiiccee??
+________ YYeess ________ NNoo
+1111.. PPlleeaassee pprroovviiddee aannyy ootthheerr ccoommmmeennttss,, ppoossiittiivvee oorr nneeggaattiivvee,, tthhaatt yyoouu ffeeeell ccoouulldd hheellpp iinn eevvaalluuaattiinngg tthhiiss
+ccoonnttrraaccttoorr’’ss ppaasstt ppeerrffoorrmmaannccee..
+NNaammee aanndd ppoossiittiioonn ooff iinnddiivviidduuaall ccoommpplleettiinngg eevvaalluuaattiioonn::
+________________________________________________________________________________________________________________
+Note: Information supplied on this form may be shared with the contractor. The government may be required to
+reveal the source of the information.
+
+=== Page 52 ===
+HC1047-05-R-4009
+Page 52 of 66
+APPENDIX B
+SSAAMMPPLLEE PPEERRFFOORRMMAANNCCEE WWOORRKK SSTTAATTEEMMEENNTT
+JJOOIINNTT SSPPEECCTTRRUUMM CCEENNTTEERR
+PPEERRFFOORRMMAANNCCEE WWOORRKK SSTTAATTEEMMEENNTT
+FFoorr
+EEMMEERRGGIINNGG SSPPEECCTTRRUUMM TTEECCHHNNOOLLOOGGYY
+CCoonnttrraacctt NNuummbbeerr EEnnggiinneeeerriinngg 22000055
+TTaasskk OOrrddeerr NNuummbbeerr EEnnggiinneeeerriinngg ##11
+JJSSCC TTrraacckkiinngg NNuummbbeerr EESSEE000011
+11.. TTaasskk MMoonniittoorrss ((TTMM))::
+aa.. PPrriimmaarryy TTMM
+NNaammee:: JJ55 EEnnggiinneeeerr ##11
+OOrrggaanniizzaattiioonn:: JJSSCC//JJ55
+AAddddrreessss:: 22000044 TTuurrbboott LLaannddiinngg
+AAnnnnaappoolliiss,, MMDD 2211440022--55006644
+PPhhoonnee NNuummbbeerr:: 441100--229933--44995577
+FFaaxx NNuummbbeerr:: 441100--229933--22663311
+EEmmaaiill AAddddrreessss:: JJ55EEnnggiinneeeerr##11@@jjsscc..mmiill
+bb.. AAlltteerrnnaattee TTMM
+NNaammee:: JJ55 EEnnggiinneeeerr ##22
+OOrrggaanniizzaattiioonn:: JJSSCC//JJ55
+AAddddrreessss:: 22000044 TTuurrbboott LLaannddiinngg
+AAnnnnaappoolliiss,, MMDD 2211440022--55006644
+PPhhoonnee NNuummbbeerr:: 441100--229933--44995577
+FFaaxx NNuummbbeerr:: 441100--229933--22663311
+EEmmaaiill AAddddrreessss:: JJ55EEnnggiinneeeerr##22@@jjsscc..mmiill
+2. Task Order Title: Assessment of a New Emerging Technology Wireless Multi-function
+Communications System
+3. Background: A new wideband wireless multi-function networking communications technology
+currently in development is nearing commercial deployment. The equipment is intended for
+worldwide deployment and will have the capability to operate anywhere between 500 MHz and 10
+GHz with an operating bandwidth of at least 25 MHz. The Department of Defense (DoD) needs to
+understand the implications of this new system and how it can be utilized. The task is to describe
+an “approach” to evaluate and quantify, using available modeling & simulation tools, the spectrum
+related threats or benefits to DoD operations and provide a strategy to exploit or defend against
+the proposed technology to assure continued DoD spectrum access and further DoD objectives in
+support of network-centric operations.
+
+=== Page 53 ===
+HC1047-05-R-4009
+Page 53 of 66
+4. Objectives.:
+a. Determine the potential detrimental impact or benefit to DoD from the development
+and fielding of this new technology.
+b. Identify modeling and measurement capabilities needed to analyze, evaluate and
+manage the new technology.
+Expected Results:
+· A thorough characterization of the technology
+· Description of the potential impacts to DoD spectrum operations
+· Identification of potential benefits to DoD from this new technology
+· Identification of areas for R&D Investment
+· Identification of policy/regulatory initiatives to exploit or defend DoD spectrum
+operations against this new technology
+· Recommendations for modeling/measurement to characterize and evaluate this
+new technology area
+55.. SSccooppee::
+RReesseeaarrcchh aanndd EEvvaalluuaattee EEmmeerrggiinngg TTeecchhnnoollooggiieess
+EElleeccttrroommaaggnneettiicc EEnnvviirroonnmmeennttaall EEffffeeccttss ((EE33)) aanndd SSppeeccttrruumm EEnnggiinneeeerriinngg
+TTeecchhnniiccaall AAddvviiccee
+MMooddeelliinngg aanndd SSiimmuullaattiioonn
+66.. PPeerrffoorrmmaannccee RReeqquuiirreemmeennttss::
+66..11 TTeecchhnnoollooggyy AAsssseessssmmeenntt
+6.1.1. Characterize the new technology and identify/describe its potential implications to DoD.
+DDeelliivveerraabblleess::
+· DDeelliivveerr aa rreeppoorrtt ccoonnttaaiinniinngg tthhee ffoolllloowwiinngg iinnffoorrmmaattiioonn
+aa.. TTeecchhnnoollooggyy DDeessccrriippttiioonn
+b. Description of the potential impacts to DoD spectrum operations
+c. Identification of potential benefits to DoD from this new technology
+d. Recommendations for modeling/measurement to characterize and evaluate this
+new technology area
+e. Identification of areas for R&D Investment
+f. Identification of policy/regulatory initiatives to exploit or defend DoD spectrum operations against this
+new technology
+· DDeevveelloopp aa bbrriieeffiinngg oorr sseerriieess ooff bbrriieeffiinnggss ttoo iinnffoorrmm ppoolliiccyy--mmaakkeerrss aanndd aaccqquuiissiittiioonn eexxeeccuuttiivveess ooff tthhee ffiinnddiinnggss ffrroomm
+tthhiiss aasssseessssmmeenntt..
+66..22 AAnnaallyyssiiss aanndd EEvvaalluuaattiioonn CCaappaabbiilliittyy DDeevveellooppmmeenntt
+66..22..11.. DDeevveelloopp aann aapppprrooaacchh ffoorr aaccqquuiirriinngg oorr ddeevveellooppiinngg tthhee nneecceessssaarryy mmooddeelliinngg aanndd mmeeaassuurreemmeenntt
+ccaappaabbiilliittiieess nneeeeddeedd ttoo aannaallyyzzee aanndd eevvaalluuaattee tthhee ssuubbjjeecctt tteecchhnnoollooggyy..
+
+=== Page 54 ===
+HC1047-05-R-4009
+Page 54 of 66
+DDeelliivveerraabblleess::
+· DDeelliivveerr aa rreeppoorrtt ddeettaaiilliinngg tthhee rreeqquuiirreedd ccaappaabbiilliittiieess aanndd aann aapppprrooaacchh ffoorr aaccqquuiirriinngg oorr ddeevveellooppiinngg tthhoossee ccaappaabbiilliittiieess..
+66..33.. PPrriicciinngg IInnffoorrmmaattiioonn:: NNoo ccoosstt oorr pprriicciinngg iinnffoorrmmaattiioonn iiss rreeqquuiirreedd ffoorr tthhiiss ssaammppllee;; hhoowweevveerr,, ssiiggnniiffiiccaanntt
+ppuurrcchhaasseess ooff mmaatteerriiaall aanndd sseerrvviicceess sshhoouulldd bbee iiddeennttiiffiieedd iinn ggeenneerraall tteerrmmss..
+77.. PPeerrffoorrmmaannccee SSttaannddaarrddss:: TThhee ccoonnttrraaccttoorr sshhaallll ddeessccrriibbee aa qquuaalliittyy aassssuurraannccee ppllaann aass ppaarrtt ooff tthhee ttaasskk oorrddeerr pprrooppoossaall..
+TThhee ggoovveerrnnmmeenntt wwiillll ddeevveelloopp aa ssuurrvveeiillllaannccee ppllaann ttoo eennssuurree pprrooppeerr ttaasskk mmoonniittoorriinngg..
+88.. IInncceennttiivveess:: TThhiiss ttaasskk iiss eennvviissiioonneedd aass aa CCoosstt PPlluuss IInncceennttiivvee FFeeee aaccttiivviittyy.. TThhee ooffffeerroorr sshhaallll pprrooppoossee bbootthh ppoossiittiivvee
+aanndd nneeggaattiivvee iinncceennttiivveess..
+99.. PPllaaccee ooff PPeerrffoorrmmaannccee:: TThhiiss ttaasskk iiss eexxppeecctteedd ttoo bbee ppeerrffoorrmmeedd aatt tthhee ccoonnttrraaccttoorr’’ss nnoorrmmaall dduuttyy ssttaattiioonn..
+1100.. PPeerriioodd ooff PPeerrffoorrmmaannccee:: nn//aa
+1111.. DDeelliivveerryy SScchheedduullee:: TThhee ttaasskk oorrddeerr pprrooppoossaall wwiillll ddeessccrriibbee tthhee sscchheedduullee ffoorr ttaasskk ddeelliivveerraabblleess..
+1122.. SSeeccuurriittyy:: SSeeccuurriittyy rreeqquuiirreemmeennttss ffoorr tthhiiss ttaasskk aarree uupp ttoo tthhee TTOOPP SSEECCRREETT lleevveell..
+1133.. GGFFEE//GGFFII:: TThheerree iiss nnoo ssppeecciiffiicc GGFFEE//GGFFII aassssoocciiaatteedd wwiitthh tthhiiss ttaasskk.. TThhee ccoonnttrraaccttoorr iiss eexxppeecctteedd ttoo mmaakkee uussee ooff tthhee
+ssttaannddaarrdd GGFFEE//GGFFII aavvaaiillaabbllee uunnddeerr tthhee tteerrmmss ooff tthhee oovveerraallll ccoonnttrraacctt..
+1144.. OOtthheerr PPeerrttiinneenntt IInnffoorrmmaattiioonn oorr SSppeecciiaall CCoonnssiiddeerraattiioonnss:: NNoonnee
+
+=== Page 55 ===
+HC1047-05-R-4009
+Page 55 of 66
+AAPPPPEENNDDIIXX CC
+SSAAMMPPLLEE PPEERRFFOORRMMAANNCCEE WWOORRKK SSTTAATTEEMMEENNTT
+JJOOIINNTT SSPPEECCTTRRUUMM CCEENNTTEERR
+PPEERRFFOORRMMAANNCCEE WWOORRKK SSTTAATTEEMMEENNTT
+FFoorr
+NNEETTWWOORRKK CCEENNTTRRIICC WWAARRFFAARREE
+CCoonnttrraacctt NNuummbbeerr::
+TTaasskk OOrrddeerr NNuummbbeerr::
+JJSSCC TTrraacckkiinngg NNuummbbeerr::
+11.. TTaasskk MMoonniittoorrss ((TTMMss))::
+a. PPrriimmaarryy TTMM::
+NNaammee:: JJ66 EEnnggiinneeeerr ##11
+OOrrggaanniizzaattiioonn:: JJSSCC//JJ66
+AAddddrreessss:: 22000044 TTuurrbboott LLaannddiinngg
+AAnnnnaappoolliiss,, MMDD 2211440022--55006644
+TTeelleepphhoonnee NNuummbbeerr:: 441100--229933--22110055
+FFaaccssiimmiillee NNuummbbeerr:: 441100--229933--22663311
+EEmmaaiill AAddddrreessss:: JJ66EEnnggiinneeeerr##11@@jjsscc..mmiill
+b. AAlltteerrnnaattee TTMM
+NNaammee:: JJ66 EEnnggiinneeeerr ##22
+OOrrggaanniizzaattiioonn:: JJSSCC//JJ66
+AAddddrreessss:: 22000044 TTuurrbboott LLaannddiinngg
+AAnnnnaappoolliiss,, MMDD 2211440022--55006644
+TTeelleepphhoonnee NNuummbbeerr:: 441100--229933--44995566
+FFaaccssiimmiillee NNuummbbeerr:: 441100--229933--22663311
+EEmmaaiill AAddddrreessss:: JJ66EEnnggiinneeeerr##22@@jjsscc..mmiill
+2. TTaasskk OOrrddeerr TTiittllee:: JJSSCC NNeettwwoorrkk CCeennttrriicc WWaarrffaarree TTrraannssffoorrmmaattiioonn
+33.. BBaacckkggrroouunndd:: TThhee DDooDD iiss ccuurrrreennttllyy uunnddeerrggooiinngg aa ffuunnddaammeennttaall ttrraannssffoorrmmaattiioonn iinn tthhee wwaayy iitt ppllaannss
+ooppeerraattiioonnss,, oorrggaanniizzeess,, ttrraaiinnss,, aanndd aaccqquuiirreess mmaatteerriieell.. AAss ssttaatteedd bbyy PPrreessiiddeenntt GGeeoorrggee WW.. BBuusshh,, ““WWee mmuusstt
+bbuuiilldd ffoorrcceess tthhaatt ddrraaww uuppoonn tthhee rreevvoolluuttiioonnaarryy aaddvvaanncceess iinn tthhee tteecchhnnoollooggyy ooff wwaarr……oonnee tthhaatt rreelliieess mmoorree
+hheeaavviillyy oonn sstteeaalltthh,, pprreecciissiioonn wweeaappoonnrryy,, aanndd iinnffoorrmmaattiioonn tteecchhnnoollooggyy..”” TThhiiss ttrraannssffoorrmmaattiioonn,, kknnoowwnn aass
+NNeettwwoorrkk CCeennttrriicc WWaarrffaarree ((NNCCWW)),, rreepprreesseennttss aa ppoowweerrffuull sseett ooff wwaarrffiigghhttiinngg ccoonncceeppttss aanndd aassssoocciiaatteedd mmiilliittaarryy
+ccaappaabbiilliittiieess tthhaatt wwiillll aallllooww tthhee wwaarrffiigghhtteerr ttoo ttaakkee ffuullll aaddvvaannttaaggee ooff aallll aavvaaiillaabbllee iinnffoorrmmaattiioonn aanndd bbrriinngg aallll
+aavvaaiillaabbllee aasssseettss ttoo bbeeaarr iinn aa rraappiidd aanndd fflleexxiibbllee mmaannnneerr..
+In support of the DoD’s NCW transformation, the JSC is embarking on a program to transform our data
+resources and analytical and other capabilities to Global Information Grid (GIG)-based services. To date this
+nascent effort has focused on evaluating some existing technologies that may support the transformation to
+GIG-based services, identifying an initial selection of prototype capabilities or services to be web-enabled,
+and creating a prototype web portal.
+44.. OObbjjeeccttiivvee:: TThhee oobbjjeeccttiivvee ooff tthhiiss PPeerrffoorrmmaannccee WWoorrkk SSttaatteemmeenntt iiss ttoo ddeevveelloopp aanndd ddooccuummeenntt aa ppllaann ttoo
+ttrraannssffoorrmm tthhee rreelleevvaanntt ssppeeccttrruumm--rreellaatteedd ccaappaabbiilliittiieess ttoo ssuuppppoorrtt tthhee DDooDD’’ss ccoonncceepptt ooff NNCCWW..
+
+=== Page 56 ===
+HC1047-05-R-4009
+Page 56 of 66
+EExxppeecctteedd RReessuullttss::
+· AA rreeppoorrtt ddooccuummeennttiinngg tthhee rreessuullttss ooff tthhee iinnvveessttiiggaattiioonn aanndd ddeetteerrmmiinnaattiioonn ooff tthhee bbaassiicc eelleeccttrroommaaggnneettiicc
+eennvviirroonnmmeennttaall eeffffeeccttss aanndd ssppeeccttrruumm mmaannaaggeemmeenntt rreellaatteedd ccaappaabbiilliittiieess aanndd//oorr sseerrvviicceess tthhaatt tthhee DDooDD wwiillll
+rreeqquuiirree.. TThhiiss wwiillll iinncclluuddee aann eevvaalluuaattiioonn ooff eexxiissttiinngg JJSSCC aanndd DDooDD ccaappaabbiilliittiieess,, aass wweellll aass aa ddeelliinneeaattiioonn ooff
+aaddddiittiioonnaall ccaappaabbiilliittiieess tthhaatt mmoosstt lliikkeellyy wwiillll bbee rreeqquuiirreedd.. IInn aaddddiittiioonn,, tthhee iinnvveessttiiggaattiioonn sshhoouulldd iinncclluuddee
+ccoonnssiiddeerraattiioonn ooff ppeerrttiinneenntt pprroottooccoollss,, nneett--cceennttrriicc sseerrvviicceess,, aanndd tteecchhnnoollooggiieess tthhaatt wwoouulldd bbee uuttiilliizzeedd ffoorr aann
+iinniittiiaall ooppeerraattiinngg ccaappaabbiilliittyy ((IIOOCC)).. FFuurrtthheerrmmoorree,, tthhee iinnvveessttiiggaattiioonn mmuusstt aaddddrreessss tthhee iissssuuee ooff ddaattaa
+ssttaannddaarrddiizzaattiioonn bbootthh nnaattiioonnaallllyy aanndd iinntteerrnnaattiioonnaallllyy..
+· AA TTrraannssffoorrmmaattiioonn PPllaann ddooccuummeennttiinngg tthhee ssppeecciiffiicc ddeevveellooppmmeenntt aanndd iimmpplleemmeennttaattiioonn sstteeppss rreeqquuiirreedd ffoorr
+aaccccoommpplliisshhiinngg tthhee ttrraannssffoorrmmaattiioonn..
+· AA ddeettaaiilleedd PPrrooggrraamm MMaannaaggeemmeenntt PPllaann tthhaatt pprroovviiddeess ddeettaaiilleedd ccoosstt aanndd sscchheedduullee iinnffoorrmmaattiioonn,, ddeettaaiilleedd
+((lleevveell 33)) wwoorrkk bbrreeaakkddoowwnn ssttrruuccttuurree,, mmeettrriiccss,, aanndd rriisskk mmaannaaggeemmeenntt iinnffoorrmmaattiioonn..
+55.. SSccooppee::
+OOppeerraattiioonnaall SSppeeccttrruumm SSuuppppoorrtt
+EE33 aanndd SSppeeccttrruumm EEnnggiinneeeerriinngg
+MMooddeelliinngg aanndd SSiimmuullaattiioonn
+DDaattaa MMaannaaggeemmeenntt
+RReesseeaarrcchh aanndd EEvvaalluuaattee EEmmeerrggiinngg TTeecchhnnoollooggiieess
+6. PPeerrffoorrmmaannccee RReeqquuiirreemmeennttss::
+6.1 TTaasskk 11:: IInnvveessttiiggaattiioonn ooff RReeqquuiirreedd CCaappaabbiilliittiieess
+66..11..11 SSuubbttaasskk 11:: CCuurrrreenntt aanndd FFuuttuurree NNeeeeddss AAsssseessssmmeenntt.. TThhee ccoonnttrraaccttoorr wwiillll ppeerrffoorrmm aann
+eexxtteennssiivvee iinnvveessttiiggaattiioonn ooff tthhee ccuurrrreenntt aanndd ffuuttuurree ((ii..ee..,, ffoorreesseeeeaabbllee ffuuttuurree,, 55 yyeeaarrss)) nneeeeddss ooff
+tthhee DDooDD iinn tthhee aarreeaass ooff EE33 aanndd SSppeeccttrruumm EEnnggiinneeeerriinngg,, aanndd ddooccuummeenntt tthhee rreessuullttss aass ppaarrtt ooff
+tthhee ffiinnaall rreeppoorrtt.. IInn aaddddiittiioonn,, tthhee ccoonnttrraaccttoorr wwiillll pprroovviiddee aa pprreesseennttaattiioonn ooff tthhee rreessuullttss aatt tthhee
+ccoonncclluussiioonn ooff tthhiiss iinnvveessttiiggaattiioonn..
+66..11..22 SSuubbttaasskk 22:: EEvvaalluuaattiioonn ooff EExxiissttiinngg aanndd RReeqquuiirreedd CCaappaabbiilliittiieess.. TThhee ccoonnttrraaccttoorr wwiillll
+iinnvveessttiiggaattee aanndd eevvaalluuaattee eexxiissttiinngg aannaallyyttiiccaall ccaappaabbiilliittiieess ffrroomm wwiitthhiinn tthhee JJSSCC aanndd tthhee rreesstt ooff
+tthhee DDooDD,, aass wweellll aass ootthheerr ssoouurrcceess ((ee..gg..,, rreesstt ooff UUSS GGoovveerrnnmmeenntt,, aaccaaddeemmiiaa,, ccoommmmeerrcciiaallllyy
+aavvaaiillaabbllee ssoouurrcceess,, eettcc..)).. TThhee eevvaalluuaattiioonn wwiillll iinncclluuddee ssuuiittaabbiilliittyy,, eeaassee ooff mmiiggrraattiioonn ttoo aa wweebb--
+eennaabblleedd ccaappaabbiilliittyy//sseerrvviiccee,, aanndd eeaassee ooff uussee iinn aa wweebb eennvviirroonnmmeenntt.. TThhee rreessuullttss ooff tthhiiss
+ssuubbttaasskk wwiillll bbee ddooccuummeenntteedd iinn tthhee ffiinnaall rreeppoorrtt.. IInn aaddddiittiioonn,, tthhee ccoonnttrraaccttoorr wwiillll pprroovviiddee aa
+pprreesseennttaattiioonn ooff tthhee rreessuullttss aatt tthhee ccoonncclluussiioonn ooff tthhiiss iinnvveessttiiggaattiioonn..
+66..11..33 SSuubbttaasskk 33:: EEvvaalluuaattiioonn ooff DDaattaa RReeqquuiirreemmeennttss.. TThhee ccoonnttrraaccttoorr wwiillll eevvaalluuaattee tthhee ddaattaa
+rreeqquuiirreemmeennttss nneecceessssaarryy ttoo ssuuppppoorrtt tthhee JJSSCC’’ss nneett--cceennttrriicc ttrraannssffoorrmmaattiioonn.. TThhee ccoonnttrraaccttoorr
+wwiillll rreevviieeww aallll aavvaaiillaabbllee ssoouurrcceess ooff ssppeeccttrruumm--rreellaatteedd ddaattaa aanndd eevvaalluuaattee tthheeiirr ssuuiittaabbiilliittyy ttoo
+ssuuppppoorrtt ccuurrrreenntt aanndd ffuuttuurree ssppeeccttrruumm eennggiinneeeerriinngg aanndd EE33--rreellaatteedd wwoorrkk.. TThhee ccoonnttrraaccttoorr wwiillll
+aallssoo aaddddrreessss ooppttiioonnss ffoorr ddaattaa iinntteerrooppeerraabbiilliittyy aanndd ssttaannddaarrddiizzaattiioonn bbeettwweeeenn tthhee DDooDD aanndd
+tthhee rreesstt ooff tthhee FFeeddeerraall GGoovveerrnnmmeenntt,, ootthheerr ccoouunnttrriieess,, aanndd cceerrttaaiinn NNoonn--ggoovveerrnnmmeennttaall
+OOrrggaanniizzaattiioonnss.. TThhee rreessuullttss ooff tthhiiss ssuubbttaasskk wwiillll bbee ddooccuummeenntteedd iinn tthhee ffiinnaall rreeppoorrtt.. IInn
+aaddddiittiioonn,, tthhee ccoonnttrraaccttoorr wwiillll pprroovviiddee aa pprreesseennttaattiioonn ooff tthhee rreessuullttss aatt tthhee ccoonncclluussiioonn ooff tthhiiss
+iinnvveessttiiggaattiioonn..
+66..11..44 SSuubbttaasskk 44:: EEvvaalluuaattiioonn ooff EExxiissttiinngg NNeett--CCeennttrriicc SSeerrvviicceess aanndd SSuuppppoorrttiinngg TTeecchhnnoollooggiieess..
+TThhee ccoonnttrraaccttoorr sshhaallll rreesseeaarrcchh tthhee nneett--cceennttrriicc sseerrvviicceess,, tteecchhnnoollooggiieess,, aanndd pprroottooccoollss tthhaatt
+wwiillll bbee nneecceessssaarryy ttoo ssuuppppoorrtt tthhee JJSSCC’’ss nneett--cceennttrriicc ttrraannssffoorrmmaattiioonn.. TThhee rreessuullttss ooff tthhiiss
+
+=== Page 57 ===
+HC1047-05-R-4009
+Page 57 of 66
+eevvaalluuaattiioonn wwiillll bbee ddooccuummeenntteedd iinn tthhee ffiinnaall rreeppoorrtt.. IInn aaddddiittiioonn,, tthhee ccoonnttrraaccttoorr wwiillll pprroovviiddee aa
+pprreesseennttaattiioonn ooff tthhee rreessuullttss aatt tthhee ccoonncclluussiioonn ooff tthhiiss iinnvveessttiiggaattiioonn..
+6.1.5 SSuubbttaasskk 55:: DDooccuummeennttaattiioonn.. AA ffiinnaall rreeppoorrtt wwiillll bbee pprreeppaarreedd ddooccuummeennttiinngg tthhee rreessuullttss ooff tthhee
+aaffoorreemmeennttiioonneedd iinnvveessttiiggaattiioonnss..
+66..22 TTaasskk 22:: TTrraannssffoorrmmaattiioonn PPllaann.. BBaasseedd oonn tthhee rreessuullttss ooff tthhee pprreecceeddiinngg ttaasskk,, tthhee ccoonnttrraaccttoorr wwiillll pprreeppaarree
+aa ppllaann ffoorr mmiiggrraattiinngg tthhee rreeqquuiissiittee aannaallyyttiiccaall ccaappaabbiilliittiieess,, ddaattaa rreessoouurrcceess,, aanndd ootthheerr iinnffoorrmmaattiioonn ttoo aa
+nneett--cceennttrriicc eennvviirroonnmmeenntt.. TThhee ppllaann wwiillll aaddddrreessss aa pphhaasseedd ssttrraatteeggyy ttoo pprroovviiddiinngg tthhee rreeqquuiissiittee
+ffuunnccttiioonnaalliittyy ((ii..ee..,, aann IIOOCC aanndd ssuubbsseeqquueenntt ffoollllooww--oonn pphhaasseess)),, ddeelliinneeaattiinngg tthhee aapppprrooaacchh ffoorr
+ddeevveellooppmmeenntt ooff eeaacchh pphhaassee ((wwiitthh tthhee mmoosstt eemmpphhaassiiss oonn IIOOCC)).. FFuurrtthheerr,, tthhee ppllaann wwiillll pprroovviiddee aa hhiigghh--
+lleevveell ttrraannssffoorrmmaattiioonn sscchheedduullee aanndd eessttiimmaatteedd ccoossttss ttoo ddeevveelloopp aanndd mmaaiinnttaaiinn aann IIOOCC..
+6.3 Task 3: Program Management Plan. A Program Management Plan will be prepared. The plan will
+provide detailed schedule information, including a work breakdown structure, to develop and
+maintain an IOC, as well as first cut schedule estimates to provide follow-on capabilities. The plan
+will explain the metrics to be used to monitor progress and adherence to cost and schedule, as well
+as how and when they will be reported to the JSC. Furthermore, the plan will include a detailed risk
+management section that will explain the contractor’s risk management process. This section will
+also include a description of the major areas of risks that may be encountered (focusing primarily
+on IOC) and how to mitigate these risks, including security requirements and constraints.
+6.4 Pricing Information: No cost or pricing information is required for this sample; however, significant
+purchases of material and services should be identified in general terms ..
+7. PPeerrffoorrmmaannccee SSttaannddaarrddss:: TThhee ccoonnttrraaccttoorr sshhaallll ddeessccrriibbee aa qquuaalliittyy aassssuurraannccee ppllaann aass ppaarrtt ooff tthhee TTaasskk OOrrddeerr
+PPrrooppoossaall.. TThhee ggoovveerrnnmmeenntt wwiillll ddeevveelloopp aa ssuurrvveeiillllaannccee ppllaann ttoo eennssuurree pprrooppeerr ttaasskk mmoonniittoorriinngg..
+88.. IInncceennttiivveess:: TThhiiss ttaasskk iiss eennvviissiioonneedd aass aa CCoosstt PPlluuss IInncceennttiivvee FFeeee aaccttiivviittyy.. TThhee ooffffeerroorr sshhaallll pprrooppoossee bbootthh
+ppoossiittiivvee aanndd nneeggaattiivvee iinncceennttiivveess..
+9. PPllaaccee ooff PPeerrffoorrmmaannccee:: TThhiiss eeffffoorrtt wwiillll bbee ppeerrffoorrmmeedd aatt tthhee ccoonnttrraaccttoorr’’ss nnoorrmmaall dduuttyy ssttaattiioonn..
+10. PPeerriioodd ooff PPeerrffoorrmmaannccee:: nn//aa
+11. DDeelliivveerryy SScchheedduullee:: TThhee ccoonnttrraaccttoorr’’ss TTaasskk OOrrddeerr PPrrooppoossaall wwiillll iinncclluuddee tthhee sscchheedduullee ffoorr
+ttaasskk ddeelliivveerraabblleess..
+12. SSeeccuurriittyy:: SSeeccuurriittyy rreeqquuiirreemmeennttss ffoorr tthhiiss ttaasskk aarree uupp ttoo TToopp SSeeccrreett lleevveell..
+13. GGoovveerrnnmmeenntt FFuurrnniisshheedd EEqquuiippmmeenntt ((GGFFEE))// GGoovveerrnnmmeenntt FFuurrnniisshheedd IInnffoorrmmaattiioonn
+((GGFFII)):: TThheerree iiss nnoo ssppeecciiffiicc GGFFEE aassssoocciiaatteedd wwiitthh tthhiiss ttaasskk.. GGFFII wwiillll iinncclluuddee ddaattaa ffrroomm tthhee
+JJSSCC ddaattaa rreessoouurrcceess,, aass wweellll aass ootthheerr ppeerrttiinneenntt mmaatteerriiaallss ((bbrriieeffiinngg mmaatteerriiaallss,, rreeppoorrttss,, eettcc..))
+iinn tthhee ppoosssseessssiioonn ooff tthhee JJSSCC tthhaatt tthhee ccoonnttrraaccttoorr mmaayy rreeqquueesstt..
+14. OOtthheerr PPeerrttiinneenntt IInnffoorrmmaattiioonn ooff SSppeecciiaall CCoonnssiiddeerraattiioonnss:: NNoonnee..
+
+=== Page 58 ===
+HC1047-05-R-4009
+Page 58 of 66
+APPENDIX D
+KEY PERSONNEL QUALIFICATIONS SUMMARY
+11.. NNAAMMEE::
+22.. TTIITTLLEE::
+33.. JJOOBB CCAATTEEGGOORRYY//LLEEVVEELL::
+44.. SSEECCUURRIITTYY CCLLEEAARRAANNCCEE::
+55.. EEDDUUCCAATTIIOONN::
+CCoolllleeggee//UUnniivveerrssiittyy//DDeeggrreeee//GGrraadduuaatteedd DDeeggrreeee//CCoouurrsseess//YYeeaarr
+PPrrooffeessssiioonnaall CCoouurrsseess//TTiittllee//YYeeaarr
+66.. PPRROOFFEESSSSIIOONNAALL EEXXPPEERRIIEENNCCEE SSUUMMMMAARRYY::
+IInncclluuddee nnuummbbeerr ooff yyeeaarrss eexxppeerriieennccee iinn aa ppaarrttiiccuullaarr ffiieelldd oorr aarreeaa ((OOppeerraattiioonnaall SSppeeccttrruumm MMaannaaggeemmeenntt
+SSuuppppoorrtt,, EElleeccttrroommaaggnneettiicc EEnnvviirroonnmmeennttaall EEffffeeccttss ((EE33)),, AAccqquuiissiittiioonn PPrrooggrraamm SSuuppppoorrtt,, aanndd IInnffoorrmmaattiioonn TTeecchhnnoollooggyy))..
+77.. SSPPEECCIIFFIICC EEXXPPEERRIIEENNCCEE::
+JJoobb AAssssiiggnnmmeenntt -- PPrreesseenntt
+JJoobb AAssssiiggnnmmeennttss –– PPaasstt
+88.. PPEERRCCEENNTT OOFF TTIIMMEE DDEEDDIICCAATTEEDD TTOO TTHHIISS CCOONNTTRRAACCTT::
+
+=== Page 59 ===
+HC1047-05-R-4009
+Page 59 of 66
+Section M - Evaluation Factors for Award
+EVALUATION CRITERIA
+APPENDIX A
+EVALUATION CRITERIA
+This Appendix contains the Evaluation Criteria stated in Section M of the solicitation. Proposals will be evaluated
+against the Government’s requirements for Cost and Price and for the two non-cost factors (Past Performance and
+Technical). Offerors must meet or exceed all solicitation requirements to be eligible for award. Paragraph numbers in
+this Appendix follow the numbering of Section M of the solicitation.
+M.1. Solicitation Provisions.
+a. Single or Multiple Awards. The Government plans to award a single IDIQ contract but may elect to
+award IDIQ contracts for the same or similar supplies or services to two or more sources under the solicitation.
+b. Evaluation of Options. Except when it is determined in accordance with FAR section 17.206(b) not to be
+in the Government’s best interests, the Government evaluates offers for award purposes by adding the total price for
+all options to the total price for the basic requirement. Evaluation of options does not obligate the Government to
+exercise the option(s).
+M.2. Evaluation of Offers.
+a. The Government intends to conduct the source selection in accordance with the competitive negotiated
+source selection procedures contained in FAR Part 15. The Government anticipates awarding a contract based on
+initial proposals and does not plan to conduct discussions. However, the Government reserves the right to conduct
+discussions should they become necessary.
+b. The Government will evaluate initial proposals in accordance with Section M.XX, below. Based on the
+ratings of each proposal against all evaluation criteria, the Government will identify the most highly rated proposal(s).
+c. All elements, subfactors, and factors are measured against standards developed to represent guidelines
+for adequacy of approach and understanding the solicitation requirements.
+d. Evaluation includes the determination of strengths, weaknesses, and risks for each element, subfactor,
+and factor.
+e. In accordance with FAR Subpart 15.3, offerors may be given the opportunity to clarify certain aspects of
+their proposal or to resolve minor or clerical errors; however, final proposal revisions will not be permitted.
+
+=== Page 60 ===
+HC1047-05-R-4009
+Page 60 of 66
+M.3. Basis for Award.
+a. There will be one award category: Full and open competition.
+b. The Government anticipates a single award resulting from this solicitation. The Government reserves the
+right to award either one, multiple, or no contracts at all, depending on the quality of the proposals received.
+c. In accordance with FAR Clause 52.215-1, Instructions to Offerors - Competitive Acquisition, the
+Government intends to award a contract resulting from this solicitation to the responsible offeror whose proposal
+represents the best value after evaluation in accordance with the factors, subfactors, and elements specified in the
+solicitation. The Government will evaluate proposals and award a contract without discussion with offerors (except
+for clarifications as described in FAR Subpart 15.3). Therefore, the offeror’s initial proposal should contain the
+offeror’s best terms from a technical and cost and price standpoint. The Government reserves the right to conduct
+discussions if the contracting officer later determines them to be necessary.
+d. The contract award decisions for the full and open category contract will be based on the Government’s
+evaluation of each offeror’s complete proposal against the evaluation criteria identified in Section M.XX, below.
+Awards will be made to the offeror whose proposal contains the combination of factors offering the best overall
+value to the Government. Best value means the expected outcome of an acquisition that, in the Government’s
+estimation, provides the greatest overall benefit in response to the requirement (FAR section 2.101). In making this
+evaluation, the Government is more concerned with obtaining superior technical and management skills than with
+making an award to the offeror with the lowest proposed price.
+e. When conducting the evaluation, the Government will consider data included by offerors in their
+proposals, as well as data obtained from other sources.
+M.4. Evaluation Criteria.
+M.4.1. Factors, Subfactors, and Elements.
+a. General. The Government will apply the following tailored evaluation criteria to identify the best value
+proposal. The evaluation criteria represent key areas of importance to be considered in the source selection decision.
+The elements, subfactors, and factors have been chosen to support a meaningful discrimination between and among
+competing proposals. The proposals will be evaluated against the Government’s requirements using three factors:
+Past Performance.
+Technical.
+Cost and Price.
+b. Definitions. In order to provide insight into the Government’s value of the factors, the following
+terminology is used:
+More Important. The criterion is greater in value than another criterion.
+Comparatively Equal. The criterion is nearly the same in value as another criterion; any difference
+is very slight and unimportant.
+c. Relative Importance. Past Performance is comparatively equal to Technical. Each of the non-cost factors
+is divided into subfactors. Past Performance is divided into four subfactors, which are further divided into elements;
+Technical is divided into four subfactors, which are further divided into elements. Subfactors are comparatively
+equal within each factor. All elements within a subfactor are comparatively equal. Each non-cost factor individually
+is more important than Cost and Price. When combined, Past Performance and Technical are significantly more
+important than Cost and Price.
+
+=== Page 61 ===
+HC1047-05-R-4009
+Page 61 of 66
+d. Risk Assessment. The Government will perform a risk assessment of each offeror’s proposal. The
+proposal risk assessment will focus on the risks and weaknesses associated with the offeror’s proposed approach.
+Assessment of risk will be done at the Past Performance and Technical factor levels, and includes potential for
+disruption of schedule, increased cost, degradation of performance, and the need for increased Government
+oversight as well as the likelihood of unsuccessful contract performance. For any risk identified, the evaluation will
+address the offeror’s proposal for mitigating those risks and why that approach is or is not feasible. Figure A-1
+provides definitions to be used for Past Performance and Technical Approach.
+(1) Risks may occur as a result of a particular technical approach, operational process, management plan,
+transition plan, quality assurance plan or as a result of the schedule and economic impacts associated with the
+approaches or plans.
+(2) A risk assessment rating will be used along with the color codes for each assessed factor. The
+statements within the color code definitions assess different evaluation aspects rather than the risk assessment
+ratings. The statements within the color code definitions reflect how well the Past Performance and Technical meet
+the solicitation requirements.
+
+=== Page 62 ===
+HC1047-05-R-4009
+Page 62 of 66
+Figure A-1
+Risk Assessment Description Table
+Risk Description
+High Offeror’s proposed approach is likely to cause significant disruption of schedule, increase in
+cost, or degradation of performance, and will require a high level of contractor emphasis and
+Government monitoring to overcome difficulties
+Medium Offeror’s proposed approach is likely to cause a moderate disruption of schedule, increase in
+cost, or degradation of performance, and will require a medium level of contractor emphasis and
+Government monitoring to overcome difficulties
+Low Offeror’s proposed approach is likely to cause minimal or no disruption of schedule, increase in
+cost, or degradation of performance, and will require a low level of contractor emphasis and
+Government monitoring to overcome difficulties
+M.4.2. Detailed Description of Evaluation Criteria.
+a. Non-Cost Factors.
+(1) Factor 1 - Past Performance. The Government will assess the offeror’s capability to perform task orders under
+the solicitation by evaluating the offeror’s past performance as a prime contractor on previous contracts similar in
+size, scope and complexity to the JSC Electromagnetic Spectrum Engineering services contract. Only past
+performance data on efforts of this type, completed within the last three years, or work that is ongoing, will be
+evaluated. The lack of relevant past performance information will result in the assignment of a white (neutral) rating
+(i.e., neither favorable nor unfavorable). Technically complex tasks managed and implemented across an enterprise
+will be rated higher than tasks of lesser size, scope, and complexity.
+Subfactor 1 - Previous Contracting Effort. The Government will evaluate the offeror’s past performance as the prime
+contractor in management of large and complex efforts similar in size, scope and complexity to the JSC
+Electromagnetic Spectrum Engineering services contract. The evaluation will focus on the offeror’s technical
+understanding and technical capability as demonstrated by the results achieved in the completion of actual contracts
+and task orders similar in size, scope, and complexity to the JSC requirement. Technically complex tasks managed and
+implemented across an enterprise will rate higher than tasks of lesser size, scope, and complexity. The evaluation will
+also focus on the innovative solutions developed and implemented by the offeror to address complex efforts and
+technical challenges, along with the results achieved. Emphasis will be placed on the application and use of
+performance metrics and quality control plans that demonstrate program objectives and customer expectations were
+met or exceeded.
+Element 1 - Objectives. Evaluate the offeror’s ability to meet objectives and mission requirements on
+Electromagnetic Spectrum Engineering services tasks similar to the size, scope, and complexity of the Task Areas
+described in Section C of the solicitation.
+Element 2 - Cost Control. Evaluate the offeror’s ability to forecast and control contract costs. Evaluate the cause of
+any variances in the award amounts and the amounts at completion (or estimated to complete) to determine the extent
+to which the offeror controlled project costs.
+Element 3 - Schedule. Evaluate the offeror’s ability to adhere to an agreed schedule. Examine the cause of any
+schedule variances to determine the extent to which the offeror delivered services on time.
+Element 4 - Risk. Evaluate the offeror’s ability to recognize and manage risk.
+Element 5 - Quality. Evaluate the offeror’s ability to provide a product or service that met the customer’s quality
+requirements.
+
+=== Page 63 ===
+HC1047-05-R-4009
+Page 63 of 66
+Element 6 - Socioeconomic Goals. Evaluate the offeror’s ability to meet small business subcontracting goals, if
+applicable. Consider any circumstances that negatively impacted the offeror’s ability to consistently meet or exceed
+small business subcontracting goals.
+Element 7 - Subcontracting Management. Evaluate the offeror’s ability to manage its subcontracting
+responsibilities. Consider the offeror’s record relative to the timely award of subcontracts and payment of
+subcontractors along with any significant subcontracting issues that resulted in contract cost, schedule, and
+performance problems.
+Element 8 - Business Relations. Evaluate the offeror’s ability to demonstrate a business-like concern for the
+customer’s interests and the ability to demonstrate a reasonable and cooperative behavior. Examine the assessment
+to determine the degree to which the offeror met the levels of cooperation needed to be an effective business partner.
+Subfactors 2-4 - Previous Contracting Efforts 2-4.
+Elements 1-8 - Same as Subfactor 1.
+(2) Factor 2 – Technical. Evaluate this factor on the basis of the proposed technical approach for performing the
+contract, management of this approach, proposed approach to transition from the incumbent contractor, and the
+strategic quality assurance plan, as described by the offeror’s proposal for each of the tasks described in the
+solicitation. The evaluation encompasses an assessment of the suitability of the proposed technical solution in
+relation to similar requirements anticipated in the contract; and the soundness, completeness, and adequacy of the
+solution. Evaluate the offeror’s proposal to determine the extent to which the approach demonstrates an
+understanding of the scope and complexity of the solicitation task areas. Subfactor 1 - Technical Approach is
+considered comparatively equal to Subfactor 2 - Management Plan, which is considered comparatively equal to
+Subfactor 3 – Transition Plan, which is comparatively equal to Subfactor 4 – Organizational Quality Assurance Plan.
+Subfactor 1 - Technical Approach. In response to the solicitation, the Government will evaluate the offeror’s
+proposed technical approach to meet the JSC’s mission requirements and performance objectives.
+Element 1. - Operational Spectrum Support. Offeror demonstrates program understanding and knowledge in
+deploying qualified spectrum managers in the areas of support of Combatant Command (COCOM) or Joint Task
+Force (JTF) contingencies; deploying technical experts to take field measurements and analyze incidents of
+electromagnetic interference (EMI), determine causes, and recommend methods of resolution; and developing,
+operating, and maintaining DoD’s standard spectrum management systems or systems similar in size and complexity.
+Element 2. - E3 and Spectrum Engineering: Offeror demonstrates program understanding and knowledge of E3 and
+spectrum engineering in the areas of coordinating electromagnetic compatibility (EMC) standards; analyzing
+equipment and systems for potential E3 issues and problems and recommending solutions and/or mitigating
+measures; performing RF measurements; developing and conducting E3 training; assisting the acquisition
+community by assessing E3; determining operationally viable frequency bands; and providing assistance in
+acquiring host nation approval for equipment operation.
+Element 3. - Modeling and Simulation: Offeror demonstrates program understanding and knowledge in the areas of
+developing and maintaining spectrum management automated tools and analytical models to perform EMC analyses.
+Element 4. - Information Management. Offeror demonstrates program understanding and knowledge in the areas of
+collecting and maintaining extensive data on spectrum dependent equipment and spectrum usage to support tactical,
+training, or sustaining-base operations, operational assessments, and research and development efforts; and
+providing and maintaining a capability to store and retrieve documents such as technical reports, project notebooks,
+and other related technical documents.
+Element 5. - Research and Evaluate Emerging Technologies. Offeror demonstrates program understanding and
+knowledge in direct support of the research and evaluation of emerging technologies.
+Element 6 - Technical Advice. Offeror demonstrates program understanding and knowledge in the areas of analyzing
+complex electromagnetic issues and advising executive decision-makers on policy viability and implementation
+options.
+
+=== Page 64 ===
+HC1047-05-R-4009
+Page 64 of 66
+Element 7 – Emerging Spectrum Technology Sample Task Order. Offeror demonstrates program understanding and
+knowledge and a sound technical approach in the analysis of emerging spectrum technology. Offeror’s proposed
+labor mix and quality assurance plan are reasonable.
+Element 8 – Network Centric Warfare Sample Task Order. Offeror demonstrates program understanding and
+knowledge and a sound technical approach to assessing the needs and describing an approach to transform relevant
+spectrum-related capabilities to support network centric warfare. Offeror’s proposed labor mix and quality assurance
+plan are reasonable.
+Subfactor 2 - Management Plan. Assess the offeror’s ability to successfully manage and perform technical solutions
+by evaluating its structure, management approach and business operations.
+Element 1 - Organizational Structure and Management Approach. Offeror demonstrates an organizational structure
+relative to this contract that provides for accomplishment of the required effort/tasking. The plan should include the
+following information, as a minimum: (1) reflect how the team will execute the contract, by identifying proposed
+organizational structure, including personnel by name for all key positions, as well as indicating whether the
+personnel are employed by the prime or proposed subcontractor, and the percentage of work to be performed by
+each participant (prime or subcontractor); (2) the program management approach, to include a description of work
+flow, staffing of tasks, cost control and status reporting to the Government; (3) clearly identify the point(s) of contact
+to interface with the Government Contracting Officer, Contracting Officer’s Representative, Technical Points of
+Contact, Financial Points of Contact, and any other Government personnel involved in the fulfillment of contract
+duties; (4) demonstrated willingness to work as part of an integrated team with the Government and other
+contractors.
+Element 2 – Certifications and Awards . Evaluate the offeror’s demonstrated recognition and achievement of
+professional certifications.
+Element 3 - Ability to Recruit, Train, and Maintain High-Quality Personnel. Evaluate the offeror’s ability to recruit,
+train, and maintain a high-quality technical work force.
+Element 4 – Plan to Maintain JSC Analytical Capabilities. Evaluate the offeror’s approach to maintaining JSC
+analytical capabilities, software currency, and overall technical capability.
+Element 5 – Organizational Conflict of Interest Plan. Evaluate the offeror’s plan to manage potential conflicts of
+interest.
+Element 6 – Resumes. Evaluate the resumes of the offeror’s key personnel for experience compatible to that
+necessary to perform the JSC effort.
+Subfactor 3 - Transition Plan. Assess the offeror’s ability to successfully transition into the new contract and
+perform technical solutions to support the solicitation without impact to day-to-day information flow and operations.
+Element 1 – Transition Planning. Evaluate the offeror’s plan to efficiently and effectively take over the day-to-day
+operation of the JSC from the onset of the contract. Evaluate the offeror’s plan to acquire trained and experienced
+staff and facilities and other matters necessary to take over full responsibilities and duties of the Electromagnetic
+Spectrum Engineering contractor.
+Element 2 - Impacts to JSC Minimized. Evaluate the ability of the offeror to affect the transition of operations while
+maximizing information flow between the offeror and the Government and minimizing impact to JSC day-to-day
+operations.
+Subfactor 4 – Organizational Strategic Quality Assurance Plan. Assess the offeror’s plan to assure high quality
+products are delivered on time and within cost.
+Element 1 – Evaluate the offeror’s plan to assure performance goals are attained. Evaluate the offeror’s plan to
+assure subcontractors adhere to cost, performance, schedule, and quality measures.
+Element 2 - Evaluate the offeror’s proposed performance metrics to ensure metrics adequately measure performance
+and product quality.
+Element 3 – Evaluate the offeror’s plan for continuous performance and/or business process improvement.
+
+=== Page 65 ===
+HC1047-05-R-4009
+Page 65 of 66
+b. Cost and Price Factor.
+(1) The offeror is required to submit all pricing data in the format indicated in Sections B and L of
+the solicitation. Offerors are required to submit their proposed rates for the entire 60-month period, as set forth in
+Section B of the solicitation. The evaluation period commences with the date of contract award and ends 60 months
+later. Contract months and evaluation months are assumed to be the same. (If FAR permits a ten year contract, the
+offeror will be required to submit proposal rates for the entire 120 month period.)
+(2) Evaluate the proposed rates for the labor categories and other related costs for completeness
+and reasonableness. Determine the reasonableness of the overall price on the basis of adequate price competition
+and by comparison with the independent government cost estimate (IGCE).
+(3) The Government may evaluate cost and price realism with regard to the ability of the offeror to
+meet requirements in terms of skills required, complexity of disciplines and job difficulty, if the Government deems
+such analysis necessary. Compare the offeror’s cost and price proposal to the technical proposals to determine the
+offeror’s (1) understanding of work to be performed and (2) capability and capacity to provide the required services
+and accomplish the required tasks. The Government may also assess the labor support information submitted
+pursuant to Section L.XX, Volume III - Cost and Price proposal, as part of any cost realism analysis conducted.
+Unrealistically low prices may indicate a lack of complete understanding of the requirements, a high-risk approach to
+performance, and or an inability to attract and maintain a high-quality workforce. The Government considers the
+findings of such analysis as an indicator of an offeror’s ability to perform and the risk of its approach.
+
+=== Page 66 ===
+HC1047-05-R-4009
+Page 66 of 66
+APPENDIX B
+EVALUATION PROCEDURES
+This appendix outlines the procedures that evaluators follow to ensure consistency and fairness in the source
+selection.
+1.0. SECURITY AND DOCUMENT CONTROL.
+1.1. General. Security and document control is critical to the source selection process. This section addresses
+security rules and procedures to be used by all personnel involved.
+1.2. Source Selection Information. To ensure the integrity and successful completion of the source selection, all
+procurement sensitive information must be protected.
+The FAR prohibits or restricts the disclosure of procurement sensitive information, trade secrets, other proprietary or
+confidential research, development, or commercial information that may be contained in the offeror’s proposals. An
+exception exists when such release is in the best interest of the public and would not jeopardize the integrity or
+successful completion of the procurement.
+The following individuals are authorized to approve release of source selection information when the solicitation has
+been released but before award:
+For source selections -- the SSA.
+When the release is prior to issuance of the solicitation -- the contracting officer.
+1.2.1. Source Selection Information Definition. Includes any of the following information prepared for use by a
+federal agency for the purpose of evaluating a bid or proposal if that information has not been previously made
+available to the public or disclosed publicly:
+Proposed costs or prices submitted in response to a federal agency solicitation, or lists of those proposed costs or
+prices.
+Source selection plans.
+Evaluations of proposals.
+Competitive range determinations that identify proposals that have a reasonable chance of being selected for award.
+Reports and evaluations of source selection panels, boards, or advisory councils.
+Other information marked as Source Selection Information - See FAR sections 2.101 and 3.104. Based on a case-by-
+case determination by the Head of the Agency or designee, or the contracting officer that its disclosure would
+jeopardize the integrity or successful completion of the procurement to which the information relates.
+Past performance information.

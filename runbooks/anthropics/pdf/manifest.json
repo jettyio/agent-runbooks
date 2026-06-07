@@ -132,8 +132,84 @@
         "duration_seconds": 86.3,
         "eval": { "overall_passed": true, "pass": 5, "partial": 0, "fail": 0 }
       }
+    },
+    {
+      "id": "invoice-to-json",
+      "title": "Invoice line items → JSON",
+      "summary": "Extract a commercial invoice's line-items table (item, qty, unit price, amount) into strictly-valid JSON — the canonical document-to-data use case.",
+      "thumbnail": "examples/invoice-to-json/thumbnail.png",
+      "operation": "extract-tables",
+      "capability": "extract",
+      "dir": "examples/invoice-to-json",
+      "input": {
+        "file": "examples/invoice-to-json/input.pdf",
+        "filename": "northwind-invoice-INV-2026-0476.pdf",
+        "pages": 1,
+        "label": "Sample commercial invoice (Northwind Trading Co. → Acme Robotics), 6 line items",
+        "license": "Synthetic sample (fictitious company/data)",
+        "values": { "operation": "extract every table into JSON" }
+      },
+      "primary_output": "examples/invoice-to-json/expected/extracted_tables.json",
+      "outputs": [
+        { "file": "examples/invoice-to-json/expected/extracted_tables.json", "role": "primary", "type": "application/json", "description": "The invoice line-items table as strict JSON." },
+        { "file": "examples/invoice-to-json/expected/extracted_tables.xlsx", "role": "secondary", "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "description": "Same table as Excel." },
+        { "file": "examples/invoice-to-json/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Run summary." },
+        { "file": "examples/invoice-to-json/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": {
+        "label": "Invoice line items (6 rows)",
+        "source_page": 1,
+        "headers": ["Item", "Description", "Qty", "Unit Price", "Amount"],
+        "rows": [
+          { "Item": "SKU-1001", "Description": "Servo motor, 24V high-torque", "Qty": "12", "Unit Price": "$48.50", "Amount": "$582.00" },
+          { "Item": "SKU-0440", "Description": "LiDAR sensor module, 2D", "Qty": "3", "Unit Price": "$310.00", "Amount": "$930.00" },
+          { "Item": "SKU-5050", "Description": "Firmware integration service (hours)", "Qty": "20", "Unit Price": "$120.00", "Amount": "$2,400.00" }
+        ]
+      },
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "pdf-amber-hawk", "trajectory_id": "3bc97289",
+        "url": "https://flows.jetty.io/jon-runbooks/pdf-amber-hawk/3bc97289",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T03:05:58.374055Z", "duration_seconds": 98.1,
+        "eval": { "overall_passed": true, "pass": 5, "partial": 0, "fail": 0 }
+      }
+    },
+    {
+      "id": "rfp-full-text",
+      "title": "Federal RFP → full text",
+      "summary": "Extract all text from a 66-page federal solicitation (DISA RFP HC1047-05-R-4009) — ~184k characters for search/RAG. A robustness test on a large, form-heavy government document.",
+      "thumbnail": "examples/rfp-full-text/thumbnail.png",
+      "operation": "extract-text",
+      "capability": "extract",
+      "dir": "examples/rfp-full-text",
+      "input": {
+        "file": "examples/rfp-full-text/input.pdf",
+        "filename": "disa-rfp-HC1047-05-R-4009.pdf",
+        "pages": 66,
+        "label": "Defense Information Systems Agency — RFP HC1047-05-R-4009 (SF-33 solicitation)",
+        "source_url": "https://buy.gsa.gov/api/system/files/documents/DISAESEservices_0.pdf",
+        "license": "Public domain (U.S. federal government)",
+        "values": { "operation": "extract all text from the document into extracted_text.txt" }
+      },
+      "primary_output": "examples/rfp-full-text/expected/extracted_text.txt",
+      "outputs": [
+        { "file": "examples/rfp-full-text/expected/extracted_text.txt", "role": "primary", "type": "text/plain", "description": "Full text of all 66 pages (~184k chars)." },
+        { "file": "examples/rfp-full-text/expected/summary.md", "role": "report", "type": "text/markdown", "description": "Run summary." },
+        { "file": "examples/rfp-full-text/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "caveat": "The dense SF-33 cover form interleaves overlapping text runs (inherent to the form; no extractor setting fixes it). The body clauses extract cleanly.",
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "pdf-amber-hawk", "trajectory_id": "598fbc1c",
+        "url": "https://flows.jetty.io/jon-runbooks/pdf-amber-hawk/598fbc1c",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T03:05:59.393462Z", "duration_seconds": 77.4,
+        "eval": { "overall_passed": true, "pass": 4, "partial": 0, "fail": 0 }
+      }
     }
   ],
+
+  "featured_examples": ["pubmed-tables-to-json", "watermark-confidential", "create-summary-pdf"],
 
   "inputs": [
     { "label": "Input PDF(s)", "type": "file", "required": true, "accept": ".pdf", "multiple": true, "description": "One or more PDF files. Uploaded files land in /app/assets/." },
@@ -217,6 +293,6 @@
     "trajectory_id": "6c756bcf",
     "sample_output_excerpt": "examples/pubmed-tables-to-json/expected/extracted_tables.json",
     "current_eval_pass_rate": 1.0,
-    "eval_runs": "6/6 completed production runs green (fc3722a6, 5999951a, 6c756bcf, 6b149fd9, 0e7dcb7b, 7f700569)"
+    "eval_runs": "8/8 completed production runs green (incl. tables→JSON 6c756bcf, watermark 0e7dcb7b, create 7f700569, invoice 3bc97289, federal RFP 598fbc1c)"
   }
 }
