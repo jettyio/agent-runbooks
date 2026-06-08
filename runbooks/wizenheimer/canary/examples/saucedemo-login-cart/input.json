@@ -1,0 +1,8 @@
+{
+  "title": "SauceDemo — login and add to cart",
+  "target_url": "https://www.saucedemo.com",
+  "app": "Sauce Labs demo store",
+  "flow": "Log in with the provided credentials. Check login succeeds and the inventory page is shown (URL contains inventory). Add the Sauce Labs Backpack to the cart. Check the cart badge in the header shows 1.",
+  "params": { "vars": { "target_url": "https://www.saucedemo.com", "flow": "Log in with the provided credentials. Check login succeeds and the inventory page is shown (URL contains inventory). Add the Sauce Labs Backpack to the cart. Check the cart badge shows 1.", "credentials": "user=standard_user,pass=secret_sauce", "headless": "true" } },
+  "note": "Login + add-to-cart flow on a standard public QA target."
+}

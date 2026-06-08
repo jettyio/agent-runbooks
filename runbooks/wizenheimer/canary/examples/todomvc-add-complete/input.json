@@ -1,0 +1,8 @@
+{
+  "title": "TodoMVC — add todos and complete one",
+  "target_url": "https://demo.playwright.dev/todomvc",
+  "app": "TodoMVC (Playwright demo)",
+  "flow": "Add a todo called Buy milk, then add a second todo called Walk the dog. Check the counter shows 2 items left. Mark Buy milk completed via its checkbox. Check the counter shows 1 item left and Buy milk is completed.",
+  "params": { "vars": { "target_url": "https://demo.playwright.dev/todomvc", "flow": "Add a todo called Buy milk, then add a second todo called Walk the dog. Check the counter shows 2 items left. Mark Buy milk completed via its checkbox. Check the counter shows 1 item left and Buy milk is completed.", "credentials": "", "headless": "true" } },
+  "note": "A deterministic public test app — exercises add + toggle + counter assertions."
+}

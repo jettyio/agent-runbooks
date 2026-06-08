@@ -1,0 +1,27 @@
+{
+  "collection": "jon-runbooks",
+  "task": "wizenheimer-canary",
+  "trajectory_id": "affed313",
+  "workflow_id": "jon-runbooks-wizenheimer-canary--affed313",
+  "url": "https://flows.jetty.io/jon-runbooks/wizenheimer-canary/affed313",
+  "runbook_version": "1.0.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "prism-playwright",
+  "ran_at": "2026-06-07T23:41:06.756346Z",
+  "duration_seconds": 170,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "report.html",
+    "replay.py"
+  ],
+  "target_url": "https://the-internet.herokuapp.com/login",
+  "eval": {
+    "overall_passed": true,
+    "verdict": "PASS",
+    "steps": "7/7"
+  },
+  "notes": "Login happy-path + logout. 7/7 PASS: success flash banner asserted, logout returns to the login form."
+}

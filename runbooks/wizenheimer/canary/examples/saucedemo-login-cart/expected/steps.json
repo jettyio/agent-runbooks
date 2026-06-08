@@ -1,0 +1,58 @@
+[
+  {
+    "name": "open the app",
+    "action": "navigate",
+    "status": "pass",
+    "console_errors": 2,
+    "error": null,
+    "screenshot": "01-open_the_app.png"
+  },
+  {
+    "name": "enter username",
+    "action": "fill",
+    "status": "pass",
+    "console_errors": 2,
+    "error": null,
+    "screenshot": "02-enter_username.png"
+  },
+  {
+    "name": "enter password",
+    "action": "fill",
+    "status": "pass",
+    "console_errors": 2,
+    "error": null,
+    "screenshot": "03-enter_password.png"
+  },
+  {
+    "name": "submit login",
+    "action": "click",
+    "status": "pass",
+    "console_errors": 2,
+    "error": null,
+    "screenshot": "04-submit_login.png"
+  },
+  {
+    "name": "inventory page loaded",
+    "action": "assert",
+    "status": "pass",
+    "console_errors": 2,
+    "error": null,
+    "screenshot": "05-inventory_page_loaded.png"
+  },
+  {
+    "name": "add backpack to cart",
+    "action": "click",
+    "status": "pass",
+    "console_errors": 2,
+    "error": null,
+    "screenshot": "06-add_backpack_to_cart.png"
+  },
+  {
+    "name": "cart badge shows 1",
+    "action": "assert",
+    "status": "pass",
+    "console_errors": 2,
+    "error": null,
+    "screenshot": "07-cart_badge_shows_1.png"
+  }
+]

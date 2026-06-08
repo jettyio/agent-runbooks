@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-06-07T23:39:30.495273Z",
+  "parameters": {
+    "target_url": "https://demo.playwright.dev/todomvc"
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "playwright 1.x + chromium ready"
+    },
+    {
+      "name": "drive",
+      "passed": true,
+      "message": "7 steps driven, evidence captured per step"
+    },
+    {
+      "name": "replay",
+      "passed": true,
+      "message": "replay.py written and smoke-runs clean (exit 0)"
+    },
+    {
+      "name": "report",
+      "passed": true,
+      "message": "report.html + all artifacts written"
+    }
+  ],
+  "results": {
+    "steps_total": 7,
+    "steps_passed": 7,
+    "verdict": "PASS"
+  },
+  "overall_passed": true
+}

@@ -1,0 +1,27 @@
+{
+  "collection": "jon-runbooks",
+  "task": "wizenheimer-canary",
+  "trajectory_id": "c5172934",
+  "workflow_id": "jon-runbooks-wizenheimer-canary--c5172934",
+  "url": "https://flows.jetty.io/jon-runbooks/wizenheimer-canary/c5172934",
+  "runbook_version": "1.0.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "prism-playwright",
+  "ran_at": "2026-06-07T23:36:06.810607Z",
+  "duration_seconds": 209,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "report.html",
+    "replay.py"
+  ],
+  "target_url": "https://demo.playwright.dev/todomvc",
+  "eval": {
+    "overall_passed": true,
+    "verdict": "PASS",
+    "steps": "7/7"
+  },
+  "notes": "Add two todos, complete one. 7/7 steps PASS with 3 real assertions (counter=2, counter=1, struck-through), 0 console errors."
+}

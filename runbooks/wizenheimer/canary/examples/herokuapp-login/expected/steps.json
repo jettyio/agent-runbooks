@@ -1,0 +1,65 @@
+[
+  {
+    "name": "open login page",
+    "action": "navigate",
+    "check": "<function <lambda> at 0x70dec2c149a0>",
+    "status": "pass",
+    "console_errors": 1,
+    "error": null,
+    "screenshot": "01-open_login_page.png"
+  },
+  {
+    "name": "fill username",
+    "action": "fill",
+    "check": null,
+    "status": "pass",
+    "console_errors": 1,
+    "error": null,
+    "screenshot": "02-fill_username.png"
+  },
+  {
+    "name": "fill password",
+    "action": "fill",
+    "check": null,
+    "status": "pass",
+    "console_errors": 1,
+    "error": null,
+    "screenshot": "03-fill_password.png"
+  },
+  {
+    "name": "submit login form",
+    "action": "click",
+    "check": null,
+    "status": "pass",
+    "console_errors": 5,
+    "error": null,
+    "screenshot": "04-submit_login_form.png"
+  },
+  {
+    "name": "check success flash banner",
+    "action": "assert",
+    "check": "<function check_success_flash at 0x70dec2c15620>",
+    "status": "pass",
+    "console_errors": 5,
+    "error": null,
+    "screenshot": "05-check_success_flash_banner.png"
+  },
+  {
+    "name": "click logout",
+    "action": "click",
+    "check": null,
+    "status": "pass",
+    "console_errors": 11,
+    "error": null,
+    "screenshot": "06-click_logout.png"
+  },
+  {
+    "name": "check login form returned",
+    "action": "assert",
+    "check": "<function check_login_form at 0x70dec2c15580>",
+    "status": "pass",
+    "console_errors": 11,
+    "error": null,
+    "screenshot": "07-check_login_form_returned.png"
+  }
+]

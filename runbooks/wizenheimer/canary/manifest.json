@@ -1,0 +1,148 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "wizenheimer/canary",
+  "title": "Canary — Browser QA",
+  "description": "Describe a user flow in plain language; the agent drives a real browser through it and hands back a self-contained QA report (per-step screenshots, console, network HAR, Playwright trace) AND a reusable replay.py script that re-runs the flow in CI with zero agent cost.",
+
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "3–5 mins"
+  },
+
+  "example_outputs": [
+    {
+      "id": "todomvc-add-complete",
+      "title": "TodoMVC — add & complete a todo",
+      "summary": "Add two todos and complete one. 7/7 steps pass, with real assertions on the counter (2 → 1) and the completed state. Self-contained report + replay.py.",
+      "thumbnail": "examples/todomvc-add-complete/thumbnail.png",
+      "operation": "qa",
+      "app": "TodoMVC (Playwright demo)",
+      "verdict": "PASS",
+      "capability": "crud-flow",
+      "dir": "examples/todomvc-add-complete",
+      "input": { "target_url": "https://demo.playwright.dev/todomvc", "flow": "Add two todos, complete one, assert the counter", "values": { "target_url": "https://demo.playwright.dev/todomvc" } },
+      "primary_output": "examples/todomvc-add-complete/expected/report.html",
+      "outputs": [
+        { "file": "examples/todomvc-add-complete/expected/report.html", "role": "primary", "type": "text/html", "description": "Self-contained QA report (per-step screenshots inlined, verdict)." },
+        { "file": "examples/todomvc-add-complete/expected/replay.py", "role": "primary", "type": "text/x-python", "description": "Reusable Playwright script that reproduces the flow in CI." },
+        { "file": "examples/todomvc-add-complete/expected/steps.json", "role": "secondary", "type": "application/json", "description": "Per-step results." },
+        { "file": "examples/todomvc-add-complete/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "wizenheimer-canary", "trajectory_id": "c5172934",
+        "url": "https://flows.jetty.io/jon-runbooks/wizenheimer-canary/c5172934",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T23:36:06.810607Z", "duration_seconds": 209, "eval": { "overall_passed": true, "verdict": "PASS", "steps": "7/7" }
+      }
+    },
+    {
+      "id": "saucedemo-login-cart",
+      "title": "SauceDemo — login & add to cart",
+      "summary": "Log in to a demo store, add an item, assert the cart badge. 7/7 steps pass — login lands on the inventory page and the cart badge shows 1.",
+      "thumbnail": "examples/saucedemo-login-cart/thumbnail.png",
+      "operation": "qa",
+      "app": "Sauce Labs demo store",
+      "verdict": "PASS",
+      "capability": "auth-cart-flow",
+      "dir": "examples/saucedemo-login-cart",
+      "input": { "target_url": "https://www.saucedemo.com", "flow": "Log in, add the backpack to the cart, assert the cart badge", "values": { "target_url": "https://www.saucedemo.com", "credentials": "user=standard_user,pass=secret_sauce" } },
+      "primary_output": "examples/saucedemo-login-cart/expected/report.html",
+      "outputs": [
+        { "file": "examples/saucedemo-login-cart/expected/report.html", "role": "primary", "type": "text/html", "description": "Self-contained QA report." },
+        { "file": "examples/saucedemo-login-cart/expected/replay.py", "role": "primary", "type": "text/x-python", "description": "Reusable Playwright replay script." },
+        { "file": "examples/saucedemo-login-cart/expected/steps.json", "role": "secondary", "type": "application/json", "description": "Per-step results." },
+        { "file": "examples/saucedemo-login-cart/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "wizenheimer-canary", "trajectory_id": "8b80f8a0",
+        "url": "https://flows.jetty.io/jon-runbooks/wizenheimer-canary/8b80f8a0",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T23:41:06.158100Z", "duration_seconds": 208, "eval": { "overall_passed": true, "verdict": "PASS", "steps": "7/7" }
+      }
+    },
+    {
+      "id": "herokuapp-login",
+      "title": "the-internet — login & logout",
+      "summary": "Log in on a QA playground, assert the success flash banner, then log out and assert the form returns. 7/7 steps pass.",
+      "thumbnail": "examples/herokuapp-login/thumbnail.png",
+      "operation": "qa",
+      "app": "the-internet (test playground)",
+      "verdict": "PASS",
+      "capability": "auth-flow",
+      "dir": "examples/herokuapp-login",
+      "input": { "target_url": "https://the-internet.herokuapp.com/login", "flow": "Log in, assert the success banner, log out, assert the form returns", "values": { "target_url": "https://the-internet.herokuapp.com/login", "credentials": "user=tomsmith,pass=SuperSecretPassword!" } },
+      "primary_output": "examples/herokuapp-login/expected/report.html",
+      "outputs": [
+        { "file": "examples/herokuapp-login/expected/report.html", "role": "primary", "type": "text/html", "description": "Self-contained QA report." },
+        { "file": "examples/herokuapp-login/expected/replay.py", "role": "primary", "type": "text/x-python", "description": "Reusable Playwright replay script." },
+        { "file": "examples/herokuapp-login/expected/steps.json", "role": "secondary", "type": "application/json", "description": "Per-step results." },
+        { "file": "examples/herokuapp-login/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "wizenheimer-canary", "trajectory_id": "affed313",
+        "url": "https://flows.jetty.io/jon-runbooks/wizenheimer-canary/affed313",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-07T23:41:06.756346Z", "duration_seconds": 170, "eval": { "overall_passed": true, "verdict": "PASS", "steps": "7/7" }
+      }
+    }
+  ],
+
+  "featured_examples": ["todomvc-add-complete", "saucedemo-login-cart", "herokuapp-login"],
+
+  "inputs": [
+    { "label": "Target URL", "type": "url", "required": true, "description": "Where the flow starts." },
+    { "label": "Flow", "type": "text", "required": true, "description": "The user journey to QA in plain language, with the checks that must hold (visible text / URL / state / no console error)." },
+    { "label": "Credentials", "type": "text", "required": false, "description": "Optional login creds, e.g. user=...,pass=... ." }
+  ],
+
+  "secrets": [],
+
+  "runbook_source": "RUNBOOK.md",
+
+  "meta": {
+    "created_by": { "name": "wizenheimer", "source": "github", "url": "https://github.com/wizenheimer/canary", "avatar": null },
+    "tags": ["qa", "e2e", "playwright", "browser-testing", "regression", "agent:claude-code", "programmatic"],
+    "version": "1.0.0",
+    "agent": "claude-code",
+    "model": "claude-sonnet-4-6",
+    "model_provider": "anthropic",
+    "snapshot": "prism-playwright",
+    "evaluation": "programmatic",
+    "primary_outputs": ["report.html", "replay.py"],
+    "lineage": {
+      "remix_of": null,
+      "imported_from": "https://github.com/wizenheimer/canary",
+      "imported_by": "skill-to-runbook-converter@1.0.0"
+    },
+    "attribution": {
+      "author": "Canary contributors (usecanary) — github.com/wizenheimer/canary",
+      "source": "wizenheimer/canary",
+      "license": "MIT",
+      "note": "Canary ships a CLI + a QuickJS-WASM Playwright sandbox + a daemon; this runbook re-implements its core idea (describe a flow → agent drives → report + reusable script) with plain Playwright so it runs in the Jetty sandbox."
+    },
+    "share": "wizenheimer/canary",
+    "metrics": { "_note": "Live counters — backend-sourced.", "number_of_runs": null, "forks": null, "remixes": null }
+  },
+
+  "caveats": [
+    "This runbook re-implements the canary concept with plain Playwright; it is not the canary CLI/QuickJS-WASM runtime. The deliverables (report + screenshots + HAR + trace + a reusable replay.py) match canary's value, but the on-disk format differs from canary's own report.html / session layout.",
+    "The runbook produces a full network.har and a Playwright trace.zip per run, but those heavy binaries (6–10 MB/run) are omitted from the shipped examples to keep the repo lean — they're reproducible by re-running. report.html (screenshots inlined), replay.py, and the per-step screenshots ARE shipped.",
+    "Best on deterministic, public, server-rendered test apps with stable selectors. Auth-walled or heavily dynamic SPAs may need credentials and more retries.",
+    "Drives a live site, so a flow can change if the target changes."
+  ],
+
+  "handoff": {
+    "issue": "JET-252 (G1a-1)",
+    "collection": "jon-runbooks",
+    "name": "wizenheimer-canary",
+    "runbook_source": "agent-runbooks/runbooks/wizenheimer/canary/RUNBOOK.md",
+    "trajectory_id": "c5172934",
+    "sample_output_excerpt": "examples/todomvc-add-complete/expected/report.html",
+    "current_eval_pass_rate": 1.0,
+    "eval_runs": "3/3 production runs green (c5172934, 8b80f8a0, affed313), each 7/7 steps PASS with report.html + a reusable replay.py"
+  }
+}

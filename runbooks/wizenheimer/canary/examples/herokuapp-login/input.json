@@ -1,0 +1,8 @@
+{
+  "title": "the-internet — login happy path",
+  "target_url": "https://the-internet.herokuapp.com/login",
+  "app": "the-internet (Selenium/Playwright playground)",
+  "flow": "Fill the login form with username tomsmith and the provided password, then submit. Check a green success flash banner appears containing the text You logged into a secure area. Then click Logout and check the page returns to the login form.",
+  "params": { "vars": { "target_url": "https://the-internet.herokuapp.com/login", "flow": "Fill the login form with username tomsmith and the provided password, then submit. Check a green success flash banner contains You logged into a secure area. Then click Logout and check the login form returns.", "credentials": "user=tomsmith,pass=SuperSecretPassword!", "headless": "true" } },
+  "note": "Login happy-path with a flash-banner assertion + logout."
+}

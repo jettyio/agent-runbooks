@@ -1,0 +1,58 @@
+[
+  {
+    "name": "open the app",
+    "action": "navigate",
+    "status": "pass",
+    "console_errors": 0,
+    "error": null,
+    "screenshot": "01-open_the_app.png"
+  },
+  {
+    "name": "add todo Buy milk",
+    "action": "fill+enter",
+    "status": "pass",
+    "console_errors": 0,
+    "error": null,
+    "screenshot": "02-add_todo_Buy_milk.png"
+  },
+  {
+    "name": "add todo Walk the dog",
+    "action": "fill+enter",
+    "status": "pass",
+    "console_errors": 0,
+    "error": null,
+    "screenshot": "03-add_todo_Walk_the_dog.png"
+  },
+  {
+    "name": "counter shows 2 items left",
+    "action": "assert",
+    "status": "pass",
+    "console_errors": 0,
+    "error": null,
+    "screenshot": "04-counter_shows_2_items_left.png"
+  },
+  {
+    "name": "mark Buy milk completed",
+    "action": "click",
+    "status": "pass",
+    "console_errors": 0,
+    "error": null,
+    "screenshot": "05-mark_Buy_milk_completed.png"
+  },
+  {
+    "name": "counter shows 1 item left",
+    "action": "assert",
+    "status": "pass",
+    "console_errors": 0,
+    "error": null,
+    "screenshot": "06-counter_shows_1_item_left.png"
+  },
+  {
+    "name": "Buy milk is marked completed",
+    "action": "assert",
+    "status": "pass",
+    "console_errors": 0,
+    "error": null,
+    "screenshot": "07-Buy_milk_is_marked_completed.png"
+  }
+]

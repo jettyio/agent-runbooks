@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-06-07T23:43:40Z",
+  "parameters": {
+    "target_url": "https://the-internet.herokuapp.com/login"
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "playwright + chromium ready, system deps installed"
+    },
+    {
+      "name": "drive",
+      "passed": true,
+      "message": "7 steps driven, evidence captured per step"
+    },
+    {
+      "name": "replay",
+      "passed": true,
+      "message": "replay.py written and smoke-runs cleanly (exit 0)"
+    },
+    {
+      "name": "report",
+      "passed": true,
+      "message": "report.html + all artifacts written to /app/results"
+    }
+  ],
+  "results": {
+    "steps_total": 7,
+    "steps_passed": 7,
+    "verdict": "PASS"
+  },
+  "overall_passed": true
+}
