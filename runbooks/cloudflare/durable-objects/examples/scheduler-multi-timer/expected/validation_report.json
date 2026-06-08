@@ -1,0 +1,55 @@
+{
+  "overall_passed": true,
+  "files": [
+    {
+      "path": "/app/results/durable_object.ts",
+      "status": "passed",
+      "checks": [
+        "Scheduler class exported and extends DurableObject<Env>",
+        "Two recurring jobs (heartbeat every 5 min, expiry every 30 min)",
+        "Single-alarm multiplexing via next_heartbeat / next_expiry KV keys",
+        "nextOccurrence() prevents drift and tight-loop re-fire after outages",
+        "All persistent state in ctx.storage — survives eviction and hibernation",
+        "initGuard set before first await to prevent concurrent double-init",
+        "Constructor limited to idempotent DDL only (lazy-init pattern)",
+        "GET /status returns lastHeartbeat (ISO string or null) and activeSessions count",
+        "Session expiry uses atomic single-statement DELETE (no TOCTOU race)",
+        "new_sqlite_classes used in wrangler — sql.exec requires SQLite backend",
+        "Worker default export routes to idFromName('global') stub"
+      ]
+    },
+    {
+      "path": "/app/results/wrangler.jsonc",
+      "status": "passed",
+      "checks": [
+        "compatibility_date >= 2024-04-03 (set to 2025-01-01)",
+        "SCHEDULER binding with class_name: Scheduler",
+        "Migration tag v1 with new_sqlite_classes: [Scheduler]",
+        "main points to durable_object.ts"
+      ]
+    },
+    {
+      "path": "/app/results/self_review.md",
+      "status": "passed",
+      "checks": [
+        "Covers single-alarm constraint and event-queue pattern",
+        "Covers in-memory state loss (hibernation / eviction)",
+        "Covers constructor-runs-on-every-wake pitfall",
+        "Covers concurrent-request race via initGuard",
+        "Covers alarm drift and tight-loop after outage",
+        "Covers new_sqlite_classes vs new_classes migration pitfall",
+        "Covers atomic SQL DELETE to avoid TOCTOU races",
+        "Covers storage-write ordering before setAlarm"
+      ]
+    },
+    {
+      "path": "/app/results/validation_report.json",
+      "status": "passed",
+      "checks": [
+        "File is non-empty and valid JSON",
+        "overall_passed is true"
+      ]
+    }
+  ],
+  "notes": "Implementation uses a single-alarm event-queue pattern to run two independent recurring jobs. All schedule state is persisted in ctx.storage KV so both jobs survive eviction and hibernation. Sessions are stored in SQLite for atomic expiry queries. The wrangler config uses new_sqlite_classes to correctly provision the SQLite backend."
+}

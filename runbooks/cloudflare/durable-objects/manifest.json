@@ -1,0 +1,131 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "cloudflare/durable-objects",
+  "title": "Cloudflare Durable Objects — spec → production DO",
+  "description": "Describe a Durable Object in plain language; the agent implements it in production-ready TypeScript on Cloudflare Workers, writes the matching wrangler.jsonc, and self-reviews the code against Cloudflare's documented gotchas (hibernation clears in-memory state, setTimeout doesn't survive eviction, only one alarm per DO, await is a yield point). Converted, with attribution, from Cloudflare's own Durable Objects reference.",
+
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "2–4 mins"
+  },
+
+  "example_outputs": [
+    {
+      "id": "chatroom-websockets",
+      "title": "ChatRoom — WebSockets + persistent counter + idle cleanup",
+      "summary": "A multi-room chat DO: WebSocket Hibernation API for broadcast, a SQLite-backed message counter incremented with an atomic INSERT ... ON CONFLICT upsert, and a setAlarm()-debounced 30-minute idle purge that rebuilds its schema on reconnect. Self-review guards 9 gotchas.",
+      "thumbnail": "examples/chatroom-websockets/thumbnail.png",
+      "operation": "build",
+      "verdict": "PASS",
+      "capability": "websockets-hibernation",
+      "dir": "examples/chatroom-websockets",
+      "input": { "spec": "ChatRoom DO: WebSocket broadcast per room, persistent message count at GET /count, delete room state after 30 min idle." },
+      "primary_output": "examples/chatroom-websockets/expected/durable_object.ts",
+      "outputs": [
+        { "file": "examples/chatroom-websockets/expected/durable_object.ts", "role": "primary", "type": "text/typescript", "description": "The ChatRoom Durable Object — hibernation API, atomic SQL counter, setAlarm idle cleanup." },
+        { "file": "examples/chatroom-websockets/expected/wrangler.jsonc", "role": "secondary", "type": "application/json", "description": "Worker config — compatibility_date + new_sqlite_classes migration." },
+        { "file": "examples/chatroom-websockets/expected/self_review.md", "role": "secondary", "type": "text/markdown", "description": "Self-review against Cloudflare's documented gotchas (9 Risk/Fix entries)." },
+        { "file": "examples/chatroom-websockets/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation (overall_passed: true)." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "cf-do-with", "trajectory_id": "caaee436",
+        "url": "https://flows.jetty.io/jon-runbooks/cf-do-with/caaee436",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-08T01:17:08.482445Z", "duration_seconds": null,
+        "eval": { "overall_passed": true, "verdict": "PASS" }
+      }
+    },
+    {
+      "id": "scheduler-multi-timer",
+      "title": "Scheduler — two recurring jobs from one alarm",
+      "summary": "The non-obvious case: a DO has exactly one alarm, but this Scheduler runs two independent timers (5-min heartbeat + 30-min session expiry). It multiplexes them — store each job's next-due time, arm the single alarm to Math.min(...), and recompute drift-free in alarm(). All schedule state persists, so it survives eviction.",
+      "thumbnail": "examples/scheduler-multi-timer/thumbnail.png",
+      "operation": "build",
+      "verdict": "PASS",
+      "capability": "alarms-scheduling",
+      "dir": "examples/scheduler-multi-timer",
+      "input": { "spec": "Scheduler DO: heartbeat every 5 min + session-expiry every 30 min, both surviving eviction; one alarm, multiplexed." },
+      "primary_output": "examples/scheduler-multi-timer/expected/durable_object.ts",
+      "outputs": [
+        { "file": "examples/scheduler-multi-timer/expected/durable_object.ts", "role": "primary", "type": "text/typescript", "description": "The Scheduler Durable Object — single-alarm multiplexing via next-due keys + Math.min." },
+        { "file": "examples/scheduler-multi-timer/expected/wrangler.jsonc", "role": "secondary", "type": "application/json", "description": "Worker config with the SQLite-class migration." },
+        { "file": "examples/scheduler-multi-timer/expected/self_review.md", "role": "secondary", "type": "text/markdown", "description": "Self-review leading with the 'Only One Alarm Allowed' gotcha." },
+        { "file": "examples/scheduler-multi-timer/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic validation (overall_passed: true)." }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "cf-do-with", "trajectory_id": "eb97b6eb",
+        "url": "https://flows.jetty.io/jon-runbooks/cf-do-with/eb97b6eb",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-08T01:30:54.199761Z", "duration_seconds": null,
+        "eval": { "overall_passed": true, "verdict": "PASS" }
+      }
+    }
+  ],
+
+  "featured_examples": ["scheduler-multi-timer", "chatroom-websockets"],
+
+  "inputs": [
+    { "label": "Spec", "type": "text", "required": true, "description": "The Durable Object to build, in plain language — its behavior, what state it persists, any scheduling, and the HTTP/WebSocket surface." }
+  ],
+
+  "secrets": [],
+
+  "runbook_source": "RUNBOOK.md",
+
+  "meta": {
+    "created_by": { "name": "cloudflare", "source": "github", "url": "https://github.com/cloudflare/skills/tree/main/skills/cloudflare/references/durable-objects", "avatar": null },
+    "tags": ["cloudflare", "durable-objects", "workers", "websockets", "alarms", "typescript", "agent:claude-code", "programmatic"],
+    "version": "1.0.0",
+    "agent": "claude-code",
+    "model": "claude-sonnet-4-6",
+    "model_provider": "anthropic",
+    "snapshot": "python312-uv",
+    "evaluation": "programmatic",
+    "primary_outputs": ["durable_object.ts"],
+    "lineage": {
+      "remix_of": null,
+      "imported_from": "https://github.com/cloudflare/skills/tree/main/skills/cloudflare/references/durable-objects",
+      "imported_by": "skill-to-runbook-converter@1.0.0"
+    },
+    "attribution": {
+      "author": "Cloudflare (github.com/cloudflare/skills)",
+      "source": "cloudflare/skills — references/durable-objects",
+      "license": "Apache-2.0",
+      "note": "The Rules of Durable Objects, the API notes, the patterns, the wrangler configuration, and the gotchas are Cloudflare's. This runbook turns that reference into an executable 'spec → production DO' build that self-reviews the generated code against those gotchas."
+    },
+    "share": "cloudflare/durable-objects",
+    "metrics": { "_note": "Live counters — backend-sourced.", "number_of_runs": null, "forks": null, "remixes": null }
+  },
+
+  "caveats": [
+    "The two shipped examples are the WITH-gotchas arm of an A/B experiment (does injecting Cloudflare's documented gotchas change the generated code?). Both correctly avoid every gotcha — see the experiment report for the full result and the cautionary methodology note.",
+    "Targets TypeScript on Cloudflare Workers only. The DO + wrangler.jsonc are produced and self-reviewed but not deployed (no `wrangler deploy` in the sandbox) — evaluation is static/structural, not a live Workers run.",
+    "Counter strategy varies by run: some use a SQLite atomic upsert (shown here), others a KV value restored under blockConcurrencyWhile — both are race-safe. Treat the example as one correct shape, not the only one.",
+    "compatibility_date and the migration type (new_sqlite_classes vs new_classes) matter — the runbook sets them, but verify against your account's current Workers compatibility before deploying."
+  ],
+
+  "experiment": {
+    "question": "Do Cloudflare's documented 'gotchas' make Claude Sonnet 4.6 write better Durable Object code?",
+    "design": "Same spec, two arms — WITH the gotchas injected vs WITHOUT — 3 runs each across 2 tasks (12 runs total). The gotchas section was the only variable.",
+    "result": "Correctness was a tie: all 12 runs avoided every gotcha, including the non-obvious single-alarm pattern. The gotchas' value showed up as traceability, canonical idioms, and surfacing subtle config gotchas — not as fixed mistakes.",
+    "report_gist": "https://gist.github.com/jlebensold/7db9194a662964b6c4fb02402930ed8a",
+    "trajectories": {
+      "with_gotchas": { "task": "cf-do-with", "chatroom": ["06d37d9d", "caaee436", "ff4d1702"], "scheduler": ["eb97b6eb", "d5327226", "9a3f5792"] },
+      "without_gotchas": { "task": "cf-do-without", "chatroom": ["6403cc42", "aece8878", "2635f18d"], "scheduler": ["8234975b", "fb942e2c", "0d2ba5d3"] }
+    }
+  },
+
+  "handoff": {
+    "issue": "JET-252",
+    "collection": "jon-runbooks",
+    "name": "cf-do-with",
+    "runbook_source": "agent-runbooks/runbooks/cloudflare/durable-objects/RUNBOOK.md",
+    "trajectory_id": "caaee436",
+    "sample_output_excerpt": "examples/chatroom-websockets/expected/durable_object.ts",
+    "current_eval_pass_rate": 1.0,
+    "eval_runs": "12/12 production runs green across both arms (cf-do-with + cf-do-without, 3×2 tasks); every run's validation_report.json overall_passed: true"
+  }
+}

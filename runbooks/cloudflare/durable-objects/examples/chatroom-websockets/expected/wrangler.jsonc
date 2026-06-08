@@ -1,0 +1,27 @@
+{
+  "name": "chat-room-worker",
+  "main": "durable_object.ts",
+
+  // >= 2024-04-03 enables Durable Object RPC and is required for the
+  // WebSocket Hibernation API to work correctly on modern runtimes.
+  "compatibility_date": "2024-04-03",
+
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "CHAT_ROOM",
+        "class_name": "ChatRoom"
+      }
+    ]
+  },
+
+  // new_sqlite_classes provisions each ChatRoom instance with its own
+  // SQLite database (ctx.storage.sql). Using a separate tag per migration
+  // step is required; tags must be unique and applied sequentially.
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["ChatRoom"]
+    }
+  ]
+}

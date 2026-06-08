@@ -1,0 +1,10 @@
+{
+  "title": "ChatRoom \u2014 WebSockets + persistent counter + idle cleanup",
+  "params": {
+    "vars": {
+      "spec": "Build a Durable Object named `ChatRoom` for a multi-room real-time chat backend on Cloudflare Workers. (1) Accept WebSocket upgrades at /room/:name/ws and broadcast every incoming text message to all clients in that room. (2) Keep a persistent count of messages sent in the room that survives hibernation and eviction; expose it at GET /room/:name/count. (3) After 30 minutes with no messages, delete all room state and disconnect clients. Each room name maps to its own DO instance.",
+      "results_dir": "/app/results"
+    }
+  },
+  "note": "Single input: a plain-language Durable Object spec. The runbook turns it into a production DO + wrangler config + self-review."
+}

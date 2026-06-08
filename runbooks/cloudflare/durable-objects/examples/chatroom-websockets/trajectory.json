@@ -1,0 +1,30 @@
+{
+  "collection": "jon-runbooks",
+  "task": "cf-do-with",
+  "trajectory_id": "caaee436",
+  "workflow_id": "jon-runbooks-cf-do-with--caaee436",
+  "url": "https://flows.jetty.io/jon-runbooks/cf-do-with/caaee436",
+  "runbook_version": "1.0.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-06-08T01:17:08.482445Z",
+  "duration_seconds": null,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "durable_object.ts"
+  ],
+  "secondary_files": [
+    "wrangler.jsonc",
+    "self_review.md"
+  ],
+  "eval": {
+    "overall_passed": true,
+    "verdict": "PASS"
+  },
+  "notes": "Hibernation API (acceptWebSocket + webSocketMessage/Close/Error), SQLite-backed atomic counter via INSERT ... ON CONFLICT DO UPDATE, setAlarm() debounced idle cleanup, and a schemaReady flag reset before deleteAll() so the table is rebuilt on immediate reconnect.",
+  "arm": "with-gotchas",
+  "experiment": "This run is the WITH-gotchas arm of an A/B test (with vs without the documented gotchas). See the secret gist report linked in README.md."
+}

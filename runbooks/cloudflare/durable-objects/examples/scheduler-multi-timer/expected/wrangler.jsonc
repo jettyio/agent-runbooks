@@ -1,0 +1,30 @@
+{
+  // Cloudflare Workers + Durable Objects configuration for the Scheduler worker.
+  "name": "scheduler-worker",
+  "main": "durable_object.ts",
+
+  // >= 2024-04-03 is required for Durable Object RPC and latest DO APIs.
+  // Pinned to a recent stable date that enables all features used here.
+  "compatibility_date": "2025-01-01",
+
+  "durable_objects": {
+    "bindings": [
+      {
+        // Binding name in Env interface.
+        "name": "SCHEDULER",
+        // Must match the exported class name exactly.
+        "class_name": "Scheduler"
+      }
+    ]
+  },
+
+  // new_sqlite_classes is required for DOs that use ctx.storage.sql.
+  // Using new_classes instead would create a KV-storage DO and sql.exec
+  // would throw at runtime.
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["Scheduler"]
+    }
+  ]
+}

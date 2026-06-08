@@ -1,0 +1,10 @@
+{
+  "title": "Scheduler \u2014 two recurring jobs from one alarm",
+  "params": {
+    "vars": {
+      "spec": "Build a Durable Object named `Scheduler` on Cloudflare Workers that runs two independent recurring jobs from a single instance: a heartbeat every 5 minutes and a session-expiry sweep every 30 minutes. Both schedules must survive hibernation and eviction. Expose POST /start to begin scheduling and GET /status to report when each job last ran and is next due. Persist all schedule state in Durable Object storage.",
+      "results_dir": "/app/results"
+    }
+  },
+  "note": "Single input: a plain-language Durable Object spec. The runbook turns it into a production DO + wrangler config + self-review."
+}
