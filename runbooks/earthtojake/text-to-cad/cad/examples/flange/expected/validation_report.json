@@ -1,0 +1,25 @@
+{
+  "version": "1.1.0",
+  "run_date": "2026-06-10T14:39:00Z",
+  "parameters": {
+    "prompt": "A round mounting flange: 60 mm outer diameter, 8 mm thick, with a 25 mm diameter central bore and six 5.5 mm bolt holes evenly spaced on a 46 mm bolt circle."
+  },
+  "stages": [
+    { "name": "setup",    "passed": true, "message": "CAD runtime present (build123d 0.10.0, cadpy)" },
+    { "name": "generate", "passed": true, "message": "model.step exported from model.py via scripts/step" },
+    { "name": "inspect",  "passed": true, "message": "1 solid, 17552 mm³, bounding box 60×60×8 mm — all spec dims verified" },
+    { "name": "snapshot", "passed": true, "message": "snapshot.png rendered (offscreen-mesh fallback, 75452 bytes)" },
+    { "name": "report",   "passed": true, "message": "all output files written to /app/results" }
+  ],
+  "results": { "pass": 5, "partial": 0, "fail": 0 },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/model.py",
+    "/app/results/model.step",
+    "/app/results/model.stl",
+    "/app/results/snapshot.png",
+    "/app/results/inspect_report.json",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}

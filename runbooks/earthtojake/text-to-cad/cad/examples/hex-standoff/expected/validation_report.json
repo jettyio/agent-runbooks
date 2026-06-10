@@ -1,0 +1,49 @@
+{
+  "version": "1.1.0",
+  "run_date": "2026-06-10T00:00:00Z",
+  "parameters": {
+    "prompt": "A hexagonal standoff 20 mm tall with a 12 mm across-flats hex body and a concentric 4.2 mm through-hole along its central axis."
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "CAD runtime present: build123d 0.10.0, cadpy, scripts/step found at /opt/text-to-cad/skills/cad"
+    },
+    {
+      "name": "generate",
+      "passed": true,
+      "message": "model.step exported from model.py via scripts/step; STL and GLB sidecars also written"
+    },
+    {
+      "name": "inspect",
+      "passed": true,
+      "message": "STEP re-imports as positive-volume solid (2217.065 mm³); all 3 spec dims verified: height=20mm, across-flats=12mm, hole-dia=4.2mm"
+    },
+    {
+      "name": "snapshot",
+      "passed": true,
+      "message": "snapshot.png rendered via offscreen-mesh fallback (trimesh + matplotlib, 37905 bytes)"
+    },
+    {
+      "name": "report",
+      "passed": true,
+      "message": "All 7 required output files written to /app/results"
+    }
+  ],
+  "results": {
+    "pass": 5,
+    "partial": 0,
+    "fail": 0
+  },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/model.py",
+    "/app/results/model.step",
+    "/app/results/model.stl",
+    "/app/results/snapshot.png",
+    "/app/results/inspect_report.json",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}
