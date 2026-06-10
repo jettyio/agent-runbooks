@@ -1,9 +1,6 @@
 {
-  "task": "jon-runbooks/text-to-cad",
   "params": {
-    "vars": {
-      "prompt": "A hexagonal standoff 20 mm tall with a 12 mm across-flats hex body and a concentric 4.2 mm through-hole along its central axis."
-    }
+    "prompt": "A hexagonal standoff 20 mm tall with a 12 mm across-flats hex body and a concentric 4.2 mm through-hole along its central axis."
   },
-  "prompt": "A hexagonal standoff 20 mm tall with a 12 mm across-flats hex body and a concentric 4.2 mm through-hole along its central axis."
+  "note": "Synthetic prompt — no input file required; geometry is generated from the description."
 }

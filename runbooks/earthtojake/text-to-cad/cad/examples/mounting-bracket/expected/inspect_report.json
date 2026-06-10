@@ -1,0 +1,64 @@
+{
+  "bounding_box_mm": {
+    "min": [
+      -20.0,
+      -20.0,
+      -5.0
+    ],
+    "max": [
+      20.0,
+      20.0,
+      5.0
+    ],
+    "size": [
+      40.0,
+      40.0,
+      10.0
+    ]
+  },
+  "solid_count": 1,
+  "total_volume_mm3": 15286.571,
+  "is_closed_positive_volume": true,
+  "spec_checks": {
+    "plate_length_x_mm": {
+      "ok": true,
+      "expected_mm": 40.0,
+      "actual_mm": 40.0
+    },
+    "plate_width_y_mm": {
+      "ok": true,
+      "expected_mm": 40.0,
+      "actual_mm": 40.0
+    },
+    "plate_height_z_mm": {
+      "ok": true,
+      "expected_mm": 10.0,
+      "actual_mm": 10.0
+    },
+    "hole_count": {
+      "ok": true,
+      "expected_mm": 4.0,
+      "actual_mm": 4.0
+    },
+    "hole_diameter_mm": {
+      "ok": true,
+      "expected_mm": 4.5,
+      "actual_mm": 4.5
+    },
+    "hole_inset_from_edge_mm": {
+      "ok": true,
+      "expected_mm": 8.0,
+      "actual_mm": 8.0
+    },
+    "fillet_radius_mm": {
+      "ok": true,
+      "expected_mm": 3.0,
+      "actual_mm": 3.0
+    },
+    "is_positive_volume_solid": {
+      "ok": true,
+      "expected_mm": 1.0,
+      "actual_mm": 1.0
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "trajectory_id": "4bdc06e9",
-  "url": "https://flows-api.jetty.io/api/v1/db/trajectory/jon-runbooks/text-to-cad/4bdc06e9",
+  "trajectory_id": "47a93b73",
+  "url": "https://flows-api.jetty.io/api/v1/db/trajectory/jon-runbooks/text-to-cad/47a93b73",
   "runbook_version": "1.2.0",
   "eval": {
     "overall_passed": true,

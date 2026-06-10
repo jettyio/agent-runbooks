@@ -1,52 +1,48 @@
 {
   "schema_version": "0.2.0",
-  "slug": "earthtojake/text-to-cad-cad",
+  "slug": "earthtojake/text-to-cad/cad",
   "title": "Text-to-CAD",
-  "description": "Natural-language part description -> validated, STEP-first parametric CAD (build123d / OpenCascade) via the earthtojake/text-to-cad cad skill. Authors a parametric build123d generator, exports STEP + STL/GLB sidecars, inspects geometry against the spec, and renders a verification snapshot.",
+  "description": "Natural-language part description → validated, STEP-first parametric CAD model (build123d / OpenCascade) via the earthtojake/text-to-cad cad skill. Authors a parametric build123d generator, exports STEP + STL/GLB sidecars, inspects geometry against the spec, and renders a verification snapshot.",
   "cta": {
     "label": "Fork and run",
-    "estimated_run_time": "~2-3 min"
+    "estimated_run_time": "~1–2 min"
   },
   "example_outputs": [
     {
-      "id": "bracket",
-      "title": "Four-hole mounting bracket",
+      "id": "mounting-flange",
+      "title": "Bolt-Circle Mounting Flange",
       "operation": "generate",
-      "thumbnail": "examples/bracket/thumbnail.png",
+      "thumbnail": "examples/mounting-flange/thumbnail.png",
       "input": {
         "file": null,
         "license": "synthetic",
         "values": {
-          "prompt": "A 40 x 40 x 10 mm aluminum mounting bracket. Add four M4 clearance holes (4.5 mm diameter) positioned 8 mm in from each corner, and a 3 mm fillet on the four vertical outer edges."
+          "prompt": "A round mounting flange: 60 mm outer diameter, 8 mm thick, with a 25 mm diameter central bore and six 5.5 mm bolt holes evenly spaced on a 46 mm bolt circle."
         }
       },
-      "primary_output": "examples/bracket/expected/model.step",
+      "primary_output": "examples/mounting-flange/expected/snapshot.png",
       "outputs": [
-        "model.step",
-        "model.stl",
-        "model.glb",
-        "snapshot.png",
-        "inspect_report.json",
-        "summary.md",
-        "validation_report.json"
+        "examples/mounting-flange/expected/model.py",
+        "examples/mounting-flange/expected/snapshot.png",
+        "examples/mounting-flange/expected/inspect_report.json",
+        "examples/mounting-flange/expected/summary.md",
+        "examples/mounting-flange/expected/validation_report.json"
       ],
-      "excerpt": null,
+      "excerpt": "1 solid, 17552 mm³; outer diameter 60 mm, thickness 8 mm — all spec dims verified.",
       "trajectory": {
-        "trajectory_id": "8f5550db",
-        "url": "https://flows-api.jetty.io/api/v1/db/trajectory/jon-runbooks/text-to-cad/8f5550db",
+        "trajectory_id": "79800836",
+        "url": "https://flows-api.jetty.io/api/v1/db/trajectory/jon-runbooks/text-to-cad/79800836",
         "eval": {
-          "success": true,
-          "bounding_box_size_mm": [
-            40.0,
-            40.0,
-            10.0
-          ]
+          "overall_passed": true,
+          "pass": 5,
+          "partial": 0,
+          "fail": 0
         }
       }
     },
     {
       "id": "hex-standoff",
-      "title": "Hex standoff with axial bore",
+      "title": "Hex Standoff with Axial Bore",
       "operation": "generate",
       "thumbnail": "examples/hex-standoff/thumbnail.png",
       "input": {
@@ -56,83 +52,71 @@
           "prompt": "A hexagonal standoff 20 mm tall with a 12 mm across-flats hex body and a concentric 4.2 mm through-hole along its central axis."
         }
       },
-      "primary_output": "examples/hex-standoff/expected/model.step",
+      "primary_output": "examples/hex-standoff/expected/snapshot.png",
       "outputs": [
-        "model.step",
-        "model.stl",
-        "model.glb",
-        "snapshot.png",
-        "inspect_report.json",
-        "summary.md",
-        "validation_report.json"
+        "examples/hex-standoff/expected/model.py",
+        "examples/hex-standoff/expected/snapshot.png",
+        "examples/hex-standoff/expected/inspect_report.json",
+        "examples/hex-standoff/expected/summary.md",
+        "examples/hex-standoff/expected/validation_report.json"
       ],
-      "excerpt": null,
+      "excerpt": "1 solid, 2217 mm³; height 20 mm, across-flats 12 mm, bore 4.2 mm — all spec dims verified.",
       "trajectory": {
-        "trajectory_id": "c5907ca7",
-        "url": "https://flows-api.jetty.io/api/v1/db/trajectory/jon-runbooks/text-to-cad/c5907ca7",
+        "trajectory_id": "4bdc06e9",
+        "url": "https://flows-api.jetty.io/api/v1/db/trajectory/jon-runbooks/text-to-cad/4bdc06e9",
         "eval": {
-          "success": true,
-          "bounding_box_size_mm": [
-            13.856,
-            12.0,
-            20.0
-          ]
+          "overall_passed": true,
+          "pass": 5,
+          "partial": 0,
+          "fail": 0
         }
       }
     },
     {
-      "id": "flange",
-      "title": "Bolt-circle mounting flange",
+      "id": "mounting-bracket",
+      "title": "Mounting Bracket with Fillets",
       "operation": "generate",
-      "thumbnail": "examples/flange/thumbnail.png",
+      "thumbnail": "examples/mounting-bracket/thumbnail.png",
       "input": {
         "file": null,
         "license": "synthetic",
         "values": {
-          "prompt": "A round mounting flange: 60 mm outer diameter, 8 mm thick, with a 25 mm diameter central bore and six 5.5 mm bolt holes evenly spaced on a 46 mm bolt circle."
+          "prompt": "A 40 x 40 x 10 mm aluminum mounting bracket. Add four M4 clearance holes (4.5 mm diameter) positioned 8 mm in from each corner, and a 3 mm fillet on the four vertical outer edges."
         }
       },
-      "primary_output": "examples/flange/expected/model.step",
+      "primary_output": "examples/mounting-bracket/expected/snapshot.png",
       "outputs": [
-        "model.step",
-        "model.stl",
-        "model.glb",
-        "snapshot.png",
-        "inspect_report.json",
-        "summary.md",
-        "validation_report.json"
+        "examples/mounting-bracket/expected/model.py",
+        "examples/mounting-bracket/expected/snapshot.png",
+        "examples/mounting-bracket/expected/inspect_report.json",
+        "examples/mounting-bracket/expected/summary.md",
+        "examples/mounting-bracket/expected/validation_report.json"
       ],
-      "excerpt": null,
+      "excerpt": "1 solid, 15287 mm³; 40×40×10 mm, four 4.5 mm holes at 8 mm inset, 3 mm fillets — all spec dims verified.",
       "trajectory": {
-        "trajectory_id": "02509b0a",
-        "url": "https://flows-api.jetty.io/api/v1/db/trajectory/jon-runbooks/text-to-cad/02509b0a",
+        "trajectory_id": "47a93b73",
+        "url": "https://flows-api.jetty.io/api/v1/db/trajectory/jon-runbooks/text-to-cad/47a93b73",
         "eval": {
-          "success": true,
-          "bounding_box_size_mm": [
-            60.0,
-            60.0,
-            8.0
-          ]
+          "overall_passed": true,
+          "pass": 5,
+          "partial": 0,
+          "fail": 0
         }
       }
     }
   ],
-  "featured_examples": [
-    "bracket",
-    "flange",
-    "hex-standoff"
-  ],
+  "featured_examples": ["mounting-flange", "hex-standoff", "mounting-bracket"],
   "inputs": [
     {
       "label": "Prompt",
       "type": "text",
       "required": true,
-      "description": "Natural-language CAD spec (dimensions, features, intent)"
+      "description": "Natural-language CAD spec (dimensions, features, intent). Example: 'a 40x40x10mm mounting bracket with four M4 clearance holes 8mm from each corner and a 3mm fillet on the vertical outer edges'."
     }
   ],
   "secrets": [],
   "meta": {
-    "version": "1.1.0",
+    "version": "1.2.0",
     "agent": "claude-code",
     "model": "claude-sonnet-4-6",
     "snapshot": "text-to-cad",

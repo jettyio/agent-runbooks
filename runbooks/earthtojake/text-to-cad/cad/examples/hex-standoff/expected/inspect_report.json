@@ -1,18 +1,18 @@
 {
   "bounding_box_mm": {
     "min": [
-      -6.928,
       -6.0,
+      -6.928,
       0.0
     ],
     "max": [
-      6.928,
       6.0,
+      6.928,
       20.0
     ],
     "size": [
-      13.856,
       12.0,
+      13.856,
       20.0
     ]
   },
@@ -20,19 +20,20 @@
   "total_volume_mm3": 2217.065,
   "is_closed_positive_volume": true,
   "spec_checks": {
-    "height_20mm": {
+    "height_mm": {
       "ok": true,
-      "measured_mm": 20.0
+      "expected_mm": 20.0,
+      "actual_mm": 20.0
     },
-    "hex_across_flats_12mm": {
+    "across_flats_mm": {
       "ok": true,
-      "measured_mm": 12.0
+      "expected_mm": 12.0,
+      "actual_mm": 12.0
     },
-    "hole_dia_4_2mm": {
+    "bore_diameter_mm": {
       "ok": true,
-      "back_calc_dia_mm": 4.2,
-      "cyl_face_area_mm2": 263.8938,
-      "expected_area_mm2": 263.8938
+      "expected_mm": 4.2,
+      "actual_mm": 4.2
     }
   }
 }

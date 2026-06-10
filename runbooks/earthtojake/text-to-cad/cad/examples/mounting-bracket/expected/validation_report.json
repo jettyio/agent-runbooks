@@ -2,37 +2,37 @@
   "version": "1.2.0",
   "run_date": "2026-06-10T15:00:00Z",
   "parameters": {
-    "prompt": "A hexagonal standoff 20 mm tall with a 12 mm across-flats hex body and a concentric 4.2 mm through-hole along its central axis."
+    "prompt": "A 40 x 40 x 10 mm aluminum mounting bracket. Add four M4 clearance holes (4.5 mm diameter) positioned 8 mm in from each corner, and a 3 mm fillet on the four vertical outer edges."
   },
   "stages": [
     {
       "name": "setup",
       "passed": true,
-      "message": "CAD runtime present: build123d 0.10.0, cadpy available; skill at /opt/text-to-cad/skills/cad"
+      "message": "CAD runtime present: build123d 0.10.0, cadpy, scripts/step verified"
     },
     {
       "name": "generate",
       "passed": true,
-      "message": "model.step exported from model.py via scripts/step (28K, 1 solid, volume 2217.065 mm³)"
+      "message": "model.step exported from model.py via scripts/step; STL and GLB sidecars written"
     },
     {
       "name": "inspect",
       "passed": true,
-      "message": "facts computed; all 3 spec dims verified — height=20.0mm, across_flats=12.0mm, bore_diameter=4.2mm"
+      "message": "Bounding box 40x40x10 mm confirmed; all 8 spec checks passed; volume = 15286.571 mm³"
     },
     {
       "name": "snapshot",
       "passed": true,
-      "message": "snapshot.png rendered via offscreen-mesh fallback (trimesh + matplotlib, 38994 bytes)"
+      "message": "snapshot.png rendered via offscreen trimesh/matplotlib fallback (96978 bytes)"
     },
     {
       "name": "report",
       "passed": true,
-      "message": "all 7 required output files written to /app/results"
+      "message": "All 7 required output files written to /app/results"
     }
   ],
   "results": {
-    "pass": 5,
+    "pass": 8,
     "partial": 0,
     "fail": 0
   },
