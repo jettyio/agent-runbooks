@@ -1,0 +1,16 @@
+{
+  "trajectory_id": "8f5550db",
+  "collection": "jon-runbooks",
+  "task": "text-to-cad",
+  "url": "https://flows-api.jetty.io/api/v1/db/trajectory/jon-runbooks/text-to-cad/8f5550db",
+  "eval": {
+    "success": true,
+    "bounding_box_size_mm": [
+      40.0,
+      40.0,
+      10.0
+    ],
+    "solid_count": 1,
+    "total_volume_mm3": 15286.571
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "bounding_box_mm": {
+    "min": [
+      -30.0,
+      -30.0,
+      0.0
+    ],
+    "max": [
+      30.0,
+      30.0,
+      8.0
+    ],
+    "size": [
+      60.0,
+      60.0,
+      8.0
+    ]
+  },
+  "solid_count": 1,
+  "total_volume_mm3": 17552.078,
+  "is_closed_positive_volume": true,
+  "outer_diameter_x_mm": {
+    "expected": 60.0,
+    "actual": 60.0,
+    "pass": true
+  },
+  "outer_diameter_y_mm": {
+    "expected": 60.0,
+    "actual": 60.0,
+    "pass": true
+  },
+  "thickness_z_mm": {
+    "expected": 8.0,
+    "actual": 8.0,
+    "pass": true
+  }
+}

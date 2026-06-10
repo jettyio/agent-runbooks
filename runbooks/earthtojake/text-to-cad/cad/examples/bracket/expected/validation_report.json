@@ -1,0 +1,49 @@
+{
+  "version": "1.1.0",
+  "run_date": "2026-06-10T14:39:00Z",
+  "parameters": {
+    "prompt": "A 40 x 40 x 10 mm aluminum mounting bracket. Add four M4 clearance holes (4.5 mm diameter) positioned 8 mm in from each corner, and a 3 mm fillet on the four vertical outer edges."
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "CAD runtime present (build123d 0.10.0, cadpy baked in snapshot)"
+    },
+    {
+      "name": "generate",
+      "passed": true,
+      "message": "model.step exported from model.py via scripts/step (47 KB STEP, 64 KB STL)"
+    },
+    {
+      "name": "inspect",
+      "passed": true,
+      "message": "Bounding box 40×40×10 mm verified; 1 closed positive-volume solid; volume=15286.571 mm³"
+    },
+    {
+      "name": "snapshot",
+      "passed": true,
+      "message": "snapshot.png rendered via offscreen mesh render (trimesh+matplotlib, 76 KB)"
+    },
+    {
+      "name": "report",
+      "passed": true,
+      "message": "All 7 required output files written to /app/results"
+    }
+  ],
+  "results": {
+    "pass": 5,
+    "partial": 0,
+    "fail": 0
+  },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/model.py",
+    "/app/results/model.step",
+    "/app/results/model.stl",
+    "/app/results/snapshot.png",
+    "/app/results/inspect_report.json",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}
