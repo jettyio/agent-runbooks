@@ -1,9 +1,0 @@
-{
-  "task": "jon-runbooks/text-to-cad",
-  "params": {
-    "vars": {
-      "prompt": "A round mounting flange: 60 mm outer diameter, 8 mm thick, with a 25 mm diameter central bore and six 5.5 mm bolt holes evenly spaced on a 46 mm bolt circle."
-    }
-  },
-  "prompt": "A round mounting flange: 60 mm outer diameter, 8 mm thick, with a 25 mm diameter central bore and six 5.5 mm bolt holes evenly spaced on a 46 mm bolt circle."
-}

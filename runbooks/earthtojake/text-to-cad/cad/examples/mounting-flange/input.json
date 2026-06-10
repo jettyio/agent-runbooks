@@ -1,0 +1,6 @@
+{
+  "params": {
+    "prompt": "A round mounting flange: 60 mm outer diameter, 8 mm thick, with a 25 mm diameter central bore and six 5.5 mm bolt holes evenly spaced on a 46 mm bolt circle."
+  },
+  "note": "Synthetic prompt — no input file required; geometry is generated from the description."
+}

@@ -1,76 +1,60 @@
 """
-Hexagonal standoff — parametric build123d generator.
+Parametric hexagonal standoff generator.
+Prompt: A hexagonal standoff 20 mm tall with a 12 mm across-flats hex body
+        and a concentric 4.2 mm through-hole along its central axis.
 
-Brief
------
-Prompt : A hexagonal standoff 20 mm tall with a 12 mm across-flats hex body
-         and a concentric 4.2 mm through-hole along its central axis.
+Parameters (all in mm):
+  HEIGHT          : 20.0  - total standoff height
+  ACROSS_FLATS    : 12.0  - hex body width across flats (flat-to-flat)
+  BORE_DIAMETER   : 4.2   - diameter of the central through-hole
 
-Parameters
-----------
-height_mm        : 20.0   — total height of the standoff along +Z
-hex_across_flats : 12.0   — hex body across-flats distance (ISO standard)
-hole_dia_mm      :  4.2   — through-hole diameter (concentric with hex axis)
-
-Coordinate convention : XY base plane, +Z up.
-All dimensions in millimetres.
-
-Assumptions
------------
-- Single positive-volume closed solid (no assembly).
-- Hex cross-section is a regular hexagon with flat-to-flat = 12 mm.
-- Through-hole is cylindrical, coaxial, runs full height.
-- No threads, no chamfer, no fillet (not specified).
+Coordinate convention: XY base plane, +Z up.
+Orientation: rotation=30 places a flat face along X and Y axes (flat-on-top).
+  bounding_box.X = ACROSS_FLATS
+  bounding_box.Y = ACROSS_FLATS / cos(30°) ≈ 13.856 (corner-to-corner)
+  bounding_box.Z = HEIGHT
 """
-
-import math
 from build123d import (
-    Align,
-    Axis,
-    BuildPart,
-    BuildSketch,
-    Cylinder,
-    Mode,
-    Part,
-    Plane,
-    RegularPolygon,
-    extrude,
+    BuildPart, BuildSketch, RegularPolygon, Circle, extrude,
+    Mode, Axis, Part
 )
 
-
-# ── Named parameters ────────────────────────────────────────────────────────
-HEIGHT_MM        = 20.0   # total standoff height
-HEX_ACROSS_FLATS = 12.0   # flat-to-flat distance of hex cross-section
-HOLE_DIA_MM      =  4.2   # concentric through-hole diameter
+# Named parameters
+HEIGHT        = 20.0   # mm — standoff height
+ACROSS_FLATS  = 12.0   # mm — hex across-flats (flat-to-flat)
+BORE_DIAMETER  = 4.2   # mm — central through-hole diameter
 
 
 def gen_step() -> Part:
-    """Return the standoff as a closed positive-volume build123d Part."""
+    """Return the hexagonal standoff as a closed positive-volume solid."""
+    inradius = ACROSS_FLATS / 2  # apothem = across_flats / 2
 
-    # across-flats (apothem) → circumradius: R = apothem / cos(π/6)
-    apothem      = HEX_ACROSS_FLATS / 2.0
-    circumradius = apothem / math.cos(math.pi / 6)   # ≈ 6.928 mm
+    with BuildPart() as standoff:
+        # --- Hex body ---
+        with BuildSketch():
+            # major_radius=False => radius is the inradius (apothem)
+            # rotation=30 => flat faces aligned with X/Y axes
+            RegularPolygon(
+                radius=inradius,
+                side_count=6,
+                major_radius=False,
+                rotation=30,
+            )
+        extrude(amount=HEIGHT)
 
-    with BuildPart() as part:
-        # ── Hex body: extrude regular-hexagon sketch from z=0 to z=HEIGHT_MM
-        with BuildSketch(Plane.XY):
-            RegularPolygon(radius=circumradius, side_count=6)
-        extrude(amount=HEIGHT_MM)
+        # --- Central through-hole (subtractive) ---
+        with BuildSketch():
+            Circle(radius=BORE_DIAMETER / 2)
+        extrude(amount=HEIGHT, mode=Mode.SUBTRACT)
 
-        # ── Concentric through-hole (full height, centered on hex axis)
-        # Align.MIN on Z anchors the cylinder at z=0, same datum as the hex body.
-        Cylinder(
-            radius=HOLE_DIA_MM / 2.0,
-            height=HEIGHT_MM,
-            align=(Align.CENTER, Align.CENTER, Align.MIN),
-            mode=Mode.SUBTRACT,
-        )
-
-    return part.part
+    return standoff.part
 
 
 if __name__ == "__main__":
-    p = gen_step()
-    bb = p.bounding_box()
-    print(f"gen_step() volume = {p.volume:.3f} mm³")
-    print(f"bounding box size  = {bb.size.X:.3f} x {bb.size.Y:.3f} x {bb.size.Z:.3f} mm")
+    part = gen_step()
+    bb = part.bounding_box()
+    print(f"Height Z  : {bb.size.Z:.3f} mm  (target {HEIGHT})")
+    print(f"Width  X  : {bb.size.X:.3f} mm  (target across-flats {ACROSS_FLATS})")
+    print(f"Width  Y  : {bb.size.Y:.3f} mm")
+    print(f"Volume    : {part.volume:.3f} mm³")
+    print(f"Solid cnt : {len(part.solids())}")

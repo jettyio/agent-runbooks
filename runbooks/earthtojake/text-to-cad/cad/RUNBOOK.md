@@ -1,5 +1,5 @@
 ---
-version: "1.1.0"
+version: "1.2.0"
 evaluation: programmatic
 agent: claude-code
 model: claude-sonnet-4-6
@@ -162,7 +162,10 @@ python "$SKILL/scripts/inspect" refs model.step --facts --planes --positioning \
 ```
 
 Then compute and record canonical facts directly from the STEP (robust even
-if the CLI output format shifts), writing `inspect_report.json`:
+if the CLI output format shifts), writing `inspect_report.json`. Always record
+spec dimension checks under a `spec_checks` key using the canonical format
+`{"ok": bool, "expected_mm": float, "actual_mm": float}` — consistent format
+across runs is required for the evaluation harness to parse them.
 
 ```bash
 python - <<'PY'
@@ -180,14 +183,22 @@ rep = {
     "solid_count": len(solids),
     "total_volume_mm3": round(sum(s.volume for s in solids), 3),
     "is_closed_positive_volume": all(s.volume > 0 for s in solids) and len(solids) >= 1,
+    # Add one entry per named dimension in the prompt brief.
+    # Use EXACTLY this layout for every check — the evaluation harness parses it:
+    #   spec_checks: { "<label>": { "ok": bool, "expected_mm": float, "actual_mm": float } }
+    # Example (replace with actual dimensions from the brief):
+    "spec_checks": {
+        # "outer_diameter_x_mm": {"ok": abs(round(bb.size.X,3) - EXPECTED) < 0.1,
+        #                          "expected_mm": EXPECTED, "actual_mm": round(bb.size.X,3)},
+    },
 }
 pathlib.Path("inspect_report.json").write_text(json.dumps(rep, indent=2))
 print(json.dumps(rep, indent=2))
 PY
 ```
 
-Verify each spec dimension from the brief against the bounding box / volume.
-Any mismatch is a Step 6 repair target.
+Populate `spec_checks` with every dimension the brief names (outer diameter,
+height, bore diameter, etc.). Any `"ok": false` entry is a Step 6 repair target.
 
 ---
 
@@ -292,7 +303,7 @@ Write `{{results_dir}}/validation_report.json`:
 
 ```json
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "run_date": "<ISO-8601>",
   "parameters": { "prompt": "{{prompt}}" },
   "stages": [
@@ -353,6 +364,16 @@ echo "=== VERIFICATION COMPLETE ==="
 - [ ] Verification script printed PASS for every line
 
 **If ANY item fails, go back and fix it. Do NOT finish until all items pass.**
+
+---
+
+## Changelog
+
+| Version | Change |
+|---------|--------|
+| 1.2.0 | Standardize `inspect_report.json` spec_checks format: every dimension check now uses `{ok, expected_mm, actual_mm}` for consistent harness parsing. Bumped validation_report version to match. |
+| 1.1.0 | Added `primary_outputs` frontmatter; added GLB sidecar export; offscreen-mesh snapshot fallback documented. |
+| 1.0.0 | Initial import from `earthtojake/text-to-cad` cad skill. |
 
 ---
 
