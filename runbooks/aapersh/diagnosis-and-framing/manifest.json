@@ -1,0 +1,129 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "aapersh/diagnosis-and-framing",
+  "title": "Diagnosis & Framing — Strategic Diagnosis",
+  "description": "Describe a business situation and the decision in front of you; the agent runs a McKinsey-style diagnosis — establishes a fact base (facts vs. interpretations vs. assumptions, with confidence), isolates the one binding growth constraint, audits the load-bearing assumptions into a test plan with owners and triggers, and hands back a single board-ready diagnosis.md with a framed verdict (Proceed / Pause / Test first / Redesign).",
+
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "3–6 mins"
+  },
+
+  "example_outputs": [
+    {
+      "id": "meridian-series-b",
+      "title": "Meridian — should we raise a $40M Series B to go upmarket?",
+      "summary": "Structural (not cyclical) deceleration across win rate, CAC, NRR and churn while a PE-backed competitor bundles a free substitute. The diagnosis isolates the binding constraint and frames the $40M raise as premature — Meridian's own two DSO pilots churned in 6 months on the same unaddressed product gaps. 12/12 structural checks pass.",
+      "thumbnail": "examples/meridian-series-b/thumbnail.png",
+      "operation": "diagnose",
+      "subject": "Vertical SaaS (dental practice management)",
+      "verdict": "Test first",
+      "capability": "growth-deceleration-diagnosis",
+      "dir": "examples/meridian-series-b",
+      "input": {
+        "subject": "Meridian Health Software",
+        "decision": "Should Meridian raise a $40M Series B to fund a move upmarket into DSOs, or is there a higher-leverage path given the current numbers?",
+        "values": { "situation": "$14.2M ARR; YoY growth 90% → 28% over 4 quarters; NRR 112% → 96%; CAC +38%; payback 11 → 19 mo; win rate 32% → 24%; PE-backed competitor bundling a free PMS; two DSO pilots churned in 6 months; 14 months runway." }
+      },
+      "primary_output": "examples/meridian-series-b/expected/diagnosis.md",
+      "outputs": [
+        { "file": "examples/meridian-series-b/expected/diagnosis.md", "role": "primary", "type": "text/markdown", "description": "Board-ready diagnosis: Executive Read → Situation Assessment → Growth Barrier → Assumption Audit → Framed Recommendation." },
+        { "file": "examples/meridian-series-b/expected/summary.md", "role": "secondary", "type": "text/markdown", "description": "One-screen executive summary." },
+        { "file": "examples/meridian-series-b/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic structural validation (12 checks)." }
+      ],
+      "excerpt": "The board is being asked to price a bet that has not yet been derisked enough to size.",
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "diagnosis-and-framing", "trajectory_id": "3fcd1c83",
+        "url": "https://flows.jetty.io/jon-runbooks/diagnosis-and-framing/3fcd1c83",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-10T14:46:13.724033Z", "duration_seconds": 358,
+        "eval": { "overall_passed": true, "verdict": "Test first", "checks": "12/12 PASS" }
+      }
+    },
+    {
+      "id": "lumen-b2b-pivot",
+      "title": "Lumen — pivot to B2B, or fix the consumer funnel?",
+      "summary": "A stalled consumer subscription app weighing two inbound enterprise LOIs against fixing its funnel. The diagnosis isolates 8.5% monthly churn as the single binding constraint (LTV/CAC compressed to 1.45x) and frames the B2B pivot as premature — same engineers, unvalidated LOIs. Recommends two parallel 30-day tests first. 12/12 structural checks pass.",
+      "thumbnail": "examples/lumen-b2b-pivot/thumbnail.png",
+      "operation": "diagnose",
+      "subject": "Consumer subscription (meditation & sleep app)",
+      "verdict": "Test first",
+      "capability": "pivot-vs-focus-decision",
+      "dir": "examples/lumen-b2b-pivot",
+      "input": {
+        "subject": "Lumen",
+        "decision": "Should Lumen redirect resources into a B2B corporate-wellness product to chase the enterprise LOIs, or double down on fixing the consumer subscription funnel?",
+        "values": { "situation": "$6.5M ARR; 78k paying subs; net adds flat 3 quarters; trial→paid 6.1% → 4.2%; monthly churn 8.5%; blended CAC $42, LTV $61; two employer LOIs but no admin/SSO/reporting; 20 months runway." }
+      },
+      "primary_output": "examples/lumen-b2b-pivot/expected/diagnosis.md",
+      "outputs": [
+        { "file": "examples/lumen-b2b-pivot/expected/diagnosis.md", "role": "primary", "type": "text/markdown", "description": "Board-ready diagnosis across all three methods." },
+        { "file": "examples/lumen-b2b-pivot/expected/summary.md", "role": "secondary", "type": "text/markdown", "description": "One-screen executive summary." },
+        { "file": "examples/lumen-b2b-pivot/expected/validation_report.json", "role": "eval", "type": "application/json", "description": "Programmatic structural validation (12 checks)." }
+      ],
+      "excerpt": "Fixing acquisition without fixing retention is adding water to a leaking bucket.",
+      "trajectory": {
+        "collection": "jon-runbooks", "task": "diagnosis-and-framing", "trajectory_id": "1646887f",
+        "url": "https://flows.jetty.io/jon-runbooks/diagnosis-and-framing/1646887f",
+        "agent": "claude-code", "model": "claude-sonnet-4-6",
+        "ran_at": "2026-06-10T14:47:08.426487Z", "duration_seconds": 214,
+        "eval": { "overall_passed": true, "verdict": "Test first", "checks": "12/12 PASS" }
+      }
+    }
+  ],
+
+  "featured_examples": ["meridian-series-b", "lumen-b2b-pivot"],
+
+  "inputs": [
+    { "label": "Situation", "type": "text", "required": true, "description": "The business / market / product being diagnosed, plus whatever facts you have (ARR, growth, KPIs, retention, competitive signals, recent changes). More facts → a sharper diagnosis." },
+    { "label": "Decision", "type": "text", "required": false, "description": "The decision the diagnosis must inform (e.g. 'Should we raise, pivot, expand?'). If omitted, the agent infers and states the most consequential decision." },
+    { "label": "Context file", "type": "file", "required": false, "description": "Optional supporting document (board deck, financials, memo) — its facts are folded into the fact base." }
+  ],
+
+  "secrets": [],
+
+  "runbook_source": "RUNBOOK.md",
+
+  "meta": {
+    "created_by": { "name": "aapersh", "source": "github", "url": "https://github.com/aapersh/strategy-skills-for-claude", "avatar": null },
+    "tags": ["strategy", "consulting", "mckinsey", "diagnosis", "growth", "assumption-audit", "decision-framing", "agent:claude-code", "programmatic"],
+    "version": "1.0.0",
+    "agent": "claude-code",
+    "model": "claude-sonnet-4-6",
+    "model_provider": "anthropic",
+    "snapshot": "python312-uv",
+    "evaluation": "programmatic",
+    "primary_outputs": ["diagnosis.md"],
+    "lineage": {
+      "remix_of": null,
+      "imported_from": "https://github.com/aapersh/strategy-skills-for-claude/tree/main/skills/01-diagnosis-and-framing",
+      "imported_by": "skill-to-runbook-converter@1.1.0"
+    },
+    "attribution": {
+      "author": "aapersh — github.com/aapersh/strategy-skills-for-claude",
+      "source": "aapersh/strategy-skills-for-claude · skills/01-diagnosis-and-framing",
+      "license": "unspecified (no LICENSE file in source repo; the collection states it is independent and unofficial)",
+      "note": "The source 'skill' is a bundle of three method files (situation-assessment.md, growth-barriers.md, assumption-audit.md). This runbook composes all three into one diagnosis pass so a reviewer gets a single board-ready artifact. The McKinsey/MBB method is general consulting practice; this is a re-expression with attribution, not a copy."
+    },
+    "share": "aapersh/diagnosis-and-framing",
+    "metrics": { "_note": "Live counters — backend-sourced.", "number_of_runs": null, "forks": null, "remixes": null }
+  },
+
+  "caveats": [
+    "This is a reasoning task: the quality of the diagnosis scales with the quality of the facts you feed it. With thin inputs it will (correctly) lean on labelled assumptions and open questions rather than invent numbers.",
+    "The programmatic eval checks the *method* — fact base with confidence, a single binding constraint, a test plan with owners + triggers, an explicit verdict — not the real-world correctness of the judgement. Treat the output as a structured first draft for a human strategist, not a final decision.",
+    "Both shipped examples use fully synthetic companies (Meridian, Lumen) so they are license-clean and safe to publish. Do not feed real customer-confidential data into a shared example.",
+    "The source skill bundles three methods; this runbook fuses them. If you want one method in isolation (just a situation assessment, just an assumption audit), trim the corresponding section from RUNBOOK.md."
+  ],
+
+  "handoff": {
+    "collection": "jon-runbooks",
+    "name": "diagnosis-and-framing",
+    "runbook_source": "agent-runbooks/runbooks/aapersh/diagnosis-and-framing/RUNBOOK.md",
+    "trajectory_id": "3fcd1c83",
+    "sample_output_excerpt": "examples/meridian-series-b/expected/diagnosis.md",
+    "current_eval_pass_rate": 1.0,
+    "eval_runs": "2/2 production runs green (3fcd1c83 in 358s, 1646887f in 214s), each 12/12 structural checks PASS with a board-ready diagnosis.md"
+  }
+}

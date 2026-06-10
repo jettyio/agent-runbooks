@@ -1,0 +1,13 @@
+{
+  "title": "Lumen \u2014 pivot to B2B, or fix the consumer funnel?",
+  "subject": "Lumen",
+  "decision": "Should Lumen redirect resources into a B2B corporate-wellness product to chase the enterprise LOIs, or double down on fixing the consumer subscription funnel?",
+  "situation": "Lumen \u2014 a consumer subscription mobile app for guided meditation and sleep.\n\nFacts available:\n- 1.1M total installs; 78,000 paying subscribers; $6.5M ARR.\n- Net new paying subscribers have been roughly flat for 3 consecutive quarters (growth plateau).\n- Free-trial-to-paid conversion 4.2%, down from 6.1% a year ago. Monthly subscriber churn 8.5%.\n- Acquisition is ~80% paid (Meta + TikTok). Blended CAC $42; estimated LTV $61 and compressing as churn rises.\n- Content library of ~400 audio sessions; no community or social features; 82% of users on iOS.\n- Two inbound letters of intent from employers interested in a corporate-wellness offering, but Lumen has no admin console, seat management, reporting, or SSO.\n- Cash: 20 months of runway; 40 employees.",
+  "params": {
+    "vars": {
+      "situation": "Lumen \u2014 a consumer subscription mobile app for guided meditation and sleep.\n\nFacts available:\n- 1.1M total installs; 78,000 paying subscribers; $6.5M ARR.\n- Net new paying subscribers have been roughly flat for 3 consecutive quarters (growth plateau).\n- Free-trial-to-paid conversion 4.2%, down from 6.1% a year ago. Monthly subscriber churn 8.5%.\n- Acquisition is ~80% paid (Meta + TikTok). Blended CAC $42; estimated LTV $61 and compressing as churn rises.\n- Content library of ~400 audio sessions; no community or social features; 82% of users on iOS.\n- Two inbound letters of intent from employers interested in a corporate-wellness offering, but Lumen has no admin console, seat management, reporting, or SSO.\n- Cash: 20 months of runway; 40 employees.",
+      "decision": "Should Lumen redirect resources into a B2B corporate-wellness product to chase the enterprise LOIs, or double down on fixing the consumer subscription funnel?"
+    }
+  },
+  "note": "A consumer-subscription pivot decision \u2014 different binding constraint (retention) and a tempting-but-unvalidated B2B escape."
+}

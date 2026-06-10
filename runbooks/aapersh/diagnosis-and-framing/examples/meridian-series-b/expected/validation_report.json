@@ -1,0 +1,39 @@
+{
+  "version": "1.0.0",
+  "parameters": {
+    "has_decision": true
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "inputs read"
+    },
+    {
+      "name": "fact_base",
+      "passed": true,
+      "message": "facts/interpretations/confidence separated"
+    },
+    {
+      "name": "growth_barrier",
+      "passed": true,
+      "message": "binding constraint isolated"
+    },
+    {
+      "name": "assumption_audit",
+      "passed": true,
+      "message": "load-bearing assumptions -> tests with owner+trigger"
+    },
+    {
+      "name": "structure",
+      "passed": true,
+      "message": "12/12 checks: failed=[]"
+    }
+  ],
+  "results": {
+    "checks_total": 12,
+    "checks_passed": 12,
+    "verdict": "PASS"
+  },
+  "overall_passed": true
+}

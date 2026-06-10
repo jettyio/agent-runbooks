@@ -1,0 +1,26 @@
+{
+  "collection": "jon-runbooks",
+  "task": "diagnosis-and-framing",
+  "trajectory_id": "3fcd1c83",
+  "workflow_id": "jon-runbooks-diagnosis-and-framing--3fcd1c83",
+  "url": "https://flows.jetty.io/jon-runbooks/diagnosis-and-framing/3fcd1c83",
+  "runbook_version": "1.0.0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-06-10T14:46:13.724033",
+  "ended_at": "2026-06-10T14:52:12.164882",
+  "duration_seconds": 358.441,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "diagnosis.md"
+  ],
+  "eval": {
+    "overall_passed": true,
+    "verdict": "PASS",
+    "checks": "12/12"
+  },
+  "notes": "Structural (not cyclical) deceleration across win rate, CAC, NRR and churn while a PE-backed competitor bundles a free substitute. The $40M upmarket bet is premature \u2014 Meridian's own two DSO pilots churned in 6 months on the same unaddressed gaps. Verdict: a 90-day evidence sprint, then a $12\u201318M bridge if it validates \u2014 not $40M now."
+}
