@@ -1,11 +1,11 @@
 {
   "schema_version": "0.2.0",
-  "slug": "earthtojake/text-to-cad/cad",
+  "slug": "earthtojake/text-to-cad-cad",
   "title": "Text-to-CAD",
-  "description": "Natural-language part description → validated, STEP-first parametric CAD model (build123d / OpenCascade) via the earthtojake/text-to-cad cad skill. Authors a parametric build123d generator, exports STEP + STL/GLB sidecars, inspects geometry against the spec, and renders a verification snapshot.",
+  "description": "Natural-language part description \u2192 validated, STEP-first parametric CAD model (build123d / OpenCascade) via the earthtojake/text-to-cad cad skill. Authors a parametric build123d generator, exports STEP + STL/GLB sidecars, inspects geometry against the spec, and renders a verification snapshot.",
   "cta": {
     "label": "Fork and run",
-    "estimated_run_time": "~1–2 min"
+    "estimated_run_time": "~1\u20132 min"
   },
   "example_outputs": [
     {
@@ -28,7 +28,7 @@
         "examples/mounting-flange/expected/summary.md",
         "examples/mounting-flange/expected/validation_report.json"
       ],
-      "excerpt": "1 solid, 17552 mm³; outer diameter 60 mm, thickness 8 mm — all spec dims verified.",
+      "excerpt": "1 solid, 17552 mm\u00b3; outer diameter 60 mm, thickness 8 mm \u2014 all spec dims verified.",
       "trajectory": {
         "trajectory_id": "79800836",
         "url": "https://flows-api.jetty.io/api/v1/db/trajectory/jon-runbooks/text-to-cad/79800836",
@@ -60,7 +60,7 @@
         "examples/hex-standoff/expected/summary.md",
         "examples/hex-standoff/expected/validation_report.json"
       ],
-      "excerpt": "1 solid, 2217 mm³; height 20 mm, across-flats 12 mm, bore 4.2 mm — all spec dims verified.",
+      "excerpt": "1 solid, 2217 mm\u00b3; height 20 mm, across-flats 12 mm, bore 4.2 mm \u2014 all spec dims verified.",
       "trajectory": {
         "trajectory_id": "4bdc06e9",
         "url": "https://flows-api.jetty.io/api/v1/db/trajectory/jon-runbooks/text-to-cad/4bdc06e9",
@@ -92,7 +92,7 @@
         "examples/mounting-bracket/expected/summary.md",
         "examples/mounting-bracket/expected/validation_report.json"
       ],
-      "excerpt": "1 solid, 15287 mm³; 40×40×10 mm, four 4.5 mm holes at 8 mm inset, 3 mm fillets — all spec dims verified.",
+      "excerpt": "1 solid, 15287 mm\u00b3; 40\u00d740\u00d710 mm, four 4.5 mm holes at 8 mm inset, 3 mm fillets \u2014 all spec dims verified.",
       "trajectory": {
         "trajectory_id": "47a93b73",
         "url": "https://flows-api.jetty.io/api/v1/db/trajectory/jon-runbooks/text-to-cad/47a93b73",
@@ -105,7 +105,11 @@
       }
     }
   ],
-  "featured_examples": ["mounting-flange", "hex-standoff", "mounting-bracket"],
+  "featured_examples": [
+    "mounting-flange",
+    "hex-standoff",
+    "mounting-bracket"
+  ],
   "inputs": [
     {
       "label": "Prompt",

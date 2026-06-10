@@ -1,9 +1,0 @@
-{
-  "task": "jon-runbooks/text-to-cad",
-  "params": {
-    "vars": {
-      "prompt": "A 40 x 40 x 10 mm aluminum mounting bracket. Add four M4 clearance holes (4.5 mm diameter) positioned 8 mm in from each corner, and a 3 mm fillet on the four vertical outer edges."
-    }
-  },
-  "prompt": "A 40 x 40 x 10 mm aluminum mounting bracket. Add four M4 clearance holes (4.5 mm diameter) positioned 8 mm in from each corner, and a 3 mm fillet on the four vertical outer edges."
-}
