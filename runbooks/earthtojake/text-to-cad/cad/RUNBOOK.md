@@ -1,42 +1,64 @@
 ---
-version: 1.0.0
+version: "1.1.0"
 evaluation: programmatic
-agent: codex
-model: gpt-5.5
-snapshot: python312-uv
+agent: claude-code
+model: claude-sonnet-4-6
+model_provider: anthropic
+snapshot: text-to-cad
+# Eat our own dog food: declare the headline deliverables so Mise surfaces them.
+primary_outputs:
+  - model.step
+  - snapshot.png
 origin:
-  url: https://raw.githubusercontent.com/earthtojake/text-to-cad/main/skills/cad/SKILL.md
-  user_supplied_url: https://github.com/earthtojake/text-to-cad/blob/main/skills/cad/SKILL.md
+  url: "https://github.com/earthtojake/text-to-cad/blob/main/skills/cad/SKILL.md"
+  user_supplied_url: "https://github.com/earthtojake/text-to-cad"
   is_directory_mirror: false
-  source_host: raw.githubusercontent.com
-  source_title: CAD generation, inspection, and validation
-  imported_at: '2026-06-10T14:33:57Z'
-  imported_by: skill-to-runbook-converter@1.1.0
+  source_host: "github.com"
+  source_title: "CAD generation, inspection, and validation"
+  imported_at: "2026-06-10T14:33:57Z"
+  imported_by: "skill-to-runbook-converter@1.1.0"
   attribution:
-    collection_or_org: earthtojake
-    skill_name: cad
-    confidence: high
+    collection_or_org: "earthtojake"
+    source_collection: "text-to-cad"
+    skill_name: "cad"
+    confidence: "high"
+secrets: {}
 ---
 
-# CAD Generation, Inspection, and Validation — Agent Runbook
+# Text-to-CAD — Agent Runbook
 
 ## Objective
 
-Create or modify parametric CAD models from natural-language requirements, generate validated STEP/STP artifacts, inspect geometry references, and return checked outputs. STEP is the primary CAD artifact; STL, 3MF, and native GLB are secondary export workflows that branch from a STEP-first process. For assemblies, prefer `cadpy.assembly.AssemblyHelper` with source-level build123d joints, named mating datums, and native labels. There are two entry points: generate from build123d Python source, or import an existing STEP/STP file directly.
+Turn a natural-language part description into a **validated, STEP-first
+parametric CAD model** using the [`earthtojake/text-to-cad`](https://github.com/earthtojake/text-to-cad)
+`cad` skill (build123d + OpenCascade). Author a parametric build123d
+generator, export a STEP file (plus STL/GLB mesh sidecars), inspect the
+geometry for the facts the prompt calls out, render a static verification
+snapshot, and write everything to `{{results_dir}}`. STEP is the primary
+artifact; STL/3MF/GLB are secondary exports that branch from it.
+
+The runtime (`snapshot: text-to-cad`) bakes the skill at
+`/opt/text-to-cad` with `build123d`, `cadquery-ocp`, and the skill's
+`cadpy` runtime already installed — no network install needed.
 
 ---
 
 ## REQUIRED OUTPUT FILES (MANDATORY)
 
-**You MUST write all of the following files to `{{results_dir}}`.
-The task is NOT complete until every file exists and is non-empty.**
+**You MUST write all of the following to `{{results_dir}}`.
+The task is NOT complete until every file exists and is non-empty. No exceptions.**
 
 | File | Description |
 |------|-------------|
-| `{{results_dir}}/step_artifact.<ext>` | Primary STEP/STP artifact (or updated artifact path) |
-| `{{results_dir}}/snapshot.png` | Mandatory snapshot of primary STEP/STP after creation or update |
-| `{{results_dir}}/validation_report.json` | Structured validation results with stages, results, and `overall_passed` |
-| `{{results_dir}}/summary.md` | Executive summary: CAD brief, validation results, viewer links, caveats |
+| `{{results_dir}}/model.py` | The parametric build123d generator (defines `gen_step()`), the source of truth for the geometry |
+| `{{results_dir}}/model.step` | The primary CAD artifact — a valid STEP solid/assembly exported from `model.py` |
+| `{{results_dir}}/model.stl` | STL mesh sidecar exported alongside the STEP |
+| `{{results_dir}}/snapshot.png` | A static verification render of the STEP/mesh (see Step 5) |
+| `{{results_dir}}/inspect_report.json` | Geometry facts: bounding box, volume, solid count, and the spec dimensions you verified |
+| `{{results_dir}}/summary.md` | Executive summary: the brief, parameters chosen, validation results, assumptions/caveats |
+| `{{results_dir}}/validation_report.json` | Structured validation with `stages`, `results`, and `overall_passed` |
+
+If you finish your analysis but have not written every file, go back and write them before stopping.
 
 ---
 
@@ -44,10 +66,19 @@ The task is NOT complete until every file exists and is non-empty.**
 
 | Parameter | Template Variable | Default | Description |
 |-----------|------------------|---------|-------------|
-| Results directory | `{{results_dir}}` | `/app/results` | Output directory for all required files |
-| CAD specification | `{{cad_spec}}` | *(required)* | Natural-language description of the part or assembly to create or modify |
-| Output filename base | `{{output_name}}` | `output` | Basename for generated STEP and sidecar files (no extension) |
-| Existing STEP target | `{{existing_step}}` | *(optional)* | Path to an existing STEP/STP file to inspect or modify |
+| Results directory | `{{results_dir}}` | `/app/results` (Jetty) / `./results` (local) | Output directory for all results |
+| Prompt | `{{prompt}}` | *(required)* | Natural-language description of the part to model (dimensions, features, intent) |
+
+### Inputs
+
+```yaml
+# REPLACE-AT-RUNTIME — orchestrator fills {{prompt}}; {{results_dir}} is auto-substituted by Jetty.
+results_dir: /app/results
+prompt: <REQUIRED — natural-language CAD spec, e.g. "a 40x40x10mm aluminum mounting bracket with four M4 clearance holes 8mm from each corner and a 5mm fillet on the top edges">
+```
+
+If `{{prompt}}` is empty, fail fast in Step 1 with `validation_report.json`
+stage `setup` set to `passed=false` and a message naming the missing input.
 
 ---
 
@@ -55,307 +86,286 @@ The task is NOT complete until every file exists and is non-empty.**
 
 | Dependency | Type | Required | Description |
 |------------|------|----------|-------------|
-| `python` | Runtime | Yes | Python interpreter for build123d and CAD scripts |
-| `scripts/step` | CAD CLI | Yes | STEP generation, GLB/topology artifacts, mesh sidecars |
-| `scripts/inspect` | CAD CLI | Yes | Selector refs, measure, align, frame, diff |
-| `scripts/snapshot` | CAD CLI | Yes | PNG/GIF visual review packets — mandatory after STEP creation/update |
-| `cadpy.assembly.AssemblyHelper` | Python package | Yes | Assembly construction with build123d joints and mating datums |
-| `build123d` | Python package | Yes | Parametric CAD modeling library |
-| `$cad-viewer` | Skill | Conditional | Hand off artifact paths for live viewer links; required when installed |
-| `$step-parts` | Skill | Conditional | Search for purchasable off-the-shelf component STEP files |
+| `text-to-cad` snapshot | Runtime | Yes | Daytona snapshot with `/opt/text-to-cad`, `build123d`, `cadquery-ocp`, `cadpy` baked in |
+| `build123d` / `cadquery-ocp` | Python | Yes (baked) | Parametric CAD kernel (OpenCascade bindings) |
+| `cadpy` | Python | Yes (baked) | The skill's STEP/GLB artifact runtime (`scripts/step` imports it) |
+| `trimesh`, `matplotlib` | Python | Yes (baked) | Headless fallback render for `snapshot.png` |
+
+No secrets are required — the geometry pipeline is fully local.
 
 ---
 
 ## Step 1: Environment Setup
 
 ```bash
-mkdir -p "{{results_dir}}"
-# Verify required CAD scripts are accessible
-for s in step inspect snapshot; do
-  python scripts/$s --help > /dev/null 2>&1 || echo "WARNING: scripts/$s not found in PATH"
-done
+set -e
+mkdir -p {{results_dir}}
+SKILL=/opt/text-to-cad/skills/cad          # baked skill dir (scripts/step|inspect|snapshot)
+WORK={{results_dir}}/work
+mkdir -p "$WORK"
+
+# Verify the CAD runtime is present (baked into the text-to-cad snapshot).
+python -c "import build123d, cadpy; from build123d import Box; print('build123d', build123d.__version__)" \
+  || { echo 'ERROR: CAD runtime missing — is snapshot=text-to-cad?'; exit 1; }
+test -f "$SKILL/scripts/step/__main__.py" || { echo "ERROR: cad skill not at $SKILL"; exit 1; }
+
+# Fail fast on an empty prompt.
+PROMPT='{{prompt}}'
+[ -n "$PROMPT" ] || { echo 'ERROR: prompt is empty'; exit 1; }
 ```
 
-Confirm `{{cad_spec}}` is non-empty. If it is empty, write `validation_report.json` with `stages[0].passed=false` and message `"cad_spec is required"`, then stop.
+---
+
+## Step 2: Write a CAD Brief
+
+From `{{prompt}}`, extract into a short brief (record it in `summary.md`):
+dimensions + units (default **mm**), coordinate convention (base plane **XY**,
+up **+Z**), feature intent (holes, fillets, pockets, bosses, …), the output
+geometry kind (single solid vs assembly), and any spec dimensions you will
+verify in Step 4. Apply the skill's defaults when unspecified: closed
+positive-volume solids; M3/M4/M5 clearance holes = 3.4/4.5/5.5 mm; cosmetic
+fillet 1–3 mm; plastic enclosure wall 2–3 mm. State every assumption explicitly.
 
 ---
 
-## Step 2: Classify the Task and Load References
+## Step 3: Author the build123d Generator + Export STEP
 
-Determine which workflow applies:
-
-| Task type | Description | Key references |
-|-----------|-------------|----------------|
-| `new_part` | Designing a new part from scratch | `cad-brief.md`, `build123d-modeling.md`, `step-generation.md` |
-| `new_assembly` | Multi-part assembly | Same + `positioning.md` |
-| `source_modification` | Edit existing build123d generator | `build123d-modeling.md`, `step-generation.md`, `repair-loop.md` |
-| `step_inspection` | Inspect/measure an existing STEP/STP | `inspection-and-validation.md` |
-| `secondary_export` | STL/3MF/GLB from existing geometry | `supported-exports.md` |
-| `snapshot_review` | Snapshot-only visual review | `snapshot-review.md` |
-
-Load only the reference files whose trigger applies. Do **not** load all references preemptively.
-
----
-
-## Step 3: Write the CAD Brief
-
-Using `references/cad-brief.md`, extract from `{{cad_spec}}` (and any attached images or drawings):
-
-- Dimensions and units (default: millimeters)
-- Coordinate convention (default: base plane XY, Z up)
-- Feature intent (holes, fillets, bosses, etc.)
-- Output paths and basenames
-- Explicit assumptions for anything unspecified
-- Validation targets (key dimensions to verify)
-
-Apply default assumptions unless the user overrides them:
-
-| Parameter | Default |
-|-----------|---------|
-| Units | mm |
-| Origin | per `references/positioning.md`; center of main part otherwise |
-| Base plane | XY |
-| Extrusion axis | +Z |
-| Output geometry | Closed positive-volume solid |
-| STEP structure | One valid solid or labeled assembly compound |
-| Enclosure wall | 2.0–3.0 mm |
-| Cosmetic fillet | 1.0–3.0 mm |
-| M3/M4/M5 clearance holes | 3.4 / 4.5 / 5.5 mm |
-
-Check `$step-parts` for any named off-the-shelf components (servos, connectors, boards) before creating placeholder geometry. Record misses and substitute a documented envelope.
-
----
-
-## Step 4: Plan the Model
-
-Before writing code, define:
-
-1. Named parameters (dimensions as Python variables)
-2. Intent labels for each feature (build123d `label=` arguments)
-3. Source and output paths
-4. Expected bounding box (approximate)
-5. Mating/positioning datums (for assemblies)
-
----
-
-## Step 5: Author and Run the Generator
-
-```python
-# Minimal build123d generator structure
-import build123d as b3d
-from build123d import *
-
-# --- parameters ---
-length_mm = 100.0
-width_mm  = 50.0
-height_mm = 25.0
-
-# --- geometry ---
-part = Box(length_mm, width_mm, height_mm, label="enclosure_body")
-# ... features ...
-
-# --- export ---
-from cadpy.utils import gen_step
-gen_step(part, "{{results_dir}}/{{output_name}}.step")
-```
-
-Run via the CAD skill launcher from the workspace directory (not the skill directory):
+Write `{{results_dir}}/work/model.py` — a parametric build123d script that
+defines **`gen_step()`** returning the part (a build123d `Part`/`Compound`/
+`BuildPart` result). Use named parameters at the top, verbose labels, and
+closed solids. Then export with the skill's `scripts/step` launcher:
 
 ```bash
-python scripts/step {{results_dir}}/{{output_name}}.py --kind part
+cd "$WORK"
+# Generated Python target -> writes model.step next to it, plus mesh sidecars.
+python "$SKILL/scripts/step" model.py -o model.step --stl model.stl --glb model.glb --verbose
+test -s model.step || { echo 'ERROR: STEP not generated'; exit 1; }
 ```
 
-Rules:
-- Edit Python source; never edit exported STEP files directly.
-- Run `scripts/step` on explicit targets only — not directory-wide.
-- Keep STEP output and its Python generator in the same directory with the same basename.
+`scripts/step` infers `--kind` from `gen_step()`. Keep `model.py` and
+`model.step` in the same directory with the same basename. If generation
+fails, fix the **smallest** responsible section of `model.py` and rerun
+(see Step 6).
 
 ---
 
-## Step 6: Validate Geometry
+## Step 4: Inspect & Validate Geometry
+
+Run the skill's deterministic inspection, then verify the spec dimensions
+the brief called out. Persist a machine-readable summary to
+`inspect_report.json`.
 
 ```bash
-# Baseline — facts, planes, positioning
-python scripts/inspect refs {{results_dir}}/{{output_name}}.step --facts --planes --positioning
-
-# Targeted checks (run those relevant to the spec)
-python scripts/inspect measure {{results_dir}}/{{output_name}}.step --selector "#o1.2" --measurement length
-python scripts/inspect align   {{results_dir}}/{{output_name}}.step
-python scripts/inspect frame   {{results_dir}}/{{output_name}}.step
+cd "$WORK"
+python "$SKILL/scripts/inspect" refs model.step --facts --planes --positioning \
+  | tee inspect_refs.txt
 ```
 
-Verify every dimension and relationship the CAD brief calls out. If a check fails, change the smallest responsible source section and rerun (see Step 7).
+Then compute and record canonical facts directly from the STEP (robust even
+if the CLI output format shifts), writing `inspect_report.json`:
+
+```bash
+python - <<'PY'
+import json, pathlib
+from build123d import import_step
+shape = import_step("model.step")
+bb = shape.bounding_box()
+solids = shape.solids()
+rep = {
+    "bounding_box_mm": {
+        "min": [round(bb.min.X,3), round(bb.min.Y,3), round(bb.min.Z,3)],
+        "max": [round(bb.max.X,3), round(bb.max.Y,3), round(bb.max.Z,3)],
+        "size": [round(bb.size.X,3), round(bb.size.Y,3), round(bb.size.Z,3)],
+    },
+    "solid_count": len(solids),
+    "total_volume_mm3": round(sum(s.volume for s in solids), 3),
+    "is_closed_positive_volume": all(s.volume > 0 for s in solids) and len(solids) >= 1,
+}
+pathlib.Path("inspect_report.json").write_text(json.dumps(rep, indent=2))
+print(json.dumps(rep, indent=2))
+PY
+```
+
+Verify each spec dimension from the brief against the bounding box / volume.
+Any mismatch is a Step 6 repair target.
 
 ---
 
-## Step 7: Iterate on Errors (max 3 rounds)
+## Step 5: Render a Verification Snapshot (MANDATORY)
 
-If any validation check from Step 6 fails:
+A visual snapshot is mandatory after creating geometry. First try the skill's
+renderer; if the interactive viewer renderer is unavailable in this headless
+runtime, fall back to a deterministic offscreen mesh render — **never skip the
+snapshot**.
 
-1. Identify the smallest responsible source section from the error output.
-2. Apply a targeted fix from the table below.
-3. Re-run the generator (Step 5) and re-run the failed check (Step 6).
-4. Repeat up to 3 rounds.
+```bash
+cd "$WORK"
+# Preferred: the skill's snapshot tool (needs the CAD Viewer render server).
+if python "$SKILL/scripts/snapshot" model.step -o snapshot.png 2>snapshot_err.txt && [ -s snapshot.png ]; then
+  echo "snapshot via scripts/snapshot"
+else
+  echo "scripts/snapshot unavailable in headless runtime; using offscreen mesh render"
+  python - <<'PY'
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+import trimesh, numpy as np
+m = trimesh.load("model.stl", force="mesh")
+fig = plt.figure(figsize=(6,6)); ax = fig.add_subplot(111, projection="3d")
+ax.add_collection3d(Poly3DCollection(m.vertices[m.faces], alpha=0.9,
+                                     facecolor="#9bb7d4", edgecolor="#33536e", linewidths=0.1))
+b = m.bounds; ctr = b.mean(axis=0); r = (b[1]-b[0]).max()/2 * 1.1
+for set_lim, c in zip((ax.set_xlim, ax.set_ylim, ax.set_zlim), ctr):
+    set_lim(c-r, c+r)
+ax.set_box_aspect((1,1,1)); ax.view_init(elev=22, azim=-55); ax.set_axis_off()
+fig.savefig("snapshot.png", dpi=130, bbox_inches="tight", pad_inches=0.1)
+print("offscreen snapshot.png written")
+PY
+fi
+test -s snapshot.png || { echo 'ERROR: no snapshot.png produced'; exit 1; }
+```
 
-After 3 rounds, if the check still fails: record the failure in `validation_report.json` with `overall_passed=false` and document the unresolved issue in `summary.md`.
+Record which renderer produced the snapshot in `summary.md`.
+
+---
+
+## Step 6: Iterate on Errors (max 3 rounds)
+
+If STEP generation failed, a spec dimension didn't match, or the snapshot is
+empty/degenerate:
+
+1. Read the specific failure (traceback, bounding-box mismatch, empty render).
+2. Change the **smallest** responsible section of `model.py`.
+3. Rerun Step 3 (export), then Step 4 (inspect) and Step 5 (snapshot).
+4. Repeat up to **3 rounds total**. Keep the best result and flag any
+   remaining mismatch honestly in `summary.md`.
 
 ### Common Fixes
 
-| Failure | Fix |
-|---------|-----|
-| Invalid solid / zero volume | Check for open edges; ensure all solids are closed |
-| Selector ref not found | Re-run `--facts` to discover current topology labels |
-| Dimension mismatch | Correct the relevant named parameter; check unit convention |
-| Assembly placement error | Verify `AssemblyHelper` mating datums; see `references/positioning.md` |
-| Snapshot fails (no visible geometry) | Check that STEP export completed; verify output path |
+| Issue | Fix |
+|-------|-----|
+| `gen_step()` not found | The generator MUST define a top-level `gen_step()` returning the part; `scripts/step` calls it |
+| STEP exports but volume is 0 / open shell | Ensure closed positive-volume solids; check boolean order and that fillets/chamfers don't over-cut |
+| Bounding box wrong vs spec | Parameter/units error — keep all dims in mm; re-check the offending named parameter |
+| `scripts/snapshot` errors (no render server) | Expected headless — the offscreen trimesh/matplotlib fallback in Step 5 handles it |
+| `import_step` fails on re-read | The STEP is malformed; regenerate from source, don't hand-edit the STEP |
 
 ---
 
-## Step 8: Snapshot (Mandatory)
-
-After creating or visibly updating any primary STEP/STP part or assembly, ALWAYS run:
+## Step 7: Copy Outputs + Write Reports
 
 ```bash
-python scripts/snapshot {{results_dir}}/{{output_name}}.step --output {{results_dir}}/snapshot.png
-```
-
-Review the snapshot output. The only valid skip cases are documented in `references/snapshot-review.md`; if skipping, report the reason in `summary.md`.
-
----
-
-## Step 9: Hand Off to CAD Viewer
-
-If `$cad-viewer` is installed:
-
-1. Pass the explicit file path(s) of every created or modified `.step`, `.stp`, `.stl`, `.3mf`, or `.glb` artifact to `$cad-viewer`.
-2. `$cad-viewer` must start CAD Viewer if not already running and return live viewer link(s).
-3. Include those viewer link(s) in the final response.
-
-If `$cad-viewer` is unavailable or startup fails, report that and rely on CLI inspection output and snapshots instead.
-
----
-
-## Step 10: Write Output Files
-
-Write `{{results_dir}}/validation_report.json`:
-
-```json
-{{
-  "version": "1.0.0",
-  "run_date": "<ISO-8601>",
-  "stages": [
-    {"name": "setup",              "passed": true,  "message": "Environment verified"},
-    {"name": "classify",           "passed": true,  "message": "Task type: <task_type>"},
-    {"name": "cad_brief",          "passed": true,  "message": "Brief extracted, <N> assumptions recorded"},
-    {"name": "generation",         "passed": true,  "message": "STEP generated at <path>"},
-    {"name": "geometry_validation","passed": true,  "message": "All spec-driven checks passed"},
-    {"name": "snapshot",           "passed": true,  "message": "Snapshot written to <path>"},
-    {"name": "handoff",            "passed": true,  "message": "Viewer links returned or $cad-viewer unavailable"},
-    {"name": "report_generation",  "passed": true,  "message": "All output files written"}
-  ],
-  "results": {"pass": 0, "partial": 0, "fail": 0},
-  "overall_passed": true,
-  "output_files": [
-    "{{results_dir}}/step_artifact.step",
-    "{{results_dir}}/snapshot.png",
-    "{{results_dir}}/validation_report.json",
-    "{{results_dir}}/summary.md"
-  ]
-}}
+cd "$WORK"
+cp -f model.py model.step model.stl snapshot.png inspect_report.json {{results_dir}}/ 2>/dev/null || true
+# model.glb is optional; copy if present.
+[ -s model.glb ] && cp -f model.glb {{results_dir}}/ || true
 ```
 
 Write `{{results_dir}}/summary.md`:
 
 ```markdown
-# CAD Run — Results
+# Text-to-CAD — Results
 
-## Overview
-- **Date**: <run date>
-- **Specification**: {{cad_spec}}
-- **Task type**: <classified task type>
-- **Output artifact**: <path>
-- **Viewer links**: <links from $cad-viewer or "unavailable">
+## Brief
+- **Prompt**: {{prompt}}
+- **Parameters**: {named params + values}
+- **Assumptions**: {units, datum, defaults applied}
+
+## Artifacts
+- STEP: model.step  |  STL: model.stl  |  Generator: model.py
+- Snapshot renderer: {scripts/snapshot | offscreen-mesh}
 
 ## Validation
+| Check | Result |
+|-------|--------|
+| STEP generated + re-imports | ... |
+| Bounding box vs spec | ... |
+| Closed positive-volume solid(s) | ... |
+| Snapshot rendered | ... |
 
-| Stage | Status | Notes |
-|---|---|---|
-| Setup | ... | ... |
-| Classify | ... | ... |
-| CAD Brief | ... | ... |
-| Generation | ... | ... |
-| Validation | ... | ... |
-| Snapshot | ... | ... |
-| Handoff | ... | ... |
+## Caveats
+- {anything ambiguous, any spec dimension that couldn't be matched}
+```
 
-## Assumptions
-- <List all assumptions applied during modeling>
+Write `{{results_dir}}/validation_report.json`:
 
-## Issues / Manual Follow-up
-- <Any unresolved errors or caveats>
-
-## Final Verification
-- <Snapshot or viewer thumbnail, if available>
+```json
+{
+  "version": "1.1.0",
+  "run_date": "<ISO-8601>",
+  "parameters": { "prompt": "{{prompt}}" },
+  "stages": [
+    { "name": "setup",       "passed": true, "message": "CAD runtime present" },
+    { "name": "generate",    "passed": true, "message": "model.step exported from model.py" },
+    { "name": "inspect",     "passed": true, "message": "facts computed; spec dims verified" },
+    { "name": "snapshot",    "passed": true, "message": "snapshot.png rendered (<renderer>)" },
+    { "name": "report",      "passed": true, "message": "all output files written" }
+  ],
+  "results": { "pass": 0, "partial": 0, "fail": 0 },
+  "overall_passed": true,
+  "output_files": [
+    "{{results_dir}}/model.py",
+    "{{results_dir}}/model.step",
+    "{{results_dir}}/model.stl",
+    "{{results_dir}}/snapshot.png",
+    "{{results_dir}}/inspect_report.json",
+    "{{results_dir}}/summary.md",
+    "{{results_dir}}/validation_report.json"
+  ]
+}
 ```
 
 ---
 
-## Step 11: Final Checklist (MANDATORY — do not skip)
+## Step 8: Final Checklist (MANDATORY — do not skip)
+
+### Verification Script
 
 ```bash
 echo "=== FINAL OUTPUT VERIFICATION ==="
 RESULTS_DIR="{{results_dir}}"
-# Required files
-for f in "$RESULTS_DIR/validation_report.json" "$RESULTS_DIR/summary.md"; do
-  if [ ! -s "$f" ]; then
-    echo "FAIL: $f is missing or empty"
-  else
-    echo "PASS: $f ($(wc -c < "$f") bytes)"
-  fi
+for f in \
+  "$RESULTS_DIR/model.py" \
+  "$RESULTS_DIR/model.step" \
+  "$RESULTS_DIR/model.stl" \
+  "$RESULTS_DIR/snapshot.png" \
+  "$RESULTS_DIR/inspect_report.json" \
+  "$RESULTS_DIR/summary.md" \
+  "$RESULTS_DIR/validation_report.json"; do
+  if [ ! -s "$f" ]; then echo "FAIL: $f is missing or empty"; else echo "PASS: $f ($(wc -c < "$f") bytes)"; fi
 done
-
-# STEP artifact
-STEP=$(ls "$RESULTS_DIR"/*.step "$RESULTS_DIR"/*.stp 2>/dev/null | head -1)
-if [ -n "$STEP" ]; then
-  echo "PASS: STEP artifact present: $STEP ($(wc -c < "$STEP") bytes)"
-else
-  echo "FAIL: No STEP/STP artifact found in $RESULTS_DIR"
-fi
-
-# Snapshot
-SNAP=$(ls "$RESULTS_DIR"/*.png "$RESULTS_DIR"/*.gif 2>/dev/null | head -1)
-if [ -n "$SNAP" ]; then
-  echo "PASS: Snapshot present: $SNAP"
-else
-  echo "FAIL: No snapshot PNG/GIF in $RESULTS_DIR (mandatory unless skip is documented)"
-fi
-
-# Validation report passes
-PASSED=$(python3 -c "import json,sys; d=json.load(open('$RESULTS_DIR/validation_report.json')); print(d.get('overall_passed'))" 2>/dev/null)
-echo "Validation overall_passed: $PASSED"
+# STEP must re-import cleanly.
+python -c "from build123d import import_step; s=import_step('$RESULTS_DIR/model.step'); assert s.volume>0; print('PASS: STEP re-imports, volume=%.1f mm^3' % s.volume)" \
+  || echo "FAIL: STEP does not re-import as a positive-volume solid"
+echo "=== VERIFICATION COMPLETE ==="
 ```
 
 ### Checklist
 
-- [ ] `validation_report.json` exists and `overall_passed` reflects actual validation results
-- [ ] `summary.md` exists and includes assumptions, viewer links (or explains absence), and any caveats
-- [ ] A STEP/STP artifact exists in `{{results_dir}}`
-- [ ] A snapshot PNG/GIF exists (or skip is documented with reason in `summary.md`)
-- [ ] All spec-driven geometry checks passed (or failures are recorded)
-- [ ] CAD viewer handoff completed or unavailability reported
+- [ ] `model.py` defines `gen_step()` and is the source of the geometry
+- [ ] `model.step` exists, is non-empty, and re-imports as a positive-volume solid
+- [ ] `model.stl` mesh sidecar exported
+- [ ] `snapshot.png` rendered (skill renderer or offscreen fallback)
+- [ ] `inspect_report.json` has bounding box, volume, solid count; spec dims verified
+- [ ] `summary.md` records brief, parameters, assumptions, validation, caveats
+- [ ] `validation_report.json` has `stages`, `results`, `overall_passed`
 - [ ] Verification script printed PASS for every line
 
-**If ANY item fails, go back and fix it before finishing.**
+**If ANY item fails, go back and fix it. Do NOT finish until all items pass.**
 
 ---
 
 ## Tips
 
-- **STEP is primary; everything else is derived.** Never treat STL/3MF/GLB as a substitute for the validated STEP.
-- **Edit source, not artifacts.** When a Python generator exists, always edit and re-run the generator; never hand-edit the exported STEP.
-- **Snapshot is mandatory.** `scripts/snapshot` is not optional after creating or visibly updating a primary STEP/STP. Document the skip reason explicitly in `summary.md` if skipping.
-- **One clarification question at a time.** Ask only when a missing value makes the model impossible, fit-critical, safety-critical, or compliance-bound. Otherwise proceed with explicit assumptions.
-- **Selector refs are artifact-local.** `#o1.2.f1` and similar tokens are not stable across regenerations — always re-run `--facts` after changes.
-- **Do not use git diff for large binary artifacts.** Use `scripts/inspect` summaries, source diffs, and topology output to compare CAD artifacts; path-limited `git status` for bookkeeping only.
-- **Report only checks that ran.** Never assert a check passed if you didn't execute it.
-- **Provenance**: Imported from `https://raw.githubusercontent.com/earthtojake/text-to-cad/main/skills/cad/SKILL.md` via skill-to-runbook-converter v1.1.0.
+- **STEP is the primary artifact.** Author parametric source (`model.py`),
+  never hand-edit the exported STEP. STL/3MF/GLB are secondary sidecars.
+- **`gen_step()` is the contract.** `scripts/step` calls it; without a
+  top-level `gen_step()` the export is a no-op.
+- **Keep everything in millimeters** with the XY base plane / +Z up unless the
+  prompt says otherwise — most bounding-box mismatches are a units slip.
+- **The snapshot is mandatory but the live `$cad-viewer` handoff is not part
+  of headless eval** — render a static `snapshot.png` (skill renderer when the
+  CAD Viewer render server is up, offscreen mesh render otherwise).
+- **Validate against the spec, not just "it exported."** Check the bounding
+  box and the dimensions the prompt named; report any you couldn't match.
