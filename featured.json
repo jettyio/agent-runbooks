@@ -1,5 +1,6 @@
 {
   "featured": [
+    "latent-spaces/brag",
     "jettyio/langfuse-trace-optimizer",
     "jettyio/posthog-trace-optimizer",
     "aapersh/diagnosis-and-framing",

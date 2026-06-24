@@ -1,0 +1,121 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "latent-spaces/brag",
+  "title": "/brag — Launch Video",
+  "description": "You built it. Now brag. Point it at a project URL (or upload the files) and it reads the project, plans a launch concept specific to it, storyboards it to the brag creative laws, composes it in Hyperframes, and renders a short, shareable brag.mp4 — with a postable caption. Local render, no API key.",
+
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No API key — Hyperframes renders locally (headless Chromium + FFmpeg). Free for your first 10 runs.",
+    "estimated_run_time": "5–9 mins"
+  },
+
+  "example_outputs": [
+    {
+      "id": "horse-tinder",
+      "title": "Horse Tinder",
+      "summary": "A reference brag the source /brag project made for its Horse Tinder demo site — default tone: swipe through eligible horses near your pasture. Shown to illustrate the output style this runbook produces.",
+      "thumbnail": "examples/horse-tinder/thumbnail.jpg",
+      "operation": "brag-video",
+      "capability": "default-tone",
+      "dir": "examples/horse-tinder",
+      "input": { "tone": "default", "format": "landscape", "concept": "Horse Tinder — a dating app for horses" },
+      "outputs": [
+        { "file": "brag.mp4", "role": "primary", "type": "video/mp4", "description": "The rendered 15–25s launch video." },
+        { "file": "brag-plan.md", "role": "secondary", "type": "text/markdown", "description": "The angle, hook, and beat-by-beat storyboard." },
+        { "file": "share-copy.txt", "role": "secondary", "type": "text/plain", "description": "The postable caption." }
+      ],
+      "excerpt": null,
+      "trajectory": null
+    },
+    {
+      "id": "taxi-for-taxis",
+      "title": "Taxi for Taxis",
+      "summary": "A reference brag for the source project's Taxi for Taxis site — yc-parody tone, the absurd premise played completely straight: the ride-hailing app for ride-hailing assets, available in 12 metros.",
+      "thumbnail": "examples/taxi-for-taxis/thumbnail.jpg",
+      "operation": "brag-video",
+      "capability": "yc-parody-tone",
+      "dir": "examples/taxi-for-taxis",
+      "input": { "tone": "yc-parody", "format": "landscape", "concept": "Taxi for Taxis — ride-hailing for ride-hailing assets" },
+      "outputs": [
+        { "file": "brag.mp4", "role": "primary", "type": "video/mp4", "description": "The rendered 15–25s launch video." },
+        { "file": "brag-plan.md", "role": "secondary", "type": "text/markdown", "description": "The angle, hook, and beat-by-beat storyboard." },
+        { "file": "share-copy.txt", "role": "secondary", "type": "text/plain", "description": "The postable caption." }
+      ],
+      "excerpt": null,
+      "trajectory": null
+    },
+    {
+      "id": "fish-flight-school",
+      "title": "Fish Flight School",
+      "summary": "A reference brag for the source project's Fish Flight School site — cinematic/deadpan tone, trailer-scale restraint: the sky was never the limit. Illustrates the runbook's range across tones.",
+      "thumbnail": "examples/fish-flight-school/thumbnail.jpg",
+      "operation": "brag-video",
+      "capability": "cinematic-tone",
+      "dir": "examples/fish-flight-school",
+      "input": { "tone": "cinematic", "format": "landscape", "concept": "Fish Flight School — teaching fish to fly" },
+      "outputs": [
+        { "file": "brag.mp4", "role": "primary", "type": "video/mp4", "description": "The rendered 15–25s launch video." },
+        { "file": "brag-plan.md", "role": "secondary", "type": "text/markdown", "description": "The angle, hook, and beat-by-beat storyboard." },
+        { "file": "share-copy.txt", "role": "secondary", "type": "text/plain", "description": "The postable caption." }
+      ],
+      "excerpt": null,
+      "trajectory": null
+    }
+  ],
+
+  "featured_examples": ["horse-tinder", "taxi-for-taxis", "fish-flight-school"],
+
+  "inputs": [
+    { "label": "Project URL", "type": "url", "required": false, "description": "The live project to brag about. Captured with `hyperframes capture`. Provide this OR upload the project files." },
+    { "label": "Project files", "type": "files", "required": false, "description": "Alternatively, upload index.html / styles.css / README — used directly when no URL is given." },
+    { "label": "Tone", "type": "text", "required": false, "description": "A preset (default / polished / yc-parody / chaotic / deadpan / cinematic / app-store) or a freeform direction like 'fake Series A launch from 2016'." },
+    { "label": "Format", "type": "text", "required": false, "description": "landscape (1920×1080) / vertical (1080×1920) / square (1080×1080). Default landscape." }
+  ],
+
+  "secrets": [
+    { "env": "GEMINI_API_KEY", "required": false, "description": "Optional. Enables Gemini frame analysis on `hyperframes snapshot` for a stronger visual self-check. The render needs no API key." }
+  ],
+
+  "runbook_source": "RUNBOOK.md",
+
+  "meta": {
+    "created_by": { "name": "latent-spaces", "source": "github", "url": "https://github.com/latent-spaces/brag", "avatar": null },
+    "tags": ["video", "launch", "marketing", "hyperframes", "share", "agent:claude-code", "rubric"],
+    "version": "1.0.0",
+    "agent": "claude-code",
+    "model": "claude-sonnet-4-6",
+    "model_provider": "anthropic",
+    "snapshot": "python312-uv",
+    "evaluation": "rubric",
+    "primary_outputs": ["brag.mp4"],
+    "lineage": {
+      "remix_of": null,
+      "imported_from": "https://github.com/latent-spaces/brag",
+      "imported_by": "skill-to-runbook-converter@1.0.0"
+    },
+    "attribution": {
+      "author": "latent-spaces — github.com/latent-spaces/brag",
+      "source": "latent-spaces/brag",
+      "license": "unspecified (no LICENSE file in source)",
+      "note": "/brag is a Claude Code skill. This runbook adapts it to run in the Jetty sandbox: it captures a project URL (or reads uploaded files) instead of the local working directory, clones the source repo at run time for its bundled music + SFX + step references, and renders locally with `npx hyperframes`. Music by ende.app, SFX by Kenney, video generation by Hyperframes, demo sites by Impeccable — per the source repo credits."
+    },
+    "share": "latent-spaces/brag",
+    "metrics": { "_note": "Live counters — backend-sourced.", "number_of_runs": null, "forks": null, "remixes": null }
+  },
+
+  "caveats": [
+    "The three example thumbnails are reference brags the source /brag project rendered for its own benchmark demo sites (Horse Tinder, Taxi for Taxis, Fish Flight School). They illustrate the output style; they are not yet Jetty production runs (no trajectory IDs).",
+    "Video rendering is heavier than a text runbook: it installs FFmpeg at run time, drives headless Chromium, and renders frame-by-frame — budget several minutes, and fall back to `--quality draft` if a high-quality render is too slow.",
+    "Bundled music/SFX are not shipped into this repo; the runbook clones github.com/latent-spaces/brag at run time to use them. If the clone fails (no network), the video renders silent.",
+    "Best on projects with a real visual identity and, ideally, a working flow to show. A bare landing page still works but leans on its strongest single visual."
+  ],
+
+  "handoff": {
+    "collection": "jon-runbooks",
+    "name": "brag",
+    "runbook_source": "agent-runbooks/runbooks/latent-spaces/brag/RUNBOOK.md",
+    "trajectory_id": null,
+    "note": "Converted from latent-spaces/brag. Not yet validated with a production Jetty run — example outputs are reference brags from the source project."
+  }
+}
