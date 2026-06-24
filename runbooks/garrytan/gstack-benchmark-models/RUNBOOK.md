@@ -95,7 +95,7 @@ If you finish but have not written all files, go back and write them first.
 
 | Parameter | Template Variable | Default | Description |
 |-----------|------------------|---------|-------------|
-| Results directory | `{{results_dir}}` | `/app/results` (Jetty) / `./results` (local) | Output directory |
+| Results directory | `{{results_dir}}` | `/app/results` | Output directory |
 | Prompt | `{{prompt}}` | *(empty → use the uploaded file)* | Inline prompt text (used only if no file is uploaded) |
 | Models | `{{models}}` | `claude-sonnet-4-6,gpt-4o,gemini/gemini-2.0-flash` | Comma-separated litellm model ids |
 | System prompt | `{{system_prompt}}` | *(empty)* | Optional system prompt sent to every model |

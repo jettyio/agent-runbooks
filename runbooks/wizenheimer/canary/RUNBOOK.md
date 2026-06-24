@@ -81,7 +81,7 @@ file, go back and write it.
 
 | Parameter | Template Variable | Default | Description |
 |-----------|------------------|---------|-------------|
-| Results directory | `{{results_dir}}` | `/app/results` (Jetty) / `./results` (local) | Output directory |
+| Results directory | `{{results_dir}}` | `/app/results` | Output directory |
 | Target URL | `{{target_url}}` | *(required)* | Where the flow starts |
 | Flow | `{{flow}}` | *(required)* | The plain-language flow + the checks that must hold |
 | Credentials | `{{credentials}}` | *(optional)* | Login creds if the flow needs them |

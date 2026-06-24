@@ -108,7 +108,7 @@ chosen operation's deliverables, nothing from the other operations.**
 
 | Parameter | Template Variable | Default | Description |
 |-----------|------------------|---------|-------------|
-| Results directory | `{{results_dir}}` | `/app/results` (Jetty) / `./results` (local) | Output directory for all deliverables |
+| Results directory | `{{results_dir}}` | `/app/results` | Output directory for all deliverables |
 | Operation | `{{operation}}` | `build` | `build`, `audit`, `redesign`, or `study` |
 | Brief / instructions | `{{brief}}` | *(required for build/redesign)* | What to design or rebuild — audience, purpose, content, any brand colour/vibe |
 | Study target URL | `{{target_url}}` | *(study URL-mode only)* | A public page whose DNA to extract. Omit for image-mode (screenshot in `/app/assets/`) |

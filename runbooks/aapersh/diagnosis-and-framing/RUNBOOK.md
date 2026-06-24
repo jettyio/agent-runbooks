@@ -88,7 +88,7 @@ before stopping.
 
 | Parameter | Template Variable | Default | Description |
 |-----------|------------------|---------|-------------|
-| Results directory | `{{results_dir}}` | `/app/results` (Jetty) / `./results` (local) | Output directory for all results |
+| Results directory | `{{results_dir}}` | `/app/results` | Output directory for all results |
 | Situation | `{{situation}}` | *(required)* | The business/decision context + available facts |
 | Decision | `{{decision}}` | *(optional)* | The decision the diagnosis must inform; inferred if empty |
 

@@ -86,7 +86,7 @@ If you finish your analysis but have not written all files, go back and write th
 
 | Parameter | Template Variable | Default | Description |
 |-----------|------------------|---------|-------------|
-| Results directory | `{{results_dir}}` | `/app/results` (Jetty) / `./results` (local) | Output directory for all results |
+| Results directory | `{{results_dir}}` | `/app/results` | Output directory for all results |
 | Template workbook | *(uploaded)* | first `*.xlsx` in `/app/assets/` | The empty `.xlsx` template |
 | Fill data | *(uploaded)* | first `*.json` in `/app/assets/` | The JSON of values to insert |
 | Notes | *(uploaded, optional)* | first `*.md` in `/app/assets/` | User notes — intentional blanks, dropdown caveats, sheets to drop |

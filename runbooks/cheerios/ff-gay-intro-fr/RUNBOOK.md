@@ -45,7 +45,7 @@ If you finish your work but have not written all files, go back and write them b
 
 | Parameter | Template Variable | Default | Description |
 |-----------|------------------|---------|-------------|
-| Results directory | `{{results_dir}}` | `/app/results` (Jetty) / `./results` (local) | Output directory for all artifacts |
+| Results directory | `{{results_dir}}` | `/app/results` | Output directory for all artifacts |
 | Resolution | `{{resolution}}` | `1080p` | Seedance output resolution. One of `480p`, `720p`, `1080p`. |
 | Aspect ratio | `{{aspect_ratio}}` | `21:9` | Cinemascope-ish framing for the F&F feel. One of `16:9`, `21:9`, `1:1`, etc. |
 | Setting | `{{setting}}` | `"Marseille port at golden hour, rain-slick docks, neon signs reflecting in puddles"` | The location/mood. Override for a different city or time of day. |

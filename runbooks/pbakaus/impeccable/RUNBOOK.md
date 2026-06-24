@@ -88,7 +88,7 @@ operation's work — an `audit` request must NOT modify the target or emit a
 
 | Parameter | Template Variable | Default | Description |
 |-----------|-------------------|---------|-------------|
-| Results directory | `{{results_dir}}` | `/app/results` (Jetty) / `./results` (local) | Output directory for all results |
+| Results directory | `{{results_dir}}` | `/app/results` | Output directory for all results |
 | Target | `{{target}}` | *(required)* | The artifact to de-slop: an uploaded HTML/CSS/JSX/TSX file (lands in `/app/assets/`), a directory, or an `http(s)://` URL |
 | Operation | `{{operation}}` | `audit` | `audit` (report only) or `polish` (fix + re-scan to zero) |
 | Provider tells | `{{provider_tells}}` | `none` | `none`, `gpt`, or `gemini` — also report that provider's signature tells (off by default; passed through to `impeccable detect --gpt/--gemini`) |

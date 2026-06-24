@@ -55,7 +55,7 @@ deployable, not just plausible.
 
 | Parameter | Template Variable | Default | Description |
 |-----------|------------------|---------|-------------|
-| Results directory | `{{results_dir}}` | `/app/results` (Jetty) / `./results` (local) | Output directory |
+| Results directory | `{{results_dir}}` | `/app/results` | Output directory |
 | Spec | `{{spec}}` | *(required)* | The Durable Object to build (behavior, persistence, scheduling, public surface) |
 
 ## Dependencies

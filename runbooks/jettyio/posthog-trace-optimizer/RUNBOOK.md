@@ -98,7 +98,7 @@ mandatory file, go back and write it.
 
 | Parameter | Template Variable | Default | Description |
 |-----------|------------------|---------|-------------|
-| Results directory | `{{results_dir}}` | `/app/results` (Jetty) / `./results` (local) | Output directory |
+| Results directory | `{{results_dir}}` | `/app/results` | Output directory |
 | Analysis window (days) | `{{window_days}}` | `30` | How far back to query events. The run also computes 3d/7d sub-windows for trend. |
 | Top-N expensive operations | `{{top_n}}` | `5` | How many of the most expensive `$ai_span_name`s to deep-dive in Steps 4–6. |
 | Qualitative sample size | `{{sample_size}}` | `15` | How many individual traces to pull for manual inspection in Step 7. |

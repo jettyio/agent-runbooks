@@ -78,7 +78,7 @@ If you finish reviewing but have not written all files, go back and write them f
 
 | Parameter | Template Variable | Default | Description |
 |-----------|------------------|---------|-------------|
-| Results directory | `{{results_dir}}` | `/app/results` (Jetty) / `./results` (local) | Output directory for all results |
+| Results directory | `{{results_dir}}` | `/app/results` | Output directory for all results |
 | Code under review | *(uploaded)* | test file(s) / diff in `/app/assets/` | What to review |
 | Focus guideline | `{{focus_guideline}}` | *(empty = all)* | Optional single guideline id to restrict the review to |
 

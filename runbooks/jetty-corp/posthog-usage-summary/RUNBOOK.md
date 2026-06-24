@@ -44,7 +44,7 @@ If you finish your analysis but have not written all files, go back and write th
 
 | Parameter | Template Variable | Default | Description |
 |-----------|------------------|---------|-------------|
-| Results directory | `{{results_dir}}` | `/app/results` (Jetty) / `./results` (local) | Output directory for all results |
+| Results directory | `{{results_dir}}` | `/app/results` | Output directory for all results |
 | PostHog host | `{{posthog_host}}` | `https://us.i.posthog.com` | PostHog API base URL (use `https://eu.i.posthog.com` for EU cloud, or self-hosted URL) |
 | Top-N limit | `{{top_n}}` | `10` | How many top events/pages to report per window |
 | Timezone | `{{timezone}}` | `UTC` | Timezone for window boundaries and report timestamps |

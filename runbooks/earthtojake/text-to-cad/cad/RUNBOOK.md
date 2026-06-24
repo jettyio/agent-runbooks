@@ -66,7 +66,7 @@ If you finish your analysis but have not written every file, go back and write t
 
 | Parameter | Template Variable | Default | Description |
 |-----------|------------------|---------|-------------|
-| Results directory | `{{results_dir}}` | `/app/results` (Jetty) / `./results` (local) | Output directory for all results |
+| Results directory | `{{results_dir}}` | `/app/results` | Output directory for all results |
 | Prompt | `{{prompt}}` | *(required)* | Natural-language description of the part to model (dimensions, features, intent) |
 
 ### Inputs
