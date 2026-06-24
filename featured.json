@@ -1,5 +1,7 @@
 {
   "featured": [
+    "jettyio/langfuse-trace-optimizer",
+    "jettyio/posthog-trace-optimizer",
     "aapersh/diagnosis-and-framing",
     "wizenheimer/canary",
     "adewale/slide-maker",
