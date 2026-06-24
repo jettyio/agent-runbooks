@@ -76,11 +76,15 @@ file exists and is non-empty. No exceptions.**
 | `{{results_dir}}/brag-plan.md` | The creative north star: the angle, hook, key moments, outro, tone, visual identity, audio direction, and a beat-by-beat **storyboard** whose scene durations sum to 15–25s. |
 | `{{results_dir}}/composition-brief.md` | The Hyperframes handoff brief — product positioning, source material, copy that must appear verbatim, and the storyboard as the creative contract. |
 | `{{results_dir}}/share-copy.txt` | One postable caption (1–3 sentences), tone-matched, specific to the project. No generic "excited to share". |
-| `{{results_dir}}/composition/` | The Hyperframes project (scaffolded by `hyperframes init`): `index.html`, the composition source, and `assets/`. |
 | `{{results_dir}}/frames/` | A few `hyperframes snapshot` PNG key frames used for the visual self-check (Step 6). |
 | `{{results_dir}}/validation_report.json` | Stage-by-stage self-validation with `overall_passed`. See Step 7. |
 
 If you finish but have not written every file, go back and write it.
+
+> **Keep `{{results_dir}}` lean — deliverables only.** Build the Hyperframes project, capture, and
+> the source clone all live under **`/tmp`** (see Steps 1–5), NOT in `{{results_dir}}`. The scaffold
+> is 800+ files; saving it as run artifacts overruns the platform's upload/heartbeat window and the
+> run is retried and fails. Only the files in the table above belong in `{{results_dir}}`.
 
 ---
 
@@ -123,9 +127,12 @@ set -e
 RESULTS="{{results_dir}}"; mkdir -p "$RESULTS/frames"
 echo "node: $(node -v)  (need >= 22)"; node -e 'process.exit(+process.versions.node.split(".")[0] >= 22 ? 0 : 1)'
 
-# Chromium for the headless render (pre-baked on python312-uv).
+# Chromium for the headless render (pre-baked on python312-uv). The sandbox has a tiny
+# /dev/shm, which crashes Chromium mid-render — so force --disable-dev-shm-usage.
 export CHROME_PATH="$(command -v chromium || command -v chromium-browser || echo /usr/bin/chromium)"
 export PUPPETEER_EXECUTABLE_PATH="$CHROME_PATH"
+export CHROMIUM_FLAGS="--disable-dev-shm-usage --no-sandbox"
+export PUPPETEER_ARGS="--disable-dev-shm-usage --no-sandbox"
 echo "chromium: $CHROME_PATH"; "$CHROME_PATH" --version || true
 
 # FFmpeg: try apt, fall back to a pip-provided static binary on PATH.
@@ -137,10 +144,17 @@ if ! command -v ffmpeg >/dev/null 2>&1; then
 fi
 ffmpeg -version | head -1
 
-# Source repo: bundled music (assets/music), SFX (assets/sfx), and the brag references.
-git clone --depth 1 https://github.com/latent-spaces/brag "$RESULTS/_brag_src" 2>/dev/null \
-  || echo "WARN: could not clone source repo — proceeding without bundled audio (music may be off)"
-BRAG_ASSETS="$RESULTS/_brag_src/skills/brag/assets"
+# Source repo: bundled music (assets/music) + the brag references. Clone OUTSIDE
+# {{results_dir}} (to /tmp/brag_src) so its hundreds of asset files are NOT saved as run
+# artifacts, and sparse-checkout only what we use (skip the heavy docs/examples videos).
+SRC_DIR="/tmp/brag_src"
+if [ ! -d "$SRC_DIR/.git" ]; then
+  git clone --depth 1 --filter=blob:none --sparse https://github.com/latent-spaces/brag "$SRC_DIR" 2>/dev/null \
+    && git -C "$SRC_DIR" sparse-checkout set skills/brag/assets skills/brag/references \
+    || echo "WARN: could not clone source repo — proceeding without bundled audio (music may be off)"
+fi
+BRAG_ASSETS="$SRC_DIR/skills/brag/assets"
+ls "$BRAG_ASSETS/music"/*.mp3 2>/dev/null | head -1 || echo "(no bundled music — video will render silent)"
 
 # Install the Hyperframes + GSAP authoring skills for this agent, and confirm the toolchain.
 npx -y hyperframes@latest skills 2>/dev/null || true
@@ -158,14 +172,15 @@ Get the source material. If `{{project_url}}` is set, capture it; otherwise read
 in `/app/assets/`.
 
 ```bash
-RESULTS="{{results_dir}}"; SRC="$RESULTS/source"; mkdir -p "$SRC"
+# Capture into /tmp (intermediate, outside {{results_dir}}) so it isn't saved as run artifacts.
+SRC="/tmp/brag_source"; mkdir -p "$SRC"
 if [ -n "{{project_url}}" ] && [ "{{project_url}}" != "" ]; then
   ( cd "$SRC" && npx -y hyperframes@latest capture "{{project_url}}" ) \
     || curl -fsSL "{{project_url}}" -o "$SRC/index.html"   # fallback: raw HTML
 else
   cp -r /app/assets/* "$SRC"/ 2>/dev/null || true
 fi
-echo "=== source material ==="; ls -R "$SRC" | head -40
+echo "=== source material (in /tmp/brag_source) ==="; ls -R "$SRC" | head -40
 ```
 
 Now **read** the source the way `/brag`'s Step 1 does — `index.html` first (title, hero headline,
@@ -233,7 +248,10 @@ Write `{{results_dir}}/composition-brief.md` (the boundary: positioning/copy/ton
 yours; structure/timing/mechanics are Hyperframes'), then scaffold and build the composition.
 
 ```bash
-RESULTS="{{results_dir}}"; cd "$RESULTS"
+# Build the composition in a WORK dir OUTSIDE results. The Hyperframes scaffold (node_modules,
+# assets, captured fonts) is 800+ files — saving it as run artifacts overruns the upload/heartbeat
+# window and the run is retried and fails. Only deliverables go to {{results_dir}}.
+WORK="/tmp/brag_work"; mkdir -p "$WORK"; cd "$WORK"
 case "{{format}}" in
   vertical) DIM="1080x1920";; square) DIM="1080x1080";; *) DIM="1920x1080";;
 esac
@@ -241,22 +259,35 @@ npx -y hyperframes@latest init composition --format "$DIM" 2>/dev/null \
   || npx -y hyperframes@latest init composition
 
 # Audio: copy a bundled track in (unless music is off), so the render has a local asset.
-if [ "{{music}}" != "off" ] && [ -d "$RESULTS/_brag_src/skills/brag/assets/music" ]; then
-  mkdir -p composition/assets/music
-  cp "$(ls "$RESULTS"/_brag_src/skills/brag/assets/music/*.mp3 | head -1)" composition/assets/music/ || true
+# (Source repo was sparse-cloned to /tmp/brag_src in Step 1 — NOT into results.)
+if [ "{{music}}" != "off" ] && [ -d "/tmp/brag_src/skills/brag/assets/music" ]; then
+  mkdir -p "$WORK/composition/assets/music"
+  cp "$(ls /tmp/brag_src/skills/brag/assets/music/*.mp3 | head -1)" "$WORK/composition/assets/music/" || true
 fi
 ```
 
-Now author the composition in `composition/` following the **HyperFrames skill** (installed in
-Step 1) and the brief. Apply the brag creative laws: show at least one real UI/copy/visual from the
-project; keep every line readable; stay 15–25s; use the project's actual palette + fonts. If music
-is on, detect beats (`npx hyperframes beats composition/assets/music/<track>.mp3`) and **beat-lock
-1–3 major reveals** (±0.15s) and snap sequential, non-text accents to the beat grid — but never
-outrun the reading-time floor. Match transitions to tone (hard cuts for `chaotic`/`yc-parody`, slow
-crossfades for `deadpan`/`polished`).
+Now author the composition in `/tmp/brag_work/composition/` following the **HyperFrames skill**
+(installed in Step 1) and the brief. Apply the brag creative laws: show at least one real UI/copy/visual
+from the project; keep every line readable; stay 15–25s; use the project's actual palette + fonts. If
+music is on, detect beats (`npx hyperframes beats /tmp/brag_work/composition/assets/music/<track>.mp3`)
+and **beat-lock 1–3 major reveals** (±0.15s) and snap sequential, non-text accents to the beat grid —
+but never outrun the reading-time floor. Match transitions to tone (hard cuts for `chaotic`/`yc-parody`,
+slow crossfades for `deadpan`/`polished`).
+
+> **Avoid the lint rejections seen in practice:**
+> - **Fonts:** `hyperframes lint` **rejects external font imports** (Google Fonts `@import`/`<link>`).
+>   Use the fonts the capture saved locally (under `/tmp/brag_source/capture/`) via `@font-face`, or
+>   fall back to a system font stack. Never `@import` a web-font CDN.
+> - **Timelines:** give every animated element a hard initial state (a `gsap.set`/`tl.set` at t=0)
+>   so nothing flashes pre-animation; register every timeline. These are the two errors `lint` flags
+>   most. The "track density" message is an advisory **warning**, not a blocker — ignore it for a
+>   short single-file video.
+> - The capture's extracted material is at `/tmp/brag_source/capture/extracted/` —
+>   `visible-text.txt`, `tokens.json` (palette + fonts), `asset-descriptions.md`. Read those for the
+>   real copy, colors, and fonts instead of guessing.
 
 ```bash
-cd "$RESULTS/composition" && npx -y hyperframes@latest lint
+cd /tmp/brag_work/composition && npx -y hyperframes@latest lint
 ```
 
 **Gate:** `npx hyperframes lint` passes with **zero errors** inside `composition/`. Fix anything it
@@ -266,21 +297,25 @@ flags (track overlaps, unregistered timelines, missing ids) before rendering.
 
 ## Step 5: Render → `brag.mp4`
 
-Optionally inspect layout/overflow, then render to the results root (one level up from `composition/`).
+Optionally inspect layout/overflow, then render the composition (in `/tmp`) straight to the **MP4 in
+`{{results_dir}}`** — the video is the only large file that belongs in results.
 
 ```bash
-RESULTS="{{results_dir}}"; cd "$RESULTS/composition"
+RESULTS="{{results_dir}}"; cd /tmp/brag_work/composition
 export CHROME_PATH="$(command -v chromium || echo /usr/bin/chromium)"; export PUPPETEER_EXECUTABLE_PATH="$CHROME_PATH"
+export CHROMIUM_FLAGS="--disable-dev-shm-usage --no-sandbox"; export PUPPETEER_ARGS="--disable-dev-shm-usage --no-sandbox"
 npx -y hyperframes@latest inspect  || true   # text/container overflow across the timeline
-npx -y hyperframes@latest render --quality high -o "$RESULTS/brag.mp4"
+# Default to DRAFT quality: a frame-by-frame high render can blow the 30-min agent timeout in the
+# sandbox. Draft is fast, reliable, and fine for a short social clip.
+npx -y hyperframes@latest render --quality draft -o "$RESULTS/brag.mp4" \
+  || npx -y hyperframes@latest render -o "$RESULTS/brag.mp4"
 ls -la "$RESULTS/brag.mp4"
 # duration sanity (must land 15–25s)
 ffprobe -v error -show_entries format=duration -of csv=p=0 "$RESULTS/brag.mp4" || true
 ```
 
-If the high-quality render is too slow, fall back to `--quality draft` to get a valid MP4, then note
-it. **Gate:** `{{results_dir}}/brag.mp4` exists, is non-empty, and `ffprobe` reports a duration in
-the 15–25s window.
+**Gate:** `{{results_dir}}/brag.mp4` exists, is non-empty, and `ffprobe` reports a duration in the
+15–25s window. Only retry at `--quality high` if there is time budget left and draft looked rough.
 
 ---
 
@@ -290,7 +325,7 @@ Capture a few key frames and look at them — this backstops the "show the thing
 readable" creative laws without watching the whole render.
 
 ```bash
-RESULTS="{{results_dir}}"; cd "$RESULTS/composition"
+RESULTS="{{results_dir}}"; cd /tmp/brag_work/composition
 npx -y hyperframes@latest snapshot --output "$RESULTS/frames" || \
   npx -y hyperframes@latest snapshot   # writes PNG key frames (Gemini analysis if GEMINI_API_KEY set)
 ls "$RESULTS/frames"/*.png 2>/dev/null | head
@@ -304,7 +339,21 @@ the project. If a frame fails, fix the composition (Step 4) and re-render (Step 
 
 ## Step 7: Share Copy + Validation Report
 
-Write `{{results_dir}}/share-copy.txt` — one postable caption (1–3 sentences), tone-matched,
+First, **prune `{{results_dir}}` to deliverables only.** If the composition, capture, clone, or any
+`node_modules` leaked into results, saving hundreds of artifacts overruns the platform's
+upload/heartbeat window and the whole run is retried and then fails — even though `brag.mp4`
+rendered fine. This guard removes anything that is not a known deliverable:
+
+```bash
+RESULTS="{{results_dir}}"; cd "$RESULTS"
+find . -maxdepth 1 -mindepth 1 \
+  ! -name 'brag.mp4' ! -name 'brag-plan.md' ! -name 'composition-brief.md' \
+  ! -name 'share-copy.txt' ! -name 'validation_report.json' ! -name 'frames' \
+  -exec rm -rf {} + 2>/dev/null || true
+echo "results now holds $(find . -type f | wc -l | tr -d ' ') files (expect < 30):"; ls -la "$RESULTS"
+```
+
+Then write `{{results_dir}}/share-copy.txt` — one postable caption (1–3 sentences), tone-matched,
 specific to the project, no generic "excited to share". (Multi-platform variants, if any, go in a
 separate `share-copy-variants.md` — keep `share-copy.txt` to the single canonical caption.)
 
@@ -359,7 +408,9 @@ for f in brag.mp4 brag-plan.md composition-brief.md share-copy.txt validation_re
   if [ -s "$RESULTS_DIR/$f" ]; then echo "PASS: $f ($(wc -c < "$RESULTS_DIR/$f") bytes)";
   else echo "FAIL: $f missing/empty"; FAIL=$((FAIL+1)); fi
 done
-[ -d "$RESULTS_DIR/composition" ] && echo "PASS: composition/ exists" || { echo "FAIL: composition/ missing"; FAIL=$((FAIL+1)); }
+# Results must stay LEAN — deliverables only (composition is built in /tmp, not saved as artifacts).
+NF=$(find "$RESULTS_DIR" -type f 2>/dev/null | wc -l | tr -d ' '); echo "result files: $NF (expect < 30)"
+[ "$NF" -lt 60 ] || { echo "FAIL: $NF files in results — composition/ leaked in? build it under /tmp"; FAIL=$((FAIL+1)); }
 DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$RESULTS_DIR/brag.mp4" 2>/dev/null | cut -d. -f1)
 echo "brag.mp4 duration: ${DUR:-?}s"
 { [ -n "$DUR" ] && [ "$DUR" -ge 15 ] && [ "$DUR" -le 26 ]; } || { echo "FAIL: duration outside 15-25s"; FAIL=$((FAIL+1)); }
@@ -377,6 +428,7 @@ FR=$(ls "$RESULTS_DIR"/frames/*.png 2>/dev/null | wc -l | tr -d ' '); echo "key 
 - [ ] `brag.mp4` rendered; `ffprobe` duration is 15–25s
 - [ ] ≥1 snapshot frame shows real product UI/copy (not abstract filler)
 - [ ] `share-copy.txt` is one tone-matched, project-specific caption
+- [ ] `{{results_dir}}` holds **only** deliverables (< 30 files) — composition/clone/capture stayed in `/tmp`
 - [ ] Verification script printed `OVERALL: PASS`
 
 **If ANY item fails, go back and fix it. Do NOT finish until all items pass.**
@@ -398,3 +450,10 @@ FR=$(ls "$RESULTS_DIR"/frames/*.png 2>/dev/null | wc -l | tr -d ' '); echo "key 
   audio or silence is genuinely the stronger choice.
 - **Let Hyperframes own the mechanics.** Give it the story, copy, tone, and moments; let it choose
   the composition structure, exact timing, and render. Run `lint` before every render.
+- **Results = deliverables only (load-bearing).** Do all heavy work in `/tmp` (clone → `/tmp/brag_src`,
+  capture → `/tmp/brag_source`, composition → `/tmp/brag_work`). The Hyperframes scaffold alone is
+  800+ files; if it lands in `{{results_dir}}`, the artifact upload overruns the run's heartbeat
+  window, the activity is retried, and a perfectly-good render is reported as a failure. The Step 7
+  prune is the safety net — don't rely on it; keep results clean by construction.
+- **Render `--quality draft`.** A high frame-by-frame render can exceed the 30-min agent budget;
+  draft renders in a couple of minutes and looks fine for a 20s social clip.
