@@ -2,8 +2,8 @@
 version: "1.0.0"
 evaluation: programmatic
 agent: claude-code
-model: claude-sonnet-4-6
-model_provider: anthropic
+model: anthropic/claude-sonnet-4.6
+model_provider: openrouter
 snapshot: python312-uv
 # Operation-aware headline deliverable: an `audit` run surfaces audit_report.md;
 # a `polish` run surfaces the cleaned-up polished.html. Only files actually

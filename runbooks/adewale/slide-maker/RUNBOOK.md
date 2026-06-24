@@ -2,7 +2,8 @@
 version: "1.2.0"
 evaluation: programmatic
 agent: claude-code
-model: claude-sonnet-4-6
+model: anthropic/claude-sonnet-4.6
+model_provider: openrouter
 snapshot: python312-uv
 # Headline deliverables, resolved by Mise to outputs.primary_files in order.
 # deck.pdf (the rendered slides) is the gallery hero; slides.md is the source.

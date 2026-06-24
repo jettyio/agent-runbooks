@@ -2,8 +2,8 @@
 version: "1.0.0"
 evaluation: programmatic
 agent: claude-code
-model: claude-sonnet-4-6
-model_provider: anthropic
+model: anthropic/claude-sonnet-4.6
+model_provider: openrouter
 snapshot: python312-uv
 # The headline deliverable — the comparison report.
 primary_outputs:

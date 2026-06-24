@@ -2,8 +2,8 @@
 version: "1.0.0"
 evaluation: programmatic
 agent: claude-code
-model: claude-sonnet-4-6
-model_provider: anthropic
+model: anthropic/claude-sonnet-4.6
+model_provider: openrouter
 snapshot: prism-playwright
 # Headline deliverables, resolved by Mise to outputs.primary_files in declaration order.
 # Operation-aware: only the files a given run actually writes surface as primary_files.

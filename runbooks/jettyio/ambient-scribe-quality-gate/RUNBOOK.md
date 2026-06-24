@@ -2,8 +2,8 @@
 version: "1.1.0"
 evaluation: rubric
 agent: claude-code
-model: claude-sonnet-4-6
-model_provider: anthropic
+model: anthropic/claude-sonnet-4.6
+model_provider: openrouter
 snapshot: python312-uv
 origin:
   attribution:

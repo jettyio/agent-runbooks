@@ -2,8 +2,8 @@
 version: "1.2.0"
 evaluation: programmatic
 agent: claude-code
-model: claude-sonnet-4-6
-model_provider: anthropic
+model: anthropic/claude-sonnet-4.6
+model_provider: openrouter
 snapshot: text-to-cad
 # Eat our own dog food: declare the headline deliverables so Mise surfaces them.
 primary_outputs:

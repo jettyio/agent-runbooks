@@ -2,7 +2,8 @@
 version: "1.0.0"
 evaluation: programmatic
 agent: claude-code
-model: claude-sonnet-4-6
+model: anthropic/claude-sonnet-4.6
+model_provider: openrouter
 snapshot: python312-uv
 origin:
   url: "https://skills.sh/larksuite/cli/lark-doc"

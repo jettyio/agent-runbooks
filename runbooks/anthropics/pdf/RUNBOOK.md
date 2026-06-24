@@ -2,8 +2,8 @@
 version: "1.2.1"
 evaluation: programmatic
 agent: claude-code
-model: claude-sonnet-4-6
-model_provider: anthropic
+model: anthropic/claude-sonnet-4.6
+model_provider: openrouter
 snapshot: python312-uv
 # The headline deliverable(s), resolved by Mise to outputs.primary_files in
 # declaration order. Only files actually written by the chosen operation are
