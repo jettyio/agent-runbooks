@@ -3,6 +3,7 @@
     "latent-spaces/brag",
     "jettyio/langfuse-trace-optimizer",
     "jettyio/posthog-trace-optimizer",
+    "jettyio/pelican-persona",
     "aapersh/diagnosis-and-framing",
     "wizenheimer/canary",
     "adewale/slide-maker",
