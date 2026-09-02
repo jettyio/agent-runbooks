@@ -1,0 +1,15 @@
+{
+  "title": "JSCAI 2026 issue — top 20 abstracts",
+  "prompt": "Execute the runbook.",
+  "params": {
+    "vars": {
+      "crossref_issn": "2772-9303",
+      "crossref_volume_issue": "volume 5, issue 4",
+      "confex_program_url": "https://scai.confex.com/scai/2026/meetingapp.cgi",
+      "max_abstracts": "20",
+      "results_dir": "/app/results"
+    }
+  },
+  "files": [],
+  "note": "No file inputs — CrossRef (api.crossref.org) and the SCAI 2026 Confex meeting program are public. Full text is the conference's pre-publication version."
+}

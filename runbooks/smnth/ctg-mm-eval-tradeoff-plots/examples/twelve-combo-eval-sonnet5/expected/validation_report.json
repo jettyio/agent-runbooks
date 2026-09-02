@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-09-02T20:12:00Z",
+  "parameters": {
+    "input_file": "/app/assets/6c1ecf5c.00.csv"
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "pandas, matplotlib, adjustText installed; /app/results/charts created"
+    },
+    {
+      "name": "compute",
+      "passed": true,
+      "message": "Derived cost_per_found, recall_per_minute, and per-agent reliability aggregates computed for all 12 rows (8 scored, 4 zero_output)"
+    },
+    {
+      "name": "render",
+      "passed": true,
+      "message": "All 5 charts rendered at dpi=180 using the fixed palette; recall_vs_field_accuracy.png and recall_vs_runtime.png used figsize=(15,10) with deterministic jitter for duplicate coordinates, adjustText for layout, and a programmatic zero-overlap assertion (via get_window_extent bounding-box comparison) that passed without needing a retry"
+    },
+    {
+      "name": "evaluation",
+      "passed": true,
+      "message": "All 4 per-run charts contain exactly 12 individually labeled combinations (asserted in code); agent_reliability_comparison.png is aggregate-level by design; no dual-axis, pie, or 3D charts; legends present on all 2+ series charts; only palette colors used"
+    },
+    {
+      "name": "report_generation",
+      "passed": true,
+      "message": "chart_data.json, summary.md, and validation_report.json written"
+    }
+  ],
+  "results": {
+    "pass": 5,
+    "partial": 0,
+    "fail": 0
+  },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/charts/recall_vs_field_accuracy.png",
+    "/app/results/charts/recall_vs_runtime.png",
+    "/app/results/charts/cost_per_found_study.png",
+    "/app/results/charts/agent_reliability_comparison.png",
+    "/app/results/charts/recall_per_minute.png",
+    "/app/results/chart_data.json",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ],
+  "notes": [
+    "cc/gpt-5.6-luna (claude-code, gpt-5.6-luna) is flagged as a corrupted extraction: 97.87% recall but 0% title_accuracy_pct and 0% enrollment_accuracy_pct, giving 66.67% overall field accuracy despite the lowest tracked cost ($0.19) and highest recall_per_minute (24.25). It is rendered in critical red on cost_per_found_study.png with an explicit annotation so its low $/study figure is not mistaken for a genuinely good result.",
+    "cc/gpt-5.6-terra (claude-code, gpt-5.6-terra) is a zero_output run that nonetheless has a tracked cost_usd (0.35) and total_tokens (1068) -- it spent money but found 0 studies, so cost_per_found is undefined (not zero) and it gets a distinct 'cost tracked, 0 studies found' label on cost_per_found_study.png rather than being lumped in with the 8 runs that have no cost tracking at all.",
+    "Only 3 of 12 runs have a usable cost_per_found value (cost_usd present AND num_found > 0): cc/claude-sonnet-4-6, cc/gpt-5.6-sol, cc/gpt-5.6-luna. All 5 opencode runs and 1 claude-code zero_output run have no cost_usd at all; a 2nd claude-code zero_output run (kimi-k2) is missing cost_usd but has total_tokens; a 3rd (ox-alpha) has neither."
+  ]
+}

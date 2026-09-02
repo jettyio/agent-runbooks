@@ -1,0 +1,62 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-08-19T21:50:06Z",
+  "parameters": {
+    "source_url": "https://www.jscai.org/issue/S2772-9303(26)X2005-1",
+    "max_abstracts": "20"
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "Playwright + BeautifulSoup installed; Confex accessible"
+    },
+    {
+      "name": "link_discovery",
+      "passed": true,
+      "message": "830 conference abstracts found via CrossRef; top 20 selected by article page number (= issue TOC order)"
+    },
+    {
+      "name": "extraction",
+      "passed": true,
+      "message": "19/20 full texts from SCAI Confex program; 1/20 partial text from OpenAlex"
+    },
+    {
+      "name": "evaluation",
+      "passed": true,
+      "message": "PASS=19, PARTIAL=1, FAIL=0"
+    },
+    {
+      "name": "completeness_check",
+      "passed": true,
+      "message": "20 entries in, 20 entries out, 0 duplicates"
+    },
+    {
+      "name": "report_generation",
+      "passed": true,
+      "message": "All output files written"
+    }
+  ],
+  "results": {
+    "pass": 19,
+    "partial": 1,
+    "fail": 0
+  },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/abstracts.json",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ],
+  "notes": {
+    "data_sources": [
+      "CrossRef API (article discovery and page-number ordering)",
+      "SCAI Confex 2026 program (abstract full text for 19/20 entries)",
+      "OpenAlex (truncated abstract for OR1-18)"
+    ],
+    "access_blocked": "jscai.org and sciencedirect.com blocked by Cloudflare Error 1000 (IP-level block)",
+    "partial_entries": [
+      "OR1-18: truncated abstract (273 chars), Confex paper not found in scanned sessions"
+    ]
+  }
+}

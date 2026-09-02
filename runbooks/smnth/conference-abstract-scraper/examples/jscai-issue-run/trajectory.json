@@ -1,0 +1,27 @@
+{
+  "collection": "volpiglio",
+  "task": "conference-abstract-scraper",
+  "trajectory_id": "ac2710e0",
+  "url": "https://jetty.io/trajectory/volpiglio/conference-abstract-scraper/ac2710e0",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "prism-playwright",
+  "ran_at": "2026-08-19T21:19:01.357938Z",
+  "duration_seconds": 1897,
+  "crossref_issn": "2772-9303",
+  "crossref_volume_issue": "volume 5, issue 4",
+  "confex_program_url": "https://scai.confex.com/scai/2026/meetingapp.cgi",
+  "max_abstracts": 20,
+  "eval": {
+    "overall_passed": true,
+    "results": {
+      "pass": 19,
+      "partial": 1,
+      "fail": 0
+    },
+    "completeness_check": "20 entries in, 20 entries out, 0 duplicates"
+  },
+  "notes": "Metadata (DOI, authors, publication date, page-number ordering) sourced from the CrossRef REST API; full text sourced directly from the SCAI Confex meeting program via title matching. 19/20 entries matched with complete full text; 1 entry (OR1-18) matched but had only a short excerpt available, downgraded to PARTIAL.",
+  "workflow_id": "volpiglio-conference-abstract-scraper--ac2710e0"
+}

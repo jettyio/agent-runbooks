@@ -1,0 +1,138 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-08-26T14:20:02Z",
+  "parameters": {
+    "results_dir": "/app/results",
+    "input_file": "/app/assets/evaluation_matrix.csv"
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "Packages installed; /app/results/charts created"
+    },
+    {
+      "name": "compute",
+      "passed": true,
+      "message": "Derived columns computed for all 12 rows"
+    },
+    {
+      "name": "render",
+      "passed": true,
+      "message": "All 5 charts rendered and saved"
+    },
+    {
+      "name": "evaluation",
+      "passed": true,
+      "message": "No label overlaps on any scatter chart"
+    },
+    {
+      "name": "report_generation",
+      "passed": true,
+      "message": "chart_data.json, summary.md, validation_report.json written"
+    }
+  ],
+  "results": {
+    "pass": 5,
+    "partial": 0,
+    "fail": 0
+  },
+  "overall_passed": true,
+  "chart_results": [
+    {
+      "chart": "recall_vs_field_accuracy.png",
+      "n_labels": 12,
+      "overlaps": 0,
+      "passed": true
+    },
+    {
+      "chart": "recall_vs_runtime.png",
+      "n_labels": 12,
+      "overlaps": 0,
+      "passed": true
+    },
+    {
+      "chart": "cost_per_found_study.png",
+      "n_real_bars": 3,
+      "n_nodata_slots": 9,
+      "passed": true
+    },
+    {
+      "chart": "agent_reliability_comparison.png",
+      "agent_stats": {
+        "claude-code": {
+          "n_total": 6,
+          "n_scored": 3,
+          "success_rate_pct": 50.0,
+          "mean_recall_pct": 97.16,
+          "mean_field_accuracy_pct": 83.7633
+        },
+        "opencode": {
+          "n_total": 6,
+          "n_scored": 5,
+          "success_rate_pct": 83.3333,
+          "mean_recall_pct": 97.444,
+          "mean_field_accuracy_pct": 92.292
+        }
+      },
+      "passed": true
+    },
+    {
+      "chart": "recall_per_minute.png",
+      "n_bars": 12,
+      "passed": true
+    }
+  ],
+  "file_checks": [
+    {
+      "file": "/app/results/charts/recall_vs_field_accuracy.png",
+      "exists": true,
+      "size_bytes": 143979
+    },
+    {
+      "file": "/app/results/charts/recall_vs_runtime.png",
+      "exists": true,
+      "size_bytes": 128387
+    },
+    {
+      "file": "/app/results/charts/cost_per_found_study.png",
+      "exists": true,
+      "size_bytes": 161394
+    },
+    {
+      "file": "/app/results/charts/agent_reliability_comparison.png",
+      "exists": true,
+      "size_bytes": 81174
+    },
+    {
+      "file": "/app/results/charts/recall_per_minute.png",
+      "exists": true,
+      "size_bytes": 166381
+    },
+    {
+      "file": "/app/results/chart_data.json",
+      "exists": true,
+      "size_bytes": 18370
+    },
+    {
+      "file": "/app/results/summary.md",
+      "exists": true,
+      "size_bytes": 4109
+    },
+    {
+      "file": "/app/results/validation_report.json",
+      "exists": false,
+      "size_bytes": 0
+    }
+  ],
+  "output_files": [
+    "/app/results/charts/recall_vs_field_accuracy.png",
+    "/app/results/charts/recall_vs_runtime.png",
+    "/app/results/charts/cost_per_found_study.png",
+    "/app/results/charts/agent_reliability_comparison.png",
+    "/app/results/charts/recall_per_minute.png",
+    "/app/results/chart_data.json",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}

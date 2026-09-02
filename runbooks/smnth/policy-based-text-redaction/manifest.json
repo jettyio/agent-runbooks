@@ -1,0 +1,180 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "smnth/policy-based-text-redaction",
+  "title": "Policy-based text redaction",
+  "description": "Redact sensitive spans from a dataset of texts according to per-record policy statements, balancing under-redaction (leaks) against over-redaction (unreadable output), and scoring the result against a 5-criterion rubric.",
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "15-20 mins"
+  },
+  "example_outputs": [
+    {
+      "id": "professional-domains-run",
+      "title": "10 professional-domain records (healthcare, education, legal)",
+      "summary": "Clinic emails, a discharge summary, school counselor notes, and privileged legal memos — each redacted against its own policy list. Scored 4.8/5 in a single pass: 5/5 on policy compliance, context preservation, marker consistency and readability, 4/5 on precision (two legal memos redact whole strategy sentences by design). Numbered markers keep who-said-what-to-whom intact.",
+      "thumbnail": "examples/professional-domains-run/thumbnail.png",
+      "operation": "redact",
+      "dir": "examples/professional-domains-run",
+      "input": {
+        "kind": "dataset",
+        "values": {
+          "input_file": "input.json",
+          "redaction_marker": "[REDACTED: {category}]"
+        }
+      },
+      "primary_output": "examples/professional-domains-run/expected/redacted_dataset.json",
+      "outputs": [
+        {
+          "file": "examples/professional-domains-run/expected/redacted_dataset.json",
+          "role": "primary",
+          "type": "application/json",
+          "description": "All 10 records with original fields plus redacted_text (96 labelled markers across the set)."
+        },
+        {
+          "file": "examples/professional-domains-run/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Rubric scores with per-criterion justification, per-record notes, iteration history."
+        },
+        {
+          "file": "examples/professional-domains-run/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Stage results, structured rubric scores, overall_score 4.8, overall_passed."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "volpiglio",
+        "task": "policy-based-text-redaction",
+        "trajectory_id": "fc8a7a86",
+        "url": "https://jetty.io/trajectory/volpiglio/policy-based-text-redaction/fc8a7a86",
+        "agent": "claude-code",
+        "model": "anthropic/claude-sonnet-5",
+        "model_provider": "openrouter",
+        "runbook_version": "1.0.2",
+        "ran_at": "2026-09-02T20:08:47.099046Z",
+        "duration_seconds": 405,
+        "eval": {
+          "overall_passed": true,
+          "overall_score": 4.8
+        }
+      }
+    },
+    {
+      "id": "sample20-run",
+      "title": "20-record sample (government, corporation, individual)",
+      "summary": "A full run over 20 records spanning three domains, scoring 4.73/5 overall against the rubric with no criterion below 4.6.",
+      "thumbnail": "examples/sample20-run/thumbnail.png",
+      "operation": "redact",
+      "dir": "examples/sample20-run",
+      "input": {
+        "kind": "dataset",
+        "values": {
+          "input_file": "input.json",
+          "redaction_marker": "[REDACTED: {category}]"
+        }
+      },
+      "primary_output": "examples/sample20-run/expected/redacted_dataset.json",
+      "outputs": [
+        {
+          "file": "examples/sample20-run/expected/redacted_dataset.json",
+          "role": "primary",
+          "type": "application/json",
+          "description": "All 20 records with original fields plus redacted_text."
+        },
+        {
+          "file": "examples/sample20-run/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Run summary with rubric scores and iteration history."
+        },
+        {
+          "file": "examples/sample20-run/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Structured rubric scores and overall_passed."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "volpiglio",
+        "task": "policy-based-text-redaction",
+        "trajectory_id": "a8e36930",
+        "url": "https://jetty.io/trajectory/volpiglio/policy-based-text-redaction/a8e36930",
+        "agent": "claude-code",
+        "model": "anthropic/claude-sonnet-5",
+        "ran_at": "2026-08-19T14:04:41.244896Z",
+        "duration_seconds": 1152,
+        "eval": {
+          "overall_passed": true,
+          "overall_score": 4.73
+        },
+        "model_provider": "openrouter"
+      }
+    }
+  ],
+  "featured_examples": [
+    "professional-domains-run",
+    "sample20-run"
+  ],
+  "inputs": [
+    {
+      "label": "Input dataset",
+      "type": "file",
+      "required": true,
+      "description": "JSON array of records, each with id, domain, policy, policy_ids, and text."
+    },
+    {
+      "label": "Redaction marker style",
+      "type": "text",
+      "required": false,
+      "default": "[REDACTED: {category}]",
+      "description": "Format for replacing sensitive spans, e.g. [REDACTED: PERSON]."
+    }
+  ],
+  "secrets": [],
+  "runbook_source": "RUNBOOK.md",
+  "meta": {
+    "created_by": {
+      "name": "smnth",
+      "source": "jetty.io",
+      "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smnth/policy-based-text-redaction",
+      "avatar": null
+    },
+    "tags": [
+      "privacy",
+      "redaction",
+      "compliance",
+      "text",
+      "agent:claude-code",
+      "rubric"
+    ],
+    "version": "1.0.2",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-5",
+    "model_provider": "openrouter",
+    "snapshot": "python312-uv",
+    "evaluation": "rubric",
+    "primary_outputs": [
+      "redacted_dataset.json"
+    ],
+    "lineage": {
+      "remix_of": null,
+      "imported_from": null,
+      "imported_by": null
+    },
+    "share": "smnth/policy-based-text-redaction",
+    "metrics": {
+      "_note": "Live counters — supplied by the Jetty backend at render time, not authored here.",
+      "number_of_runs": null,
+      "forks": null,
+      "remixes": null
+    }
+  },
+  "caveats": [
+    "Rubric scores are self-assessed by the agent per Step 4 of the runbook, not independently verified by a separate judge model.",
+    "The sample run's input dataset draws on Enron-style corporate correspondence for the `corporation` domain records."
+  ]
+}

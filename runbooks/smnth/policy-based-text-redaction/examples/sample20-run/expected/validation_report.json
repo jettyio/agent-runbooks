@@ -1,0 +1,87 @@
+{
+  "version": "1.0.1",
+  "run_date": "2026-08-19",
+  "parameters": {
+    "input_file": "/app/assets/c4395d52.00.json",
+    "output_files": [
+      "/app/results/redacted_dataset.json",
+      "/app/results/summary.md",
+      "/app/results/validation_report.json"
+    ],
+    "redaction_method": "literal string substitution, verified against source text",
+    "marker_format": "[REDACTED: {category}]",
+    "max_iterations": 3,
+    "pass_threshold": {
+      "overall_average_min": 4.0,
+      "per_criterion_min": 3
+    }
+  },
+  "stages": [
+    {
+      "stage": "environment_setup",
+      "status": "passed",
+      "notes": "Verified /app/assets/c4395d52.00.json exists and is a JSON array of 20 records with fields id, domain, policy, policy_ids, text."
+    },
+    {
+      "stage": "parse_input",
+      "status": "passed",
+      "notes": "Loaded and indexed all 20 records by id; read full policy text and body text for each to determine applicable redaction categories."
+    },
+    {
+      "stage": "redact",
+      "status": "passed",
+      "notes": "Applied literal (non-regex) string replacements per record via /app/redact.py, using a per-record entity-to-marker map so every occurrence/alias of the same entity received the same numbered marker. Verified exact substrings (including embedded newlines/whitespace) against source text before finalizing; re-ran with zero 'substring not found' warnings after fixes."
+    },
+    {
+      "stage": "evaluate_against_rubric",
+      "status": "passed",
+      "notes": "Manually reviewed all 20 redacted records line-by-line and scored each against the 5-criterion rubric. Overall average 4.73, minimum per-criterion average 4.60 (Context Preservation and Redaction Precision), both above thresholds."
+    },
+    {
+      "stage": "iterate",
+      "status": "passed",
+      "notes": "One informal refinement round applied before formal scoring: fixed 4 missed/inconsistent redactions (record 1562 bare ID number, record 784 'sbwhoeop' alias, record 938 'Cdm' initials, record 16 unredacted persona names requiring segment-based disambiguation of two same-named personas). Formal scoring after these fixes passed on round 1; no further iteration rounds were required."
+    },
+    {
+      "stage": "write_summary",
+      "status": "passed",
+      "notes": "Wrote /app/results/summary.md with overview, rubric score table, per-record notes, iteration history, recommendations, and limitations."
+    },
+    {
+      "stage": "write_validation_report",
+      "status": "passed",
+      "notes": "Wrote /app/results/validation_report.json (this file)."
+    },
+    {
+      "stage": "final_checklist",
+      "status": "passed",
+      "notes": "Confirmed all 3 output files exist and are non-empty, and that redacted_dataset.json contains exactly 20 records each with a non-empty redacted_text field."
+    }
+  ],
+  "rubric_scores": {
+    "policy_compliance": 4.85,
+    "context_preservation": 4.6,
+    "redaction_precision": 4.65,
+    "marker_consistency_and_clarity": 4.9,
+    "readability": 4.65
+  },
+  "overall_score": 4.73,
+  "pass_threshold": {
+    "overall_average_min": 4.0,
+    "per_criterion_min": 3
+  },
+  "iterations": 1,
+  "overall_passed": true,
+  "record_count": 20,
+  "lowest_scoring_records": [
+    { "id": "849", "average": 3.8, "reason": "Source text is heavily OCR-garbled independent of redaction quality; Readability capped at 3." },
+    { "id": "966", "average": 4.0, "reason": "Very short record with ambiguous two-letter initials used as person identifiers." },
+    { "id": "820", "average": 4.4, "reason": "Long multi-participant diplomatic email chain; dense redactions reduce flow slightly." },
+    { "id": "938", "average": 4.4, "reason": "Long multi-participant diplomatic email chain; dense redactions reduce flow slightly." }
+  ],
+  "output_files": [
+    { "path": "/app/results/redacted_dataset.json", "description": "All 20 original records plus non-empty redacted_text field for each." },
+    { "path": "/app/results/summary.md", "description": "Executive summary, rubric scores, per-record notes, iteration history, recommendations, limitations." },
+    { "path": "/app/results/validation_report.json", "description": "Structured validation results including rubric scores and overall_passed status." }
+  ]
+}

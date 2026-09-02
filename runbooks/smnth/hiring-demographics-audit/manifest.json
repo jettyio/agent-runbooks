@@ -1,0 +1,233 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "smnth/hiring-demographics-audit",
+  "title": "Hiring demographics audit",
+  "description": "Audit a hiring dataset for adverse impact across demographic dimensions and job roles — computes four-fifths ratios, dual significance testing (Fisher's exact + chi-square), and produces a narrative compliance report backed by a structured metrics table, with a hard programmatic-validation gate and a fact-check gate that verifies the executive summary's numbers against the metrics CSV before the run is allowed to pass.",
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "8-12 mins"
+  },
+  "example_outputs": [
+    {
+      "id": "healthcare-network-run",
+      "title": "Regional healthcare network — 900 synthetic candidates, 6 roles",
+      "summary": "A 900-candidate synthetic dataset with two deliberately injected disparities (Lab Technician candidates aged 50+, Hispanic/Latino Clinic Administrator candidates). Both surface in disparity_metrics.csv at four-fifths ratios of 0.48 and 0.15; 57 cells flagged in total, all 10 programmatic checks and the summary fact-check gate pass, rubric 5.0/5 in a single pass.",
+      "thumbnail": "examples/healthcare-network-run/thumbnail.png",
+      "operation": "audit",
+      "dir": "examples/healthcare-network-run",
+      "input": {
+        "kind": "dataset",
+        "values": {
+          "input_data_path": "input.csv",
+          "outcome_field": "hired",
+          "job_role_field": "role_applied",
+          "protected_attributes": "gender,race_ethnicity,disability_status,veteran_status,age_bracket",
+          "disparity_threshold": "0.8",
+          "min_group_size": "30"
+        }
+      },
+      "primary_output": "examples/healthcare-network-run/expected/compliance_report.md",
+      "outputs": [
+        {
+          "file": "examples/healthcare-network-run/expected/compliance_report.md",
+          "role": "primary",
+          "type": "text/markdown",
+          "description": "Narrative compliance/fairness report for HR/legal review — methodology, findings by role and dimension, flagged items with both p-values, recommendations, caveats."
+        },
+        {
+          "file": "examples/healthcare-network-run/expected/disparity_metrics.csv",
+          "role": "primary",
+          "type": "text/csv",
+          "description": "125 rows — one per (role, dimension, group) plus ALL_ROLES rollups — with counts, selection rates, four-fifths ratios, dual significance tests, flags."
+        },
+        {
+          "file": "examples/healthcare-network-run/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Executive summary; flagged count and top-5 findings re-derived from the CSV by the Step 9 gate."
+        },
+        {
+          "file": "examples/healthcare-network-run/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "10 programmatic checks, summary-accuracy gate, six rubric scores, overall_passed."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "volpiglio",
+        "task": "hiring-demographics-audit",
+        "trajectory_id": "6102412d",
+        "url": "https://jetty.io/trajectory/volpiglio/hiring-demographics-audit/6102412d",
+        "agent": "claude-code",
+        "model": "anthropic/claude-sonnet-5",
+        "model_provider": "openrouter",
+        "runbook_version": "1.1.1",
+        "ran_at": "2026-09-02T20:09:08.833956Z",
+        "duration_seconds": 429,
+        "eval": {
+          "overall_passed": true,
+          "overall_score": 5.0
+        }
+      }
+    },
+    {
+      "id": "synthetic-cvs-run",
+      "title": "Synthetic CV dataset (1,000 candidates, 12 roles)",
+      "summary": "A full audit over 1,000 synthetic candidates across 12 job roles and 5 protected attributes, scoring 5.0/5 on the rubric with every programmatic check and the fact-check gate passing.",
+      "thumbnail": "examples/synthetic-cvs-run/thumbnail.png",
+      "operation": "audit",
+      "dir": "examples/synthetic-cvs-run",
+      "input": {
+        "kind": "dataset",
+        "values": {
+          "input_data_path": "input.csv",
+          "outcome_field": "hired",
+          "job_role_field": "role_applied",
+          "protected_attributes": "gender,race_ethnicity,disability_status,veteran_status,age_bracket",
+          "disparity_threshold": "0.8",
+          "min_group_size": "30"
+        }
+      },
+      "primary_output": "examples/synthetic-cvs-run/expected/compliance_report.md",
+      "outputs": [
+        {
+          "file": "examples/synthetic-cvs-run/expected/compliance_report.md",
+          "role": "primary",
+          "type": "text/markdown",
+          "description": "Narrative compliance/fairness report for HR/legal review."
+        },
+        {
+          "file": "examples/synthetic-cvs-run/expected/disparity_metrics.csv",
+          "role": "primary",
+          "type": "text/csv",
+          "description": "Structured per-(role, dimension, group) metrics table with four-fifths ratios and dual significance tests."
+        },
+        {
+          "file": "examples/synthetic-cvs-run/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Executive summary, fact-checked against disparity_metrics.csv."
+        },
+        {
+          "file": "examples/synthetic-cvs-run/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Programmatic checks, summary-accuracy gate, and rubric scores."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "volpiglio",
+        "task": "hiring-demographics-audit",
+        "trajectory_id": "4a1353c8",
+        "url": "https://jetty.io/trajectory/volpiglio/hiring-demographics-audit/4a1353c8",
+        "agent": "claude-code",
+        "model": "claude-sonnet-4-6",
+        "ran_at": "2026-08-19T19:10:25.215617Z",
+        "duration_seconds": 466,
+        "eval": {
+          "overall_passed": true,
+          "overall_score": 5.0
+        },
+        "model_provider": "anthropic"
+      }
+    }
+  ],
+  "featured_examples": [
+    "healthcare-network-run",
+    "synthetic-cvs-run"
+  ],
+  "inputs": [
+    {
+      "label": "Input dataset",
+      "type": "file",
+      "required": true,
+      "description": "CSV, one row per candidate, including job role applied for, hiring outcome, and demographic columns."
+    },
+    {
+      "label": "Protected attributes",
+      "type": "text",
+      "required": false,
+      "default": "gender,race_ethnicity,disability_status,veteran_status,age_bracket",
+      "description": "Comma-separated demographic columns/dimensions to analyze for disparity."
+    },
+    {
+      "label": "Job role field",
+      "type": "text",
+      "required": false,
+      "default": "role_applied",
+      "description": "Column name identifying the job role/req the candidate applied for."
+    },
+    {
+      "label": "Outcome field",
+      "type": "text",
+      "required": false,
+      "default": "hired",
+      "description": "Column with the hiring decision (Yes/No)."
+    },
+    {
+      "label": "Disparity threshold",
+      "type": "text",
+      "required": false,
+      "default": "0.8",
+      "description": "Four-fifths rule threshold below which a group is flagged."
+    },
+    {
+      "label": "Minimum group size",
+      "type": "text",
+      "required": false,
+      "default": "30",
+      "description": "Minimum cell size before a significance test is attempted."
+    }
+  ],
+  "secrets": [],
+  "runbook_source": "RUNBOOK.md",
+  "meta": {
+    "created_by": {
+      "name": "smnth",
+      "source": "jetty.io",
+      "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smnth/hiring-demographics-audit",
+      "avatar": null
+    },
+    "tags": [
+      "compliance",
+      "hiring",
+      "fairness",
+      "statistics",
+      "hr",
+      "agent:claude-code",
+      "rubric",
+      "programmatic"
+    ],
+    "version": "1.1.1",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-5",
+    "model_provider": "openrouter",
+    "snapshot": "python312-uv",
+    "evaluation": "rubric",
+    "primary_outputs": [
+      "compliance_report.md",
+      "disparity_metrics.csv"
+    ],
+    "lineage": {
+      "remix_of": null,
+      "imported_from": null,
+      "imported_by": null
+    },
+    "share": "smnth/hiring-demographics-audit",
+    "metrics": {
+      "_note": "Live counters — supplied by the Jetty backend at render time, not authored here.",
+      "number_of_runs": null,
+      "forks": null,
+      "remixes": null
+    }
+  },
+  "caveats": [
+    "Statistical disparity flagged by the four-fifths rule and significance tests does not by itself establish discriminatory intent — see the report's own caveats section.",
+    "The sample dataset is synthetic and used for audit-methodology demonstration only, not a real EEOC/OFCCP filing.",
+    "Rubric scores are self-assessed by the agent, though gated by a hard programmatic-validation step (Step 4) and a fact-check step (Step 9) that verify calculations and summary numbers against the CSV rather than relying on impression alone.",
+    "The reference group for the four-fifths ratio is the highest-selection-rate group in each (role, dimension) cell regardless of its size, so a tiny group hired at 100% (e.g. 2 candidates) becomes the reference and pushes every sibling group into flagged + low_confidence. The healthcare-network-run example shows this: its injected Clinic Administrator disparity is flagged at ratio 0.15 but marked low-confidence for exactly that reason. Read low_confidence rows directionally, or raise min_group_size, until a future runbook version restricts reference-group selection to groups meeting min_group_size."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-09-02T00:00:00Z",
+  "parameters": {
+    "input_file": "/app/assets/fc8a7a86.00.json",
+    "redaction_marker": "[REDACTED: {category}]"
+  },
+  "stages": [
+    { "name": "setup", "passed": true, "message": "Environment ready; /app/results created" },
+    { "name": "input_parsing", "passed": true, "message": "10 records parsed successfully from /app/assets/fc8a7a86.00.json (healthcare: 4, education: 3, legal: 3)" },
+    { "name": "redaction", "passed": true, "message": "redacted_dataset.json generated for all 10 records; automated leak check against source-text sensitive terms found zero leaks" },
+    { "name": "evaluation", "passed": true, "message": "Rubric score: 4.8/5" },
+    { "name": "report_generation", "passed": true, "message": "All output files written" }
+  ],
+  "rubric_scores": {
+    "policy_compliance": { "score": 5, "notes": "Every span covered by each record's stated policy bullets is redacted, including repeat mentions in different forms (full name then first name, recurring day references). Verified with an automated leak check against a list of every sensitive term in the source texts; no leaks found." },
+    "context_preservation": { "score": 5, "notes": "Greetings, sign-offs, institution names, job roles, and explicitly non-sensitive general-policy statements are preserved intact; narrative flow and document structure remain clear." },
+    "redaction_precision": { "score": 4, "notes": "Nearly all redactions are minimal-span (name, date, figure, phone). Two records (LG-301, LG-303) use a couple of full-sentence PRIVILEGED_STRATEGY redactions because the entire sentence is itself a case-strength assessment or piece of advice, which is broader than a single-token redaction though still policy-justified." },
+    "marker_consistency": { "score": 5, "notes": "Each entity maps to exactly one marker per record; records with multiple people/parties use numbered markers (STAFF_1/2/3, MINOR_1/2, EMPLOYEE_1/2, WITNESS_1/2) consistently throughout." },
+    "readability": { "score": 5, "notes": "Every redacted record reads as a coherent, grammatically sound document; redactions were checked in place of the original spans to confirm they still parse naturally." }
+  },
+  "overall_score": 4.8,
+  "pass_threshold": 4.0,
+  "iterations": 1,
+  "overall_passed": true,
+  "record_count": 10,
+  "output_files": [
+    "/app/results/redacted_dataset.json",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}

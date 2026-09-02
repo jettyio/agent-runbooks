@@ -1,0 +1,14 @@
+{
+  "title": "Ulcerative colitis \u2014 1-month posting window",
+  "prompt": "Execute the runbook.",
+  "params": {
+    "vars": {
+      "condition": "Ulcerative colitis",
+      "posted_from": "2026-07-25",
+      "posted_to": "2026-08-25",
+      "results_dir": "/app/results"
+    }
+  },
+  "files": [],
+  "note": "No file inputs \u2014 ClinicalTrials.gov API v2 and study pages are public. Run against runbook v1.3.0, so it includes extraction_audit.json."
+}

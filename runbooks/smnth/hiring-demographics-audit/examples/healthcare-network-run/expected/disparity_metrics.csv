@@ -1,0 +1,126 @@
+job_role,dimension,group,candidate_count,hire_count,selection_rate,reference_group,reference_group_tie_broken,four_fifths_ratio,flagged,fisher_p_value,fisher_significant,chi2_p_value,chi2_significant,statistically_significant,low_confidence
+Clinic Administrator,gender,Female,80,22,0.275,Male,False,0.982143,False,1.0,False,1.0,False,False,False
+Clinic Administrator,gender,Male,50,14,0.28,Male,False,1.0,False,1.0,False,1.0,False,False,False
+Clinic Administrator,gender,Non-binary,5,1,0.2,Male,False,0.714286,True,,,,,,True
+Clinic Administrator,race_ethnicity,Asian,11,4,0.363636,Native American,False,0.363636,True,,,,,,True
+Clinic Administrator,race_ethnicity,Black,14,6,0.428571,Native American,False,0.428571,True,,,,,,True
+Clinic Administrator,race_ethnicity,Hispanic/Latino,65,10,0.153846,Native American,False,0.153846,True,,,,,,True
+Clinic Administrator,race_ethnicity,Middle Eastern,7,2,0.285714,Native American,False,0.285714,True,,,,,,True
+Clinic Administrator,race_ethnicity,Multiracial,8,4,0.5,Native American,False,0.5,True,,,,,,True
+Clinic Administrator,race_ethnicity,Native American,2,2,1.0,Native American,False,1.0,False,,,,,,True
+Clinic Administrator,race_ethnicity,White,28,9,0.321429,Native American,False,0.321429,True,,,,,,True
+Clinic Administrator,disability_status,No,119,31,0.260504,Yes,False,0.694678,True,,,,,,True
+Clinic Administrator,disability_status,Yes,16,6,0.375,Yes,False,1.0,False,,,,,,True
+Clinic Administrator,veteran_status,No,132,36,0.272727,Yes,False,0.818182,False,,,,,,True
+Clinic Administrator,veteran_status,Yes,3,1,0.333333,Yes,False,1.0,False,,,,,,True
+Clinic Administrator,age_bracket,30-39,40,10,0.25,50+,False,0.666667,True,,,,,,True
+Clinic Administrator,age_bracket,40-49,39,10,0.25641,50+,False,0.683761,True,,,,,,True
+Clinic Administrator,age_bracket,50+,16,6,0.375,50+,False,1.0,False,,,,,,True
+Clinic Administrator,age_bracket,<30,40,11,0.275,50+,False,0.733333,True,,,,,,True
+Lab Technician,gender,Female,93,36,0.387097,Male,False,0.917972,False,0.64800046,False,0.75424743,False,False,False
+Lab Technician,gender,Male,83,35,0.421687,Male,False,1.0,False,1.0,False,1.0,False,False,False
+Lab Technician,gender,Non-binary,10,3,0.3,Male,False,0.711429,True,,,,,,True
+Lab Technician,race_ethnicity,Asian,23,13,0.565217,Native American,False,0.942029,False,,,,,,True
+Lab Technician,race_ethnicity,Black,22,8,0.363636,Native American,False,0.606061,True,,,,,,True
+Lab Technician,race_ethnicity,Hispanic/Latino,29,9,0.310345,Native American,False,0.517241,True,,,,,,True
+Lab Technician,race_ethnicity,Middle Eastern,14,7,0.5,Native American,False,0.833333,False,,,,,,True
+Lab Technician,race_ethnicity,Multiracial,14,4,0.285714,Native American,False,0.47619,True,,,,,,True
+Lab Technician,race_ethnicity,Native American,5,3,0.6,Native American,False,1.0,False,,,,,,True
+Lab Technician,race_ethnicity,White,79,30,0.379747,Native American,False,0.632911,True,,,,,,True
+Lab Technician,disability_status,No,168,70,0.416667,No,False,1.0,False,1.0,False,1.0,False,False,False
+Lab Technician,disability_status,Yes,18,4,0.222222,No,False,0.533333,True,,,,,,True
+Lab Technician,veteran_status,No,171,68,0.397661,Yes,False,0.994152,False,,,,,,True
+Lab Technician,veteran_status,Yes,15,6,0.4,Yes,False,1.0,False,,,,,,True
+Lab Technician,age_bracket,30-39,31,15,0.483871,40-49,False,0.77957,True,,,,,,True
+Lab Technician,age_bracket,40-49,29,18,0.62069,40-49,False,1.0,False,,,,,,True
+Lab Technician,age_bracket,50+,84,25,0.297619,40-49,False,0.479497,True,,,,,,True
+Lab Technician,age_bracket,<30,42,16,0.380952,40-49,False,0.613757,True,,,,,,True
+Medical Coder,gender,Female,73,26,0.356164,Male,False,0.83105,False,0.48090518,False,0.49203298,False,False,False
+Medical Coder,gender,Male,63,27,0.428571,Male,False,1.0,False,1.0,False,1.0,False,False,False
+Medical Coder,race_ethnicity,Asian,27,13,0.481481,Native American,False,0.481481,True,,,,,,True
+Medical Coder,race_ethnicity,Black,24,13,0.541667,Native American,False,0.541667,True,,,,,,True
+Medical Coder,race_ethnicity,Hispanic/Latino,21,9,0.428571,Native American,False,0.428571,True,,,,,,True
+Medical Coder,race_ethnicity,Middle Eastern,2,0,0.0,Native American,False,0.0,True,,,,,,True
+Medical Coder,race_ethnicity,Multiracial,7,0,0.0,Native American,False,0.0,True,,,,,,True
+Medical Coder,race_ethnicity,Native American,2,2,1.0,Native American,False,1.0,False,,,,,,True
+Medical Coder,race_ethnicity,White,53,16,0.301887,Native American,False,0.301887,True,,,,,,True
+Medical Coder,disability_status,No,118,47,0.398305,No,False,1.0,False,1.0,False,1.0,False,False,False
+Medical Coder,disability_status,Yes,18,6,0.333333,No,False,0.836879,False,,,,,,True
+Medical Coder,veteran_status,No,124,46,0.370968,Yes,False,0.635945,True,,,,,,True
+Medical Coder,veteran_status,Yes,12,7,0.583333,Yes,False,1.0,False,,,,,,True
+Medical Coder,age_bracket,30-39,46,19,0.413043,30-39,False,1.0,False,1.0,False,1.0,False,False,False
+Medical Coder,age_bracket,40-49,35,13,0.371429,30-39,False,0.899248,False,0.81943561,False,0.8806798,False,False,False
+Medical Coder,age_bracket,50+,28,10,0.357143,30-39,False,0.864662,False,,,,,,True
+Medical Coder,age_bracket,<30,27,11,0.407407,30-39,False,0.986355,False,,,,,,True
+Pharmacist,gender,Female,46,22,0.478261,Female,False,1.0,False,1.0,False,1.0,False,False,False
+Pharmacist,gender,Male,38,16,0.421053,Female,False,0.880383,False,0.662936,False,0.76104649,False,False,False
+Pharmacist,gender,Non-binary,4,1,0.25,Female,False,0.522727,True,,,,,,True
+Pharmacist,race_ethnicity,Asian,20,11,0.55,Native American,False,0.825,False,,,,,,True
+Pharmacist,race_ethnicity,Black,12,2,0.166667,Native American,False,0.25,True,,,,,,True
+Pharmacist,race_ethnicity,Hispanic/Latino,22,11,0.5,Native American,False,0.75,True,,,,,,True
+Pharmacist,race_ethnicity,Middle Eastern,4,1,0.25,Native American,False,0.375,True,,,,,,True
+Pharmacist,race_ethnicity,Multiracial,6,3,0.5,Native American,False,0.75,True,,,,,,True
+Pharmacist,race_ethnicity,Native American,3,2,0.666667,Native American,False,1.0,False,,,,,,True
+Pharmacist,race_ethnicity,White,21,9,0.428571,Native American,False,0.642857,True,,,,,,True
+Pharmacist,disability_status,No,80,34,0.425,Yes,False,0.68,True,,,,,,True
+Pharmacist,disability_status,Yes,8,5,0.625,Yes,False,1.0,False,,,,,,True
+Pharmacist,veteran_status,No,86,38,0.44186,Yes,False,0.883721,False,,,,,,True
+Pharmacist,veteran_status,Yes,2,1,0.5,Yes,False,1.0,False,,,,,,True
+Pharmacist,age_bracket,30-39,32,16,0.5,40-49,False,0.875,False,,,,,,True
+Pharmacist,age_bracket,40-49,21,12,0.571429,40-49,False,1.0,False,,,,,,True
+Pharmacist,age_bracket,50+,15,5,0.333333,40-49,False,0.583333,True,,,,,,True
+Pharmacist,age_bracket,<30,20,6,0.3,40-49,False,0.525,True,,,,,,True
+Radiology Technologist,gender,Female,74,30,0.405405,Non-binary,False,0.608108,True,,,,,,True
+Radiology Technologist,gender,Male,73,29,0.39726,Non-binary,False,0.59589,True,,,,,,True
+Radiology Technologist,gender,Non-binary,3,2,0.666667,Non-binary,False,1.0,False,,,,,,True
+Radiology Technologist,race_ethnicity,Asian,21,7,0.333333,Native American,False,0.666667,True,,,,,,True
+Radiology Technologist,race_ethnicity,Black,28,13,0.464286,Native American,False,0.928571,False,,,,,,True
+Radiology Technologist,race_ethnicity,Hispanic/Latino,22,10,0.454545,Native American,False,0.909091,False,,,,,,True
+Radiology Technologist,race_ethnicity,Middle Eastern,10,4,0.4,Native American,False,0.8,False,,,,,,True
+Radiology Technologist,race_ethnicity,Multiracial,8,3,0.375,Native American,False,0.75,True,,,,,,True
+Radiology Technologist,race_ethnicity,Native American,4,2,0.5,Native American,False,1.0,False,,,,,,True
+Radiology Technologist,race_ethnicity,White,57,22,0.385965,Native American,False,0.77193,True,,,,,,True
+Radiology Technologist,disability_status,No,132,55,0.416667,No,False,1.0,False,1.0,False,1.0,False,False,False
+Radiology Technologist,disability_status,Yes,18,6,0.333333,No,False,0.8,False,,,,,,True
+Radiology Technologist,veteran_status,No,140,57,0.407143,No,False,1.0,False,1.0,False,1.0,False,False,False
+Radiology Technologist,veteran_status,Yes,10,4,0.4,No,False,0.982456,False,,,,,,True
+Radiology Technologist,age_bracket,30-39,45,18,0.4,<30,False,0.941176,False,0.82902893,False,0.98963851,False,False,False
+Radiology Technologist,age_bracket,40-49,47,19,0.404255,<30,False,0.951189,False,1.0,False,1.0,False,False,False
+Radiology Technologist,age_bracket,50+,18,7,0.388889,<30,False,0.915033,False,,,,,,True
+Radiology Technologist,age_bracket,<30,40,17,0.425,<30,False,1.0,False,1.0,False,1.0,False,False,False
+Registered Nurse,gender,Female,105,34,0.32381,Non-binary,False,0.388571,True,,,,,,True
+Registered Nurse,gender,Male,94,31,0.329787,Non-binary,False,0.395745,True,,,,,,True
+Registered Nurse,gender,Non-binary,6,5,0.833333,Non-binary,False,1.0,False,,,,,,True
+Registered Nurse,race_ethnicity,Asian,32,12,0.375,Native American,False,0.75,True,,,,,,True
+Registered Nurse,race_ethnicity,Black,31,9,0.290323,Native American,False,0.580645,True,,,,,,True
+Registered Nurse,race_ethnicity,Hispanic/Latino,36,14,0.388889,Native American,False,0.777778,True,,,,,,True
+Registered Nurse,race_ethnicity,Middle Eastern,12,5,0.416667,Native American,False,0.833333,False,,,,,,True
+Registered Nurse,race_ethnicity,Multiracial,11,0,0.0,Native American,False,0.0,True,,,,,,True
+Registered Nurse,race_ethnicity,Native American,8,4,0.5,Native American,False,1.0,False,,,,,,True
+Registered Nurse,race_ethnicity,White,75,26,0.346667,Native American,False,0.693333,True,,,,,,True
+Registered Nurse,disability_status,No,175,61,0.348571,No,False,1.0,False,1.0,False,1.0,False,False,False
+Registered Nurse,disability_status,Yes,30,9,0.3,No,False,0.860656,False,0.68068803,False,0.75656664,False,False,False
+Registered Nurse,veteran_status,No,185,61,0.32973,Yes,False,0.732733,True,,,,,,True
+Registered Nurse,veteran_status,Yes,20,9,0.45,Yes,False,1.0,False,,,,,,True
+Registered Nurse,age_bracket,30-39,66,15,0.227273,50+,False,0.469697,True,0.01763288,True,0.02065762,True,True,False
+Registered Nurse,age_bracket,40-49,51,23,0.45098,50+,False,0.932026,False,0.82192838,False,0.95114782,False,False,False
+Registered Nurse,age_bracket,50+,31,15,0.483871,50+,False,1.0,False,1.0,False,1.0,False,False,False
+Registered Nurse,age_bracket,<30,57,17,0.298246,50+,False,0.616374,True,0.1061719,False,0.13434788,False,False,False
+ALL_ROLES,gender,Female,471,170,0.360934,Non-binary,False,0.84218,False,,,,,,True
+ALL_ROLES,gender,Male,401,152,0.379052,Non-binary,False,0.884456,False,,,,,,True
+ALL_ROLES,gender,Non-binary,28,12,0.428571,Non-binary,False,1.0,False,,,,,,True
+ALL_ROLES,race_ethnicity,Asian,134,60,0.447761,Native American,False,0.716418,True,,,,,,True
+ALL_ROLES,race_ethnicity,Black,131,51,0.389313,Native American,False,0.622901,True,,,,,,True
+ALL_ROLES,race_ethnicity,Hispanic/Latino,195,63,0.323077,Native American,False,0.516923,True,,,,,,True
+ALL_ROLES,race_ethnicity,Middle Eastern,49,19,0.387755,Native American,False,0.620408,True,,,,,,True
+ALL_ROLES,race_ethnicity,Multiracial,54,14,0.259259,Native American,False,0.414815,True,,,,,,True
+ALL_ROLES,race_ethnicity,Native American,24,15,0.625,Native American,False,1.0,False,,,,,,True
+ALL_ROLES,race_ethnicity,White,313,112,0.357827,Native American,False,0.572524,True,,,,,,True
+ALL_ROLES,disability_status,No,792,298,0.376263,No,False,1.0,False,1.0,False,1.0,False,False,False
+ALL_ROLES,disability_status,Yes,108,36,0.333333,No,False,0.885906,False,0.39831517,False,0.44717374,False,False,False
+ALL_ROLES,veteran_status,No,838,306,0.365155,Yes,False,0.808558,False,0.17599747,False,0.22112571,False,False,False
+ALL_ROLES,veteran_status,Yes,62,28,0.451613,Yes,False,1.0,False,1.0,False,1.0,False,False,False
+ALL_ROLES,age_bracket,30-39,260,93,0.357692,40-49,False,0.83587,False,0.13387384,False,0.13831635,False,False,False
+ALL_ROLES,age_bracket,40-49,222,95,0.427928,40-49,False,1.0,False,1.0,False,1.0,False,False,False
+ALL_ROLES,age_bracket,50+,192,68,0.354167,40-49,False,0.827632,False,0.13149111,False,0.15242387,False,False,False
+ALL_ROLES,age_bracket,<30,226,78,0.345133,40-49,False,0.806521,False,0.08083076,False,0.08864381,False,False,False

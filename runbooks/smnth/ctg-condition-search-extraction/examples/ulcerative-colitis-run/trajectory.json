@@ -1,0 +1,31 @@
+{
+  "collection": "volpiglio",
+  "task": "ctg-condition-search-extraction",
+  "trajectory_id": "5022a12d",
+  "workflow_id": "volpiglio-ctg-condition-search-extraction--5022a12d",
+  "url": "https://jetty.io/trajectory/volpiglio/ctg-condition-search-extraction/5022a12d",
+  "runbook_version": "1.3.0",
+  "agent": "opencode",
+  "model": "openai/gpt-5.6-terra",
+  "model_provider": "openrouter",
+  "snapshot": "prism-playwright",
+  "ran_at": "2026-09-02T20:09:51.343854Z",
+  "duration_seconds": 302,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "studies.csv"
+  ],
+  "cost_usd": null,
+  "total_tokens": null,
+  "condition": "Ulcerative colitis",
+  "posted_from": "2026-07-25",
+  "posted_to": "2026-08-25",
+  "eval": {
+    "overall_passed": true,
+    "pass": 21,
+    "partial": 0,
+    "fail": 0
+  },
+  "notes": ""
+}

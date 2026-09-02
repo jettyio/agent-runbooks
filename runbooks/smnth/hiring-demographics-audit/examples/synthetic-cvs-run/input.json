@@ -1,0 +1,26 @@
+{
+  "title": "Synthetic CV dataset — 1,000 candidates, 12 roles",
+  "prompt": "Execute the runbook.",
+  "params": {
+    "vars": {
+      "input_data_path": "/app/assets/synthetic_cvs_hiring.csv",
+      "protected_attributes": "gender,race_ethnicity,disability_status,veteran_status,age_bracket",
+      "job_role_field": "role_applied",
+      "outcome_field": "hired",
+      "disparity_threshold": "0.8",
+      "min_group_size": "30",
+      "results_dir": "/app/results"
+    }
+  },
+  "files": [
+    {
+      "path": "input.csv",
+      "filename": "synthetic_cvs_hiring.csv",
+      "mime_type": "text/csv",
+      "rows": 1000,
+      "label": "Synthetic candidate dataset — 1,000 rows, 12 job roles, 20 columns (demographics, CV summary, hiring outcome)",
+      "license": "Synthetic — generated for audit-methodology demonstration; no real individuals"
+    }
+  ],
+  "note": "All names and attributes are synthetic."
+}

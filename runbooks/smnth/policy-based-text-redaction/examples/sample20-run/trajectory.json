@@ -1,0 +1,31 @@
+{
+  "collection": "volpiglio",
+  "task": "policy-based-text-redaction",
+  "trajectory_id": "a8e36930",
+  "url": "https://jetty.io/trajectory/volpiglio/policy-based-text-redaction/a8e36930",
+  "agent": "claude-code",
+  "model": "anthropic/claude-sonnet-5",
+  "model_provider": "openrouter",
+  "ran_at": "2026-08-19T14:04:41.244896Z",
+  "duration_seconds": 1152,
+  "record_count": 20,
+  "domains": [
+    "corporation",
+    "government",
+    "individual"
+  ],
+  "eval": {
+    "overall_passed": true,
+    "overall_score": 4.73,
+    "pass_threshold": 4.0,
+    "iterations": 1,
+    "rubric_scores": {
+      "policy_compliance": 4.85,
+      "context_preservation": 4.6,
+      "redaction_precision": 4.65,
+      "marker_consistency_and_clarity": 4.9,
+      "readability": 4.65
+    }
+  },
+  "workflow_id": "volpiglio-policy-based-text-redaction--a8e36930"
+}

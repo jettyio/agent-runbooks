@@ -1,0 +1,479 @@
+{
+  "recall_vs_field_accuracy": [
+    {
+      "agent": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "label": "cc/claude-sonnet-4-6",
+      "status": "scored",
+      "recall_pct": 97.87,
+      "overall_field_accuracy_pct": 92.03,
+      "plotted_x": 97.87,
+      "plotted_y": 92.03
+    },
+    {
+      "agent": "claude-code",
+      "model": "gpt-5.6-sol",
+      "label": "cc/gpt-5.6-sol",
+      "status": "scored",
+      "recall_pct": 95.74,
+      "overall_field_accuracy_pct": 92.59,
+      "plotted_x": 95.74,
+      "plotted_y": 92.59
+    },
+    {
+      "agent": "claude-code",
+      "model": "gpt-5.6-luna",
+      "label": "cc/gpt-5.6-luna",
+      "status": "scored",
+      "recall_pct": 97.87,
+      "overall_field_accuracy_pct": 66.67,
+      "plotted_x": 97.87,
+      "plotted_y": 66.67
+    },
+    {
+      "agent": "opencode",
+      "model": "kimi-k2",
+      "label": "oc/kimi-k2",
+      "status": "scored",
+      "recall_pct": 100.0,
+      "overall_field_accuracy_pct": 90.78,
+      "plotted_x": 100.0,
+      "plotted_y": 90.78
+    },
+    {
+      "agent": "opencode",
+      "model": "ox-alpha",
+      "label": "oc/ox-alpha",
+      "status": "scored",
+      "recall_pct": 95.74,
+      "overall_field_accuracy_pct": 92.59,
+      "plotted_x": 95.74,
+      "plotted_y": 92.59
+    },
+    {
+      "agent": "opencode",
+      "model": "gpt-5.6-terra",
+      "label": "oc/gpt-5.6-terra",
+      "status": "scored",
+      "recall_pct": 97.87,
+      "overall_field_accuracy_pct": 92.75,
+      "plotted_x": 97.87,
+      "plotted_y": 92.75
+    },
+    {
+      "agent": "opencode",
+      "model": "gpt-5.6-sol",
+      "label": "oc/gpt-5.6-sol",
+      "status": "scored",
+      "recall_pct": 97.87,
+      "overall_field_accuracy_pct": 92.75,
+      "plotted_x": 97.87,
+      "plotted_y": 92.75
+    },
+    {
+      "agent": "opencode",
+      "model": "gpt-5.6-luna",
+      "label": "oc/gpt-5.6-luna",
+      "status": "scored",
+      "recall_pct": 95.74,
+      "overall_field_accuracy_pct": 92.59,
+      "plotted_x": 95.74,
+      "plotted_y": 92.59
+    },
+    {
+      "agent": "claude-code",
+      "model": "kimi-k2",
+      "label": "cc/kimi-k2",
+      "status": "zero_output",
+      "recall_pct": 0.0,
+      "overall_field_accuracy_pct": null,
+      "plotted_x": 0.0,
+      "plotted_y": 0.0
+    },
+    {
+      "agent": "claude-code",
+      "model": "ox-alpha",
+      "label": "cc/ox-alpha",
+      "status": "zero_output",
+      "recall_pct": 0.0,
+      "overall_field_accuracy_pct": null,
+      "plotted_x": 1.5,
+      "plotted_y": 0.5
+    },
+    {
+      "agent": "claude-code",
+      "model": "gpt-5.6-terra",
+      "label": "cc/gpt-5.6-terra",
+      "status": "zero_output",
+      "recall_pct": 0.0,
+      "overall_field_accuracy_pct": null,
+      "plotted_x": 0.0,
+      "plotted_y": 1.5
+    },
+    {
+      "agent": "opencode",
+      "model": "claude-sonnet-4-6",
+      "label": "oc/claude-sonnet-4-6",
+      "status": "zero_output",
+      "recall_pct": 0.0,
+      "overall_field_accuracy_pct": null,
+      "plotted_x": 1.5,
+      "plotted_y": 1.5
+    }
+  ],
+  "recall_vs_runtime": [
+    {
+      "agent": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "label": "cc/claude-sonnet-4-6",
+      "status": "scored",
+      "duration_seconds": 1807.7356,
+      "recall_pct": 97.87
+    },
+    {
+      "agent": "claude-code",
+      "model": "gpt-5.6-sol",
+      "label": "cc/gpt-5.6-sol",
+      "status": "scored",
+      "duration_seconds": 306.1883,
+      "recall_pct": 95.74
+    },
+    {
+      "agent": "claude-code",
+      "model": "gpt-5.6-luna",
+      "label": "cc/gpt-5.6-luna",
+      "status": "scored",
+      "duration_seconds": 242.122,
+      "recall_pct": 97.87
+    },
+    {
+      "agent": "opencode",
+      "model": "kimi-k2",
+      "label": "oc/kimi-k2",
+      "status": "scored",
+      "duration_seconds": 1706.6195,
+      "recall_pct": 100.0
+    },
+    {
+      "agent": "opencode",
+      "model": "ox-alpha",
+      "label": "oc/ox-alpha",
+      "status": "scored",
+      "duration_seconds": 762.2017,
+      "recall_pct": 95.74
+    },
+    {
+      "agent": "opencode",
+      "model": "gpt-5.6-terra",
+      "label": "oc/gpt-5.6-terra",
+      "status": "scored",
+      "duration_seconds": 507.3621,
+      "recall_pct": 97.87
+    },
+    {
+      "agent": "opencode",
+      "model": "gpt-5.6-sol",
+      "label": "oc/gpt-5.6-sol",
+      "status": "scored",
+      "duration_seconds": 401.455,
+      "recall_pct": 97.87
+    },
+    {
+      "agent": "opencode",
+      "model": "gpt-5.6-luna",
+      "label": "oc/gpt-5.6-luna",
+      "status": "scored",
+      "duration_seconds": 1187.8595,
+      "recall_pct": 95.74
+    },
+    {
+      "agent": "claude-code",
+      "model": "kimi-k2",
+      "label": "cc/kimi-k2",
+      "status": "zero_output",
+      "duration_seconds": 808.9196,
+      "recall_pct": 0.0
+    },
+    {
+      "agent": "claude-code",
+      "model": "ox-alpha",
+      "label": "cc/ox-alpha",
+      "status": "zero_output",
+      "duration_seconds": 1809.5234,
+      "recall_pct": 0.0
+    },
+    {
+      "agent": "claude-code",
+      "model": "gpt-5.6-terra",
+      "label": "cc/gpt-5.6-terra",
+      "status": "zero_output",
+      "duration_seconds": 30.686,
+      "recall_pct": 0.0
+    },
+    {
+      "agent": "opencode",
+      "model": "claude-sonnet-4-6",
+      "label": "oc/claude-sonnet-4-6",
+      "status": "zero_output",
+      "duration_seconds": 15.2558,
+      "recall_pct": 0.0
+    }
+  ],
+  "cost_per_found_study": [
+    {
+      "agent": "claude-code",
+      "model": "gpt-5.6-luna",
+      "label": "cc/gpt-5.6-luna",
+      "status": "scored",
+      "cost_usd": 0.1919934,
+      "num_found": 46,
+      "cost_per_found": 0.004173769565217392,
+      "corrupted": true
+    },
+    {
+      "agent": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "label": "cc/claude-sonnet-4-6",
+      "status": "scored",
+      "cost_usd": 0.94313055,
+      "num_found": 46,
+      "cost_per_found": 0.02050283804347826,
+      "corrupted": false
+    },
+    {
+      "agent": "claude-code",
+      "model": "gpt-5.6-sol",
+      "label": "cc/gpt-5.6-sol",
+      "status": "scored",
+      "cost_usd": 4.12795125,
+      "num_found": 45,
+      "cost_per_found": 0.09173224999999999,
+      "corrupted": false
+    },
+    {
+      "agent": "claude-code",
+      "model": "gpt-5.6-terra",
+      "label": "cc/gpt-5.6-terra",
+      "status": "zero_output",
+      "cost_usd": 0.3511885,
+      "num_found": 0,
+      "cost_per_found": null,
+      "corrupted": false,
+      "reason": "cost tracked, 0 studies found"
+    },
+    {
+      "agent": "claude-code",
+      "model": "kimi-k2",
+      "label": "cc/kimi-k2",
+      "status": "zero_output",
+      "cost_usd": null,
+      "num_found": 0,
+      "cost_per_found": null,
+      "corrupted": false,
+      "reason": "no cost data"
+    },
+    {
+      "agent": "claude-code",
+      "model": "ox-alpha",
+      "label": "cc/ox-alpha",
+      "status": "zero_output",
+      "cost_usd": null,
+      "num_found": 0,
+      "cost_per_found": null,
+      "corrupted": false,
+      "reason": "no cost data"
+    },
+    {
+      "agent": "opencode",
+      "model": "claude-sonnet-4-6",
+      "label": "oc/claude-sonnet-4-6",
+      "status": "zero_output",
+      "cost_usd": null,
+      "num_found": 0,
+      "cost_per_found": null,
+      "corrupted": false,
+      "reason": "no cost data"
+    },
+    {
+      "agent": "opencode",
+      "model": "gpt-5.6-luna",
+      "label": "oc/gpt-5.6-luna",
+      "status": "scored",
+      "cost_usd": null,
+      "num_found": 45,
+      "cost_per_found": null,
+      "corrupted": false,
+      "reason": "no cost data"
+    },
+    {
+      "agent": "opencode",
+      "model": "gpt-5.6-sol",
+      "label": "oc/gpt-5.6-sol",
+      "status": "scored",
+      "cost_usd": null,
+      "num_found": 46,
+      "cost_per_found": null,
+      "corrupted": false,
+      "reason": "no cost data"
+    },
+    {
+      "agent": "opencode",
+      "model": "gpt-5.6-terra",
+      "label": "oc/gpt-5.6-terra",
+      "status": "scored",
+      "cost_usd": null,
+      "num_found": 46,
+      "cost_per_found": null,
+      "corrupted": false,
+      "reason": "no cost data"
+    },
+    {
+      "agent": "opencode",
+      "model": "kimi-k2",
+      "label": "oc/kimi-k2",
+      "status": "scored",
+      "cost_usd": null,
+      "num_found": 47,
+      "cost_per_found": null,
+      "corrupted": false,
+      "reason": "no cost data"
+    },
+    {
+      "agent": "opencode",
+      "model": "ox-alpha",
+      "label": "oc/ox-alpha",
+      "status": "scored",
+      "cost_usd": null,
+      "num_found": 45,
+      "cost_per_found": null,
+      "corrupted": false,
+      "reason": "no cost data"
+    }
+  ],
+  "agent_reliability_comparison": {
+    "claude-code": {
+      "attempted": 6,
+      "scored": 3,
+      "success_rate_pct": 50.0,
+      "mean_recall_pct": 97.16000000000001,
+      "mean_field_accuracy_pct": 83.76333333333334
+    },
+    "opencode": {
+      "attempted": 6,
+      "scored": 5,
+      "success_rate_pct": 83.33333333333333,
+      "mean_recall_pct": 97.444,
+      "mean_field_accuracy_pct": 92.292
+    }
+  },
+  "recall_per_minute": [
+    {
+      "agent": "claude-code",
+      "model": "gpt-5.6-luna",
+      "label": "cc/gpt-5.6-luna",
+      "status": "scored",
+      "recall_pct": 97.87,
+      "duration_seconds": 242.122,
+      "recall_per_minute": 24.253062505678958
+    },
+    {
+      "agent": "claude-code",
+      "model": "gpt-5.6-sol",
+      "label": "cc/gpt-5.6-sol",
+      "status": "scored",
+      "recall_pct": 95.74,
+      "duration_seconds": 306.1883,
+      "recall_per_minute": 18.761004257837413
+    },
+    {
+      "agent": "opencode",
+      "model": "gpt-5.6-sol",
+      "label": "oc/gpt-5.6-sol",
+      "status": "scored",
+      "recall_pct": 97.87,
+      "duration_seconds": 401.455,
+      "recall_per_minute": 14.627293220908944
+    },
+    {
+      "agent": "opencode",
+      "model": "gpt-5.6-terra",
+      "label": "oc/gpt-5.6-terra",
+      "status": "scored",
+      "recall_pct": 97.87,
+      "duration_seconds": 507.3621,
+      "recall_per_minute": 11.573982368805238
+    },
+    {
+      "agent": "opencode",
+      "model": "ox-alpha",
+      "label": "oc/ox-alpha",
+      "status": "scored",
+      "recall_pct": 95.74,
+      "duration_seconds": 762.2017,
+      "recall_per_minute": 7.536587756233029
+    },
+    {
+      "agent": "opencode",
+      "model": "gpt-5.6-luna",
+      "label": "oc/gpt-5.6-luna",
+      "status": "scored",
+      "recall_pct": 95.74,
+      "duration_seconds": 1187.8595,
+      "recall_per_minute": 4.835925460881526
+    },
+    {
+      "agent": "opencode",
+      "model": "kimi-k2",
+      "label": "oc/kimi-k2",
+      "status": "scored",
+      "recall_pct": 100.0,
+      "duration_seconds": 1706.6195,
+      "recall_per_minute": 3.5157221630246225
+    },
+    {
+      "agent": "claude-code",
+      "model": "claude-sonnet-4-6",
+      "label": "cc/claude-sonnet-4-6",
+      "status": "scored",
+      "recall_pct": 97.87,
+      "duration_seconds": 1807.7356,
+      "recall_per_minute": 3.248373268745717
+    },
+    {
+      "agent": "claude-code",
+      "model": "kimi-k2",
+      "label": "cc/kimi-k2",
+      "status": "zero_output",
+      "recall_pct": 0.0,
+      "duration_seconds": 808.9196,
+      "recall_per_minute": 0.0
+    },
+    {
+      "agent": "claude-code",
+      "model": "ox-alpha",
+      "label": "cc/ox-alpha",
+      "status": "zero_output",
+      "recall_pct": 0.0,
+      "duration_seconds": 1809.5234,
+      "recall_per_minute": 0.0
+    },
+    {
+      "agent": "claude-code",
+      "model": "gpt-5.6-terra",
+      "label": "cc/gpt-5.6-terra",
+      "status": "zero_output",
+      "recall_pct": 0.0,
+      "duration_seconds": 30.686,
+      "recall_per_minute": 0.0
+    },
+    {
+      "agent": "opencode",
+      "model": "claude-sonnet-4-6",
+      "label": "oc/claude-sonnet-4-6",
+      "status": "zero_output",
+      "recall_pct": 0.0,
+      "duration_seconds": 15.2558,
+      "recall_per_minute": 0.0
+    }
+  ]
+}

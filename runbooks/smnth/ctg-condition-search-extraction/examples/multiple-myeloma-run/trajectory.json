@@ -1,0 +1,28 @@
+{
+  "collection": "volpiglio",
+  "task": "ctg-condition-search-extraction",
+  "trajectory_id": "03f0e982",
+  "url": "https://jetty.io/trajectory/volpiglio/ctg-condition-search-extraction/03f0e982",
+  "agent": "opencode",
+  "model": "openai/gpt-5.6-terra",
+  "model_provider": "openrouter",
+  "snapshot": "prism-playwright",
+  "ran_at": "2026-08-25T21:24:50.396098Z",
+  "duration_seconds": 524,
+  "condition": "Multiple myeloma",
+  "posted_from": "2026-06-25",
+  "posted_to": "2026-08-25",
+  "eval": {
+    "overall_passed": true,
+    "results": {
+      "pass": 46,
+      "partial": 0,
+      "fail": 0
+    },
+    "candidates_found": 47,
+    "dropped_by_sanity_check": 1,
+    "studies_written": 46
+  },
+  "notes": "This run predates the extraction_audit.json requirement (runbook v1.1.0+) — it produced only studies.csv, summary.md, and validation_report.json. A run against the current spec would also need to write extraction_audit.json.",
+  "workflow_id": "volpiglio-ctg-condition-search-extraction--03f0e982"
+}

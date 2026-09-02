@@ -1,0 +1,21 @@
+{
+  "title": "12 agent+model combinations \u2014 re-run on claude-sonnet-5 via OpenRouter",
+  "prompt": "Execute the runbook.",
+  "params": {
+    "vars": {
+      "input_file": "/app/assets/evaluation_matrix.csv",
+      "results_dir": "/app/results"
+    }
+  },
+  "files": [
+    {
+      "path": "input.csv",
+      "filename": "evaluation_matrix.csv",
+      "mime_type": "text/csv",
+      "rows": 12,
+      "label": "Evaluation matrix \u2014 the same 12 agent+model combinations as twelve-combo-eval (8 scored, 4 zero-output)",
+      "license": "Synthetic/benchmark data produced by the authors \u2014 free to redistribute"
+    }
+  ],
+  "note": "Same input as twelve-combo-eval; this run exercises the portable default routing (anthropic/claude-sonnet-5 via OpenRouter) declared in runbook v1.2.1. The sandbox received the upload as /app/assets/6c1ecf5c.00.csv; the Step 1 fallback located it."
+}

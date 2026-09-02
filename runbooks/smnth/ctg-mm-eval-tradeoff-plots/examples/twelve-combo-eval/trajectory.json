@@ -1,0 +1,30 @@
+{
+  "collection": "volpiglio",
+  "task": "ctg-mm-eval-tradeoff-plots",
+  "trajectory_id": "c8701752",
+  "url": "https://jetty.io/trajectory/volpiglio/ctg-mm-eval-tradeoff-plots/c8701752",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-08-26T14:09:59.220115Z",
+  "duration_seconds": 624,
+  "eval": {
+    "overall_passed": true,
+    "results": {
+      "pass": 5,
+      "partial": 0,
+      "fail": 0
+    },
+    "stages": [
+      "setup",
+      "compute",
+      "render",
+      "evaluation",
+      "report_generation"
+    ],
+    "no_label_overlaps": true
+  },
+  "notes": "Input evaluation_matrix.csv scores 12 agent+model combinations against a ClinicalTrials.gov extraction benchmark (8 scored, 4 zero_output). This run used the runbook's own declared default (claude-code/claude-sonnet-4-6/anthropic) — agent and model match the frontmatter exactly.",
+  "workflow_id": "volpiglio-ctg-mm-eval-tradeoff-plots--c8701752"
+}

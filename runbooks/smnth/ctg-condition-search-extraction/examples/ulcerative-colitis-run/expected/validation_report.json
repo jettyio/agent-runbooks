@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-09-02T00:00:00Z",
+  "parameters": {
+    "condition": "Ulcerative colitis",
+    "posted_from": "2026-07-25",
+    "posted_to": "2026-08-25"
+  },
+  "stages": [
+    {"name": "setup", "passed": true, "message": "Results directory created and Chromium installed"},
+    {"name": "candidate_search", "passed": true, "message": "Found 22 candidates via API in one page; no nextPageToken"},
+    {"name": "page_extraction", "passed": true, "message": "Extracted 21 studies from their rendered ClinicalTrials.gov pages"},
+    {"name": "evaluation", "passed": true, "message": "All 21 retained rows evaluated PASS"},
+    {"name": "report_generation", "passed": true, "message": "All required output files written"}
+  ],
+  "results": {"pass": 21, "partial": 0, "fail": 0},
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/studies.csv",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json",
+    "/app/results/extraction_audit.json"
+  ]
+}

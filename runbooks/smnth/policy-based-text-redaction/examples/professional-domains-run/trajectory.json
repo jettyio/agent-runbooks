@@ -1,0 +1,28 @@
+{
+  "collection": "volpiglio",
+  "task": "policy-based-text-redaction",
+  "trajectory_id": "fc8a7a86",
+  "workflow_id": "volpiglio-policy-based-text-redaction--fc8a7a86",
+  "url": "https://jetty.io/trajectory/volpiglio/policy-based-text-redaction/fc8a7a86",
+  "runbook_version": "1.0.2",
+  "agent": "claude-code",
+  "model": "anthropic/claude-sonnet-5",
+  "model_provider": "openrouter",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-09-02T20:08:47.099046Z",
+  "duration_seconds": 405,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "redacted_dataset.json"
+  ],
+  "cost_usd": 0.9340599,
+  "total_tokens": 39769,
+  "input_file": "/app/assets/redaction_dataset_professional10.json",
+  "redaction_marker": "[REDACTED: {category}]",
+  "eval": {
+    "overall_passed": true,
+    "overall_score": 4.8
+  },
+  "notes": ""
+}

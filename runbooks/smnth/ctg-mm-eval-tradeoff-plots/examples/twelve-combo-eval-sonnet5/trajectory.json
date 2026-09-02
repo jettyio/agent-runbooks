@@ -1,0 +1,33 @@
+{
+  "collection": "volpiglio",
+  "task": "ctg-mm-eval-tradeoff-plots",
+  "trajectory_id": "6c1ecf5c",
+  "workflow_id": "volpiglio-ctg-mm-eval-tradeoff-plots--6c1ecf5c",
+  "url": "https://jetty.io/trajectory/volpiglio/ctg-mm-eval-tradeoff-plots/6c1ecf5c",
+  "runbook_version": "1.2.1",
+  "agent": "claude-code",
+  "model": "anthropic/claude-sonnet-5",
+  "model_provider": "openrouter",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-09-02T20:09:30.223316Z",
+  "duration_seconds": 439,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "charts/recall_vs_field_accuracy.png",
+    "charts/recall_vs_runtime.png",
+    "charts/cost_per_found_study.png",
+    "charts/agent_reliability_comparison.png",
+    "charts/recall_per_minute.png"
+  ],
+  "cost_usd": 1.340888,
+  "total_tokens": 42262,
+  "input_file": "/app/assets/evaluation_matrix.csv",
+  "eval": {
+    "overall_passed": true,
+    "pass": 5,
+    "partial": 0,
+    "fail": 0
+  },
+  "notes": ""
+}

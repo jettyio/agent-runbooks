@@ -1,0 +1,146 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "smnth/conference-abstract-scraper",
+  "title": "Conference abstract scraper",
+  "description": "Produce clean, structured, searchable JSON for a conference's accepted posters/abstracts by combining CrossRef (canonical metadata: DOI, authors, publication date, issue ordering) with the conference's own Confex meeting program (full abstract text) — deliberately bypassing publisher sites that are frequently WAF/Cloudflare-blocked. Includes a completeness check that guarantees no entry is skipped, merged, or duplicated.",
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "15-35 mins"
+  },
+  "example_outputs": [
+    {
+      "id": "jscai-issue-run",
+      "title": "JSCAI 2026 issue, top 20 abstracts",
+      "summary": "20 cardiovascular-intervention conference abstracts sourced from CrossRef (metadata/ordering) + the SCAI Confex program (full text) directly, 19 PASS / 1 PARTIAL, 0 duplicates.",
+      "thumbnail": "examples/jscai-issue-run/thumbnail.png",
+      "operation": "scrape",
+      "dir": "examples/jscai-issue-run",
+      "input": {
+        "kind": "url",
+        "values": {
+          "crossref_issn": "2772-9303",
+          "crossref_volume_issue": "volume 5, issue 4",
+          "confex_program_url": "https://scai.confex.com/scai/2026/meetingapp.cgi",
+          "max_abstracts": "20"
+        }
+      },
+      "primary_output": "examples/jscai-issue-run/expected/abstracts.json",
+      "outputs": [
+        {
+          "file": "examples/jscai-issue-run/expected/abstracts.json",
+          "role": "primary",
+          "type": "application/json",
+          "description": "20 structured abstract records with metadata and full text."
+        },
+        {
+          "file": "examples/jscai-issue-run/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Run summary with pass/partial/fail breakdown."
+        },
+        {
+          "file": "examples/jscai-issue-run/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Stage results, completeness check, and overall_passed."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "volpiglio",
+        "task": "conference-abstract-scraper",
+        "trajectory_id": "ac2710e0",
+        "url": "https://jetty.io/trajectory/volpiglio/conference-abstract-scraper/ac2710e0",
+        "agent": "claude-code",
+        "model": "claude-sonnet-4-6",
+        "ran_at": "2026-08-19T21:19:01.357938Z",
+        "duration_seconds": 1897,
+        "eval": {
+          "overall_passed": true,
+          "pass": 19,
+          "partial": 1,
+          "fail": 0
+        },
+        "model_provider": "anthropic"
+      }
+    }
+  ],
+  "featured_examples": [
+    "jscai-issue-run"
+  ],
+  "inputs": [
+    {
+      "label": "CrossRef ISSN",
+      "type": "text",
+      "required": false,
+      "default": "2772-9303",
+      "description": "The journal's ISSN, used to query CrossRef for the target issue's DOIs, titles, authors, and publication dates."
+    },
+    {
+      "label": "CrossRef volume/issue",
+      "type": "text",
+      "required": false,
+      "default": "volume 5, issue 4",
+      "description": "The specific volume/issue to pull from CrossRef."
+    },
+    {
+      "label": "Confex program URL",
+      "type": "url",
+      "required": false,
+      "default": "https://scai.confex.com/scai/2026/meetingapp.cgi",
+      "description": "The conference's own Confex meeting program — the primary full-text source."
+    },
+    {
+      "label": "Max abstracts",
+      "type": "text",
+      "required": false,
+      "default": "20",
+      "description": "Number of abstracts to process, in CrossRef page-number order."
+    }
+  ],
+  "secrets": [],
+  "runbook_source": "RUNBOOK.md",
+  "meta": {
+    "created_by": {
+      "name": "smnth",
+      "source": "jetty.io",
+      "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smnth/conference-abstract-scraper",
+      "avatar": null
+    },
+    "tags": [
+      "scraping",
+      "playwright",
+      "research",
+      "conference",
+      "agent:claude-code",
+      "programmatic"
+    ],
+    "version": "1.1.1",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-5",
+    "model_provider": "openrouter",
+    "snapshot": "prism-playwright",
+    "evaluation": "programmatic",
+    "primary_outputs": [
+      "abstracts.json"
+    ],
+    "lineage": {
+      "remix_of": null,
+      "imported_from": null,
+      "imported_by": null
+    },
+    "share": "smnth/conference-abstract-scraper",
+    "metrics": {
+      "_note": "Live counters — supplied by the Jetty backend at render time, not authored here.",
+      "number_of_runs": null,
+      "forks": null,
+      "remixes": null
+    }
+  },
+  "caveats": [
+    "Full text is sourced from the conference's own Confex program, which is normally a pre-publication version — it may differ slightly from the eventual published version in wording or completeness.",
+    "One entry in this example (1/20) had only a short excerpt available in the Confex program and is marked PARTIAL rather than PASS.",
+    "The Confex program URL and session names (e.g. 'Coronary', 'Oral Abstracts') are conference- and year-specific — check the conference's public program page for the current URL if targeting a different year or event."
+  ]
+}

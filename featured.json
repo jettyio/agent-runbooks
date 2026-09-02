@@ -12,6 +12,11 @@
     "gooseworks-ai/client-onboarding",
     "impeccable/polish",
     "marketingskills/seo-audit",
-    "earthtojake/text-to-cad-cad"
+    "earthtojake/text-to-cad-cad",
+    "smnth/hiring-demographics-audit",
+    "smnth/policy-based-text-redaction",
+    "smnth/ctg-condition-search-extraction",
+    "smnth/conference-abstract-scraper",
+    "smnth/ctg-mm-eval-tradeoff-plots"
   ]
 }

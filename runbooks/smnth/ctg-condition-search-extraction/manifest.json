@@ -1,0 +1,201 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "smnth/ctg-condition-search-extraction",
+  "title": "ClinicalTrials.gov condition search extraction",
+  "description": "Search ClinicalTrials.gov for studies matching a condition and posting-date range, then extract seven key fields verbatim from each study's own rendered page (never from the API) into a single spreadsheet — with a full provenance audit trail so no value can be silently fabricated or backfilled.",
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "15-25 mins"
+  },
+  "example_outputs": [
+    {
+      "id": "ulcerative-colitis-run",
+      "title": "Ulcerative colitis, 1-month posting window (with audit trail)",
+      "summary": "22 API candidates, 1 dropped by the condition sanity check (generic IBD only), 21 studies extracted with every field verbatim from the study page — 21/21 PASS, zero 'Not found' cells — plus the full extraction_audit.json provenance trail. Run against the current runbook spec (v1.3.0) in ~5 minutes.",
+      "thumbnail": "examples/ulcerative-colitis-run/thumbnail.png",
+      "operation": "search-extract",
+      "dir": "examples/ulcerative-colitis-run",
+      "input": {
+        "kind": "search",
+        "values": {
+          "condition": "Ulcerative colitis",
+          "posted_from": "2026-07-25",
+          "posted_to": "2026-08-25"
+        }
+      },
+      "primary_output": "examples/ulcerative-colitis-run/expected/studies.csv",
+      "outputs": [
+        {
+          "file": "examples/ulcerative-colitis-run/expected/studies.csv",
+          "role": "primary",
+          "type": "text/csv",
+          "description": "One row per matching study, 7 columns extracted verbatim from each study's own page."
+        },
+        {
+          "file": "examples/ulcerative-colitis-run/expected/extraction_audit.json",
+          "role": "secondary",
+          "type": "application/json",
+          "description": "Provenance trail: 22 candidates, 1 dropped, 0 excluded, 21 per-row extraction records with attempts/evaluation."
+        },
+        {
+          "file": "examples/ulcerative-colitis-run/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Run summary with results breakdown and the dropped candidate's reason."
+        },
+        {
+          "file": "examples/ulcerative-colitis-run/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Stage results and overall_passed."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "volpiglio",
+        "task": "ctg-condition-search-extraction",
+        "trajectory_id": "5022a12d",
+        "url": "https://jetty.io/trajectory/volpiglio/ctg-condition-search-extraction/5022a12d",
+        "agent": "opencode",
+        "model": "openai/gpt-5.6-terra",
+        "model_provider": "openrouter",
+        "runbook_version": "1.3.0",
+        "ran_at": "2026-09-02T20:09:51.343854Z",
+        "duration_seconds": 302,
+        "eval": {
+          "overall_passed": true,
+          "pass": 21,
+          "partial": 0,
+          "fail": 0
+        }
+      }
+    },
+    {
+      "id": "multiple-myeloma-run",
+      "title": "Multiple myeloma, 2-month posting window",
+      "summary": "47 API candidates narrowed to 46 studies, all 46 PASS with every field verbatim from the study's own page, 0 partial/fail.",
+      "thumbnail": "examples/multiple-myeloma-run/thumbnail.png",
+      "operation": "search-extract",
+      "dir": "examples/multiple-myeloma-run",
+      "input": {
+        "kind": "search",
+        "values": {
+          "condition": "Multiple myeloma",
+          "posted_from": "2026-06-25",
+          "posted_to": "2026-08-25"
+        }
+      },
+      "primary_output": "examples/multiple-myeloma-run/expected/studies.csv",
+      "outputs": [
+        {
+          "file": "examples/multiple-myeloma-run/expected/studies.csv",
+          "role": "primary",
+          "type": "text/csv",
+          "description": "One row per matching study, 7 columns extracted verbatim from each study's own page."
+        },
+        {
+          "file": "examples/multiple-myeloma-run/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Run summary with results breakdown and exclusions."
+        },
+        {
+          "file": "examples/multiple-myeloma-run/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Stage results and overall_passed."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "volpiglio",
+        "task": "ctg-condition-search-extraction",
+        "trajectory_id": "03f0e982",
+        "url": "https://jetty.io/trajectory/volpiglio/ctg-condition-search-extraction/03f0e982",
+        "agent": "opencode",
+        "model": "openai/gpt-5.6-terra",
+        "ran_at": "2026-08-25T21:24:50.396098Z",
+        "duration_seconds": 524,
+        "eval": {
+          "overall_passed": true,
+          "pass": 46,
+          "partial": 0,
+          "fail": 0
+        },
+        "model_provider": "openrouter"
+      }
+    }
+  ],
+  "featured_examples": [
+    "ulcerative-colitis-run",
+    "multiple-myeloma-run"
+  ],
+  "inputs": [
+    {
+      "label": "Condition",
+      "type": "text",
+      "required": true,
+      "default": "Multiple myeloma",
+      "description": "Exact condition text to search for on ClinicalTrials.gov. Used verbatim — no synonym substitution."
+    },
+    {
+      "label": "Posted from",
+      "type": "text",
+      "required": false,
+      "default": "2026-06-25",
+      "description": "Earliest 'First Posted' date to include (inclusive), YYYY-MM-DD."
+    },
+    {
+      "label": "Posted to",
+      "type": "text",
+      "required": false,
+      "default": "2026-08-25",
+      "description": "Latest 'First Posted' date to include (inclusive), YYYY-MM-DD."
+    }
+  ],
+  "secrets": [],
+  "runbook_source": "RUNBOOK.md",
+  "meta": {
+    "created_by": {
+      "name": "smnth",
+      "source": "jetty.io",
+      "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smnth/ctg-condition-search-extraction",
+      "avatar": null
+    },
+    "tags": [
+      "clinical-trials",
+      "research",
+      "playwright",
+      "data-extraction",
+      "agent:claude-code",
+      "programmatic"
+    ],
+    "version": "1.3.0",
+    "agent": "opencode",
+    "model": "openai/gpt-5.6-terra",
+    "model_provider": "openrouter",
+    "snapshot": "prism-playwright",
+    "evaluation": "programmatic",
+    "primary_outputs": [
+      "studies.csv"
+    ],
+    "lineage": {
+      "remix_of": null,
+      "imported_from": null,
+      "imported_by": null
+    },
+    "share": "smnth/ctg-condition-search-extraction",
+    "metrics": {
+      "_note": "Live counters — supplied by the Jetty backend at render time, not authored here.",
+      "number_of_runs": null,
+      "forks": null,
+      "remixes": null
+    }
+  },
+  "caveats": [
+    "Every field except Study URL is read from the study's own rendered ClinicalTrials.gov page, not the API — the API is only used to build the candidate NCT list, so values reflect the page exactly as displayed (including estimated/actual qualifiers), which can occasionally diverge from the API's structured fields.",
+    "ClinicalTrials.gov study pages are client-rendered (JS SPA) — this runbook requires a real browser (Playwright/Chromium), not a plain HTTP fetch.",
+    "The multiple-myeloma-run example predates the extraction_audit.json requirement (introduced in runbook v1.1.0) and ships only studies.csv, summary.md, and validation_report.json; the ulcerative-colitis-run example was produced against the current spec and includes the audit trail."
+  ]
+}

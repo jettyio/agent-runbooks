@@ -1,0 +1,22 @@
+{
+  "title": "20-record sample — government, corporation, individual",
+  "prompt": "Execute the runbook.",
+  "params": {
+    "vars": {
+      "input_file": "/app/assets/redaction_dataset_sample20_unlabeled.json",
+      "redaction_marker": "[REDACTED: {category}]",
+      "results_dir": "/app/results"
+    }
+  },
+  "files": [
+    {
+      "path": "input.json",
+      "filename": "redaction_dataset_sample20_unlabeled.json",
+      "mime_type": "application/json",
+      "records": 20,
+      "label": "20 records with per-record policy statements — 12 corporation (Enron-style correspondence), 5 government, 3 individual",
+      "license": "Corporate records derive from the public Enron email corpus; government/individual records are public-style samples"
+    }
+  ],
+  "note": "Each record carries id, domain, policy (bulleted), policy_ids, text."
+}

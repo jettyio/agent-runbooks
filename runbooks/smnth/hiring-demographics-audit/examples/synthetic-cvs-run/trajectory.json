@@ -1,0 +1,51 @@
+{
+  "collection": "volpiglio",
+  "task": "hiring-demographics-audit",
+  "trajectory_id": "4a1353c8",
+  "url": "https://jetty.io/trajectory/volpiglio/hiring-demographics-audit/4a1353c8",
+  "agent": "claude-code",
+  "model": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "ran_at": "2026-08-19T19:10:25.215617Z",
+  "duration_seconds": 466,
+  "row_count": 1000,
+  "job_roles": [
+    "Accountant",
+    "Business Analyst",
+    "Customer Success Manager",
+    "Data Analyst",
+    "Financial Analyst",
+    "HR Coordinator",
+    "Marketing Specialist",
+    "Operations Manager",
+    "Product Manager",
+    "Sales Representative",
+    "Software Engineer",
+    "UX Designer"
+  ],
+  "protected_attributes": [
+    "gender",
+    "race_ethnicity",
+    "disability_status",
+    "veteran_status",
+    "age_bracket"
+  ],
+  "eval": {
+    "overall_passed": true,
+    "overall_score": 5.0,
+    "pass_threshold": 4.0,
+    "iterations": 1,
+    "rubric_scores": {
+      "statistical_rigor": 5,
+      "completeness_of_breakdowns": 5,
+      "clarity_of_findings": 5,
+      "actionability_of_recommendations": 5,
+      "appropriate_caveats_and_tone": 5,
+      "factual_self_consistency": 5
+    },
+    "programmatic_checks_all_passed": true,
+    "summary_accuracy_check_passed": true,
+    "true_flagged_count": 134
+  },
+  "workflow_id": "volpiglio-hiring-demographics-audit--4a1353c8"
+}

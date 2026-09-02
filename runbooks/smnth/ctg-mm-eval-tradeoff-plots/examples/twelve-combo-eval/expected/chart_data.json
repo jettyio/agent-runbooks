@@ -1,0 +1,667 @@
+{
+  "recall_vs_field_accuracy": {
+    "description": "Scatter x=recall_pct y=overall_field_accuracy_pct; zero_output at (0,0)",
+    "runs": [
+      {
+        "label": "cc/claude-sonnet-4-6",
+        "agent": "claude-code",
+        "model": "claude-sonnet-4-6",
+        "status": "scored",
+        "recall_pct": 97.87,
+        "overall_field_accuracy_pct": 92.03,
+        "corrupted": false
+      },
+      {
+        "label": "cc/gpt-5.6-sol",
+        "agent": "claude-code",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "recall_pct": 95.74,
+        "overall_field_accuracy_pct": 92.59,
+        "corrupted": false
+      },
+      {
+        "label": "cc/gpt-5.6-luna",
+        "agent": "claude-code",
+        "model": "gpt-5.6-luna",
+        "status": "scored",
+        "recall_pct": 97.87,
+        "overall_field_accuracy_pct": 66.67,
+        "corrupted": true
+      },
+      {
+        "label": "oc/kimi-k2",
+        "agent": "opencode",
+        "model": "kimi-k2",
+        "status": "scored",
+        "recall_pct": 100.0,
+        "overall_field_accuracy_pct": 90.78,
+        "corrupted": false
+      },
+      {
+        "label": "oc/ox-alpha",
+        "agent": "opencode",
+        "model": "ox-alpha",
+        "status": "scored",
+        "recall_pct": 95.74,
+        "overall_field_accuracy_pct": 92.59,
+        "corrupted": false
+      },
+      {
+        "label": "oc/gpt-5.6-terra",
+        "agent": "opencode",
+        "model": "gpt-5.6-terra",
+        "status": "scored",
+        "recall_pct": 97.87,
+        "overall_field_accuracy_pct": 92.75,
+        "corrupted": false
+      },
+      {
+        "label": "oc/gpt-5.6-sol",
+        "agent": "opencode",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "recall_pct": 97.87,
+        "overall_field_accuracy_pct": 92.75,
+        "corrupted": false
+      },
+      {
+        "label": "oc/gpt-5.6-luna",
+        "agent": "opencode",
+        "model": "gpt-5.6-luna",
+        "status": "scored",
+        "recall_pct": 95.74,
+        "overall_field_accuracy_pct": 92.59,
+        "corrupted": false
+      },
+      {
+        "label": "cc/kimi-k2",
+        "agent": "claude-code",
+        "model": "kimi-k2",
+        "status": "zero_output",
+        "recall_pct": 0.0,
+        "overall_field_accuracy_pct": null,
+        "corrupted": false
+      },
+      {
+        "label": "cc/ox-alpha",
+        "agent": "claude-code",
+        "model": "ox-alpha",
+        "status": "zero_output",
+        "recall_pct": 0.0,
+        "overall_field_accuracy_pct": null,
+        "corrupted": false
+      },
+      {
+        "label": "cc/gpt-5.6-terra",
+        "agent": "claude-code",
+        "model": "gpt-5.6-terra",
+        "status": "zero_output",
+        "recall_pct": 0.0,
+        "overall_field_accuracy_pct": null,
+        "corrupted": false
+      },
+      {
+        "label": "oc/claude-sonnet-4-6",
+        "agent": "opencode",
+        "model": "claude-sonnet-4-6",
+        "status": "zero_output",
+        "recall_pct": 0.0,
+        "overall_field_accuracy_pct": null,
+        "corrupted": false
+      }
+    ]
+  },
+  "recall_vs_runtime": {
+    "description": "Scatter x=duration_seconds (log) y=recall_pct",
+    "runs": [
+      {
+        "label": "cc/claude-sonnet-4-6",
+        "agent": "claude-code",
+        "model": "claude-sonnet-4-6",
+        "status": "scored",
+        "duration_seconds": 1807.7356,
+        "recall_pct": 97.87,
+        "corrupted": false
+      },
+      {
+        "label": "cc/gpt-5.6-sol",
+        "agent": "claude-code",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "duration_seconds": 306.1883,
+        "recall_pct": 95.74,
+        "corrupted": false
+      },
+      {
+        "label": "cc/gpt-5.6-luna",
+        "agent": "claude-code",
+        "model": "gpt-5.6-luna",
+        "status": "scored",
+        "duration_seconds": 242.122,
+        "recall_pct": 97.87,
+        "corrupted": true
+      },
+      {
+        "label": "oc/kimi-k2",
+        "agent": "opencode",
+        "model": "kimi-k2",
+        "status": "scored",
+        "duration_seconds": 1706.6195,
+        "recall_pct": 100.0,
+        "corrupted": false
+      },
+      {
+        "label": "oc/ox-alpha",
+        "agent": "opencode",
+        "model": "ox-alpha",
+        "status": "scored",
+        "duration_seconds": 762.2017,
+        "recall_pct": 95.74,
+        "corrupted": false
+      },
+      {
+        "label": "oc/gpt-5.6-terra",
+        "agent": "opencode",
+        "model": "gpt-5.6-terra",
+        "status": "scored",
+        "duration_seconds": 507.3621,
+        "recall_pct": 97.87,
+        "corrupted": false
+      },
+      {
+        "label": "oc/gpt-5.6-sol",
+        "agent": "opencode",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "duration_seconds": 401.455,
+        "recall_pct": 97.87,
+        "corrupted": false
+      },
+      {
+        "label": "oc/gpt-5.6-luna",
+        "agent": "opencode",
+        "model": "gpt-5.6-luna",
+        "status": "scored",
+        "duration_seconds": 1187.8595,
+        "recall_pct": 95.74,
+        "corrupted": false
+      },
+      {
+        "label": "cc/kimi-k2",
+        "agent": "claude-code",
+        "model": "kimi-k2",
+        "status": "zero_output",
+        "duration_seconds": 808.9196,
+        "recall_pct": 0.0,
+        "corrupted": false
+      },
+      {
+        "label": "cc/ox-alpha",
+        "agent": "claude-code",
+        "model": "ox-alpha",
+        "status": "zero_output",
+        "duration_seconds": 1809.5234,
+        "recall_pct": 0.0,
+        "corrupted": false
+      },
+      {
+        "label": "cc/gpt-5.6-terra",
+        "agent": "claude-code",
+        "model": "gpt-5.6-terra",
+        "status": "zero_output",
+        "duration_seconds": 30.686,
+        "recall_pct": 0.0,
+        "corrupted": false
+      },
+      {
+        "label": "oc/claude-sonnet-4-6",
+        "agent": "opencode",
+        "model": "claude-sonnet-4-6",
+        "status": "zero_output",
+        "duration_seconds": 15.2558,
+        "recall_pct": 0.0,
+        "corrupted": false
+      }
+    ]
+  },
+  "cost_per_found_study": {
+    "description": "Bar y=cost_usd/num_found; no-data slots for unknown/undefined",
+    "runs": [
+      {
+        "label": "cc/claude-sonnet-4-6",
+        "agent": "claude-code",
+        "model": "claude-sonnet-4-6",
+        "status": "scored",
+        "cost_usd": 0.94313055,
+        "num_found": 46,
+        "cost_per_found": 0.02050283804347826,
+        "corrupted": false
+      },
+      {
+        "label": "cc/gpt-5.6-sol",
+        "agent": "claude-code",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "cost_usd": 4.12795125,
+        "num_found": 45,
+        "cost_per_found": 0.09173224999999999,
+        "corrupted": false
+      },
+      {
+        "label": "cc/gpt-5.6-luna",
+        "agent": "claude-code",
+        "model": "gpt-5.6-luna",
+        "status": "scored",
+        "cost_usd": 0.1919934,
+        "num_found": 46,
+        "cost_per_found": 0.004173769565217392,
+        "corrupted": true
+      },
+      {
+        "label": "oc/kimi-k2",
+        "agent": "opencode",
+        "model": "kimi-k2",
+        "status": "scored",
+        "cost_usd": null,
+        "num_found": 47,
+        "cost_per_found": null,
+        "corrupted": false
+      },
+      {
+        "label": "oc/ox-alpha",
+        "agent": "opencode",
+        "model": "ox-alpha",
+        "status": "scored",
+        "cost_usd": null,
+        "num_found": 45,
+        "cost_per_found": null,
+        "corrupted": false
+      },
+      {
+        "label": "oc/gpt-5.6-terra",
+        "agent": "opencode",
+        "model": "gpt-5.6-terra",
+        "status": "scored",
+        "cost_usd": null,
+        "num_found": 46,
+        "cost_per_found": null,
+        "corrupted": false
+      },
+      {
+        "label": "oc/gpt-5.6-sol",
+        "agent": "opencode",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "cost_usd": null,
+        "num_found": 46,
+        "cost_per_found": null,
+        "corrupted": false
+      },
+      {
+        "label": "oc/gpt-5.6-luna",
+        "agent": "opencode",
+        "model": "gpt-5.6-luna",
+        "status": "scored",
+        "cost_usd": null,
+        "num_found": 45,
+        "cost_per_found": null,
+        "corrupted": false
+      },
+      {
+        "label": "cc/kimi-k2",
+        "agent": "claude-code",
+        "model": "kimi-k2",
+        "status": "zero_output",
+        "cost_usd": null,
+        "num_found": 0,
+        "cost_per_found": null,
+        "corrupted": false
+      },
+      {
+        "label": "cc/ox-alpha",
+        "agent": "claude-code",
+        "model": "ox-alpha",
+        "status": "zero_output",
+        "cost_usd": null,
+        "num_found": 0,
+        "cost_per_found": null,
+        "corrupted": false
+      },
+      {
+        "label": "cc/gpt-5.6-terra",
+        "agent": "claude-code",
+        "model": "gpt-5.6-terra",
+        "status": "zero_output",
+        "cost_usd": 0.3511885,
+        "num_found": 0,
+        "cost_per_found": null,
+        "corrupted": false
+      },
+      {
+        "label": "oc/claude-sonnet-4-6",
+        "agent": "opencode",
+        "model": "claude-sonnet-4-6",
+        "status": "zero_output",
+        "cost_usd": null,
+        "num_found": 0,
+        "cost_per_found": null,
+        "corrupted": false
+      }
+    ]
+  },
+  "agent_reliability_comparison": {
+    "description": "Grouped bar: success_rate, mean_recall, mean_field_accuracy by agent",
+    "agent_stats": {
+      "claude-code": {
+        "n_total": 6,
+        "n_scored": 3,
+        "success_rate_pct": 50.0,
+        "mean_recall_pct": 97.16,
+        "mean_field_accuracy_pct": 83.7633
+      },
+      "opencode": {
+        "n_total": 6,
+        "n_scored": 5,
+        "success_rate_pct": 83.3333,
+        "mean_recall_pct": 97.444,
+        "mean_field_accuracy_pct": 92.292
+      }
+    }
+  },
+  "recall_per_minute": {
+    "description": "Bar recall_pct/(duration_seconds/60) sorted descending",
+    "runs": [
+      {
+        "label": "cc/claude-sonnet-4-6",
+        "agent": "claude-code",
+        "model": "claude-sonnet-4-6",
+        "status": "scored",
+        "recall_pct": 97.87,
+        "duration_seconds": 1807.7356,
+        "recall_per_minute": 3.248373268745717,
+        "corrupted": false
+      },
+      {
+        "label": "cc/gpt-5.6-sol",
+        "agent": "claude-code",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "recall_pct": 95.74,
+        "duration_seconds": 306.1883,
+        "recall_per_minute": 18.761004257837413,
+        "corrupted": false
+      },
+      {
+        "label": "cc/gpt-5.6-luna",
+        "agent": "claude-code",
+        "model": "gpt-5.6-luna",
+        "status": "scored",
+        "recall_pct": 97.87,
+        "duration_seconds": 242.122,
+        "recall_per_minute": 24.253062505678958,
+        "corrupted": true
+      },
+      {
+        "label": "oc/kimi-k2",
+        "agent": "opencode",
+        "model": "kimi-k2",
+        "status": "scored",
+        "recall_pct": 100.0,
+        "duration_seconds": 1706.6195,
+        "recall_per_minute": 3.5157221630246225,
+        "corrupted": false
+      },
+      {
+        "label": "oc/ox-alpha",
+        "agent": "opencode",
+        "model": "ox-alpha",
+        "status": "scored",
+        "recall_pct": 95.74,
+        "duration_seconds": 762.2017,
+        "recall_per_minute": 7.536587756233029,
+        "corrupted": false
+      },
+      {
+        "label": "oc/gpt-5.6-terra",
+        "agent": "opencode",
+        "model": "gpt-5.6-terra",
+        "status": "scored",
+        "recall_pct": 97.87,
+        "duration_seconds": 507.3621,
+        "recall_per_minute": 11.573982368805238,
+        "corrupted": false
+      },
+      {
+        "label": "oc/gpt-5.6-sol",
+        "agent": "opencode",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "recall_pct": 97.87,
+        "duration_seconds": 401.455,
+        "recall_per_minute": 14.627293220908944,
+        "corrupted": false
+      },
+      {
+        "label": "oc/gpt-5.6-luna",
+        "agent": "opencode",
+        "model": "gpt-5.6-luna",
+        "status": "scored",
+        "recall_pct": 95.74,
+        "duration_seconds": 1187.8595,
+        "recall_per_minute": 4.835925460881526,
+        "corrupted": false
+      },
+      {
+        "label": "cc/kimi-k2",
+        "agent": "claude-code",
+        "model": "kimi-k2",
+        "status": "zero_output",
+        "recall_pct": 0.0,
+        "duration_seconds": 808.9196,
+        "recall_per_minute": 0.0,
+        "corrupted": false
+      },
+      {
+        "label": "cc/ox-alpha",
+        "agent": "claude-code",
+        "model": "ox-alpha",
+        "status": "zero_output",
+        "recall_pct": 0.0,
+        "duration_seconds": 1809.5234,
+        "recall_per_minute": 0.0,
+        "corrupted": false
+      },
+      {
+        "label": "cc/gpt-5.6-terra",
+        "agent": "claude-code",
+        "model": "gpt-5.6-terra",
+        "status": "zero_output",
+        "recall_pct": 0.0,
+        "duration_seconds": 30.686,
+        "recall_per_minute": 0.0,
+        "corrupted": false
+      },
+      {
+        "label": "oc/claude-sonnet-4-6",
+        "agent": "opencode",
+        "model": "claude-sonnet-4-6",
+        "status": "zero_output",
+        "recall_pct": 0.0,
+        "duration_seconds": 15.2558,
+        "recall_per_minute": 0.0,
+        "corrupted": false
+      }
+    ],
+    "sorted_descending": [
+      {
+        "label": "cc/gpt-5.6-luna",
+        "agent": "claude-code",
+        "model": "gpt-5.6-luna",
+        "status": "scored",
+        "recall_pct": 97.87,
+        "overall_field_accuracy_pct": 66.67,
+        "duration_seconds": 242.122,
+        "cost_usd": 0.1919934,
+        "num_found": 46,
+        "cost_per_found": 0.004173769565217392,
+        "recall_per_minute": 24.253062505678958,
+        "corrupted": true
+      },
+      {
+        "label": "cc/gpt-5.6-sol",
+        "agent": "claude-code",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "recall_pct": 95.74,
+        "overall_field_accuracy_pct": 92.59,
+        "duration_seconds": 306.1883,
+        "cost_usd": 4.12795125,
+        "num_found": 45,
+        "cost_per_found": 0.09173224999999999,
+        "recall_per_minute": 18.761004257837413,
+        "corrupted": false
+      },
+      {
+        "label": "oc/gpt-5.6-sol",
+        "agent": "opencode",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "recall_pct": 97.87,
+        "overall_field_accuracy_pct": 92.75,
+        "duration_seconds": 401.455,
+        "cost_usd": null,
+        "num_found": 46,
+        "cost_per_found": null,
+        "recall_per_minute": 14.627293220908944,
+        "corrupted": false
+      },
+      {
+        "label": "oc/gpt-5.6-terra",
+        "agent": "opencode",
+        "model": "gpt-5.6-terra",
+        "status": "scored",
+        "recall_pct": 97.87,
+        "overall_field_accuracy_pct": 92.75,
+        "duration_seconds": 507.3621,
+        "cost_usd": null,
+        "num_found": 46,
+        "cost_per_found": null,
+        "recall_per_minute": 11.573982368805238,
+        "corrupted": false
+      },
+      {
+        "label": "oc/ox-alpha",
+        "agent": "opencode",
+        "model": "ox-alpha",
+        "status": "scored",
+        "recall_pct": 95.74,
+        "overall_field_accuracy_pct": 92.59,
+        "duration_seconds": 762.2017,
+        "cost_usd": null,
+        "num_found": 45,
+        "cost_per_found": null,
+        "recall_per_minute": 7.536587756233029,
+        "corrupted": false
+      },
+      {
+        "label": "oc/gpt-5.6-luna",
+        "agent": "opencode",
+        "model": "gpt-5.6-luna",
+        "status": "scored",
+        "recall_pct": 95.74,
+        "overall_field_accuracy_pct": 92.59,
+        "duration_seconds": 1187.8595,
+        "cost_usd": null,
+        "num_found": 45,
+        "cost_per_found": null,
+        "recall_per_minute": 4.835925460881526,
+        "corrupted": false
+      },
+      {
+        "label": "oc/kimi-k2",
+        "agent": "opencode",
+        "model": "kimi-k2",
+        "status": "scored",
+        "recall_pct": 100.0,
+        "overall_field_accuracy_pct": 90.78,
+        "duration_seconds": 1706.6195,
+        "cost_usd": null,
+        "num_found": 47,
+        "cost_per_found": null,
+        "recall_per_minute": 3.5157221630246225,
+        "corrupted": false
+      },
+      {
+        "label": "cc/claude-sonnet-4-6",
+        "agent": "claude-code",
+        "model": "claude-sonnet-4-6",
+        "status": "scored",
+        "recall_pct": 97.87,
+        "overall_field_accuracy_pct": 92.03,
+        "duration_seconds": 1807.7356,
+        "cost_usd": 0.94313055,
+        "num_found": 46,
+        "cost_per_found": 0.02050283804347826,
+        "recall_per_minute": 3.248373268745717,
+        "corrupted": false
+      },
+      {
+        "label": "cc/kimi-k2",
+        "agent": "claude-code",
+        "model": "kimi-k2",
+        "status": "zero_output",
+        "recall_pct": 0.0,
+        "overall_field_accuracy_pct": null,
+        "duration_seconds": 808.9196,
+        "cost_usd": null,
+        "num_found": 0,
+        "cost_per_found": null,
+        "recall_per_minute": 0.0,
+        "corrupted": false
+      },
+      {
+        "label": "cc/ox-alpha",
+        "agent": "claude-code",
+        "model": "ox-alpha",
+        "status": "zero_output",
+        "recall_pct": 0.0,
+        "overall_field_accuracy_pct": null,
+        "duration_seconds": 1809.5234,
+        "cost_usd": null,
+        "num_found": 0,
+        "cost_per_found": null,
+        "recall_per_minute": 0.0,
+        "corrupted": false
+      },
+      {
+        "label": "cc/gpt-5.6-terra",
+        "agent": "claude-code",
+        "model": "gpt-5.6-terra",
+        "status": "zero_output",
+        "recall_pct": 0.0,
+        "overall_field_accuracy_pct": null,
+        "duration_seconds": 30.686,
+        "cost_usd": 0.3511885,
+        "num_found": 0,
+        "cost_per_found": null,
+        "recall_per_minute": 0.0,
+        "corrupted": false
+      },
+      {
+        "label": "oc/claude-sonnet-4-6",
+        "agent": "opencode",
+        "model": "claude-sonnet-4-6",
+        "status": "zero_output",
+        "recall_pct": 0.0,
+        "overall_field_accuracy_pct": null,
+        "duration_seconds": 15.2558,
+        "cost_usd": null,
+        "num_found": 0,
+        "cost_per_found": null,
+        "recall_per_minute": 0.0,
+        "corrupted": false
+      }
+    ]
+  }
+}

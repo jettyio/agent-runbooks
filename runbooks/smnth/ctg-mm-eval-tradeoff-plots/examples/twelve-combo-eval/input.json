@@ -1,0 +1,21 @@
+{
+  "title": "12 agent+model combinations — MM extraction benchmark",
+  "prompt": "Execute the runbook.",
+  "params": {
+    "vars": {
+      "input_file": "/app/assets/evaluation_matrix.csv",
+      "results_dir": "/app/results"
+    }
+  },
+  "files": [
+    {
+      "path": "input.csv",
+      "filename": "evaluation_matrix.csv",
+      "mime_type": "text/csv",
+      "rows": 12,
+      "label": "Evaluation matrix — 12 agent+model combinations scored against the ClinicalTrials.gov multiple-myeloma extraction benchmark (8 scored, 4 zero-output)",
+      "license": "Synthetic/benchmark data produced by the authors — free to redistribute"
+    }
+  ],
+  "note": "The chart logic assumes this 20-column schema."
+}

@@ -1,0 +1,13 @@
+agent,model,status,gold_total,num_found,num_missing,recall_pct,num_extra_entries,precision_pct,title_accuracy_pct,url_accuracy_pct,status_accuracy_pct,enrollment_accuracy_pct,study_type_accuracy_pct,start_date_accuracy_pct,overall_field_accuracy_pct,cost_usd,total_tokens,duration_seconds,notes
+claude-code,claude-sonnet-4-6,scored,47,46,1,97.87,0,100.0,56.52,100.0,95.65,100.0,100.0,100.0,92.03,0.94313055,20553.0,1807.7356,
+claude-code,gpt-5.6-sol,scored,47,45,2,95.74,0,100.0,55.56,100.0,100.0,100.0,100.0,100.0,92.59,4.12795125,8364.0,306.1883,
+claude-code,gpt-5.6-luna,scored,47,46,1,97.87,0,100.0,0.0,100.0,100.0,0.0,100.0,100.0,66.67,0.1919934,5901.0,242.122,
+opencode,kimi-k2,scored,47,47,0,100.0,0,100.0,44.68,100.0,100.0,100.0,100.0,100.0,90.78,,,1706.6195,
+opencode,ox-alpha,scored,47,45,2,95.74,0,100.0,55.56,100.0,100.0,100.0,100.0,100.0,92.59,,,762.2017,
+opencode,gpt-5.6-terra,scored,47,46,1,97.87,0,100.0,56.52,100.0,100.0,100.0,100.0,100.0,92.75,,,507.3621,
+opencode,gpt-5.6-sol,scored,47,46,1,97.87,0,100.0,56.52,100.0,100.0,100.0,100.0,100.0,92.75,,,401.455,
+opencode,gpt-5.6-luna,scored,47,45,2,95.74,0,100.0,55.56,100.0,100.0,100.0,100.0,100.0,92.59,,,1187.8595,
+claude-code,kimi-k2,zero_output,47,0,47,0.0,0,,,,,,,,,,502210.0,808.9196,claude-code/kimi-k2 stalled — produced 9 intermediate files but no final results CSV; metadata shows success=true but no CSV delivered
+claude-code,ox-alpha,zero_output,47,0,47,0.0,0,,,,,,,,,,,1809.5234,"agent 'claude-code' produced no /app/results files — check agent log for upstream errors (auth, CLI usage, or model provider failure)"
+claude-code,gpt-5.6-terra,zero_output,47,0,47,0.0,0,,,,,,,,,0.3511885,1068.0,30.686,"agent 'claude-code' produced no /app/results files — check agent log for upstream errors (auth, CLI usage, or model provider failure)"
+opencode,claude-sonnet-4-6,zero_output,47,0,47,0.0,0,,,,,,,,,,,15.2558,"Two attempts both failed: agent 'opencode' produced no /app/results files — check agent log for upstream errors (auth, CLI usage, or model provider failure)"

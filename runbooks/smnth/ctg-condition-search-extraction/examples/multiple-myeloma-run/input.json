@@ -1,0 +1,14 @@
+{
+  "title": "Multiple myeloma — 2-month posting window",
+  "prompt": "Execute the runbook.",
+  "params": {
+    "vars": {
+      "condition": "Multiple myeloma",
+      "posted_from": "2026-06-25",
+      "posted_to": "2026-08-25",
+      "results_dir": "/app/results"
+    }
+  },
+  "files": [],
+  "note": "No file inputs — ClinicalTrials.gov API v2 and study pages are public. Run predates the extraction_audit.json requirement (runbook v1.1.0+)."
+}

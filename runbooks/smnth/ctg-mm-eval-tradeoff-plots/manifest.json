@@ -1,0 +1,240 @@
+{
+  "schema_version": "0.2.0",
+  "slug": "smnth/ctg-mm-eval-tradeoff-plots",
+  "title": "Multiple myeloma extraction trade-off plots",
+  "description": "Turn a 12-row agent+model evaluation matrix (scored against a ClinicalTrials.gov extraction benchmark) into five decision-relevant charts — accuracy, speed-vs-completeness, cost per correct result, agent reliability, and throughput — each answering a distinct question, with a validated colorblind-safe palette and a hard no-overlapping-labels gate.",
+  "cta": {
+    "label": "Fork and run",
+    "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+    "estimated_run_time": "8-12 mins"
+  },
+  "example_outputs": [
+    {
+      "id": "twelve-combo-eval-sonnet5",
+      "title": "Same 12-combination matrix, re-run on claude-sonnet-5 via OpenRouter",
+      "summary": "Reproducibility check against the current runbook (v1.2.1, portable OpenRouter routing): all five charts rendered clean on the first attempt, the in-code zero-overlap assertion passed without a retry, and each per-run chart asserts exactly 12 labelled combinations. Takeaways match the original run.",
+      "thumbnail": "examples/twelve-combo-eval-sonnet5/thumbnail.png",
+      "operation": "visualize",
+      "dir": "examples/twelve-combo-eval-sonnet5",
+      "input": {
+        "kind": "dataset",
+        "values": {
+          "input_file": "input.csv"
+        }
+      },
+      "primary_output": "examples/twelve-combo-eval-sonnet5/expected/charts/recall_vs_field_accuracy.png",
+      "outputs": [
+        {
+          "file": "examples/twelve-combo-eval-sonnet5/expected/charts/recall_vs_field_accuracy.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "All 12 combinations: recall vs overall field accuracy — the 'which is actually best' view, 100%-recall run starred."
+        },
+        {
+          "file": "examples/twelve-combo-eval-sonnet5/expected/charts/recall_vs_runtime.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "All 12 combinations: recall vs runtime (log scale) — the speed-vs-completeness trade-off."
+        },
+        {
+          "file": "examples/twelve-combo-eval-sonnet5/expected/charts/cost_per_found_study.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "Dollar cost per correctly-found study; 3 real bars, 9 explicit no-data slots, corrupted run flagged in red."
+        },
+        {
+          "file": "examples/twelve-combo-eval-sonnet5/expected/charts/agent_reliability_comparison.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "Aggregate claude-code vs opencode: success rate, mean recall, mean field accuracy."
+        },
+        {
+          "file": "examples/twelve-combo-eval-sonnet5/expected/charts/recall_per_minute.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "All 12 combinations: recall per minute of runtime — throughput view."
+        },
+        {
+          "file": "examples/twelve-combo-eval-sonnet5/expected/chart_data.json",
+          "role": "secondary",
+          "type": "application/json",
+          "description": "Exact derived numbers behind every chart."
+        },
+        {
+          "file": "examples/twelve-combo-eval-sonnet5/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Per-chart takeaways plus a 'which chart to look at' guide."
+        },
+        {
+          "file": "examples/twelve-combo-eval-sonnet5/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Stage results and overall_passed."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "volpiglio",
+        "task": "ctg-mm-eval-tradeoff-plots",
+        "trajectory_id": "6c1ecf5c",
+        "url": "https://jetty.io/trajectory/volpiglio/ctg-mm-eval-tradeoff-plots/6c1ecf5c",
+        "agent": "claude-code",
+        "model": "anthropic/claude-sonnet-5",
+        "model_provider": "openrouter",
+        "runbook_version": "1.2.1",
+        "ran_at": "2026-09-02T20:09:30.223316Z",
+        "duration_seconds": 439,
+        "eval": {
+          "overall_passed": true,
+          "pass": 5,
+          "partial": 0,
+          "fail": 0
+        }
+      }
+    },
+    {
+      "id": "twelve-combo-eval",
+      "title": "12 agent+model combinations, MM extraction benchmark",
+      "summary": "All 5 charts rendered clean — every one of the 12 combinations individually labeled with zero overlapping labels, palette and chart-form rules followed exactly.",
+      "thumbnail": "examples/twelve-combo-eval/thumbnail.png",
+      "operation": "visualize",
+      "dir": "examples/twelve-combo-eval",
+      "input": {
+        "kind": "dataset",
+        "values": {
+          "input_file": "input.csv"
+        }
+      },
+      "primary_output": "examples/twelve-combo-eval/expected/charts/recall_vs_field_accuracy.png",
+      "outputs": [
+        {
+          "file": "examples/twelve-combo-eval/expected/charts/recall_vs_field_accuracy.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "All 12 combinations: recall vs overall field accuracy — the 'which is actually best' view."
+        },
+        {
+          "file": "examples/twelve-combo-eval/expected/charts/recall_vs_runtime.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "All 12 combinations: recall vs runtime (log scale) — the speed-vs-completeness trade-off."
+        },
+        {
+          "file": "examples/twelve-combo-eval/expected/charts/cost_per_found_study.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "Dollar cost per correctly-found study, all 12 combinations, missing-data slots shown explicitly."
+        },
+        {
+          "file": "examples/twelve-combo-eval/expected/charts/agent_reliability_comparison.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "Aggregate claude-code vs opencode: success rate, mean recall, mean field accuracy."
+        },
+        {
+          "file": "examples/twelve-combo-eval/expected/charts/recall_per_minute.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "All 12 combinations: recall per minute of runtime — throughput view."
+        },
+        {
+          "file": "examples/twelve-combo-eval/expected/chart_data.json",
+          "role": "secondary",
+          "type": "application/json",
+          "description": "Exact derived numbers behind every chart, for auditability."
+        },
+        {
+          "file": "examples/twelve-combo-eval/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Per-chart takeaways plus a 'which chart to look at' guide."
+        },
+        {
+          "file": "examples/twelve-combo-eval/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Stage results and overall_passed."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "volpiglio",
+        "task": "ctg-mm-eval-tradeoff-plots",
+        "trajectory_id": "c8701752",
+        "url": "https://jetty.io/trajectory/volpiglio/ctg-mm-eval-tradeoff-plots/c8701752",
+        "agent": "claude-code",
+        "model": "claude-sonnet-4-6",
+        "ran_at": "2026-08-26T14:09:59.220115Z",
+        "duration_seconds": 624,
+        "eval": {
+          "overall_passed": true,
+          "pass": 5,
+          "partial": 0,
+          "fail": 0
+        },
+        "model_provider": "anthropic"
+      }
+    }
+  ],
+  "featured_examples": [
+    "twelve-combo-eval-sonnet5",
+    "twelve-combo-eval"
+  ],
+  "inputs": [
+    {
+      "label": "Evaluation matrix",
+      "type": "file",
+      "required": true,
+      "default": "/app/assets/evaluation_matrix.csv",
+      "description": "CSV, one row per agent+model combination, columns: agent, model, status, gold_total, num_found, num_missing, recall_pct, num_extra_entries, precision_pct, title_accuracy_pct, url_accuracy_pct, status_accuracy_pct, enrollment_accuracy_pct, study_type_accuracy_pct, start_date_accuracy_pct, overall_field_accuracy_pct, cost_usd, total_tokens, duration_seconds, notes."
+    }
+  ],
+  "secrets": [],
+  "runbook_source": "RUNBOOK.md",
+  "meta": {
+    "created_by": {
+      "name": "smnth",
+      "source": "jetty.io",
+      "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smnth/ctg-mm-eval-tradeoff-plots",
+      "avatar": null
+    },
+    "tags": [
+      "visualization",
+      "matplotlib",
+      "evaluation",
+      "benchmarking",
+      "agent:claude-code",
+      "programmatic"
+    ],
+    "version": "1.2.1",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-5",
+    "model_provider": "openrouter",
+    "snapshot": "python312-uv",
+    "evaluation": "programmatic",
+    "primary_outputs": [
+      "charts/recall_vs_field_accuracy.png",
+      "charts/recall_vs_runtime.png",
+      "charts/cost_per_found_study.png",
+      "charts/agent_reliability_comparison.png",
+      "charts/recall_per_minute.png"
+    ],
+    "lineage": {
+      "remix_of": null,
+      "imported_from": null,
+      "imported_by": null
+    },
+    "share": "smnth/ctg-mm-eval-tradeoff-plots",
+    "metrics": {
+      "_note": "Live counters — supplied by the Jetty backend at render time, not authored here.",
+      "number_of_runs": null,
+      "forks": null,
+      "remixes": null
+    }
+  },
+  "caveats": [
+    "This is a purpose-built visualization runbook for a specific evaluation matrix schema — the 20-column CSV format (agent, model, status, recall_pct, overall_field_accuracy_pct, cost_usd, duration_seconds, etc.) is not generic; a differently-shaped evaluation CSV would need the column names in Step 3 adjusted.",
+    "The runbook's frontmatter mentions a prior failed attempt that shipped overlapping labels despite calling adjustText — Step 4 now includes a mandatory programmatic overlap-check gate (asserting zero overlapping label bounding boxes) before a chart is accepted, per this runbook's own Common Fixes / Step 6 iteration loop."
+  ]
+}
