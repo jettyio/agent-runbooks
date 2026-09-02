@@ -10,9 +10,72 @@
   },
   "example_outputs": [
     {
+      "id": "software-company-run",
+      "title": "Software company — 1,200 synthetic candidates, 5 roles",
+      "summary": "A 1,200-candidate synthetic dataset with an injected disparity against female Software Engineer candidates (n=129). The audit flags it at a four-fifths ratio of 0.45 with Fisher p=0.0002 and chi-square p=0.0004 agreeing; 22 cells flagged in total, 17 of them at full confidence and 5 statistically significant. All 10 programmatic checks and the summary fact-check gate pass, rubric 5.0/5 in ~5 minutes.",
+      "thumbnail": "examples/software-company-run/thumbnail.png",
+      "operation": "audit",
+      "dir": "examples/software-company-run",
+      "input": {
+        "kind": "dataset",
+        "values": {
+          "input_data_path": "input.csv",
+          "outcome_field": "hired",
+          "job_role_field": "role_applied",
+          "protected_attributes": "gender,race_ethnicity,disability_status,veteran_status,age_bracket",
+          "disparity_threshold": "0.8",
+          "min_group_size": "30"
+        }
+      },
+      "primary_output": "examples/software-company-run/expected/compliance_report.md",
+      "outputs": [
+        {
+          "file": "examples/software-company-run/expected/compliance_report.md",
+          "role": "primary",
+          "type": "text/markdown",
+          "description": "Narrative compliance/fairness report for HR/legal review — methodology, findings by role and dimension, flagged items with both p-values, recommendations, caveats."
+        },
+        {
+          "file": "examples/software-company-run/expected/disparity_metrics.csv",
+          "role": "primary",
+          "type": "text/csv",
+          "description": "90 rows — one per (role, dimension, group) plus ALL_ROLES rollups — with counts, selection rates, four-fifths ratios, dual significance tests, flags."
+        },
+        {
+          "file": "examples/software-company-run/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Executive summary; flagged count and top-5 findings re-derived from the CSV by the Step 9 gate."
+        },
+        {
+          "file": "examples/software-company-run/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "10 programmatic checks, summary-accuracy gate, six rubric scores, overall_passed."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "volpiglio",
+        "task": "hiring-demographics-audit",
+        "trajectory_id": "f7d170dd",
+        "url": "https://jetty.io/trajectory/volpiglio/hiring-demographics-audit/f7d170dd",
+        "agent": "claude-code",
+        "model": "anthropic/claude-sonnet-5",
+        "model_provider": "openrouter",
+        "runbook_version": "1.2.0",
+        "ran_at": "2026-09-02T20:51:06.362940Z",
+        "duration_seconds": 315,
+        "eval": {
+          "overall_passed": true,
+          "overall_score": 5.0
+        }
+      }
+    },
+    {
       "id": "healthcare-network-run",
       "title": "Regional healthcare network — 900 synthetic candidates, 6 roles",
-      "summary": "A 900-candidate synthetic dataset with two deliberately injected disparities (Lab Technician candidates aged 50+, Hispanic/Latino Clinic Administrator candidates). Both surface in disparity_metrics.csv at four-fifths ratios of 0.48 and 0.15; 57 cells flagged in total, all 10 programmatic checks and the summary fact-check gate pass, rubric 5.0/5 in a single pass.",
+      "summary": "A 900-candidate synthetic dataset with two injected disparities. Lab Technician candidates aged 50+ are flagged at a four-fifths ratio of 0.62 against the 30-39 reference; the Clinic Administrator cell is too fragmented for a within-role comparison (Hispanic/Latino is its only group above min_group_size), but the injected effect surfaces in the company-wide rollup, where Hispanic/Latino candidates are flagged at 0.72 with both tests significant. 24 cells flagged, all 10 programmatic checks and the summary gate pass, rubric 5.0/5.",
       "thumbnail": "examples/healthcare-network-run/thumbnail.png",
       "operation": "audit",
       "dir": "examples/healthcare-network-run",
@@ -33,7 +96,7 @@
           "file": "examples/healthcare-network-run/expected/compliance_report.md",
           "role": "primary",
           "type": "text/markdown",
-          "description": "Narrative compliance/fairness report for HR/legal review — methodology, findings by role and dimension, flagged items with both p-values, recommendations, caveats."
+          "description": "Narrative compliance/fairness report for HR/legal review."
         },
         {
           "file": "examples/healthcare-network-run/expected/disparity_metrics.csv",
@@ -58,14 +121,14 @@
       "trajectory": {
         "collection": "volpiglio",
         "task": "hiring-demographics-audit",
-        "trajectory_id": "6102412d",
-        "url": "https://jetty.io/trajectory/volpiglio/hiring-demographics-audit/6102412d",
+        "trajectory_id": "c31e02a8",
+        "url": "https://jetty.io/trajectory/volpiglio/hiring-demographics-audit/c31e02a8",
         "agent": "claude-code",
         "model": "anthropic/claude-sonnet-5",
         "model_provider": "openrouter",
-        "runbook_version": "1.1.1",
-        "ran_at": "2026-09-02T20:09:08.833956Z",
-        "duration_seconds": 429,
+        "runbook_version": "1.2.0",
+        "ran_at": "2026-09-02T20:50:44.648815Z",
+        "duration_seconds": 424,
         "eval": {
           "overall_passed": true,
           "overall_score": 5.0
@@ -74,8 +137,8 @@
     },
     {
       "id": "synthetic-cvs-run",
-      "title": "Synthetic CV dataset (1,000 candidates, 12 roles)",
-      "summary": "A full audit over 1,000 synthetic candidates across 12 job roles and 5 protected attributes, scoring 5.0/5 on the rubric with every programmatic check and the fact-check gate passing.",
+      "title": "Synthetic CV dataset — 1,000 candidates, 12 roles",
+      "summary": "The original 1,000-candidate, 12-role synthetic dataset, re-run on runbook v1.2.0. 104 of 234 cells flagged — most of them small groups reported as directional — with 7 statistically significant on both tests, including company-wide race and age rollups (Hispanic/Latino 0.58, under-30 0.50 against the 40-49 reference) and a within-role finding for female Financial Analyst candidates (0.43). All 10 programmatic checks and the summary fact-check gate pass, rubric 5.0/5.",
       "thumbnail": "examples/synthetic-cvs-run/thumbnail.png",
       "operation": "audit",
       "dir": "examples/synthetic-cvs-run",
@@ -102,7 +165,7 @@
           "file": "examples/synthetic-cvs-run/expected/disparity_metrics.csv",
           "role": "primary",
           "type": "text/csv",
-          "description": "Structured per-(role, dimension, group) metrics table with four-fifths ratios and dual significance tests."
+          "description": "234 rows — one per (role, dimension, group) plus ALL_ROLES rollups — with counts, selection rates, four-fifths ratios, dual significance tests, flags."
         },
         {
           "file": "examples/synthetic-cvs-run/expected/summary.md",
@@ -121,21 +184,23 @@
       "trajectory": {
         "collection": "volpiglio",
         "task": "hiring-demographics-audit",
-        "trajectory_id": "4a1353c8",
-        "url": "https://jetty.io/trajectory/volpiglio/hiring-demographics-audit/4a1353c8",
+        "trajectory_id": "c8d96f9a",
+        "url": "https://jetty.io/trajectory/volpiglio/hiring-demographics-audit/c8d96f9a",
         "agent": "claude-code",
-        "model": "claude-sonnet-4-6",
-        "ran_at": "2026-08-19T19:10:25.215617Z",
-        "duration_seconds": 466,
+        "model": "anthropic/claude-sonnet-5",
+        "model_provider": "openrouter",
+        "runbook_version": "1.2.0",
+        "ran_at": "2026-09-02T20:50:22.617566Z",
+        "duration_seconds": 485,
         "eval": {
           "overall_passed": true,
           "overall_score": 5.0
-        },
-        "model_provider": "anthropic"
+        }
       }
     }
   ],
   "featured_examples": [
+    "software-company-run",
     "healthcare-network-run",
     "synthetic-cvs-run"
   ],
@@ -201,7 +266,7 @@
       "rubric",
       "programmatic"
     ],
-    "version": "1.1.1",
+    "version": "1.2.0",
     "agent": "claude-code",
     "model": "anthropic/claude-sonnet-5",
     "model_provider": "openrouter",
@@ -228,6 +293,6 @@
     "Statistical disparity flagged by the four-fifths rule and significance tests does not by itself establish discriminatory intent — see the report's own caveats section.",
     "The sample dataset is synthetic and used for audit-methodology demonstration only, not a real EEOC/OFCCP filing.",
     "Rubric scores are self-assessed by the agent, though gated by a hard programmatic-validation step (Step 4) and a fact-check step (Step 9) that verify calculations and summary numbers against the CSV rather than relying on impression alone.",
-    "The reference group for the four-fifths ratio is the highest-selection-rate group in each (role, dimension) cell regardless of its size, so a tiny group hired at 100% (e.g. 2 candidates) becomes the reference and pushes every sibling group into flagged + low_confidence. The healthcare-network-run example shows this: its injected Clinic Administrator disparity is flagged at ratio 0.15 but marked low-confidence for exactly that reason. Read low_confidence rows directionally, or raise min_group_size, until a future runbook version restricts reference-group selection to groups meeting min_group_size."
+    "Since v1.2.0 the four-fifths reference group is the highest-selection-rate group among those meeting min_group_size (falling back to the overall highest, marked low-confidence, only when no group qualifies). Earlier versions used the highest-rate group regardless of size, so a 2-candidate group hired at 100% could become the yardstick and push every sibling group into flagged + low-confidence."
   ]
 }

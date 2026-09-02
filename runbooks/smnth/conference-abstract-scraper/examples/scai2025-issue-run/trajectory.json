@@ -1,0 +1,32 @@
+{
+  "collection": "volpiglio",
+  "task": "conference-abstract-scraper",
+  "trajectory_id": "97478418",
+  "workflow_id": "volpiglio-conference-abstract-scraper--97478418",
+  "url": "https://jetty.io/trajectory/volpiglio/conference-abstract-scraper/97478418",
+  "runbook_version": "1.1.3",
+  "agent": "claude-code",
+  "model": "anthropic/claude-sonnet-5",
+  "model_provider": "openrouter",
+  "snapshot": "prism-playwright",
+  "ran_at": "2026-09-02T22:59:21.672437Z",
+  "duration_seconds": 634,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "abstracts.json"
+  ],
+  "cost_usd": 1.0699057,
+  "total_tokens": 25695,
+  "crossref_issn": "2772-9303",
+  "crossref_volume_issue": "volume 4, issue 5",
+  "confex_program_url": "https://scai.confex.com/scai/2025/meetingapp.cgi",
+  "max_abstracts": "12",
+  "eval": {
+    "overall_passed": true,
+    "pass": 11,
+    "partial": 1,
+    "fail": 0
+  },
+  "notes": ""
+}

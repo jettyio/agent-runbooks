@@ -10,7 +10,7 @@
   },
   "files": [
     {
-      "path": "input.json",
+      "path": "dataset.json",
       "filename": "redaction_dataset_sample20_unlabeled.json",
       "mime_type": "application/json",
       "records": 20,
@@ -18,5 +18,5 @@
       "license": "Corporate records derive from the public Enron email corpus; government/individual records are public-style samples"
     }
   ],
-  "note": "Each record carries id, domain, policy (bulleted), policy_ids, text."
+  "note": "Each record carries id, domain, policy (bulleted), policy_ids, text. Re-run 2026-09-02 on runbook v1.0.3 (claude-sonnet-5 via OpenRouter); the sandbox received the upload as /app/assets/53f59a7a.00.json and the Step 1 fallback located it."
 }

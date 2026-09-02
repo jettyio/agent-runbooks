@@ -1,5 +1,5 @@
 {
-  "title": "10 professional-domain records \u2014 healthcare, education, legal",
+  "title": "10 professional-domain records — healthcare, education, legal",
   "prompt": "Execute the runbook.",
   "params": {
     "vars": {
@@ -10,12 +10,12 @@
   },
   "files": [
     {
-      "path": "input.json",
+      "path": "dataset.json",
       "filename": "redaction_dataset_professional10.json",
       "mime_type": "application/json",
       "records": 10,
-      "label": "10 synthetic records with per-record policy statements \u2014 4 healthcare (clinic email, discharge summary, shift handoff, voicemail), 3 education (counselor incident, progress letter, transportation note), 3 legal (settlement memo, workplace investigation, client update)",
-      "license": "Synthetic \u2014 written for this example; all names, identifiers, and institutions are fictional"
+      "label": "10 synthetic records with per-record policy statements — 4 healthcare (clinic email, discharge summary, shift handoff, voicemail), 3 education (counselor incident, progress letter, transportation note), 3 legal (settlement memo, workplace investigation, client update)",
+      "license": "Synthetic — written for this example; all names, identifiers, and institutions are fictional"
     }
   ],
   "note": "The sandbox received the upload as /app/assets/fc8a7a86.00.json; the runbook's Step 1 fallback located it."

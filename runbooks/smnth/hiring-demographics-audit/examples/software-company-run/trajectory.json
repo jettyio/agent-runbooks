@@ -1,0 +1,33 @@
+{
+  "collection": "volpiglio",
+  "task": "hiring-demographics-audit",
+  "trajectory_id": "f7d170dd",
+  "workflow_id": "volpiglio-hiring-demographics-audit--f7d170dd",
+  "url": "https://jetty.io/trajectory/volpiglio/hiring-demographics-audit/f7d170dd",
+  "runbook_version": "1.2.0",
+  "agent": "claude-code",
+  "model": "anthropic/claude-sonnet-5",
+  "model_provider": "openrouter",
+  "snapshot": "python312-uv",
+  "ran_at": "2026-09-02T20:51:06.362940Z",
+  "duration_seconds": 315,
+  "status": "completed",
+  "success": true,
+  "primary_files": [
+    "compliance_report.md",
+    "disparity_metrics.csv"
+  ],
+  "cost_usd": 0.906244,
+  "total_tokens": 29151,
+  "input_data_path": "/app/assets/software_hiring_1200.csv",
+  "protected_attributes": "gender,race_ethnicity,disability_status,veteran_status,age_bracket",
+  "job_role_field": "role_applied",
+  "outcome_field": "hired",
+  "disparity_threshold": "0.8",
+  "min_group_size": "30",
+  "eval": {
+    "overall_passed": true,
+    "overall_score": 5.0
+  },
+  "notes": ""
+}

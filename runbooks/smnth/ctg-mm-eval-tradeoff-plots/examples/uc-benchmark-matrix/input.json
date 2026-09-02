@@ -1,0 +1,21 @@
+{
+  "title": "12 agent+model combinations \u2014 ulcerative-colitis extraction benchmark",
+  "prompt": "Execute the runbook.",
+  "params": {
+    "vars": {
+      "input_file": "/app/assets/evaluation_matrix_uc.csv",
+      "results_dir": "/app/results"
+    }
+  },
+  "files": [
+    {
+      "path": "input.csv",
+      "filename": "evaluation_matrix_uc.csv",
+      "mime_type": "text/csv",
+      "rows": 12,
+      "label": "A second 12-combination evaluation matrix (6 models x claude-code/opencode) scored against a 21-study ulcerative-colitis extraction benchmark \u2014 9 scored, 3 zero-output, cost tracked only for claude-code, one run with a corrupted URL column",
+      "license": "Synthetic benchmark matrix authored for this example"
+    }
+  ],
+  "note": "Run against runbook v1.3.0 (label-locality gate + inset zoom for dense clusters). The sandbox received the upload as /app/assets/81a3cc18.00.csv; the input fallback located it."
+}

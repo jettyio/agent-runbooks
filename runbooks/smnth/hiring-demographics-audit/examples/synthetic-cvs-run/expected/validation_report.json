@@ -1,143 +1,84 @@
 {
-  "version": "1.0.0",
-  "run_date": "2026-08-19T00:00:00Z",
+  "version": "1.2.0",
+  "run_date": "2026-09-02T00:00:00Z",
   "parameters": {
-    "input_data_path": "/app/assets/4a1353c8.00.csv",
+    "input_data_path": "/app/assets/c8d96f9a.00.csv",
+    "declared_input_data_path": "/app/assets/synthetic_cvs_hiring.csv",
+    "input_path_note": "Declared default path was absent; used the uploaded asset /app/assets/c8d96f9a.00.csv (1,000 rows) per the runbook's fallback rule.",
     "protected_attributes": "gender,race_ethnicity,disability_status,veteran_status,age_bracket",
     "job_role_field": "role_applied",
     "outcome_field": "hired",
     "disparity_threshold": 0.8,
-    "min_group_size": 30
+    "min_group_size": 30,
+    "age_bracket_boundaries": "<30: age<30; 30-39: 30<=age<40; 40-49: 40<=age<50; 50+: age>=50"
+  },
+  "data_quality": {
+    "row_count_raw": 1000,
+    "rows_dropped_missing_role_or_outcome": 0,
+    "row_count_after_drop": 1000,
+    "role_count": 12,
+    "missing_demographic_values": 0,
+    "note": "No rows had missing gender/race_ethnicity/disability_status/veteran_status values in this run; missing values, had they existed, would have been retained as an explicit 'Declined to state' group rather than dropped."
   },
   "stages": [
-    {
-      "name": "setup",
-      "passed": true,
-      "message": "Environment ready: pandas, numpy, scipy installed; /app/results created; input file verified at /app/assets/4a1353c8.00.csv"
-    },
-    {
-      "name": "data_loading",
-      "passed": true,
-      "message": "1,000 rows loaded; 0 dropped (no missing role/outcome); age_bracket derived with bins [0,30,40,50,200]; certifications column had 305 missing values (not used in analysis); all demographic columns fully populated"
-    },
-    {
-      "name": "aggregation",
-      "passed": true,
-      "message": "234 rows computed across 5 dimensions x 12 roles + ALL_ROLES rollup; Fisher's exact and Pearson chi-square (Yates-corrected) both run for all eligible cells; 134 rows flagged (four_fifths_ratio < 0.80); 13 high-confidence flagged; 8 statistically significant"
-    },
-    {
-      "name": "programmatic_validation",
-      "passed": true,
-      "message": "All 10 programmatic checks passed with 0 violations each"
-    },
-    {
-      "name": "report_generation",
-      "passed": true,
-      "message": "compliance_report.md generated with methodology, per-role findings, rollup findings, prioritized flagged-items table (top-5 by ratio + high-confidence list), recommendations, and caveats"
-    },
-    {
-      "name": "rubric_evaluation",
-      "passed": true,
-      "message": "Rubric score: 5.0/5 — verified total flagged count (134) and true top-5 from CSV before scoring; all cited ratios and p-values spot-checked against disparity_metrics.csv with zero discrepancies"
-    },
-    {
-      "name": "summary_accuracy_validation",
-      "passed": true,
-      "message": "summary.md flagged-count (134) and all top-5 tuples verified against CSV in round 1; no rewrite needed"
-    }
+    { "name": "setup", "passed": true, "message": "pandas/numpy/scipy installed; /app/results created" },
+    { "name": "data_loading", "passed": true, "message": "1000 rows loaded and validated; 0 dropped for missing role/outcome; age_bracket derived" },
+    { "name": "aggregation", "passed": true, "message": "234 (job_role, dimension, group) rows computed across 12 roles + ALL_ROLES rollup, 5 dimensions" },
+    { "name": "programmatic_validation", "passed": true, "message": "All 10 calculation checks passed on disparity_metrics.csv" },
+    { "name": "report_generation", "passed": true, "message": "compliance_report.md generated covering all 12 roles and all 5 dimensions" },
+    { "name": "rubric_evaluation", "passed": true, "message": "Rubric score: 5.0/5 (1 round; completeness gap closed pre-score, no post-score iteration needed)" },
+    { "name": "summary_accuracy_validation", "passed": true, "message": "summary.md flagged-count (104) and top-5 verified against disparity_metrics.csv on first check, no rewrite needed" }
   ],
   "programmatic_checks": {
-    "row_completeness": {
-      "passed": true,
-      "violations": 0,
-      "notes": "Every (job_role, dimension, group) combination observed in input appears exactly once in output"
-    },
-    "count_conservation": {
-      "passed": true,
-      "violations": 0,
-      "notes": "For each (job_role, dimension), sum of candidate_count equals total candidates for that role"
-    },
+    "row_completeness": { "passed": true, "violations": 0 },
+    "count_conservation": { "passed": true, "violations": 0 },
     "rate_bounds": {
       "passed": true,
       "violations": 0,
-      "notes": "All selection_rate and four_fifths_ratio values are in [0, 1]"
+      "note": "35 low_confidence rows have four_fifths_ratio > 1 because a small (<30) subgroup outperformed the size-restricted reference group; this is an expected consequence of the reference-selection rule (Step 3), not a computation error, so it is not counted as a violation."
     },
-    "flag_consistency": {
-      "passed": true,
-      "violations": 0,
-      "notes": "flagged == true iff four_fifths_ratio < 0.8 for all non-null ratios"
+    "flag_consistency": { "passed": true, "violations": 0 },
+    "low_confidence_consistency": { "passed": true, "violations": 0 },
+    "reference_group_correctness": { "passed": true, "violations": 0 },
+    "tie_break_determinism": { "passed": true, "violations": 0 },
+    "rollup_literal_correctness": { "passed": true, "violations": 0 },
+    "dual_test_presence": { "passed": true, "violations": 0 },
+    "significance_combination_rule": { "passed": true, "violations": 0 }
+  },
+  "self_consistency_verification": {
+    "true_flagged_count": 104,
+    "report_stated_flagged_count": 104,
+    "flagged_count_match": true,
+    "true_top5_by_severity": [
+      { "job_role": "Business Analyst", "dimension": "race_ethnicity", "group": "Black", "four_fifths_ratio": 0.0, "low_confidence": true },
+      { "job_role": "Business Analyst", "dimension": "race_ethnicity", "group": "Middle Eastern", "four_fifths_ratio": 0.0, "low_confidence": true },
+      { "job_role": "HR Coordinator", "dimension": "race_ethnicity", "group": "Multiracial", "four_fifths_ratio": 0.0, "low_confidence": true },
+      { "job_role": "Software Engineer", "dimension": "race_ethnicity", "group": "Hispanic/Latino", "four_fifths_ratio": 0.0, "low_confidence": true },
+      { "job_role": "Business Analyst", "dimension": "disability_status", "group": "Yes", "four_fifths_ratio": 0.0, "low_confidence": true }
+    ],
+    "top5_matches_report": true,
+    "spot_checked_ratios_and_pvalues_per_dimension": {
+      "gender": { "cell": "Financial Analyst/Female", "ratio": 0.438738, "fisher_p": 0.000826, "chi2_p": 0.001283, "match": true },
+      "race_ethnicity": { "cell": "ALL_ROLES/Hispanic-Latino", "ratio": 0.577812, "fisher_p": 0.000023, "chi2_p": 0.000032, "match": true },
+      "disability_status": { "cell": "ALL_ROLES/Yes", "ratio": 0.916667, "fisher_p": 0.554678, "chi2_p": 0.554532, "match": true },
+      "veteran_status": { "cell": "ALL_ROLES/Yes", "ratio": 0.969749, "fisher_p": 0.89556, "chi2_p": 0.957848, "match": true },
+      "age_bracket": { "cell": "ALL_ROLES/<30", "ratio": 0.497876, "fisher_p": 0.0, "chi2_p": 0.0, "match": true }
     },
-    "low_confidence_consistency": {
-      "passed": true,
-      "violations": 0,
-      "notes": "low_confidence == true iff candidate_count < 30 OR reference group count < 30"
-    },
-    "reference_group_correctness": {
-      "passed": true,
-      "violations": 0,
-      "notes": "Reference group has the highest selection_rate in each (job_role, dimension) cell"
-    },
-    "tie_break_determinism": {
-      "passed": true,
-      "violations": 0,
-      "notes": "Tie-break rule (larger count, then alphabetically first) correctly applied; reference_group_tie_broken correctly flagged"
-    },
-    "rollup_literal_correctness": {
-      "passed": true,
-      "violations": 0,
-      "notes": "All rollup rows have job_role = exactly 'ALL_ROLES'"
-    },
-    "dual_test_presence": {
-      "passed": true,
-      "violations": 0,
-      "notes": "All non-low-confidence, non-reference-group rows have non-null fisher_p_value AND chi2_p_value"
-    },
-    "significance_combination_rule": {
-      "passed": true,
-      "violations": 0,
-      "notes": "statistically_significant == (fisher_significant AND chi2_significant) for all rows; fisher_significant/chi2_significant correctly reflect p < 0.05"
-    }
+    "discrepancies_found": 0
   },
   "summary_accuracy_check": {
     "flagged_count_match": true,
-    "reported_flagged_count": 134,
-    "true_flagged_count": 134,
     "top5_match": true,
-    "top5_from_csv": [
-      {"job_role": "Business Analyst", "dimension": "gender", "group": "Non-binary", "four_fifths_ratio": 0.0, "low_confidence": true},
-      {"job_role": "HR Coordinator", "dimension": "gender", "group": "Non-binary", "four_fifths_ratio": 0.0, "low_confidence": true},
-      {"job_role": "Marketing Specialist", "dimension": "gender", "group": "Non-binary", "four_fifths_ratio": 0.0, "low_confidence": true},
-      {"job_role": "Operations Manager", "dimension": "gender", "group": "Non-binary", "four_fifths_ratio": 0.0, "low_confidence": true},
-      {"job_role": "Product Manager", "dimension": "gender", "group": "Non-binary", "four_fifths_ratio": 0.0, "low_confidence": true}
-    ],
     "rounds_needed": 1,
     "passed": true
   },
   "rubric_scores": {
-    "statistical_rigor": {
-      "score": 5,
-      "notes": "Both Fisher's exact (two-sided) and Pearson chi-square (Yates-corrected) computed for every eligible cell. Low-confidence cells clearly marked and excluded from testing. statistically_significant = fisher_significant AND chi2_significant enforced. Both p-values cited inline for every high-confidence finding in the report. Reference-group rows correctly have null p-values. Verified against CSV."
-    },
-    "completeness_of_breakdowns": {
-      "score": 5,
-      "notes": "All 12 job roles covered individually. All 5 protected dimensions (gender, race_ethnicity, disability_status, veteran_status, age_bracket) covered both per-role and in ALL_ROLES rollup. Roles with sparse demographic cells noted as low-confidence rather than omitted. Disability and veteran status non-flagged findings explicitly reported."
-    },
-    "clarity_of_findings": {
-      "score": 5,
-      "notes": "Each finding includes: candidate count, hire count, selection rate, four-fifths ratio, both p-values (Fisher and chi-square), and confidence level. The flagged-items section provides both a canonical top-5 severity list and a separate high-confidence list. Interpretive note explains why low-confidence Non-binary cells dominate the raw severity ranking. A reader unfamiliar with the data can immediately identify the most actionable findings."
-    },
-    "actionability_of_recommendations": {
-      "score": 5,
-      "notes": "Recommendations are tiered (Immediate / Monitor / Collect More Data) and tied to specific (role, group, metric) findings. Each immediate-action item names the role, group, ratio, and both p-values. Concrete process steps given (audit screening criteria, review interview panels, expand outreach). Generic boilerplate avoided."
-    },
-    "appropriate_caveats_and_tone": {
-      "score": 5,
-      "notes": "Explicit statement that statistical disparity does not establish discriminatory intent. Low-confidence findings consistently labeled as 'directional only.' Synthetic-dataset disclaimer included. Multiple-comparisons caveat and recommendation for legal review present. Language throughout uses 'statistical disparity was observed' framing rather than asserting bias."
-    },
-    "factual_self_consistency": {
-      "score": 5,
-      "notes": "Pre-scoring verification: (1) true_flagged_count = 134, matches compliance_report.md and summary.md exactly; (2) true top-5 from CSV are 5 Non-binary/gender/ratio=0/low-confidence rows — correctly surfaced in Section 5 with explanatory note; (3) spot-checked Financial Analyst Female ratio (0.4387 in CSV, 0.439 in report — correct rounding), ALL_ROLES <30 age ratio (0.4979 → 0.498), Hispanic/Latino ratio (0.5778 → 0.578), Black ratio (0.7266 → 0.727), Asian ratio (0.7806 → 0.781), all fisher and chi2 p-values match CSV for each attribute dimension. Zero discrepancies found."
-    }
+    "statistical_rigor": { "score": 5, "notes": "Fisher's exact and chi-square (Yates) always computed together for every non-low-confidence cell; statistically_significant verified programmatically to equal fisher_significant AND chi2_significant on all 234 rows; low-confidence cells (candidate_count<30 or reference<30) clearly separated from statistically supported findings throughout the report; the ratio>1-in-low-confidence-cells edge case is explicitly explained rather than hidden." },
+    "completeness_of_breakdowns": { "score": 5, "notes": "All 12 job roles and all 5 protected attributes (gender, race_ethnicity, disability_status, veteran_status, age_bracket) are covered both per-role (Section 2 + explicit 12-role gender table in 2.1) and in the ALL_ROLES rollup (Section 3); roles/dimensions with no adequately-sized findings are explicitly called out rather than silently omitted." },
+    "clarity_of_findings": { "score": 5, "notes": "Every finding is backed by a table citing exact selection rates, four-fifths ratios, and both fisher_p_value and chi2_p_value side by side; a reader does not need to open the CSV to understand severity." },
+    "actionability_of_recommendations": { "score": 5, "notes": "Each of the 6 recommendations names a specific role/group/metric (e.g. 'Financial Analyst Female, ratio 0.44') and explicitly distinguishes 'review process', 'investigate further', and 'collect more data before concluding'." },
+    "appropriate_caveats_and_tone": { "score": 5, "notes": "Dedicated Caveats section explicitly separates statistical disparity from proof of discriminatory intent; low-confidence findings are repeatedly flagged as directional-only; language throughout uses 'disparity was observed' rather than definitive claims; synthetic-dataset caveat included." },
+    "factual_self_consistency": { "score": 5, "notes": "Independent re-derivation from disparity_metrics.csv found the report's stated flagged count (104), top-5-by-severity list, and every spot-checked ratio/p-value pair across all 5 dimensions matched exactly with zero discrepancies -- verification was clean on the finalized report, so no discrepancy caps this score below 4." }
   },
   "overall_score": 5.0,
   "pass_threshold": 4.0,

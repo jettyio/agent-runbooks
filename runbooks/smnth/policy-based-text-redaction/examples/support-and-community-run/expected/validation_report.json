@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-09-02T00:00:00Z",
+  "parameters": {
+    "input_file": "/app/assets/189acf64.00.json",
+    "redaction_marker": "[REDACTED: {category}]"
+  },
+  "stages": [
+    { "name": "setup", "passed": true, "message": "Environment ready; /app/results created" },
+    { "name": "input_parsing", "passed": true, "message": "8 records parsed successfully with id, domain, policy, policy_ids, text fields" },
+    { "name": "redaction", "passed": true, "message": "redacted_dataset.json generated for all 8 records via literal substring replacement" },
+    { "name": "evaluation", "passed": true, "message": "Rubric score: 5.0/5" },
+    { "name": "report_generation", "passed": true, "message": "All output files written" }
+  ],
+  "rubric_scores": {
+    "policy_compliance": { "score": 5, "notes": "All policy-flagged spans redacted at every occurrence and alias across all 8 records; no leaks found on review." },
+    "context_preservation": { "score": 5, "notes": "Greetings, sign-offs, timestamps, and generic non-personal figures (e.g. published rate ranges) preserved intact." },
+    "redaction_precision": { "score": 5, "notes": "Redactions scoped to individual tokens/phrases, never whole sentences or messages." },
+    "marker_consistency": { "score": 5, "notes": "Single marker per entity throughout; distinct co-occurring entities (e.g. two agents in CS-402) numbered per first appearance." },
+    "readability": { "score": 5, "notes": "Grammar and punctuation remain intact around every marker; all 8 records read as coherent documents." }
+  },
+  "overall_score": 5.0,
+  "pass_threshold": 4.0,
+  "iterations": 1,
+  "overall_passed": true,
+  "record_count": 8,
+  "output_files": [
+    "/app/results/redacted_dataset.json",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}

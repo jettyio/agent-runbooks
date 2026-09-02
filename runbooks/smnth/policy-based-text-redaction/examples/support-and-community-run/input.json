@@ -1,0 +1,22 @@
+{
+  "title": "8 support & community records — e-commerce chats, forum posts, fintech calls",
+  "prompt": "Execute the runbook.",
+  "params": {
+    "vars": {
+      "input_file": "/app/assets/redaction_dataset_support8.json",
+      "redaction_marker": "[REDACTED: {category}]",
+      "results_dir": "/app/results"
+    }
+  },
+  "files": [
+    {
+      "path": "dataset.json",
+      "filename": "redaction_dataset_support8.json",
+      "mime_type": "application/json",
+      "records": 8,
+      "label": "8 synthetic records with per-record policy statements — 4 e-commerce support (chat transcripts, escalation ticket, refund form), 2 community forum posts, 2 fintech support (call summary, loan chat)",
+      "license": "Synthetic — written for this example; all names, identifiers, and institutions are fictional"
+    }
+  ],
+  "note": "The sandbox received the upload as /app/assets/189acf64.00.json; the runbook's Step 1 fallback located it."
+}

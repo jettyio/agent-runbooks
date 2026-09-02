@@ -14,8 +14,10 @@ no-overlapping-labels gate before any chart is accepted.
    colours; no dual axes, no pies, no default colour cycle.
 3. **Derive** — cost per found study, recall per minute, per-agent success/recall/accuracy
    aggregates → `chart_data.json`.
-4. **Render + verify** — five PNGs; scatter charts jitter coincident points, run adjustText,
-   and assert zero overlapping label bounding boxes before saving.
+4. **Render + verify** — five PNGs; scatter charts jitter only exactly-coincident points
+   (clamped to the data bounds), run adjustText, and assert both zero overlapping labels and
+   label locality (every label within 12% of its marker) before saving — dense clusters go
+   into an inset zoom instead of having their labels exiled across the chart.
 5. **Report** — `summary.md` with a per-chart takeaway and a "which chart to look at" guide.
 
 ## Deliverables (`{{results_dir}}/`)

@@ -1,0 +1,15 @@
+{
+  "title": "SCAI 2025 supplement (JSCAI vol. 4, issue 5) \u2014 first 12 abstracts",
+  "prompt": "Execute the runbook for the SCAI 2025 supplement: CrossRef volume 4, issue 5 of ISSN 2772-9303, full text from https://scai.confex.com/scai/2025/meetingapp.cgi. These parameters are correct as given.",
+  "params": {
+    "vars": {
+      "crossref_issn": "2772-9303",
+      "crossref_volume_issue": "volume 4, issue 5",
+      "confex_program_url": "https://scai.confex.com/scai/2025/meetingapp.cgi",
+      "max_abstracts": "12",
+      "results_dir": "/app/results"
+    }
+  },
+  "files": [],
+  "note": "A different year than the defaults. Run against runbook v1.1.3, whose session-code filter selects the 805 conference abstracts out of the issue's 864 works before taking the first 12 by page; earlier versions picked the regular journal articles that open this issue and could not match any of them in Confex."
+}

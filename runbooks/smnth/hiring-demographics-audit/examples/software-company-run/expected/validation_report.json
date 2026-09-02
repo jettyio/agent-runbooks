@@ -1,0 +1,68 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-09-02T00:00:00Z",
+  "parameters": {
+    "input_data_path": "/app/assets/f7d170dd.00.csv",
+    "input_data_note": "Declared default path /app/assets/software_hiring_1200.csv was not present; used the uploaded asset per runbook fallback rule.",
+    "protected_attributes": "gender,race_ethnicity,disability_status,veteran_status,age_bracket",
+    "job_role_field": "role_applied",
+    "outcome_field": "hired",
+    "disparity_threshold": 0.8,
+    "min_group_size": 30,
+    "age_bracket_boundaries": ["<30", "30-39", "40-49", "50+"]
+  },
+  "data_quality": {
+    "rows_before": 1200,
+    "rows_after_dropping_missing_role_or_outcome": 1200,
+    "rows_dropped": 0,
+    "missing_demographic_values": 0,
+    "note": "No missing role_applied, hired, or demographic values in this dataset; only 'certifications' had nulls (526), which is not used in disparity calculations."
+  },
+  "stages": [
+    { "name": "setup", "passed": true, "message": "Environment ready; pandas/numpy/scipy installed" },
+    { "name": "data_loading", "passed": true, "message": "Input parsed and validated; 1200 rows, 0 dropped" },
+    { "name": "aggregation", "passed": true, "message": "Disparity metrics computed for 5 roles x 5 dimensions plus ALL_ROLES rollup; 90 output rows" },
+    { "name": "programmatic_validation", "passed": true, "message": "All 10 calculation checks passed on first run" },
+    { "name": "report_generation", "passed": true, "message": "Compliance report generated" },
+    { "name": "rubric_evaluation", "passed": true, "message": "Rubric score: 5.0/5, passed on first round, no iteration needed" },
+    { "name": "summary_accuracy_validation", "passed": true, "message": "summary.md flagged-count (22) and top-5 verified against CSV, matched on first check" }
+  ],
+  "programmatic_checks": {
+    "row_completeness": { "passed": true, "violations": 0 },
+    "count_conservation": { "passed": true, "violations": 0 },
+    "rate_bounds": { "passed": true, "violations": 0 },
+    "flag_consistency": { "passed": true, "violations": 0 },
+    "low_confidence_consistency": { "passed": true, "violations": 0 },
+    "reference_group_correctness": { "passed": true, "violations": 0 },
+    "tie_break_determinism": { "passed": true, "violations": 0 },
+    "rollup_literal_correctness": { "passed": true, "violations": 0 },
+    "dual_test_presence": { "passed": true, "violations": 0 },
+    "significance_combination_rule": { "passed": true, "violations": 0 }
+  },
+  "summary_accuracy_check": {
+    "true_flagged_count": 22,
+    "stated_flagged_count": 22,
+    "flagged_count_match": true,
+    "top5_match": true,
+    "rounds_needed": 1,
+    "passed": true
+  },
+  "rubric_scores": {
+    "statistical_rigor": { "score": 5, "notes": "Fisher's exact and chi2 (Yates-corrected) run on every eligible (>=30/>=30) cell; statistically_significant programmatically verified to equal fisher_significant AND chi2_significant with 0 violations; low_confidence cells clearly separated from statistically supported ones in report Section 4." },
+    "completeness_of_breakdowns": { "score": 5, "notes": "All 5 job roles (Software Engineer, QA Engineer, Data Scientist, Product Manager, Engineering Manager) and all 5 protected attributes covered individually (Section 2) plus a full ALL_ROLES rollup per dimension (Section 3)." },
+    "clarity_of_findings": { "score": 5, "notes": "Section 4 flagged-items table cites role, dimension, group, ratio, both p-values, significance, and confidence for all 22 flagged rows; no need to cross-reference the CSV to understand severity." },
+    "actionability_of_recommendations": { "score": 5, "notes": "Recommendations name specific role/group/metric combinations (e.g. Software Engineer Hispanic/Latino ratio 0.43 p<0.02) and explicitly distinguish investigate vs. collect-more-data vs. monitor." },
+    "appropriate_caveats_and_tone": { "score": 5, "notes": "Section 6 explicitly separates statistical disparity from proof of discrimination, flags the conservative dual-test bar, notes synthetic-data status; report language uses 'flagged'/'warrants review' throughout, never 'proven'." },
+    "factual_self_consistency": { "score": 5, "notes": "Independent re-derivation from disparity_metrics.csv found zero discrepancies: true_flagged_count (22) matches the report's stated count exactly, and the true top-5-by-ratio tuples match Section 4's first five table rows in the same order with matching ratios and p-values." }
+  },
+  "overall_score": 5.0,
+  "pass_threshold": 4.0,
+  "iterations": 1,
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/compliance_report.md",
+    "/app/results/disparity_metrics.csv",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}

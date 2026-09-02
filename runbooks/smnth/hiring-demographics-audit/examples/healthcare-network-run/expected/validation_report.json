@@ -1,29 +1,48 @@
 {
-  "version": "1.0.0",
+  "version": "1.2.0",
   "run_date": "2026-09-02T00:00:00Z",
   "parameters": {
-    "input_data_path": "/app/assets/6102412d.00.csv",
-    "input_data_note": "Declared path /app/assets/healthcare_hiring_900.csv was absent; used the uploaded asset /app/assets/6102412d.00.csv (900 rows, matches expected schema) per the fallback instruction in Step 1.",
+    "input_data_path": "/app/assets/c31e02a8.00.csv",
+    "input_path_note": "Uploaded asset used (declared default /app/assets/healthcare_hiring_900.csv was not present); this is the healthcare hiring dataset with the schema specified in the runbook.",
     "protected_attributes": "gender,race_ethnicity,disability_status,veteran_status,age_bracket",
     "job_role_field": "role_applied",
     "outcome_field": "hired",
     "disparity_threshold": 0.8,
-    "min_group_size": 30,
-    "age_bracket_boundaries": "<30, 30-39, 40-49, 50+"
+    "min_group_size": 30
+  },
+  "data_quality": {
+    "rows_before_drop": 900,
+    "rows_after_drop": 900,
+    "rows_dropped_missing_role_or_outcome": 0,
+    "missing_demographic_data": "none -- gender, race_ethnicity, disability_status, veteran_status, age all fully populated for all 900 rows",
+    "only_missing_column": "certifications (167 blanks = 'no certifications listed'), not used in disparity calculation",
+    "age_bracket_boundaries": "<30, 30-39, 40-49, 50+",
+    "role_counts": {
+      "Registered Nurse": 205,
+      "Lab Technician": 186,
+      "Radiology Technologist": 150,
+      "Medical Coder": 136,
+      "Clinic Administrator": 135,
+      "Pharmacist": 88
+    }
   },
   "stages": [
-    { "name": "setup", "passed": true, "message": "pandas 3.0.5, numpy 2.5.2, scipy 1.18.1 installed; /app/results created" },
-    { "name": "data_loading", "passed": true, "message": "900 rows loaded; 0 rows dropped (role_applied and hired fully populated); no missing demographic data found; age_bracket derived; Yes/No fields coerced to boolean" },
-    { "name": "aggregation", "passed": true, "message": "125 rows written to disparity_metrics.csv (6 roles + ALL_ROLES rollup, x 5 dimensions, one row per group)" },
-    { "name": "programmatic_validation", "passed": true, "message": "All 10 calculation checks passed on second attempt; first attempt caught a floating-point rounding edge case (ratio exactly 0.8 computed as 0.7999999999999999) which was fixed by rounding the ratio before threshold comparison, then re-validated" },
-    { "name": "report_generation", "passed": true, "message": "compliance_report.md generated covering methodology, per-role findings, per-dimension rollup findings, full 57-row flagged table, recommendations, and caveats" },
-    { "name": "rubric_evaluation", "passed": true, "message": "Rubric score: 5.0/5 on first evaluation; independent re-derivation of true_flagged_count (57), true top-5 by severity, and spot-checked ratios/p-values for all 5 dimensions matched the report exactly with zero discrepancies" },
-    { "name": "summary_accuracy_validation", "passed": true, "message": "summary.md flagged-count (57) and top-5 findings verified programmatically against disparity_metrics.csv on round 1; exact match, no rewrite needed" }
+    { "name": "setup", "passed": true, "message": "pandas/numpy/scipy installed, /app/results created" },
+    { "name": "data_loading", "passed": true, "message": "900 rows loaded and validated; 0 rows dropped; age_bracket derived" },
+    { "name": "aggregation", "passed": true, "message": "125 disparity metric rows computed across 6 roles + ALL_ROLES rollup x 5 dimensions" },
+    { "name": "programmatic_validation", "passed": true, "message": "All 10 calculation checks passed" },
+    { "name": "report_generation", "passed": true, "message": "compliance_report.md generated" },
+    { "name": "rubric_evaluation", "passed": true, "message": "Rubric score: 5.0/5, no iteration required" },
+    { "name": "summary_accuracy_validation", "passed": true, "message": "summary.md flagged-count (24) and top-5 severity list verified against disparity_metrics.csv on round 1" }
   ],
   "programmatic_checks": {
     "row_completeness": { "passed": true, "violations": 0 },
     "count_conservation": { "passed": true, "violations": 0 },
-    "rate_bounds": { "passed": true, "violations": 0 },
+    "rate_bounds": {
+      "passed": true,
+      "violations": 0,
+      "note": "33 low_confidence rows have four_fifths_ratio > 1.0 because the reference group is restricted to candidate_count>=30 cells; a small excluded group can by chance have a higher raw selection rate than that size-restricted reference. All 33 are confirmed low_confidence=true. This is expected per the methodology's own eligibility rule (see runbook Tips), not a calculation defect, and is not counted as a violation."
+    },
     "flag_consistency": { "passed": true, "violations": 0 },
     "low_confidence_consistency": { "passed": true, "violations": 0 },
     "reference_group_correctness": { "passed": true, "violations": 0 },
@@ -33,26 +52,45 @@
     "significance_combination_rule": { "passed": true, "violations": 0 }
   },
   "summary_accuracy_check": {
-    "true_flagged_count": 57,
     "flagged_count_match": true,
+    "true_flagged_count": 24,
+    "summary_stated_flagged_count": 24,
+    "top5_match": true,
     "true_top5": [
       { "job_role": "Medical Coder", "dimension": "race_ethnicity", "group": "Middle Eastern", "four_fifths_ratio": 0.0 },
       { "job_role": "Medical Coder", "dimension": "race_ethnicity", "group": "Multiracial", "four_fifths_ratio": 0.0 },
       { "job_role": "Registered Nurse", "dimension": "race_ethnicity", "group": "Multiracial", "four_fifths_ratio": 0.0 },
-      { "job_role": "Clinic Administrator", "dimension": "race_ethnicity", "group": "Hispanic/Latino", "four_fifths_ratio": 0.153846 },
-      { "job_role": "Pharmacist", "dimension": "race_ethnicity", "group": "Black", "four_fifths_ratio": 0.25 }
+      { "job_role": "Pharmacist", "dimension": "race_ethnicity", "group": "Black", "four_fifths_ratio": 0.25 },
+      { "job_role": "Pharmacist", "dimension": "race_ethnicity", "group": "Middle Eastern", "four_fifths_ratio": 0.375 }
     ],
-    "top5_match": true,
     "rounds_needed": 1,
     "passed": true
   },
   "rubric_scores": {
-    "statistical_rigor": { "score": 5, "notes": "Fisher's exact and chi-square (Yates-corrected) tests both computed for every cell with candidate_count and reference_group count >= 30 (31 of 125 rows); statistically_significant verified programmatically to equal fisher_significant AND chi2_significant for all rows; low_confidence correctly marks 94/125 rows as directional-only; only 1 row is both non-low-confidence and statistically significant (Registered Nurse / age_bracket / 30-39)." },
-    "completeness_of_breakdowns": { "score": 5, "notes": "All 6 job roles individually addressed in Section 2; all 5 protected attributes addressed both per-role and in the ALL_ROLES rollup (Section 3); no role or dimension omitted or given only cursory treatment." },
-    "clarity_of_findings": { "score": 5, "notes": "Full 57-row flagged table included with exact selection rates, four-fifths ratios, and both p-values inline; the single significant finding is called out with both p-values (0.0176 Fisher / 0.0207 chi-square) rather than requiring the reader to cross-reference the CSV." },
-    "actionability_of_recommendations": { "score": 5, "notes": "5 recommendations each reference a specific role/group/metric (e.g., RN age_bracket 30-39 ratio 0.47; Native American reference group n=24) and explicitly distinguish 'investigate further' from 'collect more data' from 'monitor, no action needed'." },
-    "appropriate_caveats_and_tone": { "score": 5, "notes": "Dedicated Caveats section (Section 6) states correlation does not establish discriminatory intent, flags that 75.2% of rows are low-confidence, and explains the reference-group instability mechanism for race_ethnicity rather than asserting bias; report uses 'statistical disparity was observed' framing throughout, not definitive discrimination language." },
-    "factual_self_consistency": { "score": 5, "notes": "Independent re-derivation from disparity_metrics.csv: true_flagged_count=57 matches report's stated '57 of 125 rows'; true top-5-by-severity (Medical Coder/Middle Eastern, Medical Coder/Multiracial, Registered Nurse/Multiracial, Clinic Administrator/Hispanic-Latino, Pharmacist/Black) matches the report's flagged-items table ordering exactly; spot-checked one ratio+p-value pair per dimension (gender: RN/Female 0.389; race_ethnicity: Clinic Admin/Hispanic-Latino 0.154; disability_status: Lab Tech/Yes 0.533; veteran_status: Medical Coder/No 0.636; age_bracket: RN/30-39 0.470, p=0.0176/0.0207) — all matched the CSV exactly with zero discrepancies found on the first drafted report." }
+    "statistical_rigor": {
+      "score": 5,
+      "notes": "Both Fisher's exact and Yates-corrected chi-square computed for every cell with candidate_count>=30 on both sides (verified: dual_test_presence check found 0 violations). statistically_significant confirmed programmatically to equal fisher_significant AND chi2_significant for all 125 rows (significance_combination_rule check: 0 violations). 16 of 24 flagged rows are clearly marked low_confidence and distinguished from the 3 adequately-powered significant findings in report Sections 3-4."
+    },
+    "completeness_of_breakdowns": {
+      "score": 5,
+      "notes": "All 6 job roles have a dedicated findings subsection (Section 2) and all 5 requested protected attributes (gender, race_ethnicity, disability_status, veteran_status, age_bracket) appear in both the per-role breakdown and the ALL_ROLES cross-role rollup table (Section 3)."
+    },
+    "clarity_of_findings": {
+      "score": 5,
+      "notes": "Section 3 rollup table and Section 4 flagged-items table cite exact selection rates, four-fifths ratios, and both fisher_p_value and chi2_p_value inline for every row where they apply -- no cross-referencing of the CSV needed to judge severity."
+    },
+    "actionability_of_recommendations": {
+      "score": 5,
+      "notes": "Section 5 has 6 recommendations, each naming a specific role/group/metric (e.g. 'Registered Nurse hiring by age bracket', 'Pharmacist role generally') and explicitly labeled as investigate-further vs. collect-more-data vs. review-process vs. no-action."
+    },
+    "appropriate_caveats_and_tone": {
+      "score": 5,
+      "notes": "Section 6 explicitly separates statistical disparity from proof of discrimination, explicitly caveats the 16 low-confidence flagged cells, and notes the synthetic/non-legal nature of the audit. Language throughout uses 'statistical disparity was observed' framing rather than assertions of bias."
+    },
+    "factual_self_consistency": {
+      "score": 5,
+      "notes": "Pre-scoring verification (required by Step 6) recomputed true_flagged_count=24 directly from disparity_metrics.csv, matching the report's stated count exactly. The true top-5-by-severity (sorted by four_fifths_ratio ascending, tie-broken by statistically_significant then low_confidence) was recomputed and found to be exactly the 5 rows the report surfaces first in Section 4 (rows 1-5: Medical Coder Middle Eastern, Medical Coder Multiracial, Registered Nurse Multiracial, Pharmacist Black, Pharmacist Middle Eastern). Spot-checked one ratio + both p-values per protected attribute dimension (gender/Female, race_ethnicity/Hispanic-Latino & Multiracial, disability_status/Yes, veteran_status/No, age_bracket/30-39) against the CSV -- all matched to reported precision. Zero discrepancies found in the first draft, so no correction cycle was needed."
+    }
   },
   "overall_score": 5.0,
   "pass_threshold": 4.0,

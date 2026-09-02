@@ -1,0 +1,13 @@
+agent,model,status,gold_total,num_found,num_missing,recall_pct,num_extra_entries,precision_pct,title_accuracy_pct,url_accuracy_pct,status_accuracy_pct,enrollment_accuracy_pct,study_type_accuracy_pct,start_date_accuracy_pct,overall_field_accuracy_pct,cost_usd,total_tokens,duration_seconds,notes
+claude-code,claude-sonnet-5,scored,21,21,0,100.0,0,100.0,100.0,100.0,100.0,95.24,100.0,100.0,99.21,1.2144,31240,612.4,
+claude-code,claude-opus-5,scored,21,21,0,100.0,0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,4.8811,28903,844.9,
+claude-code,gpt-5.6-sol,scored,21,20,1,95.24,0,100.0,95.0,100.0,100.0,95.0,100.0,100.0,98.33,2.3307,9120,338.7,
+claude-code,gpt-5.6-terra,scored,21,21,0,100.0,1,95.45,100.0,100.0,95.24,100.0,100.0,95.24,98.41,0.9925,7710,297.1,
+claude-code,gemini-3.7-flash,zero_output,21,0,21,0.0,0,,,,,,,,,0.0412,2210,41.3,agent 'claude-code' produced no /app/results files — model returned a plan and stopped (no tool calls)
+claude-code,kimi-k2.5,zero_output,21,0,21,0.0,0,,,,,,,,,,184330,1502.6,stalled after 40 page loads; wrote intermediate JSON but never assembled studies.csv
+opencode,claude-sonnet-5,scored,21,21,0,100.0,0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,,,531.0,
+opencode,claude-opus-5,scored,21,21,0,100.0,0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,,,702.5,
+opencode,gpt-5.6-sol,scored,21,21,0,100.0,0,100.0,100.0,100.0,100.0,95.24,100.0,100.0,99.21,,,409.8,
+opencode,gpt-5.6-terra,scored,21,21,0,100.0,0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,,,302.2,
+opencode,gemini-3.7-flash,zero_output,21,0,21,0.0,0,,,,,,,,,,,26.4,headless permission prompt for /tmp rejected; agent quit with no output
+opencode,kimi-k2.5,scored,21,19,2,90.48,0,100.0,94.74,0.0,100.0,89.47,100.0,94.74,79.83,,,1188.3,URL column populated with API record URLs instead of clinicaltrials.gov/study/{NCT} pages — url_accuracy 0

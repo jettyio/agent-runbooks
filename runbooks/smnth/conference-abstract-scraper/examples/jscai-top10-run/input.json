@@ -1,0 +1,15 @@
+{
+  "title": "JSCAI 2026 issue \u2014 first 10 abstracts (quick run)",
+  "prompt": "Execute the runbook.",
+  "params": {
+    "vars": {
+      "crossref_issn": "2772-9303",
+      "crossref_volume_issue": "volume 5, issue 4",
+      "confex_program_url": "https://scai.confex.com/scai/2026/meetingapp.cgi",
+      "max_abstracts": "10",
+      "results_dir": "/app/results"
+    }
+  },
+  "files": [],
+  "note": "No file inputs. Ran under a fresh task name (conference-abstract-scraper-top10) so the request's routing and template variables applied \u2014 the original volpiglio task carried a stale literal step config at the time (since redeployed with path-based config and runbook v1.1.1)."
+}

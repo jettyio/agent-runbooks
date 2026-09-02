@@ -1,5 +1,5 @@
 ---
-version: "1.2.1"
+version: "1.3.0"
 evaluation: programmatic
 agent: claude-code
 model: anthropic/claude-sonnet-5
@@ -126,7 +126,7 @@ Save each as its own PNG under `{{results_dir}}/charts/`.
 ### ⚠️ A prior attempt at this exact runbook shipped `recall_vs_field_accuracy.png` and `recall_vs_runtime.png` with labels literally printed on top of each other — `adjustText` was called but its output was never checked. Do not repeat that. For these two scatter charts specifically, follow this exact procedure, in order:
 
 1. **Use a large figure**: `figsize=(15, 10)`, `dpi=180`.
-2. **Jitter exact-duplicate coordinates before plotting**, deterministically (fixed seed, so re-runs are stable): the 4 `zero_output` rows on `recall_vs_field_accuracy.png` all sit at the identical point (0, 0) — perturb each by a few percent of the axis range in a small spread pattern (e.g. a tiny arc or grid: `(0,0), (1.5,0.5), (0,1.5), (1.5,1.5)`-style offsets) so `adjustText` has distinct starting positions to work from. Draw a thin gray leader line (`plt.plot` or `ax.annotate` with `arrowprops`) from each jittered marker back to a small shared marker cluster at the true (0,0), OR simply draw all 4 markers at small deterministic offsets around (0,0) — either is fine, the requirement is that all 4 are visibly distinct dots with their own clear label, not one dot with 4 labels stacked on it.
+2. **Jitter exact-duplicate coordinates before plotting**, deterministically (fixed seed, so re-runs are stable) — and **only** exact duplicates, by at most ~1.5% of the axis range, **clamped inside the data bounds** (a recall or accuracy marker must never be drawn above 100% or below 0%; on a log axis never below the smallest real value): the 4 `zero_output` rows on `recall_vs_field_accuracy.png` all sit at the identical point (0, 0) — perturb each by a few percent of the axis range in a small spread pattern (e.g. a tiny arc or grid: `(0,0), (1.5,0.5), (0,1.5), (1.5,1.5)`-style offsets) so `adjustText` has distinct starting positions to work from. Draw a thin gray leader line (`plt.plot` or `ax.annotate` with `arrowprops`) from each jittered marker back to a small shared marker cluster at the true (0,0), OR simply draw all 4 markers at small deterministic offsets around (0,0) — either is fine, the requirement is that all 4 are visibly distinct dots with their own clear label, not one dot with 4 labels stacked on it.
 3. **Call `adjust_text` with strong separation**, not defaults:
    ```python
    from adjustText import adjust_text
@@ -139,15 +139,26 @@ Save each as its own PNG under `{{results_dir}}/charts/`.
        iter_lim=500,
    )
    ```
-4. **Programmatically verify zero overlaps before accepting the render** — do not trust step 3 blindly:
+4. **Programmatically verify zero overlaps AND label locality before accepting the render** — do not trust step 3 blindly. A label that adjustText has pushed halfway across the chart with a long leader line is not legible even though it no longer overlaps anything, so both gates must pass:
    ```python
    fig.canvas.draw()
    renderer = fig.canvas.get_renderer()
    boxes = [t.get_window_extent(renderer=renderer) for t in texts]
    overlaps = [(i, j) for i in range(len(boxes)) for j in range(i+1, len(boxes)) if boxes[i].overlaps(boxes[j])]
    assert not overlaps, f"{len(overlaps)} label pairs still overlap: {overlaps}"
+   # Locality gate: every label must stay within 12% of the axes width/height of its own marker
+   ax_bbox = ax.get_window_extent(renderer=renderer)
+   far = []
+   for t, (x, y) in zip(texts, zip(xs, ys)):
+       px, py = ax.transData.transform((x, y))
+       tb = t.get_window_extent(renderer=renderer)
+       dx = min(abs(tb.x0 - px), abs(tb.x1 - px)) if not (tb.x0 <= px <= tb.x1) else 0
+       dy = min(abs(tb.y0 - py), abs(tb.y1 - py)) if not (tb.y0 <= py <= tb.y1) else 0
+       if dx > 0.12 * ax_bbox.width or dy > 0.12 * ax_bbox.height:
+           far.append(t.get_text())
+   assert not far, f"labels too far from their markers: {far}"
    ```
-5. **If the assertion fails**, increase `expand_points`/`expand_text`/`force_text` further and/or enlarge the figure, and retry (up to 3 total attempts, per Step 6). If it still fails on the 3rd attempt for one specific tight cluster, fall back to numbered circular markers (①②③④) at that cluster with a small reference legend box listing "① = agent/model" pairs placed in empty chart space — this guarantees legibility even when 4+ points are genuinely coincident.
+5. **If either assertion fails**, do not keep pushing labels farther away. First retry once with a larger figure and stronger `expand_*`/`force_*` (2 attempts total for the plain layout, per Step 6). If a **dense cluster** is the cause — 4 or more points inside any 10% × 10% box of the axes, which is normal when several strong models all score 95–100% — switch to the **inset-zoom layout**: draw the full chart with the cluster's points unlabeled, add `ax.inset_axes` covering roughly 45% of the figure in the empty region of the plot, zoom it to the cluster's bounding box with a little padding, replot and label the cluster's points inside the inset (running the same adjustText + overlap + locality gates on the inset), and mark the zoomed region on the main axes with `ax.indicate_inset_zoom`. Points outside the cluster keep their normal labels on the main axes. If even the inset cannot separate two genuinely coincident points, fall back to numbered circular markers (①②③④) for just those points with a small reference legend box listing "① = agent/model" pairs in empty chart space.
 6. Only write the PNG file after the overlap assertion in step 4 passes (or the numbered-marker fallback is used).
 
 ---
@@ -156,7 +167,7 @@ Save each as its own PNG under `{{results_dir}}/charts/`.
 
 | Status | Criteria |
 |--------|----------|
-| `PASS` | All 5 PNGs exist, are non-trivial in size (>15KB), use the specified palette, have a legend where 2+ series are present, no chart uses a dual y-axis or 3D/pie form, every per-run chart shows all 12 combinations with a visible label each, and visual inspection of label bounding boxes confirms no two labels overlap |
+| `PASS` | All 5 PNGs exist, are non-trivial in size (>15KB), use the specified palette, have a legend where 2+ series are present, no chart uses a dual y-axis or 3D/pie form, every per-run chart shows all 12 combinations with a visible label each, no two labels overlap, every label sits within 12% of the axes size of its own marker (or the cluster is shown in an inset zoom), and no marker is drawn outside the data bounds |
 | `PARTIAL` | Charts render, all 12 combinations are represented, but one used a fallback (e.g. square bar corners instead of rounded) — note the deviation in `summary.md` |
 | `FAIL` | Any chart is missing, blank, uses an unapproved color, uses a dual-axis/pie/3D form, is missing one or more of the 12 combinations from a per-run chart, or has any overlapping label |
 
@@ -175,6 +186,8 @@ If any chart fails Step 5's criteria, fix the specific issue (palette substituti
 | Matplotlib default color cycle sneaks in when you forget to set `color=` explicitly on every artist | Explicitly pass `color=` on every bar/scatter call — never rely on the default cycle |
 | Multiple runs share the exact same (recall, field_accuracy) or (recall, duration) coordinate, so their markers overlap | Add a small deterministic jitter (2–3% of axis range, seeded so it's reproducible) purely for label anchoring — draw a thin leader line from the jittered label back to the true, unjittered marker position |
 | `adjustText` labels still collide after a default call | Increase `expand_points`/`expand_text` and iteration count, or pass `arrowprops=dict(arrowstyle='-', color='#898781', lw=0.75)` for visible leader lines; re-render and re-check — do not ship a chart with any two labels overlapping |
+| Labels end up far from their points with long leader lines fanning across the chart (adjustText "solved" a dense cluster by exiling the labels) | This fails the locality gate. Use the inset-zoom layout from Step 4.5 for the cluster instead of pushing labels farther away |
+| Jittered markers appear above 100% or below 0% | Jitter must be clamped inside the data bounds — reduce the offset and clip; never let a jitter change what value a reader would read off the axis |
 
 ---
 

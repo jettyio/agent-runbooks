@@ -1,0 +1,43 @@
+{
+  "candidates": [
+    {"nct":"NCT07736586","conditions":["Psoriasis (PsO)","Skin Disease","Immune System Disease","Skin Diseases, Papulosquamous"]},
+    {"nct":"NCT07746583","conditions":["Psoriasis"]},
+    {"nct":"NCT07780929","conditions":["Psoriasis","Psoriasis (PsO)"]},
+    {"nct":"NCT07730619","conditions":["Plaque Psoriasis","Biologic Agents","Relapse","Influence Factors"]},
+    {"nct":"NCT07744828","conditions":["Healthy Volunteers"]},
+    {"nct":"NCT07772687","conditions":["Rheumatoid Arthritis","Psoriatic Arthritis"]},
+    {"nct":"NCT07771673","conditions":["Inflammatory Skin Conditions"]},
+    {"nct":"NCT07758075","conditions":["Plaque Psoriasis"]},
+    {"nct":"NCT07736651","conditions":["Psoriasis"]},
+    {"nct":"NCT07773766","conditions":["Plaque Psoriasis","Fibromyalgia"]},
+    {"nct":"NCT07733089","conditions":["Plaque Psoriasis"]},
+    {"nct":"NCT07785089","conditions":["Psoriatic Arthritis","Enthesitis"]},
+    {"nct":"NCT07744191","conditions":["Psoriasis (PsO)","Psoriatic Arthritis (PsA)"]},
+    {"nct":"NCT07765628","conditions":["Moderate to Severe Plaque Psoriasis"]},
+    {"nct":"NCT07746479","conditions":["Psoriasis"]},
+    {"nct":"NCT07772544","conditions":["Psoriatic Arthritis (PsA)"]},
+    {"nct":"NCT07752108","conditions":["Palmoplantar Psoriasis"]}
+  ],
+  "dropped": [
+    {"nct":"NCT07744828","reason":"Condition list did not plausibly reference Psoriasis","conditions":["Healthy Volunteers"]},
+    {"nct":"NCT07772687","reason":"Condition list identified Psoriatic Arthritis rather than Psoriasis","conditions":["Rheumatoid Arthritis","Psoriatic Arthritis"]},
+    {"nct":"NCT07771673","reason":"Condition list did not plausibly reference Psoriasis","conditions":["Inflammatory Skin Conditions"]},
+    {"nct":"NCT07785089","reason":"Condition list identified Psoriatic Arthritis rather than Psoriasis","conditions":["Psoriatic Arthritis","Enthesitis"]},
+    {"nct":"NCT07772544","reason":"Condition list identified Psoriatic Arthritis rather than Psoriasis","conditions":["Psoriatic Arthritis (PsA)"]}
+  ],
+  "excluded": [],
+  "rows": [
+    {"Study Title":"A Study of HL40626S Tablets in Healthy Adults","NCT Number":"NCT07736586","Study URL":"https://clinicaltrials.gov/study/NCT07736586","Study Status":"Not yet recruiting","Enrollment size":"64 (Estimated)","Study Type":"Interventional","Start Date":"2026-08 (Estimated)","_page_loaded":true,"_condition_present":true,"_attempts":1,"_error":"","_evaluation":"PASS","_evaluation_reason":""},
+    {"Study Title":"A Study of Guselkumab Given After Ustekinumab in Participants With Moderate to Severe Psoriasis in Routine Clinical Practice (G-START)","NCT Number":"NCT07746583","Study URL":"https://clinicaltrials.gov/study/NCT07746583","Study Status":"Recruiting","Enrollment size":"100 (Estimated)","Study Type":"Observational","Start Date":"2026-09-15 (Estimated)","_page_loaded":true,"_condition_present":true,"_attempts":1,"_error":"","_evaluation":"PASS","_evaluation_reason":""},
+    {"Study Title":"A Prospective, Interventional, Exploratory Study Evaluating the Efficacy of Small-Molecule Compound XJH05 Ointment in the Treatment of Plaque Psoriasis","NCT Number":"NCT07780929","Study URL":"https://clinicaltrials.gov/study/NCT07780929","Study Status":"Recruiting","Enrollment size":"5 (Estimated)","Study Type":"Interventional","Start Date":"2025-11-17 (Actual)","_page_loaded":true,"_condition_present":true,"_attempts":1,"_error":"","_evaluation":"PASS","_evaluation_reason":""},
+    {"Study Title":"To Explore the Influencing Factors and Solutions for Patients With Plaque Psoriasis Undergoing Relapse","NCT Number":"NCT07730619","Study URL":"https://clinicaltrials.gov/study/NCT07730619","Study Status":"Active, not recruiting","Enrollment size":"140 (Estimated)","Study Type":"Observational","Start Date":"2022-12-01 (Actual)","_page_loaded":true,"_condition_present":true,"_attempts":1,"_error":"","_evaluation":"PASS","_evaluation_reason":""},
+    {"Study Title":"A Phase II Clinical Study to Evaluate the Efficacy and Safety of SHR-1139 Injection in Patients With Plaque Psoriasis","NCT Number":"NCT07758075","Study URL":"https://clinicaltrials.gov/study/NCT07758075","Study Status":"Not yet recruiting","Enrollment size":"50 (Estimated)","Study Type":"Interventional","Start Date":"2026-08 (Estimated)","_page_loaded":true,"_condition_present":true,"_attempts":1,"_error":"","_evaluation":"PASS","_evaluation_reason":""},
+    {"Study Title":"Anti Inflammatory Diet With Physical Therapy on Psoriasis","NCT Number":"NCT07736651","Study URL":"https://clinicaltrials.gov/study/NCT07736651","Study Status":"Recruiting","Enrollment size":"60 (Estimated)","Study Type":"Interventional","Start Date":"2026-08-01 (Actual)","_page_loaded":true,"_condition_present":true,"_attempts":1,"_error":"","_evaluation":"PASS","_evaluation_reason":""},
+    {"Study Title":"Prevalence of Fibromyalgia in Patients With Plaque Psoriasis","NCT Number":"NCT07773766","Study URL":"https://clinicaltrials.gov/study/NCT07773766","Study Status":"Not yet recruiting","Enrollment size":"110 (Estimated)","Study Type":"Observational","Start Date":"2026-09 (Estimated)","_page_loaded":true,"_condition_present":true,"_attempts":1,"_error":"","_evaluation":"PASS","_evaluation_reason":""},
+    {"Study Title":"A Trial to Understand How Safe and Well Tolerated ZP9830 is and How it Works in People With Plaque Psoriasis Over an 8-week Treatment Period","NCT Number":"NCT07733089","Study URL":"https://clinicaltrials.gov/study/NCT07733089","Study Status":"Recruiting","Enrollment size":"32 (Estimated)","Study Type":"Interventional","Start Date":"2026-07-22 (Actual)","_page_loaded":true,"_condition_present":true,"_attempts":1,"_error":"","_evaluation":"PASS","_evaluation_reason":""},
+    {"Study Title":"A Clinical Trial of Antiplatelets in Psoriasis","NCT Number":"NCT07744191","Study URL":"https://clinicaltrials.gov/study/NCT07744191","Study Status":"Not yet recruiting","Enrollment size":"60 (Estimated)","Study Type":"Interventional","Start Date":"2026-09 (Estimated)","_page_loaded":true,"_condition_present":true,"_attempts":1,"_error":"","_evaluation":"PASS","_evaluation_reason":""},
+    {"Study Title":"A Phase 2 Study of HS-20118 to Evaluate the Efficacy and Safety in Participant With Moderate-to-Severe Plaque Psoriasis","NCT Number":"NCT07765628","Study URL":"https://clinicaltrials.gov/study/NCT07765628","Study Status":"Not yet recruiting","Enrollment size":"120 (Estimated)","Study Type":"Interventional","Start Date":"2026-08-06 (Estimated)","_page_loaded":true,"_condition_present":true,"_attempts":1,"_error":"","_evaluation":"PASS","_evaluation_reason":""},
+    {"Study Title":"A Study to Evaluate the Efficacy and Safety of LZM012 ( Psoriasis )","NCT Number":"NCT07746479","Study URL":"https://clinicaltrials.gov/study/NCT07746479","Study Status":"Completed","Enrollment size":"244 (Actual)","Study Type":"Interventional","Start Date":"2025-06-23 (Actual)","_page_loaded":true,"_condition_present":true,"_attempts":1,"_error":"","_evaluation":"PASS","_evaluation_reason":""},
+    {"Study Title":"A Study of Zasocitinib in Adults With Non-pustular Palmoplantar Psoriasis","NCT Number":"NCT07752108","Study URL":"https://clinicaltrials.gov/study/NCT07752108","Study Status":"Not yet recruiting","Enrollment size":"40 (Estimated)","Study Type":"Interventional","Start Date":"2026-09-01 (Estimated)","_page_loaded":true,"_condition_present":true,"_attempts":1,"_error":"","_evaluation":"PASS","_evaluation_reason":""}
+  ]
+}

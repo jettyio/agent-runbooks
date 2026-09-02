@@ -1,0 +1,14 @@
+{
+  "title": "Psoriasis \u2014 1-month posting window",
+  "prompt": "Execute the runbook.",
+  "params": {
+    "vars": {
+      "condition": "Psoriasis",
+      "posted_from": "2026-07-25",
+      "posted_to": "2026-08-25",
+      "results_dir": "/app/results"
+    }
+  },
+  "files": [],
+  "note": "No file inputs \u2014 ClinicalTrials.gov API v2 and study pages are public. Chosen because the API's condition search over-matches (psoriatic arthritis, healthy-volunteer PK studies), which exercises the Step 2 sanity check."
+}

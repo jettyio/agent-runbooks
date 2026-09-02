@@ -10,6 +10,90 @@
   },
   "example_outputs": [
     {
+      "id": "uc-benchmark-matrix",
+      "title": "A different 12-combination matrix — ulcerative-colitis benchmark (inset zoom)",
+      "summary": "Same runbook, a different evaluation matrix: 6 models x 2 agents scored against a 21-study ulcerative-colitis benchmark, where eight strong runs pile into the 95–100% corner. Runbook v1.3.0's label-locality gate sends that dense cluster into an inset zoom instead of exiling labels across the chart; all 5 charts pass with every combination labelled next to its own marker and the corrupted-URL run called out.",
+      "thumbnail": "examples/uc-benchmark-matrix/thumbnail.png",
+      "operation": "visualize",
+      "dir": "examples/uc-benchmark-matrix",
+      "input": {
+        "kind": "dataset",
+        "values": {
+          "input_file": "input.csv"
+        }
+      },
+      "primary_output": "examples/uc-benchmark-matrix/expected/charts/recall_vs_field_accuracy.png",
+      "outputs": [
+        {
+          "file": "examples/uc-benchmark-matrix/expected/charts/recall_vs_field_accuracy.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "All 12 combinations: recall vs overall field accuracy, with the dense 8-run cluster in an inset zoom."
+        },
+        {
+          "file": "examples/uc-benchmark-matrix/expected/charts/recall_vs_runtime.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "All 12 combinations: recall vs runtime (log scale)."
+        },
+        {
+          "file": "examples/uc-benchmark-matrix/expected/charts/cost_per_found_study.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "Dollar cost per correctly-found study; opencode runs shown as explicit no-data slots."
+        },
+        {
+          "file": "examples/uc-benchmark-matrix/expected/charts/agent_reliability_comparison.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "Aggregate claude-code vs opencode: success rate, mean recall, mean field accuracy."
+        },
+        {
+          "file": "examples/uc-benchmark-matrix/expected/charts/recall_per_minute.png",
+          "role": "primary",
+          "type": "image/png",
+          "description": "All 12 combinations: recall per minute of runtime."
+        },
+        {
+          "file": "examples/uc-benchmark-matrix/expected/chart_data.json",
+          "role": "secondary",
+          "type": "application/json",
+          "description": "Exact derived numbers behind every chart."
+        },
+        {
+          "file": "examples/uc-benchmark-matrix/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Per-chart takeaways plus a 'which chart to look at' guide."
+        },
+        {
+          "file": "examples/uc-benchmark-matrix/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Stage results and overall_passed."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "volpiglio",
+        "task": "ctg-mm-eval-tradeoff-plots",
+        "trajectory_id": "81a3cc18",
+        "url": "https://jetty.io/trajectory/volpiglio/ctg-mm-eval-tradeoff-plots/81a3cc18",
+        "agent": "claude-code",
+        "model": "anthropic/claude-sonnet-5",
+        "model_provider": "openrouter",
+        "runbook_version": "1.3.0",
+        "ran_at": "2026-09-02T20:57:29.347105Z",
+        "duration_seconds": 641,
+        "eval": {
+          "overall_passed": true,
+          "pass": 5,
+          "partial": 0,
+          "fail": 0
+        }
+      }
+    },
+    {
       "id": "twelve-combo-eval-sonnet5",
       "title": "Same 12-combination matrix, re-run on claude-sonnet-5 via OpenRouter",
       "summary": "Reproducibility check against the current runbook (v1.2.1, portable OpenRouter routing): all five charts rendered clean on the first attempt, the in-code zero-overlap assertion passed without a retry, and each per-run chart asserts exactly 12 labelled combinations. Takeaways match the original run.",
@@ -173,11 +257,13 @@
           "partial": 0,
           "fail": 0
         },
-        "model_provider": "anthropic"
+        "model_provider": "anthropic",
+        "runbook_version": "1.2.0"
       }
     }
   ],
   "featured_examples": [
+    "uc-benchmark-matrix",
     "twelve-combo-eval-sonnet5",
     "twelve-combo-eval"
   ],
@@ -207,7 +293,7 @@
       "agent:claude-code",
       "programmatic"
     ],
-    "version": "1.2.1",
+    "version": "1.3.0",
     "agent": "claude-code",
     "model": "anthropic/claude-sonnet-5",
     "model_provider": "openrouter",
@@ -235,6 +321,6 @@
   },
   "caveats": [
     "This is a purpose-built visualization runbook for a specific evaluation matrix schema — the 20-column CSV format (agent, model, status, recall_pct, overall_field_accuracy_pct, cost_usd, duration_seconds, etc.) is not generic; a differently-shaped evaluation CSV would need the column names in Step 3 adjusted.",
-    "The runbook's frontmatter mentions a prior failed attempt that shipped overlapping labels despite calling adjustText — Step 4 now includes a mandatory programmatic overlap-check gate (asserting zero overlapping label bounding boxes) before a chart is accepted, per this runbook's own Common Fixes / Step 6 iteration loop."
+    "v1.3.0 adds a label-locality gate alongside the overlap gate: adjustText can 'solve' a dense 95–100% cluster by exiling labels across the chart with long leader lines, which passes a pure overlap check but is unreadable. Labels must now stay within 12% of the axes size of their marker, jitter is clamped inside the data bounds, and dense clusters go into an inset zoom."
   ]
 }

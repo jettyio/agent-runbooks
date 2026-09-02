@@ -1,0 +1,112 @@
+[
+  {
+    "id": "HC-101",
+    "domain": "healthcare",
+    "policy": "- Protected health information: Any detail that identifies a patient or reveals their diagnosis, medication, test result, or treatment plan must not be disclosed outside the care team.\n- Appointment and schedule details: Specific dates, times, and locations of appointments, procedures, or staff shifts are confidential and must be removed before sharing.\n- Staff identity: Names of individual clinicians and administrative staff must be withheld to prevent targeting or harassment; job roles may remain.",
+    "policy_ids": [
+      "Protected health information",
+      "Appointment and schedule details",
+      "Staff identity"
+    ],
+    "text": "From: Dr. Priya Raman, Endocrinology\nTo: Care Coordination\nSubject: Follow-up for Mr. Daniel Okafor (DOB 03/14/1968)\n\nHi team,\n\nMr. Okafor's A1c came back at 9.4 this morning, up from 8.1 in March, so I'm switching him from metformin alone to metformin plus semaglutide 0.25 mg weekly. He was quite anxious in clinic about the injections — please have Nurse Kelly Tran walk him through the pen at his next visit. I've booked him for Thursday, October 9 at 2:30 PM in Suite 410 and a nutrition consult with Maria Santos on the 16th.\n\nHe mentioned his insurance changed in September, so someone should confirm prior authorization before Thursday or we'll lose the slot. Please also make sure the standard diabetic foot exam is on the visit checklist; our workflow requires it annually and I don't see one on file.\n\nThanks,\nPriya"
+  },
+  {
+    "id": "HC-102",
+    "domain": "healthcare",
+    "policy": "- Protected health information: Any detail that identifies a patient or reveals their diagnosis, medication, test result, or treatment plan must not be disclosed outside the care team.\n- Personal contact information: Phone numbers, home addresses, personal email addresses, and dates of birth must never appear in shared or archived copies.\n- Physical location: Home addresses, room numbers, and precise locations that could be used to find a person must be removed.",
+    "policy_ids": [
+      "Protected health information",
+      "Personal contact information",
+      "Physical location"
+    ],
+    "text": "Discharge summary — Riverbend Community Hospital, Unit 3 West\n\nPatient: Angela Whitfield, 54F, MRN 00-2237-81\nAddress: 1180 Larkspur Lane, Apt 6B, Dunmore\nHome phone: (570) 555-0142\nAdmitted with community-acquired pneumonia; treated with IV ceftriaxone and azithromycin, transitioned to oral amoxicillin-clavulanate on day 3. Chest X-ray on day 4 showed improving right lower lobe consolidation. Oxygen saturation stable at 96% on room air for 24 hours before discharge.\n\nDischarge instructions: complete the 5 remaining days of antibiotics, use the incentive spirometer 10 times per hour while awake, and return to the emergency department for fever above 101.5°F, worsening shortness of breath, or chest pain. Follow up with the primary care clinic within one week. The patient's daughter, Renee, will provide transportation and can be reached at (570) 555-0199 if the patient cannot be contacted.\n\nGeneral education about hand hygiene, hydration, and rest was provided and the patient verbalized understanding."
+  },
+  {
+    "id": "HC-103",
+    "domain": "healthcare",
+    "policy": "- Protected health information: Any detail that identifies a patient or reveals their diagnosis, medication, test result, or treatment plan must not be disclosed outside the care team.\n- Staff identity: Names of individual clinicians and administrative staff must be withheld to prevent targeting or harassment; job roles may remain.\n- Appointment and schedule details: Specific dates, times, and locations of appointments, procedures, or staff shifts are confidential and must be removed before sharing.",
+    "policy_ids": [
+      "Protected health information",
+      "Staff identity",
+      "Appointment and schedule details"
+    ],
+    "text": "Shift handoff note, night to day, Behavioral Health Unit\n\nBed 7, Marcus Bell, 29M, admitted 48 hours ago for major depressive episode with passive suicidal ideation. Slept 6 hours after receiving trazodone 50 mg at 22:00. Denied SI at 05:00 check with Dr. Hannah Weiss; remains on 15-minute observation until reassessed at 10:00 rounds. Family meeting with his mother scheduled for 1:00 PM today in Conference Room B.\n\nBed 9 remains empty and is being held for an expected transfer from the emergency department this afternoon.\n\nGeneral unit reminders: the medication cart audit is due Friday, the new visitor sign-in procedure starts Monday, and the fire drill originally planned for this week has been moved to next week. Charge nurse for the day shift is Tomás Rivera; please page him for any bed-management questions."
+  },
+  {
+    "id": "ED-201",
+    "domain": "education",
+    "policy": "- Minor's identity: The name, grade, date of birth, and any identifying detail of a student under 18 must be removed, along with the names of their parents or guardians.\n- Disciplinary and behavioral records: Descriptions of specific disciplinary incidents, suspensions, or behavioral diagnoses must not be disclosed to anyone outside the school's student-services team.\n- Staff identity: Names of individual clinicians and administrative staff must be withheld to prevent targeting or harassment; job roles may remain.",
+    "policy_ids": [
+      "Minor's identity",
+      "Disciplinary and behavioral records",
+      "Staff identity"
+    ],
+    "text": "Counselor incident summary — Westlake Middle School\n\nOn Tuesday, seventh-grader Jonah Petrakis (age 12, homeroom 7B) was involved in a shoving incident in the east stairwell with another student, Leo Marchetti. Both students were separated by Mr. Alvarez, who was on hall duty. Jonah has now had three behavioral referrals this semester and has an existing 504 plan for ADHD; his mother, Diana Petrakis, was called and has agreed to attend a meeting on Thursday. Leo received a one-day in-school suspension.\n\nGoing forward, both boys will be assigned different lunch periods. Our general practice is that any student with three referrals in a semester is offered a weekly check-in with a counselor, and that offer will be made to both families. The stairwell will also get additional supervision during passing periods, which is a schoolwide change unrelated to these particular students."
+  },
+  {
+    "id": "ED-202",
+    "domain": "education",
+    "policy": "- Minor's identity: The name, grade, date of birth, and any identifying detail of a student under 18 must be removed, along with the names of their parents or guardians.\n- Academic performance: Specific grades, test scores, and class rankings must be redacted; general statements about progress may remain.\n- Personal contact information: Phone numbers, home addresses, personal email addresses, and dates of birth must never appear in shared or archived copies.",
+    "policy_ids": [
+      "Minor's identity",
+      "Academic performance",
+      "Personal contact information"
+    ],
+    "text": "Dear Mr. and Mrs. Nakamura,\n\nI'm writing to share an update on Emi's progress in Honors Biology this quarter. Emi scored 92 on the cell-structure unit test and 78 on the genetics quiz, and is currently ranked 4th out of 28 in the section. She participates thoughtfully in lab discussions and her lab notebook is one of the most organized I've seen this year.\n\nThe class will begin the ecology unit after the break. Students will be expected to complete a field observation log, and I'd encourage every family to plan for at least one outdoor session on a weekend. The school's general policy is that late field logs lose one letter grade per week, so getting an early start helps.\n\nIf you'd like to discuss anything, you can reach me at the school office or on my cell at (206) 555-0177. Emi's birthday is on the 3rd, so we'll be sure to celebrate with the class.\n\nWarm regards,\nMs. Okonkwo"
+  },
+  {
+    "id": "ED-203",
+    "domain": "education",
+    "policy": "- Minor's identity: The name, grade, date of birth, and any identifying detail of a student under 18 must be removed, along with the names of their parents or guardians.\n- Disciplinary and behavioral records: Descriptions of specific disciplinary incidents, suspensions, or behavioral diagnoses must not be disclosed to anyone outside the school's student-services team.\n- Physical location: Home addresses, room numbers, and precise locations that could be used to find a person must be removed.",
+    "policy_ids": [
+      "Minor's identity",
+      "Disciplinary and behavioral records",
+      "Physical location"
+    ],
+    "text": "Transportation note for the district office\n\nStudent Sofia Delgado (grade 4, Maple Elementary) will begin riding Bus 14 starting next Monday. The pickup point is at the corner of Hawthorne Street and 12th Avenue, and her home address on file is 47 Hawthorne Street. Her father, Ramon Delgado, has requested that she be seated near the front because of a recent incident in which she was bullied by an older student on the previous route; that student has since been moved to a different bus and given a written warning.\n\nBus drivers are reminded of the general rule that seating charts must be updated within two school days of a route change, and that any parent request involving student safety should be documented in the transportation log. The district is also reviewing whether all elementary routes should include an aide during the winter months."
+  },
+  {
+    "id": "LG-301",
+    "domain": "legal",
+    "policy": "- Attorney-client privileged strategy: Any statement of legal strategy, assessment of case strength, or advice given to a client must be withheld from external copies.\n- Party and witness identity: Names of clients, opposing parties, and witnesses must be replaced with role-based placeholders; the nature of the matter may remain.\n- Financial details: Dollar amounts, account numbers, salary figures, settlement amounts, and payment terms are confidential and must be removed.",
+    "policy_ids": [
+      "Attorney-client privileged strategy",
+      "Party and witness identity",
+      "Financial details"
+    ],
+    "text": "MEMORANDUM — Privileged and Confidential\n\nTo: File\nFrom: A. Whitcombe\nRe: Harlan Distribution v. Crestview Logistics — settlement posture\n\nOur client, Harlan Distribution (contact: Gregory Harlan, CEO), has authorized us to settle for any amount at or above $1.4 million, though their true walk-away number is closer to $1.1 million. Crestview's last offer was $650,000, conveyed by their counsel, Melissa Ochoa of Ochoa & Park.\n\nCandidly, our breach-of-contract claim is strong on liability but weak on damages: the consequential-loss theory depends heavily on the testimony of Harlan's former operations manager, Bryce Tan, who left on poor terms and may be an unreliable witness. I recommend we push mediation before the deposition of Mr. Tan so the other side does not discover that weakness.\n\nFor the file, the matter concerns a disputed freight services agreement and the general question of whether the termination notice complied with the contract's cure provision. Mediation is a standard step in commercial disputes of this size and we will follow our usual preparation checklist."
+  },
+  {
+    "id": "LG-302",
+    "domain": "legal",
+    "policy": "- Party and witness identity: Names of clients, opposing parties, and witnesses must be replaced with role-based placeholders; the nature of the matter may remain.\n- Employee personnel matters: Names of employees involved in complaints, investigations, or performance actions must be removed, along with any medical or family circumstances mentioned.\n- Financial details: Dollar amounts, account numbers, salary figures, settlement amounts, and payment terms are confidential and must be removed.",
+    "policy_ids": [
+      "Party and witness identity",
+      "Employee personnel matters",
+      "Financial details"
+    ],
+    "text": "Investigation summary — workplace complaint, Northgate Manufacturing\n\nThe complainant, Teresa Lindqvist (Quality Assurance), alleges that her supervisor, Victor Adebayo, made repeated comments about her taking leave to care for her husband, who is undergoing chemotherapy, and that her annual bonus was reduced from $6,000 to $1,500 as a result. Two witnesses, Jamal Price and Erin Kowalski, corroborated hearing at least one of the comments during a team meeting in June.\n\nNorthgate's general policy is that any complaint alleging retaliation triggers an independent review by outside counsel and a hold on performance actions until the review concludes. That process was followed here. Interviews were conducted in a standard format, each lasting roughly one hour, and all participants were reminded of the company's anti-retaliation policy. A written recommendation will be delivered to the general counsel and the head of human resources within ten business days."
+  },
+  {
+    "id": "LG-303",
+    "domain": "legal",
+    "policy": "- Attorney-client privileged strategy: Any statement of legal strategy, assessment of case strength, or advice given to a client must be withheld from external copies.\n- Party and witness identity: Names of clients, opposing parties, and witnesses must be replaced with role-based placeholders; the nature of the matter may remain.\n- Physical location: Home addresses, room numbers, and precise locations that could be used to find a person must be removed.",
+    "policy_ids": [
+      "Attorney-client privileged strategy",
+      "Party and witness identity",
+      "Physical location"
+    ],
+    "text": "Client update — draft, do not send\n\nDear Ms. Farrow,\n\nFollowing our meeting at your home on Willow Court, I want to confirm our advice on the landlord matter. We believe the landlord, Mr. Stanislav Petrov, has a weak position on the security-deposit claim because he never provided the itemized statement required within thirty days. Our strategy is to send a demand letter first and hold the small-claims filing in reserve; if he responds within two weeks, we expect he will return the full deposit rather than risk statutory penalties.\n\nMore generally, tenants in this jurisdiction have a right to an itemized deposit statement, and landlords who fail to provide one face penalties of up to twice the deposit. That is public information you may share with anyone. The demand letter will go out from our office once you approve the draft attached to this message.\n\nKind regards,\nD. Mensah, Attorney"
+  },
+  {
+    "id": "HC-104",
+    "domain": "healthcare",
+    "policy": "- Protected health information: Any detail that identifies a patient or reveals their diagnosis, medication, test result, or treatment plan must not be disclosed outside the care team.\n- Personal contact information: Phone numbers, home addresses, personal email addresses, and dates of birth must never appear in shared or archived copies.\n- Appointment and schedule details: Specific dates, times, and locations of appointments, procedures, or staff shifts are confidential and must be removed before sharing.",
+    "policy_ids": [
+      "Protected health information",
+      "Personal contact information",
+      "Appointment and schedule details"
+    ],
+    "text": "Voicemail transcription — Pediatric Clinic front desk\n\n\"Hi, this is Lauren Kessler calling about my son Owen, he's six, date of birth June 2, 2020. Dr. Alvarado's office asked me to call back about his strep test — the nurse said it came back positive and that the amoxicillin prescription was sent to the Walgreens on Cedar Avenue. I just want to double-check the dosage because the bottle says twice a day and the note from the visit said three times. Also we have his follow-up on Monday, October 6 at 9:15 AM, but I need to move it because of a work conflict. You can call me back at 312-555-0163 any time after four. Thanks so much.\"\n\nStandard callback procedure applies: verify the caller's identity using two identifiers before discussing any results, and log the dosage clarification as a pharmacist consult request. Appointment changes go through the online portal or the scheduling line."
+  }
+]

@@ -62,12 +62,129 @@
           "partial": 1,
           "fail": 0
         },
-        "model_provider": "anthropic"
+        "model_provider": "anthropic",
+        "runbook_version": "1.1.0"
+      }
+    },
+    {
+      "id": "jscai-top10-run",
+      "title": "JSCAI 2026 issue, first 10 abstracts (quick run)",
+      "summary": "The same SCAI 2026 supplement, capped at 10 abstracts: 10/10 PASS with complete CrossRef metadata and full Confex text for every entry, zero duplicates, and the OR1-11 page-number gap correctly identified as a pre-publication withdrawal rather than a scraping miss. ~14 minutes on claude-sonnet-5 via OpenRouter (runbook v1.1.1).",
+      "thumbnail": "examples/jscai-top10-run/thumbnail.png",
+      "operation": "scrape",
+      "dir": "examples/jscai-top10-run",
+      "input": {
+        "kind": "url",
+        "values": {
+          "crossref_issn": "2772-9303",
+          "crossref_volume_issue": "volume 5, issue 4",
+          "confex_program_url": "https://scai.confex.com/scai/2026/meetingapp.cgi",
+          "max_abstracts": "10"
+        }
+      },
+      "primary_output": "examples/jscai-top10-run/expected/abstracts.json",
+      "outputs": [
+        {
+          "file": "examples/jscai-top10-run/expected/abstracts.json",
+          "role": "primary",
+          "type": "application/json",
+          "description": "10 structured abstract records with metadata, full text, and Confex record ids."
+        },
+        {
+          "file": "examples/jscai-top10-run/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Run summary with pass/partial/fail breakdown and completeness check."
+        },
+        {
+          "file": "examples/jscai-top10-run/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Stage results, completeness check, page-gap notes, and overall_passed."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "volpiglio",
+        "task": "conference-abstract-scraper-top10",
+        "trajectory_id": "56f55442",
+        "url": "https://jetty.io/trajectory/volpiglio/conference-abstract-scraper-top10/56f55442",
+        "agent": "claude-code",
+        "model": "anthropic/claude-sonnet-5",
+        "model_provider": "openrouter",
+        "runbook_version": "1.1.1",
+        "ran_at": "2026-09-02T20:31:48.379253Z",
+        "duration_seconds": 852,
+        "eval": {
+          "overall_passed": true,
+          "pass": 10,
+          "partial": 0,
+          "fail": 0
+        }
+      }
+    },
+    {
+      "id": "scai2025-issue-run",
+      "title": "SCAI 2025 supplement (a different year), first 12 abstracts",
+      "summary": "Same runbook pointed at the previous year's meeting: JSCAI volume 4, issue 5 plus the scai/2025 Confex program. The v1.1.3 session-code filter picks the 805 abstracts out of the issue's 864 works, the first 12 (OR1-1 to OR1-12, contiguous pages) all match Confex records with full text — 11 PASS, 1 PARTIAL where the program lists the abstract under a differently worded poster title. ~11 minutes.",
+      "thumbnail": "examples/scai2025-issue-run/thumbnail.png",
+      "operation": "scrape",
+      "dir": "examples/scai2025-issue-run",
+      "input": {
+        "kind": "url",
+        "values": {
+          "crossref_issn": "2772-9303",
+          "crossref_volume_issue": "volume 4, issue 5",
+          "confex_program_url": "https://scai.confex.com/scai/2025/meetingapp.cgi",
+          "max_abstracts": "12"
+        }
+      },
+      "primary_output": "examples/scai2025-issue-run/expected/abstracts.json",
+      "outputs": [
+        {
+          "file": "examples/scai2025-issue-run/expected/abstracts.json",
+          "role": "primary",
+          "type": "application/json",
+          "description": "12 structured abstract records with metadata, full text, Confex record ids, and per-entry match scores."
+        },
+        {
+          "file": "examples/scai2025-issue-run/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Run summary with pass/partial/fail breakdown and completeness check."
+        },
+        {
+          "file": "examples/scai2025-issue-run/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Stage results, completeness check, page-gap notes, and overall_passed."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "volpiglio",
+        "task": "conference-abstract-scraper",
+        "trajectory_id": "97478418",
+        "url": "https://jetty.io/trajectory/volpiglio/conference-abstract-scraper/97478418",
+        "agent": "claude-code",
+        "model": "anthropic/claude-sonnet-5",
+        "model_provider": "openrouter",
+        "runbook_version": "1.1.3",
+        "ran_at": "2026-09-02T22:59:21.672437Z",
+        "duration_seconds": 634,
+        "eval": {
+          "overall_passed": true,
+          "pass": 11,
+          "partial": 1,
+          "fail": 0
+        }
       }
     }
   ],
   "featured_examples": [
-    "jscai-issue-run"
+    "jscai-issue-run",
+    "jscai-top10-run",
+    "scai2025-issue-run"
   ],
   "inputs": [
     {
@@ -116,7 +233,7 @@
       "agent:claude-code",
       "programmatic"
     ],
-    "version": "1.1.1",
+    "version": "1.1.3",
     "agent": "claude-code",
     "model": "anthropic/claude-sonnet-5",
     "model_provider": "openrouter",
@@ -141,6 +258,8 @@
   "caveats": [
     "Full text is sourced from the conference's own Confex program, which is normally a pre-publication version — it may differ slightly from the eventual published version in wording or completeness.",
     "One entry in this example (1/20) had only a short excerpt available in the Confex program and is marked PARTIAL rather than PASS.",
-    "The Confex program URL and session names (e.g. 'Coronary', 'Oral Abstracts') are conference- and year-specific — check the conference's public program page for the current URL if targeting a different year or event."
+    "The Confex program URL and session names (e.g. 'Coronary', 'Oral Abstracts') are conference- and year-specific — check the conference's public program page for the current URL if targeting a different year or event.",
+    "v1.1.2 makes the Parameters table's authority explicit: a v1.1.1 run given SCAI 2025 inputs (volume 4, issue 5; the scai/2025 program) saw them substituted correctly but 'corrected' them back to the 2026 defaults sitting in the next column. The runbook now says the Template Variable column overrides the Default column and that a different year is not a typo, and Step 2 filters CrossRef works by their volume/issue fields instead of a guessed date window.",
+    "v1.1.3 filters CrossRef works to session-coded titles (`OR1-1 | …`) before taking the first N. A v1.1.2 run against SCAI 2025 (JSCAI vol. 4 issue 5) correctly targeted the 2025 issue but selected 12 regular journal articles that open that issue — none of which exist as Confex records — and failed all 12 matches; the filter makes the choice of year robust."
   ]
 }

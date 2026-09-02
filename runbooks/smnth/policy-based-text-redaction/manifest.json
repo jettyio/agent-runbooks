@@ -19,7 +19,7 @@
       "input": {
         "kind": "dataset",
         "values": {
-          "input_file": "input.json",
+          "input_file": "dataset.json",
           "redaction_marker": "[REDACTED: {category}]"
         }
       },
@@ -63,16 +63,69 @@
       }
     },
     {
+      "id": "support-and-community-run",
+      "title": "8 support & community records (e-commerce, forum, fintech)",
+      "summary": "Chat transcripts with card digits, order and tracking numbers, a parenting forum post naming a child's allergy and preschool, a fintech call summary with balances and a transaction reference — each redacted against its own policy list. 70 labelled markers, zero leaks on spot-check, rubric 5.0/5 in a single 3-minute pass.",
+      "thumbnail": "examples/support-and-community-run/thumbnail.png",
+      "operation": "redact",
+      "dir": "examples/support-and-community-run",
+      "input": {
+        "kind": "dataset",
+        "values": {
+          "input_file": "dataset.json",
+          "redaction_marker": "[REDACTED: {category}]"
+        }
+      },
+      "primary_output": "examples/support-and-community-run/expected/redacted_dataset.json",
+      "outputs": [
+        {
+          "file": "examples/support-and-community-run/expected/redacted_dataset.json",
+          "role": "primary",
+          "type": "application/json",
+          "description": "All 8 records with original fields plus redacted_text (70 labelled markers across the set)."
+        },
+        {
+          "file": "examples/support-and-community-run/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Rubric scores with per-criterion justification, per-record notes, iteration history."
+        },
+        {
+          "file": "examples/support-and-community-run/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Stage results, structured rubric scores, overall_score 5.0, overall_passed."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "volpiglio",
+        "task": "policy-based-text-redaction",
+        "trajectory_id": "189acf64",
+        "url": "https://jetty.io/trajectory/volpiglio/policy-based-text-redaction/189acf64",
+        "agent": "claude-code",
+        "model": "anthropic/claude-sonnet-5",
+        "model_provider": "openrouter",
+        "runbook_version": "1.0.2",
+        "ran_at": "2026-09-02T20:41:25.453353Z",
+        "duration_seconds": 206,
+        "eval": {
+          "overall_passed": true,
+          "overall_score": 5.0
+        }
+      }
+    },
+    {
       "id": "sample20-run",
       "title": "20-record sample (government, corporation, individual)",
-      "summary": "A full run over 20 records spanning three domains, scoring 4.73/5 overall against the rubric with no criterion below 4.6.",
+      "summary": "The original 20-record dataset — Enron-style corporate email threads, government notices, personal writing — re-run on the current runbook: 216 labelled markers across the set, entities numbered per record so forwarded threads stay readable, scored 4.2/5 (marker consistency 5, everything else 4) in a single pass with a well-formed validation report.",
       "thumbnail": "examples/sample20-run/thumbnail.png",
       "operation": "redact",
       "dir": "examples/sample20-run",
       "input": {
         "kind": "dataset",
         "values": {
-          "input_file": "input.json",
+          "input_file": "dataset.json",
           "redaction_marker": "[REDACTED: {category}]"
         }
       },
@@ -82,7 +135,7 @@
           "file": "examples/sample20-run/expected/redacted_dataset.json",
           "role": "primary",
           "type": "application/json",
-          "description": "All 20 records with original fields plus redacted_text."
+          "description": "All 20 records with original fields plus redacted_text (216 labelled markers)."
         },
         {
           "file": "examples/sample20-run/expected/summary.md",
@@ -94,29 +147,31 @@
           "file": "examples/sample20-run/expected/validation_report.json",
           "role": "eval",
           "type": "application/json",
-          "description": "Structured rubric scores and overall_passed."
+          "description": "Stage results, structured rubric scores, overall_score 4.2, overall_passed."
         }
       ],
       "excerpt": null,
       "trajectory": {
         "collection": "volpiglio",
         "task": "policy-based-text-redaction",
-        "trajectory_id": "a8e36930",
-        "url": "https://jetty.io/trajectory/volpiglio/policy-based-text-redaction/a8e36930",
+        "trajectory_id": "53f59a7a",
+        "url": "https://jetty.io/trajectory/volpiglio/policy-based-text-redaction/53f59a7a",
         "agent": "claude-code",
         "model": "anthropic/claude-sonnet-5",
-        "ran_at": "2026-08-19T14:04:41.244896Z",
-        "duration_seconds": 1152,
+        "model_provider": "openrouter",
+        "runbook_version": "1.0.3",
+        "ran_at": "2026-09-02T23:08:25.668295Z",
+        "duration_seconds": 878,
         "eval": {
           "overall_passed": true,
-          "overall_score": 4.73
-        },
-        "model_provider": "openrouter"
+          "overall_score": 4.2
+        }
       }
     }
   ],
   "featured_examples": [
     "professional-domains-run",
+    "support-and-community-run",
     "sample20-run"
   ],
   "inputs": [
@@ -151,7 +206,7 @@
       "agent:claude-code",
       "rubric"
     ],
-    "version": "1.0.2",
+    "version": "1.0.3",
     "agent": "claude-code",
     "model": "anthropic/claude-sonnet-5",
     "model_provider": "openrouter",
@@ -174,7 +229,8 @@
     }
   },
   "caveats": [
+    "The sample run's input dataset draws on Enron-style corporate correspondence for the `corporation` domain records.",
     "Rubric scores are self-assessed by the agent per Step 4 of the runbook, not independently verified by a separate judge model.",
-    "The sample run's input dataset draws on Enron-style corporate correspondence for the `corporation` domain records."
+    "v1.0.3 pins the validation_report.json stage shape to {name, passed, message} and asserts it in the final checklist: two earlier runs on the 20-record sample wrote {stage, status: 'completed'} entries, which the Jetty dashboard renders as zero checks passed even though the run succeeded."
   ]
 }

@@ -1,285 +1,174 @@
-# Hiring Demographics Audit — Compliance Report
+# Hiring Demographics Compliance/Fairness Audit
 
-**Prepared:** 2026-08-19  
-**Dataset:** `/app/assets/synthetic_cvs_hiring.csv` (synthetic dataset, audit-methodology purposes)  
-**Audit Standard:** Four-fifths (80%) rule, supplemented by Fisher's exact test and Pearson chi-square test
+**Prepared for:** HR / Legal review
+**Scope:** Candidate-level hiring outcomes across 12 job roles, cross-tabulated by five demographic dimensions
+**Disparity threshold:** Four-fifths rule (ratio < 0.80 flagged) | **Minimum group size for reliable inference:** 30 candidates
 
 ---
 
 ## 1. Methodology
 
-### 1.1 Dataset Overview
+### 1.1 Dataset
 
-| Item | Value |
-|------|-------|
-| Total candidate records | 1,000 |
-| Records dropped (missing role or outcome) | 0 |
-| Unique job roles analyzed | 12 |
-| Overall hire rate | 38.0% |
-| Date range | Not available in dataset |
+- **Source:** `synthetic_cvs_hiring.csv`-equivalent dataset uploaded for this run (1,000 candidate rows, one row per candidate, 12 distinct `role_applied` values). This is a **synthetic** dataset created for audit-methodology testing, not a real applicant population — findings illustrate the analytical method, not an actual EEOC/OFCCP filing.
+- **Row counts:** 1,000 candidates loaded; 1,000 retained after validating `role_applied` and `hired` were both present (0 rows dropped for missing role or outcome).
+- **Outcome field:** `hired` was supplied as literal `Yes`/`No` strings and coerced to boolean. `disability_status`, `veteran_status`, and `referred` were coerced the same way.
+- **Missing/declined demographic data:** No rows had missing values in `gender`, `race_ethnicity`, `disability_status`, or `veteran_status` in this run. Had any existed, they would have been retained as an explicit `"Declined to state"` group rather than dropped, consistent with treating non-disclosure as its own category.
+- **Age brackets:** the raw dataset only contains numeric `age`. Candidates were bucketed once, consistently, into: **`<30`** (age < 30), **`30-39`** (30 ≤ age < 40), **`40-49`** (40 ≤ age < 50), **`50+`** (age ≥ 50). These same buckets are used in both `disparity_metrics.csv` and this report.
+- **Group sizes per role:** roles range from ~75 to ~96 candidates each (average ≈83). Because demographic groups (especially minority race/ethnicity categories, disability status = Yes, veteran status = Yes, and Non-binary gender) are a further subdivision of an already-small per-role population, **most within-role demographic cells fall below the n=30 reliability threshold** — this is expected and is exactly why a cross-role rollup (`ALL_ROLES`) is reported alongside each role.
+- CV-derived fields (education, GPA, years of experience, skills, certifications, `cv_text`) were **not** used in the core disparity calculation; they are referenced below only where they help interpret a flagged finding.
 
-**Data-quality notes:**
-- The `certifications` column had 305 missing values; this column was not used in disparity calculations.
-- All other required columns (`role_applied`, `hired`, `age`, `gender`, `race_ethnicity`, `disability_status`, `veteran_status`) were fully populated.
-- Candidates with missing demographic data (none observed for core attributes) would have been retained with a "Unknown/Declined" category rather than dropped.
-- `disability_status` and `veteran_status` exhibit significant skew: 87.5% report no disability; 93.5% report non-veteran status. Small `Yes` minorities frequently fall below the minimum group size threshold for statistical testing.
+### 1.2 Disparity metric
 
-### 1.2 Protected Attributes Analyzed
+For each **(job role, demographic dimension, group)** cell we computed the **selection rate** (hires ÷ candidates). Within each (role, dimension) cell, the **reference group** is the group with the highest selection rate **among groups that meet the n≥30 minimum**; if no group in the cell reaches 30, the reference falls back to the highest-rate group overall and every row in that cell is marked `low_confidence = true`. Ties are broken deterministically: larger `candidate_count` wins, then alphabetically-first group name — any cell where this fired is marked `reference_group_tie_broken = true` in the CSV.
 
-| Attribute | Source | Notes |
-|-----------|--------|-------|
-| `gender` | Direct column | Values: Male, Female, Non-binary |
-| `race_ethnicity` | Direct column | Values: White, Asian, Black, Hispanic/Latino, Multiracial, Middle Eastern, Native American |
-| `disability_status` | Direct column (Yes/No string → retained as string category) | |
-| `veteran_status` | Direct column (Yes/No string → retained as string category) | |
-| `age_bracket` | Derived from numeric `age` | Buckets: <30, 30–39, 40–49, 50+ |
+The **four-fifths ratio** = group selection rate ÷ reference group selection rate. A ratio below **0.80** is `flagged`.
 
-**Age bracket boundaries (fixed):** `[0, 30)` → `<30`; `[30, 40)` → `30-39`; `[40, 50)` → `40-49`; `[50, ∞)` → `50+`. These boundaries were determined once during data loading and are used consistently throughout the analysis and this report.
+### 1.3 Statistical significance
 
-### 1.3 Disparity Metrics
-
-**Four-fifths (80%) rule:** For each (job role, demographic dimension), the group with the highest selection (hire) rate is designated the reference group. Every other group's ratio (`group_rate / reference_rate`) is computed; a ratio below **0.80** is flagged as a potential adverse impact indicator.
-
-**Reference group tie-breaking:** When two or more groups share the maximum selection rate, the reference group is chosen by: (1) larger candidate count; (2) alphabetically first name. Rows where this rule fired have `reference_group_tie_broken = true` in the metrics table.
-
-**Statistical significance:** Two tests are always computed for every eligible cell (both the comparison group **and** its reference group must have ≥ 30 candidates):
-- **Fisher's exact test** (two-sided, `scipy.stats.fisher_exact`) — exact, valid at any sample size
-- **Pearson chi-square with Yates' continuity correction** (`scipy.stats.chi2_contingency`, `correction=True`) — large-sample approximation
-
-A finding is considered `statistically_significant` **only if both tests agree** (Fisher p < 0.05 **AND** chi-square p < 0.05). This conservative rule prevents artifacts from test selection.
-
-**Minimum group size:** Cells where either the comparison group or reference group has fewer than 30 candidates are marked `low_confidence = true`. These cells are reported for transparency but should not support firm conclusions.
+For every cell where **both** the group and its reference group meet n≥30, we ran two independent tests on the 2×2 hired/not-hired table against the reference group: **Fisher's exact test** (two-sided) and a **Pearson chi-square test with Yates' continuity correction**. A finding is marked `statistically_significant = true` only if **both** tests agree at p < 0.05. Both p-values are always reported side-by-side — no single test is used to decide significance. Cells below the size threshold (`low_confidence = true`) do not receive p-values; significance testing is not meaningful on samples that small, and this is flagged rather than silently computed anyway.
 
 ### 1.4 Limitations
 
-- Statistical disparity in aggregate hiring data does not establish discriminatory intent. Multiple confounders (qualifications, role-specific requirements, pipeline composition) may explain observed differences.
-- The dataset is synthetic and generated for audit-methodology purposes; findings should not be extrapolated to real-world populations.
-- With 12 roles and 5 demographic dimensions, multiple comparisons inflate the chance of false positives. No multiplicity correction (e.g., Bonferroni) was applied; findings should be treated as hypothesis-generating rather than confirmatory.
-- Low-confidence cells (below 30 candidates) are directional only and require additional data before any action is warranted.
+- **Small-cell instability:** a demographic group with, say, 3 candidates can show a 0% or 100% selection rate purely from noise. All such cells are marked `low_confidence` in the data and are reported for transparency but should be treated as **directional only, not conclusive**.
+- **A four-fifths ratio above 1.0 in a low-confidence cell is expected, not an error:** because the reference group must itself have ≥30 candidates, a tiny subgroup can occasionally out-perform it, producing a ratio > 1. This does not indicate a data or calculation error — it is a direct consequence of restricting the reference to an adequately-sized comparison group.
+- **Correlation ≠ causation:** a statistically significant disparity in aggregate hiring outcomes is not, by itself, evidence of discriminatory intent or a violation. It indicates a pattern that warrants further review of the underlying process (sourcing, screening criteria, interview stages), not a legal conclusion.
+- This audit does not control for role-specific qualification requirements (e.g., years of experience, degree field) beyond what is implicit in who applied; where a CV-derived field plausibly explains a flagged gap, it is noted in Section 2.
 
 ---
 
-## 2. Summary of Findings
+## 2. Findings by Job Role
 
-**Total flagged cells (four-fifths ratio < 0.80):** 134 across all (role, dimension, group) combinations.
+Across the 12 individual roles (excluding the `ALL_ROLES` rollup), **13 of 100 role-level, adequately-sized (non-low-confidence) cells were flagged**, all in the **gender** dimension — no role-level cell in `race_ethnicity`, `disability_status`, or `veteran_status` had both groups large enough to be non-low-confidence *and* fall below the 0.80 ratio (age_bracket had none non-low-confidence at all at the individual-role level; role populations of ~80 split four ways rarely clear n=30 per bucket).
 
-| Dimension | Flagged Cells | High-Confidence Flagged | Statistically Significant |
-|-----------|--------------|------------------------|--------------------------|
-| `gender` | 20 | 4 | 1 |
-| `race_ethnicity` | 69 | 6 | 4 |
-| `age_bracket` | 29 | 3 | 3 |
-| `disability_status` | 8 | 0 | 0 |
-| `veteran_status` | 8 | 0 | 0 |
-| **Total** | **134** | **13** | **8** |
+**Statistically significant, adequately-sized findings by role (both tests p<0.05):**
 
-*"High-confidence" = both comparison and reference groups have ≥ 30 candidates. "Statistically significant" = both Fisher's exact and chi-square tests return p < 0.05.*
+- **Financial Analyst — gender, Female:** 47 candidates, 13 hires, selection rate 27.7% vs. Male reference (46 candidates, 63.0% selection rate). Four-fifths ratio **0.44** (well below 0.80). Fisher's exact p = **0.0008**, chi-square p = **0.0013** — statistically significant by both tests. This is the most severe *adequately-sized* finding in the entire dataset.
+
+**Other role-level flagged-but-not-statistically-significant gender gaps** (ratio < 0.80, both groups n≥30, but p ≥ 0.05 on at least one test — treat as suggestive, not confirmed):
+
+| Role | Group | Selection rate | Reference (rate) | Ratio | Fisher p | Chi² p |
+|---|---|---|---|---|---|---|
+| Business Analyst | Female | 21.9% (32) | Male (40.5%) | 0.54 | 0.133 | 0.149 |
+| Product Manager | Female | 20.0% (35) | Male (31.7%) | 0.63 | 0.302 | 0.371 |
+| HR Coordinator | Male | 36.4% (44) | Female (50.0%) | 0.73 | 0.260 | 0.317 |
+| Marketing Specialist | Female | 35.1% (37) | Male (45.5%) | 0.77 | 0.373 | 0.475 |
+
+For these four, the direction is consistent with the significant Financial Analyst finding, but neither test crosses the significance threshold individually for these smaller effect sizes — larger applicant pools would be needed to confirm whether this is a real pattern.
+
+**Small-cell (low-confidence) role-level flags:** the remaining 91 flagged rows are all in cells below n=30 (frequently `Non-binary` gender — 1–4 candidates per role — and small race/ethnicity or disability/veteran categories with a single 0-hire or 100%-hire outcome). These appear in every role and are reported in full in `disparity_metrics.csv`, but by design carry no p-values and should not be read as evidence of anything on their own; see Section 4 for the complete list and Section 1.4 for why they occur.
+
+**Interpretation note (Financial Analyst):** the CV-derived fields do not obviously explain the gap — median years-of-experience and GPA for Female Financial Analyst applicants in this dataset are comparable to Male applicants, so the disparity is not simply an artifact of a weaker underlying applicant pool. This makes it the top candidate for a targeted screening-process review (Section 6).
+
+### 2.1 All 12 roles at a glance (gender — the only dimension with adequately-sized comparisons at individual-role level)
+
+Every role has at least 30 Male and 30 Female candidates, so gender is the one dimension where a same-role, adequately-sized comparison is possible everywhere. The table below covers all 12 roles (Non-binary omitted here as it is a low-confidence cell — 1 to 4 candidates — in every single role; see `disparity_metrics.csv` for those rows):
+
+| Role | Female N | Female rate | Male N | Male rate | Reference | Ratio | Flagged |
+|---|---|---|---|---|---|---|---|
+| Accountant | 39 | 38.5% | 44 | 45.5% | Male | 0.85 | No |
+| Business Analyst | 32 | 21.9% | 42 | 40.5% | Male | **0.54** | **Yes** |
+| Customer Success Manager | 47 | 38.3% | 32 | 46.9% | Male | 0.82 | No |
+| Data Analyst | 43 | 37.2% | 39 | 33.3% | Female | 0.90 | No |
+| Financial Analyst | 47 | 27.7% | 46 | 63.0% | Male | **0.44** | **Yes** |
+| HR Coordinator | 36 | 50.0% | 44 | 36.4% | Female | **0.73** | **Yes** |
+| Marketing Specialist | 37 | 35.1% | 44 | 45.5% | Male | **0.77** | **Yes** |
+| Operations Manager | 41 | 36.6% | 34 | 44.1% | Male | 0.83 | No |
+| Product Manager | 35 | 20.0% | 41 | 31.7% | Male | **0.63** | **Yes** |
+| Sales Representative | 39 | 35.9% | 47 | 42.6% | Male | 0.84 | No |
+| Software Engineer | 42 | 30.9% | 39 | 30.8% | Female | 0.99 | No |
+| UX Designer | 36 | 38.9% | 45 | 42.2% | Male | 0.92 | No |
+
+Five of 12 roles show a flagged gender gap; only Financial Analyst clears both significance tests (Section 2 above). Accountant, Customer Success Manager, Data Analyst, Operations Manager, Sales Representative, Software Engineer, and UX Designer show **no flagged gender gap** (ratios 0.82–0.99) and have **no other adequately-sized dimension to report** — every race/ethnicity, disability, veteran, and age cell in those seven roles falls below the n=30 minimum (a direct consequence of splitting an ~80-candidate role population across 6-8 demographic categories per dimension). This is why Section 3's cross-role rollup, not the per-role view, is the reliable source for race/ethnicity, age, disability, and veteran-status findings — confirmed programmatically: for `race_ethnicity` and `age_bracket`, the *only* non-low-confidence role-level rows in the entire dataset are trivial self-comparisons (a single group in that cell happens to clear n=30 and is therefore compared against itself, ratio = 1.0 by definition) — there is not one role in this dataset where two different race/ethnicity or age groups both independently clear n=30.
 
 ---
 
 ## 3. Findings by Demographic Dimension (Cross-Role Rollup)
 
-### 3.1 Gender
+The `ALL_ROLES` rollup pools all 1,000 candidates per dimension, which is where n≥30 is achievable for every group and where the clearest, most reliable disparity signal in this dataset lives.
 
-Across all 1,000 candidates, males have the highest selection rate (42.1%), followed by females (34.4%) and Non-binary candidates (27.6%).
+### Gender (rollup)
+- Male: 497 candidates, 42.1% selection rate (reference).
+- Female: 474 candidates, 34.4% selection rate. Ratio **0.82** — just above the 0.80 threshold, **not flagged** at the rollup level, though Fisher/chi² both show p<0.05 (p=0.015 / p=0.017), meaning the gap is statistically real but not large enough to trip four-fifths.
+- Non-binary: 29 candidates, 27.6% selection rate. Ratio 0.66, **flagged**, but `low_confidence` (n<30) — directional only.
 
-| Group | n | Hired | Selection Rate | 4/5 Ratio | Flagged | Confidence |
-|-------|---|-------|---------------|-----------|---------|------------|
-| Male (reference) | 497 | 209 | 42.1% | 1.000 | No | High |
-| Female | 474 | 163 | 34.4% | 0.818 | No | High |
-| Non-binary | 29 | 8 | 27.6% | 0.656 | **Yes** | **Low** |
+### Race/Ethnicity (rollup) — the strongest pattern in this audit
+White is the reference group (387 candidates, 46.5% selection rate). **Every other race/ethnicity category is flagged**, and four of six are statistically significant by both tests:
 
-The Non-binary group's ratio of 0.656 is below the 0.80 threshold, but with only 29 candidates across all roles, this finding is **low-confidence**. No statistical testing was performed for this group given its size. A dataset with ≥ 30 Non-binary candidates would be needed before drawing conclusions.
+| Group | N | Selection rate | Ratio | Fisher p | Chi² p | Sig. (both) |
+|---|---|---|---|---|---|---|
+| Hispanic/Latino | 160 | 26.9% | **0.58** | 0.000023 | 0.000032 | **Yes** |
+| Black | 145 | 33.8% | **0.73** | 0.010 | 0.011 | **Yes** |
+| Multiracial | 67 | 32.8% | 0.71 | 0.045 | 0.052 | No (fails chi²) |
+| Middle Eastern | 58 | 34.5% | 0.74 | 0.091 | 0.115 | No |
+| Asian | 157 | 36.3% | 0.78 | 0.036 | 0.038 | **Yes** |
+| Native American | 26 | 34.6% | 0.74 | — | — | low_confidence (n<30) |
 
-### 3.2 Race/Ethnicity
+Hispanic/Latino and Black candidates show the largest, most statistically robust gaps relative to White candidates — both comfortably exceed n=30 on both sides and pass both significance tests with very low p-values. This is the single clearest disparity signal in the dataset and it is consistent across the applicant pool as a whole, not an artifact of any one role.
 
-White candidates have the highest selection rate (46.5%). Six of six non-White groups are flagged across all roles.
+### Age bracket (rollup)
+40-49 is the reference group (210 candidates, 50.5% selection rate — notably the highest of any bracket). All three other brackets are flagged and statistically significant:
 
-| Group | n | Hired | Selection Rate | 4/5 Ratio | Flagged | Fisher p | Chi2 p | Stat. Sig. | Confidence |
-|-------|---|-------|---------------|-----------|---------|----------|--------|------------|------------|
-| White (reference) | 387 | 180 | 46.5% | 1.000 | No | — | — | — | High |
-| Asian | 157 | 57 | 36.3% | 0.781 | **Yes** | 0.035640 | 0.037539 | **Yes** | High |
-| Black | 145 | 49 | 33.8% | 0.727 | **Yes** | 0.010433 | 0.011092 | **Yes** | High |
-| Middle Eastern | 58 | 20 | 34.5% | 0.741 | **Yes** | 0.091201 | 0.115051 | No | High |
-| Multiracial | 67 | 22 | 32.8% | 0.706 | **Yes** | 0.045456 | 0.051588 | No | High |
-| Hispanic/Latino | 160 | 43 | 26.9% | 0.578 | **Yes** | 0.000023 | 0.000032 | **Yes** | High |
-| Native American | 26 | 9 | 34.6% | 0.744 | **Yes** | — | — | — | **Low** |
+| Bracket | N | Selection rate | Ratio | Fisher p | Chi² p |
+|---|---|---|---|---|---|
+| <30 | 191 | 25.1% | **0.50** | <0.0001 | <0.0001 |
+| 30-39 | 257 | 36.6% | 0.72 | 0.0027 | 0.0034 |
+| 50+ | 342 | 38.6% | 0.76 | 0.0079 | 0.0081 |
 
-**Hispanic/Latino** candidates show the most severe disparity at a four-fifths ratio of 0.578 — a selection rate of 26.9% vs. 46.5% for White candidates — and this is highly statistically significant (Fisher p < 0.0001, chi-square p < 0.0001). **Black** (ratio 0.727, Fisher p = 0.010, chi-square p = 0.011) and **Asian** (ratio 0.781, Fisher p = 0.036, chi-square p = 0.038) candidates also show statistically significant disparities. **Middle Eastern** (ratio 0.741) and **Multiracial** (ratio 0.706) are flagged but do not meet the dual-test significance threshold. **Native American** is flagged but low-confidence (n = 26).
+The under-30 bracket shows the largest gap of any dimension in the rollup view (ratio 0.50) and is highly statistically significant, on a large sample (n=191) — this is not a low-confidence artifact.
 
-### 3.3 Age Bracket
+### Disability status (rollup)
+No: 875 candidates, 38.4% (reference). Yes: 125 candidates, 35.2%, ratio 0.92 — **not flagged**, not significant (p=0.55 both tests).
 
-The 40–49 age bracket has the highest selection rate (50.5%). Three of three younger/older brackets are flagged.
-
-| Group | n | Hired | Selection Rate | 4/5 Ratio | Flagged | Fisher p | Chi2 p | Stat. Sig. | Confidence |
-|-------|---|-------|---------------|-----------|---------|----------|--------|------------|------------|
-| 40–49 (reference) | 210 | 106 | 50.5% | 1.000 | No | — | — | — | High |
-| 50+ | 342 | 132 | 38.6% | 0.765 | **Yes** | 0.007851 | 0.008105 | **Yes** | High |
-| 30–39 | 257 | 94 | 36.6% | 0.725 | **Yes** | 0.002683 | 0.003435 | **Yes** | High |
-| <30 | 191 | 48 | 25.1% | 0.498 | **Yes** | < 0.0001 | < 0.0001 | **Yes** | High |
-
-The **<30 age bracket** is the single most severe high-confidence disparity in the dataset, with a four-fifths ratio of 0.498 and highly significant dual-test results (Fisher p ≈ 0, chi-square p ≈ 0). Candidates under 30 are hired at roughly half the rate of 40–49 year olds. The **30–39** (ratio 0.725) and **50+** (ratio 0.765) brackets are also flagged with statistical significance, suggesting that the 40–49 cohort is systematically favored.
-
-### 3.4 Disability Status
-
-Across all roles, candidates reporting a disability have a selection rate of 35.2% vs. 38.4% for those without (ratio 0.917). This is **not flagged** (above 0.80 threshold). No further action is indicated by this metric alone.
-
-### 3.5 Veteran Status
-
-Veterans have a selection rate of 36.9% vs. 38.1% for non-veterans (ratio 0.970). This is **not flagged**. No disparity signal detected.
+### Veteran status (rollup)
+No: 935 candidates, 38.1% (reference). Yes: 65 candidates, 36.9%, ratio 0.97 — **not flagged**, not significant (p=0.90/0.96).
 
 ---
 
-## 4. Findings by Job Role
+## 4. Flagged Items — Full List (Sorted by Severity)
 
-This section covers roles where at least one high-confidence flagged finding exists. All other roles are noted with their overall hire rate; per-role demographic breakdowns with small group sizes are low-confidence.
+**Total flagged (ratio < 0.80): 104 of 234 rows** (91 low-confidence, 13 adequately-sized; 7 of the 13 are statistically significant by both tests).
 
-### 4.1 Financial Analyst — Gender Disparity (High Confidence, Statistically Significant)
+Below are the 5 lowest-ratio flagged rows in the dataset overall (strict sort by `four_fifths_ratio` ascending, ties broken by `statistically_significant` [true first], then `low_confidence` [false first], then larger `candidate_count`, then alphabetically). **All five of these extreme (ratio = 0.00) rows are small, `low_confidence` cells where a handful of candidates in a minority category happened to receive zero offers** — they are the mathematically most extreme ratios in the table, but the smallest and least reliable. They are reported here for completeness (an audit should not hide its most extreme numbers), but the findings that actually warrant HR/legal attention are the statistically significant, adequately-sized findings in Sections 2–3 below this table.
 
-Overall hire rate: 44.8% (43 hired / 96 applicants)
+| Rank | Role | Dimension | Group | N | Hires | Selection rate | Reference | Ratio | Confidence |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | Business Analyst | race_ethnicity | Black | 7 | 0 | 0% | White | 0.00 | Low (n=7) |
+| 2 | Business Analyst | race_ethnicity | Middle Eastern | 7 | 0 | 0% | White | 0.00 | Low (n=7) |
+| 3 | HR Coordinator | race_ethnicity | Multiracial | 7 | 0 | 0% | Middle Eastern | 0.00 | Low (n=7) |
+| 4 | Software Engineer | race_ethnicity | Hispanic/Latino | 7 | 0 | 0% | White | 0.00 | Low (n=7) |
+| 5 | Business Analyst | disability_status | Yes | 5 | 0 | 0% | No | 0.00 | Low (n=5) |
 
-| Group | n | Hired | Selection Rate | 4/5 Ratio | Fisher p | Chi2 p | Stat. Sig. |
-|-------|---|-------|---------------|-----------|----------|--------|------------|
-| Male (reference) | 46 | 29 | 63.0% | 1.000 | — | — | — |
-| Female | 47 | 13 | 27.7% | **0.439** | **0.000826** | **0.001283** | **Yes** |
-| Non-binary | 3 | 1 | 33.3% | 0.529 | — | — | Low confidence |
+**Statistically-significant, adequately-sized flagged findings (the actionable set), sorted by ratio:**
 
-**The most severe high-confidence, statistically significant per-role finding in the dataset.** Female candidates in the Financial Analyst role are hired at 27.7% vs. 63.0% for male candidates (four-fifths ratio 0.439). Both Fisher's exact (p = 0.0008) and chi-square (p = 0.0013) tests confirm this is highly unlikely due to chance. This finding warrants urgent review of the Financial Analyst screening and selection process.
+| Role | Dimension | Group | N | Selection rate | Reference | Ratio | Fisher p | Chi² p |
+|---|---|---|---|---|---|---|---|---|
+| Financial Analyst | gender | Female | 47 | 27.7% | Male (63.0%) | **0.44** | 0.0008 | 0.0013 |
+| ALL_ROLES | age_bracket | <30 | 191 | 25.1% | 40-49 (50.5%) | **0.50** | <0.0001 | <0.0001 |
+| ALL_ROLES | race_ethnicity | Hispanic/Latino | 160 | 26.9% | White (46.5%) | **0.58** | 0.00002 | 0.00003 |
+| ALL_ROLES | race_ethnicity | Black | 145 | 33.8% | White (46.5%) | 0.73 | 0.0104 | 0.0111 |
+| ALL_ROLES | age_bracket | 30-39 | 257 | 36.6% | 40-49 (50.5%) | 0.72 | 0.0027 | 0.0034 |
+| ALL_ROLES | age_bracket | 50+ | 342 | 38.6% | 40-49 (50.5%) | 0.76 | 0.0079 | 0.0081 |
+| ALL_ROLES | race_ethnicity | Asian | 157 | 36.3% | White (46.5%) | 0.78 | 0.0356 | 0.0375 |
 
-### 4.2 Business Analyst — Gender Disparity (High Confidence, Not Statistically Significant)
-
-Overall hire rate: 32.0% (24 hired / 75 applicants)
-
-| Group | n | Hired | Selection Rate | 4/5 Ratio | Fisher p | Chi2 p | Stat. Sig. |
-|-------|---|-------|---------------|-----------|----------|--------|------------|
-| Male (reference) | 42 | 17 | 40.5% | 1.000 | — | — | — |
-| Female | 32 | 7 | 21.9% | **0.540** | 0.132577 | 0.149078 | No |
-| Non-binary | 1 | 0 | 0.0% | 0.000 | — | — | Low confidence |
-
-Female candidates in the Business Analyst role are flagged (ratio 0.540), but neither significance test reaches p < 0.05. The finding is directionally concerning — the gap is large — but with 32 female applicants, the sample is at the minimum threshold and the signal may not be robust. Larger samples or role-level process review are recommended.
-
-### 4.3 Product Manager — Gender Disparity (High Confidence, Not Statistically Significant)
-
-Overall hire rate: 25.3% (20 hired / 79 applicants)
-
-| Group | n | Hired | Selection Rate | 4/5 Ratio | Fisher p | Chi2 p | Stat. Sig. |
-|-------|---|-------|---------------|-----------|----------|--------|------------|
-| Male (reference) | 41 | 13 | 31.7% | 1.000 | — | — | — |
-| Female | 35 | 7 | 20.0% | **0.631** | 0.301875 | 0.371346 | No |
-| Non-binary | 3 | 0 | 0.0% | 0.000 | — | — | Low confidence |
-
-Product Manager has the lowest overall hire rate (25.3%) of any role. Female candidates are flagged (ratio 0.631) but the difference is not statistically significant at the dual-test threshold. Monitor for persistence as the candidate pool grows.
-
-### 4.4 HR Coordinator — Gender Disparity (High Confidence, Not Statistically Significant, Male Disadvantaged)
-
-Overall hire rate: 41.5% (34 hired / 82 applicants)
-
-| Group | n | Hired | Selection Rate | 4/5 Ratio | Fisher p | Chi2 p | Stat. Sig. |
-|-------|---|-------|---------------|-----------|----------|--------|------------|
-| Female (reference) | 36 | 18 | 50.0% | 1.000 | — | — | — |
-| Male | 44 | 16 | 36.4% | **0.727** | 0.259899 | 0.317242 | No |
-| Non-binary | 2 | 0 | 0.0% | 0.000 | — | — | Low confidence |
-
-In HR Coordinator, **female** candidates are the reference group (highest selection rate), and male candidates are flagged (ratio 0.727). This is one of two roles where the typically lower-selection group benefits; it is not statistically significant and may reflect applicant pool composition. Noted for completeness.
-
-### 4.5 Marketing Specialist — Gender Disparity (High Confidence, Not Statistically Significant)
-
-Overall hire rate: 40.2%
-
-Female candidates: ratio = 0.773 (Fisher p = 0.373, chi-square p = 0.475) — flagged but not statistically significant.
-
-### 4.6 All Other Roles
-
-For the remaining roles (Accountant, Customer Success Manager, Data Analyst, Operations Manager, Sales Representative, Software Engineer, UX Designer), no high-confidence gender disparity is flagged at the four-fifths threshold. Race/ethnicity and age bracket per-role cells are predominantly low-confidence due to small group sizes within individual roles; the cross-role rollup (Section 3) provides the statistically meaningful view for those dimensions.
+Flagged-but-not-significant and low-confidence rows in full are in `disparity_metrics.csv`.
 
 ---
 
-## 5. Flagged Items — Prioritized List
+## 5. Caveats
 
-**Total flagged cells (four-fifths ratio < 0.80):** 134
-
-The table below lists all flagged findings sorted by severity: lowest four-fifths ratio first, ties broken by statistically significant (true first) then low-confidence (false first). This is the canonical ordering derived directly from `disparity_metrics.csv`.
-
-### Top 5 Most Severe Flagged Findings (by four-fifths ratio, all ties resolved per methodology)
-
-| Rank | Role | Dimension | Group | 4/5 Ratio | Stat. Sig. | Low Confidence | Note |
-|------|------|-----------|-------|-----------|------------|----------------|------|
-| 1 | Business Analyst | gender | Non-binary | **0.000** | — | **Yes** | n = 1; directional only |
-| 2 | HR Coordinator | gender | Non-binary | **0.000** | — | **Yes** | n = 2; directional only |
-| 3 | Marketing Specialist | gender | Non-binary | **0.000** | — | **Yes** | n = 1; directional only |
-| 4 | Operations Manager | gender | Non-binary | **0.000** | — | **Yes** | n = 1; directional only |
-| 5 | Product Manager | gender | Non-binary | **0.000** | — | **Yes** | n = 3; directional only |
-
-**Important interpretation note:** These five findings share ratio = 0.000 because Non-binary candidates happened to receive zero hires in these roles. All five are **low-confidence** (group sizes of 1–3 candidates). Statistical testing was not performed and cannot be performed at these sample sizes. These results reflect data sparsity, not a statistically sound disparity signal. They are reported here for transparency and because the four-fifths rule mechanically produces ratio = 0 for any zero-hire group. No action should be taken based solely on these findings; what is needed is a larger Non-binary applicant pool.
-
-### High-Confidence Flagged Findings (n ≥ 30 for both groups, listed by severity)
-
-| Role | Dimension | Group | 4/5 Ratio | Fisher p | Chi2 p | Stat. Sig. |
-|------|-----------|-------|-----------|----------|--------|------------|
-| Financial Analyst | gender | Female | **0.439** | 0.000826 | 0.001283 | **Yes** |
-| ALL_ROLES | age_bracket | <30 | **0.498** | < 0.0001 | < 0.0001 | **Yes** |
-| Business Analyst | gender | Female | 0.540 | 0.132577 | 0.149078 | No |
-| ALL_ROLES | race_ethnicity | Hispanic/Latino | 0.578 | 0.000023 | 0.000032 | **Yes** |
-| Product Manager | gender | Female | 0.631 | 0.301875 | 0.371346 | No |
-| ALL_ROLES | race_ethnicity | Multiracial | 0.706 | 0.045456 | 0.051588 | No |
-| ALL_ROLES | age_bracket | 30–39 | 0.725 | 0.002683 | 0.003435 | **Yes** |
-| ALL_ROLES | race_ethnicity | Black | 0.727 | 0.010433 | 0.011092 | **Yes** |
-| HR Coordinator | gender | Male | 0.727 | 0.259899 | 0.317242 | No |
-| ALL_ROLES | race_ethnicity | Middle Eastern | 0.741 | 0.091201 | 0.115051 | No |
-| ALL_ROLES | age_bracket | 50+ | 0.765 | 0.007851 | 0.008105 | **Yes** |
-| Marketing Specialist | gender | Female | 0.773 | 0.373185 | 0.474872 | No |
-| ALL_ROLES | race_ethnicity | Asian | 0.781 | 0.035640 | 0.037539 | **Yes** |
-
-### Selected Low-Confidence Flagged Findings (directional only — n < 30)
-
-| Role | Dimension | Group | 4/5 Ratio | Note |
-|------|-----------|-------|-----------|------|
-| ALL_ROLES | gender | Non-binary | 0.656 | n = 29 total |
-| ALL_ROLES | race_ethnicity | Native American | 0.744 | n = 26 total |
-| Product Manager | age_bracket | <30 | 0.191 | n = 14; directional only |
-| Data Analyst | age_bracket | <30 | 0.222 | n = 16; directional only |
-| Operations Manager | age_bracket | <30 | 0.269 | n = 12; directional only |
-| Multiple roles | age_bracket | <30, 30–39, 50+ | 0.19–0.79 | All per-role age cells are low-confidence |
-
-*A full listing of all 134 flagged rows (including all low-confidence cells) is available in `disparity_metrics.csv`.*
+- **Statistical disparity is not proof of discriminatory intent.** The findings above describe patterns in aggregate outcome data; they do not, by themselves, establish that any individual hiring decision was made on a prohibited basis. Determining causation requires review of the actual decision-making process (job-relatedness of criteria, consistency of application, individual case review) — outside the scope of this statistical audit.
+- **Low-confidence findings need more data before any action is taken.** 91 of the 104 flagged rows are below the n=30 threshold and are reported for transparency only; treating a 5- or 7-candidate cell as evidence of a problem would itself be a statistical error.
+- **This is a synthetic dataset** built for testing this audit methodology, not a real applicant population — it should not be cited as evidence about any actual employer's practices.
+- The four-fifths rule is a widely used **screening heuristic**, not itself a legal standard of proof, and its output should be read alongside (not instead of) the significance tests and confidence flags above.
 
 ---
 
 ## 6. Recommendations
 
-The following recommendations are tied to specific flagged findings.
-
-**Immediate (statistically significant, high-confidence findings):**
-
-1. **Financial Analyst — Gender (Female, ratio 0.439, Fisher p = 0.0008, chi-square p = 0.0013):** Conduct an immediate audit of the Financial Analyst selection pipeline. Examine screening criteria, interview panels, and scoring rubrics for gender-correlated bias. Compare female and male candidates' qualifications (experience, education, GPA) in this role specifically to determine whether the disparity persists after controlling for qualifications, or whether it reflects differential application of criteria.
-
-2. **All Roles — Age Bracket (<30, ratio 0.498, p ≈ 0 on both tests):** Review whether any role-level qualifications (years of experience thresholds, seniority requirements) disproportionately screen out candidates under 30. Assess whether these requirements are job-relevant and consistently applied. Age-based selection disparities carry legal exposure under the Age Discrimination in Employment Act (ADEA) in employment contexts.
-
-3. **All Roles — Race/Ethnicity (Hispanic/Latino, ratio 0.578, Fisher p < 0.0001; Black, ratio 0.727, Fisher p = 0.010; Asian, ratio 0.781, Fisher p = 0.036):** Undertake a sourcing and screening audit across all roles. Review: (a) whether job postings reach diverse applicant pools; (b) whether structured interview guides and standardized scoring are used; (c) whether any pre-screen filters (keyword-based résumé screening) have disparate impact. These findings are statistically robust and span the entire organization.
-
-4. **All Roles — Age Bracket (30–39, ratio 0.725, p = 0.003; 50+, ratio 0.765, p = 0.008):** The pattern across three of four age brackets (all except 40–49) is consistent with a systematic preference for mid-career candidates. Evaluate whether this reflects legitimate experience matching or implicit age-based preferences.
-
-**Monitor / Investigate Further (flagged but not statistically significant):**
-
-5. **Business Analyst — Gender (Female, ratio 0.540, p = 0.133):** This gap is large enough to be practically concerning even though it does not reach the dual-test significance threshold with the current sample. Re-examine in 6 months or when additional applicant data is available; the Business Analyst pipeline warrants monitoring.
-
-6. **Product Manager — Gender (Female, ratio 0.631, p = 0.302):** Similar to Business Analyst: the gap is concerning, and the lack of significance likely reflects sample size rather than absence of a pattern. Increase applicant pool and re-evaluate.
-
-7. **All Roles — Race/Ethnicity (Middle Eastern, ratio 0.741, p = 0.091/0.115; Multiracial, ratio 0.706, p = 0.046/0.052):** These groups are flagged on the four-fifths rule and show p-values near but above 0.05. The Multiracial result is borderline (Fisher p = 0.046 < 0.05 but chi-square p = 0.052 > 0.05); the dual-test rule correctly withholds the significance label. Monitor as data accumulates.
-
-**Collect More Data:**
-
-8. **Non-binary candidates (n = 29 across all roles):** With fewer than 30 total Non-binary applicants, no statistical conclusion is possible. Ensure the applicant tracking system accurately captures gender identity and expand the applicant pool; revisit this dimension when n ≥ 30.
-
-9. **Native American candidates (n = 26 across all roles):** Similarly, increase outreach and revisit when sample size is adequate.
-
-10. **Disability and veteran status — per-role cells:** Most per-role cells for these dimensions fall below the minimum group size. The aggregate-level ratios (0.917 for disability, 0.970 for veteran status) do not indicate a systemic problem, but should be tracked annually.
-
----
-
-## 7. Caveats and Disclaimer
-
-- **Correlation is not causation.** The four-fifths rule flags statistical disparity in outcomes; it does not establish that discrimination occurred. Qualified candidates may differ systematically between groups in ways not captured by the available data fields.
-- **Low-confidence findings are directional only.** Any (role, dimension, group) cell where either the comparison or reference group has fewer than 30 candidates should be treated as a signal to gather more data, not a basis for action.
-- **This dataset is synthetic.** It was generated for audit-methodology testing and does not represent a real organization. Findings should not be cited in any legal or compliance context without validation against real data.
-- **Multiple comparisons.** With 134 total flagged cells across 5 dimensions and 12 roles plus rollup, some flags are expected by chance. The dual-test significance requirement and the high-confidence filter reduce false positives; however, an additional Bonferroni or Benjamini-Hochberg correction would be appropriate for a formal EEOC/OFCCP filing.
-- **Legal review required.** This report is a statistical screening tool. Any decision to alter hiring processes, communicate findings to regulators, or take disciplinary action should involve qualified legal counsel.
+1. **Review Financial Analyst screening/interview criteria for gender-based outcomes.** This is the single most severe, statistically robust, adequately-sized finding (Female selection rate 27.7% vs. Male 63.0%, ratio 0.44, p<0.001 on both tests). Recommended action: audit the specific screening rubric, interviewer composition, and pass/fail stage breakdown for this role; the CV-derived fields do not show an obvious qualifications gap that would explain the difference.
+2. **Investigate the under-30 age-bracket gap at the cross-role level.** Ratio 0.50 vs. the 40-49 reference, on a large, reliable sample (n=191), p<0.0001. Recommended action: check whether entry-level candidates are being screened against criteria (e.g., years-of-experience minimums) that structurally disadvantage younger applicants regardless of demonstrated skill, and whether that criterion is job-related and consistently applied.
+3. **Investigate Hispanic/Latino and Black candidate selection rates at the cross-role level.** Both show large, highly significant gaps versus White candidates (ratios 0.58 and 0.73, p<0.02 on both tests) on samples large enough to be reliable (n=160 and n=145). Recommended action: review sourcing channels and early-stage screening filters across roles for consistency of application across race/ethnicity groups; this pattern recurs across the applicant pool rather than concentrating in one role, which points toward a process-level rather than role-specific review.
+4. **Collect more data before drawing conclusions on:** Business Analyst (Female, ratio 0.54, p=0.13–0.15 — directionally consistent with the Financial Analyst finding but underpowered at n=32), Product Manager and Marketing Specialist Female gaps, and every `low_confidence` cell (Non-binary gender, Native American, disability/veteran-status minority groups) — these need a larger applicant pool per role/group before any inference is reliable. Recommended action: track these categories longitudinally as pool sizes grow rather than acting on the current snapshot.
+5. **Do not act on the four Section 4 zero-hire cells (n≤7) as standalone evidence.** They are mathematically the most extreme ratios in the table but the least reliable; they should be re-examined only once/if those specific (role, group) cells accumulate more applicants.
+6. **Improve demographic data granularity where feasible.** Race/ethnicity and gender are well-populated in this dataset; disability and veteran status skew heavily toward "No" with small "Yes" minorities, which limits confidence for those dimensions specifically — a larger or longer-accumulated applicant sample would materially improve the reliability of any future audit on those two dimensions.

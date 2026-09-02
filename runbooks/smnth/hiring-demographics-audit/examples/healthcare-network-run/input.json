@@ -23,5 +23,5 @@
       "note": "Two disparities were deliberately injected: Lab Technician candidates aged 50+ hired at ~0.6x the younger rate, and Hispanic/Latino Clinic Administrator candidates hired at ~0.5x the White rate. Everything else follows one base hire model (experience, referral, GPA)."
     }
   ],
-  "note": "The sandbox received the upload as /app/assets/6102412d.00.csv; the runbook's Step 1 fallback located it."
+  "note": "Run against runbook v1.2.0 (size-qualified reference groups). The sandbox received the upload as /app/assets/c31e02a8.00.csv; the Step 1 fallback located it."
 }

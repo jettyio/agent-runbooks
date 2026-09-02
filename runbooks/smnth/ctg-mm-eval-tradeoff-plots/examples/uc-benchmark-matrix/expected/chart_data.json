@@ -1,0 +1,468 @@
+{
+  "recall_vs_field_accuracy": {
+    "points": [
+      {
+        "label": "cc/sonnet-5",
+        "agent": "claude-code",
+        "model": "claude-sonnet-5",
+        "status": "scored",
+        "recall_pct": 100.0,
+        "overall_field_accuracy_pct": 99.21,
+        "is_zero_output": false
+      },
+      {
+        "label": "cc/opus-5",
+        "agent": "claude-code",
+        "model": "claude-opus-5",
+        "status": "scored",
+        "recall_pct": 100.0,
+        "overall_field_accuracy_pct": 100.0,
+        "is_zero_output": false
+      },
+      {
+        "label": "cc/gpt-5.6-sol",
+        "agent": "claude-code",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "recall_pct": 95.24,
+        "overall_field_accuracy_pct": 98.33,
+        "is_zero_output": false
+      },
+      {
+        "label": "cc/gpt-5.6-terra",
+        "agent": "claude-code",
+        "model": "gpt-5.6-terra",
+        "status": "scored",
+        "recall_pct": 100.0,
+        "overall_field_accuracy_pct": 98.41,
+        "is_zero_output": false
+      },
+      {
+        "label": "cc/gemini-3.7-flash",
+        "agent": "claude-code",
+        "model": "gemini-3.7-flash",
+        "status": "zero_output",
+        "recall_pct": 0.0,
+        "overall_field_accuracy_pct": 0.0,
+        "is_zero_output": true
+      },
+      {
+        "label": "cc/kimi-k2.5",
+        "agent": "claude-code",
+        "model": "kimi-k2.5",
+        "status": "zero_output",
+        "recall_pct": 0.0,
+        "overall_field_accuracy_pct": 0.0,
+        "is_zero_output": true
+      },
+      {
+        "label": "oc/sonnet-5",
+        "agent": "opencode",
+        "model": "claude-sonnet-5",
+        "status": "scored",
+        "recall_pct": 100.0,
+        "overall_field_accuracy_pct": 100.0,
+        "is_zero_output": false
+      },
+      {
+        "label": "oc/opus-5",
+        "agent": "opencode",
+        "model": "claude-opus-5",
+        "status": "scored",
+        "recall_pct": 100.0,
+        "overall_field_accuracy_pct": 100.0,
+        "is_zero_output": false
+      },
+      {
+        "label": "oc/gpt-5.6-sol",
+        "agent": "opencode",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "recall_pct": 100.0,
+        "overall_field_accuracy_pct": 99.21,
+        "is_zero_output": false
+      },
+      {
+        "label": "oc/gpt-5.6-terra",
+        "agent": "opencode",
+        "model": "gpt-5.6-terra",
+        "status": "scored",
+        "recall_pct": 100.0,
+        "overall_field_accuracy_pct": 100.0,
+        "is_zero_output": false
+      },
+      {
+        "label": "oc/gemini-3.7-flash",
+        "agent": "opencode",
+        "model": "gemini-3.7-flash",
+        "status": "zero_output",
+        "recall_pct": 0.0,
+        "overall_field_accuracy_pct": 0.0,
+        "is_zero_output": true
+      },
+      {
+        "label": "oc/kimi-k2.5",
+        "agent": "opencode",
+        "model": "kimi-k2.5",
+        "status": "scored",
+        "recall_pct": 90.48,
+        "overall_field_accuracy_pct": 79.83,
+        "is_zero_output": false
+      }
+    ]
+  },
+  "recall_vs_runtime": {
+    "points": [
+      {
+        "label": "cc/sonnet-5",
+        "agent": "claude-code",
+        "model": "claude-sonnet-5",
+        "status": "scored",
+        "duration_seconds": 612.4,
+        "recall_pct": 100.0,
+        "is_zero_output": false
+      },
+      {
+        "label": "cc/opus-5",
+        "agent": "claude-code",
+        "model": "claude-opus-5",
+        "status": "scored",
+        "duration_seconds": 844.9,
+        "recall_pct": 100.0,
+        "is_zero_output": false
+      },
+      {
+        "label": "cc/gpt-5.6-sol",
+        "agent": "claude-code",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "duration_seconds": 338.7,
+        "recall_pct": 95.24,
+        "is_zero_output": false
+      },
+      {
+        "label": "cc/gpt-5.6-terra",
+        "agent": "claude-code",
+        "model": "gpt-5.6-terra",
+        "status": "scored",
+        "duration_seconds": 297.1,
+        "recall_pct": 100.0,
+        "is_zero_output": false
+      },
+      {
+        "label": "cc/gemini-3.7-flash",
+        "agent": "claude-code",
+        "model": "gemini-3.7-flash",
+        "status": "zero_output",
+        "duration_seconds": 41.3,
+        "recall_pct": 0.0,
+        "is_zero_output": true
+      },
+      {
+        "label": "cc/kimi-k2.5",
+        "agent": "claude-code",
+        "model": "kimi-k2.5",
+        "status": "zero_output",
+        "duration_seconds": 1502.6,
+        "recall_pct": 0.0,
+        "is_zero_output": true
+      },
+      {
+        "label": "oc/sonnet-5",
+        "agent": "opencode",
+        "model": "claude-sonnet-5",
+        "status": "scored",
+        "duration_seconds": 531.0,
+        "recall_pct": 100.0,
+        "is_zero_output": false
+      },
+      {
+        "label": "oc/opus-5",
+        "agent": "opencode",
+        "model": "claude-opus-5",
+        "status": "scored",
+        "duration_seconds": 702.5,
+        "recall_pct": 100.0,
+        "is_zero_output": false
+      },
+      {
+        "label": "oc/gpt-5.6-sol",
+        "agent": "opencode",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "duration_seconds": 409.8,
+        "recall_pct": 100.0,
+        "is_zero_output": false
+      },
+      {
+        "label": "oc/gpt-5.6-terra",
+        "agent": "opencode",
+        "model": "gpt-5.6-terra",
+        "status": "scored",
+        "duration_seconds": 302.2,
+        "recall_pct": 100.0,
+        "is_zero_output": false
+      },
+      {
+        "label": "oc/gemini-3.7-flash",
+        "agent": "opencode",
+        "model": "gemini-3.7-flash",
+        "status": "zero_output",
+        "duration_seconds": 26.4,
+        "recall_pct": 0.0,
+        "is_zero_output": true
+      },
+      {
+        "label": "oc/kimi-k2.5",
+        "agent": "opencode",
+        "model": "kimi-k2.5",
+        "status": "scored",
+        "duration_seconds": 1188.3,
+        "recall_pct": 90.48,
+        "is_zero_output": false
+      }
+    ]
+  },
+  "cost_per_found_study": {
+    "entries": [
+      {
+        "label": "cc/sonnet-5",
+        "agent": "claude-code",
+        "model": "claude-sonnet-5",
+        "status": "scored",
+        "cost_per_found": 0.057828571428571424,
+        "has_data": true,
+        "cost_usd": 1.2144,
+        "num_found": 21
+      },
+      {
+        "label": "cc/opus-5",
+        "agent": "claude-code",
+        "model": "claude-opus-5",
+        "status": "scored",
+        "cost_per_found": 0.23243333333333333,
+        "has_data": true,
+        "cost_usd": 4.8811,
+        "num_found": 21
+      },
+      {
+        "label": "cc/gpt-5.6-sol",
+        "agent": "claude-code",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "cost_per_found": 0.11653500000000001,
+        "has_data": true,
+        "cost_usd": 2.3307,
+        "num_found": 20
+      },
+      {
+        "label": "cc/gpt-5.6-terra",
+        "agent": "claude-code",
+        "model": "gpt-5.6-terra",
+        "status": "scored",
+        "cost_per_found": 0.04726190476190476,
+        "has_data": true,
+        "cost_usd": 0.9925,
+        "num_found": 21
+      },
+      {
+        "label": "cc/gemini-3.7-flash",
+        "agent": "claude-code",
+        "model": "gemini-3.7-flash",
+        "status": "zero_output",
+        "cost_per_found": null,
+        "has_data": false,
+        "cost_usd": 0.0412,
+        "num_found": 0
+      },
+      {
+        "label": "cc/kimi-k2.5",
+        "agent": "claude-code",
+        "model": "kimi-k2.5",
+        "status": "zero_output",
+        "cost_per_found": null,
+        "has_data": false,
+        "cost_usd": null,
+        "num_found": 0
+      },
+      {
+        "label": "oc/sonnet-5",
+        "agent": "opencode",
+        "model": "claude-sonnet-5",
+        "status": "scored",
+        "cost_per_found": null,
+        "has_data": false,
+        "cost_usd": null,
+        "num_found": 21
+      },
+      {
+        "label": "oc/opus-5",
+        "agent": "opencode",
+        "model": "claude-opus-5",
+        "status": "scored",
+        "cost_per_found": null,
+        "has_data": false,
+        "cost_usd": null,
+        "num_found": 21
+      },
+      {
+        "label": "oc/gpt-5.6-sol",
+        "agent": "opencode",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "cost_per_found": null,
+        "has_data": false,
+        "cost_usd": null,
+        "num_found": 21
+      },
+      {
+        "label": "oc/gpt-5.6-terra",
+        "agent": "opencode",
+        "model": "gpt-5.6-terra",
+        "status": "scored",
+        "cost_per_found": null,
+        "has_data": false,
+        "cost_usd": null,
+        "num_found": 21
+      },
+      {
+        "label": "oc/gemini-3.7-flash",
+        "agent": "opencode",
+        "model": "gemini-3.7-flash",
+        "status": "zero_output",
+        "cost_per_found": null,
+        "has_data": false,
+        "cost_usd": null,
+        "num_found": 0
+      },
+      {
+        "label": "oc/kimi-k2.5",
+        "agent": "opencode",
+        "model": "kimi-k2.5",
+        "status": "scored",
+        "cost_per_found": null,
+        "has_data": false,
+        "cost_usd": null,
+        "num_found": 19
+      }
+    ],
+    "canonical_order": [
+      "cc/sonnet-5",
+      "cc/opus-5",
+      "cc/gpt-5.6-sol",
+      "cc/gpt-5.6-terra",
+      "cc/gemini-3.7-flash",
+      "cc/kimi-k2.5",
+      "oc/sonnet-5",
+      "oc/opus-5",
+      "oc/gpt-5.6-sol",
+      "oc/gpt-5.6-terra",
+      "oc/gemini-3.7-flash",
+      "oc/kimi-k2.5"
+    ]
+  },
+  "recall_per_minute": {
+    "entries": [
+      {
+        "label": "cc/sonnet-5",
+        "agent": "claude-code",
+        "model": "claude-sonnet-5",
+        "status": "scored",
+        "recall_per_minute": 9.797517962116263
+      },
+      {
+        "label": "cc/opus-5",
+        "agent": "claude-code",
+        "model": "claude-opus-5",
+        "status": "scored",
+        "recall_per_minute": 7.101432122144632
+      },
+      {
+        "label": "cc/gpt-5.6-sol",
+        "agent": "claude-code",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "recall_per_minute": 16.871567759078832
+      },
+      {
+        "label": "cc/gpt-5.6-terra",
+        "agent": "claude-code",
+        "model": "gpt-5.6-terra",
+        "status": "scored",
+        "recall_per_minute": 20.19522046449007
+      },
+      {
+        "label": "cc/gemini-3.7-flash",
+        "agent": "claude-code",
+        "model": "gemini-3.7-flash",
+        "status": "zero_output",
+        "recall_per_minute": 0.0
+      },
+      {
+        "label": "cc/kimi-k2.5",
+        "agent": "claude-code",
+        "model": "kimi-k2.5",
+        "status": "zero_output",
+        "recall_per_minute": 0.0
+      },
+      {
+        "label": "oc/sonnet-5",
+        "agent": "opencode",
+        "model": "claude-sonnet-5",
+        "status": "scored",
+        "recall_per_minute": 11.299435028248588
+      },
+      {
+        "label": "oc/opus-5",
+        "agent": "opencode",
+        "model": "claude-opus-5",
+        "status": "scored",
+        "recall_per_minute": 8.540925266903914
+      },
+      {
+        "label": "oc/gpt-5.6-sol",
+        "agent": "opencode",
+        "model": "gpt-5.6-sol",
+        "status": "scored",
+        "recall_per_minute": 14.641288433382137
+      },
+      {
+        "label": "oc/gpt-5.6-terra",
+        "agent": "opencode",
+        "model": "gpt-5.6-terra",
+        "status": "scored",
+        "recall_per_minute": 19.85440105890139
+      },
+      {
+        "label": "oc/gemini-3.7-flash",
+        "agent": "opencode",
+        "model": "gemini-3.7-flash",
+        "status": "zero_output",
+        "recall_per_minute": 0.0
+      },
+      {
+        "label": "oc/kimi-k2.5",
+        "agent": "opencode",
+        "model": "kimi-k2.5",
+        "status": "scored",
+        "recall_per_minute": 4.568543297147185
+      }
+    ]
+  },
+  "agent_reliability_comparison": {
+    "claude-code": {
+      "total_attempts": 6,
+      "scored_attempts": 4,
+      "success_rate_pct": 66.66666666666666,
+      "mean_recall_pct": 98.81,
+      "mean_field_accuracy_pct": 98.98749999999998
+    },
+    "opencode": {
+      "total_attempts": 6,
+      "scored_attempts": 5,
+      "success_rate_pct": 83.33333333333334,
+      "mean_recall_pct": 98.096,
+      "mean_field_accuracy_pct": 95.80799999999999
+    }
+  }
+}

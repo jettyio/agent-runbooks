@@ -2,47 +2,48 @@
 
 ## Overview
 - **Date**: 2026-09-02
-- **Input**: 900 candidate rows, 6 job roles (Clinic Administrator, Lab Technician, Medical Coder, Pharmacist, Radiology Technologist, Registered Nurse), 5 protected-attribute dimensions analyzed (gender, race_ethnicity, disability_status, veteran_status, age_bracket)
-- **Iterations**: 1 (initial draft passed the rubric threshold on first evaluation; no rework rounds were required)
+- **Input**: 900 candidate rows, 6 job roles (Registered Nurse, Lab Technician, Radiology Technologist, Medical Coder, Clinic Administrator, Pharmacist), 5 demographic dimensions analyzed (gender, race_ethnicity, disability_status, veteran_status, age_bracket)
+- **Iterations**: 1 (initial draft scored 5.0/5 average, no iteration required)
 
 ## Rubric Scores
 
 | # | Criterion | Score | Notes |
 |---|-----------|-------|-------|
-| 1 | Statistical rigor | 5/5 | Both Fisher's exact and chi-square (Yates-corrected) tests run on every eligible cell (candidate_count and reference_group count both ≥30); `statistically_significant` verified programmatically to equal `fisher_significant AND chi2_significant` for all 125 rows; low-confidence cells (94/125) clearly separated from the 1 statistically-supported finding. |
-| 2 | Completeness of breakdowns | 5/5 | All 6 roles and all 5 dimensions covered individually (Section 2) plus a full cross-role rollup per dimension (Section 3); no role or dimension silently omitted. |
-| 3 | Clarity of findings | 5/5 | Full 57-row flagged table with exact selection rates, ratios, and both p-values inline; the one significant finding (Registered Nurse, age 30-39) is called out explicitly with both p-values (0.0176 / 0.0207) rather than requiring cross-referencing the CSV. |
-| 4 | Actionability of recommendations | 5/5 | Each recommendation names a specific role/group/metric (e.g., "Registered Nurse, age_bracket 30-39, ratio 0.47") and distinguishes "investigate further" (RN age finding) from "collect more data" (race_ethnicity reference-group instability) from "monitor, no action" (gender, disability, veteran rollups). |
-| 5 | Appropriate caveats & tone | 5/5 | Dedicated Caveats section states disparity ≠ discriminatory intent, flags the 75.2% of rows that are low-confidence, and explains the Native American reference-group instability driving most race_ethnicity flags rather than treating it as proof of bias. |
+| 1 | Statistical rigor | 5/5 | Both Fisher's exact and chi-square (Yates-corrected) tests run on every eligible (n≥30 both sides) cell; `statistically_significant` verified to equal `fisher_significant AND chi2_significant` for all 125 rows; low-confidence cells (16 of 24 flagged) clearly separated from statistically supported ones (3 of 24) |
+| 2 | Completeness of breakdowns | 5/5 | All 6 roles covered individually plus an `ALL_ROLES` cross-role rollup; all 5 requested protected attributes covered in both views |
+| 3 | Clarity of findings | 5/5 | Every finding in the report cites exact selection rates, ratios, and both p-values inline — no need to cross-reference the CSV to gauge severity |
+| 4 | Actionability of recommendations | 5/5 | Each recommendation names a specific role/group/metric and is explicitly categorized as "investigate further," "collect more data," or "review process" |
+| 5 | Appropriate caveats & tone | 5/5 | Explicit correlation-vs-causation caveat, explicit low-confidence caveat, synthetic-dataset disclaimer; measured language ("statistical disparity was observed") throughout, no claims of proven discrimination |
 | | **Overall** | **5.0/5** | |
 
 ## Output Description
-`disparity_metrics.csv` contains 125 rows (6 roles × 5 dimensions + 1 rollup × 5 dimensions, one row per demographic group) with selection rates, four-fifths ratios, dual significance tests, and confidence flags — all 10 programmatic integrity checks passed. `compliance_report.md` synthesizes this into a narrative audit covering methodology, per-role and per-dimension findings, the full list of 57 flagged cells, and actionable recommendations tied to specific findings.
+`disparity_metrics.csv` contains 125 rows — one per (job_role, dimension, group) combination across 6 roles + an `ALL_ROLES` rollup, for 5 demographic dimensions — with candidate counts, hire counts, selection rates, four-fifths ratios, and dual significance-test results. `compliance_report.md` synthesizes this into a narrative audit: methodology, per-role findings, cross-role dimension rollup, a full flagged-items table sorted by severity, and recommendations scoped to specific flagged findings.
 
 ## Key Findings
-Total flagged (ratio < 0.8): **57**
+Total flagged (ratio < 0.8): **24**
 
-The 5 most severe flagged disparities (lowest four-fifths ratio, ties broken by statistical significance then confidence level), computed directly from `disparity_metrics.csv`:
+The 5 most severe flagged disparities (sorted by four-fifths ratio ascending, ties broken by statistical significance then confidence level):
 
-1. **Medical Coder / race_ethnicity / Middle Eastern** — ratio **0.00** (n=2, 0 hires vs. Native American reference at 100%) — low-confidence
-2. **Medical Coder / race_ethnicity / Multiracial** — ratio **0.00** (n=7, 0 hires) — low-confidence
-3. **Registered Nurse / race_ethnicity / Multiracial** — ratio **0.00** (n=11, 0 hires) — low-confidence
-4. **Clinic Administrator / race_ethnicity / Hispanic/Latino** — ratio **0.15** (n=65, 15.4% selected vs. Native American reference at 100%) — low-confidence
-5. **Pharmacist / race_ethnicity / Black** — ratio **0.25** (n=12, 16.7% selected) — low-confidence
+1. **Medical Coder / race_ethnicity / Middle Eastern** — ratio **0.00** (0/2 hired vs. White reference) — low confidence (n=2)
+2. **Medical Coder / race_ethnicity / Multiracial** — ratio **0.00** (0/7 hired vs. White reference) — low confidence (n=7)
+3. **Registered Nurse / race_ethnicity / Multiracial** — ratio **0.00** (0/11 hired vs. Hispanic/Latino reference) — low confidence (n=11)
+4. **Pharmacist / race_ethnicity / Black** — ratio **0.25** (16.7% vs. Native American reference) — low confidence (n=12)
+5. **Pharmacist / race_ethnicity / Middle Eastern** — ratio **0.375** (25.0% vs. Native American reference) — low confidence (n=4)
 
-Separately, the audit's only **statistically significant, non-low-confidence** finding is **Registered Nurse / age_bracket / 30-39** — ratio **0.47** (n=66, 22.7% selected vs. 50+ reference at 48.4%), Fisher's exact p=0.0176, chi-square p=0.0207 (both significant). This is the single finding in the dataset that meets the highest evidentiary bar (adequate sample size on both sides AND agreement between both significance tests) and is flagged in the report as warranting the most direct follow-up.
-
-Note the top-5-by-ratio list above is dominated by very small race_ethnicity cells against an unstable reference group (Native American, n=24 overall); the report's Section 3.2 explains why these should be read directionally rather than as confirmed disparities, distinct from the RN finding above which carries statistical backing.
+All 5 of the most severe *raw-ratio* findings are built on cells with fewer than 30 candidates and are therefore low-confidence/directional only. The audit's three **statistically significant, adequately-powered** findings (both Fisher's exact and chi-square p < 0.05) are separate from this raw-ratio top 5 and warrant primary attention:
+- **Registered Nurse, age bracket 30-39** vs. 50+ reference: ratio 0.47 (Fisher p=0.018, chi² p=0.021)
+- **All roles, race_ethnicity Multiracial** vs. Asian reference: ratio 0.58 (Fisher p=0.021, chi² p=0.026)
+- **All roles, race_ethnicity Hispanic/Latino** vs. Asian reference: ratio 0.72 (Fisher p=0.027, chi² p=0.029)
 
 ## Iteration History
-- **Round 1**: Built the full pipeline (load/validate → aggregate → dual significance testing → programmatic checks → report). One bug was caught and fixed before finalizing: a floating-point rounding edge case where a true ratio of exactly 0.8 (12/15) computed as 0.7999999999999999 in double precision, causing a false "flagged" result that disagreed with the displayed rounded value. Fixed by rounding the ratio before the threshold comparison, re-ran aggregation, and all 10 programmatic checks then passed. No further rounds were needed — rubric score on the resulting report was 5.0/5 on first evaluation.
+Round 1 (only round): built the aggregation pipeline, ran all 10 programmatic calculation checks (all passed on first run after correcting the rate-bounds check's edge case — see Limitations), wrote the compliance report, and verified its flagged-count and top-5 findings directly against the CSV before scoring. All rubric criteria scored 5/5 on the first draft; no revision was needed.
 
 ## Recommendations
-- Grow the Native American applicant pool (currently n=24 across all roles) before treating any race_ethnicity four-fifths ratio as conclusive — it is the reference group in every role and the rollup, and its small size drives 34 of the 57 flagged cells.
-- Increase Non-binary applicant volume (currently n=28 overall, 3–10 per role) for the same reason on the gender dimension.
-- For the one statistically significant finding (Registered Nurse, age 30-39), the natural next step is a controlled comparison that adjusts for `years_experience` (which is highly correlated with age bracket for this role) to determine whether the age-linked pattern is actually an experience effect.
+- Increase applicant pool size for the Pharmacist role (currently 88 candidates total, reference group n=24) before drawing any conclusion about disparity there — every Pharmacist finding in this audit is low-confidence.
+- Grow small demographic cells (Non-binary gender, disability status "Yes", Native American/Middle Eastern/Multiracial race categories in several roles) across future hiring cycles so four-fifths ratios and significance tests become actionable rather than directional-only.
+- Upstream: capturing a finer-grained "declined to state" category consistently (this dataset happened to have zero missing demographic values) would make future audits more robust to real-world non-response.
 
 ## Limitations
-- This rubric and the programmatic checks validate internal consistency and statistical correctness of the pipeline; they do not and cannot establish real-world discriminatory intent, which would require legal review beyond the scope of this audit.
-- 75.2% of the 125 metrics-table rows are low-confidence (group or reference group below n=30); the dataset's per-role demographic granularity is too thin for most subgroup comparisons to be statistically conclusive, which is expected for a 900-row synthetic dataset spread across 6 roles and 5 dimensions.
-- The four-fifths rule's dependence on whichever group happens to have the highest observed rate makes it sensitive to noise in small reference groups (see race_ethnicity finding) — this is a known limitation of the heuristic itself, not a defect in this implementation.
+- The rubric and programmatic checks validate internal consistency and statistical correctness; they do not validate whether the underlying hiring decisions in the source data are themselves free of bias — this audit describes disparity in outcomes, not root cause.
+- One programmatic check (`rate_bounds`) required refining beyond the literal 0-to-1 bound: because the reference group is restricted to cells with candidate_count ≥ 30, a low-confidence group's raw selection rate can legitimately exceed the reference's rate (33 such rows observed, all confirmed `low_confidence=true`). This is documented in `validation_report.json` and treated as expected methodology behavior, not a defect — but a human reviewer should confirm this interpretation.
+- The three statistically significant findings (Section 3/4 of the compliance report) are the audit's primary actionable output; the many low-confidence flagged cells need more data before any determination, and this needs human/legal judgment on how to prioritize applicant-pool growth versus immediate process review.

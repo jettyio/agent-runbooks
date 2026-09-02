@@ -1,5 +1,5 @@
 ---
-version: "1.1.1"
+version: "1.1.3"
 evaluation: programmatic
 agent: claude-code                    # Agent runtime: claude-code | opencode | codex | gemini-cli
 model: anthropic/claude-sonnet-5      # OpenRouter catalog id — the portable Jetty default
@@ -47,6 +47,8 @@ If you finish your analysis but have not written all files, go back and write th
 
 ## Parameters
 
+**The Template Variable column holds this run's actual inputs — it overrides the Default column.** Use `{{crossref_volume_issue}}` and `{{confex_program_url}}` exactly as given, even when they name a different year or volume than the defaults (the defaults describe SCAI 2026; any other SCAI year, or another conference with a CrossRef-indexed supplement and a Confex program, is selected purely by changing these two values). Never "correct" a parameter toward the default, and never mix years between the CrossRef issue and the Confex program.
+
 | Parameter | Template Variable | Default | Description |
 |-----------|------------------|---------|-------------|
 | Results directory | `{{results_dir}}` | `/app/results` (Jetty) / `./results` (local) | Output directory for all results |
@@ -91,9 +93,10 @@ Query the CrossRef REST API directly (no browser needed for this step) to discov
 GET https://api.crossref.org/journals/{{crossref_issn}}/works?filter=from-print-pub-date:...&rows=1000
 ```
 
-(adjust the filter to select `{{crossref_volume_issue}}` — narrow by volume/issue or publication date range as needed; CrossRef's `works` endpoint supports both).
+Filter the returned works to exactly `{{crossref_volume_issue}}` using each work's `volume` and `issue` fields (CrossRef returns them as strings, e.g. `"volume": "4", "issue": "5"`) — page through the journal's works with `rows=1000&offset=…` (or `cursor=*`) until the filtered set stops growing, rather than guessing a publication-date window. Confirm the filtered set is non-empty before continuing; if it is empty, the volume/issue was mistyped — stop and report it in `validation_report.json` rather than silently switching to another issue.
 
 1. For each returned work, record: `title`, `DOI`, `authors` (from the `author` array, in listed order), `published` (print or online date), and `page` (the article/page number CrossRef reports for the issue — this stands in for true table-of-contents order since these supplement issues publish in page-number order).
+   **Keep only the conference abstracts.** A supplement issue can bundle regular journal content (original research, case reports, editorials) together with the meeting's abstracts; only the abstracts are indexed in the Confex program. Conference abstracts are recognisable by the session code prefixed to their CrossRef title — `OR1-1 | …`, `B-18 | …`, `P-204 | …` (a short letter/number code, a hyphen, a number, then a pipe). Keep works whose title matches `^[A-Za-z]{1,4}\d*-\d+\s*\|` and drop the rest, recording the dropped count in `validation_report.json`'s `notes`. If **no** title carries a session code, fall back to all works for the issue and say so in the notes.
 2. Sort all returned works by `page` ascending. This is the canonical ordering — do not reorder based on any other field.
 3. Take the first `{{max_abstracts}}` entries in this sorted order. Do not skip, reorder, or de-duplicate at this stage — record every entry exactly as returned, even if titles look similar (near-duplicate titles are common for multi-part poster series and must NOT be merged).
 4. Persist this list of CrossRef records to `{{results_dir}}/_discovered_links.json` as an intermediate checkpoint, so partial progress survives if a later step fails.
@@ -288,6 +291,8 @@ done
 
 ## Tips
 
+- **Session-coded titles are the abstracts.** In JSCAI supplement issues, the first entries by page number can be regular articles (vol. 4 issue 5 — SCAI 2025 — opens with case reports and sub-analyses that are only discussed in aggregate at the meeting); taking "the first N by page" without the session-code filter selects titles that are not in Confex at all and every match fails. The filter in Step 2 is what makes a different year work.
+- **Parameters win over defaults.** The defaults in the Parameters table describe the SCAI 2026 supplement; a run for SCAI 2025 sets `{{crossref_volume_issue}}` to `volume 4, issue 5` and `{{confex_program_url}}` to the `scai/2025` program. Both are legitimate, current inputs — do not treat a year that differs from the default as a mistake.
 - **Why Confex, not the journal site, by design**: Elsevier/ScienceDirect-family publisher domains (jscai.org included) commonly return a Cloudflare-level block (Error 1000) to sandboxed IPs regardless of per-page handling — this is an access-layer block with no request-level workaround. The conference's own Confex program is normally open and, for a conference-supplement issue, carries equivalent (pre-publication) abstract text. Going there directly avoids the block entirely rather than working around it after the fact.
 - CrossRef's `works` endpoint returns `author`, `published-print`/`published-online`, and `page` directly in JSON — no HTML parsing needed for metadata. Use these fields as-is rather than re-deriving them from Confex, which typically doesn't expose DOIs at all.
 - Confex meeting apps (`*.confex.com`) are client-rendered Backbone.js SPAs — the served HTML is a shell until JS runs. Use Playwright's `wait_for_selector` or `wait_for_load_state("networkidle")` after navigating, never a fixed sleep; a fixed sleep is a common cause of empty/truncated `full_text`.

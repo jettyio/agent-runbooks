@@ -26,5 +26,6 @@
     "no_label_overlaps": true
   },
   "notes": "Input evaluation_matrix.csv scores 12 agent+model combinations against a ClinicalTrials.gov extraction benchmark (8 scored, 4 zero_output). This run used the runbook's own declared default (claude-code/claude-sonnet-4-6/anthropic) — agent and model match the frontmatter exactly.",
-  "workflow_id": "volpiglio-ctg-mm-eval-tradeoff-plots--c8701752"
+  "workflow_id": "volpiglio-ctg-mm-eval-tradeoff-plots--c8701752",
+  "runbook_version": "1.2.0"
 }

@@ -1,0 +1,54 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-09-02T21:07:32Z",
+  "parameters": {
+    "input_file": "/app/assets/81a3cc18.00.csv"
+  },
+  "stages": [
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "Installed pandas, matplotlib, adjustText; created /app/results/charts"
+    },
+    {
+      "name": "compute",
+      "passed": true,
+      "message": "Loaded 12 rows (9 scored, 3 zero_output). Computed cost_per_found (4 real, 8 no-data), recall_per_minute (12/12 real), and agent-level reliability aggregates. Written to chart_data.json."
+    },
+    {
+      "name": "render",
+      "passed": true,
+      "message": "All 5 charts rendered. recall_vs_field_accuracy.png used an inset-zoom layout for the dense 8-point cluster (95-100% recall x 98-100% field accuracy) plus jitter+leader-lines for exact-duplicate coordinates (3 zero_output runs at (0,0); a 4-way tie and a 2-way tie inside the cluster). recall_vs_runtime.png passed the plain adjustText layout on the first attempt with no inset needed. Both scatter charts passed the overlap and 12%-locality gates before saving."
+    },
+    {
+      "name": "evaluation",
+      "passed": true,
+      "message": "All charts use only the specified palette (#fcfcfb/#0b0b0b/#52514e/#e1e0d9/#c3c2b7 chart ink, #2a78d6 claude-code, #eb6834 opencode, #d03b3b failure red). No dual-axis, pie, or 3D charts. Legends present on all multi-series charts. Every per-run chart (recall_vs_field_accuracy, recall_vs_runtime, cost_per_found_study, recall_per_minute) labels all 12 combinations individually with zero overlapping labels, programmatically verified."
+    },
+    {
+      "name": "report_generation",
+      "passed": true,
+      "message": "chart_data.json, summary.md, and validation_report.json all written to /app/results."
+    }
+  ],
+  "results": {
+    "pass": 5,
+    "partial": 0,
+    "fail": 0
+  },
+  "overall_passed": true,
+  "deviations": [
+    "Input CSV has 9 scored / 3 zero_output rows, not the runbook's generic 8/4 split; all computations and charts reflect the actual 12-row dataset.",
+    "recall_vs_field_accuracy.png required an inset-zoom layout (per the runbook's own fallback procedure) because 8 of 12 points cluster inside a ~5%x2% region of the axes -- plain adjustText could not have separated all 8 labels legibly at that density."
+  ],
+  "output_files": [
+    "/app/results/charts/recall_vs_field_accuracy.png",
+    "/app/results/charts/recall_vs_runtime.png",
+    "/app/results/charts/cost_per_found_study.png",
+    "/app/results/charts/agent_reliability_comparison.png",
+    "/app/results/charts/recall_per_minute.png",
+    "/app/results/chart_data.json",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ]
+}

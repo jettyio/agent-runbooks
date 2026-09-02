@@ -1,5 +1,5 @@
 ---
-version: "1.1.1"
+version: "1.2.0"
 evaluation: rubric
 agent: claude-code                    # Agent runtime: claude-code | opencode | codex | gemini-cli
 model: anthropic/claude-sonnet-5      # OpenRouter catalog id — the portable Jetty default
@@ -112,7 +112,7 @@ Log a short data-quality note (row counts, missingness by column) — this will 
 For each demographic dimension in `{{protected_attributes}}`, cross-tabulated with `{{job_role_field}}`:
 
 1. Compute per-(role, dimension, group) cell: candidate count, hire count, hire rate (selection rate).
-2. Within each role, identify the group with the highest selection rate as the reference group.
+2. Within each role, identify the reference group: **among the groups in that (role, dimension) cell whose `candidate_count` is at least `{{min_group_size}}`, the one with the highest selection rate.** Restricting the reference to adequately sized groups is what keeps a group of 2 candidates hired at 100% from becoming the yardstick for everyone else (a real failure mode of earlier versions of this runbook — it turned every sibling group into a flagged, low-confidence row and hid the genuine disparities). If **no** group in the cell meets `{{min_group_size}}`, fall back to the highest-selection-rate group overall and mark every row in that cell `low_confidence = true`.
 
    **Deterministic tie-break rule (required — do not pick arbitrarily):** if two or more groups tie for the highest selection rate, resolve the tie in this fixed order: (a) prefer the tied group with the larger `candidate_count`; (b) if still tied, prefer the group whose name is alphabetically first (case-sensitive ASCII order). Record `reference_group_tie_broken = true` on every row belonging to a (job_role, dimension) cell where this rule had to fire, so a reader can see the choice was arbitrary-but-reproducible rather than meaningful.
 
@@ -128,7 +128,7 @@ For each demographic dimension in `{{protected_attributes}}`, cross-tabulated wi
 
 6. Write the full table to `{{results_dir}}/disparity_metrics.csv` with columns: `job_role, dimension, group, candidate_count, hire_count, selection_rate, reference_group, reference_group_tie_broken, four_fifths_ratio, flagged, fisher_p_value, fisher_significant, chi2_p_value, chi2_significant, statistically_significant, low_confidence`.
 
-`low_confidence` should be `true` whenever a cell falls below `{{min_group_size}}` — these cells still get reported (transparency matters for an audit) but must be clearly marked as directional-only, not conclusive. `fisher_p_value`/`chi2_p_value`/`fisher_significant`/`chi2_significant` should be left null/blank for low-confidence cells (below `{{min_group_size}}`) since neither test is meaningful there.
+`low_confidence` should be `true` whenever a cell falls below `{{min_group_size}}`, or its reference group does (only possible when no group in the cell qualified) — these cells still get reported (transparency matters for an audit) but must be clearly marked as directional-only, not conclusive. `fisher_p_value`/`chi2_p_value`/`fisher_significant`/`chi2_significant` should be left null/blank for low-confidence cells (below `{{min_group_size}}`) since neither test is meaningful there.
 
 ---
 
@@ -143,7 +143,7 @@ Checks:
 - **Rate bounds**: every `selection_rate` and `four_fifths_ratio` is between 0 and 1 inclusive (or explicitly null when the reference group has zero hires).
 - **Flag consistency**: `flagged` is `true` if and only if `four_fifths_ratio < {{disparity_threshold}}`.
 - **Low-confidence consistency**: `low_confidence` is `true` if and only if `candidate_count < {{min_group_size}}` (or the reference group's count is below the threshold).
-- **Reference group correctness**: for each (job_role, dimension), the recorded `reference_group` actually has the highest `selection_rate` among groups in that cell.
+- **Reference group correctness**: for each (job_role, dimension), the recorded `reference_group` has the highest `selection_rate` among the groups in that cell with `candidate_count >= {{min_group_size}}` (or among all groups when none qualify), and a qualifying group was never passed over in favour of a smaller one.
 - **Tie-break determinism**: for every (job_role, dimension) cell where multiple groups share the max `selection_rate`, the recorded `reference_group` matches what the Step 3 tie-break rule (larger `candidate_count`, then alphabetically first) would produce, and `reference_group_tie_broken` is `true` on those rows.
 - **Rollup literal correctness**: every rollup row's `job_role` is exactly `ALL_ROLES` — no other spelling or casing appears anywhere in the file.
 - **Dual-test presence**: every row with `low_confidence == false` has non-null `fisher_p_value` AND `chi2_p_value` (both tests were actually run, not just one).
@@ -382,6 +382,7 @@ done
 
 - `hired`, `disability_status`, `veteran_status`, and `referred` are all encoded as literal `Yes`/`No` strings in the source CSV, not booleans — coerce explicitly rather than relying on truthy string checks.
 - `age` is a raw integer; there is no pre-built `age_bracket` column. Pick bucket boundaries once in Step 2 and reuse them consistently in both the metrics table and the report — don't let the report re-derive brackets independently of the CSV.
+- The reference group is chosen only among groups that meet `{{min_group_size}}` (v1.2.0+). Earlier versions used the highest-rate group regardless of size, which let a 2-candidate group hired at 100% define the ratio for every other group in the cell.
 - `race_ethnicity` and `gender` are the most reliably populated demographic columns; check `disability_status`/`veteran_status` for skew (they may be predominantly `No` with a small `Yes` minority) — small minority cells will frequently trip `low_confidence`, which is expected and should be reported as such, not treated as an error.
 - `cv_text` is a free-text synthetic summary already redundant with the structured columns (years_experience, education_level, etc.) — no NLP extraction is needed from it; use the structured fields directly.
 - This is a synthetic dataset for audit-methodology purposes, not a real EEOC/OFCCP filing — the four-fifths rule is used as a standard, well-understood disparity heuristic, not a claim of legal compliance certification.

@@ -1,5 +1,5 @@
 {
-  "title": "Synthetic CV dataset — 1,000 candidates, 12 roles",
+  "title": "Synthetic CV dataset \u2014 1,000 candidates, 12 roles",
   "prompt": "Execute the runbook.",
   "params": {
     "vars": {
@@ -18,9 +18,9 @@
       "filename": "synthetic_cvs_hiring.csv",
       "mime_type": "text/csv",
       "rows": 1000,
-      "label": "Synthetic candidate dataset — 1,000 rows, 12 job roles, 20 columns (demographics, CV summary, hiring outcome)",
-      "license": "Synthetic — generated for audit-methodology demonstration; no real individuals"
+      "label": "Synthetic candidate dataset \u2014 1,000 rows, 12 job roles, 20 columns (demographics, CV summary, hiring outcome)",
+      "license": "Synthetic \u2014 generated for audit-methodology demonstration; no real individuals"
     }
   ],
-  "note": "All names and attributes are synthetic."
+  "note": "The original 2026-08-19 dataset, re-run 2026-09-02 against runbook v1.2.0 (size-qualified reference groups). The sandbox received the upload as /app/assets/c8d96f9a.00.csv; the Step 1 fallback located it."
 }

@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-09-02T20:45:21Z",
+  "parameters": {
+    "condition": "Psoriasis",
+    "posted_from": "2026-07-25",
+    "posted_to": "2026-08-25"
+  },
+  "stages": [
+    {"name": "setup", "passed": true, "message": "Results directory created; Chrome and Playwright environment ready"},
+    {"name": "candidate_search", "passed": true, "message": "Found 17 candidates via the ClinicalTrials.gov API in one page"},
+    {"name": "page_extraction", "passed": true, "message": "Extracted 12 retained studies from rendered ClinicalTrials.gov pages"},
+    {"name": "evaluation", "passed": true, "message": "All 12 rows evaluated as PASS"},
+    {"name": "report_generation", "passed": true, "message": "All required output files written"}
+  ],
+  "results": {"pass": 12, "partial": 0, "fail": 0},
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/studies.csv",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json",
+    "/app/results/extraction_audit.json"
+  ]
+}

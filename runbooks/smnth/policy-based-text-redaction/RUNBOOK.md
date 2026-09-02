@@ -1,5 +1,5 @@
 ---
-version: "1.0.2"
+version: "1.0.3"
 evaluation: rubric
 agent: claude-code                    # Agent runtime: claude-code | opencode | codex | gemini-cli
 model: anthropic/claude-sonnet-5      # OpenRouter catalog id — the portable Jetty default
@@ -186,7 +186,7 @@ Write `{{results_dir}}/summary.md` with the following structure:
 
 ## Step 7: Write Validation Report
 
-Write `{{results_dir}}/validation_report.json`:
+Write `{{results_dir}}/validation_report.json`. **Use exactly this shape** — every entry in `stages` has the keys `name` (string), `passed` (JSON boolean, not a status word) and `message` (string); the dashboard that renders runs reads those three keys and shows a report with any other shape (e.g. `stage`/`status: "completed"`) as zero checks passed. Keep the five stage names below; do not rename or restructure them.
 
 ```json
 {
@@ -247,6 +247,12 @@ assert isinstance(data, list) and len(data) > 0, 'expected a non-empty list of r
 for r in data:
     assert 'redacted_text' in r and r['redacted_text'], f\"record {r.get('id')} missing redacted_text\"
 print(f'PASS: redacted_dataset.json has {len(data)} records, each with a non-empty redacted_text')
+vr = json.load(open('$RESULTS_DIR/validation_report.json'))
+assert isinstance(vr.get('stages'), list) and vr['stages'], 'validation_report.json: stages must be a non-empty list'
+for s in vr['stages']:
+    assert set(s) >= {'name', 'passed', 'message'} and isinstance(s['passed'], bool), f'stage entry must have name/passed(bool)/message: {s}'
+assert isinstance(vr.get('overall_passed'), bool) and 'overall_score' in vr and 'rubric_scores' in vr, 'validation_report.json missing overall_passed/overall_score/rubric_scores'
+print(f\"PASS: validation_report.json has {len(vr['stages'])} well-formed stages, overall_score {vr['overall_score']}\")
 "
 ```
 
@@ -255,7 +261,7 @@ print(f'PASS: redacted_dataset.json has {len(data)} records, each with a non-emp
 - [ ] `redacted_dataset.json` exists, contains all input records, each with original fields plus a non-empty `redacted_text`
 - [ ] Rubric quality bar met (overall >= 4.0, no criterion below 3)
 - [ ] `summary.md` exists with rubric scores and iteration history
-- [ ] `validation_report.json` exists with `rubric_scores`, `overall_score`, and `overall_passed`
+- [ ] `validation_report.json` exists with `rubric_scores`, `overall_score`, `overall_passed`, and `stages` entries shaped exactly `{name, passed, message}`
 - [ ] Verification script printed PASS for all files
 
 **If ANY item fails, go back and fix it. Do NOT finish until all items pass.**

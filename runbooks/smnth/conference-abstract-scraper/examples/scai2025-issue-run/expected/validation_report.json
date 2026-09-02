@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-09-02T23:15:00Z",
+  "parameters": {
+    "crossref_issn": "2772-9303",
+    "crossref_volume_issue": "volume 4, issue 5",
+    "confex_program_url": "https://scai.confex.com/scai/2025/meetingapp.cgi",
+    "max_abstracts": "12"
+  },
+  "stages": [
+    { "name": "setup", "passed": true, "message": "Playwright Chromium installed and launched successfully; api.crossref.org and scai.confex.com/scai/2025/meetingapp.cgi both reachable (HTTP 200)" },
+    { "name": "crossref_discovery", "passed": true, "message": "Fetched 3963 works for ISSN 2772-9303, filtered to 834 works for volume 4/issue 5, filtered to 805 session-coded abstracts (29 non-abstract works dropped: case reports, editorials, index/TOC pages), deduped 4 exact duplicate CrossRef records, sorted by page ascending, selected first 12 (OR1-1 through OR1-12, pages 102652-102663, fully contiguous with no gaps)" },
+    { "name": "confex_matching_and_extraction", "passed": true, "message": "Matched and extracted full text for 12/12 abstracts from the Confex program via its search API. 11 matched by near-exact normalized title (score >= 0.99). 1 (OR1-12) initially matched a wrong record via surface-text similarity (a different abstract about in-stent restenosis that happened to share several leading words); corrected using token-overlap (Jaccard) matching on distinctive keywords, which correctly identified the true match (Confex Paper/36046, a Poster Abstract on bifurcation-lesion side-branch drug-coated balloons) and was manually verified by content." },
+    { "name": "evaluation", "passed": true, "message": "All 12 abstracts evaluated: 11 PASS, 1 PARTIAL, 0 FAIL" },
+    { "name": "completeness_check", "passed": true, "message": "12 entries discovered, 12 entries matched, 12 entries in final output, 0 duplicate abstract_id/doi_or_url values, every Step 2 discovery entry appears exactly once" },
+    { "name": "report_generation", "passed": true, "message": "All output files written: abstracts.json, summary.md, validation_report.json" }
+  ],
+  "results": {
+    "pass": 11,
+    "partial": 1,
+    "fail": 0
+  },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/abstracts.json",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ],
+  "notes": {
+    "page_number_gaps": [
+      "No gaps in the selected range: pages 102652-102663 (OR1-1 through OR1-12) are fully contiguous, one page apart each."
+    ],
+    "unmatched_titles": [],
+    "partial_entries": [
+      "OR1-12 (DOI 10.1016/j.jscai.2025.102663, 'Drug-Coated Versus Uncoated Balloon for Side Branch in Coronary Bifurcation Lesions'): Confex program lists this under a differently-worded pre-publication title ('Drug-Coated Balloons vs. Plain Balloon Angioplasty for Side Branch Management in Coronary Bifurcation Lesions: A Systematic Review and Meta-Analysis', Poster D-92, Paper/36046) and as a Poster Abstract rather than the Oral Abstract session implied by the OR1 code. Combined title-similarity score was 0.584 (below the 0.75 light-normalization threshold), so it is flagged PARTIAL despite full_text being complete and clinically consistent with the CrossRef abstract (same topic, methods, and conclusions), because the match required keyword/content-level verification rather than light normalization alone."
+    ],
+    "other_observations": [
+      "CrossRef returned 29 non-session-coded works within volume 4/issue 5 (case reports, editorials, an Author Index, and a Table of Contents entry) that were correctly excluded by the session-code filter.",
+      "CrossRef returned 4 exact-duplicate records (same DOI appearing twice: 10.1016/j.jscai.2025.102803, .103360, .103369, .103382) elsewhere in the full volume/issue result set; deduplicated by DOI. None of these fell within the selected first-12 range."
+    ]
+  }
+}

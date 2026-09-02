@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "run_date": "2026-09-02T00:00:00Z",
+  "parameters": {
+    "crossref_issn": "2772-9303",
+    "crossref_volume_issue": "volume 5, issue 4",
+    "confex_program_url": "https://scai.confex.com/scai/2026/meetingapp.cgi",
+    "max_abstracts": "10"
+  },
+  "stages": [
+    { "name": "setup", "passed": true, "message": "Playwright Chromium installed (required missing OS libs via playwright install-deps), api.crossref.org reachable" },
+    { "name": "crossref_discovery", "passed": true, "message": "Retrieved 864 works for volume 5, issue 4 (paginated across 3963 total journal works). Sorted by page number ascending and took the first 10 conference abstracts (page 104404-104413, session codes OR1-1 through OR1-10)" },
+    { "name": "confex_matching_and_extraction", "passed": true, "message": "Matched and extracted full text for all 10 abstracts from the Confex program using the site's own title search, all at high confidence (exact session-code + title match)" },
+    { "name": "evaluation", "passed": true, "message": "All 10 abstracts evaluated: 10 PASS, 0 PARTIAL, 0 FAIL" },
+    { "name": "completeness_check", "passed": true, "message": "10 entries in, 10 entries out, 0 duplicates, 0 merge conflicts" },
+    { "name": "report_generation", "passed": true, "message": "All output files written" }
+  ],
+  "results": {
+    "pass": 10,
+    "partial": 0,
+    "fail": 0
+  },
+  "overall_passed": true,
+  "output_files": [
+    "/app/results/abstracts.json",
+    "/app/results/summary.md",
+    "/app/results/validation_report.json"
+  ],
+  "notes": {
+    "page_number_gaps": [
+      "No gaps within the selected first-10 window: pages 104404-104413 (OR1-1 through OR1-10) are fully contiguous.",
+      "Just outside the selected window: OR1-11 is absent from CrossRef results -- the page sequence jumps directly from 104413 (OR1-10) to 104414, which is titled 'OR1-12'. This is consistent with OR1-11 having been withdrawn before publication; it does not affect the required 10-abstract batch."
+    ],
+    "unmatched_titles": [],
+    "partial_entries": [],
+    "discovery_scope_finding": "IMPORTANT: CrossRef volume 5, issue 4 of JSCAI is NOT a pure conference-abstract supplement -- it is the journal's regular April 2026 monthly issue, which happens to co-publish the SCAI 2026 Scientific Sessions abstracts alongside regular journal content. Of the 864 works in this volume/issue, 834 are conference abstracts identifiable by a session-code title prefix (e.g. 'OR1-1 | ...', matching Confex's own 'Oral Abstract'/'Poster Abstract' GoodType categories confirmed via the site's search-filter form), while the remaining 30 are non-abstract items -- original research articles, case reports, editorials, a letter-to-the-editor response, a corrigendum, and front/back matter (Cover, Title Page, Table of Contents, Category Index) -- that were never entered into the Confex conference program and would spuriously FAIL every match attempt if included. Since the runbook's objective is specifically the conference's accepted posters/abstracts, the agent selected the first 10 entries from the abstract subset (sorted by page number ascending, which for this subset happens to align exactly with the session numbering: OR1-1 through OR1-10) rather than the literal first 10 by page number across the full mixed issue. This is a deliberate scope interpretation, not a data-quality failure; see summary.md Recommendations for detail."
+  }
+}

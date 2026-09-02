@@ -13,8 +13,9 @@ run may pass.
 
 1. **Load + validate** — coerce Yes/No fields, derive `age_bracket`, keep
    declined-to-state as its own group.
-2. **Aggregate** — selection rates, deterministic reference-group tie-break, four-fifths
-   ratio, dual significance tests, `ALL_ROLES` rollup → `disparity_metrics.csv`.
+2. **Aggregate** — selection rates, reference group = highest-rate group *among those meeting
+   `min_group_size`* (deterministic tie-break), four-fifths ratio, dual significance tests,
+   `ALL_ROLES` rollup → `disparity_metrics.csv`.
 3. **Programmatic validation (hard gate)** — ten internal-consistency checks.
 4. **Report** — methodology, findings by role and by dimension, flagged items with both
    p-values, specific recommendations, caveats.
