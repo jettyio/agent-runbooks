@@ -10,6 +10,68 @@
   },
   "example_outputs": [
     {
+      "id": "multiple-myeloma-run",
+      "title": "Multiple myeloma, 2-month posting window",
+      "summary": "47 API candidates narrowed to 46 studies (one dropped by the condition sanity check), all 46 PASS with every field verbatim from the study's own page and zero 'Not found' cells, plus the full extraction_audit.json provenance trail. Re-run on 2026-09-02 against runbook v1.3.0; it reproduced the same 46 studies as the original 2026-08-25 run in ~10 minutes.",
+      "thumbnail": "examples/multiple-myeloma-run/thumbnail.png",
+      "operation": "search-extract",
+      "dir": "examples/multiple-myeloma-run",
+      "input": {
+        "kind": "search",
+        "values": {
+          "condition": "Multiple myeloma",
+          "posted_from": "2026-06-25",
+          "posted_to": "2026-08-25"
+        }
+      },
+      "primary_output": "examples/multiple-myeloma-run/expected/studies.csv",
+      "outputs": [
+        {
+          "file": "examples/multiple-myeloma-run/expected/studies.csv",
+          "role": "primary",
+          "type": "text/csv",
+          "description": "One row per matching study, 7 columns extracted verbatim from each study's own page."
+        },
+        {
+          "file": "examples/multiple-myeloma-run/expected/extraction_audit.json",
+          "role": "secondary",
+          "type": "application/json",
+          "description": "Provenance trail: 47 candidates, 1 dropped, 0 excluded, 46 per-row extraction records with attempts/evaluation."
+        },
+        {
+          "file": "examples/multiple-myeloma-run/expected/summary.md",
+          "role": "report",
+          "type": "text/markdown",
+          "description": "Run summary with results breakdown and exclusions."
+        },
+        {
+          "file": "examples/multiple-myeloma-run/expected/validation_report.json",
+          "role": "eval",
+          "type": "application/json",
+          "description": "Stage results and overall_passed."
+        }
+      ],
+      "excerpt": null,
+      "trajectory": {
+        "collection": "volpiglio",
+        "task": "ctg-condition-search-extraction",
+        "trajectory_id": "f70377e5",
+        "url": "https://jetty.io/trajectory/volpiglio/ctg-condition-search-extraction/f70377e5",
+        "agent": "opencode",
+        "model": "openai/gpt-5.6-terra",
+        "model_provider": "openrouter",
+        "runbook_version": "1.3.0",
+        "ran_at": "2026-09-02T20:10:12.002120Z",
+        "duration_seconds": 591,
+        "eval": {
+          "overall_passed": true,
+          "pass": 46,
+          "partial": 0,
+          "fail": 0
+        }
+      }
+    },
+    {
       "id": "ulcerative-colitis-run",
       "title": "Ulcerative colitis, 1-month posting window (with audit trail)",
       "summary": "22 API candidates, 1 dropped by the condition sanity check (generic IBD only), 21 studies extracted with every field verbatim from the study page — 21/21 PASS, zero 'Not found' cells — plus the full extraction_audit.json provenance trail. Run against the current runbook spec (v1.3.0) in ~5 minutes.",
@@ -70,66 +132,11 @@
           "fail": 0
         }
       }
-    },
-    {
-      "id": "multiple-myeloma-run",
-      "title": "Multiple myeloma, 2-month posting window",
-      "summary": "47 API candidates narrowed to 46 studies, all 46 PASS with every field verbatim from the study's own page, 0 partial/fail.",
-      "thumbnail": "examples/multiple-myeloma-run/thumbnail.png",
-      "operation": "search-extract",
-      "dir": "examples/multiple-myeloma-run",
-      "input": {
-        "kind": "search",
-        "values": {
-          "condition": "Multiple myeloma",
-          "posted_from": "2026-06-25",
-          "posted_to": "2026-08-25"
-        }
-      },
-      "primary_output": "examples/multiple-myeloma-run/expected/studies.csv",
-      "outputs": [
-        {
-          "file": "examples/multiple-myeloma-run/expected/studies.csv",
-          "role": "primary",
-          "type": "text/csv",
-          "description": "One row per matching study, 7 columns extracted verbatim from each study's own page."
-        },
-        {
-          "file": "examples/multiple-myeloma-run/expected/summary.md",
-          "role": "report",
-          "type": "text/markdown",
-          "description": "Run summary with results breakdown and exclusions."
-        },
-        {
-          "file": "examples/multiple-myeloma-run/expected/validation_report.json",
-          "role": "eval",
-          "type": "application/json",
-          "description": "Stage results and overall_passed."
-        }
-      ],
-      "excerpt": null,
-      "trajectory": {
-        "collection": "volpiglio",
-        "task": "ctg-condition-search-extraction",
-        "trajectory_id": "03f0e982",
-        "url": "https://jetty.io/trajectory/volpiglio/ctg-condition-search-extraction/03f0e982",
-        "agent": "opencode",
-        "model": "openai/gpt-5.6-terra",
-        "ran_at": "2026-08-25T21:24:50.396098Z",
-        "duration_seconds": 524,
-        "eval": {
-          "overall_passed": true,
-          "pass": 46,
-          "partial": 0,
-          "fail": 0
-        },
-        "model_provider": "openrouter"
-      }
     }
   ],
   "featured_examples": [
-    "ulcerative-colitis-run",
-    "multiple-myeloma-run"
+    "multiple-myeloma-run",
+    "ulcerative-colitis-run"
   ],
   "inputs": [
     {
@@ -196,6 +203,6 @@
   "caveats": [
     "Every field except Study URL is read from the study's own rendered ClinicalTrials.gov page, not the API — the API is only used to build the candidate NCT list, so values reflect the page exactly as displayed (including estimated/actual qualifiers), which can occasionally diverge from the API's structured fields.",
     "ClinicalTrials.gov study pages are client-rendered (JS SPA) — this runbook requires a real browser (Playwright/Chromium), not a plain HTTP fetch.",
-    "The multiple-myeloma-run example predates the extraction_audit.json requirement (introduced in runbook v1.1.0) and ships only studies.csv, summary.md, and validation_report.json; the ulcerative-colitis-run example was produced against the current spec and includes the audit trail."
+    "Re-running the multiple-myeloma example one week after the original 2026-08-25 run reproduced the same 46 studies; 2 cells had genuinely changed on ClinicalTrials.gov (a status moving to Recruiting, a start date becoming Actual) and 2 Study Type cells differed only in whether the page's '[Patient Registry]' qualifier was copied. The CSV reflects the rendered page at run time, and extraction_audit.json is what lets you check which."
   ]
 }

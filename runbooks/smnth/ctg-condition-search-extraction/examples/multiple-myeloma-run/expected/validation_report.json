@@ -1,17 +1,37 @@
 {
   "version": "1.0.0",
-  "run_date": "2026-08-25T00:00:00Z",
+  "run_date": "2026-09-02T20:19:50.384Z",
   "parameters": {
     "condition": "Multiple myeloma",
     "posted_from": "2026-06-25",
     "posted_to": "2026-08-25"
   },
   "stages": [
-    { "name": "setup", "passed": true, "message": "Results directory created and Playwright Chrome runtime installed" },
-    { "name": "candidate_search", "passed": true, "message": "Found 47 candidates via API; 1 candidate was removed by the condition-list sanity check" },
-    { "name": "page_extraction", "passed": true, "message": "Extracted 46 studies from their rendered ClinicalTrials.gov pages after confirming the displayed NCT number" },
-    { "name": "evaluation", "passed": true, "message": "All 46 rows evaluated as PASS" },
-    { "name": "report_generation", "passed": true, "message": "All required output files written" }
+    {
+      "name": "setup",
+      "passed": true,
+      "message": "Environment ready"
+    },
+    {
+      "name": "candidate_search",
+      "passed": true,
+      "message": "Found 47 candidates via API"
+    },
+    {
+      "name": "page_extraction",
+      "passed": true,
+      "message": "Extracted 46 studies from their rendered pages"
+    },
+    {
+      "name": "evaluation",
+      "passed": true,
+      "message": "All rows evaluated"
+    },
+    {
+      "name": "report_generation",
+      "passed": true,
+      "message": "All output files written"
+    }
   ],
   "results": {
     "pass": 46,
@@ -20,8 +40,9 @@
   },
   "overall_passed": true,
   "output_files": [
-    "/app/results/multiple_myeloma_studies.csv",
+    "/app/results/studies.csv",
     "/app/results/summary.md",
-    "/app/results/validation_report.json"
+    "/app/results/validation_report.json",
+    "/app/results/extraction_audit.json"
   ]
 }

@@ -10,5 +10,5 @@
     }
   },
   "files": [],
-  "note": "No file inputs — ClinicalTrials.gov API v2 and study pages are public. Run predates the extraction_audit.json requirement (runbook v1.1.0+)."
+  "note": "No file inputs — ClinicalTrials.gov API v2 and study pages are public. Run against runbook v1.3.0 (includes extraction_audit.json); reproduces the same 46 studies as the original 2026-08-25 run, with 2 cells updated on the live site since and 2 Study Type cells differing only in the '[Patient Registry]' qualifier."
 }
