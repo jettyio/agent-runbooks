@@ -55,7 +55,7 @@ secrets:
 - **Prompt:** the first `*.txt` / `*.md` uploaded into `/app/assets/`, or the
   `{{prompt}}` parameter if no file is present.
 - **Models:** {{models}} — comma-separated litellm model ids (e.g.
-  `claude-sonnet-4-6,gpt-4o,gemini/gemini-2.0-flash`).
+  `claude-sonnet-5-5,gpt-6.1-sol,gemini/gemini-3.8-flash`).
 - **System prompt (optional):** {{system_prompt}}
 - **Judge:** {{judge}} (`true` = score each output 0–10 with an LLM judge).
 
@@ -97,10 +97,10 @@ If you finish but have not written all files, go back and write them first.
 |-----------|------------------|---------|-------------|
 | Results directory | `{{results_dir}}` | `/app/results` | Output directory |
 | Prompt | `{{prompt}}` | *(empty → use the uploaded file)* | Inline prompt text (used only if no file is uploaded) |
-| Models | `{{models}}` | `claude-sonnet-4-6,gpt-4o,gemini/gemini-2.0-flash` | Comma-separated litellm model ids |
+| Models | `{{models}}` | `claude-sonnet-5-5,gpt-6.1-sol,gemini/gemini-3.8-flash` | Comma-separated litellm model ids |
 | System prompt | `{{system_prompt}}` | *(empty)* | Optional system prompt sent to every model |
 | Judge | `{{judge}}` | `true` | `true` to score each output 0–10 with an LLM judge |
-| Judge model | `{{judge_model}}` | `claude-sonnet-4-6` | The model used as the quality judge |
+| Judge model | `{{judge_model}}` | `claude-sonnet-5-5` | The model used as the quality judge |
 
 ---
 
@@ -202,7 +202,7 @@ completeness, and clarity, returning strict JSON. Skip judging for models that e
 
 ```python
 JUDGE = "{{judge}}".strip().lower() in ("true", "1", "yes")
-JUDGE_MODEL = "{{judge_model}}".strip() or "claude-sonnet-4-6"
+JUDGE_MODEL = "{{judge_model}}".strip() or "claude-sonnet-5-5"
 
 if JUDGE:
     for r in results:
@@ -310,7 +310,7 @@ If a model errored with a fixable cause, fix and retry **only that model**:
 |-------|-----|
 | `AuthenticationError` / missing key | The provider key isn't set — skip that model and note it; don't retry without a key. |
 | `RateLimitError` / quota (common on trial Gemini keys) | Wait briefly and retry once; if it persists, mark `skipped: quota` and continue. |
-| `BadRequestError: model not found` | The litellm model id is wrong for the provider — correct it (e.g. `gemini/gemini-2.0-flash`, not `gemini-2.0-flash`). |
+| `BadRequestError: model not found` | The litellm model id is wrong for the provider — correct it (e.g. `gemini/gemini-3.8-flash`, not `gemini-3.8-flash`). |
 | `Timeout` | Raise the per-call timeout once; if it persists, record `skipped: timeout`. |
 | `completion_cost` raised / `cost_usd` null | litellm has no pricing for that model id — leave cost `null` and note it; don't fail the run. |
 
