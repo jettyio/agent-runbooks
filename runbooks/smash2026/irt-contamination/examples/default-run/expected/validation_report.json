@@ -1,0 +1,154 @@
+{
+ "version": 2,
+ "verdict": "pass",
+ "checks": [
+  {
+   "kind": "step",
+   "id": "setup",
+   "name": "Set up the sandbox and parameters",
+   "status": "pass"
+  },
+  {
+   "kind": "step",
+   "id": "get-code",
+   "name": "Extract the tested code",
+   "status": "pass"
+  },
+  {
+   "kind": "step",
+   "id": "experiment",
+   "name": "Run the experiment",
+   "status": "pass"
+  },
+  {
+   "kind": "step",
+   "id": "interpret",
+   "name": "Write the narrative",
+   "status": "pass"
+  },
+  {
+   "kind": "step",
+   "id": "render",
+   "name": "Render the result card and summary",
+   "status": "pass"
+  },
+  {
+   "kind": "checklist",
+   "id": "the-headline-states-this-run-s-finding-with-its-numbers-not-a-description-of-the-method",
+   "name": "The headline states this run's finding with its numbers, not a description of the method",
+   "status": "pass",
+   "message": "Headline quotes 1.00→0.52 (LOSS AUROC) and 0.73 (IRT), both from results.json — the finding, not the method"
+  },
+  {
+   "kind": "checklist",
+   "id": "paper-numbers-are-quoted-exactly-and-any-disagreement-with-the-paper-is-stated-plainly",
+   "name": "Paper numbers are quoted exactly and any disagreement with the paper is stated plainly",
+   "status": "pass",
+   "message": "Paper Table 1 numbers quoted verbatim in findings; synthetic vs paper gap (~0.73 vs 0.68 IRT AUROC) stated plainly in caveats"
+  },
+  {
+   "kind": "checklist",
+   "id": "caveats-say-what-is-synthetic-reconstructed-or-an-extension-of-the-paper",
+   "name": "Caveats say what is synthetic, reconstructed or an extension of the paper",
+   "status": "pass",
+   "message": "Caveats explicitly flag: fully synthetic re-enactment, sandbagging as runbook extension, AUROC level dependency on simulation, simulated vs real IRT calibration"
+  },
+  {
+   "kind": "checklist",
+   "id": "each-try-next-suggestion-would-plausibly-give-a-contrasting-result",
+   "name": "Each try-next suggestion would plausibly give a contrasting result",
+   "status": "pass",
+   "message": "Light contamination (0.3) tests weak-signal IRT; strong model (ability 2.0) tests easy-item blind-spot dominance; small population (20) tests calibration sensitivity — all three contrast meaningfully with the default run"
+  },
+  {
+   "kind": "code_check",
+   "id": "outputs-exist",
+   "name": "Result card, numbers, narrative and summary were written",
+   "status": "pass",
+   "message": "all 5 outputs present",
+   "details": {
+    "command": "cd /app/results && for f in result_card.html results.json card_data.json narrative.json summary.md; do test -s \"$f\" || { echo \"missing or empty: $f\"; exit 1; }; done; echo \"all 5 outputs present\"",
+    "exit_code": 0,
+    "stdout_tail": "all 5 outputs present\n",
+    "duration_seconds": 0.248,
+    "runner": "jetty",
+    "source": "inline"
+   }
+  },
+  {
+   "kind": "code_check",
+   "id": "results-valid",
+   "name": "Experiment numbers are valid JSON and the experiment stayed within its time budget",
+   "status": "pass",
+   "message": "results.json and card_data.json parse; experiment 14.9s within 240s",
+   "details": {
+    "command": "python3 - \"/app/results\" 240 <<'PY'\nimport json, sys\nfrom pathlib import Path\nR, budget = Path(sys.argv[1]), float(sys.argv[2])\nres = json.loads((R / \"results.json\").read_text())\njson.loads((R / \"card_data.json\").read_text())\nrt = float(res.get(\"runtime_sec\", 0))\nif rt > budget:\n    sys.exit(f\"experiment took {rt}s, budget {budget}s\")\nprint(f\"results.json and card_data.json parse; experiment {rt}s within {budget:.0f}s\")\nPY",
+    "exit_code": 0,
+    "stdout_tail": "results.json and card_data.json parse; experiment 14.9s within 240s\n",
+    "duration_seconds": 0.279,
+    "runner": "jetty",
+    "source": "inline"
+   }
+  },
+  {
+   "kind": "code_check",
+   "id": "narrative-complete",
+   "name": "The narrative has a headline, three idea bullets, findings, try-next runs and caveats",
+   "status": "pass",
+   "message": "headline, 3 idea bullets, 4 findings, 3 try_next, 4 caveats",
+   "details": {
+    "command": "python3 - \"/app/results\" <<'PY'\nimport json, sys\nfrom pathlib import Path\nn = json.loads((Path(sys.argv[1]) / \"narrative.json\").read_text())\nproblems = []\nif not str(n.get(\"headline\", \"\")).strip(): problems.append(\"no headline\")\nif len(str(n.get(\"headline\", \"\")).split()) > 45: problems.append(\"headline over 45 words\")\nif len(n.get(\"idea\", [])) != 3: problems.append(f\"idea has {len(n.get('idea', []))} bullets, need 3\")\nif not 2 <= len(n.get(\"findings\", [])) <= 4: problems.append(f\"{len(n.get('findings', []))} findings, need 2-4\")\nif not 2 <= len(n.get(\"try_next\", [])) <= 3: problems.append(f\"{len(n.get('try_next', []))} try_next, need 2-3\")\nif len(n.get(\"caveats\", [])) < 2: problems.append(\"fewer than 2 caveats\")\nif problems: sys.exit(\"; \".join(problems))\nprint(\"headline, 3 idea bullets, %d findings, %d try_next, %d caveats\" % (len(n[\"findings\"]), len(n[\"try_next\"]), len(n[\"caveats\"])))\nPY",
+    "exit_code": 0,
+    "stdout_tail": "headline, 3 idea bullets, 4 findings, 3 try_next, 4 caveats\n",
+    "duration_seconds": 0.28,
+    "runner": "jetty",
+    "source": "inline"
+   }
+  },
+  {
+   "kind": "code_check",
+   "id": "try-next-valid",
+   "name": "Every try-next suggestion uses only this runbook's parameters",
+   "status": "pass",
+   "message": "all try_next parameters are declared runbook parameters",
+   "details": {
+    "command": "python3 - \"/app/results\" \"contamination,model_ability,memorization_boost,n_member_items,n_calibration_items,n_population,seed\" <<'PY'\nimport json, sys\nfrom pathlib import Path\nallowed = set(sys.argv[2].split(\",\"))\nn = json.loads((Path(sys.argv[1]) / \"narrative.json\").read_text())\nbad = sorted({k for t in n.get(\"try_next\", []) for k in (t.get(\"params\") or {}) if k not in allowed})\nempty = [t.get(\"label\", \"?\") for t in n.get(\"try_next\", []) if not t.get(\"params\")]\nif bad or empty: sys.exit(f\"unknown parameters: {bad}; suggestions without params: {empty}\")\nprint(\"all try_next parameters are declared runbook parameters\")\nPY",
+    "exit_code": 0,
+    "stdout_tail": "all try_next parameters are declared runbook parameters\n",
+    "duration_seconds": 0.269,
+    "runner": "jetty",
+    "source": "inline"
+   }
+  },
+  {
+   "kind": "code_check",
+   "id": "headline-grounded",
+   "name": "Every number in the headline appears in the run's results",
+   "status": "pass",
+   "message": "3 headline number(s) all grounded in results",
+   "details": {
+    "command": "python3 - \"/app/results\" <<'PY'\nimport json, re, sys\nfrom pathlib import Path\nR = Path(sys.argv[1])\nblob = (R / \"results.json\").read_text() + (R / \"card_data.json\").read_text()\nvals = [float(x) for x in re.findall(r\"-?\\d+(?:\\.\\d+)?(?:[eE]-?\\d+)?\", blob)]\nhead = json.loads((R / \"narrative.json\").read_text())[\"headline\"]\nnums = re.findall(r\"(?<![\\w.−-])[−-]?\\d[\\d,]*(?:\\.\\d+)?(?![\\w-])\", head)\nmissing = []\nfor n in nums:\n    s = n.replace(\"−\", \"-\").replace(\",\", \"\"); v = float(s); dec = len(s.split(\".\")[1]) if \".\" in s else 0\n    tol = 0.5 * 10 ** (-dec) + 1e-9\n    if not any(abs(abs(x) - abs(v)) <= tol or abs(abs(x * 100) - abs(v)) <= max(tol, 0.5) for x in vals):\n        missing.append(n)\nif missing: sys.exit(f\"headline numbers not found in results: {missing}\")\nprint(f\"{len(nums)} headline number(s) all grounded in results\")\nPY",
+    "exit_code": 0,
+    "stdout_tail": "3 headline number(s) all grounded in results\n",
+    "duration_seconds": 0.14,
+    "runner": "jetty",
+    "source": "inline"
+   }
+  },
+  {
+   "kind": "code_check",
+   "id": "card-integrity",
+   "name": "The card embeds its figures, shows the headline, and contains no NaN",
+   "status": "pass",
+   "message": "card 175 KB, 3 figures, headline present",
+   "details": {
+    "command": "python3 - \"/app/results\" <<'PY'\nimport html, json, re, sys\nfrom pathlib import Path\nR = Path(sys.argv[1])\ncard = (R / \"result_card.html\").read_text()\ntext = re.sub(r\"data:image/[a-z]+;base64,[A-Za-z0-9+/=]+\", \"\", card)\nhead = json.loads((R / \"narrative.json\").read_text())[\"headline\"]\nproblems = []\nif card.count(\"data:image/png;base64\") < 1: problems.append(\"no embedded figures\")\nif re.search(r\"\\bNaN\\b|\\bnan%|\\bInfinity\\b\", text): problems.append(\"NaN/Infinity in card text\")\nif len(card) > 5_000_000: problems.append(f\"card is {len(card) // 1024} KB\")\nplain = html.unescape(re.sub(r\"<[^>]+>\", \"\", text))\nif re.sub(r\"[*`]\", \"\", head)[:40] not in plain: problems.append(\"headline not on card\")\nif problems: sys.exit(\"; \".join(problems))\nprint(f\"card {len(card) // 1024} KB, {card.count('data:image/png;base64')} figures, headline present\")\nPY",
+    "exit_code": 0,
+    "stdout_tail": "card 175 KB, 3 figures, headline present\n",
+    "duration_seconds": 0.287,
+    "runner": "jetty",
+    "source": "inline"
+   }
+  }
+ ]
+}

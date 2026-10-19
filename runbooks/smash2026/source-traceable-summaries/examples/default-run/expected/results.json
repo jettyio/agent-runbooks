@@ -1,0 +1,1582 @@
+{
+  "params": {
+    "summarizer_style": "brief",
+    "summarizer_size": "small",
+    "judge_size": "small",
+    "noise_types": "all",
+    "compare_styles": true,
+    "degradation_ladder": true,
+    "custom_notes": "",
+    "runbook_url": ""
+  },
+  "backend": "openrouter-via-anthropic-key",
+  "summarizer_model": "anthropic/claude-haiku-4.5",
+  "judge_model": "anthropic/claude-haiku-4.5",
+  "llm_calls": 18,
+  "noise_on": [
+    "conflicting_labs",
+    "copied_forward",
+    "date_mismatch",
+    "discontinued_med",
+    "negation",
+    "resolved_dx"
+  ],
+  "main": {
+    "name": "main",
+    "style": "brief",
+    "noise": [
+      "conflicting_labs",
+      "copied_forward",
+      "date_mismatch",
+      "discontinued_med",
+      "negation",
+      "resolved_dx"
+    ],
+    "judge_score": 6,
+    "judge_rationale": "Summary is mostly accurate with proper citations, but contains critical medication discrepancy: D8.2 contradicts D2.1 and D3.3 (metformin dose and lisinopril status). This inconsistency undermines clinical reliability despite otherwise good organization.",
+    "gates": {
+      "schema": {
+        "pass": true,
+        "applicable": true,
+        "why": []
+      },
+      "citations": {
+        "pass": true,
+        "applicable": true,
+        "why": []
+      },
+      "negation": {
+        "pass": true,
+        "applicable": true,
+        "why": []
+      },
+      "status": {
+        "pass": true,
+        "applicable": true,
+        "why": []
+      },
+      "med_bounds": {
+        "pass": true,
+        "applicable": true,
+        "why": []
+      },
+      "event_dates": {
+        "pass": true,
+        "applicable": true,
+        "why": []
+      },
+      "contradiction": {
+        "pass": false,
+        "applicable": true,
+        "why": [
+          "conflicting HbA1c silently resolved to one value"
+        ]
+      },
+      "intended_use": {
+        "pass": false,
+        "applicable": true,
+        "why": [
+          "no intended-use / verify-against-source statement"
+        ]
+      }
+    },
+    "gates_applicable": 8,
+    "gates_failed": [
+      "contradiction",
+      "intended_use"
+    ],
+    "released": false,
+    "audit": [
+      {
+        "item": "Type 2 diabetes",
+        "expected": "active",
+        "said": "Type 2 diabetes mellitus diagnosed 2016 [active]; Diabetes suboptimally controlled [active]",
+        "verdict": "ok",
+        "severity": 2
+      },
+      {
+        "item": "Hypertension",
+        "expected": "active",
+        "said": "Hypertension on treatment [active]",
+        "verdict": "ok",
+        "severity": 2
+      },
+      {
+        "item": "Metformin 1000 mg BID (since 2024-06-10)",
+        "expected": "active",
+        "said": "Metformin increased to 1000 mg twice daily [active]",
+        "verdict": "ok",
+        "severity": 3
+      },
+      {
+        "item": "Losartan 50 mg daily (started 2024-09-03)",
+        "expected": "active",
+        "said": "Losartan 50 mg daily started [active]",
+        "verdict": "ok",
+        "severity": 2
+      },
+      {
+        "item": "HbA1c 7.2% (lab) vs 8.1% (letter): conflict",
+        "expected": "conflicting",
+        "said": "HbA1c 8.1% (worsening glycemic control) [active]",
+        "verdict": "SILENTLY RESOLVED",
+        "severity": 2
+      },
+      {
+        "item": "Fall with L distal radius fracture on 2025-01-14",
+        "expected": "historical",
+        "said": "Left distal radius fracture from fall [resolved]",
+        "verdict": "ok",
+        "severity": 1
+      },
+      {
+        "item": "Lisinopril stopped 2024-09-03 (cough)",
+        "expected": "discontinued",
+        "said": "Lisinopril discontinued due to ACE inhibitor-induced cough [discontinued]",
+        "verdict": "ok",
+        "severity": 3
+      },
+      {
+        "item": "Pneumonia 2023, resolved",
+        "expected": "resolved",
+        "said": "Community-acquired pneumonia with acute kidney injury (2023) [resolved]",
+        "verdict": "ok",
+        "severity": 2
+      },
+      {
+        "item": "Acute kidney injury 2023, resolved",
+        "expected": "resolved",
+        "said": "Community-acquired pneumonia with acute kidney injury (2023) [resolved]",
+        "verdict": "ok",
+        "severity": 2
+      },
+      {
+        "item": "DVT ruled out (Doppler 2025-02-02)",
+        "expected": "negated",
+        "said": "DVT ruled out on left leg ultrasound [negated]",
+        "verdict": "ok",
+        "severity": 3
+      }
+    ],
+    "layer2": {
+      "n_claims": 13,
+      "gold_recall": 1.0,
+      "gold_supported_by_governing_source": 1.0,
+      "supported_claim_rate": 1.0,
+      "unsupported_claim_rate": 0.0,
+      "severity_weighted_errors": 2,
+      "omitted_items": 0
+    },
+    "summary_text": "67-year-old man with type 2 diabetes (diagnosed 2016) and hypertension. Diabetes suboptimally controlled despite metformin escalation to 1000 mg twice daily; recent HbA1c 8.1% suggests worsening glycemic control, with SGLT2 inhibitor consideration pending. ACE inhibitor switched to losartan in September 2024 due to persistent dry cough. Recent labs show eGFR 68 mL/min/1.73m\u00b2 (mild renal impairment). History of community-acquired pneumonia with acute kidney injury (2023, resolved). Recent left distal radius fracture from fall (January 2025) treated conservatively with successful physiotherapy. DVT ruled out on left leg ultrasound (February 2025).",
+    "n_claims": 13
+  },
+  "style_runs": [
+    {
+      "name": "main",
+      "style": "brief",
+      "noise": [
+        "conflicting_labs",
+        "copied_forward",
+        "date_mismatch",
+        "discontinued_med",
+        "negation",
+        "resolved_dx"
+      ],
+      "judge_score": 6,
+      "judge_rationale": "Summary is mostly accurate with proper citations, but contains critical medication discrepancy: D8.2 contradicts D2.1 and D3.3 (metformin dose and lisinopril status). This inconsistency undermines clinical reliability despite otherwise good organization.",
+      "gates": {
+        "schema": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "citations": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "negation": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "status": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "med_bounds": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "event_dates": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "contradiction": {
+          "pass": false,
+          "applicable": true,
+          "why": [
+            "conflicting HbA1c silently resolved to one value"
+          ]
+        },
+        "intended_use": {
+          "pass": false,
+          "applicable": true,
+          "why": [
+            "no intended-use / verify-against-source statement"
+          ]
+        }
+      },
+      "gates_applicable": 8,
+      "gates_failed": [
+        "contradiction",
+        "intended_use"
+      ],
+      "released": false,
+      "audit": [
+        {
+          "item": "Type 2 diabetes",
+          "expected": "active",
+          "said": "Type 2 diabetes mellitus diagnosed 2016 [active]; Diabetes suboptimally controlled [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Hypertension",
+          "expected": "active",
+          "said": "Hypertension on treatment [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Metformin 1000 mg BID (since 2024-06-10)",
+          "expected": "active",
+          "said": "Metformin increased to 1000 mg twice daily [active]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Losartan 50 mg daily (started 2024-09-03)",
+          "expected": "active",
+          "said": "Losartan 50 mg daily started [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "HbA1c 7.2% (lab) vs 8.1% (letter): conflict",
+          "expected": "conflicting",
+          "said": "HbA1c 8.1% (worsening glycemic control) [active]",
+          "verdict": "SILENTLY RESOLVED",
+          "severity": 2
+        },
+        {
+          "item": "Fall with L distal radius fracture on 2025-01-14",
+          "expected": "historical",
+          "said": "Left distal radius fracture from fall [resolved]",
+          "verdict": "ok",
+          "severity": 1
+        },
+        {
+          "item": "Lisinopril stopped 2024-09-03 (cough)",
+          "expected": "discontinued",
+          "said": "Lisinopril discontinued due to ACE inhibitor-induced cough [discontinued]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Pneumonia 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia with acute kidney injury (2023) [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Acute kidney injury 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia with acute kidney injury (2023) [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "DVT ruled out (Doppler 2025-02-02)",
+          "expected": "negated",
+          "said": "DVT ruled out on left leg ultrasound [negated]",
+          "verdict": "ok",
+          "severity": 3
+        }
+      ],
+      "layer2": {
+        "n_claims": 13,
+        "gold_recall": 1.0,
+        "gold_supported_by_governing_source": 1.0,
+        "supported_claim_rate": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "severity_weighted_errors": 2,
+        "omitted_items": 0
+      },
+      "summary_text": "67-year-old man with type 2 diabetes (diagnosed 2016) and hypertension. Diabetes suboptimally controlled despite metformin escalation to 1000 mg twice daily; recent HbA1c 8.1% suggests worsening glycemic control, with SGLT2 inhibitor consideration pending. ACE inhibitor switched to losartan in September 2024 due to persistent dry cough. Recent labs show eGFR 68 mL/min/1.73m\u00b2 (mild renal impairment). History of community-acquired pneumonia with acute kidney injury (2023, resolved). Recent left distal radius fracture from fall (January 2025) treated conservatively with successful physiotherapy. DVT ruled out on left leg ultrasound (February 2025).",
+      "n_claims": 13
+    },
+    {
+      "name": "style:careful",
+      "style": "careful",
+      "noise": [
+        "conflicting_labs",
+        "copied_forward",
+        "date_mismatch",
+        "discontinued_med",
+        "negation",
+        "resolved_dx"
+      ],
+      "judge_score": 7,
+      "judge_rationale": "Well-structured with appropriate citations and explicit conflict flagging. However, unresolved medication discrepancies (metformin dose, lisinopril reappearance in D8.2) and conflicting HbA1c values require urgent clarification before clinical use.",
+      "gates": {
+        "schema": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "citations": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "negation": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "status": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "med_bounds": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "event_dates": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "contradiction": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "intended_use": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        }
+      },
+      "gates_applicable": 8,
+      "gates_failed": [],
+      "released": true,
+      "audit": [
+        {
+          "item": "Type 2 diabetes",
+          "expected": "active",
+          "said": "Type 2 diabetes mellitus diagnosed 2016, suboptimally controlled [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Hypertension",
+          "expected": "active",
+          "said": "Hypertension on treatment [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Metformin 1000 mg BID (since 2024-06-10)",
+          "expected": "active",
+          "said": "Metformin 1000 mg twice daily (increased 2024-06-10); however, family medicine note 2025-03-20 lists 500 mg tw",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Losartan 50 mg daily (started 2024-09-03)",
+          "expected": "active",
+          "said": "Losartan 50 mg daily started 2024-09-03 [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "HbA1c 7.2% (lab) vs 8.1% (letter): conflict",
+          "expected": "conflicting",
+          "said": "HbA1c 7.2% (2025-02-11) versus 8.1% (2025-03-05): conflicting recent glycaemic control values [conflicting]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Fall with L distal radius fracture on 2025-01-14",
+          "expected": "historical",
+          "said": "Left distal radius fracture from fall at home 2025-01-14, treated in cast, completed physiotherapy [resolved]",
+          "verdict": "ok",
+          "severity": 1
+        },
+        {
+          "item": "Lisinopril stopped 2024-09-03 (cough)",
+          "expected": "discontinued",
+          "said": "Lisinopril 10 mg daily discontinued 2024-09-03 due to ACE inhibitor-induced dry cough [discontinued]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Pneumonia 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia (right lower lobe) admitted 2023-02-24, resolved by discharge 2023-03-02 [resolve",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Acute kidney injury 2023, resolved",
+          "expected": "resolved",
+          "said": "Acute kidney injury on admission (creatinine 168 umol/L) resolved by discharge with IV fluids [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "DVT ruled out (Doppler 2025-02-02)",
+          "expected": "negated",
+          "said": "Left leg venous Doppler ultrasound negative for DVT (2025-02-02) [negated]",
+          "verdict": "ok",
+          "severity": 3
+        }
+      ],
+      "layer2": {
+        "n_claims": 13,
+        "gold_recall": 1.0,
+        "gold_supported_by_governing_source": 1.0,
+        "supported_claim_rate": 0.8461538461538461,
+        "unsupported_claim_rate": 0.15384615384615385,
+        "severity_weighted_errors": 0,
+        "omitted_items": 0
+      },
+      "summary_text": "SP-0187 is a 67-year-old man with type 2 diabetes mellitus (diagnosed 2016) and hypertension. ACTIVE PROBLEMS: Type 2 diabetes with suboptimal glycaemic control\u2014HbA1c 7.2% as of 2025-02-11 (D5.1), though endocrinology noted worsening to 8.1% at their 2025-03-05 visit (D7.1); note conflict between these two recent values. Mild chronic kidney disease with eGFR 68 mL/min/1.73m\u00b2 (2025-02-11) (D5.2). Hypertension on treatment. RESOLVED/HISTORICAL PROBLEMS: Community-acquired pneumonia (right lower lobe) admitted 2023-02-24, resolved by discharge 2023-03-02 with follow-up chest X-ray clear 2023-04-10 (D4.1, D4.3). Acute kidney injury on admission (creatinine 168 umol/L) resolved by discharge with IV fluids (D4.2). Left calf swelling after long flight (2025-02-02)\u2014venous Doppler ultrasound negative for DVT (D6.2, D6.3). Left distal radius fracture from fall at home 2025-01-14, treated in cast, completed physiotherapy with near-normal wrist range of motion (D9.1, D9.2). CURRENT MEDICATIONS: Metformin 1000 mg twice daily (increased from 500 mg on 2024-06-10) (D2.1, D7.1); however, a family medicine note dated 2025-03-20 lists metformin 500 mg twice daily (D8.2)\u2014source conflict noted. Losartan 50 mg daily (started 2024-09-03 after lisinopril discontinued same day due to ACE inhibitor-induced cough) (D3.2, D3.3). DISCONTINUED MEDICATIONS: Lisinopril 10 mg daily stopped 2024-09-03 (D3.2). No known drug allergies (D2.2). Endocrinology plan includes consideration of SGLT2 inhibitor at next visit (D7.1). This is an AI-generated summary for clinician review and must be verified against the cited source segments.",
+      "n_claims": 13
+    },
+    {
+      "name": "style:naive",
+      "style": "naive",
+      "noise": [
+        "conflicting_labs",
+        "copied_forward",
+        "date_mismatch",
+        "discontinued_med",
+        "negation",
+        "resolved_dx"
+      ],
+      "judge_score": 3,
+      "judge_rationale": "Critical medication discrepancy: D8.2 contradicts D3.2/D3.3 (lisinopril 10mg vs losartan 50mg). Summary follows D3 but D8 (2025-03-20) is more recent, creating dangerous ambiguity about current medications.",
+      "gates": {
+        "schema": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "citations": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "negation": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "status": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "med_bounds": {
+          "pass": false,
+          "applicable": true,
+          "why": [
+            "lisinopril stop date missing"
+          ]
+        },
+        "event_dates": {
+          "pass": true,
+          "applicable": true,
+          "why": []
+        },
+        "contradiction": {
+          "pass": false,
+          "applicable": true,
+          "why": [
+            "conflicting HbA1c silently resolved to one value"
+          ]
+        },
+        "intended_use": {
+          "pass": false,
+          "applicable": true,
+          "why": [
+            "no intended-use / verify-against-source statement"
+          ]
+        }
+      },
+      "gates_applicable": 8,
+      "gates_failed": [
+        "med_bounds",
+        "contradiction",
+        "intended_use"
+      ],
+      "released": false,
+      "audit": [
+        {
+          "item": "Type 2 diabetes",
+          "expected": "active",
+          "said": "Type 2 diabetes mellitus diagnosed 2016, suboptimally controlled [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Hypertension",
+          "expected": "active",
+          "said": "Hypertension on treatment [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Metformin 1000 mg BID (since 2024-06-10)",
+          "expected": "active",
+          "said": "Metformin 1000 mg twice daily [active]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Losartan 50 mg daily (started 2024-09-03)",
+          "expected": "active",
+          "said": "Losartan 50 mg daily started; lisinopril discontinued due to ACE inhibitor-induced dry cough [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "HbA1c 7.2% (lab) vs 8.1% (letter): conflict",
+          "expected": "conflicting",
+          "said": "HbA1c 8.1% (worsening glycemic control) [active]",
+          "verdict": "SILENTLY RESOLVED",
+          "severity": 2
+        },
+        {
+          "item": "Fall with L distal radius fracture on 2025-01-14",
+          "expected": "historical",
+          "said": "Left distal radius fracture from fall at home, treated in cast [resolved]",
+          "verdict": "ok",
+          "severity": 1
+        },
+        {
+          "item": "Lisinopril stopped 2024-09-03 (cough)",
+          "expected": "discontinued",
+          "said": "Losartan 50 mg daily started; lisinopril discontinued due to ACE inhibitor-induced dry cough [active]",
+          "verdict": "STOP DATE MISSING",
+          "severity": 3
+        },
+        {
+          "item": "Pneumonia 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia right lower lobe treated with IV ceftriaxone [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Acute kidney injury 2023, resolved",
+          "expected": "resolved",
+          "said": "Acute kidney injury on admission (creatinine 168 umol/L), resolved with IV fluids [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "DVT ruled out (Doppler 2025-02-02)",
+          "expected": "negated",
+          "said": "Left leg venous Doppler ultrasound negative for deep vein thrombosis [negated]",
+          "verdict": "ok",
+          "severity": 3
+        }
+      ],
+      "layer2": {
+        "n_claims": 12,
+        "gold_recall": 1.0,
+        "gold_supported_by_governing_source": 1.0,
+        "supported_claim_rate": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "severity_weighted_errors": 5,
+        "omitted_items": 0
+      },
+      "summary_text": "67-year-old man with type 2 diabetes mellitus (suboptimally controlled, worsening glycemic control) and hypertension. Recent medication changes include metformin dose increase to 1000 mg twice daily and switch from lisinopril to losartan due to ACE inhibitor-induced cough. Recent labs show HbA1c 8.1% and eGFR 68 mL/min/1.73m2. History of community-acquired pneumonia with acute kidney injury in 2023 (resolved), negative DVT workup in February 2025, and left distal radius fracture from fall in January 2025 (completed physiotherapy). No known drug allergies.",
+      "n_claims": 12
+    }
+  ],
+  "ladder": [
+    {
+      "n_noise": 0,
+      "added": "none",
+      "judge_score": 9,
+      "gates_failed": [
+        "intended_use"
+      ],
+      "gates_applicable": 3,
+      "gold_recall": 1.0,
+      "severity_weighted_errors": 0
+    },
+    {
+      "n_noise": 1,
+      "added": "discontinued_med",
+      "judge_score": 9,
+      "gates_failed": [
+        "intended_use"
+      ],
+      "gates_applicable": 5,
+      "gold_recall": 1.0,
+      "severity_weighted_errors": 0
+    },
+    {
+      "n_noise": 2,
+      "added": "resolved_dx",
+      "judge_score": 9,
+      "gates_failed": [
+        "intended_use"
+      ],
+      "gates_applicable": 5,
+      "gold_recall": 1.0,
+      "severity_weighted_errors": 0
+    },
+    {
+      "n_noise": 3,
+      "added": "conflicting_labs",
+      "judge_score": 9,
+      "gates_failed": [
+        "contradiction",
+        "intended_use"
+      ],
+      "gates_applicable": 6,
+      "gold_recall": 1.0,
+      "severity_weighted_errors": 2
+    },
+    {
+      "n_noise": 4,
+      "added": "copied_forward",
+      "judge_score": 3,
+      "gates_failed": [
+        "contradiction",
+        "intended_use"
+      ],
+      "gates_applicable": 6,
+      "gold_recall": 1.0,
+      "severity_weighted_errors": 2
+    },
+    {
+      "n_noise": 5,
+      "added": "date_mismatch",
+      "judge_score": 6,
+      "gates_failed": [
+        "contradiction",
+        "intended_use"
+      ],
+      "gates_applicable": 7,
+      "gold_recall": 1.0,
+      "severity_weighted_errors": 2
+    },
+    {
+      "n_noise": 6,
+      "added": "negation",
+      "judge_score": 6,
+      "gates_failed": [
+        "contradiction",
+        "intended_use"
+      ],
+      "gates_applicable": 8,
+      "gold_recall": 1.0,
+      "severity_weighted_errors": 2
+    }
+  ],
+  "n_variants": 9,
+  "n_judged_7plus": 5,
+  "n_judged_7plus_but_gate_failed": 4,
+  "n_judged_7plus_but_clinical_gate_failed": 1,
+  "judged_7plus_but_clinical_gate_failed": [
+    {
+      "name": "ladder:3",
+      "judge_score": 9,
+      "failed": [
+        "contradiction"
+      ]
+    }
+  ],
+  "judge_gate_agreement": 0.5555555555555556,
+  "all_runs": [
+    {
+      "name": "main",
+      "style": "brief",
+      "noise": [
+        "conflicting_labs",
+        "copied_forward",
+        "date_mismatch",
+        "discontinued_med",
+        "negation",
+        "resolved_dx"
+      ],
+      "judge_score": 6,
+      "judge_rationale": "Summary is mostly accurate with proper citations, but contains critical medication discrepancy: D8.2 contradicts D2.1 and D3.3 (metformin dose and lisinopril status). This inconsistency undermines clinical reliability despite otherwise good organization.",
+      "gates_failed": [
+        "contradiction",
+        "intended_use"
+      ],
+      "released": false,
+      "layer2": {
+        "n_claims": 13,
+        "gold_recall": 1.0,
+        "gold_supported_by_governing_source": 1.0,
+        "supported_claim_rate": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "severity_weighted_errors": 2,
+        "omitted_items": 0
+      },
+      "audit": [
+        {
+          "item": "Type 2 diabetes",
+          "expected": "active",
+          "said": "Type 2 diabetes mellitus diagnosed 2016 [active]; Diabetes suboptimally controlled [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Hypertension",
+          "expected": "active",
+          "said": "Hypertension on treatment [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Metformin 1000 mg BID (since 2024-06-10)",
+          "expected": "active",
+          "said": "Metformin increased to 1000 mg twice daily [active]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Losartan 50 mg daily (started 2024-09-03)",
+          "expected": "active",
+          "said": "Losartan 50 mg daily started [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "HbA1c 7.2% (lab) vs 8.1% (letter): conflict",
+          "expected": "conflicting",
+          "said": "HbA1c 8.1% (worsening glycemic control) [active]",
+          "verdict": "SILENTLY RESOLVED",
+          "severity": 2
+        },
+        {
+          "item": "Fall with L distal radius fracture on 2025-01-14",
+          "expected": "historical",
+          "said": "Left distal radius fracture from fall [resolved]",
+          "verdict": "ok",
+          "severity": 1
+        },
+        {
+          "item": "Lisinopril stopped 2024-09-03 (cough)",
+          "expected": "discontinued",
+          "said": "Lisinopril discontinued due to ACE inhibitor-induced cough [discontinued]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Pneumonia 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia with acute kidney injury (2023) [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Acute kidney injury 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia with acute kidney injury (2023) [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "DVT ruled out (Doppler 2025-02-02)",
+          "expected": "negated",
+          "said": "DVT ruled out on left leg ultrasound [negated]",
+          "verdict": "ok",
+          "severity": 3
+        }
+      ],
+      "summary_text": "67-year-old man with type 2 diabetes (diagnosed 2016) and hypertension. Diabetes suboptimally controlled despite metformin escalation to 1000 mg twice daily; recent HbA1c 8.1% suggests worsening glycemic control, with SGLT2 inhibitor consideration pending. ACE inhibitor switched to losartan in September 2024 due to persistent dry cough. Recent labs show eGFR 68 mL/min/1.73m\u00b2 (mild renal impairment). History of community-acquired pneumonia with acute kidney injury (2023, resolved). Recent left distal radius fracture from fall (January 2025) treated conservatively with successful physiotherapy. DVT ruled out on left leg ultrasound (February 2025).",
+      "gate_reasons": {
+        "contradiction": [
+          "conflicting HbA1c silently resolved to one value"
+        ],
+        "intended_use": [
+          "no intended-use / verify-against-source statement"
+        ]
+      }
+    },
+    {
+      "name": "style:careful",
+      "style": "careful",
+      "noise": [
+        "conflicting_labs",
+        "copied_forward",
+        "date_mismatch",
+        "discontinued_med",
+        "negation",
+        "resolved_dx"
+      ],
+      "judge_score": 7,
+      "judge_rationale": "Well-structured with appropriate citations and explicit conflict flagging. However, unresolved medication discrepancies (metformin dose, lisinopril reappearance in D8.2) and conflicting HbA1c values require urgent clarification before clinical use.",
+      "gates_failed": [],
+      "released": true,
+      "layer2": {
+        "n_claims": 13,
+        "gold_recall": 1.0,
+        "gold_supported_by_governing_source": 1.0,
+        "supported_claim_rate": 0.8461538461538461,
+        "unsupported_claim_rate": 0.15384615384615385,
+        "severity_weighted_errors": 0,
+        "omitted_items": 0
+      },
+      "audit": [
+        {
+          "item": "Type 2 diabetes",
+          "expected": "active",
+          "said": "Type 2 diabetes mellitus diagnosed 2016, suboptimally controlled [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Hypertension",
+          "expected": "active",
+          "said": "Hypertension on treatment [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Metformin 1000 mg BID (since 2024-06-10)",
+          "expected": "active",
+          "said": "Metformin 1000 mg twice daily (increased 2024-06-10); however, family medicine note 2025-03-20 lists 500 mg tw",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Losartan 50 mg daily (started 2024-09-03)",
+          "expected": "active",
+          "said": "Losartan 50 mg daily started 2024-09-03 [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "HbA1c 7.2% (lab) vs 8.1% (letter): conflict",
+          "expected": "conflicting",
+          "said": "HbA1c 7.2% (2025-02-11) versus 8.1% (2025-03-05): conflicting recent glycaemic control values [conflicting]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Fall with L distal radius fracture on 2025-01-14",
+          "expected": "historical",
+          "said": "Left distal radius fracture from fall at home 2025-01-14, treated in cast, completed physiotherapy [resolved]",
+          "verdict": "ok",
+          "severity": 1
+        },
+        {
+          "item": "Lisinopril stopped 2024-09-03 (cough)",
+          "expected": "discontinued",
+          "said": "Lisinopril 10 mg daily discontinued 2024-09-03 due to ACE inhibitor-induced dry cough [discontinued]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Pneumonia 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia (right lower lobe) admitted 2023-02-24, resolved by discharge 2023-03-02 [resolve",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Acute kidney injury 2023, resolved",
+          "expected": "resolved",
+          "said": "Acute kidney injury on admission (creatinine 168 umol/L) resolved by discharge with IV fluids [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "DVT ruled out (Doppler 2025-02-02)",
+          "expected": "negated",
+          "said": "Left leg venous Doppler ultrasound negative for DVT (2025-02-02) [negated]",
+          "verdict": "ok",
+          "severity": 3
+        }
+      ],
+      "summary_text": "SP-0187 is a 67-year-old man with type 2 diabetes mellitus (diagnosed 2016) and hypertension. ACTIVE PROBLEMS: Type 2 diabetes with suboptimal glycaemic control\u2014HbA1c 7.2% as of 2025-02-11 (D5.1), though endocrinology noted worsening to 8.1% at their 2025-03-05 visit (D7.1); note conflict between these two recent values. Mild chronic kidney disease with eGFR 68 mL/min/1.73m\u00b2 (2025-02-11) (D5.2). Hypertension on treatment. RESOLVED/HISTORICAL PROBLEMS: Community-acquired pneumonia (right lower lobe) admitted 2023-02-24, resolved by discharge 2023-03-02 with follow-up chest X-ray clear 2023-04-10 (D4.1, D4.3). Acute kidney injury on admission (creatinine 168 umol/L) resolved by discharge with IV fluids (D4.2). Left calf swelling after long flight (2025-02-02)\u2014venous Doppler ultrasound negative for DVT (D6.2, D6.3). Left distal radius fracture from fall at home 2025-01-14, treated in cast, completed physiotherapy with near-normal wrist range of motion (D9.1, D9.2). CURRENT MEDICATIONS: Metformin 1000 mg twice daily (increased from 500 mg on 2024-06-10) (D2.1, D7.1); however, a family medicine note dated 2025-03-20 lists metformin 500 mg twice daily (D8.2)\u2014source conflict noted. Losartan 50 mg daily (started 2024-09-03 after lisinopril discontinued same day due to ACE inhibitor-induced cough) (D3.2, D3.3). DISCONTINUED MEDICATIONS: Lisinopril 10 mg daily stopped 2024-09-03 (D3.2). No known drug allergies (D2.2). Endocrinology plan includes consideration of SGLT2 inhibitor at next visit (D7.1). This is an AI-generated summary for clinician review and must be verified against the cited source segments.",
+      "gate_reasons": {}
+    },
+    {
+      "name": "style:naive",
+      "style": "naive",
+      "noise": [
+        "conflicting_labs",
+        "copied_forward",
+        "date_mismatch",
+        "discontinued_med",
+        "negation",
+        "resolved_dx"
+      ],
+      "judge_score": 3,
+      "judge_rationale": "Critical medication discrepancy: D8.2 contradicts D3.2/D3.3 (lisinopril 10mg vs losartan 50mg). Summary follows D3 but D8 (2025-03-20) is more recent, creating dangerous ambiguity about current medications.",
+      "gates_failed": [
+        "med_bounds",
+        "contradiction",
+        "intended_use"
+      ],
+      "released": false,
+      "layer2": {
+        "n_claims": 12,
+        "gold_recall": 1.0,
+        "gold_supported_by_governing_source": 1.0,
+        "supported_claim_rate": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "severity_weighted_errors": 5,
+        "omitted_items": 0
+      },
+      "audit": [
+        {
+          "item": "Type 2 diabetes",
+          "expected": "active",
+          "said": "Type 2 diabetes mellitus diagnosed 2016, suboptimally controlled [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Hypertension",
+          "expected": "active",
+          "said": "Hypertension on treatment [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Metformin 1000 mg BID (since 2024-06-10)",
+          "expected": "active",
+          "said": "Metformin 1000 mg twice daily [active]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Losartan 50 mg daily (started 2024-09-03)",
+          "expected": "active",
+          "said": "Losartan 50 mg daily started; lisinopril discontinued due to ACE inhibitor-induced dry cough [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "HbA1c 7.2% (lab) vs 8.1% (letter): conflict",
+          "expected": "conflicting",
+          "said": "HbA1c 8.1% (worsening glycemic control) [active]",
+          "verdict": "SILENTLY RESOLVED",
+          "severity": 2
+        },
+        {
+          "item": "Fall with L distal radius fracture on 2025-01-14",
+          "expected": "historical",
+          "said": "Left distal radius fracture from fall at home, treated in cast [resolved]",
+          "verdict": "ok",
+          "severity": 1
+        },
+        {
+          "item": "Lisinopril stopped 2024-09-03 (cough)",
+          "expected": "discontinued",
+          "said": "Losartan 50 mg daily started; lisinopril discontinued due to ACE inhibitor-induced dry cough [active]",
+          "verdict": "STOP DATE MISSING",
+          "severity": 3
+        },
+        {
+          "item": "Pneumonia 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia right lower lobe treated with IV ceftriaxone [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Acute kidney injury 2023, resolved",
+          "expected": "resolved",
+          "said": "Acute kidney injury on admission (creatinine 168 umol/L), resolved with IV fluids [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "DVT ruled out (Doppler 2025-02-02)",
+          "expected": "negated",
+          "said": "Left leg venous Doppler ultrasound negative for deep vein thrombosis [negated]",
+          "verdict": "ok",
+          "severity": 3
+        }
+      ],
+      "summary_text": "67-year-old man with type 2 diabetes mellitus (suboptimally controlled, worsening glycemic control) and hypertension. Recent medication changes include metformin dose increase to 1000 mg twice daily and switch from lisinopril to losartan due to ACE inhibitor-induced cough. Recent labs show HbA1c 8.1% and eGFR 68 mL/min/1.73m2. History of community-acquired pneumonia with acute kidney injury in 2023 (resolved), negative DVT workup in February 2025, and left distal radius fracture from fall in January 2025 (completed physiotherapy). No known drug allergies.",
+      "gate_reasons": {
+        "med_bounds": [
+          "lisinopril stop date missing"
+        ],
+        "contradiction": [
+          "conflicting HbA1c silently resolved to one value"
+        ],
+        "intended_use": [
+          "no intended-use / verify-against-source statement"
+        ]
+      }
+    },
+    {
+      "name": "ladder:0",
+      "style": "brief",
+      "noise": [],
+      "judge_score": 9,
+      "judge_rationale": "Accurate, well-cited summary with appropriate clinical detail. Minor: chronological ordering of ED note (D9, dated 2025-01-14) could be clearer relative to lab/consult dates. Excellent completeness and usefulness for clinicians.",
+      "gates_failed": [
+        "intended_use"
+      ],
+      "released": false,
+      "layer2": {
+        "n_claims": 12,
+        "gold_recall": 1.0,
+        "gold_supported_by_governing_source": 1.0,
+        "supported_claim_rate": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "severity_weighted_errors": 0,
+        "omitted_items": 0
+      },
+      "audit": [
+        {
+          "item": "Type 2 diabetes",
+          "expected": "active",
+          "said": "Type 2 diabetes mellitus diagnosed 2016 [active]; Diabetes suboptimally controlled at initial presentation [hi",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Hypertension",
+          "expected": "active",
+          "said": "Hypertension on treatment [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Metformin 1000 mg BID (since 2024-06-10)",
+          "expected": "active",
+          "said": "Metformin increased to 1000 mg twice daily [active]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Losartan 50 mg daily",
+          "expected": "active",
+          "said": "Losartan 50 mg daily [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "HbA1c 7.2%",
+          "expected": "active",
+          "said": "HbA1c 7.2% [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Fall with L distal radius fracture on 2025-01-14",
+          "expected": "historical",
+          "said": "Left distal radius fracture from fall at home [active]",
+          "verdict": "ok",
+          "severity": 1
+        }
+      ],
+      "summary_text": "67-year-old man with type 2 diabetes (diagnosed 2016) and hypertension. Diabetes suboptimally controlled initially but improving with intensified therapy. Current metformin 1000 mg twice daily (increased June 2024) with recent HbA1c 7.2%. Blood pressure controlled on losartan 50 mg daily. Mild renal impairment (eGFR 68). Endocrinology recommends considering SGLT2 inhibitor addition. Recent left distal radius fracture from fall. No drug allergies. Tolerating current regimen well.",
+      "gate_reasons": {
+        "intended_use": [
+          "no intended-use / verify-against-source statement"
+        ]
+      }
+    },
+    {
+      "name": "ladder:1",
+      "style": "brief",
+      "noise": [
+        "discontinued_med"
+      ],
+      "judge_score": 9,
+      "judge_rationale": "Accurate, well-cited, comprehensive summary with proper chronology. Minor: eGFR interpretation as 'mild renal impairment' is reasonable but not explicitly stated in source. Excellent clinical utility.",
+      "gates_failed": [
+        "intended_use"
+      ],
+      "released": false,
+      "layer2": {
+        "n_claims": 12,
+        "gold_recall": 1.0,
+        "gold_supported_by_governing_source": 1.0,
+        "supported_claim_rate": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "severity_weighted_errors": 0,
+        "omitted_items": 0
+      },
+      "audit": [
+        {
+          "item": "Type 2 diabetes",
+          "expected": "active",
+          "said": "Type 2 diabetes mellitus diagnosed 2016, suboptimally controlled [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Hypertension",
+          "expected": "active",
+          "said": "Hypertension on treatment [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Metformin 1000 mg BID (since 2024-06-10)",
+          "expected": "active",
+          "said": "Metformin increased to 1000 mg twice daily [active]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Losartan 50 mg daily (started 2024-09-03)",
+          "expected": "active",
+          "said": "Losartan 50 mg daily initiated [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "HbA1c 7.2%",
+          "expected": "active",
+          "said": "HbA1c 7.2% [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Fall with L distal radius fracture on 2025-01-14",
+          "expected": "historical",
+          "said": "Left distal radius fracture from fall at home [active]",
+          "verdict": "ok",
+          "severity": 1
+        },
+        {
+          "item": "Lisinopril stopped 2024-09-03 (cough)",
+          "expected": "discontinued",
+          "said": "Persistent dry cough attributed to ACE inhibitor [resolved]; Lisinopril 10 mg daily discontinued [discontinued",
+          "verdict": "ok",
+          "severity": 3
+        }
+      ],
+      "summary_text": "67-year-old man with type 2 diabetes (diagnosed 2016) and hypertension referred to endocrinology for suboptimal glycemic control. Metformin escalated to 1000 mg twice daily as of June 2024. Lisinopril discontinued September 2024 due to persistent dry cough; switched to losartan 50 mg daily. Recent HbA1c 7.2% (February 2025) with eGFR 68 mL/min/1.73m\u00b2. Endocrinology recommends continuing current metformin dose with consideration of SGLT2 inhibitor at next visit. Recent left distal radius fracture from fall (January 2025). Currently asymptomatic on present regimen.",
+      "gate_reasons": {
+        "intended_use": [
+          "no intended-use / verify-against-source statement"
+        ]
+      }
+    },
+    {
+      "name": "ladder:2",
+      "style": "brief",
+      "noise": [
+        "discontinued_med",
+        "resolved_dx"
+      ],
+      "judge_score": 9,
+      "judge_rationale": "Accurate, well-cited, comprehensive summary with appropriate clinical context. Minor: could note eGFR trend or SGLT2 inhibitor caution given renal function, but overall excellent for clinical use.",
+      "gates_failed": [
+        "intended_use"
+      ],
+      "released": false,
+      "layer2": {
+        "n_claims": 12,
+        "gold_recall": 1.0,
+        "gold_supported_by_governing_source": 1.0,
+        "supported_claim_rate": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "severity_weighted_errors": 0,
+        "omitted_items": 0
+      },
+      "audit": [
+        {
+          "item": "Type 2 diabetes",
+          "expected": "active",
+          "said": "Type 2 diabetes mellitus diagnosed 2016 [active]; Diabetes suboptimally controlled [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Hypertension",
+          "expected": "active",
+          "said": "Hypertension on treatment [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Metformin 1000 mg BID (since 2024-06-10)",
+          "expected": "active",
+          "said": "Metformin 1000 mg twice daily [active]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Losartan 50 mg daily (started 2024-09-03)",
+          "expected": "active",
+          "said": "Losartan 50 mg daily started [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "HbA1c 7.2%",
+          "expected": "active",
+          "said": "HbA1c 7.2% [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Fall with L distal radius fracture on 2025-01-14",
+          "expected": "historical",
+          "said": "Left distal radius fracture from fall [active]",
+          "verdict": "ok",
+          "severity": 1
+        },
+        {
+          "item": "Lisinopril stopped 2024-09-03 (cough)",
+          "expected": "discontinued",
+          "said": "Lisinopril discontinued due to ACE inhibitor-induced cough [discontinued]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Pneumonia 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia with acute kidney injury (2023) [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Acute kidney injury 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia with acute kidney injury (2023) [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        }
+      ],
+      "summary_text": "67-year-old man with type 2 diabetes (diagnosed 2016) suboptimally controlled on metformin 1000 mg twice daily, currently achieving HbA1c 7.2%. Hypertension managed with losartan 50 mg daily after switching from lisinopril due to ACE inhibitor-induced cough. Recent labs show eGFR 68 mL/min/1.73m\u00b2, indicating mild renal impairment. History of community-acquired pneumonia (2023) with transient acute kidney injury, now resolved. Recent left distal radius fracture from fall (January 2025). Endocrinology recommends considering SGLT2 inhibitor addition at next visit. No known drug allergies.",
+      "gate_reasons": {
+        "intended_use": [
+          "no intended-use / verify-against-source statement"
+        ]
+      }
+    },
+    {
+      "name": "ladder:3",
+      "style": "brief",
+      "noise": [
+        "conflicting_labs",
+        "discontinued_med",
+        "resolved_dx"
+      ],
+      "judge_score": 9,
+      "judge_rationale": "Accurate, well-cited, clinically relevant summary. Minor: D5.1 HbA1c 7.2% not mentioned despite being more recent than D7.1's 8.1%, creating potential timeline ambiguity. Otherwise excellent documentation.",
+      "gates_failed": [
+        "contradiction",
+        "intended_use"
+      ],
+      "released": false,
+      "layer2": {
+        "n_claims": 10,
+        "gold_recall": 1.0,
+        "gold_supported_by_governing_source": 1.0,
+        "supported_claim_rate": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "severity_weighted_errors": 2,
+        "omitted_items": 0
+      },
+      "audit": [
+        {
+          "item": "Type 2 diabetes",
+          "expected": "active",
+          "said": "Type 2 diabetes mellitus diagnosed 2016 [active]; Diabetes suboptimally controlled [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Hypertension",
+          "expected": "active",
+          "said": "Hypertension on treatment [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Metformin 1000 mg BID (since 2024-06-10)",
+          "expected": "active",
+          "said": "Metformin 1000 mg twice daily [active]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Losartan 50 mg daily (started 2024-09-03)",
+          "expected": "active",
+          "said": "Losartan 50 mg daily (switched from lisinopril due to ACE inhibitor cough) [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "HbA1c 7.2% (lab) vs 8.1% (letter): conflict",
+          "expected": "conflicting",
+          "said": "HbA1c 8.1% (worsening glycaemic control) [active]",
+          "verdict": "SILENTLY RESOLVED",
+          "severity": 2
+        },
+        {
+          "item": "Fall with L distal radius fracture on 2025-01-14",
+          "expected": "historical",
+          "said": "Left distal radius fracture from fall [active]",
+          "verdict": "ok",
+          "severity": 1
+        },
+        {
+          "item": "Lisinopril stopped 2024-09-03 (cough)",
+          "expected": "discontinued",
+          "said": "Losartan 50 mg daily (switched from lisinopril due to ACE inhibitor cough) [active]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Pneumonia 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia with acute kidney injury (2023) [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Acute kidney injury 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia with acute kidney injury (2023) [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        }
+      ],
+      "summary_text": "67-year-old man with type 2 diabetes (diagnosed 2016) and hypertension. Diabetes suboptimally controlled despite metformin escalation to 1000 mg twice daily; recent HbA1c 8.1% suggests worsening glycaemic control. Switched from lisinopril to losartan in September 2024 due to ACE inhibitor-induced cough. Recent labs show eGFR 68 mL/min/1.73m\u00b2 (mild renal impairment). History of community-acquired pneumonia with acute kidney injury in 2023 (resolved). Recent left distal radius fracture from fall. Endocrinology recommends continuing metformin and considering SGLT2 inhibitor addition.",
+      "gate_reasons": {
+        "contradiction": [
+          "conflicting HbA1c silently resolved to one value"
+        ],
+        "intended_use": [
+          "no intended-use / verify-against-source statement"
+        ]
+      }
+    },
+    {
+      "name": "ladder:4",
+      "style": "brief",
+      "noise": [
+        "conflicting_labs",
+        "copied_forward",
+        "discontinued_med",
+        "resolved_dx"
+      ],
+      "judge_score": 3,
+      "judge_rationale": "Critical medication discrepancies: D8.2 contradicts D2.1 and D3.2-D3.3 (metformin dose, lisinopril/losartan status). HbA1c values conflict (7.2% vs 8.1%). Summary unreliable for clinical decision-making.",
+      "gates_failed": [
+        "contradiction",
+        "intended_use"
+      ],
+      "released": false,
+      "layer2": {
+        "n_claims": 12,
+        "gold_recall": 1.0,
+        "gold_supported_by_governing_source": 1.0,
+        "supported_claim_rate": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "severity_weighted_errors": 2,
+        "omitted_items": 0
+      },
+      "audit": [
+        {
+          "item": "Type 2 diabetes",
+          "expected": "active",
+          "said": "Type 2 diabetes mellitus diagnosed 2016 [active]; Diabetes suboptimally controlled [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Hypertension",
+          "expected": "active",
+          "said": "Hypertension on treatment [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Metformin 1000 mg BID (since 2024-06-10)",
+          "expected": "active",
+          "said": "Metformin increased to 1000 mg twice daily [active]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Losartan 50 mg daily (started 2024-09-03)",
+          "expected": "active",
+          "said": "Losartan 50 mg daily started [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "HbA1c 7.2% (lab) vs 8.1% (letter): conflict",
+          "expected": "conflicting",
+          "said": "HbA1c 8.1% (most recent) [active]",
+          "verdict": "SILENTLY RESOLVED",
+          "severity": 2
+        },
+        {
+          "item": "Fall with L distal radius fracture on 2025-01-14",
+          "expected": "historical",
+          "said": "Left distal radius fracture from fall [active]",
+          "verdict": "ok",
+          "severity": 1
+        },
+        {
+          "item": "Lisinopril stopped 2024-09-03 (cough)",
+          "expected": "discontinued",
+          "said": "Lisinopril discontinued due to ACE inhibitor-induced cough [discontinued]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Pneumonia 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia with acute kidney injury (2023) [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Acute kidney injury 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia with acute kidney injury (2023) [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        }
+      ],
+      "summary_text": "67-year-old man with type 2 diabetes (diagnosed 2016) and hypertension. Diabetes suboptimally controlled despite metformin escalation to 1000 mg twice daily; recent HbA1c 8.1% suggests worsening glycemic control. Lisinopril discontinued in September 2024 due to ACE inhibitor-induced cough; switched to losartan. Recent labs show eGFR 68 mL/min/1.73m\u00b2 and HbA1c 7.2%. History of community-acquired pneumonia (2023) with transient acute kidney injury, now resolved. Recent fall with left distal radius fracture (January 2025). Endocrinology recommends continuing metformin and considering SGLT2 inhibitor addition.",
+      "gate_reasons": {
+        "contradiction": [
+          "conflicting HbA1c silently resolved to one value"
+        ],
+        "intended_use": [
+          "no intended-use / verify-against-source statement"
+        ]
+      }
+    },
+    {
+      "name": "ladder:5",
+      "style": "brief",
+      "noise": [
+        "conflicting_labs",
+        "copied_forward",
+        "date_mismatch",
+        "discontinued_med",
+        "resolved_dx"
+      ],
+      "judge_score": 6,
+      "judge_rationale": "Summary is well-structured with good citations, but contains critical medication discrepancy: lisinopril listed as active 2025-03-20 despite documented discontinuation 2024-09-03. This error undermines clinical reliability despite otherwise accurate content.",
+      "gates_failed": [
+        "contradiction",
+        "intended_use"
+      ],
+      "released": false,
+      "layer2": {
+        "n_claims": 13,
+        "gold_recall": 1.0,
+        "gold_supported_by_governing_source": 1.0,
+        "supported_claim_rate": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "severity_weighted_errors": 2,
+        "omitted_items": 0
+      },
+      "audit": [
+        {
+          "item": "Type 2 diabetes",
+          "expected": "active",
+          "said": "Type 2 diabetes mellitus diagnosed 2016 [active]; Diabetes suboptimally controlled [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Hypertension",
+          "expected": "active",
+          "said": "Hypertension on treatment [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Metformin 1000 mg BID (since 2024-06-10)",
+          "expected": "active",
+          "said": "Metformin 1000 mg twice daily [active]",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Losartan 50 mg daily (started 2024-09-03)",
+          "expected": "active",
+          "said": "Losartan 50 mg daily started [active]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "HbA1c 7.2% (lab) vs 8.1% (letter): conflict",
+          "expected": "conflicting",
+          "said": "HbA1c 8.1% (worsening glycemic control) [active]",
+          "verdict": "SILENTLY RESOLVED",
+          "severity": 2
+        },
+        {
+          "item": "Fall with L distal radius fracture on 2025-01-14",
+          "expected": "historical",
+          "said": "Left distal radius fracture from fall [resolved]",
+          "verdict": "ok",
+          "severity": 1
+        },
+        {
+          "item": "Lisinopril stopped 2024-09-03 (cough)",
+          "expected": "discontinued",
+          "said": "Lisinopril discontinued due to ACE inhibitor-induced cough [discontinued]; Conflicting medication documentatio",
+          "verdict": "ok",
+          "severity": 3
+        },
+        {
+          "item": "Pneumonia 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia with acute kidney injury (2023) [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        },
+        {
+          "item": "Acute kidney injury 2023, resolved",
+          "expected": "resolved",
+          "said": "Community-acquired pneumonia with acute kidney injury (2023) [resolved]",
+          "verdict": "ok",
+          "severity": 2
+        }
+      ],
+      "summary_text": "67-year-old man with type 2 diabetes (diagnosed 2016) and hypertension. Diabetes suboptimally controlled despite metformin escalation to 1000 mg twice daily; recent HbA1c 8.1% suggests worsening glycemic control, with SGLT2 inhibitor consideration pending. ACE inhibitor switched to losartan in September 2024 due to persistent dry cough. Recent labs show eGFR 68 mL/min/1.73m2 (mildly reduced). History of community-acquired pneumonia with acute kidney injury in 2023 (resolved). Recent left distal radius fracture from fall (January 2025) treated conservatively with good physiotherapy recovery. No drug allergies.",
+      "gate_reasons": {
+        "contradiction": [
+          "conflicting HbA1c silently resolved to one value"
+        ],
+        "intended_use": [
+          "no intended-use / verify-against-source statement"
+        ]
+      }
+    }
+  ],
+  "runtime_sec": 32.6
+}

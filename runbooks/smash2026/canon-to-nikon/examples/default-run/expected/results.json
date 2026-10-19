@@ -1,0 +1,722 @@
+{
+  "params": {
+    "task": "Diabetic Retinopathy",
+    "classifier": "best",
+    "resolution": "best",
+    "budget_brl": 1900000,
+    "n_sites": 40,
+    "patients_per_site": 1000,
+    "prevalence_pct": 10,
+    "specificity": 0.9,
+    "recapture_pct": 50,
+    "shift_strength": 1.0,
+    "seed": 7,
+    "runbook_url": ""
+  },
+  "caveats_from_inputs": [],
+  "task": "Diabetic Retinopathy",
+  "calculator_task": "Diabetic Retinopathy",
+  "classifier": "LR",
+  "resolution": 672,
+  "config_is_table2": true,
+  "selected": {
+    "internal": 0.94,
+    "external": 0.946,
+    "delta": -0.006000000000000005,
+    "int_ci": [
+      0.916,
+      0.963
+    ],
+    "ext_ci": [
+      0.932,
+      0.957
+    ]
+  },
+  "per_task": [
+    {
+      "task": "DR Staging (ICDR)",
+      "metric": "QWK",
+      "internal": 0.637,
+      "external": 0.503,
+      "delta": 0.134,
+      "ci_overlap": false,
+      "table2": {
+        "alg": "HGB",
+        "res": 392,
+        "internal": 0.692,
+        "external": 0.527
+      },
+      "delta_min": -0.119,
+      "delta_max": 0.23999999999999996,
+      "delta_mean": 0.10838699999999998
+    },
+    {
+      "task": "Diabetic Retinopathy",
+      "metric": "AUROC",
+      "internal": 0.94,
+      "external": 0.946,
+      "delta": -0.006000000000000005,
+      "ci_overlap": true,
+      "table2": {
+        "alg": "LR",
+        "res": 672,
+        "internal": 0.94,
+        "external": 0.946
+      },
+      "delta_min": -0.019000000000000017,
+      "delta_max": 0.02300000000000002,
+      "delta_mean": -5.551115123125783e-18
+    },
+    {
+      "task": "AMD",
+      "metric": "AUROC",
+      "internal": 0.975,
+      "external": 0.915,
+      "delta": 0.05999999999999994,
+      "ci_overlap": false,
+      "table2": {
+        "alg": "LR",
+        "res": 952,
+        "internal": 0.976,
+        "external": 0.909
+      },
+      "delta_min": 0.019000000000000017,
+      "delta_max": 0.19500000000000006,
+      "delta_mean": 0.10639999999999998
+    },
+    {
+      "task": "Hemorrhage",
+      "metric": "AUROC",
+      "internal": 0.804,
+      "external": 0.569,
+      "delta": 0.2350000000000001,
+      "ci_overlap": true,
+      "table2": {
+        "alg": "LR",
+        "res": 672,
+        "internal": 0.804,
+        "external": 0.569
+      },
+      "delta_min": -0.039000000000000035,
+      "delta_max": 0.2350000000000001,
+      "delta_mean": 0.08935
+    },
+    {
+      "task": "Hypertensive Retinopathy",
+      "metric": "AUROC",
+      "internal": 0.822,
+      "external": 0.599,
+      "delta": 0.22299999999999998,
+      "ci_overlap": false,
+      "table2": {
+        "alg": "RF",
+        "res": 392,
+        "internal": 0.864,
+        "external": 0.69
+      },
+      "delta_min": 0.09899999999999998,
+      "delta_max": 0.276,
+      "delta_mean": 0.17225
+    },
+    {
+      "task": "Increased Cup/Disc",
+      "metric": "AUROC",
+      "internal": 0.868,
+      "external": 0.852,
+      "delta": 0.016000000000000014,
+      "ci_overlap": true,
+      "table2": {
+        "alg": "SVM",
+        "res": 392,
+        "internal": 0.871,
+        "external": 0.85
+      },
+      "delta_min": 0.006000000000000005,
+      "delta_max": 0.05699999999999994,
+      "delta_mean": 0.027449999999999992
+    },
+    {
+      "task": "Macular Edema",
+      "metric": "AUROC",
+      "internal": 0.927,
+      "external": 0.99,
+      "delta": -0.06299999999999994,
+      "ci_overlap": false,
+      "table2": {
+        "alg": "RF",
+        "res": 392,
+        "internal": 0.952,
+        "external": 0.952
+      },
+      "delta_min": -0.08699999999999997,
+      "delta_max": 0.005999999999999894,
+      "delta_mean": -0.04304999999999998
+    },
+    {
+      "task": "Myopic Fundus",
+      "metric": "AUROC",
+      "internal": 0.989,
+      "external": 0.978,
+      "delta": 0.01100000000000001,
+      "ci_overlap": true,
+      "table2": {
+        "alg": "SVM",
+        "res": 952,
+        "internal": 0.991,
+        "external": 0.975
+      },
+      "delta_min": -0.015000000000000013,
+      "delta_max": 0.05700000000000005,
+      "delta_mean": 0.008350000000000007
+    },
+    {
+      "task": "Nevus",
+      "metric": "AUROC",
+      "internal": 0.832,
+      "external": 0.775,
+      "delta": 0.05699999999999994,
+      "ci_overlap": true,
+      "table2": {
+        "alg": "LR",
+        "res": 952,
+        "internal": 0.84,
+        "external": 0.795
+      },
+      "delta_min": -0.15100000000000002,
+      "delta_max": 0.05699999999999994,
+      "delta_mean": -0.03610000000000002
+    },
+    {
+      "task": "Other",
+      "metric": "AUROC",
+      "internal": 0.812,
+      "external": 0.727,
+      "delta": 0.08500000000000008,
+      "ci_overlap": false,
+      "table2": {
+        "alg": "LR",
+        "res": 952,
+        "internal": 0.828,
+        "external": 0.74
+      },
+      "delta_min": 0.009000000000000008,
+      "delta_max": 0.1130000000000001,
+      "delta_mean": 0.06850000000000005
+    },
+    {
+      "task": "Scar",
+      "metric": "AUROC",
+      "internal": 0.959,
+      "external": 0.957,
+      "delta": 0.0020000000000000018,
+      "ci_overlap": true,
+      "table2": {
+        "alg": "LR",
+        "res": 392,
+        "internal": 0.964,
+        "external": 0.955
+      },
+      "delta_min": -0.04599999999999993,
+      "delta_max": 0.026000000000000023,
+      "delta_mean": -0.007999999999999985
+    },
+    {
+      "task": "Vascular Occlusion",
+      "metric": "AUROC",
+      "internal": 0.917,
+      "external": 0.943,
+      "delta": -0.025999999999999912,
+      "ci_overlap": true,
+      "table2": {
+        "alg": "RF",
+        "res": 392,
+        "internal": 0.954,
+        "external": 0.906
+      },
+      "delta_min": -0.049000000000000044,
+      "delta_max": 0.124,
+      "delta_mean": 0.023449999999999988
+    }
+  ],
+  "most_fragile_task": "Hemorrhage",
+  "most_fragile_delta": 0.2350000000000001,
+  "gap_variance_share": {
+    "task": 0.67298775323751,
+    "classifier": 0.009033478770874374,
+    "resolution": 0.002138691025776724,
+    "interactions/other": 0.31584007696583893
+  },
+  "resolution_952_vs_224_shrinks_gap": [
+    "Hemorrhage",
+    "Macular Edema"
+  ],
+  "resolution_952_vs_224_widens_gap": [
+    "Diabetic Retinopathy",
+    "AMD",
+    "Hypertensive Retinopathy",
+    "Myopic Fundus",
+    "Nevus",
+    "Vascular Occlusion"
+  ],
+  "best_case_gap_any_config": {
+    "Diabetic Retinopathy": -0.019000000000000017,
+    "AMD": 0.019000000000000017,
+    "Hemorrhage": -0.039000000000000035,
+    "Hypertensive Retinopathy": 0.09899999999999998,
+    "Increased Cup/Disc": 0.006000000000000005,
+    "Macular Edema": -0.08699999999999997,
+    "Myopic Fundus": -0.015000000000000013,
+    "Nevus": -0.15100000000000002,
+    "Other": 0.009000000000000008,
+    "Scar": -0.04599999999999993,
+    "Vascular Occlusion": -0.049000000000000044
+  },
+  "lr_gap_range_hemorrhage_hypertensive": {
+    "Hemorrhage": [
+      0.134,
+      0.2350000000000001
+    ],
+    "Hypertensive Retinopathy": [
+      0.16600000000000004,
+      0.276
+    ]
+  },
+  "constants": {
+    "inadequate_canon": 0.0879,
+    "inadequate_nikon": 0.186,
+    "price_canon_brl": 95000,
+    "price_nikon_brl": 35000,
+    "price_ratio": 2.7142857142857144,
+    "inadequacy_ratio": 2.1160409556313993
+  },
+  "calculator": {
+    "budget_brl": 1900000.0,
+    "n_sites": 40,
+    "patients_per_site": 1000,
+    "prevalence": 0.1,
+    "specificity": 0.9,
+    "recapture": 0.5,
+    "auroc_canon_sites": 0.94,
+    "auroc_nikon_sites": 0.946,
+    "canon_site": {
+      "graded": 0.95605,
+      "sens": 0.8204890238881726,
+      "detect_given_disease": 0.7844285312882874,
+      "false_ref": 0.08604449999999998,
+      "miss_given_disease": 0.21557146871171262
+    },
+    "nikon_site": {
+      "graded": 0.907,
+      "sens": 0.8392646608619088,
+      "detect_given_disease": 0.7612130474017512,
+      "false_ref": 0.08162999999999998,
+      "miss_given_disease": 0.23878695259824878
+    },
+    "equity_miss_ratio": 1.1076927481418362,
+    "programs": {
+      "all_canon": {
+        "canon_sites": 20,
+        "nikon_sites": 0,
+        "uncovered_sites": 20,
+        "cost_brl": 1900000,
+        "screened": 20000,
+        "unscreened": 20000,
+        "inadequate_images": 1758.0000000000002,
+        "diseased": 4000.0,
+        "detected": 1568.857062576575,
+        "missed": 2431.142937423425,
+        "missed_unscreened": 2000.0,
+        "false_referrals": 1720.8899999999996
+      },
+      "all_nikon": {
+        "canon_sites": 0,
+        "nikon_sites": 40,
+        "uncovered_sites": 0,
+        "cost_brl": 1400000,
+        "screened": 40000,
+        "unscreened": 0,
+        "inadequate_images": 7440.0,
+        "diseased": 4000.0,
+        "detected": 3044.852189607005,
+        "missed": 955.1478103929949,
+        "missed_unscreened": 0.0,
+        "false_referrals": 3265.1999999999994
+      },
+      "best_mix": {
+        "canon_sites": 8,
+        "nikon_sites": 32,
+        "uncovered_sites": 0,
+        "cost_brl": 1880000,
+        "screened": 40000,
+        "unscreened": 0,
+        "inadequate_images": 6655.2,
+        "diseased": 4000.0,
+        "detected": 3063.424576716234,
+        "missed": 936.5754232837662,
+        "missed_unscreened": 0.0,
+        "false_referrals": 3300.515999999999
+      }
+    },
+    "programs_ci_low": {
+      "all_canon": {
+        "canon_sites": 20,
+        "nikon_sites": 0,
+        "uncovered_sites": 20,
+        "cost_brl": 1900000,
+        "screened": 20000,
+        "unscreened": 20000,
+        "inadequate_images": 1758.0000000000002,
+        "diseased": 4000.0,
+        "detected": 1430.2245655885088,
+        "missed": 2569.775434411491,
+        "missed_unscreened": 2000.0,
+        "false_referrals": 1720.8899999999996
+      },
+      "all_nikon": {
+        "canon_sites": 0,
+        "nikon_sites": 40,
+        "uncovered_sites": 0,
+        "cost_brl": 1400000,
+        "screened": 40000,
+        "unscreened": 0,
+        "inadequate_images": 7440.0,
+        "diseased": 4000.0,
+        "detected": 2887.2867368048146,
+        "missed": 1112.7132631951854,
+        "missed_unscreened": 0.0,
+        "false_referrals": 3265.1999999999994
+      },
+      "best_mix": {
+        "canon_sites": 0,
+        "nikon_sites": 40,
+        "uncovered_sites": 0,
+        "cost_brl": 1400000,
+        "screened": 40000,
+        "unscreened": 0,
+        "inadequate_images": 7440.0,
+        "diseased": 4000.0,
+        "detected": 2887.2867368048146,
+        "missed": 1112.7132631951854,
+        "missed_unscreened": 0.0,
+        "false_referrals": 3265.1999999999994
+      }
+    },
+    "programs_ci_high": {
+      "all_canon": {
+        "canon_sites": 20,
+        "nikon_sites": 0,
+        "uncovered_sites": 20,
+        "cost_brl": 1900000,
+        "screened": 20000,
+        "unscreened": 20000,
+        "inadequate_images": 1758.0000000000002,
+        "diseased": 4000.0,
+        "detected": 1708.3709829629652,
+        "missed": 2291.629017037035,
+        "missed_unscreened": 2000.0,
+        "false_referrals": 1720.8899999999996
+      },
+      "all_nikon": {
+        "canon_sites": 0,
+        "nikon_sites": 40,
+        "uncovered_sites": 0,
+        "cost_brl": 1400000,
+        "screened": 40000,
+        "unscreened": 0,
+        "inadequate_images": 7440.0,
+        "diseased": 4000.0,
+        "detected": 3171.612718285238,
+        "missed": 828.3872817147621,
+        "missed_unscreened": 0.0,
+        "false_referrals": 3265.1999999999994
+      },
+      "best_mix": {
+        "canon_sites": 8,
+        "nikon_sites": 32,
+        "uncovered_sites": 0,
+        "cost_brl": 1880000,
+        "screened": 40000,
+        "unscreened": 0,
+        "inadequate_images": 6655.2,
+        "diseased": 4000.0,
+        "detected": 3220.638567813376,
+        "missed": 779.3614321866239,
+        "missed_unscreened": 0.0,
+        "false_referrals": 3300.515999999999
+      }
+    },
+    "missed_saved_nikon_vs_canon": 1475.99512703043,
+    "full_coverage_cost_nikon": 1400000,
+    "full_coverage_cost_canon": 3800000
+  },
+  "all_tasks_calculator": [
+    {
+      "task": "Diabetic Retinopathy",
+      "alg": "LR",
+      "res": 672,
+      "missed_all_canon": 2431.142937423425,
+      "missed_all_nikon": 955.1478103929949,
+      "missed_best_mix": 936.5754232837662,
+      "equity_ratio": 1.1076927481418362,
+      "nikon_sens": 0.8392646608619088,
+      "canon_sens": 0.8204890238881726
+    },
+    {
+      "task": "AMD",
+      "alg": "LR",
+      "res": 952,
+      "missed_all_canon": 2212.000461470265,
+      "missed_all_nikon": 1359.8830251334002,
+      "missed_best_mix": 1172.7066046948266,
+      "equity_ratio": 3.2072643042905233,
+      "nikon_sens": 0.7277058916390847,
+      "canon_sens": 0.9350972953975916
+    },
+    {
+      "task": "Hemorrhage",
+      "alg": "LR",
+      "res": 672,
+      "missed_all_canon": 3098.057296753593,
+      "missed_all_nikon": 3455.1967451307423,
+      "missed_best_mix": 3098.057296753593,
+      "equity_ratio": 1.5733226104621467,
+      "nikon_sens": 0.15016627752735873,
+      "canon_sens": 0.4717026846118963
+    },
+    {
+      "task": "Hypertensive Retinopathy",
+      "alg": "RF",
+      "res": 392,
+      "missed_all_canon": 2839.0546731051736,
+      "missed_all_nikon": 2981.070079710062,
+      "missed_best_mix": 2720.477933010119,
+      "equity_ratio": 1.776445668717699,
+      "nikon_sens": 0.2808516869597403,
+      "canon_sens": 0.6071572234165713
+    },
+    {
+      "task": "Increased Cup/Disc",
+      "alg": "SVM",
+      "res": 392,
+      "missed_all_canon": 2805.322008693902,
+      "missed_all_nikon": 1920.9148810262127,
+      "missed_best_mix": 1858.8607082985309,
+      "equity_ratio": 1.1926377649492137,
+      "nikon_sens": 0.5730664605771189,
+      "canon_sens": 0.624798907644003
+    },
+    {
+      "task": "Macular Edema",
+      "alg": "RF",
+      "res": 392,
+      "missed_all_canon": 2358.937685184719,
+      "missed_all_nikon": 886.2642758486272,
+      "missed_best_mix": 852.5864947527898,
+      "equity_ratio": 1.2345656536350196,
+      "nikon_sens": 0.8582513021365414,
+      "canon_sens": 0.8582513021365414
+    },
+    {
+      "task": "Myopic Fundus",
+      "alg": "SVM",
+      "res": 952,
+      "missed_all_canon": 2125.2085378736856,
+      "missed_all_nikon": 618.9886439516063,
+      "missed_best_mix": 545.27433031076,
+      "equity_ratio": 2.471830813071475,
+      "nikon_sens": 0.9319215424609684,
+      "canon_sens": 0.9804881868763737
+    },
+    {
+      "task": "Nevus",
+      "alg": "LR",
+      "res": 952,
+      "missed_all_canon": 2948.978555996703,
+      "missed_all_nikon": 2354.0789910092262,
+      "missed_best_mix": 2262.8546152060626,
+      "equity_ratio": 1.2403225426610187,
+      "nikon_sens": 0.45367172243406106,
+      "canon_sens": 0.5496686595906577
+    },
+    {
+      "task": "Other",
+      "alg": "LR",
+      "res": 952,
+      "missed_all_canon": 3000.7164540098743,
+      "missed_all_nikon": 2711.881272335784,
+      "missed_best_mix": 2569.791599472577,
+      "equity_ratio": 1.3549698625765902,
+      "nikon_sens": 0.35504926341351034,
+      "canon_sens": 0.5226105046755534
+    },
+    {
+      "task": "Scar",
+      "alg": "LR",
+      "res": 392,
+      "missed_all_canon": 2285.48323873164,
+      "missed_all_nikon": 851.5818803593738,
+      "missed_best_mix": 795.458799780155,
+      "equity_ratio": 1.4914743929325358,
+      "nikon_sens": 0.8678109480817602,
+      "canon_sens": 0.8966668904703521
+    },
+    {
+      "task": "Vascular Occlusion",
+      "alg": "RF",
+      "res": 392,
+      "missed_all_canon": 2346.759900842223,
+      "missed_all_nikon": 1390.9619872073563,
+      "missed_best_mix": 1251.4735501027744,
+      "equity_ratio": 2.0056557632946275,
+      "nikon_sens": 0.7191394743088874,
+      "canon_sens": 0.8646201031105993
+    }
+  ],
+  "tasks_where_all_nikon_misses_fewer": [
+    "Diabetic Retinopathy",
+    "AMD",
+    "Increased Cup/Disc",
+    "Macular Edema",
+    "Myopic Fundus",
+    "Nevus",
+    "Other",
+    "Scar",
+    "Vascular Occlusion"
+  ],
+  "synthetic_demo": [
+    {
+      "resolution": "224 px (noisier features)",
+      "camera_sensitive_fraction": 0.0,
+      "internal": 0.9482541788000838,
+      "external": 0.9049958584273703
+    },
+    {
+      "resolution": "224 px (noisier features)",
+      "camera_sensitive_fraction": 0.1,
+      "internal": 0.9496816396327545,
+      "external": 0.8901434413318192
+    },
+    {
+      "resolution": "224 px (noisier features)",
+      "camera_sensitive_fraction": 0.2,
+      "internal": 0.9501076817889671,
+      "external": 0.8732317636337652
+    },
+    {
+      "resolution": "224 px (noisier features)",
+      "camera_sensitive_fraction": 0.30000000000000004,
+      "internal": 0.9502614083401779,
+      "external": 0.8528961809936393
+    },
+    {
+      "resolution": "224 px (noisier features)",
+      "camera_sensitive_fraction": 0.4,
+      "internal": 0.9500593677300152,
+      "external": 0.828293779649895
+    },
+    {
+      "resolution": "224 px (noisier features)",
+      "camera_sensitive_fraction": 0.5,
+      "internal": 0.9495732990157109,
+      "external": 0.7990034869121695
+    },
+    {
+      "resolution": "224 px (noisier features)",
+      "camera_sensitive_fraction": 0.6000000000000001,
+      "internal": 0.948873477192104,
+      "external": 0.7649419334612944
+    },
+    {
+      "resolution": "224 px (noisier features)",
+      "camera_sensitive_fraction": 0.7000000000000001,
+      "internal": 0.9478471694549735,
+      "external": 0.72632349754656
+    },
+    {
+      "resolution": "224 px (noisier features)",
+      "camera_sensitive_fraction": 0.8,
+      "internal": 0.9467125211007993,
+      "external": 0.6834732042556003
+    },
+    {
+      "resolution": "224 px (noisier features)",
+      "camera_sensitive_fraction": 0.9,
+      "internal": 0.9452938446424833,
+      "external": 0.6376177735704659
+    },
+    {
+      "resolution": "224 px (noisier features)",
+      "camera_sensitive_fraction": 1.0,
+      "internal": 0.9424725964121686,
+      "external": 0.5901299178293549
+    },
+    {
+      "resolution": "952 px (cleaner features)",
+      "camera_sensitive_fraction": 0.0,
+      "internal": 0.9865854064042334,
+      "external": 0.9545272398195722
+    },
+    {
+      "resolution": "952 px (cleaner features)",
+      "camera_sensitive_fraction": 0.1,
+      "internal": 0.987383441717296,
+      "external": 0.9472134392311117
+    },
+    {
+      "resolution": "952 px (cleaner features)",
+      "camera_sensitive_fraction": 0.2,
+      "internal": 0.9875116973926097,
+      "external": 0.936994585913337
+    },
+    {
+      "resolution": "952 px (cleaner features)",
+      "camera_sensitive_fraction": 0.30000000000000004,
+      "internal": 0.9876937887834869,
+      "external": 0.9232519495103482
+    },
+    {
+      "resolution": "952 px (cleaner features)",
+      "camera_sensitive_fraction": 0.4,
+      "internal": 0.9878252112655985,
+      "external": 0.9048080602764133
+    },
+    {
+      "resolution": "952 px (cleaner features)",
+      "camera_sensitive_fraction": 0.5,
+      "internal": 0.9879154652593377,
+      "external": 0.8800686484858751
+    },
+    {
+      "resolution": "952 px (cleaner features)",
+      "camera_sensitive_fraction": 0.6000000000000001,
+      "internal": 0.9878758801743643,
+      "external": 0.8474519915432343
+    },
+    {
+      "resolution": "952 px (cleaner features)",
+      "camera_sensitive_fraction": 0.7000000000000001,
+      "internal": 0.9878331282825932,
+      "external": 0.8058872703090986
+    },
+    {
+      "resolution": "952 px (cleaner features)",
+      "camera_sensitive_fraction": 0.8,
+      "internal": 0.9874974467620192,
+      "external": 0.7548553472731949
+    },
+    {
+      "resolution": "952 px (cleaner features)",
+      "camera_sensitive_fraction": 0.9,
+      "internal": 0.9870176755321423,
+      "external": 0.6949745606936053
+    },
+    {
+      "resolution": "952 px (cleaner features)",
+      "camera_sensitive_fraction": 1.0,
+      "internal": 0.9853931036448362,
+      "external": 0.6249698084680582
+    }
+  ],
+  "shift_strength": 1.0,
+  "runtime_sec": 1.2
+}

@@ -1,0 +1,197 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/low-confidence-profiles",
+ "title": "Diagnosing Low-Confidence Patient Profiles via Localized Harmful Covariate Shift Detection",
+ "description": "MED3pa first discovers interpretable low-confidence patient profiles, and Detectron is then applied within each profile to test whether its degradation is associated with a detectable harmful covariate shift. An injected age shift, undetectable at the population level, was nonetheless localized to specific degraded profiles …",
+ "paper": {
+  "title": "Diagnosing Low-Confidence Patient Profiles via Localized Harmful Covariate Shift Detection",
+  "authors": "Olivier Lefebvre, Hakima Laribi, Dan Poenaru, Martin Vallières",
+  "venue": "SMASH 2026",
+  "session": "Poster",
+  "url": "https://doi.org/10.48550/arXiv.2610.19178",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://doi.org/10.48550/arXiv.2610.19178"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "2-5 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "The age shift was missed at population level (p = 0.19). Two of five profiles were flagged; in the largest, AUC fell from 0.69 to 0.64. A synthetic MIMIC-like cohort replaces MIMIC-IV. Detectron is simplified; borderline profiles change with the seed.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "dataset": "synthetic",
+     "removed_subgroup": "age<50",
+     "outcome": "readmit_any",
+     "tree_depth": "3",
+     "n_cdc": "5",
+     "detectron_n": "500",
+     "detectron_repeats": "5",
+     "min_profile_share": "0.05",
+     "alpha": "0.05",
+     "seed": "0"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-09-low-confidence-profiles",
+    "trajectory_id": "6ee4fe7d",
+    "url": "https://jetty.io/jon-smash2026/smash-09-low-confidence-profiles/6ee4fe7d",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T18:52:12.829167+00:00",
+    "duration_seconds": 172,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Dataset",
+   "type": "text",
+   "required": false,
+   "default": "synthetic",
+   "description": "synthetic (100,000-patient MIMIC-like readmission cohort with known mechanisms) or diabetes130 (UCI Diabetes 130-US hospitals, real, ~3 MB download)"
+  },
+  {
+   "label": "Removed subgroup",
+   "type": "text",
+   "required": false,
+   "default": "age<50",
+   "description": "Subgroup removed from training only: age<50, sex (female removed), race (non-White removed)"
+  },
+  {
+   "label": "Outcome",
+   "type": "text",
+   "required": false,
+   "default": "readmit_any",
+   "description": "diabetes130 only: readmit_any or readmit_30 (30-day)"
+  },
+  {
+   "label": "Tree depth",
+   "type": "text",
+   "required": false,
+   "default": "3",
+   "description": "Depth of MED3pa's profile tree (2–4); deeper = more, smaller profiles"
+  },
+  {
+   "label": "CDCs",
+   "type": "text",
+   "required": false,
+   "default": "5",
+   "description": "Constrained disagreement classifiers per Detectron test (2–10)"
+  },
+  {
+   "label": "Detectron sample",
+   "type": "text",
+   "required": false,
+   "default": "500",
+   "description": "Max deployment (and reference) cases per Detectron test (50–1000)"
+  },
+  {
+   "label": "Detectron repeats",
+   "type": "text",
+   "required": false,
+   "default": "5",
+   "description": "Independent repeats per test; HCS if median p < α (1–9)"
+  },
+  {
+   "label": "Min profile share",
+   "type": "text",
+   "required": false,
+   "default": "0.05",
+   "description": "Smallest profile tested (paper: 5% of the population)"
+  },
+  {
+   "label": "α",
+   "type": "text",
+   "required": false,
+   "default": "0.05",
+   "description": "False-positive rate for declaring HCS (paper: 0.05)"
+  },
+  {
+   "label": "Seed",
+   "type": "text",
+   "required": false,
+   "default": "0",
+   "description": "Seed for the split, models and (synthetic) cohort"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/low-confidence-profiles/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/low-confidence-profiles",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "clinical"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

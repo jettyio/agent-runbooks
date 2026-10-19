@@ -1,0 +1,181 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/masq-questionnaire",
+ "title": "MASQ: The Multi-Agent System Questionnaire",
+ "description": "We introduce the multi-agent system questionnaire (MASQ), a three-stage screening framework that connects system design choices to plausible miscoordination risks and their observable manifestations. Stage 3 guides researchers in examining MAS execution traces for evidence of anticipated and unanticipated miscoordination.",
+ "paper": {
+  "title": "MASQ: The Multi-Agent System Questionnaire",
+  "authors": "Nils Kiele, Niki Mehri, Aaron Arellano, Samira Ebrahimi Kahou",
+  "venue": "SMASH 2026",
+  "session": "Poster",
+  "url": "https://drive.google.com/file/d/1Rp0p5g3H-GnNNV-2aCJPC3Ke3VbRcm0C/view?usp=sharing",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://drive.google.com/file/d/1Rp0p5g3H-GnNNV-2aCJPC3Ke3VbRcm0C/view?usp=sharing"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "2-5 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "An LLM filling in MASQ for ChatDev anticipated 8 of 14 failure modes, the same count as the authors. In a small ChatDev-style chain, 3 of 5 tasks declared done failed hidden tests. Stage 2 ratings are an LLM applying the paper's rule, not the authors' labels. Five traces give coarse rates.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "system_preset": "chatdev",
+     "system_description": "",
+     "run_stage3": "true",
+     "n_traces": "5",
+     "mas_verification": "prompt",
+     "mas_memory": "drop",
+     "max_rounds": "2",
+     "annotator_size": "small"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-11-masq-questionnaire",
+    "trajectory_id": "cfe65072",
+    "url": "https://jetty.io/jon-smash2026/smash-11-masq-questionnaire/cfe65072",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T18:24:38.419377+00:00",
+    "duration_seconds": 163,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "System preset",
+   "type": "text",
+   "required": false,
+   "default": "chatdev",
+   "description": "chatdev (the paper's ChatDev description; overlaid on Table 2) or groupchat (a hypothetical research-assistant group chat written for this runbook)"
+  },
+  {
+   "label": "Your system",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Paste a description of your multi-agent system (roles, who talks to whom, how they communicate, termination and verification, memory). Overrides the preset"
+  },
+  {
+   "label": "Run Stage 3",
+   "type": "text",
+   "required": false,
+   "default": "true",
+   "description": "Run the mini chat chain and annotate its traces (false = Stages 1–2 only, ~10 s)"
+  },
+  {
+   "label": "Traces",
+   "type": "text",
+   "required": false,
+   "default": "5",
+   "description": "Number of Stage-3 traces (2–6; one coding task each)"
+  },
+  {
+   "label": "Mini-MAS verification",
+   "type": "text",
+   "required": false,
+   "default": "prompt",
+   "description": "prompt (tester reads the code, like ChatDev's role-prompted tester) or tests (tester's asserts are actually executed)"
+  },
+  {
+   "label": "Mini-MAS memory",
+   "type": "text",
+   "required": false,
+   "default": "drop",
+   "description": "drop (only the final artefact passes between phases, like ChatDev) or shared (full history visible)"
+  },
+  {
+   "label": "Review rounds",
+   "type": "text",
+   "required": false,
+   "default": "2",
+   "description": "Hard cap on reviewer ⇄ programmer rounds (1–3)"
+  },
+  {
+   "label": "Annotator size",
+   "type": "text",
+   "required": false,
+   "default": "small",
+   "description": "small (Claude Haiku) or large (Claude Sonnet) for the MAST trace annotation"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/masq-questionnaire/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/masq-questionnaire",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "llm-evaluation"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

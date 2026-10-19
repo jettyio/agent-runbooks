@@ -1,0 +1,37 @@
+{
+  "headline": "Among 154 child#001 rule pairs within 3 TIR points, the worst pair differs by 64.0 pp in hypo time; your weights pick a rule with 16.4% hypo, well above the 4% limit.",
+  "idea": [
+    "A scalar reward for insulin dosing silently encodes whoever designed it’s trade-off between glycaemic control, avoiding dangerous lows, and minimising insulin dose — the choice is never shown to the clinician or patient.",
+    "Split the reward into three separate objectives (glycaemic risk, hypo risk, insulin exposure), simulate or train a family of policies, and report the Pareto front: now every trade-off is visible and attributable.",
+    "Time-in-range (TIR) alone cannot distinguish a ‘dangerously low’ policy from a ‘dangerously high’ one — two rules can share nearly identical TIR scores while differing by tens of percentage points in time spent below 70 mg/dL."
+  ],
+  "findings": [
+    "**Matched pairs (paper Table 1 replication, child cohort):** This run found 154 pairs of rules within 3 TIR points among 41 reliable rules; the paper reports 148 pairs for the child cohort. The median hypo-time gap is 8.9 pp (paper: 6.4 pp) and the maximum is 64.0 pp (paper: 39.8 pp) — our enumerated family produces a larger worst-case gap than the paper’s trained agents. The worst pair is ‘basal 2/6 · suspend≤80’ (TIR 35.5%, hypo 1.6%) vs ‘basal 5/6 · +1 if >180’ (TIR 33.2%, hypo 65.5%): a 2.3-point TIR difference masks a 64-point difference in blood glucose below 70 mg/dL. The glucose traces in fig_pair_traces.png show the suspend rule keeping glucose elevated above 80 mg/dL throughout the day, while the high-basal rule drives prolonged episodes of severe hypoglycaemia.",
+    "**Your weights’ pick vs alternatives:** With weights (0.50, 0.30, 0.20) your pick is ‘basal 2/6 · +1 if >180’ (TIR 48.3%, hypo 16.4%, hyper 35.3%) — identical to the paper’s baseline B pick, and 16.4% hypo time is four times the 4% international consensus limit. The single-objective baseline A (w = 1,0,0) picks ‘basal 2/6 · +2 if >180’ (TIR 50.0%, hypo 21.5%) — even worse. Crucially, there is a Pareto-optimal rule ‘basal 2/6 · suspend<110 · +1 if >180’ with TIR 50.4% and hypo only 1.7% (well under the 4% limit), at the cost of higher hyperglycaemia (47.9%). Your weights assigned too little weight to hypo safety to select it; only a weight vector emphasising r_hypo would reach that Pareto rule.",
+    "**Preference-simplex map:** 54% of the 231 weight vectors tested pick a rule that exceeds the 4% hypo limit, and only 9 distinct rules are reachable across the entire simplex. The simplex map (fig_simplex.png) shows that weight vectors near the glycaemic-risk corner (high r_gly) and near the centre all select rules with dangerous hypo exposure; only vectors strongly emphasising hypo safety (upper-right region) select rules within the target.",
+    "**Differential vs absolute reward:** The rank correlation between undiscounted differential return and absolute return is only 0.50, confirming the paper’s warning: the differential reward’s favourite rule (‘basal 4/6 · suspend<110’) has 15.0% hypo time. The differential return telescopes to RI(start) − RI(end) and is blind to every excursion in between; a rule that oscillates into hypoglycaemia and then recovers collects the same endpoint reward as one that avoids it entirely."
+  ],
+  "try_next": [
+    {
+      "label": "Adult#001 — chase the paper’s 42.8-point gap",
+      "why": "The paper reports a maximum 42.8-point matched-pair hypo gap for adult#001, making it the cohort where the TIR blind-spot is most dramatic. Running adult#001 lets you compare directly with the paper’s headline figure.",
+      "params": {"patient": "adult#001", "w_glycemic": 0.5, "w_hypo": 0.3, "w_dose": 0.2, "max_hypo_pct": 4, "tir_tolerance": 3, "n_days": 2, "seed": 1}
+    },
+    {
+      "label": "Hypo-safety-first weights — does your pick change?",
+      "why": "Shifting most weight onto r_hypo should push the scalarized optimum toward the suspend-rule corner of the Pareto front and bring hypo time inside the 4% limit, demonstrating how the trade-off attribution shifts with the designer’s choice.",
+      "params": {"patient": "child#001", "w_glycemic": 0.1, "w_hypo": 0.8, "w_dose": 0.1, "max_hypo_pct": 4, "tir_tolerance": 3, "n_days": 2, "seed": 1}
+    },
+    {
+      "label": "Tighter TIR tolerance — how many pairs survive at ±1 point?",
+      "why": "Reducing tir_tolerance to 1 requires rules to be within 1 TIR point to count as ‘same’, giving a stricter test of the paper’s claim. If large hypo gaps persist even at ±1 point, the finding is more alarming.",
+      "params": {"patient": "child#001", "w_glycemic": 0.5, "w_hypo": 0.3, "w_dose": 0.2, "max_hypo_pct": 4, "tir_tolerance": 1, "n_days": 2, "seed": 1}
+    }
+  ],
+  "caveats": [
+    "All patients are simulated UVa/Padova virtual subjects run through the simglucose Python package — not real people. Simglucose’s meal scenarios and CGM noise model are synthetic; real physiology is more variable.",
+    "This runbook replaces the paper’s trained SAC agents and preference-conditioned Q-network (envelope MORL) with an enumerated family of 48 simple basal-only rules. ‘Your pick’ is the oracle scalarized optimum within that family, not a trained policy; the matched-pair gaps reflect rule variety, not policy learning.",
+    "Episodes are one simulated day with random meals and no meal boluses; real closed-loop systems also deliver correction boluses at meals, which would change TIR and hypo profiles substantially.",
+    "This is an interactive companion to the SMASH 2026 paper and is not clinical guidance. Do not use these results to inform real insulin dosing decisions."
+  ]
+}

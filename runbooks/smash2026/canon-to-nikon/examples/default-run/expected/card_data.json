@@ -1,0 +1,114 @@
+{
+  "paper": {
+    "num": 6,
+    "title": "From Canon to Nikon: Camera Domain Shift and Equity Risks in Retinal AI",
+    "authors": "Anonymous authors (under double-blind review)",
+    "affiliation": "BRSET, S\u00e3o Paulo, Brazil"
+  },
+  "inputs": {
+    "task": "Diabetic Retinopathy",
+    "classifier @ resolution": "LR @ 672 px",
+    "budget": "R$1,900,000",
+    "sites \u00d7 patients/yr": "40 \u00d7 1,000",
+    "prevalence": "10%",
+    "specificity": 0.9,
+    "re-imaged if inadequate": "50%",
+    "synthetic shift": 1.0
+  },
+  "tiles": [
+    {
+      "label": "Diabetic Retinopathy: Canon \u2192 Nikon",
+      "value": "0.940 \u2192 0.946",
+      "sub": "AUROC, LR @ 672 px (paper Table 4); gap -0.006",
+      "tone": "good"
+    },
+    {
+      "label": "Missed cases / yr: all-Canon vs all-Nikon",
+      "value": "2,431 vs 955",
+      "sub": "R$1.90M buys 20 Canon or 40 Nikon sites of 40 (Diabetic Retinopathy)",
+      "tone": "accent"
+    },
+    {
+      "label": "Equity gap at Nikon sites",
+      "value": "1.11\u00d7",
+      "sub": "risk that a diseased patient is missed at a Nikon vs a Canon site: 24% vs 22% (sensitivity 0.84 vs 0.82 at spec 0.90; 18.60% vs 8.79% inadequate images)",
+      "tone": "neutral"
+    },
+    {
+      "label": "What drives the gap?",
+      "value": "task 67%",
+      "sub": "share of variance in the internal\u2212external gap across 220 configurations; classifier 1%, resolution 0%",
+      "tone": "neutral"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_tasks.png",
+      "title": "Which tasks survive the camera change?",
+      "caption": "The paper's own internal (Canon) and external (Nikon) estimates with 95% bootstrap CIs. Orange = external drops \u2265 0.05; blue = external is higher (different case mix). \u25b6 = your task."
+    },
+    {
+      "path": "fig_gap_heatmap.png",
+      "title": "Does a different classifier or resolution fix it?",
+      "caption": "Internal \u2212 external AUROC for all 220 binary configurations in Table 4. Rows (tasks) differ far more than columns (classifier \u00d7 resolution)."
+    },
+    {
+      "path": "fig_program.png",
+      "title": "Your screening program: coverage vs camera quality",
+      "caption": "Missed referable cases per year (unscreened + ungradable + false negatives). Canon sites use the internal AUROC, Nikon sites the external one. A modelling illustration built on the paper's numbers."
+    },
+    {
+      "path": "fig_shift_demo.png",
+      "title": "Why some tasks break: a synthetic mechanism",
+      "caption": "Simulated embeddings (not RETFound-Green). The Nikon 'camera' remixes colour/optical features. Tasks whose signal lives there degrade; cleaner (higher-resolution) features lift both lines but keep the gap."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "Diabetic Retinopathy internal \u2192 external (Table 2: LR, 672 px)",
+      "paper": "0.940 \u2192 0.946",
+      "yours": "0.940 \u2192 0.946 (LR, 672 px)",
+      "note": "transcribed, not recomputed"
+    },
+    {
+      "metric": "Inadequate images, Canon vs Nikon (Table 1)",
+      "paper": "8.79% vs 18.60%",
+      "yours": "8.79% vs 18.60%",
+      "note": "calculator input; discussion rounds to 8.8% vs 18.6%"
+    },
+    {
+      "metric": "Image-field abnormality, Nikon",
+      "paper": "15.84% (Table 1) / 16.5% (text)",
+      "yours": "15.84% (used in demo)",
+      "note": "paper is internally inconsistent"
+    },
+    {
+      "metric": "Illumination Cram\u00e9r's V",
+      "paper": "0.028 (Table 1) / 0.023 (text)",
+      "yours": "\u2014",
+      "note": "inconsistent in paper; not used"
+    },
+    {
+      "metric": "Camera price ratio",
+      "paper": "\"approximately half\" (abstract); \"1.5 times more\" (intro); R$95,000 vs R$35,000",
+      "yours": "2.71\u00d7 (from the quoted prices)",
+      "note": "calculator uses the prices"
+    },
+    {
+      "metric": "Hemorrhage / hypertensive \u0394AUROC (LR, all resolutions)",
+      "paper": "\u2206 AUROC=0.15\u20130.28 (Fig. 2 caption)",
+      "yours": "0.134\u20130.276 from Table 4",
+      "note": "hemorrhage at 952 px is 0.134"
+    },
+    {
+      "metric": "Resolution / classifier fix the gap?",
+      "paper": "neither ... consistently mitigated cross-camera variation",
+      "yours": "952 vs 224 px shrinks the gap for 2/11 tasks, widens it for 6/11",
+      "note": "Table-2 classifier per task"
+    }
+  ],
+  "runbook": {
+    "name": "smash-06-canon-to-nikon",
+    "url": ""
+  }
+}

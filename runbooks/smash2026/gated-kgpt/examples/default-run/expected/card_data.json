@@ -1,0 +1,116 @@
+{
+  "paper": {
+    "num": 2,
+    "title": "Gated Knowledge-Guided Prototype Transfer for Zero-Support Medical Vision Language Model",
+    "authors": "Sumaiya Fazal, Rizwan Qureshi, Laleh Behjat, Samira Ebrahimi Kahou",
+    "affiliation": "FAST-NUCES \u00b7 MGH/Harvard \u00b7 University of Calgary \u00b7 Mila"
+  },
+  "inputs": {
+    "classes": "No DR (3), Mild (1), Moderate (1), Severe (0), Proliferative (0)",
+    "zero-support": "Severe, Proliferative",
+    "\u03b2": 1.0,
+    "k": 3,
+    "temperature": "auto",
+    "modality gap": 1.0,
+    "separability": 1.0,
+    "gap shrink / grade": 0.5,
+    "support draws": 50,
+    "data": "synthetic ordinal embedding world"
+  },
+  "tiles": [
+    {
+      "label": "Negative-transfer rate",
+      "value": "46\u201350% \u2192 16%",
+      "sub": "share of 50 support draws where missing-class recall fell; ungated (VLM / ontology) \u2192 gated",
+      "tone": "accent"
+    },
+    {
+      "label": "Missing-class recall (gated)",
+      "value": "+2.37 pts",
+      "sub": "95% CI [+1.72, +2.95] vs SS-Text+ (73.4% \u2192 75.8%)",
+      "tone": "good"
+    },
+    {
+      "label": "Supported-class recall (gated)",
+      "value": "+0.97 pts",
+      "sub": "\u0394SCR (paper: \u22121.20); \u0394top-1 +1.12, \u0394ACA +1.53, \u0394H +1.56",
+      "tone": "neutral"
+    },
+    {
+      "label": "Evidence gate",
+      "value": "0.51 / 0.22",
+      "sub": "Severe 0.514 \u00b7 Proliferative 0.215 (paper: 0.582 severe, 0.214 proliferative)",
+      "tone": "neutral"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_negative_transfer.png",
+      "title": "How often does borrowing knowledge make the missing classes worse?",
+      "caption": "Each dot is one random support draw (same support for all methods). Orange dots: missing-class recall fell relative to SS-Text+ (negative transfer). Black bar = mean. Dotted line = \u22125 points (severe negative transfer)."
+    },
+    {
+      "path": "fig_beta_sweep.png",
+      "title": "Is the gate just a smaller step size?",
+      "caption": "Same hybrid neighbours, transfer strength \u03b2 varied. Ungated uses the full \u03b2; gated uses \u03b2\u00b7g with g from the evidence (agreement \u00d7 relevance). Dotted line = your \u03b2. Extension, not in the paper."
+    },
+    {
+      "path": "fig_gate_inspector.png",
+      "title": "Gate inspector: why each zero-support class gets the update it gets",
+      "caption": "Agreement a = how much the selected residuals point the same way; relevance q = \u221a(VLM margin \u00d7 1/ontology distance). Orange ticks: the paper's MESSIDOR gates."
+    },
+    {
+      "path": "fig_per_class_recall.png",
+      "title": "Who pays, who gains? Recall per class",
+      "caption": "Mean recall over support draws. Shaded = zero-support classes. Paper (MESSIDOR), severe / proliferative recall: gated 46.53 / 73.71 vs KGPT-VLM 37.47 / 68.00."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "SS-Text+ Top-1 / ACA / MCR / SCR / H",
+      "paper": "57.45 / 54.64 / 54.90 / 54.46 / 52.87",
+      "yours": "72.9 / 62.7 / 73.4 / 55.5 / 63.0",
+      "note": "absolute levels depend on the synthetic world"
+    },
+    {
+      "metric": "Ungated NTR (VLM / Ont), severe NTR",
+      "paper": "46% / 48%; severe 38% / 34%",
+      "yours": "50% / 46%; severe 16% / 14%",
+      "note": "NTR = share of draws with \u0394MCR < 0; severe = \u0394MCR < \u22125"
+    },
+    {
+      "metric": "Ungated \u0394MCR (VLM / Ont)",
+      "paper": "\u22122.16 [\u22124.73, 0.32] / \u22122.43 [\u22124.68, \u22120.21]",
+      "yours": "-0.28 [-1.54, +1.05] / +0.32 [-0.93, +1.61]",
+      "note": ""
+    },
+    {
+      "metric": "Gated \u0394MCR / \u0394ACA / \u0394H",
+      "paper": "+5.23 [3.84, 6.69] / +1.37 [0.78, 1.99] / +1.83 [1.06, 2.64]",
+      "yours": "+2.37 [+1.72, +2.95] / +1.53 / +1.56",
+      "note": ""
+    },
+    {
+      "metric": "Gated \u0394SCR / \u0394Top-1",
+      "paper": "\u22121.20 [\u22121.52, \u22120.88] / \u22120.45 [\u22120.71, \u22120.19]",
+      "yours": "+0.97 / +1.12",
+      "note": "the price of transfer"
+    },
+    {
+      "metric": "Gated NTR; draws improved / unchanged",
+      "paper": "2%; 36 improved, 13 unchanged of 50",
+      "yours": "16%; 42 improved, 0 unchanged of 50",
+      "note": ""
+    },
+    {
+      "metric": "Mean gate (severe / proliferative)",
+      "paper": "0.582\u00b10.010 / 0.214\u00b10.003",
+      "yours": "0.514\u00b10.019 / 0.215\u00b10.008",
+      "note": "paper relevances 0.381 / 0.102 imply agreement a \u2248 0.94\u20130.95"
+    }
+  ],
+  "runbook": {
+    "name": "smash-02-gated-kgpt",
+    "url": ""
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "headline": "The judge gave 9/10 when the brief prompt summarized the conflicting-labs pack, but the contradiction gate blocked release: HbA1c conflict (7.2% vs 8.1%) was silently resolved to one value; 1 of 9 variants scored >=7 yet a clinical gate failed.",
+  "idea": [
+    "Extraction accuracy — whether the summary mentions every gold fact — is not the same as clinical usefulness: a summary can achieve 100% gold recall yet still silently resolve a conflict between sources, invert a resolved status, or drop a negation, each of which can mislead a clinician.",
+    "The paper proposes converting objectively testable properties (negation, status, stop dates, contradiction surfacing, intended-use language) into deterministic Layer-1 release gates; because these checks should never be averaged away, a single gate failure blocks release regardless of the overall judge score.",
+    "Evaluation should run on synthetic packs with controlled, planted noise and provenance-aware gold labels so that each error type is isolable; LLM-judge scores serve only as secondary regression signals because judge models may share blind spots with the system being evaluated."
+  ],
+  "findings": [
+    "The main run (brief prompt, all 6 noise types) received a judge score of 6/10 but was blocked by two gates: the contradiction gate failed because the HbA1c conflict (7.2% from lab D5 vs 8.1% from the endocrinology letter D7) was silently resolved to one value rather than flagged with both sources cited; the intended-use gate failed because the brief prompt never emits a verification statement. Layer-2 metrics look perfect — 100% gold recall, 100% supported-claim rate, all 10 gold items mentioned — yet the deterministic gate caught a severity-2 error invisible to recall or citation-coverage counts.",
+    "Among the three prompt styles run on the same pack, only the careful prompt passed all gates (judge 7/10, released); brief scored 6/10 and was blocked on contradiction and intended_use; naive scored 3/10 and failed three gates including a severity-3 med_bounds failure (lisinopril stop date missing). The judge rank-ordered the styles correctly but could not distinguish releasable from blocked without the gates: it gave brief a 6 while the gates refused it.",
+    "On the noise ladder, the intended-use gate fails at every step because the brief prompt never emits a verification statement. The contradiction gate first fires at noise step 3 (conflicting_labs added) — and the judge simultaneously scored that pack 9/10, the sharpest judge-vs-gate divergence in the run. One step later (copied-forward dose), the judge collapsed to 3/10, apparently noticing the inconsistent medication listing, but the clinical contradiction had already been silently resolved one step earlier. Gold recall held at 1.00 across all 7 ladder points: recall tracking alone would never raise an alert.",
+    "Layer-2 summary for the main run: 13 claims, 100% gold recall, 100% governing-source citation, severity-weighted errors = 2. A pipeline reporting only these numbers would greenlight the release. The deterministic gate blocked it on one sentence — the silently resolved HbA1c conflict — consistent with the paper: a gain in coverage should not offset broken evidence links."
+  ],
+  "try_next": [
+    {
+      "label": "Careful prompt on the full pack",
+      "why": "The careful prompt is the only one that passed all gates; running it with compare_styles off confirms the gate pass and shows the judge score without style contamination.",
+      "params": {
+        "summarizer_style": "careful",
+        "noise_types": "all",
+        "compare_styles": false,
+        "degradation_ladder": false
+      }
+    },
+    {
+      "label": "Isolate the conflicting-labs noise type",
+      "why": "The contradiction gate fired at noise step 3 while the judge scored 9/10 — the sharpest divergence. Running with only conflicting_labs active isolates that gate failure cleanly.",
+      "params": {
+        "summarizer_style": "brief",
+        "noise_types": "conflicting_labs",
+        "compare_styles": true,
+        "degradation_ladder": false
+      }
+    },
+    {
+      "label": "Large summarizer on all noise",
+      "why": "Upgrading to Claude Sonnet tests whether a more capable model handles the contradiction and intended-use requirements without an explicit careful prompt.",
+      "params": {
+        "summarizer_style": "brief",
+        "summarizer_size": "large",
+        "noise_types": "all",
+        "compare_styles": false,
+        "degradation_ladder": false
+      }
+    }
+  ],
+  "caveats": [
+    "The patient pack (SP-0187) is fully synthetic and written specifically for this runbook; the planted noise types, source identifiers, and gold labels are crafted to exercise each gate and do not represent a validated benchmark like the Synthea-derived packs the paper describes.",
+    "The Layer-1 gates are simplified lexical/structural checks (regex patterns and field inspection); they can misfire on unusual phrasing and are not a faithful reimplementation of the paper's evaluation framework — the claim audit shows exactly what each check matched.",
+    "The summarizer and judge are from the same model family (Claude Haiku); the judge may share blind spots with the summarizer, consistent with the 9/10 score on a silently-resolved conflict — the paper's warning that judge scores should not serve as the sole evidence of clinical acceptability applies directly here.",
+    "Each variant ran once at temperature 0; results are deterministic given the model version but the paper reports no quantitative benchmarks, so no number on this card reproduces or contradicts the authors' own results — all comparisons are illustrative of the framework, not a replication."
+  ]
+}

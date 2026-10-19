@@ -1,0 +1,467 @@
+{
+  "params": {
+    "dataset": "synthetic",
+    "removed_subgroup": "age<50",
+    "outcome": "readmit_any",
+    "tree_depth": 3,
+    "n_cdc": 5,
+    "detectron_n": 500,
+    "detectron_repeats": 5,
+    "min_profile_share": 0.05,
+    "alpha": 0.05,
+    "seed": 0,
+    "n_patients": 100000,
+    "runbook_url": ""
+  },
+  "dataset": "synthetic",
+  "outcome": "30-day readmission (synthetic MIMIC-like cohort)",
+  "n_patients": 100000,
+  "prevalence": 0.36453,
+  "shift": "age<50",
+  "n_train": 28550,
+  "n_removed": 9214,
+  "tau": 0.361646234676007,
+  "subgroup_share_test": 0.18066,
+  "population": {
+    "train_dist": {
+      "n": 12236,
+      "prevalence": 0.36122915985616216,
+      "auc": 0.752468396420847,
+      "sens": 0.6574660633484163,
+      "spec": 0.7132804503582395,
+      "bal_acc": 0.685373256853328
+    },
+    "test": {
+      "n": 25000,
+      "prevalence": 0.36564,
+      "auc": 0.729998021137469,
+      "sens": 0.6336287058308719,
+      "spec": 0.7011160855034996,
+      "bal_acc": 0.6673723956671858
+    },
+    "test_subgroup": {
+      "n": 4488,
+      "prevalence": 0.37655971479500894,
+      "auc": 0.6665058727493433,
+      "sens": 0.5840236686390533,
+      "spec": 0.6522516082916369,
+      "bal_acc": 0.6181376384653451
+    },
+    "test_rest": {
+      "n": 20512,
+      "prevalence": 0.36325078003120126,
+      "auc": 0.7448027621668212,
+      "sens": 0.6448798818950476,
+      "spec": 0.7115841053518107,
+      "bal_acc": 0.6782319936234291
+    },
+    "test_no_shift_model": {
+      "n": 25000,
+      "prevalence": 0.36564,
+      "auc": 0.7430329632197491,
+      "sens": 0.6640411333552128,
+      "spec": 0.6903966202156504,
+      "bal_acc": 0.6772188767854316
+    },
+    "detectron": {
+      "n": 500,
+      "repeats": 5,
+      "p_value": 0.19190784455575138,
+      "p_values": [
+        0.00932176728344801,
+        0.5435293419921535,
+        0.019273690950485912,
+        0.19190784455575138,
+        0.36626988621312295
+      ],
+      "hcs": false,
+      "share_of_repeats_hcs": 0.4,
+      "rate_Q": 0.0988,
+      "rate_Pr": 0.0772
+    }
+  },
+  "profiles": [
+    {
+      "leaf": 3,
+      "rule": "hemoglobin \u2264 11.55 & creatinine \u2264 1.695",
+      "share": 0.31072,
+      "confidence": 0.5502808800784569,
+      "subgroup_share_test": 0.27906675307841866,
+      "train_dist": {
+        "n": 3344,
+        "prevalence": 0.48325358851674644,
+        "auc": 0.6872546955216354,
+        "sens": 0.8298267326732673,
+        "spec": 0.3929398148148148,
+        "bal_acc": 0.6113832737440411
+      },
+      "test": {
+        "n": 7715,
+        "prevalence": 0.48010369410239795,
+        "auc": 0.6436044802279692,
+        "sens": 0.7904967602591793,
+        "spec": 0.3879331837447021,
+        "bal_acc": 0.5892149720019406
+      },
+      "mean_age_train": 68.91088516746412,
+      "mean_age_test": 61.12728451069346,
+      "auc_drop": 0.043650215293666195,
+      "detectron": {
+        "n": 500,
+        "repeats": 5,
+        "p_value": 0.009499758388422451,
+        "p_values": [
+          0.0074853627962513675,
+          0.5269760609379834,
+          0.02889883752893378,
+          0.0035943654650225135,
+          0.009499758388422451
+        ],
+        "hcs": true,
+        "share_of_repeats_hcs": 0.8,
+        "rate_Q": 0.3452,
+        "rate_Pr": 0.2888
+      },
+      "status": "HCS detected"
+    },
+    {
+      "leaf": 7,
+      "rule": "hemoglobin \u2264 13.05 & hemoglobin > 11.55 & creatinine > 1.075",
+      "share": 0.16552,
+      "confidence": 0.5789406630909709,
+      "subgroup_share_test": 0.14344262295081966,
+      "train_dist": {
+        "n": 2138,
+        "prevalence": 0.480823199251637,
+        "auc": 0.70755687594209,
+        "sens": 0.7558365758754864,
+        "spec": 0.5171171171171172,
+        "bal_acc": 0.6364768464963018
+      },
+      "test": {
+        "n": 4148,
+        "prevalence": 0.42912246865959497,
+        "auc": 0.6970211433343456,
+        "sens": 0.7056179775280899,
+        "spec": 0.5616554054054054,
+        "bal_acc": 0.6336366914667476
+      },
+      "mean_age_train": 69.40177736202058,
+      "mean_age_test": 64.81412729026037,
+      "auc_drop": 0.01053573260774443,
+      "detectron": {
+        "n": 500,
+        "repeats": 5,
+        "p_value": 0.8709060203050578,
+        "p_values": [
+          0.9573079574899221,
+          0.3489680267550563,
+          0.3712894078864378,
+          0.953269767514792,
+          0.8709060203050578
+        ],
+        "hcs": false,
+        "share_of_repeats_hcs": 0.0,
+        "rate_Q": 0.21159999999999995,
+        "rate_Pr": 0.2304
+      },
+      "status": "no HCS"
+    },
+    {
+      "leaf": 13,
+      "rule": "hemoglobin > 13.05 & creatinine > 1.105 & hemoglobin \u2264 14.65",
+      "share": 0.11898,
+      "confidence": 0.6200863337006725,
+      "subgroup_share_test": 0.11845178511845178,
+      "train_dist": {
+        "n": 1602,
+        "prevalence": 0.31335830212234705,
+        "auc": 0.7015411082940963,
+        "sens": 0.5239043824701195,
+        "spec": 0.7527272727272727,
+        "bal_acc": 0.6383158275986961
+      },
+      "test": {
+        "n": 2997,
+        "prevalence": 0.3383383383383383,
+        "auc": 0.7040161888875958,
+        "sens": 0.5355029585798816,
+        "spec": 0.7614725163893091,
+        "bal_acc": 0.6484877374845954
+      },
+      "mean_age_train": 68.7103620474407,
+      "mean_age_test": 65.67033700367034,
+      "auc_drop": -0.0024750805934994347,
+      "detectron": {
+        "n": 500,
+        "repeats": 5,
+        "p_value": 0.05992892911356865,
+        "p_values": [
+          0.003270482625396392,
+          0.05992892911356865,
+          0.11506553558408042,
+          0.30556820603619306,
+          0.011668722201568168
+        ],
+        "hcs": false,
+        "share_of_repeats_hcs": 0.4,
+        "rate_Q": 0.28680000000000005,
+        "rate_Pr": 0.23879999999999998
+      },
+      "status": "no HCS"
+    },
+    {
+      "leaf": 4,
+      "rule": "hemoglobin \u2264 11.55 & creatinine > 1.695",
+      "share": 0.03206,
+      "confidence": 0.634019990864874,
+      "subgroup_share_test": 0.26634382566585957,
+      "train_dist": {
+        "n": 342,
+        "prevalence": 0.7777777777777778,
+        "auc": 0.689404432132964,
+        "sens": 0.9924812030075187,
+        "spec": 0.039473684210526314,
+        "bal_acc": 0.5159774436090225
+      },
+      "test": {
+        "n": 826,
+        "prevalence": 0.7336561743341404,
+        "auc": 0.6478097809780977,
+        "sens": 0.9834983498349835,
+        "spec": 0.031818181818181815,
+        "bal_acc": 0.5076582658265827
+      },
+      "mean_age_train": 68.87426900584795,
+      "mean_age_test": 61.152542372881356,
+      "auc_drop": 0.04159465115486627,
+      "detectron": null,
+      "status": "< 5% of patients: not tested"
+    },
+    {
+      "leaf": 6,
+      "rule": "hemoglobin \u2264 13.05 & hemoglobin > 11.55 & creatinine \u2264 1.075",
+      "share": 0.15886,
+      "confidence": 0.6415526452399934,
+      "subgroup_share_test": 0.140119462419114,
+      "train_dist": {
+        "n": 2031,
+        "prevalence": 0.24864598719842443,
+        "auc": 0.680504262746065,
+        "sens": 0.3584158415841584,
+        "spec": 0.8551769331585846,
+        "bal_acc": 0.6067963873713715
+      },
+      "test": {
+        "n": 4018,
+        "prevalence": 0.25908412145345944,
+        "auc": 0.6612721224553146,
+        "sens": 0.31412103746397696,
+        "spec": 0.863957003694995,
+        "bal_acc": 0.589039020579486
+      },
+      "mean_age_train": 68.97045790251107,
+      "mean_age_test": 65.15828770532603,
+      "auc_drop": 0.019232140290750377,
+      "detectron": {
+        "n": 500,
+        "repeats": 5,
+        "p_value": 0.02479733987232391,
+        "p_values": [
+          0.6051896339810661,
+          0.016955960895866394,
+          0.3736525756014096,
+          0.02479733987232391,
+          0.0035267020983662184
+        ],
+        "hcs": true,
+        "share_of_repeats_hcs": 0.6,
+        "rate_Q": 0.3556,
+        "rate_Pr": 0.3136
+      },
+      "status": "HCS detected"
+    },
+    {
+      "leaf": 11,
+      "rule": "hemoglobin > 13.05 & creatinine \u2264 1.105 & prior_admissions > 1.5",
+      "share": 0.03446,
+      "confidence": 0.664432247394045,
+      "subgroup_share_test": 0.11670480549199085,
+      "train_dist": {
+        "n": 430,
+        "prevalence": 0.24883720930232558,
+        "auc": 0.6683834379792251,
+        "sens": 0.24299065420560748,
+        "spec": 0.9040247678018576,
+        "bal_acc": 0.5735077110037325
+      },
+      "test": {
+        "n": 874,
+        "prevalence": 0.2414187643020595,
+        "auc": 0.6679605126775464,
+        "sens": 0.17535545023696683,
+        "spec": 0.9230769230769231,
+        "bal_acc": 0.5492161866569449
+      },
+      "mean_age_train": 68.63720930232559,
+      "mean_age_test": 65.22883295194508,
+      "auc_drop": 0.00042292530167864495,
+      "detectron": null,
+      "status": "< 5% of patients: not tested"
+    },
+    {
+      "leaf": 14,
+      "rule": "hemoglobin > 14.65 & creatinine > 1.105",
+      "share": 0.03116,
+      "confidence": 0.6995659539258091,
+      "subgroup_share_test": 0.09934640522875816,
+      "train_dist": {
+        "n": 421,
+        "prevalence": 0.2660332541567696,
+        "auc": 0.6850439204808138,
+        "sens": 0.3125,
+        "spec": 0.8996763754045307,
+        "bal_acc": 0.6060881877022654
+      },
+      "test": {
+        "n": 765,
+        "prevalence": 0.2326797385620915,
+        "auc": 0.6771624906686062,
+        "sens": 0.3146067415730337,
+        "spec": 0.9182282793867121,
+        "bal_acc": 0.6164175104798729
+      },
+      "mean_age_train": 69.18289786223278,
+      "mean_age_test": 65.84052287581699,
+      "auc_drop": 0.007881429812207519,
+      "detectron": null,
+      "status": "< 5% of patients: not tested"
+    },
+    {
+      "leaf": 10,
+      "rule": "hemoglobin > 13.05 & creatinine \u2264 1.105 & prior_admissions \u2264 1.5",
+      "share": 0.14824,
+      "confidence": 0.7539300738662408,
+      "subgroup_share_test": 0.11594202898550725,
+      "train_dist": {
+        "n": 1928,
+        "prevalence": 0.14730290456431536,
+        "auc": 0.6513591891984511,
+        "sens": 0.06690140845070422,
+        "spec": 0.9829683698296837,
+        "bal_acc": 0.5249348891401939
+      },
+      "test": {
+        "n": 3657,
+        "prevalence": 0.16598304621274268,
+        "auc": 0.6595441164555594,
+        "sens": 0.08072487644151564,
+        "spec": 0.9813114754098361,
+        "bal_acc": 0.5310181759256759
+      },
+      "mean_age_train": 68.9859958506224,
+      "mean_age_test": 65.77413180202352,
+      "auc_drop": -0.008184927257108288,
+      "detectron": {
+        "n": 500,
+        "repeats": 5,
+        "p_value": 0.32886719641825196,
+        "p_values": [
+          0.448489639147138,
+          0.47442482330421676,
+          0.11983707155906172,
+          0.2401879169646506,
+          0.32886719641825196
+        ],
+        "hcs": false,
+        "share_of_repeats_hcs": 0.0,
+        "rate_Q": 0.5928,
+        "rate_Pr": 0.5751999999999999
+      },
+      "status": "no HCS"
+    }
+  ],
+  "n_profiles": 8,
+  "n_tested": 5,
+  "n_flagged": 2,
+  "share_flagged": 0.46958,
+  "share_tested": 0.90232,
+  "population_hcs": false,
+  "contrast": {
+    "age<50": {
+      "population_hcs": false,
+      "population_p": 0.19190784455575138,
+      "n_tested": 5,
+      "n_flagged": 2,
+      "share_flagged": 0.46958,
+      "share_tested": 0.90232,
+      "pop_auc_train_dist": 0.752468396420847,
+      "pop_auc_test": 0.729998021137469
+    },
+    "sex": {
+      "population_hcs": true,
+      "population_p": 1.0562216409072257e-28,
+      "n_tested": 7,
+      "n_flagged": 7,
+      "share_flagged": 0.96958,
+      "share_tested": 0.96958,
+      "pop_auc_train_dist": 0.7413767246723254,
+      "pop_auc_test": 0.7196967610289613
+    },
+    "race": {
+      "population_hcs": true,
+      "population_p": 0.00035219352640632776,
+      "n_tested": 7,
+      "n_flagged": 5,
+      "share_flagged": 0.79318,
+      "share_tested": 0.95624,
+      "pop_auc_train_dist": 0.7339927232650156,
+      "pop_auc_test": 0.7351418151587878
+    }
+  },
+  "headline_profile": {
+    "leaf": 3,
+    "rule": "hemoglobin \u2264 11.55 & creatinine \u2264 1.695",
+    "share": 0.31072,
+    "confidence": 0.5502808800784569,
+    "subgroup_share_test": 0.27906675307841866,
+    "train_dist": {
+      "n": 3344,
+      "prevalence": 0.48325358851674644,
+      "auc": 0.6872546955216354,
+      "sens": 0.8298267326732673,
+      "spec": 0.3929398148148148,
+      "bal_acc": 0.6113832737440411
+    },
+    "test": {
+      "n": 7715,
+      "prevalence": 0.48010369410239795,
+      "auc": 0.6436044802279692,
+      "sens": 0.7904967602591793,
+      "spec": 0.3879331837447021,
+      "bal_acc": 0.5892149720019406
+    },
+    "mean_age_train": 68.91088516746412,
+    "mean_age_test": 61.12728451069346,
+    "auc_drop": 0.043650215293666195,
+    "detectron": {
+      "n": 500,
+      "repeats": 5,
+      "p_value": 0.009499758388422451,
+      "p_values": [
+        0.0074853627962513675,
+        0.5269760609379834,
+        0.02889883752893378,
+        0.0035943654650225135,
+        0.009499758388422451
+      ],
+      "hcs": true,
+      "share_of_repeats_hcs": 0.8,
+      "rate_Q": 0.3452,
+      "rate_Pr": 0.2888
+    },
+    "status": "HCS detected"
+  },
+  "localized": true,
+  "runtime_sec": 34.6
+}

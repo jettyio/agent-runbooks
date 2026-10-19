@@ -1,0 +1,37 @@
+{
+  "headline": "Age<50 shift missed at population level (p = 0.19) but 2 of 5 profiles flagged (47% of patients); worst profile (31% share): AUC 0.69 → 0.64.",
+  "idea": [
+    "A model can perform well on average while being unreliable for specific patient subgroups: population-level metrics smooth over heterogeneous error patterns.",
+    "MED3pa identifies interpretable low-confidence patient profiles (leaves of a regression tree) by learning to predict per-patient correctness from features and model output.",
+    "Detectron, run inside each profile, tests whether deployment patients look systematically different from training-distribution patients — a harmful covariate shift that explains the profile’s degraded reliability."
+  ],
+  "findings": [
+    "The population-level Detectron test found no harmful covariate shift for the age<50 removal (median p = 0.19), consistent with the paper’s finding that age shift was undetected at the population level for all three tasks. Yet 2 of 5 tested profiles covering 47% of patients were flagged, confirming that localized degradation can be invisible at the aggregate level.",
+    "The worst flagged profile — hemoglobin ≤ 11.55 & creatinine ≤ 1.695 — covers 31% of patients, with 28% of its deployment patients belonging to the removed subgroup. Mean age fell from 68.9 (training distribution) to 61.1 (deployment), and AUC dropped from 0.69 to 0.64, sensitivity from 0.83 to 0.79. The paper’s MIMIC-IV readmission profile (17.68% of patients, AUC 0.80 → 0.64) shows a comparable AUC endpoint at deployment despite different cohort mechanisms.",
+    "The three-shift contrast mirrors the paper: age<50 is localized (population no HCS p = 0.19, 2 profiles flagged), while sex is detected at population level (p = 1.06e-28) in all 7 of 7 tested profiles (97% of patients), and race is detected at population level (p = 0.000352) in 5 of 7 profiles (79% of patients). Broad shifts light up everywhere and offer little guidance on which specific patients are affected.",
+    "Some profiles showed AUC drops without Detectron flagging HCS, and others were flagged with modest drops — illustrating the paper’s caution that HCS detection and performance degradation are correlated but not identical signals. Profiles near the 5% minimum-share threshold have limited statistical power; fig_profiles.png shows these discordant cases."
+  ],
+  "try_next": [
+    {
+      "label": "Real data: UCI Diabetes 130-US hospitals",
+      "why": "Tests whether localization holds on a real, noisier dataset without planted mechanisms (the paper used MIMIC-IV, not synthetic data).",
+      "params": {"dataset": "diabetes130", "removed_subgroup": "age<50", "outcome": "readmit_any", "seed": 0}
+    },
+    {
+      "label": "Broad shift (sex removed) as primary condition",
+      "why": "Confirms the broad-vs-localized contrast: the sex shift fires everywhere in the contrast table, so running it as the primary condition should yield population HCS and profiles flagged across the board.",
+      "params": {"dataset": "synthetic", "removed_subgroup": "sex", "seed": 0}
+    },
+    {
+      "label": "Lower Detectron power with small sample",
+      "why": "Reducing detectron_n to 100 lowers statistical power; borderline profiles may drop below significance, showing how sample size affects the ability to localize HCS.",
+      "params": {"dataset": "synthetic", "removed_subgroup": "age<50", "detectron_n": 100, "seed": 1}
+    }
+  ],
+  "caveats": [
+    "This run uses a synthetic 100,000-patient MIMIC-like cohort with planted mechanisms, not MIMIC-IV; the localization result is partially designed into the data-generating process and is not an independent replication of the paper.",
+    "MED3pa and Detectron are faithful simplifications: the sklearn MLP replaces the paper’s full neural-network CDC architecture, and the rejection test uses Fisher’s exact test on the median of repeated subsamples rather than the exact statistical framework described in the paper.",
+    "Results are sensitive to the random seed, especially for profiles with p-values near α = 0.05; a borderline finding should be checked with at least one additional seed.",
+    "HCS detected by Detectron is a diagnostic signal, not causal proof: it indicates that deployment patients differ from training-distribution patients within a profile, but does not establish that this shift caused the reliability drop."
+  ]
+}

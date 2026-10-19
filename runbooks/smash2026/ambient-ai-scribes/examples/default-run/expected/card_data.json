@@ -1,0 +1,114 @@
+{
+  "paper": {
+    "num": 8,
+    "title": "Implementing Ambient Artificial Intelligence Scribes in Hospital-based Specialty Care: A Mixed-Methods Evaluation on Administrative Burden and Clinical Workflows",
+    "authors": "Nishila Mehta, Emily Ha, Andrew Gordon, Rodica Balaci, Onil Bhattacharya, Geetha Mukerji",
+    "affiliation": "Women's College Hospital \u00b7 University of Toronto"
+  },
+  "inputs": {
+    "specialty": "mixed",
+    "encounters": "6 synthetic",
+    "baseline note": "6 min",
+    "edit speed": "1.5 s/word",
+    "encounters/month": "390",
+    "patients declining": "10%",
+    "trainee-led": "20%",
+    "promise": "5 min/note"
+  },
+  "tiles": [
+    {
+      "label": "Edit burden of scribe drafts",
+      "value": "78% \u2192 27%",
+      "sub": "words changed to sign the draft: generic \u2192 specialty-customized",
+      "tone": "warn"
+    },
+    {
+      "label": "Net minutes per note",
+      "value": "+1.5 / +3.3",
+      "sub": "vs writing it yourself in 6 min (generic / customized)",
+      "tone": "neutral"
+    },
+    {
+      "label": "Clinic hours saved / month",
+      "value": "6.6 h",
+      "sub": "at the paper's adoption, vs 4,550 h promised",
+      "tone": "warn"
+    },
+    {
+      "label": "Drafts needing substantial edits",
+      "value": "33%",
+      "sub": "judge's call on generic drafts (paper survey: 88%)",
+      "tone": "neutral"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_edit_burden.png",
+      "title": "How much of the scribe's draft did the specialist have to change?",
+      "caption": "Word-level edits (insertions + deletions + substitutions) the simulated specialist made to sign each draft, divided by the longer of draft and final note. Synthetic transcripts; LLM scribe and LLM specialist."
+    },
+    {
+      "path": "fig_quality.png",
+      "title": "What was wrong with the drafts?",
+      "caption": "Left: PDQI-9-style item scores (LLM judge). Right: errors per draft by type. Orange = generic SOAP, blue = specialty-customized."
+    },
+    {
+      "path": "fig_hours_ladder.png",
+      "title": "Promise vs implementation reality",
+      "caption": "Clinician-hours saved per month across the clinic. 'Pilot reality' combines the paper's adoption funnel and usage distribution with the minutes measured here; each rung removes one barrier."
+    },
+    {
+      "path": "fig_funnel.png",
+      "title": "Where the encounters went (paper's numbers)",
+      "caption": "Adoption funnel at the interim analysis. Even after the barriers you assumed, most eligible encounters were simply not recorded with the scribe."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "AI notes needing editing",
+      "paper": "88% reported that generated notes required frequent editing (n=17 survey)",
+      "yours": "33% generic / 17% customized drafts judged to need substantial edits",
+      "note": "different construct: clinician perception vs LLM judge"
+    },
+    {
+      "metric": "Mismatch with specialty documentation",
+      "paper": "mismatch between output and specialty-specific documentation requirements (n=4)",
+      "yours": "format errors per draft 0.8 generic vs 0.3 customized",
+      "note": ""
+    },
+    {
+      "metric": "Inaccurate content",
+      "paper": "inaccurate content information (n=4)",
+      "yours": "inaccuracy + hallucination errors per draft 0.0; planted-fact recall 100%",
+      "note": "synthetic transcripts"
+    },
+    {
+      "metric": "Time savings",
+      "paper": "41% felt they experienced overall time savings; 29% reported reduced documentation time",
+      "yours": "83% of generic / 100% of customized notes faster than 6 min from scratch",
+      "note": "modelled minutes, your assumptions"
+    },
+    {
+      "metric": "Adoption",
+      "paper": "43 enrolled; 21 (49%) used the AI scribe",
+      "yours": "used as model input",
+      "note": "calibration"
+    },
+    {
+      "metric": "Utilization among users",
+      "paper": "median 0.94% of encounters (IQR 3.04%), range 0.05-18.4%",
+      "yours": "lognormal \u03c3 = 1.87; mean 3.1% per active user",
+      "note": "fitted, capped at 18.4%"
+    },
+    {
+      "metric": "Documentation time (EHR)",
+      "paper": "longer clinical notes, greater editing time, slightly more time spent documenting per encounter",
+      "yours": "drafts 205 words; finalizing a draft 4.5 min vs 6 min assumed baseline",
+      "note": ""
+    }
+  ],
+  "runbook": {
+    "name": "smash-08-scribe-reality-check",
+    "url": ""
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "headline": "The +0.120 youngest−oldest sensitivity gap reverses in 19 of 36 analytic specifications, and the 95% CI already spans zero [−0.057, +0.235].",
+  "idea": [
+    "A raw subgroup gap's size and sign depend on the metric, operating threshold, and outcome prevalence—it is a signal to investigate, not a verdict.",
+    "A stratified bootstrap CI shows whether the gap exceeds sampling noise given each group's test-set size.",
+    "A multiverse of defensible data-preparation choices reveals whether the gap's direction is stable or an artifact of one analysis path."
+  ],
+  "findings": [
+    "Sensitivity difference (10–29 minus 60+) is **+0.120** [−0.057, +0.235]; the interval spans zero. The paper reports +0.104 [−0.070, +0.232] for the same comparison—results agree closely. The threshold sweep (τ from 0.02 to 0.80) shows the sensitivity gap spans −0.080 to +0.245, reversing sign well below the training-prevalence threshold (τ = 0.117).",
+    "Raw PPV gap is **+0.099**; standardizing to pooled prevalence (π = 0.114) gives +0.104—the gap grows by about 5%, no sign flip. The multiverse of 36 specifications splits both ways: 19 give a negative gap (youngest below oldest) and 13 a positive one, ranging from −0.237 to +0.148."
+  ],
+  "try_next": [
+    {
+      "label": "Sex gap, diabetes130 (CI excludes zero in paper)",
+      "why": "Paper reports −0.049 [−0.084, −0.011]; a CI excluding zero contrasts with the age gap here.",
+      "params": {"dataset": "diabetes130", "attribute": "sex"}
+    },
+    {
+      "label": "Race gap, diabetes130 (AfricanAmerican vs Caucasian)",
+      "why": "Paper reports −0.040 [−0.090, +0.006]; tests whether a race comparison also shows multiverse instability.",
+      "params": {"dataset": "diabetes130", "attribute": "race"}
+    },
+    {
+      "label": "Age gap, CDC Diabetes (large robust gap in paper)",
+      "why": "Paper reports −0.207 [−0.241, −0.170]; a CI that excludes zero contrasts with the fragile diabetes130 age gap.",
+      "params": {"dataset": "cdc_diabetes", "attribute": "age"}
+    }
+  ],
+  "caveats": [
+    "Predictor coding and outcome definition reconstructed from the paper's table; no access to the authors' original code.",
+    "CI spanning zero does not establish equivalence between age groups; this is not a fairness verdict."
+  ]
+}

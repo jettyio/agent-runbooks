@@ -1,0 +1,37 @@
+{
+  "headline": "TRACE streaming F1 0.96 vs DiffMean 0.61; ASR cut from 0.94 to 0.18 with ΔRef +0.00, while the global direction reaches ASR 0.00 but causes ΔRef +0.46.",
+  "idea": [
+    "Detect harm *while it is generated* via a cumulative risk R_t = 1 − ∏(1 − q_i) that can only rise, enabling a streaming stop before the full response is produced.",
+    "Discrete activation concepts with a smoothed harmfulness score s_c (Eq. 3) — estimated from response-level labels via a Laplace prior — make both detection and editing interpretable: each concept has a readable purity and a direction.",
+    "Edit only tokens assigned to harmful concepts, shifting each toward its nearest benign concept (Eq. 6–7 with gain g_h proportional to s_c), rather than adding one global direction to every token regardless of content."
+  ],
+  "findings": [
+    "**Detection:** TRACE achieves streaming F1 0.959 and FPR 1.5% on test responses; DiffMean reaches only F1 0.606 with FPR 32.8%. On the hard-negative (caution) responses — safe content on sensitive topics — TRACE's FPR is 4.8% vs DiffMean's 57.1%. The paper's Table 1 reports TRACE resp/stream F1 of 0.933/0.935 on S-Eval; this simulation's 0.959 is consistent in order of magnitude but inflated by the orthogonal simulated features. Median stop position is 50.6% through harmful responses.",
+    "**Steering:** ASR drops from 0.94 (unsteered) to 0.18 after TRACE selective editing at λ=1, with ΔRef exactly 0.00 — no safe response is newly pushed into refusal-like behaviour. The global refusal direction achieves ASR 0.00 but disrupts 45.8% of safe responses (ΔRef +0.46), matching the paper's Table 2 pattern (WildGuard: refusal direction ΔRef +0.717; S-Eval: +0.439). Despite the zero ΔRef, TRACE edits tokens in 97.7% of safe responses (27.2% of their tokens on average) due to concept impurity — it just doesn't change their downstream behaviour.",
+    "**Codebook:** 17 of 48 concepts are scored harmful (s_c > 0). Average purity of these harmful concepts is 38.9% — fewer than 4 in 10 tokens assigned to a 'harmful' concept actually come from harmful prototypes. Yet detection accuracy is high because the causal hazard head is trained on response labels rather than ground-truth families, and cumulative risk integrates evidence across many tokens.",
+    "**Your sequence:** The sequence `benign:20, caution:8, benign:6, harmful:14, benign:6` (54 tokens) is stopped at token 39, just 4 tokens after the harmful segment begins at token 35. TRACE edits 33 tokens. The caution-only stretch (tokens 21–28) does not trigger a false stop despite being on a sensitive topic, confirming that the concept-hazard design distinguishes refusal from compliance."
+  ],
+  "try_next": [
+    {
+      "label": "Coarse codebook, no region term, high hard negatives",
+      "why": "With only 16 codes and no region signal, harmful and caution tokens share codes; high hard-negative share makes the base rate ambiguous. Expect concept purity to collapse and streaming F1 to drop sharply.",
+      "params": {"codebook_size": 16, "region_weight": 0.0, "hard_negative_share": 0.8, "seed": 3}
+    },
+    {
+      "label": "Safe-only sequence with no harmful segment",
+      "why": "Verifies that TRACE does not false-alarm on a trajectory that is entirely safe sensitive-topic content. The stop token should be None and ΔRef should remain near 0.",
+      "params": {"your_sequence": "caution:15, benign:10, caution:10", "seed": 3}
+    },
+    {
+      "label": "Weaker edit at λ = 0.5",
+      "why": "Halving the steering strength shows the ASR–ΔRef trade-off: expect ASR to fall less (above 0.18) but the safe-response edit fraction to stay similar, isolating the effect of edit magnitude from concept assignment.",
+      "params": {"steer_strength": 0.5, "seed": 3}
+    }
+  ],
+  "caveats": [
+    "All activations are synthetic 48-dimensional vectors with orthogonal topic, compliance, and refusal features designed to be separable; real Qwen3-8B residuals are 4096-dimensional and entangled, so detection and steering numbers here are not comparable in level with the paper's Table 1 and Table 2.",
+    "The ASR and ΔRef 'analogs' measure semantic feature directions in simulated activation space, not actual model outputs scored against WildGuard, S-Eval, or HarmBench; a simulator readout of 'harmful' or 'refusal' is not the same as a judge model or human label.",
+    "The codebook, hazard head, and response head are simplified stand-ins for the paper's jointly trained cross-layer VQ encoder and GRU streaming head; W and b come from ridge regression onto a synthetic 'layer u', not the paper's reconstruction objective (Eq. 2).",
+    "The simulated world was deliberately constructed with separable concept families, which systematically favours concept-based methods over direction-based baselines like DiffMean; on real data the gap is smaller (paper: TRACE stream F1 0.935 vs DiffMean 0.820 on S-Eval)."
+  ]
+}

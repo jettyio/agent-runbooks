@@ -1,0 +1,193 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/trace-safety-steering",
+ "title": "TRACE: Temporal Risk Assessment and Concept Editing for Safer Language Generation",
+ "description": "TRACE learns a codebook of recurring activation patterns and assigns each token activation to its nearest codebook vector, defining a latent concept. During steering, activations assigned to harmful concepts are steered along directions defined by nearby benign targets.",
+ "paper": {
+  "title": "TRACE: Temporal Risk Assessment and Concept Editing for Safer Language Generation",
+  "authors": "Ankur Garg, Xuemin Yu, Hassan Sajjad, Samira Ebrahimi Kahou",
+  "venue": "SMASH 2026",
+  "session": "Poster",
+  "url": "https://github.com/agarg-dev/TRACE/blob/0d45d7e5a5e30399eeafd0e2a41c55ae8ae8288d/TRACE.pdf",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://github.com/agarg-dev/TRACE/blob/0d45d7e5a5e30399eeafd0e2a41c55ae8ae8288d/TRACE.pdf"
+   },
+   {
+    "label": "Full version",
+    "url": "https://arxiv.org/abs/2610.15365"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "2-5 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "Streaming F1 0.96 for TRACE vs 0.61 for DiffMean. Steering lowers the attack-success analog from 0.94 to 0.18 with no change in refusals; a global refusal direction reaches 0.00 but adds 0.46 refusals. Activations are simulated; no language model is run. The codebook and GRU detector are simplified stand-ins for the paper's trained components.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "your_sequence": "benign:20, caution:8, benign:6, harmful:14, benign:6",
+     "codebook_size": "48",
+     "prior_strength": "5",
+     "rho": "0.5",
+     "region_weight": "0.5",
+     "steer_strength": "1.0",
+     "hard_negative_share": "0.3",
+     "harm_onset": "0.4",
+     "seed": "3"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-10-trace-safety-steering",
+    "trajectory_id": "8998382e",
+    "url": "https://jetty.io/jon-smash2026/smash-10-trace-safety-steering/8998382e",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T18:41:27.953338+00:00",
+    "duration_seconds": 166,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Your sequence",
+   "type": "text",
+   "required": false,
+   "default": "benign:20, caution:8, benign:6, harmful:14, benign:6",
+   "description": "Your response trajectory as family:count segments (benign, caution, harmful; ≤ 300 tokens). Activations are sampled for it; TRACE scores it token by token"
+  },
+  {
+   "label": "Codebook size",
+   "type": "text",
+   "required": false,
+   "default": "48",
+   "description": "Number of discrete concepts K (try 16 for a coarse codebook)"
+  },
+  {
+   "label": "Prior strength",
+   "type": "text",
+   "required": false,
+   "default": "5",
+   "description": "Virtual responses a in Eq. 3 (higher = rare concepts pulled harder toward the base rate)"
+  },
+  {
+   "label": "Encoder mix ρ",
+   "type": "text",
+   "required": false,
+   "default": "0.5",
+   "description": "How much the learned projection changes the activation in Eq. 1 (0–1)"
+  },
+  {
+   "label": "Region weight",
+   "type": "text",
+   "required": false,
+   "default": "0.5",
+   "description": "Strength of the region term pushing harmful- and safe-response tokens to different codes (0 = off)"
+  },
+  {
+   "label": "Steering strength λ",
+   "type": "text",
+   "required": false,
+   "default": "1.0",
+   "description": "λ in Eq. 7 (and the global direction's scale)"
+  },
+  {
+   "label": "Hard negatives",
+   "type": "text",
+   "required": false,
+   "default": "0.3",
+   "description": "Share of safe responses that are refusals / safety education on sensitive topics (0–0.9)"
+  },
+  {
+   "label": "Harm onset",
+   "type": "text",
+   "required": false,
+   "default": "0.4",
+   "description": "Mean position (fraction of the response) where harmful responses turn harmful"
+  },
+  {
+   "label": "Seed",
+   "type": "text",
+   "required": false,
+   "default": "3",
+   "description": "Random seed"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/trace-safety-steering/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/trace-safety-steering",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "llm-evaluation"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

@@ -1,0 +1,102 @@
+{
+  "paper": {
+    "num": 11,
+    "title": "MASQ: The Multi-Agent System Questionnaire",
+    "authors": "Nils Kiele, Niki Mehri, Aaron Arellano, Samira Ebrahimi Kahou",
+    "affiliation": "University of Calgary"
+  },
+  "inputs": {
+    "system": "ChatDev (paper)",
+    "LLM": "anthropic/claude-haiku-4.5",
+    "Stage 3": "5 mini-MAS traces",
+    "verification": "prompt",
+    "memory between phases": "drop",
+    "review rounds": 2,
+    "LLM calls": 35
+  },
+  "tiles": [
+    {
+      "label": "LLM screen agrees with authors",
+      "value": "9/14",
+      "sub": "exact Low/Mid/High match with the paper's Stage 2; 13/14 within one level",
+      "tone": "neutral"
+    },
+    {
+      "label": "Anticipated correctly (ChatDev)",
+      "value": "8/14",
+      "sub": "LLM screen vs MAST's 30 annotated ChatDev traces; authors: 8/14. Verification (FM-3.2) rated Low (authors Low, observed 11/30)",
+      "tone": "good"
+    },
+    {
+      "label": "Mini-MAS: anticipated = observed",
+      "value": "2/14",
+      "sub": "5 traces of a ChatDev-shaped chain (prompt verification, history drop)",
+      "tone": "neutral"
+    },
+    {
+      "label": "Declared done, hidden tests fail",
+      "value": "3 of 5",
+      "sub": "hidden-test pass rate 88%; reviewer approved 5/5",
+      "tone": "accent"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_stage2_grid.png",
+      "title": "Which failure modes does the design make plausible?",
+      "caption": "MASQ Stage 2: each MAST failure mode, grouped by the Stage-1 dimension it is mapped to. The LLM classifies the design's protection (explicit guardrail / prompt-only / architectural); code applies the paper's rule (Low / Mid / High). Paper columns are the authors' Table 2; '(!)' marks anticipated ≠ observed."
+    },
+    {
+      "path": "fig_stage3_mini.png",
+      "title": "Stage 3: did the anticipated failures show up in real traces?",
+      "caption": "A tiny ChatDev-shaped chat chain was screened (Stage 2) and then run on small coding tasks; an LLM annotated each trace (T1…) against MAST. '(!)' uses a matching rule that reproduces the paper's flags: Low ≤ 2/30, Mid 2/30–8/30, High ≥ 8/30."
+    },
+    {
+      "path": "fig_traces.png",
+      "title": "When the agents say it's verified, is it?",
+      "caption": "Hidden unit tests (never shown to the agents) on each trace's final code, with whether the reviewer approved and the tester passed it."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "Correctly anticipated (ChatDev)",
+      "paper": "Stage 2 correctly predicts 8/14 MAST risks",
+      "yours": "LLM screen: 8/14",
+      "note": "scored against the paper's own Stage 3 counts"
+    },
+    {
+      "metric": "No or incomplete verification (FM-3.2)",
+      "paper": "Low; occurring in 11/30 traces",
+      "yours": "LLM: Low",
+      "note": "the paper's main miss"
+    },
+    {
+      "metric": "Loss of conversation history (FM-1.4)",
+      "paper": "High; 2/30 (!)",
+      "yours": "LLM: Low",
+      "note": ""
+    },
+    {
+      "metric": "Conversation reset (FM-2.1)",
+      "paper": "High; 1/30 (!)",
+      "yours": "LLM: High",
+      "note": ""
+    },
+    {
+      "metric": "Overestimated risks",
+      "paper": "we overestimated five risk categories",
+      "yours": "LLM screen overestimated 4, underestimated 2",
+      "note": "(!) cells in the grid"
+    },
+    {
+      "metric": "Role prompts vs mechanical verification",
+      "paper": "role-prompting does not substitute for formal, mechanical verification",
+      "yours": "3/5 mini-MAS traces declared done but failed hidden tests (prompt verification)",
+      "note": "runbook extension"
+    }
+  ],
+  "runbook": {
+    "name": "smash-11-masq-questionnaire",
+    "url": ""
+  }
+}

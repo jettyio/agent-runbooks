@@ -1,0 +1,197 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/engagement-not-enough",
+ "title": "When Engagement Is Not Enough: What Should AI Optimize in Gamified Education?",
+ "description": "In crossover STEAM education (n = 49), interest favored gamified instruction (dz = 0.64), whereas perceived expression acquisition favored conventional instruction (dz = -0.55). In disaster education (n = 37), engagement was high and perceived knowledge and competence increased, but intention changed little.",
+ "paper": {
+  "title": "When Engagement Is Not Enough: What Should AI Optimize in Gamified Education?",
+  "authors": "Takuji Takemoto",
+  "venue": "SMASH 2026",
+  "session": "Poster",
+  "url": "https://drive.google.com/file/d/1L1jl5c3v9hjZtZ1QofMdEY-6dHQ-uJSn/view?usp=sharing",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://drive.google.com/file/d/1L1jl5c3v9hjZtZ1QofMdEY-6dHQ-uJSn/view?usp=sharing"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "2-4 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "With equal weights the gamified condition wins 55% of resamples. The verdict flips once learning gets more than 51% of the weight. Learners are simulated from the paper's summary statistics. Persistence is an assumed value; the paper's follow-up data are not modelled.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "w_engagement": "0.25",
+     "w_learning": "0.25",
+     "w_intention": "0.25",
+     "w_persistence": "0.25",
+     "retention": "0.5",
+     "affect_learning_corr": "0",
+     "engagement_ceiling": "7",
+     "n_case1": "49",
+     "n_case2": "37",
+     "seed": "3"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-19-engagement-not-enough",
+    "trajectory_id": "cb535105",
+    "url": "https://jetty.io/jon-smash2026/smash-19-engagement-not-enough/cb535105",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T18:34:03.914929+00:00",
+    "duration_seconds": 133,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Weight: engagement (E)",
+   "type": "text",
+   "required": false,
+   "default": "0.25",
+   "description": "How much you value engagement (interest, enjoyment). Weights are renormalized to sum to 1"
+  },
+  {
+   "label": "Weight: learning (L)",
+   "type": "text",
+   "required": false,
+   "default": "0.25",
+   "description": "How much you value learning-related outcomes (acquisition, knowledge, competence)"
+  },
+  {
+   "label": "Weight: intention (B)",
+   "type": "text",
+   "required": false,
+   "default": "0.25",
+   "description": "How much you value behavioural intention / action"
+  },
+  {
+   "label": "Weight: persistence (P)",
+   "type": "text",
+   "required": false,
+   "default": "0.25",
+   "description": "How much you value durable change over time"
+  },
+  {
+   "label": "Retention (assumed)",
+   "type": "text",
+   "required": false,
+   "default": "0.5",
+   "description": "Your assumption: fraction of the Case 2 learning effect still present at follow-up (paper: T2 ongoing)"
+  },
+  {
+   "label": "Affect–learning correlation",
+   "type": "text",
+   "required": false,
+   "default": "0",
+   "description": "Assumed correlation between a learner's engagement benefit and learning benefit in Case 1 (−0.5 … 0.8)"
+  },
+  {
+   "label": "Engagement scale top",
+   "type": "text",
+   "required": false,
+   "default": "7",
+   "description": "Top of the engagement scale (7 = paper). Raise it (e.g. 10) to remove the ceiling and test the \"proxy saturation\" idea"
+  },
+  {
+   "label": "Case 1 sample size",
+   "type": "text",
+   "required": false,
+   "default": "49",
+   "description": "Learners in the synthetic crossover (paper: 49)"
+  },
+  {
+   "label": "Case 2 sample size",
+   "type": "text",
+   "required": false,
+   "default": "37",
+   "description": "Learners in the synthetic card-game study (paper: 37)"
+  },
+  {
+   "label": "Seed",
+   "type": "text",
+   "required": false,
+   "default": "3",
+   "description": "Random seed"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/engagement-not-enough/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/engagement-not-enough",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "people"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

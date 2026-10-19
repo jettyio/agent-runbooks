@@ -1,0 +1,109 @@
+{
+  "paper": {
+    "num": 10,
+    "title": "TRACE: Temporal Risk Assessment and Concept Editing for Safer Language Generation",
+    "authors": "Ankur Garg, Xuemin Yu, Hassan Sajjad, Samira Ebrahimi Kahou",
+    "affiliation": ""
+  },
+  "inputs": {
+    "codebook": 48,
+    "prior a": "5",
+    "\u03c1": "0.5",
+    "region weight": "0.5",
+    "\u03bb": "1",
+    "hard negatives": "30% of safe",
+    "harm onset": "0.4",
+    "your sequence": "benign:20, caution:8, benign:6, harmful:14, benign:6",
+    "seed": 3
+  },
+  "tiles": [
+    {
+      "label": "Streaming F1 (test)",
+      "value": "0.96 vs 0.61",
+      "sub": "TRACE vs DiffMean; FPR 2% vs 33%",
+      "tone": "good"
+    },
+    {
+      "label": "ASR analog",
+      "value": "0.94 \u2192 0.18",
+      "sub": "unsteered \u2192 TRACE edit at \u03bb = 1 (global: 0.00)",
+      "tone": "accent"
+    },
+    {
+      "label": "\u0394Ref analog",
+      "value": "+0.00 vs +0.46",
+      "sub": "safe responses disrupted: TRACE vs global direction",
+      "tone": "warn"
+    },
+    {
+      "label": "Your sequence stops at",
+      "value": "token 39",
+      "sub": "harm starts at token 35",
+      "tone": "neutral"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_stream.png",
+      "title": "When would generation stop?",
+      "caption": "Cumulative streaming risk R_t = 1 \u2212 \u220f(1 \u2212 q_i) for your concept sequence and two test responses. Dotted lines mark where harmful content truly starts. The strip shows your sequence's true concept families and the tokens TRACE would edit."
+    },
+    {
+      "path": "fig_steering.png",
+      "title": "Selective edits vs one global direction",
+      "caption": "Sweeping the steering strength \u03bb. TRACE edits only tokens assigned to harmful concepts (Eq. 7); the global direction shifts every token. Lower left is better."
+    },
+    {
+      "path": "fig_concepts.png",
+      "title": "Did the codebook find the harmful concepts?",
+      "caption": "Each bar is a learned concept: its true composition (simulated ground truth) and its smoothed harmfulness score s_c (Eq. 3) computed only from response labels."
+    },
+    {
+      "path": "fig_latency.png",
+      "title": "Earlier detection costs false positives",
+      "caption": "Median detection position vs false-positive rate across thresholds (the paper's Figure 2 analog)."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "Harmful-class F1, response / streaming (TRACE)",
+      "paper": "WildGuard 0.835 / 0.837; S-Eval 0.933 / 0.935",
+      "yours": "0.940 / 0.959",
+      "note": "synthetic activations"
+    },
+    {
+      "metric": "DiffMean F1, response / streaming",
+      "paper": "WildGuard 0.491 / 0.491; S-Eval 0.820 / 0.820",
+      "yours": "0.780 / 0.606",
+      "note": ""
+    },
+    {
+      "metric": "Steering ASR (unsteered \u2192 TRACE)",
+      "paper": "WildGuard 0.873 \u2192 0.306; S-Eval 0.634 \u2192 0.062",
+      "yours": "0.939 \u2192 0.184",
+      "note": "activation-level analog"
+    },
+    {
+      "metric": "\u0394Ref, TRACE vs refusal direction",
+      "paper": "+0.006 vs +0.717 (WildGuard); \u22120.002 vs +0.439 (S-Eval)",
+      "yours": "+0.000 vs +0.458",
+      "note": "analog"
+    },
+    {
+      "metric": "Refusal direction ASR",
+      "paper": "0.000 on both datasets",
+      "yours": "0.000 at \u03bb = 1",
+      "note": ""
+    },
+    {
+      "metric": "Stop threshold",
+      "paper": "threshold = 0.605 (Figure 1 example)",
+      "yours": "0.550",
+      "note": "validation-selected"
+    }
+  ],
+  "runbook": {
+    "name": "smash-10-trace-simulator",
+    "url": ""
+  }
+}

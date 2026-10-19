@@ -1,0 +1,113 @@
+{
+  "paper": {
+    "num": 20,
+    "title": "Towards Robust, Performance-Based Contamination Detection for LLMs",
+    "authors": "Allenna Tang, Jackie Cheung",
+    "affiliation": "McGill University \u00b7 Mila"
+  },
+  "inputs": {
+    "population": "102 models",
+    "items": "1,200 members / 1,200 unseen / 3,600 calibration",
+    "contamination strength": 0.97,
+    "model ability \u03b8": 0.3,
+    "memorization boost": 1.0,
+    "seed": 7
+  },
+  "tiles": [
+    {
+      "label": "Best confidence detector",
+      "value": "1.00 \u2192 0.52",
+      "sub": "AUROC before \u2192 after the evasion",
+      "tone": "warn"
+    },
+    {
+      "label": "IRT-residual detector",
+      "value": "0.73 \u2192 0.73",
+      "sub": "unchanged by construction (p = 0.002)",
+      "tone": "good"
+    },
+    {
+      "label": "Benchmark answers changed by evasion",
+      "value": "0",
+      "sub": "of 2,400 audited items",
+      "tone": "accent"
+    },
+    {
+      "label": "Cost to beat IRT too",
+      "value": "\u221213.1 pts",
+      "sub": "adversary must give back 70% of its contamination gains",
+      "tone": "neutral"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_auroc.png",
+      "title": "The evasion: confidence detectors collapse, IRT does not",
+      "caption": "AUROC for separating contaminated (member) from unseen items. The transform reshapes token probabilities to look like unseen items while keeping every answer's argmax."
+    },
+    {
+      "path": "fig_residuals.png",
+      "title": "Why IRT still sees it",
+      "caption": "The audited model answers member items better than its estimated ability predicts: positive residuals."
+    },
+    {
+      "path": "fig_sandbag.png",
+      "title": "What would it take to fool IRT too?",
+      "caption": "An adversary can only lower the IRT signal by answering contaminated items wrong \u2014 giving back the very score inflation it was after (dotted line = uncontaminated accuracy)."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "Min-K%++ AUROC (before \u2192 after)",
+      "paper": "0.99 \u2192 0.48",
+      "yours": "0.96 \u2192 0.50",
+      "note": ""
+    },
+    {
+      "metric": "Min-K% AUROC (before \u2192 after)",
+      "paper": "0.93 \u2192 0.54",
+      "yours": "0.97 \u2192 0.51",
+      "note": ""
+    },
+    {
+      "metric": "LOSS AUROC (before \u2192 after)",
+      "paper": "0.99 \u2192 0.54",
+      "yours": "1.00 \u2192 0.52",
+      "note": ""
+    },
+    {
+      "metric": "ZLIB AUROC (before \u2192 after)",
+      "paper": "0.99 \u2192 0.45",
+      "yours": "1.00 \u2192 0.52",
+      "note": ""
+    },
+    {
+      "metric": "IRT-residual AUROC (before \u2192 after)",
+      "paper": "0.68 \u2192 0.68 (\u0394 0.00)",
+      "yours": "0.73 \u2192 0.73",
+      "note": ""
+    },
+    {
+      "metric": "Control (uncontaminated) IRT AUROC",
+      "paper": "0.5016, p = 0.495",
+      "yours": "0.484, p = 0.890",
+      "note": ""
+    },
+    {
+      "metric": "Easy-item blind spot (IRT AUROC by difficulty)",
+      "paper": "on very easy items r \u2248 0: contamination undetectable",
+      "yours": "hard 0.83 / medium 0.66 / easy 0.60",
+      "note": ""
+    },
+    {
+      "metric": "Member accuracy (contamination)",
+      "paper": "0.5996 \u2192 0.9908",
+      "yours": "0.615 \u2192 0.990",
+      "note": "synthetic"
+    }
+  ],
+  "runbook": {
+    "name": "smash-20-contamination-audit",
+    "url": ""
+  }
+}

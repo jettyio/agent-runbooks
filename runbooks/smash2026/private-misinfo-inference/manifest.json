@@ -1,0 +1,189 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/private-misinfo-inference",
+ "title": "Privacy-Preserving Text Inference for Health-Misinformation Classification and Semantic Retrieval",
+ "description": "We design a privacy-preserving text inference framework based on CKKS homomorphic encryption for health-misinformation classification and semantic retrieval. The hybrid classifier achieved an accuracy of 0.971 and a macro-F1 score of 0.950, with identical reported metrics under plaintext and ciphertext-based inference.",
+ "paper": {
+  "title": "Privacy-Preserving Text Inference for Health-Misinformation Classification and Semantic Retrieval",
+  "authors": "Jasleen Kaur, Chloe Cachet, Koray Karabina, Jean Belo Klamti, Philippe Lamontagne",
+  "venue": "SMASH 2026",
+  "session": "Poster",
+  "url": "https://arxiv.org/abs/2610.20796",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://arxiv.org/abs/2610.20796"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "6-10 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "All 1,080 encrypted predictions matched plaintext. Accuracy 0.944, macro-F1 0.896 on CoAID; SIMD packing made encrypted retrieval 26 times faster. A small static embedder replaces BioBERT and MPNet. ISCC-SCT fingerprints and late-fusion retrieval are not reproduced.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "claims": "",
+     "features": "hybrid",
+     "text_field": "title+content",
+     "svd_dim": "300",
+     "poly_modulus_degree": "8192",
+     "retrieval_db_size": "0",
+     "C": "1.0",
+     "embedder": "minishlab/potion-base-8M",
+     "seed": "42"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-13-private-misinfo-inference",
+    "trajectory_id": "efcf00ae",
+    "url": "https://jetty.io/jon-smash2026/smash-13-private-misinfo-inference/efcf00ae",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T18:31:42.466170+00:00",
+    "duration_seconds": 399,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Your claims",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Up to 10 health claims separated by \\"
+  },
+  {
+   "label": "Features",
+   "type": "text",
+   "required": false,
+   "default": "hybrid",
+   "description": "hybrid (TF-IDF→SVD + embedding), tfidf, or embed"
+  },
+  {
+   "label": "Training text",
+   "type": "text",
+   "required": false,
+   "default": "title+content",
+   "description": "title+content (paper-like) or title (short, closer to what people paste)"
+  },
+  {
+   "label": "SVD dimensions",
+   "type": "text",
+   "required": false,
+   "default": "300",
+   "description": "TF-IDF truncated-SVD size (paper: 300)"
+  },
+  {
+   "label": "CKKS ring size",
+   "type": "text",
+   "required": false,
+   "default": "8192",
+   "description": "8192, 16384 or 32768 (paper). Used for the test-split and retrieval runs; the latency benchmark always covers all three"
+  },
+  {
+   "label": "Retrieval database size",
+   "type": "text",
+   "required": false,
+   "default": "0",
+   "description": "Number of CoAID titles to search (0 = all ~5,200)"
+  },
+  {
+   "label": "Regularization C",
+   "type": "text",
+   "required": false,
+   "default": "1.0",
+   "description": "Inverse L2 strength of the logistic regression"
+  },
+  {
+   "label": "Embedder",
+   "type": "text",
+   "required": false,
+   "default": "minishlab/potion-base-8M",
+   "description": "model2vec static embedder (30 MB)"
+  },
+  {
+   "label": "Seed",
+   "type": "text",
+   "required": false,
+   "default": "42",
+   "description": "Train/test split seed"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/private-misinfo-inference/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/private-misinfo-inference",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "privacy"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

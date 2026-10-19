@@ -1,0 +1,173 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/fl-bias-propagation",
+ "title": "Tracing Bias Propagation Across Subgroups in Federated Learning",
+ "description": "We show that the impact of false-negative errors on recipient client–subgroup pairs can be predicted from the global model's curvature together with source and recipient-group feature summaries, without retraining a model for each possible error. Notably, a non-target subgroup can experience the largest degradation.",
+ "paper": {
+  "title": "Tracing Bias Propagation Across Subgroups in Federated Learning",
+  "authors": "Tirathraj Ramburn, Afaf Taïk, Farnoosh Ghadiri",
+  "venue": "SMASH 2026",
+  "session": "Spotlight",
+  "url": "https://drive.google.com/file/d/1aA6Fac9mYYJa1VoylGh4o3GgjQjDeobk/view?usp=sharing",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://drive.google.com/file/d/1aA6Fac9mYYJa1VoylGh4o3GgjQjDeobk/view?usp=sharing"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "2-5 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "Mislabelling 30% of A1-B3's positives hurts A1-B4 most, 17.1% more than A1-B3 itself. The closed-form prediction matches the retrained ranking at Spearman 0.980. Synthetic data from the paper's generator. Logistic regression only, as in the paper.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "target_group": "A1-B3",
+     "flip_fraction": "0.3",
+     "heterogeneity": "0",
+     "n_clients": "4",
+     "beta": "-1,0.85,0.90,-0.70,0.55",
+     "r_shift": "0.25",
+     "n_seeds": "20"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-16-fl-bias-propagation",
+    "trajectory_id": "7618dc02",
+    "url": "https://jetty.io/jon-smash2026/smash-16-fl-bias-propagation/7618dc02",
+    "agent": "claude-code",
+    "model": "anthropic/claude-haiku-5.5",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-19T15:22:52.333044+00:00",
+    "duration_seconds": 175,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Mislabelled subgroup",
+   "type": "text",
+   "required": false,
+   "default": "A1-B3",
+   "description": "Source subgroup at client 0 whose positives get flipped: A0-B1 … A0-B4, A1-B1 … A1-B4 (A = audit attribute, B = Z quartile band)"
+  },
+  {
+   "label": "Flip fraction",
+   "type": "text",
+   "required": false,
+   "default": "0.3",
+   "description": "Fraction ρ of that subgroup's positive labels changed 1 → 0 (paper: 0.1–0.4)"
+  },
+  {
+   "label": "Client heterogeneity",
+   "type": "text",
+   "required": false,
+   "default": "0",
+   "description": "h: shifts the mean of predictor R by h·(0, −1, 0, 1) across clients (paper: 0, 0.5, 1)"
+  },
+  {
+   "label": "Clients",
+   "type": "text",
+   "required": false,
+   "default": "4",
+   "description": "Number of clients (2–8); client 0 is the source"
+  },
+  {
+   "label": "Coefficients",
+   "type": "text",
+   "required": false,
+   "default": "-1,0.85,0.90,-0.70,0.55",
+   "description": "True β for (intercept, Z, R, W1, W2)"
+  },
+  {
+   "label": "A→R association",
+   "type": "text",
+   "required": false,
+   "default": "0.25",
+   "description": "How strongly the audit attribute shifts predictor R (0 = A independent of features)"
+  },
+  {
+   "label": "Seeds",
+   "type": "text",
+   "required": false,
+   "default": "20",
+   "description": "Independent federations (paper: 20)"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/fl-bias-propagation/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/fl-bias-propagation",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "privacy"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

@@ -1,0 +1,189 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/ambient-ai-scribes",
+ "title": "Implementing Ambient Artificial Intelligence (AI) Scribes in Hospital-based Specialty Care: A Mixed-Methods Evaluation on Administrative Burden and Clinical Workflows",
+ "description": "Among 17 mid-pilot survey respondents, while 52% reported the AI scribe was easy to use, 88% reported that AI generated notes required substantial editing … These interim findings suggest that the implementation of an AI scribe is feasible in hospital-based ambulatory care but may not independently reduce documentation burden …",
+ "paper": {
+  "title": "Implementing Ambient Artificial Intelligence (AI) Scribes in Hospital-based Specialty Care: A Mixed-Methods Evaluation on Administrative Burden and Clinical Workflows",
+  "authors": "Nishila Mehta, Emily Ha, Andrew Gordon, Rodica Balaci, Onil Bhattacharya, Geetha Mukerji",
+  "venue": "SMASH 2026",
+  "session": "Poster",
+  "url": "https://drive.google.com/file/d/1I4e3YIe7SLrZE1yJefyni5q4t2k4JwKW/view?usp=sharing",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://drive.google.com/file/d/1I4e3YIe7SLrZE1yJefyni5q4t2k4JwKW/view?usp=sharing"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "2-4 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "Generic scribe drafts needed 78% of words edited. At the paper's median usage of 0.94% of encounters, a promised 4,550 clinic hours a month becomes 6.6. Transcripts, scribe and reviewing specialist are all simulated with LLMs. Time figures rest on this runbook's stated assumptions, not measured use.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "specialty": "mixed",
+     "your_transcript": "",
+     "encounters_per_month": "390",
+     "patient_decline_rate": "0.10",
+     "trainee_share": "0.20",
+     "baseline_doc_minutes": "6",
+     "edit_sec_per_word": "1.5",
+     "promised_minutes_per_note": "5",
+     "seed": "8"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-08-ambient-ai-scribes",
+    "trajectory_id": "42662724",
+    "url": "https://jetty.io/jon-smash2026/smash-08-ambient-ai-scribes/42662724",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T18:48:15.465968+00:00",
+    "duration_seconds": 133,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Specialty",
+   "type": "text",
+   "required": false,
+   "default": "mixed",
+   "description": "mixed (all 6 encounters), psychiatry, endocrinology, rheumatology or internal_medicine"
+  },
+  {
+   "label": "Your transcript",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Paste a short, de-identified or invented encounter transcript (Dr:/Pt: lines). It is drafted and finalized with the chosen specialty's template (internal_medicine if mixed)"
+  },
+  {
+   "label": "Encounters per month",
+   "type": "text",
+   "required": false,
+   "default": "390",
+   "description": "Encounters per clinician per month. The default is implied by the paper's medians (11 scribe encounters ÷ 0.94% ≈ 1,170 per ~3 months), so treat it as rough"
+  },
+  {
+   "label": "Patients declining",
+   "type": "text",
+   "required": false,
+   "default": "0.10",
+   "description": "Share of encounters where the patient declines the scribe (assumption)"
+  },
+  {
+   "label": "Trainee-led encounters",
+   "type": "text",
+   "required": false,
+   "default": "0.20",
+   "description": "Share of encounters conducted by trainees, who may not use the scribe (assumption)"
+  },
+  {
+   "label": "Baseline note time",
+   "type": "text",
+   "required": false,
+   "default": "6",
+   "description": "Minutes to write the note yourself without the scribe (assumption)"
+  },
+  {
+   "label": "Edit speed",
+   "type": "text",
+   "required": false,
+   "default": "1.5",
+   "description": "Seconds per inserted or substituted word when editing a draft (≈ 40 wpm typing)"
+  },
+  {
+   "label": "The promise",
+   "type": "text",
+   "required": false,
+   "default": "5",
+   "description": "Illustrative \"minutes saved per note\" claim for the promise scenario (not from the paper)"
+  },
+  {
+   "label": "Seed",
+   "type": "text",
+   "required": false,
+   "default": "8",
+   "description": "Random seed for the implementation Monte Carlo"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/ambient-ai-scribes/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/ambient-ai-scribes",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "people"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

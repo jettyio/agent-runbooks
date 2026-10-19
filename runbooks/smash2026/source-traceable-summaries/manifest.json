@@ -1,0 +1,177 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/source-traceable-summaries",
+ "title": "From Extraction Accuracy to Clinical Usefulness: A Human-Centered Evaluation Framework for Source-Traceable Patient Summaries",
+ "description": "A fact can be extracted correctly and still mislead if it is presented without temporal context, detached from its source, merged with conflicting information, or rewritten in a way that changes perceived urgency, certainty, or relevance. The framework combines deterministic checks, review of clinical meaning, and task-based evaluation of how users interpret and verify summaries …",
+ "paper": {
+  "title": "From Extraction Accuracy to Clinical Usefulness: A Human-Centered Evaluation Framework for Source-Traceable Patient Summaries",
+  "authors": "Alissa Taylor",
+  "venue": "SMASH 2026",
+  "session": "Poster",
+  "url": "https://drive.google.com/file/d/10P_qlRn02fwt-f2id3gu_oRUfPCTcpgr/view?usp=sharing",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://drive.google.com/file/d/10P_qlRn02fwt-f2id3gu_oRUfPCTcpgr/view?usp=sharing"
+   },
+   {
+    "label": "Poster",
+    "url": "https://drive.google.com/file/d/1A4N0VZEXDosqmlJZZc1wSjLLjtV0m9p1/view?usp=sharing"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "3-6 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "An LLM judge scored a summary 9/10 while the contradiction gate blocked it: two conflicting HbA1c values (7.2% and 8.1%) had been reduced to one. The patient pack is synthetic, written for this runbook. Gates are simplified lexical checks.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "summarizer_style": "brief",
+     "summarizer_size": "small",
+     "judge_size": "small",
+     "noise_types": "all",
+     "compare_styles": "true",
+     "degradation_ladder": "true",
+     "custom_notes": ""
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-18-source-traceable-summaries",
+    "trajectory_id": "36e1722c",
+    "url": "https://jetty.io/jon-smash2026/smash-18-source-traceable-summaries/36e1722c",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T18:38:13.567106+00:00",
+    "duration_seconds": 205,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Summarizer prompt",
+   "type": "text",
+   "required": false,
+   "default": "brief",
+   "description": "brief (concise, readable, cited), careful (explicit rules on status, dates, conflicts, negation, intended use) or naive (just \"summarize\")"
+  },
+  {
+   "label": "Summarizer size",
+   "type": "text",
+   "required": false,
+   "default": "small",
+   "description": "small (Claude Haiku) or large (Claude Sonnet; slower and costlier)"
+  },
+  {
+   "label": "Judge size",
+   "type": "text",
+   "required": false,
+   "default": "small",
+   "description": "Model used as the holistic 1–10 judge"
+  },
+  {
+   "label": "Noise types",
+   "type": "text",
+   "required": false,
+   "default": "all",
+   "description": "all, none, or a comma list of discontinued_med, resolved_dx, conflicting_labs, copied_forward, date_mismatch, negation"
+  },
+  {
+   "label": "Compare prompt styles",
+   "type": "text",
+   "required": false,
+   "default": "true",
+   "description": "Also run the other two prompt styles on the same pack"
+  },
+  {
+   "label": "Noise ladder",
+   "type": "text",
+   "required": false,
+   "default": "true",
+   "description": "Also run your prompt on packs with 0, 1, …, 6 noise types (same clinical state)"
+  },
+  {
+   "label": "Your notes",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Paste synthetic notes instead (never real patient data): documents separated by lines === type \\"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/source-traceable-summaries/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/source-traceable-summaries",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "llm-evaluation"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

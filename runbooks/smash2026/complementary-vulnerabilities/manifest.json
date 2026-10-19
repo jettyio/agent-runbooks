@@ -1,0 +1,197 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/complementary-vulnerabilities",
+ "title": "Complementary Vulnerabilities: Auditing and Governing Clinician-LLM Error Overlap",
+ "description": "But a second reasoner reduces error only insofar as it fails differently from the first. We say that a clinician and a model have complementary vulnerabilities to the extent that they break down through different mechanisms and on different cases. We therefore propose a predeployment audit in which each site measures error overlap on its own cases.",
+ "paper": {
+  "title": "Complementary Vulnerabilities: Auditing and Governing Clinician-LLM Error Overlap",
+  "authors": "Mohsen Amoei, Kathleen Fraser, Dan Poenaru",
+  "venue": "SMASH 2026",
+  "session": "Poster",
+  "url": "https://drive.google.com/file/d/1_bJ_5DA5k0V2X1XuuxliKg5WdLPq1SMP/view?usp=sharing",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://drive.google.com/file/d/1_bJ_5DA5k0V2X1XuuxliKg5WdLPq1SMP/view?usp=sharing"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "2-4 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "On 36 MedQA cases, wrong AI suggestions cut the proxy clinician's accuracy from 70% to 50%. Double-fault rate 3%, Yule's Q +0.30. Both readers are LLMs: Claude Haiku stands in for the clinician and Claude Sonnet is the model under audit. 36 exam questions, far below the roughly 1,000 adjudicated cases the paper recommends.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "clinician_proxy": "small-fast",
+     "audit_model": "large",
+     "n_items": "36",
+     "case_mix": "mixed",
+     "anchoring": "both",
+     "anchor_source": "enriched",
+     "gate_thresholds": "accuracy>=0.80,double_fault<=0.05,model_only<=0.10,rescue_retained>=0.50",
+     "byo_counts": "",
+     "sim_accuracy": "0.90",
+     "seed": "1"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-01-complementary-vulnerabilities",
+    "trajectory_id": "4f54174c",
+    "url": "https://jetty.io/jon-smash2026/smash-01-complementary-vulnerabilities/4f54174c",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T18:24:13.794896+00:00",
+    "duration_seconds": 140,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Clinician proxy",
+   "type": "text",
+   "required": false,
+   "default": "small-fast",
+   "description": "Reader standing in for the unaided clinician: small-fast (Claude Haiku, answers from first impression), small (Haiku, careful) or large (Claude Sonnet)"
+  },
+  {
+   "label": "Model under audit",
+   "type": "text",
+   "required": false,
+   "default": "large",
+   "description": "The candidate model: large (Sonnet), small (Haiku, careful) or small-fast"
+  },
+  {
+   "label": "Cases",
+   "type": "text",
+   "required": false,
+   "default": "36",
+   "description": "Number of MedQA-USMLE test cases (12–60)"
+  },
+  {
+   "label": "Case mix",
+   "type": "text",
+   "required": false,
+   "default": "mixed",
+   "description": "mixed (equal thirds), diagnosis, management, or mechanism/other (question type parsed from the stem)"
+  },
+  {
+   "label": "Assisted workflow",
+   "type": "text",
+   "required": false,
+   "default": "both",
+   "description": "both, model_conforms (model sees the clinician's impression first), clinician_defers (clinician sees the AI suggestion first), or off"
+  },
+  {
+   "label": "Anchor source",
+   "type": "text",
+   "required": false,
+   "default": "enriched",
+   "description": "What the second reader is shown: clinician (the other reader's real answers), enriched (real answers plus a wrong one planted on a third of the cases it got right, so enough wrong anchors exist) or always_wrong"
+  },
+  {
+   "label": "Gate thresholds",
+   "type": "text",
+   "required": false,
+   "default": "accuracy>=0.80,double_fault<=0.05,model_only<=0.10,rescue_retained>=0.50",
+   "description": "Your site's prespecified go/no-go thresholds"
+  },
+  {
+   "label": "Your paired counts",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Skip the LLMs and audit your own paired record: shared_success,model_only_error,clinician_only_error,shared_error, optionally "
+  },
+  {
+   "label": "Simulator accuracy",
+   "type": "text",
+   "required": false,
+   "default": "0.90",
+   "description": "Accuracy of the three hypothetical models in the no-LLM simulator panel"
+  },
+  {
+   "label": "Seed",
+   "type": "text",
+   "required": false,
+   "default": "1",
+   "description": "Which cases are drawn and which anchors are planted"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/complementary-vulnerabilities/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/complementary-vulnerabilities",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "llm-evaluation"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

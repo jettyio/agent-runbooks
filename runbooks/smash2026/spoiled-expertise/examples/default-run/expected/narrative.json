@@ -1,0 +1,38 @@
+{
+  "headline": "Radiologist reads as Shunned expertise (mirror: Outdated); two judges coded 36 comments at κ = 0.93.",
+  "idea": [
+    "**Spoiled expertise** is what happens when an expert's perceived authority is devalued by stigma attached to their *stance toward an epistemic technology*—not by any actual loss of competence. The paper (Ajaj, Joshi & Bouchard) identifies this as a distinct social process, separate from skill decay.",
+    "A **2×2 framework** crosses two axes—*stance of adoption* (adopt / not adopt) × *locus of evaluation* (self / others)—to yield four named forms: **Slopped** (adopt, self-doubt), **Lagging** (non-adopt, self-doubt), **Shunned** (adopt, stigmatised by others), and **Outdated** (non-adopt, stigmatised by others).",
+    "The **damned-if-you-do/don't dilemma**: adopters face Shunned or Slopped; non-adopters face Outdated or Lagging. The same social environment that rewards modernisation also punishes dependency, so every stance carries a stigma risk—experts are structurally trapped."
+  ],
+  "findings": [
+    "**Case reading — Shunned expertise (second judge: Slopped; judges disagree).** Judge A (Haiku) placed the radiologist in **Shunned**: peers and patients stigmatise their AI adoption as evidence of reduced professional worth. Two verified evidence quotes drive this reading: *a senior colleague said 'If the software reads it first, what exactly are we paying you for?'* (spoiling: others frame adoption as displacing expertise) and *our department dashboard lists each radiologist's AI override rate, and mine is the highest; the chief asked me to justify it* (institutional locus of stigma). Judge B (Sonnet) read the same text as **Slopped**, weighting the self-doubt quote—*Some nights I wonder whether I'd still catch the small nodules without the overlay*—as the primary signal. All 5 evidence quotes were verified verbatim. The split reading itself illustrates the paper's point: the same situation can produce simultaneous stigma from within and without.",
+    "**Mirror quadrant and transitions.** Had the radiologist refused the AI tool, the mirror quadrant is **Outdated**: the same institutional environment that now scrutinises over-reliance would instead stigmatise resistance to modernisation—the dilemma is real. The LLM identified two transitions: (1) → **Slopped** if override-rate scrutiny intensifies and self-doubt takes over (labelled *extrapolation* by deterministic check—this direction is not described in the paper, which documents only Slopped → Shunned and Outdated → Slopped); (2) → **Outdated** if the radiologist abandons the tool to reassert unmediated expertise (also *extrapolation*). One of 2 transitions was relabelled from 'paper' to 'extrapolation'. Paper-sourced stigma-management moves include redefining expertise around relational capacities machines cannot perform, and using techniques of information control to frame the override rate as evidence of rigorous oversight rather than AI distrust.",
+    "**Corpus reliability — κ = 0.93 [95% CI 0.82, 1.00].** Two independent LLM judges (different models, same verbatim codebook) coded all 36 synthetic comments. Overall quadrant κ = 0.93 is well above the conventional 0.80 threshold for strong agreement. Per-axis κ: stance 0.89, locus 0.96—locus is slightly easier to code than stance. The judges disagreed on only 2 of 36 comments, both involving concealed or coerced adoption in law contexts. Both were coded Outdated by judge A and *Not spoiled / unclear* by judge B, suggesting the boundary between stigma from non-adoption and ambiguous compliance is the hardest distinction. The synthetic corpus is balanced by design, so the distribution says nothing about real-world prevalence.",
+    "**Corpus distribution.** The most common consensus code is **Shunned** (8 of 36 comments), matching the case reading. Full consensus distribution: Slopped 7, Lagging 5, Shunned 8, Outdated 7, Not spoiled / unclear 7—evenly spread across five professions (medicine, law, accounting, journalism, teaching) as intended by the synthetic corpus construction."
+  ],
+  "try_next": [
+    {
+      "label": "The lawyer preset — a non-adopter",
+      "why": "The lawyer refuses AI entirely; expect Lagging or Outdated and compare how locus and mirror flip relative to the radiologist.",
+      "params": {"case": "lawyer"}
+    },
+    {
+      "label": "Same-model bias test — judge_b small",
+      "why": "Both judges become Haiku 4.5; if κ rises sharply, part of the 0.93 reflects shared model reasoning rather than codebook clarity.",
+      "params": {"case": "radiologist", "judge_b": "small"}
+    },
+    {
+      "label": "Bring your own case — custom profession",
+      "why": "Replace the preset with your own profession, AI use and peer reactions to see where your situation sits in the 2×2.",
+      "params": {"case": "custom", "profession": "Clinical pharmacist", "ai_use": "I use an AI drug-interaction checker for every complex patient and document every override.", "peer_reactions": "A physician told me the tool is making me a button-pusher, not a pharmacist || I worry I have forgotten how to reason through polypharmacy without the alert list || The pharmacy director praised my override documentation at the last audit"}
+    }
+  ],
+  "caveats": [
+    "**Interpretive aid, not measurement or diagnosis.** This card places a described situation in the paper's conceptual framework; it cannot measure whether spoiled expertise is actually occurring, how severe it is, or what a person should do.",
+    "**The default corpus is synthetic**, written specifically for this runbook to illustrate each quadrant. Its near-uniform distribution is engineered, not observed—it says nothing about how common each form is in the real world.",
+    "**Both judges are Claude models** (Haiku 4.5 and Sonnet 4.6 via OpenRouter). High κ may partly reflect shared training assumptions; the same-model test (`judge_b: small`) is the appropriate next check for shared-model bias.",
+    "**Extrapolated transitions and moves go beyond the paper.** The paper describes only two transitions (Slopped → Shunned; Outdated → Slopped); any other transition flagged as *extrapolation* in the results is the LLM's inference, not the authors' claim.",
+    "**The two judges disagree on this case** (Shunned vs. Slopped), reflecting genuine dual-locus ambiguity: the radiologist faces stigma from others *and* self-doubt simultaneously. The framework does not specify a tiebreaker; the overall reading (Shunned) is Judge A's primary code."
+  ]
+}

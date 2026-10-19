@@ -1,0 +1,197 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/gated-kgpt",
+ "title": "Gated Knowledge-Guided Prototype Transfer for Zero-Support Medical Vision Language Model",
+ "description": "We introduce gated Knowledge-Guided Prototype Transfer (KGPT), a pre-repulsion module that transfers supported-class visual residuals to missing classes using VLM similarity and an ontology-based clinical distance. A validation-free evidence gate scales transfer based on semantic relevance and residual agreement, thereby limiting unsupported extrapolation.",
+ "paper": {
+  "title": "Gated Knowledge-Guided Prototype Transfer for Zero-Support Medical Vision Language Model",
+  "authors": "Sumaiya Fazal, Rizwan Qureshi, Laleh Behjat, Samira Ebrahimi Kahou",
+  "venue": "SMASH 2026",
+  "session": "Poster",
+  "url": "https://drive.google.com/file/d/1TNzjU8LBvL9_Vo73FUBv9Oouxrt2rDfI/view?usp=sharing",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://drive.google.com/file/d/1TNzjU8LBvL9_Vo73FUBv9Oouxrt2rDfI/view?usp=sharing"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "2-4 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "Ungated transfer made a missing grade worse in 46–50% of support draws. The gate cut that to 16% and added +2.37 points of missing-class recall. Synthetic embeddings stand in for MESSIDOR with FLAIR features. SS-Text+ is approximated with a shrinkage-plus-repulsion prototype.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "class_names": "No DR,Mild,Moderate,Severe,Proliferative",
+     "support_counts": "3,1,1,0,0",
+     "beta": "1.0",
+     "k": "3",
+     "temperature": "0",
+     "modality_gap": "1.0",
+     "separability": "1.0",
+     "gap_shrink": "0.5",
+     "n_seeds": "50",
+     "world_seed": "0"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-02-gated-kgpt",
+    "trajectory_id": "76e34be1",
+    "url": "https://jetty.io/jon-smash2026/smash-02-gated-kgpt/76e34be1",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T18:51:55.795826+00:00",
+    "duration_seconds": 156,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Ordinal class names",
+   "type": "text",
+   "required": false,
+   "default": "No DR,Mild,Moderate,Severe,Proliferative",
+   "description": "Your ordinal label list, mildest first, comma-separated (3–8 classes). The ontology is this order"
+  },
+  {
+   "label": "Support counts",
+   "type": "text",
+   "required": false,
+   "default": "3,1,1,0,0",
+   "description": "Labelled shots per class (same order). 0 = zero-support class. Paper: 3,1,1,0,0"
+  },
+  {
+   "label": "Transfer strength β",
+   "type": "text",
+   "required": false,
+   "default": "1.0",
+   "description": "Residual transfer strength (paper: 1). Gated KGPT uses β·g"
+  },
+  {
+   "label": "Neighbours k",
+   "type": "text",
+   "required": false,
+   "default": "3",
+   "description": "Top-k supported source classes per missing class (paper: 3)"
+  },
+  {
+   "label": "Temperature",
+   "type": "text",
+   "required": false,
+   "default": "0",
+   "description": "Softmax temperature; 0 = automatic T = max(std of scores, 1e−3) (paper)"
+  },
+  {
+   "label": "Modality gap",
+   "type": "text",
+   "required": false,
+   "default": "1.0",
+   "description": "Size of the image–text offset in the synthetic world (0 = none, 2 = large)"
+  },
+  {
+   "label": "Separability",
+   "type": "text",
+   "required": false,
+   "default": "1.0",
+   "description": "How far apart image clusters of adjacent grades are (0.5 = hard, 2 = easy)"
+  },
+  {
+   "label": "Gap shrink per grade",
+   "type": "text",
+   "required": false,
+   "default": "0.5",
+   "description": "How much less correction each higher grade needs. 0 = borrowed correction exactly right (ungated is safe)"
+  },
+  {
+   "label": "Support draws",
+   "type": "text",
+   "required": false,
+   "default": "50",
+   "description": "Paired random support sets (paper: 50)"
+  },
+  {
+   "label": "World seed",
+   "type": "text",
+   "required": false,
+   "default": "0",
+   "description": "Seed of the synthetic embedding world (test set and prototypes)"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/gated-kgpt/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/gated-kgpt",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "clinical"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

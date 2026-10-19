@@ -1,0 +1,101 @@
+{
+  "paper": {
+    "num": 1,
+    "title": "Complementary Vulnerabilities: Auditing and Governing Clinician\u2013LLM Error Overlap",
+    "authors": "Mohsen Amoei, Kathleen Fraser, Dan Poenaru",
+    "affiliation": "McGill University \u00b7 RI-MUHC \u00b7 Mila \u00b7 University of Ottawa"
+  },
+  "inputs": {
+    "clinician proxy": "small-fast (anthropic/claude-haiku-4.5)",
+    "model under audit": "large (anthropic/claude-sonnet-4.6)",
+    "items": "36 MedQA-USMLE",
+    "case mix": "mixed",
+    "anchoring": "both",
+    "anchor source": "enriched",
+    "LLM calls": 24
+  },
+  "tiles": [
+    {
+      "label": "Double-fault rate (both wrong)",
+      "value": "2.8%",
+      "sub": "1/36 cases \u00b7 1.9% if errors were independent \u00b7 95% CI 0%\u201314%",
+      "tone": "accent"
+    },
+    {
+      "label": "Error association (Yule's Q)",
+      "value": "+0.30",
+      "sub": "CI [-0.52, +0.91] \u00b7 +1 = fail together, 0 = independent, \u22121 = complementary",
+      "tone": "good"
+    },
+    {
+      "label": "Wrong answers copied by the proxy clinician",
+      "value": "10% \u2192 30%",
+      "sub": "blind \u2192 after seeing a wrong AI suggestion (n=10) \u00b7 model: 6% \u2192 18%",
+      "tone": "warn"
+    },
+    {
+      "label": "Go / no-go gates",
+      "value": "PASS \u00b7 PASS",
+      "sub": "Gate 1: model acc \u2265 80% & DF \u2264 5%. Gate 2: model-only \u2264 10% & rescue (and clinician accuracy on AI-wrong cases) retained \u2265 50%; illustrative site thresholds",
+      "tone": "good"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_paired_2x2.png",
+      "title": "Where do the two readers fail: on the same cases or on different ones?",
+      "caption": "The paper's paired 2x2 per workflow. Orange = model-only error (substitution risk), blue = clinician-only error (rescue potential), dark = shared error (common-mode failure). DF = double-fault rate; Q = Yule's Q."
+    },
+    {
+      "path": "fig_conformity.png",
+      "title": "Does independence survive once one reader sees the other's answer?",
+      "caption": "Left: on cases where the shown answer was wrong, how often the second reader gave that same wrong answer when blind vs after seeing it. Right: double-fault rate per workflow with 95% Wilson CI; the orange tick is what independence would give."
+    },
+    {
+      "path": "fig_strata.png",
+      "title": "Does the answer change with case mix?",
+      "caption": "Per-stratum accuracy and double-fault rate (question type parsed from the stem). Strata that pass Gate 1 are the candidates for partial deployment; with ~12 cases each these are illustrations, not estimates."
+    },
+    {
+      "path": "fig_simulator.png",
+      "title": "Why accuracy alone cannot answer the question",
+      "caption": "Left: three hypothetical models, all 90% accurate next to a 78%-accurate clinician, with minimum, independent and maximum overlap. Right: how many adjudicated cases it takes to pin the double-fault rate down."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "Same accuracy, different overlap",
+      "paper": "\u201cTwo models can both be 90% accurate while one fails exactly where clinicians fail and the other catches clinician misses.\u201d",
+      "yours": "Simulator at 90%: DF 0.0% (rescue 100%) vs 10.0% (rescue 55%)",
+      "note": "no LLM; exact 2x2"
+    },
+    {
+      "metric": "Sizing principle",
+      "paper": "\u201ca serious-harm outcome near 1% prevalence implies a sample on the order of 1,000 adjudicated cases to expect 10 such events\u201d",
+      "yours": "n = 36; DF 95% CI 0%\u201314%; ~360 cases to expect 10 shared errors",
+      "note": "this run is a demo, not an audit"
+    },
+    {
+      "metric": "Model conforms when it answers second",
+      "paper": "model reproduced all of the clinician\u2019s listed diagnoses in 48% of cases when it answered second versus 3% when it answered first (Everett et al., 2026, cited)",
+      "yours": "copied a wrong impression 18% vs 6% blind",
+      "note": "different measure; LLM-vs-LLM proxy"
+    },
+    {
+      "metric": "Automation bias",
+      "paper": "Incorrect LLM recommendations lowered physicians\u2019 accuracy by 14 to 18 percentage points (Qazi et al., 2026, cited)",
+      "yours": "proxy-clinician accuracy on AI-wrong cases: 70% \u2192 50% (20-point drop)",
+      "note": "small-model proxy, not physicians"
+    },
+    {
+      "metric": "Human\u2013model vs model\u2013model diversity",
+      "paper": "human-model error diversity exceeded model-model diversity (Zoller et al., 2025, cited)",
+      "yours": "model\u2013model Q +0.30, disagreement 25%",
+      "note": "this run is model\u2013model only"
+    }
+  ],
+  "runbook": {
+    "name": "smash-01-complementary-vulnerabilities",
+    "url": ""
+  }
+}

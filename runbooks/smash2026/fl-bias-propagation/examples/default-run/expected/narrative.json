@@ -1,0 +1,33 @@
+{
+  "headline": "A1-B4 was hit hardest, 0.04201 vs 0.03588 for the flipped A1-B3 (17.1% more), and the closed-form prediction closely tracked the ranking (Spearman 0.980).",
+  "idea": [
+    "False-negative labels at one hospital shift the shared model, so the error spreads to other hospitals' subgroups.",
+    "A closed-form propagation vector predicts each recipient subgroup's damage without retraining.",
+    "Damage depends on how far a subgroup's mean projects onto that vector, and the most-affected subgroup can be a different one entirely."
+  ],
+  "findings": [
+    "The closed-form prediction closely matched the retrained effects: Spearman 0.980 [0.974, 0.986] and slope c 1.002 [0.982, 1.023], against the paper's 0.975 [0.961, 0.987] and c = 1.014 for A1-B3. Flipping 30% of A1-B3 positives changed 45.5 labels per seed (0.379%), close to the paper's 45.25 (0.377%).",
+    "A1-B4 was hit hardest, with a mean logit decrease of 0.04201 [0.03405, 0.04630], against the paper's 0.04225, and 17.1% more than target-matched A1-B3 (0.03588). The paper reports 18.2% and rank 2 for A1-B3, and this run gives rank 2 as well. The audit gives 5 of 8 source errors a different top victim, with 8 of 64 predicted cells negative (the recipient's logit rises)."
+  ],
+  "try_next": [
+    {
+      "label": "A1-B1 as the mislabelled group",
+      "why": "The audit predicts A1-B1 as its own top victim, unlike A1-B3, so this tests whether same-group damage dominates.",
+      "params": {"target_group": "A1-B1"}
+    },
+    {
+      "label": "Heterogeneous clients at h = 1",
+      "why": "Splits recipients by client and tests the paper's heterogeneous setting, where it reports Spearman 0.974 for A1-B3.",
+      "params": {"heterogeneity": 1}
+    },
+    {
+      "label": "No association between A and R",
+      "why": "With r_shift 0, A0 and A1 recipients should look more alike along the propagation vector.",
+      "params": {"r_shift": 0}
+    }
+  ],
+  "caveats": [
+    "Synthetic data from the paper's setup; logistic regression only, with Newton's method replacing FedAvg rounds (same optimum).",
+    "A lower logit does not necessarily flip a prediction; Spearman over eight averaged group effects is a coarse measure."
+  ]
+}

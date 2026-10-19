@@ -1,0 +1,126 @@
+{
+  "paper": {
+    "num": 19,
+    "title": "When Engagement Is Not Enough: What Should AI Optimize in Gamified Education?",
+    "authors": "Takuji Takemoto",
+    "affiliation": "University of Fukui"
+  },
+  "inputs": {
+    "weights E/L/B/P": "0.25 / 0.25 / 0.25 / 0.25",
+    "retention (assumed)": 0.5,
+    "affect\u2013learning corr.": 0.0,
+    "engagement scale top": 7.0,
+    "n Case 1": 49,
+    "n Case 2": 37,
+    "seed": 3,
+    "data": "synthetic, calibrated to the paper"
+  },
+  "tiles": [
+    {
+      "label": "Winner under your weights",
+      "value": "Gamified",
+      "sub": "in 55% of 4,000 bootstrap resamples (Case 1, composite +0.017)",
+      "tone": "accent"
+    },
+    {
+      "label": "Decision flips at",
+      "value": "51% on L",
+      "sub": "you put 50% on learning vs engagement; 50% of your weight is on outcomes Case 1 never measured",
+      "tone": "neutral"
+    },
+    {
+      "label": "Engagement as a proxy",
+      "value": "43%",
+      "sub": "of the top-third knowledge gainers found by watching engagement (chance 33%; 23% of learners hit the ceiling)",
+      "tone": "warn"
+    },
+    {
+      "label": "Same game, two verdicts",
+      "value": "3.68 vs 0.03",
+      "sub": "Case 2 standardized effect: engagement vs behavioural intention",
+      "tone": "neutral"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_case1_effects.png",
+      "title": "Case 1: which condition is 'better' depends on the outcome",
+      "caption": "Grey = the paper's d_z and 95% CI. Coloured = this run's synthetic learners (generated so the sample d_z match exactly) with bootstrap CIs. Blue = engagement-type outcomes (E), orange = learning (L)."
+    },
+    {
+      "path": "fig_flip.png",
+      "title": "Where does the decision flip?",
+      "caption": "Probability that the gamified condition comes out ahead as the weight moves from engagement to learning. The star is your weighting (B and P weights dropped: Case 1 did not measure them)."
+    },
+    {
+      "path": "fig_proxy.png",
+      "title": "Case 2: can an AI find who learned by watching engagement?",
+      "caption": "Left: one synthetic cohort, engagement vs perceived-knowledge gain (note the pile-up at the scale top). Right: share of the top-third gainers that a system ranking learners by engagement would pick, by how strongly engagement tracks gains (300 synthetic cohorts per point)."
+    },
+    {
+      "path": "fig_case2_classes.png",
+      "title": "Case 2: one intervention, four 'success' numbers",
+      "caption": "Standardized effects from the paper's reported numbers. Persistence is not measured yet (T2 ongoing): the hatched bar is your retention assumption times the learning effect."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "Case 1 d_z: Interest",
+      "paper": "0.64 [0.35, 0.92]",
+      "yours": "0.64 [0.34, 1.05]",
+      "note": "synthetic, n = 49"
+    },
+    {
+      "metric": "Case 1 d_z: Enjoyment of interaction",
+      "paper": "0.61 [0.32, 0.89]",
+      "yours": "0.61 [0.33, 0.94]",
+      "note": "synthetic, n = 49"
+    },
+    {
+      "metric": "Case 1 d_z: Overall enjoyment",
+      "paper": "0.50 [0.21, 0.78]",
+      "yours": "0.50 [0.22, 0.82]",
+      "note": "synthetic, n = 49"
+    },
+    {
+      "metric": "Case 1 d_z: Acquisition of new expressions",
+      "paper": "-0.55 [-0.84, -0.27]",
+      "yours": "-0.55 [-0.90, -0.28]",
+      "note": "synthetic, n = 49"
+    },
+    {
+      "metric": "Case 2 knowledge T0 \u2192 T1 (d_z)",
+      "paper": "4.37 \u2192 5.45 (d_z = 1.53)",
+      "yours": "4.37 \u2192 5.44 (d_z = 1.53)",
+      "note": "calibrated"
+    },
+    {
+      "metric": "Case 2 competence T0 \u2192 T1 (d_z)",
+      "paper": "4.07 \u2192 5.49 (d_z = 1.99)",
+      "yours": "4.07 \u2192 5.48 (d_z = 1.99)",
+      "note": "calibrated"
+    },
+    {
+      "metric": "Case 2 intention T0 \u2192 T1 (d_z)",
+      "paper": "5.97 \u2192 6.00 (d_z = 0.03)",
+      "yours": "5.97 \u2192 6.00 (d_z = 0.03)",
+      "note": "calibrated"
+    },
+    {
+      "metric": "r(engagement, gain): knowledge / intention / competence",
+      "paper": "r \u2248 .24 / .26 / .05",
+      "yours": "0.17 / 0.24 / -0.01",
+      "note": "one synthetic cohort, engagement scale 1\u20137"
+    },
+    {
+      "metric": "Persistence (T2)",
+      "paper": "T2 is ongoing; at present, persistence cannot yet be established",
+      "yours": "assumed retention 0.5",
+      "note": "your assumption, not data"
+    }
+  ],
+  "runbook": {
+    "name": "smash-19-engagement-not-enough",
+    "url": ""
+  }
+}

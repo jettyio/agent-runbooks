@@ -1,0 +1,107 @@
+{
+  "paper": {
+    "num": 13,
+    "title": "Privacy-Preserving Text Inference for Health-Misinformation Classification and Semantic Retrieval",
+    "authors": "Jasleen Kaur, Chloe Cachet, Koray Karabina, Jean Belo Klamti, Philippe Lamontagne",
+    "affiliation": "National Research Council of Canada \u00b7 Florida Atlantic University"
+  },
+  "inputs": {
+    "claims": "6 of yours",
+    "features": "hybrid (556-d)",
+    "text": "title+content",
+    "SVD dims": 300,
+    "CKKS ring N": "8,192",
+    "seed": 42
+  },
+  "tiles": [
+    {
+      "label": "CoAID test (1,080 items)",
+      "value": "0.944 / 0.896",
+      "sub": "accuracy / macro-F1, hybrid features (556-d); paper hybrid 0.971 / 0.950",
+      "tone": "neutral"
+    },
+    {
+      "label": "Encrypted = plaintext",
+      "value": "1,080 / 1,080",
+      "sub": "identical labels; max logit error 6.0e-06",
+      "tone": "good"
+    },
+    {
+      "label": "Your claims flagged \u201cfake\u201d",
+      "value": "3 / 6",
+      "sub": "scored without the server ever seeing the text",
+      "tone": "accent"
+    },
+    {
+      "label": "SIMD packing speed-up",
+      "value": "26\u00d7",
+      "sub": "33.9 s \u2192 1.28 s over 5,168 items (paper 42.6\u00d7)",
+      "tone": "neutral"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_claims.png",
+      "title": "Your claims, scored on ciphertext",
+      "caption": "Bars: the model's probability that a claim resembles CoAID's \u201cfake\u201d class, computed in the clear. Diamonds: the same probability from the encrypted score the server returned (client decrypts, applies the sigmoid). |\u0394z| = logit difference."
+    },
+    {
+      "path": "fig_terms.png",
+      "title": "What the classifier actually keys on",
+      "caption": "Exact term weights obtained by pushing the logistic-regression weights back through the scaler and SVD. Many cues are about source and format (fact-check phrasing vs agency article titles), not medical truth."
+    },
+    {
+      "path": "fig_cost.png",
+      "title": "What encryption costs",
+      "caption": "Left: median time per encrypted claim (encrypt + server dot product + decrypt) by CKKS ring size; the paper uses N = 32,768. Right: encrypted similarity search returning one ciphertext per item (naive) vs all scores packed into one ciphertext."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "Acc / macro-F1: TF-IDF (paper) vs TF-IDF\u2192SVD300",
+      "paper": "0.942 / 0.904",
+      "yours": "0.944 / 0.895",
+      "note": "same recipe"
+    },
+    {
+      "metric": "Acc / macro-F1: MPNet (paper) vs potion-base-8M (256-d)",
+      "paper": "0.938 / 0.899",
+      "yours": "0.928 / 0.866",
+      "note": "no BioBERT block; MPNet replaced by a static embedder"
+    },
+    {
+      "metric": "Acc / macro-F1: Full hybrid (paper) vs TF-IDF\u2192SVD + potion (556-d)",
+      "paper": "0.971 / 0.95",
+      "yours": "0.944 / 0.896",
+      "note": "no BioBERT block; MPNet replaced by a static embedder"
+    },
+    {
+      "metric": "Test split",
+      "paper": "1,081 samples (184 fake, 897 real)",
+      "yours": "1,080 (183 fake)",
+      "note": "deduplicated CoAID news, title+content"
+    },
+    {
+      "metric": "Plaintext vs ciphertext predictions",
+      "paper": "identical accuracy and F1 scores for every feature configuration",
+      "yours": "1080/1080 labels identical",
+      "note": "N = 8,192"
+    },
+    {
+      "metric": "Per-query cost at N = 32,768",
+      "paper": "approximately 122.4 ms and 2.133 MB",
+      "yours": "149.2 ms, 2.24 MB",
+      "note": "556-d vs 1,324-d vector; different CPU"
+    },
+    {
+      "metric": "Retrieval naive \u2192 SIMD-packed",
+      "paper": "221.049 s \u2192 5.186 s (42.6\u00d7), 6.11 GB \u2192 2.13 MB",
+      "yours": "33.9 s \u2192 1.28 s (26\u00d7), 0.68 GB \u2192 0.50 MB",
+      "note": "5,168 items, 256-d, N = 8,192; naive extrapolated from 200"
+    }
+  ],
+  "runbook": {
+    "name": "smash-13-private-claim-check",
+    "url": ""
+  }
+}

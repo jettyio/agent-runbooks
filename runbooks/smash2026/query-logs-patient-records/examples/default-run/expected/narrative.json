@@ -1,0 +1,36 @@
+{
+  "headline": "20 of 21 synthetic patient records rebuilt from the provider's query log; b = 4 quantization retains 97% of float nDCG@10 while encrypted retrieval stays exact.",
+  "idea": [
+    "Every query embedding a clinical RAG provider logs is effectively a patient record: nearest-neighbour inversion recovers the working diagnosis, and cross-referencing with the appointment schedule re-attaches it to the patient.",
+    "Both retrieval rounds — scoring and private document fetch — can be cast as public-matrix × encrypted-vector products under CKKS homomorphic encryption, so the server learns neither the query nor which document was returned.",
+    "Embedding quantization to b = 4 bits is nearly free for retrieval quality (97% nDCG@10 retention on SciFact) yet is required to fit the cryptographic slot sizes; b = 2 collapses retrieval completely."
+  ],
+  "findings": [
+    "The attack recovered the correct diagnosis in **95%** of patient queries (vs 1.7% chance), and every timestamp join was correct (link_acc = 100%), yielding **20 / 21** full (patient, working-diagnosis) records. Your query — *Metastatic renal cell carcinoma, second-line therapy after progression* at 14:15 — inverted to *metastatic renal cell carcinoma* (cosine similarity 0.859) and was linked to patient MRN-63849 attending the 14:00 appointment. Crucially, quantization did not protect the log: the quantized attacker achieved the same **95%** top-1 accuracy.",
+    "On SciFact with the potion-base-8M static embedder, float nDCG@10 is **0.506**; at b = 4 it is 0.490 (97% retention), matching the paper's 97% figure for BGE-large on SciFact. At b = 2 it collapses to 0.016 (3%), consistent with the paper's 0.002 for BGE-large. Absolute nDCG levels are lower than the paper's because potion-base-8M is a much smaller static embedder than BGE-large or Cohere v3.",
+    "All **20 / 20** sampled queries had bit-exact homomorphic scores (after rounding) and correct top-1 documents. PIR fetch of your query's top document (*Immune cell promotion of metastasis*) was byte-exact. Server time was **14.78 s** for 5,183 SciFact documents, roughly in the range of the paper's 4.3–8.7 s (which includes succinct proofs on a 48-core machine). Linear extrapolation to 1M documents gives **48 min** on our single CPU, vs the paper's ~19 min at scale."
+  ],
+  "try_next": [
+    {
+      "label": "Collapse mode: he_bits = 2",
+      "why": "At b = 2, nDCG@10 drops to 0.016 — encrypted retrieval is still exact but returns nearly useless documents. This shows the hard floor below which quantization breaks the system.",
+      "params": {"he_bits": 2, "bit_widths": "2,3,4,6,8"}
+    },
+    {
+      "label": "Broken timestamp join: query_lag_max_min = 45",
+      "why": "When the lookup lag approaches or exceeds the 20-minute slot length, the timestamp join starts mislinking patients. Expect link_acc to drop substantially compared to this run's 100%.",
+      "params": {"query_lag_max_min": 45}
+    },
+    {
+      "label": "NFCorpus comparison",
+      "why": "The paper's NFCorpus BGE-large numbers are b = 4: 0.353 / float: 0.370, with 95% retention. Switching corpus lets you compare a different retrieval difficulty and check that quantization behaviour generalises.",
+      "params": {"corpus": "nfcorpus", "bit_widths": "2,3,4,6,8"}
+    }
+  ],
+  "caveats": [
+    "The clinic schedule, patient identifiers, and diagnoses are entirely synthetic; no real patient data was used or exposed at any point.",
+    "The dictionary-inversion attack is a nearest-neighbour lower bound using only 4 fixed phrasings per diagnosis; a trained text-inversion model would likely achieve higher accuracy.",
+    "Timing is indicative only: no succinct proofs or corpus certification were reproduced, and we run on a single CPU rather than the paper's 48-core AWS EC2 server, so the 48-min 1M-document extrapolation is not directly comparable to the paper's ~19 min.",
+    "The quantization scheme (global symmetric scalar quantization) is our own construction because the paper does not specify its scheme; the embedder is potion-base-8M, smaller than BGE-large or Cohere v3, which explains the lower absolute nDCG@10 values compared with Table 1."
+  ]
+}

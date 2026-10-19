@@ -1,0 +1,37 @@
+{
+  "headline": "Wrong AI suggestions cut proxy-clinician accuracy from 70% to 50% (20-point drop); offline Q = +0.30 and double-fault rate 3%, with both gates passing on 36 MedQA cases.",
+  "idea": [
+    "A second reader only reduces error insofar as it fails on **different cases** from the first. Two readers that are both 90% accurate can have wildly different double-fault rates depending on whether their errors overlap — the deciding property is error *complementarity*, not accuracy.",
+    "The paired-error audit operationalises this: record a 2x2 of case-level outcomes (shared success, model-only error, clinician-only error, shared error), compute the double-fault rate and Yule's Q, stratify by case type, and apply two pre-specified go/no-go gates before deployment.",
+    "Independence is fragile: a reader that sees the other's answer first systematically shifts toward it, converting rescue potential into correlated failure. Governance must therefore preserve the measured independence — the offline audit only tells you what *could* be rescued, not what will be in practice."
+  ],
+  "findings": [
+    "**Offline 2x2 (N = 36):** The Haiku proxy-clinician reached 78% accuracy and the Sonnet model under audit 92%. Their errors overlapped in just 1 case (shared error), giving a double-fault rate of 2.8% vs 1.9% that independent errors would predict. Yule's Q = +0.30 (bootstrap 95% CI –0.52 to +0.91) — modest positive association but with a very wide interval at this sample size. Rescue potential was high: 7 of 8 cases where the clinician was wrong but the model was right (87.5%).",
+    "**Assisted workflows:** When the model answered second after seeing the clinician's impression, it copied a wrong impression 17.6% of the time vs 5.9% when blind — 2 answers switched, both right-to-wrong, trimming rescue from 94% to 82%. The clinician-defers workflow was starker: faced with wrong AI suggestions, the proxy clinician's accuracy on those cases dropped from 70% to 50%, a **20-percentage-point** fall. The paper cites 14–18 pp drops for real physicians (Qazi et al., 2026); this run, with a small LLM proxy, lands at 20 pp — directionally consistent but not directly comparable.",
+    "**Gates:** Gate 1 (model accuracy ≥ 80% and double-fault ≤ 5%) passed; Gate 2 (model-only error ≤ 10% and rescue retained ≥ 50%) also passed, driven by the model-only rate of 5.6% and rescue-retained ratio of 87.5%. By stratum, **diagnosis** and **mechanism/other** both cleared Gate 1, but **management** failed (double-fault 8.3%, n = 12) — the paper's partial-deployment logic would flag that stratum for closer review.",
+    "**Simulator panel:** Three hypothetical models all at 90% accuracy next to a 78%-accurate clinician span from 0.0% double-fault (complementary) to 10.0% (redundant). The complementary model rescues every clinician error; the redundant model rescues only 54.5%. This run's observed double-fault (2.8%) sits between independent (2.2%) and complementary, as the wide CI illustrates: 36 cases are not enough to tell them apart."
+  ],
+  "try_next": [
+    {
+      "label": "Same-family readers (both Haiku)",
+      "why": "Replacing the large audit model with a second Haiku should push Q higher and double-fault up — the same family of errors — testing whether model-model diversity is lower than proxy-clinician/model diversity (Zoller et al., 2025).",
+      "params": {"clinician_proxy": "small-fast", "audit_model": "small", "n_items": 36, "case_mix": "mixed", "anchoring": "both", "anchor_source": "enriched", "gate_thresholds": "accuracy>=0.80,double_fault<=0.05,model_only<=0.10,rescue_retained>=0.50", "byo_counts": "", "sim_accuracy": 0.90, "seed": 1}
+    },
+    {
+      "label": "Pure conformity test (always-wrong anchors)",
+      "why": "Setting anchor_source to always_wrong removes any ambiguity: every anchor shown is guaranteed wrong. This isolates maximum-signal conformity — how often does each reader copy a known-wrong answer when they would otherwise be correct?",
+      "params": {"clinician_proxy": "small-fast", "audit_model": "large", "n_items": 36, "case_mix": "mixed", "anchoring": "both", "anchor_source": "always_wrong", "gate_thresholds": "accuracy>=0.80,double_fault<=0.05,model_only<=0.10,rescue_retained>=0.50", "byo_counts": "", "sim_accuracy": 0.90, "seed": 1}
+    },
+    {
+      "label": "Focus on management questions only",
+      "why": "Management was the only stratum that failed Gate 1 in this run (double-fault 8.3%). Running on management alone with more cases would give a narrower CI and show whether that stratum is consistently problematic or a small-sample artefact.",
+      "params": {"clinician_proxy": "small-fast", "audit_model": "large", "n_items": 48, "case_mix": "management", "anchoring": "both", "anchor_source": "enriched", "gate_thresholds": "accuracy>=0.80,double_fault<=0.05,model_only<=0.10,rescue_retained>=0.50", "byo_counts": "", "sim_accuracy": 0.90, "seed": 2}
+    }
+  ],
+  "caveats": [
+    "Both readers are LLMs (Claude Haiku as clinician proxy, Claude Sonnet as model under audit). This is an **LLM-vs-LLM proxy** of the clinician–model audit; it does not constitute evidence about how clinicians actually reason or defer, and the automation-bias drop (20 pp) should not be compared directly to physician studies.",
+    "MedQA-USMLE multiple-choice exam questions are not real clinical cases — they are constructed items with known key errors and a narrow answer format. Performance here does not predict performance on free-text clinical decisions.",
+    "N = 36 is far below the paper's ~1,000-case sizing recommendation for rare serious-harm events. Every rate on this card carries a very wide 95% CI (the double-fault CI spans 0%–14%), and the per-stratum analyses (n ≈ 12 each) are illustrative only.",
+    "Gate thresholds (accuracy ≥ 80%, double-fault ≤ 5%, model-only ≤ 10%, rescue retained ≥ 50%) are the runbook defaults, not validated or endorsed by the paper's authors. LLM answers can vary between runs even at temperature 0."
+  ]
+}

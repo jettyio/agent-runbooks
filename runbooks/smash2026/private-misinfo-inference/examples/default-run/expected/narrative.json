@@ -1,0 +1,36 @@
+{
+  "headline": "All 1080 encrypted labels matched plaintext; hybrid accuracy 0.944, macro-F1 0.896 on 1080 CoAID items; SIMD packing gave a 26x retrieval speed-up over 5168 titles.",
+  "idea": [
+    "Health claims often contain sensitive personal context — a patient's symptoms, fears, or medication history — so sending them to a classification server in the clear is a real privacy risk. Homomorphic encryption (HE) lets the client encrypt the claim's feature vector; the server operates on the ciphertext and returns an encrypted score, never learning the text.",
+    "The server computes a single encrypted dot product z = x̃ᵀw + b using CKKS arithmetic on the ciphertext. The client decrypts z and applies the sigmoid to get a probability. Because the logistic boundary is a hyperplane, one multiplication-free linear operation is all the server needs — well within CKKS's multiplicative-depth budget.",
+    "Encrypted semantic retrieval naively requires one ciphertext per database item, producing gigabytes of communication. SIMD packing batches an entire shard of the title database into one ciphertext and computes all dot products in a single matrix-vector product, replacing thousands of ciphertexts with one per shard — the key to practical encrypted search."
+  ],
+  "findings": [
+    "The hybrid model (TF-IDF→SVD300 + potion-base-8M, 556-d) reached **accuracy 0.944 and macro-F1 0.896** on the 1080-item test set (183 fake). TF-IDF alone matched it at 0.944/0.895, suggesting the 256-d static embedder adds little here. The paper's full hybrid (0.971/0.950) uses a 768-d BioBERT block not reproduced in this run, accounting for most of the gap. The test split (1080 items, 183 fake) is one item short of the paper's 1081/184, consistent with one extra duplicate removed.",
+    "Encryption was exactly lossless: **all 1080 test labels** agreed between plaintext and decrypted-ciphertext inference, with maximum logit difference 6.02e-06. All six participant claims were scored without the server seeing the text. Three were flagged as resembling CoAID's fake class: the hot-water-flushes-coronavirus claim (p=1.000), the 5G-spreads-coronavirus claim (p=1.000), and the Italian-doctors photo caption (p=0.999). The photo-caption result reflects CoAID's fact-check headline style rather than the underlying truth — the nearest retrieved items were other false-cure headlines. Three true-and-accurate claims (vaccine trials, handwashing) scored near zero (p<0.002).",
+    "At N=32,768 (the paper's ring size), per-query cost was **149.2 ms and 2.24 MB** versus the paper's ~122.4 ms and 2.133 MB — modestly higher latency on a single Linux CPU versus an Apple M4. SIMD-packed retrieval over 5168 CoAID titles took 1.282 s versus a naive extrapolation of 33.9 s, a **26x speed-up**; top-5 neighbours were identical between plaintext and encrypted scores for all 6 claims. The paper reports 42.6x over 7128 items; the ratio is smaller here because packing efficiency depends on how well the database fills each N/2-slot shard."
+  ],
+  "try_next": [
+    {
+      "label": "Title-only text with false-cure claims",
+      "why": "Switching to title-only text strips article body context and brings inputs closer to social-media posts. The model may rely heavily on fact-check phrasing patterns present only in the full content field, so this tests whether style cues or substance drive the fake signal.",
+      "params": {"text_field": "title", "features": "hybrid"}
+    },
+    {
+      "label": "Paper-exact ring size N=32768",
+      "why": "Running the full encrypted test split at N=32,768 matches the paper's CKKS parameters exactly and lets you measure whether the 149 ms latency holds over all 1080 items (currently capped at 400 for the bulk pass), giving a direct apples-to-apples cost comparison.",
+      "params": {"poly_modulus_degree": 32768}
+    },
+    {
+      "label": "TF-IDF only, no embedder",
+      "why": "In this run TF-IDF alone (0.944/0.895) nearly matched the hybrid (0.944/0.896). Running features=tfidf in isolation confirms whether the embedder is genuinely redundant or whether its contribution is masked by the SVD dimensionality, and is the closest single-block match to the paper's TF-IDF ablation row.",
+      "params": {"features": "tfidf"}
+    }
+  ],
+  "caveats": [
+    "The paper's 768-d BioBERT sentence block is not reproduced (no GPU/torch); potion-base-8M (256-d, CPU-only) stands in for the paper's PCA-256 MPNet block. The resulting feature vector is 556-d instead of 1324-d, which explains the accuracy gap versus the paper's full hybrid.",
+    "Encrypted retrieval does not include the paper's ISCC-SCT fingerprint component, Ridge late-fusion re-ranking, or STS-B evaluation; only cosine similarity over static embeddings is measured.",
+    "The honest-but-curious threat model is assumed throughout: the server is trusted not to deviate from the protocol, only not to learn the plaintext. Malicious-server or chosen-ciphertext attacks are out of scope.",
+    "Latency numbers are single-run medians on one Linux CPU core; the paper reports results on an Apple M4 MacBook Air. Naive retrieval latency is extrapolated from 200 sampled items to the full database, not measured directly."
+  ]
+}

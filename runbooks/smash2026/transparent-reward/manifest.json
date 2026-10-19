@@ -1,0 +1,181 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/transparent-reward",
+ "title": "Towards Transparent Reward Design in Clinical Reinforcement Learning",
+ "description": "Using automated insulin dosing as a testbed, we show that conventionally trained policies occupy one such undisclosed point on a tradeoff surface, producing clinically consequential failure modes invisible to standard metrics. We construct an approximate Pareto frontier through preference-conditioned RL and show that it recovers policies with similar aggregate performance but different risk profiles across three simulated patients.",
+ "paper": {
+  "title": "Towards Transparent Reward Design in Clinical Reinforcement Learning",
+  "authors": "Caro Strickland, Baptiste Bonin, Audrey Durand",
+  "venue": "SMASH 2026",
+  "session": "Spotlight",
+  "url": "https://drive.google.com/file/d/1NuHr7dRpH-Qh5nYx7jZ9j1t1NRRW5bXk/view?usp=sharing",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://drive.google.com/file/d/1NuHr7dRpH-Qh5nYx7jZ9j1t1NRRW5bXk/view?usp=sharing"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "4-8 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "For child#001, two dosing rules within 3 points of time-in-range differ by 64.0 points in time hypoglycaemic. The paper's weights pick a rule at 16.4% hypo. 48 simple dosing rules replace trained RL policies. Simulated patients; not clinical guidance.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "patient": "child#001",
+     "w_glycemic": "0.5",
+     "w_hypo": "0.3",
+     "w_dose": "0.2",
+     "max_hypo_pct": "4",
+     "tir_tolerance": "3",
+     "n_days": "2",
+     "seed": "1"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-15-transparent-reward",
+    "trajectory_id": "3886339b",
+    "url": "https://jetty.io/jon-smash2026/smash-15-transparent-reward/3886339b",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T19:07:36.018238+00:00",
+    "duration_seconds": 285,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Patient",
+   "type": "text",
+   "required": false,
+   "default": "child#001",
+   "description": "simglucose virtual patient: adult#001, adolescent#001, child#001 (paper's three), or any adult#001–#010, adolescent#…, child#…"
+  },
+  {
+   "label": "Weight: glycaemic risk",
+   "type": "text",
+   "required": false,
+   "default": "0.5",
+   "description": "Your preference weight on r_gly (paper's baseline B: 0.5)"
+  },
+  {
+   "label": "Weight: hypo safety",
+   "type": "text",
+   "required": false,
+   "default": "0.3",
+   "description": "Your preference weight on r_hypo (paper: 0.3)"
+  },
+  {
+   "label": "Weight: insulin exposure",
+   "type": "text",
+   "required": false,
+   "default": "0.2",
+   "description": "Your preference weight on r_dose (paper: 0.2). Weights are renormalized to sum to 1"
+  },
+  {
+   "label": "Hypo limit",
+   "type": "text",
+   "required": false,
+   "default": "4",
+   "description": "Your maximum acceptable % time < 70 mg/dL (international consensus target: < 4%)"
+  },
+  {
+   "label": "TIR tolerance",
+   "type": "text",
+   "required": false,
+   "default": "3",
+   "description": "Two rules count as \"same TIR\" if within this many percentage points (paper: 3)"
+  },
+  {
+   "label": "Days per rule",
+   "type": "text",
+   "required": false,
+   "default": "2",
+   "description": "Simulated days (meal scenarios) per rule; ≥ 2 enables the paper's reliability filter"
+  },
+  {
+   "label": "Seed",
+   "type": "text",
+   "required": false,
+   "default": "1",
+   "description": "Seed for meal scenarios and CGM noise"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/transparent-reward/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/transparent-reward",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "clinical"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

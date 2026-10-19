@@ -1,0 +1,205 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/canon-to-nikon",
+ "title": "From Canon to Nikon: Camera Domain Shift and Potential Equity Implications in Retinal AI",
+ "description": "In a Brazilian cohort of 8,524 patients, retinal images acquired with the Nikon NF5050 were more than twice as likely to have inadequate image quality compared with those acquired with the Canon CR-2, despite refurbished Canon systems costing more than twice as much as Nikon systems. We find that camera-associated performance differences vary substantially across tasks, and that neither higher input resolution nor classifier choice consistently mitigates cross-camera variation.",
+ "paper": {
+  "title": "From Canon to Nikon: Camera Domain Shift and Potential Equity Implications in Retinal AI",
+  "authors": "Lisa Y.W. Tang",
+  "venue": "SMASH 2026",
+  "session": "Poster",
+  "url": "https://drive.google.com/file/d/1cEMU7Sho9vz6uA6rD2xq78R9KDpaOwuK/view?usp=sharing",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://drive.google.com/file/d/1cEMU7Sho9vz6uA6rD2xq78R9KDpaOwuK/view?usp=sharing"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "3-5 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "With R$1,900,000 for 40 sites, all-Nikon covers every site and misses 955 cases a year, against 2,431 for all-Canon on 20 sites. Diabetic retinopathy AUROC holds across cameras (0.940 vs 0.946). Model performance is transcribed from the paper's Table 4; the screening calculator is an extension. Camera type is confounded with case mix and site in the source cohort.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "task": "Diabetic Retinopathy",
+     "classifier": "best",
+     "resolution": "best",
+     "budget_brl": "1900000",
+     "n_sites": "40",
+     "patients_per_site": "1000",
+     "prevalence_pct": "10",
+     "specificity": "0.90",
+     "recapture_pct": "50",
+     "shift_strength": "1.0",
+     "seed": "7"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-06-canon-to-nikon",
+    "trajectory_id": "36dc08dd",
+    "url": "https://jetty.io/jon-smash2026/smash-06-canon-to-nikon/36dc08dd",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T18:21:58.019177+00:00",
+    "duration_seconds": 181,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Task",
+   "type": "text",
+   "required": false,
+   "default": "Diabetic Retinopathy",
+   "description": "One of: DR Staging (ICDR), Diabetic Retinopathy, AMD, Hemorrhage, Hypertensive Retinopathy, Increased Cup/Disc, Macular Edema, Myopic Fundus, Nevus, Other, Scar, Vascular Occlusion"
+  },
+  {
+   "label": "Classifier",
+   "type": "text",
+   "required": false,
+   "default": "best",
+   "description": "best (the paper's Table 2 choice for the task) or SVM, LR, HGB, kNN, RF"
+  },
+  {
+   "label": "Resolution",
+   "type": "text",
+   "required": false,
+   "default": "best",
+   "description": "best (Table 2) or 224, 392, 672, 952 px"
+  },
+  {
+   "label": "Budget (R$)",
+   "type": "text",
+   "required": false,
+   "default": "1900000",
+   "description": "Camera budget for the screening program, in Brazilian reais"
+  },
+  {
+   "label": "Sites",
+   "type": "text",
+   "required": false,
+   "default": "40",
+   "description": "Screening sites that need a camera"
+  },
+  {
+   "label": "Patients per site",
+   "type": "text",
+   "required": false,
+   "default": "1000",
+   "description": "Patients screened per site per year"
+  },
+  {
+   "label": "Prevalence (%)",
+   "type": "text",
+   "required": false,
+   "default": "10",
+   "description": "Share of screened patients who have the condition and should be referred"
+  },
+  {
+   "label": "Specificity",
+   "type": "text",
+   "required": false,
+   "default": "0.90",
+   "description": "Operating point for the AI referral decision"
+  },
+  {
+   "label": "Re-imaged if inadequate (%)",
+   "type": "text",
+   "required": false,
+   "default": "50",
+   "description": "Share of inadequate photos that are retaken and graded"
+  },
+  {
+   "label": "Synthetic shift strength",
+   "type": "text",
+   "required": false,
+   "default": "1.0",
+   "description": "Camera-shift strength in the synthetic mechanism demo (0 = none, 3 = severe)"
+  },
+  {
+   "label": "Seed",
+   "type": "text",
+   "required": false,
+   "default": "7",
+   "description": "Random seed (synthetic demo only)"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/canon-to-nikon/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/canon-to-nikon",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "clinical"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}
