@@ -2,7 +2,7 @@
 version: "1.2.0"
 evaluation: rubric
 agent: claude-code                    # Agent runtime: claude-code | opencode | codex | gemini-cli
-model: anthropic/claude-sonnet-5      # OpenRouter catalog id — the portable Jetty default
+model: anthropic/claude-sonnet-5.5      # OpenRouter catalog id — the portable Jetty default
 model_provider: openrouter            # Jetty-provisioned routing — runs in any collection, no ANTHROPIC_API_KEY needed
 snapshot: python312-uv                # Sandbox: python312-uv | prism-playwright | custom image
 # Headline deliverable(s), relative to results_dir, in priority order. spot

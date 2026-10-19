@@ -2,7 +2,7 @@
 version: 1.0.0
 evaluation: programmatic
 agent: codex
-model: gpt-5.5
+model: gpt-6.1-sol
 snapshot: python312-uv
 origin:
   url: https://raw.githubusercontent.com/gooseworks-ai/goose-skills/296901414500a3a2d26b37e410f92e0406bf94a2/skills/capabilities/competitor-post-engagers/SKILL.md

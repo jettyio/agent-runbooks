@@ -2,7 +2,7 @@
 version: 1.0.0
 evaluation: programmatic
 agent: codex
-model: gpt-5.5
+model: gpt-6.1-sol
 snapshot: python312-uv
 origin:
   url: https://raw.githubusercontent.com/adewale/swiss-poster-skill/e8e0b9f1e03a5d832067ef8c6e0e64eac91fa10e/swiss-poster/SKILL.md

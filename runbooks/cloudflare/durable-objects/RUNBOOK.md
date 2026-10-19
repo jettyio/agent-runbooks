@@ -2,7 +2,7 @@
 version: "1.0.0"
 evaluation: programmatic
 agent: claude-code
-model: anthropic/claude-sonnet-4.6
+model: anthropic/claude-sonnet-5.5
 model_provider: openrouter
 snapshot: python312-uv
 # The headline deliverable — the Durable Object implementation.

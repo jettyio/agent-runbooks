@@ -92,7 +92,7 @@
 
   "inputs": [
     { "label": "Prompt", "type": "file", "required": true, "accept": ".txt,.md", "description": "The prompt to benchmark (uploaded file). Or pass it inline via the Prompt parameter." },
-    { "label": "Models", "type": "text", "required": false, "default": "claude-sonnet-4-6,gpt-4o,gemini/gemini-2.0-flash", "description": "Comma-separated litellm model ids. Models with no provider key are skipped cleanly." },
+    { "label": "Models", "type": "text", "required": false, "default": "claude-sonnet-5-5,gpt-6.1-sol,gemini/gemini-3.8-flash", "description": "Comma-separated litellm model ids. Models with no provider key are skipped cleanly." },
     { "label": "Judge", "type": "select", "required": false, "default": "true", "options": ["true", "false"], "description": "Score each output 0–10 with an LLM judge (adds a little cost)." },
     { "label": "System prompt", "type": "text", "required": false, "description": "Optional system prompt sent identically to every model." }
   ],

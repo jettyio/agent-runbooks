@@ -2,7 +2,7 @@
 version: "1.3.0"
 evaluation: programmatic
 agent: claude-code
-model: anthropic/claude-sonnet-5
+model: anthropic/claude-sonnet-5.5
 model_provider: openrouter
 snapshot: python312-uv
 primary_outputs:
