@@ -1,0 +1,197 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/prevalence-thresholds",
+ "title": "Prevalence, Thresholds, and Subgroup Performance Gaps in Clinical Prediction Models Across Five Public Datasets",
+ "description": "Clinical prediction models are commonly compared across demographic subgroups, but a raw performance gap is not a fixed property of a model. Observed gaps should prompt investigation of metric choice, prevalence, threshold, sample composition, measured case mix, and uncertainty rather than being treated alone as proof of discrimination, fairness, or equivalence.",
+ "paper": {
+  "title": "Prevalence, Thresholds, and Subgroup Performance Gaps in Clinical Prediction Models Across Five Public Datasets",
+  "authors": "Zavash Ghorbanpourbaboli, Arina Afshar, Elham Jangravi, Mohammed Ayoub Alaoui Mhamdi, Russell Butler",
+  "venue": "SMASH 2026",
+  "session": "Poster",
+  "url": "https://drive.google.com/file/d/1MnK-mFUFDe2Josf706Rgn4RxZMB6df3M/view?usp=sharing",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://drive.google.com/file/d/1MnK-mFUFDe2Josf706Rgn4RxZMB6df3M/view?usp=sharing"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "4-7 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "With the paper's specification, the Diabetes-130 youngest-minus-oldest sensitivity gap is +0.120 [−0.057, +0.235]; the paper reports +0.104. 19 of 36 alternative analysis choices give a negative gap. Model hyperparameters and variable encodings are this runbook's; the predictor set and age bands follow the paper. No fairness verdict is implied.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "dataset": "diabetes130",
+     "attribute": "age",
+     "age_bands": "",
+     "group_a": "",
+     "group_b": "",
+     "threshold": "train_prevalence",
+     "target_prevalence": "pooled",
+     "model": "auto",
+     "multiverse": "true",
+     "byo_confusion": ""
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-07-gap-audit",
+    "trajectory_id": "79dfad08",
+    "url": "https://jetty.io/jon-smash2026/smash-07-gap-audit/79dfad08",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-19T14:02:16.155733+00:00",
+    "duration_seconds": 253,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Dataset",
+   "type": "text",
+   "required": false,
+   "default": "diabetes130",
+   "description": "diabetes130 (UCI Diabetes 130-US Hospitals, 30-day readmission) or cdc_diabetes (UCI CDC Diabetes Health Indicators)"
+  },
+  {
+   "label": "Attribute",
+   "type": "text",
+   "required": false,
+   "default": "age",
+   "description": "sex, age, or race (race: diabetes130 only)"
+  },
+  {
+   "label": "Age bands",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Age comparison bands. diabetes130: 10-29 vs 60+ (paper, default), <50 vs 70+, 10-29 vs 80+. cdc_diabetes: 18-44 vs 65+ (default), 18-24 vs 80+, 18-34 vs 70+"
+  },
+  {
+   "label": "Group A",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Override first group for sex/race (e.g. Asian, Hispanic, Female). Blank = paper default"
+  },
+  {
+   "label": "Group B",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Override reference group (e.g. Caucasian, Male). Blank = paper default"
+  },
+  {
+   "label": "Threshold",
+   "type": "text",
+   "required": false,
+   "default": "train_prevalence",
+   "description": "train_prevalence (paper), top20 (flag top 20% risk), or a number like 0.3"
+  },
+  {
+   "label": "Target prevalence",
+   "type": "text",
+   "required": false,
+   "default": "pooled",
+   "description": "Common prevalence for PPV standardization: pooled (paper) or a number like 0.05"
+  },
+  {
+   "label": "Model",
+   "type": "text",
+   "required": false,
+   "default": "auto",
+   "description": "auto (paper's 6-family CV selection) or one of logistic, l1_logistic, shallow_tree, random_forest, gradient_boosting, soft_voting"
+  },
+  {
+   "label": "Multiverse",
+   "type": "text",
+   "required": false,
+   "default": "true",
+   "description": "Re-run the estimate across defensible analytic choices (true/false)"
+  },
+  {
+   "label": "Your confusion matrices",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Skip the datasets and audit your own model: GroupA:TP,FP,TN,FN; GroupB:TP,FP,TN,FN (e.g. Women:80,40,800,30; Men:120,90,700,25)"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/prevalence-thresholds/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/prevalence-thresholds",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "clinical"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

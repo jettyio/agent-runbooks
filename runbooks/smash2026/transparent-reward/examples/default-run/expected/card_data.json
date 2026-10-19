@@ -1,0 +1,96 @@
+{
+  "paper": {
+    "num": 15,
+    "title": "Towards Transparent Reward Design in Clinical Reinforcement Learning",
+    "authors": "Caro Strickland, Baptiste Bonin, Audrey Durand",
+    "affiliation": "Universit\u00e9 Laval"
+  },
+  "inputs": {
+    "patient": "child#001",
+    "weights (gly, hypo, dose)": "0.50, 0.30, 0.20",
+    "hypo limit": "4%",
+    "TIR tolerance": "\u00b13 pts",
+    "simulated days / rule": 2,
+    "dosing rules": 48,
+    "seed": 1
+  },
+  "tiles": [
+    {
+      "label": "Same TIR, different hypo",
+      "value": "64.0 pts",
+      "sub": "max hypo-time gap among 154 rule pairs within 3 TIR points (median 8.9)",
+      "tone": "accent"
+    },
+    {
+      "label": "Your weights pick",
+      "value": "48% TIR",
+      "sub": "basal 2/6 \u00b7 +1 if >180; hypo 16.4%, hyper 35.3%",
+      "tone": "warn"
+    },
+    {
+      "label": "Two fixed weightings",
+      "value": "50% vs 48%",
+      "sub": "TIR of the w = (1,0,0) pick vs the paper's w = (0.5,0.3,0.2) pick; hypo 21.5% vs 16.4%, insulin 16 vs 15 U/day",
+      "tone": "neutral"
+    },
+    {
+      "label": "Preferences that break your limit",
+      "value": "54%",
+      "sub": "of 231 weight vectors pick a rule with > 4% hypo time",
+      "tone": "warn"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_tradeoff.png",
+      "title": "Which risk does each dosing rule trade for its time in range?",
+      "caption": "Each dot is one basal-only dosing rule simulated on the UVa/Padova model. Blue = Pareto-optimal on the paper's three objectives. The orange line joins the matched pair with the biggest hypoglycaemia gap at (almost) the same TIR."
+    },
+    {
+      "path": "fig_pair_traces.png",
+      "title": "Same score, different day",
+      "caption": "Glucose traces of that matched pair on simulated day 1. Green band = target range 70\u2013180 mg/dL."
+    },
+    {
+      "path": "fig_simplex.png",
+      "title": "Who chose the trade-off? Every preference vector, mapped",
+      "caption": "Each hexagon is a weight vector w over the three objectives; colour = time in range of the rule that maximizes w\u00b7r. Orange outlines mark weights whose pick exceeds your hypo limit."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "Matched pairs within 3 TIR pts (child)",
+      "paper": "148",
+      "yours": "154",
+      "note": "41/48 rules kept (SD \u2264 20 pts, TIR \u2265 20%); paper: 40 preference vectors"
+    },
+    {
+      "metric": "Median hypo gap among matched pairs (pp)",
+      "paper": "6.4",
+      "yours": "8.9",
+      "note": ""
+    },
+    {
+      "metric": "Max hypo gap among matched pairs (pp)",
+      "paper": "39.8",
+      "yours": "64.0",
+      "note": ""
+    },
+    {
+      "metric": "child#001 fixed-weight failure modes",
+      "paper": "Baseline A hypo 55.2%; baseline B hypo 0.0%, hyper 56.0%",
+      "yours": "A-pick hypo 21.5%; B-pick hypo 16.4%, hyper 35.3%",
+      "note": "paper baselines are SAC agents; yours are the best rule in the family"
+    },
+    {
+      "metric": "Differential (risk-decreasing) reward",
+      "paper": "a policy can collect higher reward by oscillating into and out of a hazardous state",
+      "yours": "rank corr. with absolute reward 0.50; its favourite rule has 15.0% hypo",
+      "note": "undiscounted sum telescopes to RI(start) \u2212 RI(end)"
+    }
+  ],
+  "runbook": {
+    "name": "smash-15-transparent-reward",
+    "url": ""
+  }
+}

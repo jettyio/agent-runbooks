@@ -1,0 +1,841 @@
+{
+  "params": {
+    "dataset": "diabetes130",
+    "attribute": "age",
+    "age_bands": "",
+    "group_a": "",
+    "group_b": "",
+    "threshold": "train_prevalence",
+    "target_prevalence": "pooled",
+    "model": "auto",
+    "multiverse": true,
+    "byo_confusion": "",
+    "n_boot": 1000,
+    "max_rows": 300000,
+    "cv_rows": 20000,
+    "multiverse_rows": 60000,
+    "runbook_url": ""
+  },
+  "mode": "dataset",
+  "group_labels": {
+    "youngest": "10-29",
+    "oldest": "60+"
+  },
+  "outcome": "30-day readmission (all encounters, patient-level splits)",
+  "model": "gradient_boosting",
+  "cv_auc": {
+    "logistic": 0.6026866822990096,
+    "l1_logistic": 0.6037393192378013,
+    "shallow_tree": 0.612854922559402,
+    "random_forest": 0.6253724627001261,
+    "gradient_boosting": 0.6331531822649932,
+    "soft_voting": 0.6322777459570941
+  },
+  "test_auc": 0.6597089996181806,
+  "tau": 0.11718875502008032,
+  "tau_rule": "train_prevalence",
+  "age_bands": "10-29 vs 60+",
+  "group_a": "youngest",
+  "group_b": "oldest",
+  "metrics_a": {
+    "se": 0.725,
+    "sp": 0.7453125,
+    "ppv": 0.26244343891402716,
+    "npv": 0.9559118236472945,
+    "prev": 0.1111111111111111,
+    "n": 720,
+    "events": 80,
+    "tp": 58,
+    "fp": 163,
+    "tn": 477,
+    "fn": 22
+  },
+  "metrics_b": {
+    "se": 0.605002156101768,
+    "sp": 0.6034798027372971,
+    "ppv": 0.16392101881060872,
+    "npv": 0.9224189040399763,
+    "prev": 0.11386624766768143,
+    "n": 20366,
+    "events": 2319,
+    "tp": 1403,
+    "fp": 7156,
+    "tn": 10891,
+    "fn": 916
+  },
+  "se_diff": 0.11999784389823198,
+  "se_diff_ci": [
+    -0.05677322436800785,
+    0.23469773214099754
+  ],
+  "ci_excludes_zero": false,
+  "ppv_gap_raw": 0.09852242010341844,
+  "ppv_gap_std": 0.103844346858011,
+  "standardized": {
+    "pi": 0.11377217110879256,
+    "ppv_a": 0.26763757788011255,
+    "ppv_b": 0.16379323102210155,
+    "npv_a": 0.9547742628125788,
+    "npv_b": 0.9224856241184158
+  },
+  "ppv_sign_flip": false,
+  "ppv_gap_shrink_pct": -5.401741805576998,
+  "prevalence_curve": [
+    {
+      "pi": 0.01,
+      "ppv_gap": 0.012772136995519514
+    },
+    {
+      "pi": 0.02,
+      "ppv_gap": 0.02470671644674582
+    },
+    {
+      "pi": 0.03,
+      "ppv_gap": 0.035853540463758805
+    },
+    {
+      "pi": 0.04,
+      "ppv_gap": 0.04625886737127998
+    },
+    {
+      "pi": 0.05,
+      "ppv_gap": 0.055965714229721686
+    },
+    {
+      "pi": 0.060000000000000005,
+      "ppv_gap": 0.06501412909148599
+    },
+    {
+      "pi": 0.06999999999999999,
+      "ppv_gap": 0.07344143645996393
+    },
+    {
+      "pi": 0.08,
+      "ppv_gap": 0.0812824589722484
+    },
+    {
+      "pi": 0.09,
+      "ppv_gap": 0.08856971794376392
+    },
+    {
+      "pi": 0.09999999999999999,
+      "ppv_gap": 0.09533361508391894
+    },
+    {
+      "pi": 0.11,
+      "ppv_gap": 0.10160259740825112
+    },
+    {
+      "pi": 0.12,
+      "ppv_gap": 0.10740330712749341
+    },
+    {
+      "pi": 0.13,
+      "ppv_gap": 0.11276071808179625
+    },
+    {
+      "pi": 0.14,
+      "ppv_gap": 0.11769826010416598
+    },
+    {
+      "pi": 0.15000000000000002,
+      "ppv_gap": 0.12223793253698606
+    },
+    {
+      "pi": 0.16,
+      "ppv_gap": 0.12640040798584454
+    },
+    {
+      "pi": 0.17,
+      "ppv_gap": 0.1302051272729134
+    },
+    {
+      "pi": 0.18000000000000002,
+      "ppv_gap": 0.1336703864453706
+    },
+    {
+      "pi": 0.19,
+      "ppv_gap": 0.13681341660073376
+    },
+    {
+      "pi": 0.2,
+      "ppv_gap": 0.1396504572087176
+    },
+    {
+      "pi": 0.21000000000000002,
+      "ppv_gap": 0.1421968235368286
+    },
+    {
+      "pi": 0.22,
+      "ppv_gap": 0.14446696872306475
+    },
+    {
+      "pi": 0.23,
+      "ppv_gap": 0.14647454098269574
+    },
+    {
+      "pi": 0.24000000000000002,
+      "ppv_gap": 0.14823243638620348
+    },
+    {
+      "pi": 0.25,
+      "ppv_gap": 0.14975284760123814
+    },
+    {
+      "pi": 0.26,
+      "ppv_gap": 0.1510473089521942
+    },
+    {
+      "pi": 0.27,
+      "ppv_gap": 0.15212673811611077
+    },
+    {
+      "pi": 0.28,
+      "ppv_gap": 0.1530014747425239
+    },
+    {
+      "pi": 0.29000000000000004,
+      "ppv_gap": 0.1536813162571945
+    },
+    {
+      "pi": 0.3,
+      "ppv_gap": 0.15417555108488545
+    },
+    {
+      "pi": 0.31,
+      "ppv_gap": 0.15449298950423973
+    },
+    {
+      "pi": 0.32,
+      "ppv_gap": 0.15464199232798997
+    },
+    {
+      "pi": 0.33,
+      "ppv_gap": 0.1546304975839698
+    },
+    {
+      "pi": 0.34,
+      "ppv_gap": 0.15446604535643965
+    },
+    {
+      "pi": 0.35000000000000003,
+      "ppv_gap": 0.15415580093290082
+    },
+    {
+      "pi": 0.36000000000000004,
+      "ppv_gap": 0.15370657638866625
+    },
+    {
+      "pi": 0.37,
+      "ppv_gap": 0.15312485072981868
+    },
+    {
+      "pi": 0.38,
+      "ppv_gap": 0.15241678870469683
+    },
+    {
+      "pi": 0.39,
+      "ppv_gap": 0.15158825838456608
+    },
+    {
+      "pi": 0.4,
+      "ppv_gap": 0.1506448476055573
+    },
+    {
+      "pi": 0.41000000000000003,
+      "ppv_gap": 0.14959187935619844
+    },
+    {
+      "pi": 0.42000000000000004,
+      "ppv_gap": 0.1484344261878242
+    },
+    {
+      "pi": 0.43,
+      "ppv_gap": 0.14717732371877168
+    },
+    {
+      "pi": 0.44,
+      "ppv_gap": 0.14582518329747052
+    },
+    {
+      "pi": 0.45,
+      "ppv_gap": 0.14438240388426826
+    },
+    {
+      "pi": 0.46,
+      "ppv_gap": 0.14285318320703555
+    },
+    {
+      "pi": 0.47000000000000003,
+      "ppv_gap": 0.14124152824122782
+    },
+    {
+      "pi": 0.48000000000000004,
+      "ppv_gap": 0.13955126506109783
+    },
+    {
+      "pi": 0.49,
+      "ppv_gap": 0.13778604810511874
+    },
+    {
+      "pi": 0.5,
+      "ppv_gap": 0.1359493688953558
+    },
+    {
+      "pi": 0.51,
+      "ppv_gap": 0.13404456424749123
+    },
+    {
+      "pi": 0.52,
+      "ppv_gap": 0.13207482400543025
+    },
+    {
+      "pi": 0.53,
+      "ppv_gap": 0.13004319833186473
+    },
+    {
+      "pi": 0.54,
+      "ppv_gap": 0.1279526045838535
+    },
+    {
+      "pi": 0.55,
+      "ppv_gap": 0.12580583380032173
+    },
+    {
+      "pi": 0.56,
+      "ppv_gap": 0.1236055568264317
+    },
+    {
+      "pi": 0.5700000000000001,
+      "ppv_gap": 0.12135433009796703
+    },
+    {
+      "pi": 0.5800000000000001,
+      "ppv_gap": 0.11905460110721111
+    },
+    {
+      "pi": 0.59,
+      "ppv_gap": 0.11670871357027712
+    },
+    {
+      "pi": 0.6,
+      "ppv_gap": 0.1143189123144368
+    }
+  ],
+  "threshold_sweep": [
+    {
+      "tau": 0.02,
+      "se_gap": 0.0004312203536006587,
+      "sp_gap": -0.014229598409707984,
+      "ppv_gap": -0.0041726002803805645,
+      "npv_gap": 0.0034965034965035446
+    },
+    {
+      "tau": 0.04,
+      "se_gap": 0.002587322121604174,
+      "sp_gap": -0.009387294287139136,
+      "ppv_gap": -0.0034931917372255372,
+      "npv_gap": 0.014962593516209433
+    },
+    {
+      "tau": 0.06,
+      "se_gap": -0.08015847347994831,
+      "sp_gap": 0.17568172687981382,
+      "ppv_gap": 0.011278262270254968,
+      "npv_gap": -0.007766744213413501
+    },
+    {
+      "tau": 0.08,
+      "se_gap": -0.02450409659335928,
+      "sp_gap": 0.23108844267745332,
+      "ppv_gap": 0.04780420967714091,
+      "npv_gap": 0.019243487993488073
+    },
+    {
+      "tau": 0.1,
+      "se_gap": 0.03416882276843458,
+      "sp_gap": 0.18237579306809998,
+      "ppv_gap": 0.06806692415813284,
+      "npv_gap": 0.024782022180928065
+    },
+    {
+      "tau": 0.12,
+      "se_gap": 0.12560909874946102,
+      "sp_gap": 0.13540417036072483,
+      "ppv_gap": 0.10379708971900126,
+      "npv_gap": 0.033125199128398064
+    },
+    {
+      "tau": 0.14,
+      "se_gap": 0.18688551099611905,
+      "sp_gap": 0.04851646049204861,
+      "ppv_gap": 0.10698488149468544,
+      "npv_gap": 0.031406643308451776
+    },
+    {
+      "tau": 0.16,
+      "se_gap": 0.18994717550668389,
+      "sp_gap": 0.0013046662880257243,
+      "ppv_gap": 0.08558122762733181,
+      "npv_gap": 0.026011322402929915
+    },
+    {
+      "tau": 0.18,
+      "se_gap": 0.1973102630444157,
+      "sp_gap": -0.0006817268798138265,
+      "ppv_gap": 0.11791152813808048,
+      "npv_gap": 0.025262358942185537
+    },
+    {
+      "tau": 0.2,
+      "se_gap": 0.220612332902113,
+      "sp_gap": -0.02086314553665425,
+      "ppv_gap": 0.10528414755732801,
+      "npv_gap": 0.02546085068805648
+    },
+    {
+      "tau": 0.22,
+      "se_gap": 0.2383085381630013,
+      "sp_gap": -0.03036126156701946,
+      "ppv_gap": 0.10646077197117831,
+      "npv_gap": 0.025975915145615702
+    },
+    {
+      "tau": 0.24,
+      "se_gap": 0.22798081069426476,
+      "sp_gap": -0.020987127361888347,
+      "ppv_gap": 0.15430154564012832,
+      "npv_gap": 0.02501459951665219
+    },
+    {
+      "tau": 0.26,
+      "se_gap": 0.23833548943510133,
+      "sp_gap": -0.023835505901257825,
+      "ppv_gap": 0.15937219730941704,
+      "npv_gap": 0.02565485823892588
+    },
+    {
+      "tau": 0.28,
+      "se_gap": 0.24523501509271237,
+      "sp_gap": -0.02241724732642536,
+      "ppv_gap": 0.16832023857314898,
+      "npv_gap": 0.02641789719346621
+    },
+    {
+      "tau": 0.3,
+      "se_gap": 0.24524040534713237,
+      "sp_gap": -0.02110981049481908,
+      "ppv_gap": 0.186129272531656,
+      "npv_gap": 0.026385057008452617
+    },
+    {
+      "tau": 0.32,
+      "se_gap": 0.21420871065114272,
+      "sp_gap": -0.02181915623095254,
+      "ppv_gap": 0.1439316239316239,
+      "npv_gap": 0.022911600966490142
+    },
+    {
+      "tau": 0.34,
+      "se_gap": 0.19308969383354896,
+      "sp_gap": -0.021752749764503698,
+      "ppv_gap": 0.10846560846560849,
+      "npv_gap": 0.020622027222820694
+    },
+    {
+      "tau": 0.36,
+      "se_gap": 0.18317701595515307,
+      "sp_gap": -0.016333912838698894,
+      "ppv_gap": 0.14362519201228874,
+      "npv_gap": 0.020009812867129106
+    },
+    {
+      "tau": 0.38,
+      "se_gap": 0.17628288055196206,
+      "sp_gap": -0.017552952014185164,
+      "ppv_gap": 0.11979949874686718,
+      "npv_gap": 0.019142783671674324
+    }
+  ],
+  "multiverse": [
+    {
+      "tau": "train_prevalence",
+      "bands": "10-29 vs 60+",
+      "dedup": false,
+      "outcome": "<30",
+      "label": "\u03c4=prev \u00b7 10-29 vs 60+ \u00b7 all-encounters \u00b7 30-day",
+      "se_diff": -0.07496848026379588,
+      "ppv_diff": 0.02793900079663139,
+      "n": 59997
+    },
+    {
+      "tau": "train_prevalence",
+      "bands": "10-29 vs 60+",
+      "dedup": false,
+      "outcome": "any",
+      "label": "\u03c4=prev \u00b7 10-29 vs 60+ \u00b7 all-encounters \u00b7 any-readmit",
+      "se_diff": 0.02200552792939303,
+      "ppv_diff": 0.11162412525388499,
+      "n": 59985
+    },
+    {
+      "tau": "train_prevalence",
+      "bands": "10-29 vs 60+",
+      "dedup": true,
+      "outcome": "<30",
+      "label": "\u03c4=prev \u00b7 10-29 vs 60+ \u00b7 per-patient \u00b7 30-day",
+      "se_diff": -0.17024053701286596,
+      "ppv_diff": 0.01625148452056982,
+      "n": 49319
+    },
+    {
+      "tau": "train_prevalence",
+      "bands": "10-29 vs 60+",
+      "dedup": true,
+      "outcome": "any",
+      "label": "\u03c4=prev \u00b7 10-29 vs 60+ \u00b7 per-patient \u00b7 any-readmit",
+      "se_diff": -0.1833214877990998,
+      "ppv_diff": -0.03897446954632938,
+      "n": 49319
+    },
+    {
+      "tau": "train_prevalence",
+      "bands": "<50 vs 70+",
+      "dedup": false,
+      "outcome": "<30",
+      "label": "\u03c4=prev \u00b7 <50 vs 70+ \u00b7 all-encounters \u00b7 30-day",
+      "se_diff": 0.005016676637458195,
+      "ppv_diff": 0.04996683476057248,
+      "n": 60007
+    },
+    {
+      "tau": "train_prevalence",
+      "bands": "<50 vs 70+",
+      "dedup": false,
+      "outcome": "any",
+      "label": "\u03c4=prev \u00b7 <50 vs 70+ \u00b7 all-encounters \u00b7 any-readmit",
+      "se_diff": 0.01469170409654208,
+      "ppv_diff": 0.07008881010105106,
+      "n": 60033
+    },
+    {
+      "tau": "train_prevalence",
+      "bands": "<50 vs 70+",
+      "dedup": true,
+      "outcome": "<30",
+      "label": "\u03c4=prev \u00b7 <50 vs 70+ \u00b7 per-patient \u00b7 30-day",
+      "se_diff": -0.23709158846020162,
+      "ppv_diff": -0.01507131618140671,
+      "n": 42937
+    },
+    {
+      "tau": "train_prevalence",
+      "bands": "<50 vs 70+",
+      "dedup": true,
+      "outcome": "any",
+      "label": "\u03c4=prev \u00b7 <50 vs 70+ \u00b7 per-patient \u00b7 any-readmit",
+      "se_diff": -0.14936777628321984,
+      "ppv_diff": -0.07537840312548111,
+      "n": 42937
+    },
+    {
+      "tau": "train_prevalence",
+      "bands": "10-29 vs 80+",
+      "dedup": false,
+      "outcome": "<30",
+      "label": "\u03c4=prev \u00b7 10-29 vs 80+ \u00b7 all-encounters \u00b7 30-day",
+      "se_diff": -0.08604505632040049,
+      "ppv_diff": 0.035873092176421095,
+      "n": 22338
+    },
+    {
+      "tau": "train_prevalence",
+      "bands": "10-29 vs 80+",
+      "dedup": false,
+      "outcome": "any",
+      "label": "\u03c4=prev \u00b7 10-29 vs 80+ \u00b7 all-encounters \u00b7 any-readmit",
+      "se_diff": -0.09141816514564938,
+      "ppv_diff": -0.020696776510729986,
+      "n": 22338
+    },
+    {
+      "tau": "train_prevalence",
+      "bands": "10-29 vs 80+",
+      "dedup": true,
+      "outcome": "<30",
+      "label": "\u03c4=prev \u00b7 10-29 vs 80+ \u00b7 per-patient \u00b7 30-day",
+      "se_diff": -0.2288220911836617,
+      "ppv_diff": -0.027033181522446326,
+      "n": 15152
+    },
+    {
+      "tau": "train_prevalence",
+      "bands": "10-29 vs 80+",
+      "dedup": true,
+      "outcome": "any",
+      "label": "\u03c4=prev \u00b7 10-29 vs 80+ \u00b7 per-patient \u00b7 any-readmit",
+      "se_diff": -0.14084208990075897,
+      "ppv_diff": -0.10800359232816498,
+      "n": 15152
+    },
+    {
+      "tau": "0.5",
+      "bands": "10-29 vs 60+",
+      "dedup": false,
+      "outcome": "<30",
+      "label": "\u03c4=0.5 \u00b7 10-29 vs 60+ \u00b7 all-encounters \u00b7 30-day",
+      "se_diff": 0.017241379310344827,
+      "ppv_diff": 0.5,
+      "n": 59951
+    },
+    {
+      "tau": "0.5",
+      "bands": "10-29 vs 60+",
+      "dedup": false,
+      "outcome": "any",
+      "label": "\u03c4=0.5 \u00b7 10-29 vs 60+ \u00b7 all-encounters \u00b7 any-readmit",
+      "se_diff": 0.001997987212881913,
+      "ppv_diff": 0.031163319603213946,
+      "n": 60065
+    },
+    {
+      "tau": "0.5",
+      "bands": "10-29 vs 60+",
+      "dedup": true,
+      "outcome": "<30",
+      "label": "\u03c4=0.5 \u00b7 10-29 vs 60+ \u00b7 per-patient \u00b7 30-day",
+      "se_diff": 0.0,
+      "ppv_diff": 0.0,
+      "n": 49319
+    },
+    {
+      "tau": "0.5",
+      "bands": "10-29 vs 60+",
+      "dedup": true,
+      "outcome": "any",
+      "label": "\u03c4=0.5 \u00b7 10-29 vs 60+ \u00b7 per-patient \u00b7 any-readmit",
+      "se_diff": -0.0059109215825634,
+      "ppv_diff": 0.025826613794831754,
+      "n": 49319
+    },
+    {
+      "tau": "0.5",
+      "bands": "<50 vs 70+",
+      "dedup": false,
+      "outcome": "<30",
+      "label": "\u03c4=0.5 \u00b7 <50 vs 70+ \u00b7 all-encounters \u00b7 30-day",
+      "se_diff": 0.0,
+      "ppv_diff": 0.0,
+      "n": 59970
+    },
+    {
+      "tau": "0.5",
+      "bands": "<50 vs 70+",
+      "dedup": false,
+      "outcome": "any",
+      "label": "\u03c4=0.5 \u00b7 <50 vs 70+ \u00b7 all-encounters \u00b7 any-readmit",
+      "se_diff": 0.05682884869924165,
+      "ppv_diff": 0.0739457668042911,
+      "n": 59996
+    },
+    {
+      "tau": "0.5",
+      "bands": "<50 vs 70+",
+      "dedup": true,
+      "outcome": "<30",
+      "label": "\u03c4=0.5 \u00b7 <50 vs 70+ \u00b7 per-patient \u00b7 30-day",
+      "se_diff": 0.0,
+      "ppv_diff": 0.0,
+      "n": 42937
+    },
+    {
+      "tau": "0.5",
+      "bands": "<50 vs 70+",
+      "dedup": true,
+      "outcome": "any",
+      "label": "\u03c4=0.5 \u00b7 <50 vs 70+ \u00b7 per-patient \u00b7 any-readmit",
+      "se_diff": -0.056977621301075976,
+      "ppv_diff": -0.04746024841718621,
+      "n": 42937
+    },
+    {
+      "tau": "0.5",
+      "bands": "10-29 vs 80+",
+      "dedup": false,
+      "outcome": "<30",
+      "label": "\u03c4=0.5 \u00b7 10-29 vs 80+ \u00b7 all-encounters \u00b7 30-day",
+      "se_diff": 0.029411764705882353,
+      "ppv_diff": 1.0,
+      "n": 22338
+    },
+    {
+      "tau": "0.5",
+      "bands": "10-29 vs 80+",
+      "dedup": false,
+      "outcome": "any",
+      "label": "\u03c4=0.5 \u00b7 10-29 vs 80+ \u00b7 all-encounters \u00b7 any-readmit",
+      "se_diff": -0.0635684792659964,
+      "ppv_diff": -0.01711463211238684,
+      "n": 22338
+    },
+    {
+      "tau": "0.5",
+      "bands": "10-29 vs 80+",
+      "dedup": true,
+      "outcome": "<30",
+      "label": "\u03c4=0.5 \u00b7 10-29 vs 80+ \u00b7 per-patient \u00b7 30-day",
+      "se_diff": 0.0,
+      "ppv_diff": 0.0,
+      "n": 15152
+    },
+    {
+      "tau": "0.5",
+      "bands": "10-29 vs 80+",
+      "dedup": true,
+      "outcome": "any",
+      "label": "\u03c4=0.5 \u00b7 10-29 vs 80+ \u00b7 per-patient \u00b7 any-readmit",
+      "se_diff": -0.018261091652072375,
+      "ppv_diff": -0.05632084057251596,
+      "n": 15152
+    },
+    {
+      "tau": "top20",
+      "bands": "10-29 vs 60+",
+      "dedup": false,
+      "outcome": "<30",
+      "label": "\u03c4=top20% \u00b7 10-29 vs 60+ \u00b7 all-encounters \u00b7 30-day",
+      "se_diff": 0.1480380307791475,
+      "ppv_diff": 0.10618004430119207,
+      "n": 59971
+    },
+    {
+      "tau": "top20",
+      "bands": "10-29 vs 60+",
+      "dedup": false,
+      "outcome": "any",
+      "label": "\u03c4=top20% \u00b7 10-29 vs 60+ \u00b7 all-encounters \u00b7 any-readmit",
+      "se_diff": 0.10058399592871992,
+      "ppv_diff": 0.11706256476947141,
+      "n": 60000
+    },
+    {
+      "tau": "top20",
+      "bands": "10-29 vs 60+",
+      "dedup": true,
+      "outcome": "<30",
+      "label": "\u03c4=top20% \u00b7 10-29 vs 60+ \u00b7 per-patient \u00b7 30-day",
+      "se_diff": -0.14124557150848407,
+      "ppv_diff": -0.001768346595932807,
+      "n": 49319
+    },
+    {
+      "tau": "top20",
+      "bands": "10-29 vs 60+",
+      "dedup": true,
+      "outcome": "any",
+      "label": "\u03c4=top20% \u00b7 10-29 vs 60+ \u00b7 per-patient \u00b7 any-readmit",
+      "se_diff": -0.011821843165126744,
+      "ppv_diff": -0.015736109233473017,
+      "n": 49319
+    },
+    {
+      "tau": "top20",
+      "bands": "<50 vs 70+",
+      "dedup": false,
+      "outcome": "<30",
+      "label": "\u03c4=top20% \u00b7 <50 vs 70+ \u00b7 all-encounters \u00b7 30-day",
+      "se_diff": 0.1232843186726682,
+      "ppv_diff": 0.040273485134985326,
+      "n": 60063
+    },
+    {
+      "tau": "top20",
+      "bands": "<50 vs 70+",
+      "dedup": false,
+      "outcome": "any",
+      "label": "\u03c4=top20% \u00b7 <50 vs 70+ \u00b7 all-encounters \u00b7 any-readmit",
+      "se_diff": 0.10933453880803945,
+      "ppv_diff": 0.07820651455418792,
+      "n": 60008
+    },
+    {
+      "tau": "top20",
+      "bands": "<50 vs 70+",
+      "dedup": true,
+      "outcome": "<30",
+      "label": "\u03c4=top20% \u00b7 <50 vs 70+ \u00b7 per-patient \u00b7 30-day",
+      "se_diff": -0.15978449774070214,
+      "ppv_diff": -0.012917952097123625,
+      "n": 42937
+    },
+    {
+      "tau": "top20",
+      "bands": "<50 vs 70+",
+      "dedup": true,
+      "outcome": "any",
+      "label": "\u03c4=top20% \u00b7 <50 vs 70+ \u00b7 per-patient \u00b7 any-readmit",
+      "se_diff": -0.0515860818311884,
+      "ppv_diff": -0.05439395344435127,
+      "n": 42937
+    },
+    {
+      "tau": "top20",
+      "bands": "10-29 vs 80+",
+      "dedup": false,
+      "outcome": "<30",
+      "label": "\u03c4=top20% \u00b7 10-29 vs 80+ \u00b7 all-encounters \u00b7 30-day",
+      "se_diff": 0.12486441385064662,
+      "ppv_diff": 0.0695815058479532,
+      "n": 22338
+    },
+    {
+      "tau": "top20",
+      "bands": "10-29 vs 80+",
+      "dedup": false,
+      "outcome": "any",
+      "label": "\u03c4=top20% \u00b7 10-29 vs 80+ \u00b7 all-encounters \u00b7 any-readmit",
+      "se_diff": 0.04048275879833191,
+      "ppv_diff": 0.022724313507808902,
+      "n": 22338
+    },
+    {
+      "tau": "top20",
+      "bands": "10-29 vs 80+",
+      "dedup": true,
+      "outcome": "<30",
+      "label": "\u03c4=top20% \u00b7 10-29 vs 80+ \u00b7 per-patient \u00b7 30-day",
+      "se_diff": -0.075219329785704,
+      "ppv_diff": -0.007711167352103754,
+      "n": 15152
+    },
+    {
+      "tau": "top20",
+      "bands": "10-29 vs 80+",
+      "dedup": true,
+      "outcome": "any",
+      "label": "\u03c4=top20% \u00b7 10-29 vs 80+ \u00b7 per-patient \u00b7 any-readmit",
+      "se_diff": -0.026605370694687686,
+      "ppv_diff": -0.06381867363119109,
+      "n": 15152
+    }
+  ],
+  "paper": {
+    "se_diff": 0.104,
+    "ci": [
+      -0.07,
+      0.232
+    ]
+  },
+  "se_gap_range_over_thresholds": [
+    -0.08015847347994831,
+    0.24524040534713237
+  ],
+  "multiverse_summary": {
+    "n_specs": 36,
+    "min": -0.23709158846020162,
+    "max": 0.1480380307791475,
+    "n_negative": 19,
+    "n_positive": 13
+  },
+  "runtime_sec": 86.3
+}

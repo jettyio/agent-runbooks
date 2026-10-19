@@ -1,0 +1,99 @@
+{
+  "paper": {
+    "num": 21,
+    "title": "Two for One: Privileged Bilateral Learning for Monocular Retinal Disease Classification",
+    "authors": "Lisa Y.W. Tang",
+    "url": "https://drive.google.com/file/d/1RKzJvGv1_Avf2kqHYQFnlwnWD78wedUW/",
+    "affiliation": ""
+  },
+  "inputs": {
+    "task preset": "amd",
+    "eye at inference": "left",
+    "prevalence": 0.06,
+    "inter-eye correlation": 0.6,
+    "\u03b1": 0.03,
+    "eye noise L / R": "2.0 / 2.0",
+    "patients": 3500,
+    "cohorts": 10,
+    "data": "toy simulated paired-eye features (not ODIR images)"
+  },
+  "tiles": [
+    {
+      "label": "AUROC, left eye only",
+      "value": "0.711 \u2192 0.702",
+      "sub": "baseline \u2192 privileged student; \u0394 95% CI [-0.033, +0.012] (1,000 bootstraps)",
+      "tone": "warn"
+    },
+    {
+      "label": "Robust across cohorts?",
+      "value": "8 of 10",
+      "sub": "independent cohorts/splits where AUROC improved; mean \u0394 +0.024 \u00b1 0.021",
+      "tone": "neutral"
+    },
+    {
+      "label": "Trade-off at the macro-F1 threshold",
+      "value": "FPR 0.027 \u2192 0.047",
+      "sub": "precision 0.357 \u2192 0.244; recall 0.238 \u2192 0.238",
+      "tone": "warn"
+    },
+    {
+      "label": "Student \u2194 teacher similarity",
+      "value": "\u0394CKA +0.118",
+      "sub": "linear probe AUROC 0.718 \u2192 0.706; teacher (both eyes) 0.729",
+      "tone": "neutral"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_performance.png",
+      "title": "Does the one-eye student beat the one-eye baseline?",
+      "caption": "Left: test ROC curves; dots = operating point at the threshold that maximised macro-F1 on validation. Right: metrics with 95% bootstrap CIs (1,000 resamples of the test set)."
+    },
+    {
+      "path": "fig_when_it_helps.png",
+      "title": "When does the privileged eye help?",
+      "caption": "\u0394 AUROC (student \u2212 baseline) as the two eyes' disease signals become more correlated, for different distillation weights \u03b1 (mean of 2 simulated cohorts per cell). Extension, not in the paper."
+    },
+    {
+      "path": "fig_seeds_tradeoff.png",
+      "title": "One split or many?",
+      "caption": "The paper reports a single split. Left: \u0394 AUROC over independent simulated cohorts and splits. Right: the precision/FPR change at the validation-chosen threshold flips direction between splits."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "AUROC, baseline \u2192 privileged",
+      "paper": "AMD left 0.931 \u2192 0.966; AMD right 0.801 \u2192 0.810; DR left 0.789 \u2192 0.836; DR right 0.825 \u2192 0.837",
+      "yours": "0.711 \u2192 0.702 (left, amd preset)",
+      "note": "toy: magnitudes are not comparable"
+    },
+    {
+      "metric": "Balanced accuracy",
+      "paper": "AMD left 0.834 \u2192 0.879; DR left 0.576 \u2192 0.749",
+      "yours": "0.605 \u2192 0.595",
+      "note": ""
+    },
+    {
+      "metric": "FPR / precision trade-off",
+      "paper": "AMD left FPR 0.011 \u2192 0.027, precision 0.760 \u2192 0.595; DR left FPR 0.766 \u2192 0.089, precision 0.078 \u2192 0.760",
+      "yours": "FPR 0.027 \u2192 0.047, precision 0.357 \u2192 0.244",
+      "note": "both directions happen; depends on the validation threshold"
+    },
+    {
+      "metric": "\u0394CKA (student vs baseline, to teacher)",
+      "paper": "+0.015 (DR); AMD inconclusive",
+      "yours": "+0.118",
+      "note": "linear CKA, validation set"
+    },
+    {
+      "metric": "Linear probe AUROC",
+      "paper": "AMD 0.815 vs 0.836 (+2.0 points); DR +2.9 points",
+      "yours": "0.718 vs 0.706 (-1.2 points)",
+      "note": ""
+    }
+  ],
+  "runbook": {
+    "name": "smash-21-privileged-bilateral",
+    "url": ""
+  }
+}

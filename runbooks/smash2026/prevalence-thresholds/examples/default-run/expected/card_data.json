@@ -1,0 +1,91 @@
+{
+  "paper": {
+    "num": 7,
+    "title": "Prevalence, Thresholds, and Subgroup Performance Gaps in Clinical Prediction Models Across Five Public Datasets",
+    "authors": "Zavash Ghorbanpourbaboli, Arina Afshar, Elham Jangravi, Mohammed Ayoub Alaoui Mhamdi, Russell Butler",
+    "url": "https://drive.google.com/file/d/1MnK-mFUFDe2Josf706Rgn4RxZMB6df3M/view?usp=sharing",
+    "affiliation": "Bishop's University"
+  },
+  "inputs": {
+    "dataset": "diabetes130",
+    "attribute": "age",
+    "groups": "10-29 vs 60+",
+    "outcome": "30-day readmission (all encounters, patient-level splits)",
+    "model": "gradient_boosting",
+    "threshold": "0.117 (train_prevalence)",
+    "rows": "21,086 test",
+    "standardized to \u03c0": "0.114"
+  },
+  "tiles": [
+    {
+      "label": "Sensitivity gap (10-29 \u2212 60+)",
+      "value": "+0.120",
+      "sub": "95% CI [-0.057, +0.235] \u2014 includes 0",
+      "tone": "accent"
+    },
+    {
+      "label": "PPV gap: raw \u2192 standardized",
+      "value": "+0.099 \u2192 +0.104",
+      "sub": "gap grows",
+      "tone": "neutral"
+    },
+    {
+      "label": "Prevalence",
+      "value": "11.1% vs 11.4%",
+      "sub": "80 / 2,319 events in test",
+      "tone": "neutral"
+    },
+    {
+      "label": "Gap across analytic choices",
+      "value": "-0.24 \u2026 +0.15",
+      "sub": "19 negative / 13 positive of 36 specs",
+      "tone": "warn"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_forest.png",
+      "title": "Is the sensitivity gap distinguishable from zero?",
+      "caption": "Point = difference at the shared threshold; whiskers = 95% percentile CI from 1,000 bootstrap resamples drawn separately within each subgroup (paper \u00a72)."
+    },
+    {
+      "path": "fig_prevalence.png",
+      "title": "Prevalence standardization",
+      "caption": "Holding each group's sensitivity and specificity fixed, PPV is recomputed at a common prevalence. The curve shows how much of the PPV gap is just base rates."
+    },
+    {
+      "path": "fig_threshold.png",
+      "title": "Threshold dependence",
+      "caption": "Each metric's gap as the shared operating threshold moves. Shrinking one gap can grow another."
+    },
+    {
+      "path": "fig_multiverse.png",
+      "title": "Same data, different defensible choices",
+      "caption": "Point estimates re-run under every combination of threshold rule and data-preparation choices (fast gradient-boosting model). Orange = negative gap, blue = positive."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "Sensitivity difference",
+      "paper": "+0.104 [-0.070, +0.232]",
+      "yours": "+0.120 [-0.057, +0.235]",
+      "note": "Paper's predictor set, age bands and patient-level resampling; model hyperparameters are ours."
+    },
+    {
+      "metric": "Sensitivity CIs excluding zero (13 comparisons)",
+      "paper": "7 of 13 (3 sex, 4 age, 0 race)",
+      "yours": "includes 0",
+      "note": "your single comparison"
+    },
+    {
+      "metric": "PPV gap after standardization",
+      "paper": "BRFSS M\u2212F +0.101 \u2192 +0.016; CCHS M\u2212F +0.053 \u2192 \u22120.005 (point estimate only; interval spans zero)",
+      "yours": "+0.099 \u2192 +0.104",
+      "note": ""
+    }
+  ],
+  "runbook": {
+    "name": "smash-07-gap-audit",
+    "url": ""
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "paper": {
+    "num": 4,
+    "title": "Query Logs Are Patient Records: An Unguarded Attack Surface in Clinical RAG, and a Privacy-Preserving Pipeline",
+    "authors": "Louis Tremblay Thibault, Ulrich A\u00efvodji, Sofiane Azogagh, Marc-Olivier Killijian",
+    "affiliation": "\u00c9cole de Technologie Sup\u00e9rieure \u00b7 Mila \u00b7 EURECOM \u00b7 UQAM"
+  },
+  "inputs": {
+    "your query": "Metastatic renal cell carcinoma, second-line therapy after progression",
+    "logged at": "14:15",
+    "corpus": "scifact (5,183 docs)",
+    "bits (encrypted run)": 4,
+    "clip percentile": 99.9,
+    "embedder": "potion-base-8M",
+    "clinic day": "24 appointments, lag \u2264 15 min"
+  },
+  "tiles": [
+    {
+      "label": "Patient records rebuilt from the log",
+      "value": "20 / 21",
+      "sub": "diagnosis recovered 95% (chance 1.7%), timestamp join right 100%",
+      "tone": "accent"
+    },
+    {
+      "label": "nDCG@10 kept at b = 4",
+      "value": "97%",
+      "sub": "0.490 vs 0.506 float on scifact; b = 2: 0.016",
+      "tone": "good"
+    },
+    {
+      "label": "Encrypted = plaintext",
+      "value": "20 / 20",
+      "sub": "top-1 identical; scores bit-exact in 20/20 after rounding",
+      "tone": "good"
+    },
+    {
+      "label": "Price of privacy (server)",
+      "value": "14.8 s",
+      "sub": "vs 3.0 ms in the clear for 5,183 docs; \u2248 48 min at 1M (no proofs)",
+      "tone": "neutral"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_record.png",
+      "title": "What an insider reads in the provider's log after one (synthetic) clinic day",
+      "caption": "Each logged query embedding is inverted by nearest-neighbour search over a 60-diagnosis dictionary and joined to the appointment schedule by timestamp. \u2713 = right diagnosis and right patient; ~ = right diagnosis, wrong patient; \u2717 = wrong diagnosis. Your query (orange) maps to *metastatic renal cell carcinoma*. Synthetic schedule and patients."
+    },
+    {
+      "path": "fig_quantization.png",
+      "title": "How coarse can the encrypted embeddings be?",
+      "caption": "Retrieval quality as each embedding dimension is rounded to b bits (needed to fit the cryptographic parameters). Squares = the paper's Table 1; circles = this run on the same public corpus with a small static embedder."
+    },
+    {
+      "path": "fig_cost.png",
+      "title": "What privacy costs as the corpus grows",
+      "caption": "Server time for both encrypted rounds (scoring + private fetch), measured on this corpus and extrapolated linearly. The paper's numbers include succinct proofs of correct computation on a 48-core machine; ours do not."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "nDCG@10 at b = 4 / float (scifact)",
+      "paper": "BGE-large 0.713 / 0.735; Cohere v3 0.719 / 0.718",
+      "yours": "0.490 / 0.506",
+      "note": "static model2vec embedder, so lower absolute nDCG"
+    },
+    {
+      "metric": "Quality retained at b = 4",
+      "paper": "97% (BGE-large)",
+      "yours": "97%",
+      "note": "clip at 99.9th pct of |x|"
+    },
+    {
+      "metric": "nDCG@10 at b = 2",
+      "paper": "0.002 (BGE-large), 0.033 (Cohere v3): collapses",
+      "yours": "0.016",
+      "note": ""
+    },
+    {
+      "metric": "Server time per private query",
+      "paper": "4.3\u20138.7 seconds (verified, SciFact/NFCorpus)",
+      "yours": "14.78 s (5,183 docs)",
+      "note": "no proofs; TenSEAL CKKS, N = 8192"
+    },
+    {
+      "metric": "1M-document corpus",
+      "paper": "roughly 19 minutes and $2.22",
+      "yours": "\u2248 48 min (linear extrapolation)",
+      "note": "no verification; different hardware"
+    },
+    {
+      "metric": "Retrieval exactness",
+      "paper": "every document is scored \u2026 quality is not traded for privacy",
+      "yours": "top-1 match 20/20; PIR fetch exact: yes",
+      "note": ""
+    }
+  ],
+  "runbook": {
+    "name": "smash-04-query-log-privacy",
+    "url": ""
+  }
+}

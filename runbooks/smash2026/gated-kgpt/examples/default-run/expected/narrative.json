@@ -1,0 +1,37 @@
+{
+  "headline": "Borrowing without a gate made unseen grades worse in 46–50% of support draws; the evidence gate cut that to 16% and still added +2.37 missing-class recall points.",
+  "idea": [
+    "Prevalence-based one-shot sampling leaves rare grades with zero labelled examples — on MESSIDOR every support set had no severe or proliferative DR — so their prototypes remain pure text with no visual grounding.",
+    "Borrowing the visual correction (residual) of a nearby supported class sounds like an obvious fix, but the paper shows ungated transfer made missing-class recall worse in roughly half of all support draws because the borrowed correction carries class-specific noise on top of the shared modality gap.",
+    "KGPT scales the borrowed correction by an evidence gate g = clip(agreement × relevance): agreement measures how consistently the selected residuals point the same way; relevance combines VLM similarity margin and ontology proximity. This requires no extra labels, validation data, or gradient updates."
+  ],
+  "findings": [
+    "**NTR vs paper (Table 1):** Ungated VLM and ontology ranking hurt missing-class recall in 50% and 46% of draws, respectively, close to the paper's 46% and 48%. The gated approach reduced NTR to 16%, well below either ungated variant but higher than the paper's 2%. The mean ΔMCR for gated KGPT was +2.37 pts [+1.72, +2.95], a meaningful gain but smaller than the paper's +5.23 [+3.84, +6.69]. Both differences are expected: the synthetic world's gap_shrink=0.5 creates moderate (not extreme) mismatch between borrowed and needed corrections, so ungated transfer is occasionally beneficial too, limiting the gate's relative gain.",
+    "**Gate inspector:** Moderate DR was the top source for both Severe and Proliferative in all 50 seeds — the most evidence-rich supported neighbour dominates entirely. Severe (d_min=1, q_vlm=0.402) gets gate 0.514±0.019, close to the paper's 0.582. Proliferative (d_min=2, q_vlm=0.137) gets gate 0.215±0.008, nearly identical to the paper's 0.214. The farther class gets a smaller gate because both its ontology relevance (1/d_min=0.5 vs 1.0) and its VLM margin are lower, reflecting that Moderate is a weaker semantic match to Proliferative than to Severe. No gate-closed classes appeared in this run.",
+    "**Beta sweep:** Ungated NTR remains below 20% for β ≤ 0.3, rises to ~50% at β=1, and reaches 100% at β=2. Gated KGPT at β=1 (NTR=16%) outperforms ungated at any β — including ungated at β=0.3 (NTR=12%) — and delivers higher mean ΔMCR (+2.37) than ungated at its best fixed β of ~0.6 (+2.58 ΔMCR but 24% NTR). The gate is not merely a smaller step: it uses evidence to scale the step adaptively, achieving a better recall–stability tradeoff than any fixed β for the ungated version.",
+    "**Cost on supported classes:** In this synthetic world, gated KGPT yields ΔSCR=+0.97 and ΔTop-1=+1.12 (both positive), which diverges from the paper's −1.20 and −0.45. The synthetic geometry does not reproduce the real VLM's inductive bias that causes supported-class recall to dip when prototypes are adjusted; this is a known limitation of the reconstruction. Per-class recall shows Severe improving from 67.6% to 70.1% and Proliferative from 79.2% to 81.4% under gated KGPT."
+  ],
+  "try_next": [
+    {
+      "label": "Zero gap shrink — borrowed correction is always exactly right",
+      "why": "With gap_shrink=0 every class has the same modality gap, so the borrowed visual correction needs no scaling. Does the gate, by reducing the effective step, actually hurt missing-class recall compared to ungated transfer? This is the cleanest test of whether the gate adds value beyond overshoot-prevention.",
+      "params": {"gap_shrink": 0}
+    },
+    {
+      "label": "Middle grade with zero support — does a central missing class reveal a gate-closed configuration?",
+      "why": "Setting support_counts to 3,1,0,1,0 leaves Moderate unsupported and flanked by two supported neighbours (Mild and Severe). Because the two neighbours may be nearly equidistant in VLM space, the NN margin above the candidate-row median (q_vlm) can be near zero, triggering a gate-closed class and showing how the gate refuses to act when evidence is ambiguous.",
+      "params": {"support_counts": "3,1,0,1,0"}
+    },
+    {
+      "label": "Lower fixed beta 0.5 — is a smaller step as safe as the gate at beta=1?",
+      "why": "The beta sweep shows ungated NTR is around 18–24% at β=0.45–0.6. Comparing ungated β=0.5 to gated β=1 tests whether evidence-adaptive scaling adds value beyond simply turning down the step size. If gated β=1 still beats ungated β=0.5 on ΔMCR with lower NTR, the gate earns its keep.",
+      "params": {"beta": 0.5}
+    }
+  ],
+  "caveats": [
+    "**Synthetic embedding world, not MESSIDOR or FLAIR.** Text prototypes and image clusters are constructed from an ordinal Gaussian kernel in 256-d space with a simulated modality gap. Absolute accuracies, class-balance, and gap geometry differ from real VLM features; the paper's MESSIDOR absolute numbers (Top-1 57.45%, MCR 54.90%) should not be compared directly to this run's values.",
+    "**SS-Text+ is approximated.** The pre-repulsion prototype uses a simple shrinkage formula (μ_c = (Σ support + λ t_c)/(K_c + λ)) and a hand-tuned repulsion strength of 0.25. The real SS-Text+ solver's closed form, objective, and scale differ; this affects absolute accuracy levels but not the qualitative negative-transfer story.",
+    "**The gap_shrink parameter is an extension of the paper.** The paper does not identify what property of MESSIDOR features makes full residual transfer overshoot; gap_shrink (the assumption that higher grades need less correction) is the synthetic world's explanation for that phenomenon. The paper's low gated NTR of 2% reflects the actual feature geometry; this run's 16% reflects the simulation's approximation.",
+    "**Seeds vary only the identity of support images.** Each of the 50 support draws samples different images from a fixed pool, as in the paper. The test set and the embedding world geometry are fixed across seeds; variance comes only from which support images are drawn, not from world randomness."
+  ]
+}

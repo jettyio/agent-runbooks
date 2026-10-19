@@ -1,0 +1,197 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/nAMD-visual-acuity",
+ "title": "Visual Acuity Improvement Prediction in Neovascular Age-Related Macular Degeneration",
+ "description": "We proposed a predictive pipeline that automates the extraction of clinical OCT biomarkers using fine-tuned DL models. The combination of these automated biomarkers with baseline best-corrected visual acuity serves as inputs for an interpretable classifier.",
+ "paper": {
+  "title": "Visual Acuity Improvement Prediction in Neovascular Age-Related Macular Degeneration",
+  "authors": "Hadi Moazen, Mélanie Hébert, Alaa Eddine Ayadi, Ali Dirani, Audrey Durand",
+  "venue": "SMASH 2026",
+  "session": "Poster",
+  "url": "https://drive.google.com/file/d/1h81k0dJvGwdnHFxP-kYIcjuwFZgX_n1d/view",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://drive.google.com/file/d/1h81k0dJvGwdnHFxP-kYIcjuwFZgX_n1d/view"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "2-4 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "For a simulated patient with BCVA 50 and SRF present, the model gives a 51% chance of gaining 10 or more letters. A misread SRF flag lowers it to 33%. The 1,203 eyes are simulated from the paper's reported marginals. Not for clinical use.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "patient_bcva": "50",
+     "patient_cst": "380",
+     "patient_srf": "1",
+     "patient_irf": "1",
+     "patient_ped": "0",
+     "patient_vmt": "0",
+     "automation_error_scale": "1",
+     "cst_error_um": "20",
+     "n_patients": "1203",
+     "seed": "5"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-05-nAMD-visual-acuity",
+    "trajectory_id": "5255723d",
+    "url": "https://jetty.io/jon-smash2026/smash-05-nAMD-visual-acuity/5255723d",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T18:27:03.228280+00:00",
+    "duration_seconds": 121,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Patient: baseline BCVA",
+   "type": "text",
+   "required": false,
+   "default": "50",
+   "description": "Your hypothetical patient's baseline acuity in ETDRS letters (cohort median 64)"
+  },
+  {
+   "label": "Patient: CST",
+   "type": "text",
+   "required": false,
+   "default": "380",
+   "description": "Central subfield thickness in µm (cohort median 289)"
+  },
+  {
+   "label": "Patient: SRF",
+   "type": "text",
+   "required": false,
+   "default": "1",
+   "description": "Subretinal fluid present (1) or absent (0)"
+  },
+  {
+   "label": "Patient: IRF/IRC",
+   "type": "text",
+   "required": false,
+   "default": "1",
+   "description": "Intraretinal fluid / cysts present (1) or absent (0)"
+  },
+  {
+   "label": "Patient: PED",
+   "type": "text",
+   "required": false,
+   "default": "0",
+   "description": "Pigment epithelial detachment present (1) or absent (0)"
+  },
+  {
+   "label": "Patient: VMT",
+   "type": "text",
+   "required": false,
+   "default": "0",
+   "description": "Vitreomacular adhesion/traction present (1) or absent (0)"
+  },
+  {
+   "label": "Automation error scale",
+   "type": "text",
+   "required": false,
+   "default": "1",
+   "description": "Multiplies the paper's biomarker error rates (0 = perfect extraction, 1 = paper, 3 = much worse)"
+  },
+  {
+   "label": "CST error",
+   "type": "text",
+   "required": false,
+   "default": "20",
+   "description": "SD of the automated CST measurement error in µm"
+  },
+  {
+   "label": "Cohort size",
+   "type": "text",
+   "required": false,
+   "default": "1203",
+   "description": "Simulated eyes (paper: 1203)"
+  },
+  {
+   "label": "Seed",
+   "type": "text",
+   "required": false,
+   "default": "5",
+   "description": "Random seed"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/nAMD-visual-acuity/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/nAMD-visual-acuity",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "clinical"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

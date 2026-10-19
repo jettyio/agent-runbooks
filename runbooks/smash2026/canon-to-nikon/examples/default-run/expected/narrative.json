@@ -1,0 +1,73 @@
+{
+  "headline": "At R$1,900,000, all-Nikon covers all 40 sites and misses 955 cases/yr vs 2,431 for all-Canon (20 sites); Diabetic Retinopathy AUROC holds at 0.940→0.946 across cameras.",
+  "idea": [
+    "A classifier trained on Canon CR-2 fundus images is deployed unchanged at Nikon NF5050 sites—a realistic scenario when programs procure cheaper cameras after training.",
+    "The performance drop is task-specific: Hemorrhage and Hypertensive Retinopathy lose 0.22–0.24 AUROC units, while Diabetic Retinopathy and Macular Edema actually improve on Nikon, suggesting camera change can shift performance in either direction depending on which image features carry the disease signal.",
+    "Neither higher input resolution nor a different classifier consistently closes the gap: task identity explains 67% of the variance in the internal−external gap across 220 configurations, while classifier and resolution together explain under 2%—so programs must evaluate performance camera-by-camera for each clinical target."
+  ],
+  "findings": [
+    "For Diabetic Retinopathy (LR @ 672 px, the paper's Table 2 selection), the internal AUROC is 0.940 and the external AUROC is 0.946—a delta of −0.006, meaning the model performs marginally *better* on Nikon images. Among all 12 tasks at this classifier and resolution, DR ranks 10th most fragile (1 = most fragile); Hemorrhage (delta +0.235) and Hypertensive Retinopathy (+0.223) are the two highest-risk tasks.",
+    "The variance decomposition over 220 binary-task configurations shows that task identity drives 67% of the variance in the internal−external gap, while classifier choice contributes 1% and input resolution 0%. Going from 224 px to 952 px shrinks the gap for only 2 of 11 binary tasks and widens it for 6—confirming the paper's finding that resolution changes offer no systematic relief.",
+    "At a R$1,900,000 budget, 40 sites, 1,000 patients/site, 10% prevalence and 0.90 specificity: all-Canon buys 20 sites (20 uncovered) and misses 2,431 diseased patients per year; all-Nikon covers all 40 sites at R$1,400,000 and misses 955/yr; the best mix (8 Canon + 32 Nikon, R$1,880,000) misses 937/yr. Bootstrap CI for all-Nikon spans 828–1,113 missed/yr vs 2,292–2,570 for all-Canon. For DR at this budget, coverage dominates: Nikon's slight accuracy advantage on this task and full site coverage together far outweigh its higher inadequacy rate (18.60% vs 8.79%).",
+    "The pattern flips for camera-fragile tasks: across all 11 binary tasks, all-Nikon misses fewer cases for 9 of them at this budget. For Hemorrhage and Hypertensive Retinopathy, all-Canon misses fewer despite covering only 20 sites—the accuracy loss on Nikon is large enough to offset the coverage gain. The equity ratio at Nikon vs Canon sites is 1.11 for DR (Nikon patients are 11% more likely to be missed, driven by the higher inadequacy rate rather than accuracy). For AMD it reaches 3.21 and for Myopic Fundus 2.47."
+  ],
+  "try_next": [
+    {
+      "label": "Hemorrhage — a camera-fragile task where Canon wins despite covering half the sites",
+      "why": "Hemorrhage has the largest internal−external drop (+0.235 AUROC). At R$1.9M, all-Canon (20 sites, 3,098 missed/yr) is expected to beat all-Nikon (40 sites, 3,455 missed/yr)—the accuracy loss overwhelms the coverage gain, which is the equity case the paper warns about.",
+      "params": {
+        "task": "Hemorrhage",
+        "classifier": "best",
+        "resolution": "best",
+        "budget_brl": 1900000,
+        "n_sites": 40,
+        "patients_per_site": 1000,
+        "prevalence_pct": 10,
+        "specificity": 0.90,
+        "recapture_pct": 50,
+        "shift_strength": 1.0,
+        "seed": 7
+      }
+    },
+    {
+      "label": "R$3,800,000 budget — the crossover where all-Canon can cover every site",
+      "why": "R$3,800,000 = 40 × R$95,000, so all-Canon finally achieves full coverage. This tests whether removing the coverage disadvantage reverses the conclusion for DR; it also shows the budget level at which the best mix converges with all-Canon.",
+      "params": {
+        "task": "Diabetic Retinopathy",
+        "classifier": "best",
+        "resolution": "best",
+        "budget_brl": 3800000,
+        "n_sites": 40,
+        "patients_per_site": 1000,
+        "prevalence_pct": 10,
+        "specificity": 0.90,
+        "recapture_pct": 50,
+        "shift_strength": 1.0,
+        "seed": 7
+      }
+    },
+    {
+      "label": "No re-imaging (recapture_pct 0) with Hypertensive Retinopathy — worst-case equity gap",
+      "why": "Setting recapture to 0 means every inadequate image is a permanently missed patient. Combined with Hypertensive Retinopathy's large accuracy drop (+0.223), this isolates how much of the equity risk at Nikon sites comes from image quality alone vs classifier fragility. Expect a substantially higher equity ratio.",
+      "params": {
+        "task": "Hypertensive Retinopathy",
+        "classifier": "best",
+        "resolution": "best",
+        "budget_brl": 1900000,
+        "n_sites": 40,
+        "patients_per_site": 1000,
+        "prevalence_pct": 10,
+        "specificity": 0.90,
+        "recapture_pct": 0,
+        "shift_strength": 1.0,
+        "seed": 7
+      }
+    }
+  ],
+  "caveats": [
+    "All performance numbers are transcribed verbatim from the paper's Table 4 (240 cells) and Table 1; no images were accessed and nothing was recomputed from raw data. The screening calculator and equity gap analysis are this runbook's own extension of the paper, not a result the authors report.",
+    "The calculator makes strong modelling assumptions: equal-variance binormal ROC to convert AUROC to sensitivity; fixed inadequacy rates from the BRSET cohort (Canon 8.79%, Nikon 18.60%) applied uniformly; a single recapture fraction; and a uniform prevalence. These assumptions may not hold in a real programme.",
+    "Camera type and image quality are confounded: the Canon and Nikon cohorts differ in patient case mix, acquisition protocol and site characteristics, not just hardware. The external AUROC reflects all of these differences, not camera optics alone. The synthetic mechanism demo uses simulated embeddings, not RETFound-Green, and is illustrative only.",
+    "The paper contains several internal inconsistencies quoted on this card: the Canon/Nikon price ratio is described as 'approximately half' (abstract) and '1.5 times more' (introduction), while the footnoted prices (R$95,000 vs R$35,000) imply 2.71×; image-field abnormality for Nikon is 15.84% in Table 1 but 16.5% in the text; and the illumination Cramér’s V is 0.028 in the table but 0.023 in the text. The calculator uses the explicit prices and the Table 1 figures."
+  ]
+}

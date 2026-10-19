@@ -1,0 +1,37 @@
+{
+  "headline": "LLM screen matched paper's 8/14 for ChatDev; mini-MAS stage 3 confirmed just 2/14 anticipated failures; 3 of 5 declared-done traces failed hidden tests.",
+  "idea": [
+    "MASQ turns MAST's after-the-fact failure taxonomy into a design-time screen: five design dimensions (agent configuration, network topology, communication, task dynamics, memory) are mapped to 14 MAST failure modes, letting teams anticipate which risks are baked in before any system runs.",
+    "The fixed dimension-to-mode mapping and the guardrail/prompt-only/architectural classification rule (paper §3) automatically translate design choices into Low/Mid/High risk ratings—explicit hard mechanisms earn Low, prompt-based constraints earn Mid, and risks inherent to the architecture earn High.",
+    "Stage 3 confronts those anticipations with real execution traces: mismatches where a mode was predicted Low but appeared often, or rated High but never manifested, are the actionable output—pointing to either overconfident guardrails or unnecessary alarm."
+  ],
+  "findings": [
+    "For ChatDev (the paper's reference system), the LLM screen agreed with the authors on exactly 9/14 modes and scored 8/14 correctly anticipated against the paper's 30 annotated traces—matching the authors' own result. FM-3.2 (no or incomplete verification) was again rated Low, replicating the paper's headline miss: 11/30 traces exhibited it but the design's tester role-prompt fooled both the authors and this LLM screen into predicting Low likelihood.",
+    "Divergences from the authors reveal where the LLM's reasoning differs: the LLM rated FM-1.3 (step repetition) Low—confident the hard 2-round cap prevents it—while authors rated it Mid and 7/30 traces showed it; conversely, the LLM rated FM-2.4 (information withholding) High and FM-1.4 (loss of history) Low, while authors rated both opposite directions. FM-1.4's Low was ultimately correct against the paper traces (2/30, matching the Low ≤ 2/30 threshold), so the LLM outperformed the authors on that mode.",
+    "For the mini chat chain (Stage 3, 5 traces), only 2/14 anticipated failures matched observed behavior—the screen heavily over-estimated risks, rating FM-2.2 (fail to ask for clarification), FM-2.4 (information withholding), FM-1.4, and FM-2.1 as High when none appeared in any trace. FM-3.2 (no/incomplete verification) was rated Low yet appeared in 2/5 traces, and FM-3.1 (premature termination) appeared in 1/5 despite a Low rating—both flipped by the small trace set.",
+    "3 of 5 mini-MAS traces were declared done by the agents (reviewer approved all 5; tester passed 1) while hidden unit tests still caught failures; the overall hidden-test pass rate was 88% (22/25). Every partial failure was declared verified through prompt-only review alone, directly confirming the paper's finding: 'role-prompting does not substitute for formal, mechanical verification.'"
+  ],
+  "try_next": [
+    {
+      "label": "Mechanical test execution (mas_verification=tests)",
+      "why": "Switching to executed assert statements should close the declared-done-but-hidden-fail gap and plausibly lower FM-3.2's anticipated risk to Low—testing whether the screen now correctly predicts that verification failure.",
+      "params": {"mas_verification": "tests", "mas_memory": "drop", "n_traces": 5}
+    },
+    {
+      "label": "Shared history across phases (mas_memory=shared)",
+      "why": "The current drop setting drove High ratings for FM-1.4 and FM-2.1 (memory modes); shared history should rate those Low and may reduce FM-2.4 (information withholding), revealing whether the memory dimension drives the mismatch surplus.",
+      "params": {"mas_memory": "shared", "mas_verification": "prompt", "n_traces": 5}
+    },
+    {
+      "label": "Group-chat topology instead of chat chain",
+      "why": "The groupchat preset has a shared ever-growing transcript and a manager agent—a different network topology and memory architecture—likely shifting High risks away from FM-1.4/FM-2.1 and toward FM-1.3 (step repetition) and FM-3.1 (premature termination).",
+      "params": {"system_preset": "groupchat", "run_stage3": false}
+    }
+  ],
+  "caveats": [
+    "Stage-2 risk ratings are an LLM's judgement applied to the paper's rule, not the authors' hand-labelled Table 2 entries; small models can be inconsistent when phrasing changes slightly.",
+    "The mini chat chain is a ChatDev-shaped toy written for this runbook, not ChatDev itself; MAST annotations are produced by the same small LLM model driving the agents, which may introduce correlated annotation errors.",
+    "With only 5 traces the observed rates are very coarse against a matching rule calibrated on 30 traces—a single additional trace showing a failure mode can flip a mismatch verdict, making the 2/14 score sensitive to noise.",
+    "The dimension boundaries, the exact mode-to-dimension mapping, and the match thresholds (Low ≤ 2/30, Mid 2–8/30, High ≥ 8/30) are reconstructed from Table 2 rather than stated explicitly in the paper; any ambiguity in the reconstruction propagates to all anticipated-vs-observed results."
+  ]
+}

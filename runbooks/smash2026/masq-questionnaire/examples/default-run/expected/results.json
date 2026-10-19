@@ -1,0 +1,479 @@
+{
+  "params": {
+    "system_preset": "chatdev",
+    "system_description": "",
+    "run_stage3": true,
+    "n_traces": 5,
+    "mas_verification": "prompt",
+    "mas_memory": "drop",
+    "max_rounds": 2,
+    "annotator_size": "small",
+    "runbook_url": ""
+  },
+  "backend": "openrouter-via-anthropic-key",
+  "model": "anthropic/claude-haiku-4.5",
+  "annotator_model": "anthropic/claude-haiku-4.5",
+  "system": "ChatDev (paper)",
+  "description": "ChatDev instantiates LLMs via inception prompting into specialized roles (CEO, CTO, programmer, reviewer, and tester). Its network topology is a sequential \"chat chain,\" mirroring the waterfall model and confining interactions to instructor-assistant pairs per phase. For communication, these pairs engage in multi-turn dialogues of natural and programming languages, using a \"communicative dehallucination\" mechanism to actively request more specific details before responding. The task dynamics dictate that sub-tasks advance only after agent consensus or forceful termination (hard limit of 10 conversation rounds or two unchanged code modifications). The memory state architecture uses two types of memory: short-term, to retain the full dialogue history within a single phase, and long-term, containing only the final solutions passed on by each sub-task. The user prompt is a short software request such as \"Develop a Gomoku game\".",
+  "stage1": {
+    "Agent configuration": "Five LLM-based agents (CEO, CTO, programmer, reviewer, tester) instantiated via inception prompting. Each role has specialized instructions. Tools include code generation and analysis. Autonomy constrained by role definitions and phase-specific prompts.",
+    "Network topology": "Sequential chat chain topology mirroring waterfall model. Instructor-assistant pairs per phase. CEO\u2192CTO\u2192Programmer\u2192Reviewer\u2192Tester linear progression. No cross-phase lateral communication. Orchestration follows predetermined phase sequence.",
+    "Communication": "Multi-turn natural and programming language dialogues within instructor-assistant pairs. Communicative dehallucination mechanism requests specific details before responding. Task-relevant information exchanged through conversational turns within phase boundaries.",
+    "Task dynamics": "Phase-level objectives advance upon agent consensus or hard termination (10 rounds max or two unchanged code modifications). Sub-tasks execute sequentially. Termination conditions: consensus reached or limits exceeded. Verification occurs at review/test phases.",
+    "Memory state architecture": "Dual memory system: short-term retains full dialogue history within single phase; long-term stores only final solutions from each sub-task. Memory passed forward sequentially. No cross-phase dialogue retention."
+  },
+  "stage2": {
+    "FM-1.2": {
+      "class": "prompt_only",
+      "risk": "Mid",
+      "rationale": "Role adherence enforced only through inception prompting and role-specific instructions, no code-level constraints."
+    },
+    "FM-2.6": {
+      "class": "prompt_only",
+      "risk": "Mid",
+      "rationale": "No mechanism verifies reasoning-action alignment; relies on agent instruction adherence and communicative dehallucination."
+    },
+    "FM-1.3": {
+      "class": "explicit_guardrail",
+      "risk": "Low",
+      "rationale": "Hard termination limits (10 rounds max, two unchanged modifications) prevent infinite repetition loops."
+    },
+    "FM-2.5": {
+      "class": "prompt_only",
+      "risk": "Mid",
+      "rationale": "Sequential topology enforces information flow, but agent compliance with prior feedback depends on role instructions only."
+    },
+    "FM-2.2": {
+      "class": "explicit_guardrail",
+      "risk": "Low",
+      "rationale": "Communicative dehallucination mechanism explicitly requests specific details before proceeding on ambiguous information."
+    },
+    "FM-2.4": {
+      "class": "architectural",
+      "risk": "High",
+      "rationale": "Long-term memory stores only final solutions, discarding intermediate dialogue; sequential topology prevents lateral cross-phase communication."
+    },
+    "FM-3.1": {
+      "class": "explicit_guardrail",
+      "risk": "Low",
+      "rationale": "Hard termination conditions (10 rounds, consensus, two unchanged modifications) prevent premature exit; phase-level objectives must be met."
+    },
+    "FM-1.1": {
+      "class": "prompt_only",
+      "risk": "Mid",
+      "rationale": "Task specification adherence relies on role prompts and phase-specific instructions; no output validation against constraints."
+    },
+    "FM-1.5": {
+      "class": "explicit_guardrail",
+      "risk": "Low",
+      "rationale": "Termination conditions are explicit and enforced: 10-round limit, consensus detection, code modification tracking."
+    },
+    "FM-2.3": {
+      "class": "prompt_only",
+      "risk": "Mid",
+      "rationale": "Phase-level objectives guide conversation, but drift prevention depends on agent instruction adherence and role discipline."
+    },
+    "FM-3.2": {
+      "class": "explicit_guardrail",
+      "risk": "Low",
+      "rationale": "Dedicated review and test phases with specialized agents perform verification before completion; structured phase progression."
+    },
+    "FM-3.3": {
+      "class": "prompt_only",
+      "risk": "Mid",
+      "rationale": "Verification correctness depends on reviewer/tester agent competence and role instructions; no independent validation mechanism."
+    },
+    "FM-1.4": {
+      "class": "explicit_guardrail",
+      "risk": "Low",
+      "rationale": "Short-term memory retains full dialogue within phase; long-term memory passes solutions forward sequentially, preserving context."
+    },
+    "FM-2.1": {
+      "class": "architectural",
+      "risk": "High",
+      "rationale": "Sequential phase progression with memory handoff prevents reset; however, long-term memory discards intermediate dialogue history."
+    }
+  },
+  "risk_counts": {
+    "Low": 6,
+    "Mid": 6,
+    "High": 2,
+    "?": 0
+  },
+  "chatdev": {
+    "agree_with_authors": 9,
+    "within_one_level": 13,
+    "llm_screen_correct_vs_paper_traces": 8,
+    "authors_correct": 8,
+    "llm_ok": {
+      "FM-1.2": false,
+      "FM-2.6": true,
+      "FM-1.3": false,
+      "FM-2.5": false,
+      "FM-2.2": true,
+      "FM-2.4": false,
+      "FM-3.1": true,
+      "FM-1.1": true,
+      "FM-1.5": true,
+      "FM-2.3": true,
+      "FM-3.2": false,
+      "FM-3.3": true,
+      "FM-1.4": true,
+      "FM-2.1": false
+    },
+    "verification_rating": "Low"
+  },
+  "mini": {
+    "description": "A three-phase sequential chat chain modelled on ChatDev. Roles are set by short system prompts: CTO, programmer, reviewer, tester (all the same small LLM). Phase 1: the CTO turns a one-sentence user request into a specification (single turn, no clarification channel to the user). Phase 2: the programmer writes a Python function from the specification; the reviewer comments and the programmer revises, until the reviewer writes <APPROVED> or 2 review rounds have passed (hard cap). Phase 3: the tester reads the code and replies <PASS> or lists issues (no code is executed); one fix round. Between phases only the final artefact (specification or code) is passed on; dialogue history is dropped.",
+    "stage1": {
+      "Agent configuration": "Four agents (CTO, programmer, reviewer, tester) instantiated from same small LLM with role-specific system prompts. No external tools. Fixed autonomy: CTO single-turn, programmer/reviewer iterate, tester single-turn. No specialized training beyond prompts.",
+      "Network topology": "Sequential three-phase pipeline. Phase 1: CTO solo. Phase 2: programmer\u2194reviewer bidirectional until approval/cap. Phase 3: tester solo. No cross-phase agent communication. Linear orchestration.",
+      "Communication": "Task-relevant artefacts only: user request\u2192specification\u2192code\u2192test results. No clarification channels to user or between phases. Reviewer signals approval via <APPROVED> tag. Tester signals pass/fail via <PASS> or issue list.",
+      "Task dynamics": "Phase-level objectives: specification, code implementation, code review (max 2 rounds), testing. Execution strictly sequential. Termination: Phase 2 ends on <APPROVED> or round 2; Phase 3 ends after one fix attempt. No verification beyond tester output.",
+      "Memory state architecture": "No persistent memory across phases. Each phase receives only final artefact from prior phase; dialogue history discarded. Within-phase memory: programmer/reviewer retain conversation context. Tester sees code only, no prior dialogue."
+    },
+    "stage2": {
+      "FM-1.2": {
+        "class": "prompt_only",
+        "risk": "Mid",
+        "rationale": "Role boundaries enforced only via system prompts; no code-level role validation or permission checks."
+      },
+      "FM-2.6": {
+        "class": "prompt_only",
+        "risk": "Mid",
+        "rationale": "No mechanism verifies agent reasoning matches output; relies on LLM consistency and role prompt adherence."
+      },
+      "FM-1.3": {
+        "class": "explicit_guardrail",
+        "risk": "Low",
+        "rationale": "Hard cap of 2 review rounds in Phase 2 prevents infinite propose/reject loops; enforced termination rule."
+      },
+      "FM-2.5": {
+        "class": "prompt_only",
+        "risk": "Mid",
+        "rationale": "Agents instructed to consider feedback via role prompts; no enforced input validation or acknowledgment mechanism."
+      },
+      "FM-2.2": {
+        "class": "architectural",
+        "risk": "High",
+        "rationale": "No clarification channel to user by design; agents must proceed on one-sentence request or specification alone."
+      },
+      "FM-2.4": {
+        "class": "architectural",
+        "risk": "High",
+        "rationale": "Phase dialogue history discarded by design; only final artefact passed forward, losing context and reasoning."
+      },
+      "FM-3.1": {
+        "class": "explicit_guardrail",
+        "risk": "Low",
+        "rationale": "Phase termination conditions hardcoded: Phase 2 ends on <APPROVED> or round 2; Phase 3 after one fix attempt."
+      },
+      "FM-1.1": {
+        "class": "prompt_only",
+        "risk": "Mid",
+        "rationale": "Task constraints communicated via role prompts and specification; no code-level enforcement of output format or requirements."
+      },
+      "FM-1.5": {
+        "class": "explicit_guardrail",
+        "risk": "Low",
+        "rationale": "Termination conditions explicitly defined and enforced: <APPROVED> tag, round caps, <PASS>/<FAIL> signals."
+      },
+      "FM-2.3": {
+        "class": "prompt_only",
+        "risk": "Mid",
+        "rationale": "Task focus maintained only via role prompts and phase objectives; no guardrails prevent conversation drift."
+      },
+      "FM-3.2": {
+        "class": "explicit_guardrail",
+        "risk": "Low",
+        "rationale": "Tester role explicitly assigned to verify code; Phase 3 mandatory verification step before completion."
+      },
+      "FM-3.3": {
+        "class": "architectural",
+        "risk": "High",
+        "rationale": "Tester performs static review only, no execution; cannot detect runtime errors or logical faults reliably."
+      },
+      "FM-1.4": {
+        "class": "architectural",
+        "risk": "High",
+        "rationale": "No persistent memory across phases by design; dialogue history discarded, agents work from partial state."
+      },
+      "FM-2.1": {
+        "class": "architectural",
+        "risk": "High",
+        "rationale": "Sequential pipeline with history drop between phases constitutes implicit reset; no recovery mechanism for lost context."
+      }
+    },
+    "observed_rate": {
+      "FM-1.2": 0.0,
+      "FM-2.6": 0.0,
+      "FM-1.3": 0.0,
+      "FM-2.5": 0.0,
+      "FM-2.2": 0.0,
+      "FM-2.4": 0.0,
+      "FM-3.1": 0.2,
+      "FM-1.1": 0.0,
+      "FM-1.5": 0.0,
+      "FM-2.3": 0.0,
+      "FM-3.2": 0.4,
+      "FM-3.3": 0.0,
+      "FM-1.4": 0.0,
+      "FM-2.1": 0.0
+    },
+    "mismatch": {
+      "FM-1.2": true,
+      "FM-2.6": true,
+      "FM-1.3": false,
+      "FM-2.5": true,
+      "FM-2.2": true,
+      "FM-2.4": true,
+      "FM-3.1": true,
+      "FM-1.1": true,
+      "FM-1.5": false,
+      "FM-2.3": true,
+      "FM-3.2": true,
+      "FM-3.3": true,
+      "FM-1.4": true,
+      "FM-2.1": true
+    },
+    "correctly_anticipated": 2,
+    "hidden_pass_rate": 0.88,
+    "declared_done_but_hidden_fail": 3,
+    "approved_in_review": 5,
+    "n_traces": 5,
+    "settings": {
+      "verification": "prompt",
+      "memory": "drop",
+      "max_rounds": 2
+    }
+  },
+  "traces": [
+    {
+      "task": "Write a function parse_duration(s) that converts durations like '1h30m' into seconds.",
+      "function": "parse_duration",
+      "calls": 7,
+      "review_rounds": 2,
+      "approved": true,
+      "tester_pass": false,
+      "hidden_pass": 4,
+      "hidden_total": 5,
+      "declared_done_but_hidden_fail": true,
+      "final_code": "def parse_duration(s: str) -> int:\n    \"\"\"\n    Converts a duration string into total seconds.\n    \n    Args:\n        s: String containing non-negative integers followed by unit suffixes (d/h/m/s)\n        \n    Returns:\n        Total duration in seconds\n        \n    Raises:\n        ValueError: If format is invalid, contains negative numbers, or units are out of order\n    \"\"\"\n    if not s:\n        return 0\n    \n    # Unit conversion to seconds and their order\n    units = {\"d\": 86400, \"h\": 3600, \"m\": 60, \"s\": 1}\n    unit_order = {\"d\": 0, \"h\": 1, \"m\": 2, \"s\": 3}\n    \n    total_seconds = 0\n    i = 0\n    last_unit_order = -1\n    \n    while i < len(s):\n        # Parse the number\n        if not s[i].isdigit():\n            raise ValueError(f\"Invalid format: expected digit at position {i}\")\n        \n        num_str = \"\"\n        while i < len(s) and s[i].isdigit():\n            num_str += s[i]\n            i += 1\n        \n        num = int(num_str)\n        \n        if num < 0:\n            raise ValueError(\"Duration values must be non-negative\")\n        \n        # Parse the unit\n        if i >= len(s):\n            raise ValueError(\"Missing unit suffix after number\")\n        \n        unit = s[i]\n        if unit not in units:\n            raise ValueError(f\"Invalid unit: '{unit}'. Must be one of: d, h, m, s\")\n        \n        # Check unit order (use < not <= to allow same unit only once)\n        current_unit_order = unit_order[unit]\n        if current_unit_order < last_unit_order:\n            raise ValueError(f\"Units out of order: '{unit}' cannot follow previous unit\")\n        \n        if current_unit_order == last_unit_order:\n            raise ValueError(f\"Duplicate unit: '{unit}' appears more than once\")\n        \n        last_unit_order = current_unit_order\n        total_seconds += num * units[unit]\n        i += 1\n    \n    return total_seconds\n",
+      "mast": {
+        "FM-1.2": false,
+        "FM-2.6": false,
+        "FM-1.3": false,
+        "FM-2.5": false,
+        "FM-2.2": false,
+        "FM-2.4": false,
+        "FM-3.1": false,
+        "FM-1.1": false,
+        "FM-1.5": false,
+        "FM-2.3": false,
+        "FM-3.2": true,
+        "FM-3.3": false,
+        "FM-1.4": false,
+        "FM-2.1": false
+      },
+      "mast_evidence": {
+        "FM-1.2": "All agents remained within their assigned roles (design, coding, testing)",
+        "FM-2.6": "Agent reasoning aligned with outputs throughout trace",
+        "FM-1.3": "No needless repetition of steps or propose/reject loops observed",
+        "FM-2.5": "Programmer addressed reviewer feedback; tester's concerns incorporated",
+        "FM-2.2": "Specification was clear; no ambiguity requiring clarification",
+        "FM-2.4": "All relevant information shared between agents appropriately",
+        "FM-3.1": "Task completed; function fully implemented and approved",
+        "FM-1.1": "Code adheres to task specification and constraints",
+        "FM-1.5": "Agents correctly recognized termination after final code approval",
+        "FM-2.3": "Conversation remained focused on parse_duration implementation",
+        "FM-3.2": "Tester's verification incomplete; trace cuts off mid-analysis without full test coverage",
+        "FM-3.3": "No incorrect verification; code passed all traced test cases",
+        "FM-1.4": "Conversation history maintained throughout; context preserved",
+        "FM-2.1": "No dialogue restart; progress and agreements maintained"
+      },
+      "n_messages": 8
+    },
+    {
+      "task": "Write a function roman_to_int(s) that converts a Roman numeral to an integer.",
+      "function": "roman_to_int",
+      "calls": 5,
+      "review_rounds": 1,
+      "approved": true,
+      "tester_pass": false,
+      "hidden_pass": 4,
+      "hidden_total": 5,
+      "declared_done_but_hidden_fail": true,
+      "final_code": "def roman_to_int(s: str) -> int:\n    \"\"\"\n    Converts a valid Roman numeral string to its integer equivalent.\n    \n    Args:\n        s: Non-empty string containing only valid Roman numeral characters\n        \n    Returns:\n        Integer value between 1 and 3999\n    \"\"\"\n    # Mapping of Roman numerals to their integer values\n    roman_values = {\n        'I': 1,\n        'V': 5,\n        'X': 10,\n        'L': 50,\n        'C': 100,\n        'D': 500,\n        'M': 1000\n    }\n    \n    total = 0\n    \n    # Iterate through the string\n    for i in range(len(s)):\n        current_value = roman_values[s[i]]\n        \n        # Check if there's a next character and if current is less than next\n        # This indicates subtractive notation\n        if i + 1 < len(s) and current_value < roman_values[s[i + 1]]:\n            # Subtract the current value (subtractive case)\n            total -= current_value\n        else:\n            # Add the current value (normal case)\n            total += current_value\n    \n    return total\n",
+      "mast": {
+        "FM-1.2": false,
+        "FM-2.6": false,
+        "FM-1.3": false,
+        "FM-2.5": false,
+        "FM-2.2": false,
+        "FM-2.4": false,
+        "FM-3.1": true,
+        "FM-1.1": false,
+        "FM-1.5": false,
+        "FM-2.3": false,
+        "FM-3.2": true,
+        "FM-3.3": false,
+        "FM-1.4": false,
+        "FM-2.1": false
+      },
+      "mast_evidence": {
+        "FM-1.2": "All agents acted within their assigned roles",
+        "FM-2.6": "Stated reasoning aligned with actual code implementation",
+        "FM-1.3": "No unnecessary repetition of steps or exchanges",
+        "FM-2.5": "Agents acknowledged and built upon each other's contributions",
+        "FM-2.2": "Task specification was clear; no ambiguity requiring clarification",
+        "FM-2.4": "All relevant information shared between agents appropriately",
+        "FM-3.1": "Code passed 4/5 hidden tests; one test case failed, task incomplete",
+        "FM-1.1": "Code adheres to task specification and constraints",
+        "FM-1.5": "Agents correctly recognized task completion",
+        "FM-2.3": "Conversation remained focused on roman_to_int implementation",
+        "FM-3.2": "Tester verified only 8 manual test cases; did not catch hidden test failure",
+        "FM-3.3": "Verification process was sound; hidden test failure not visible to agents",
+        "FM-1.4": "Conversation history maintained throughout trace",
+        "FM-2.1": "No dialogue restart or loss of progress"
+      },
+      "n_messages": 6
+    },
+    {
+      "task": "Write a function merge_intervals(intervals) that merges overlapping intervals.",
+      "function": "merge_intervals",
+      "calls": 5,
+      "review_rounds": 1,
+      "approved": true,
+      "tester_pass": false,
+      "hidden_pass": 5,
+      "hidden_total": 5,
+      "declared_done_but_hidden_fail": false,
+      "final_code": "from typing import List, Tuple\n\ndef merge_intervals(intervals: List[Tuple[int, int]]) -> List[Tuple[int, int]]:\n    \"\"\"\n    Merge overlapping or adjacent intervals.\n    \n    Args:\n        intervals: List of tuples (start, end) where start <= end\n        \n    Returns:\n        List of merged intervals sorted by start position\n    \"\"\"\n    # Handle empty input\n    if not intervals:\n        return []\n    \n    # Sort intervals by start position, then by end position\n    sorted_intervals = sorted(intervals)\n    \n    # Initialize merged list with the first interval\n    merged = [sorted_intervals[0]]\n    \n    # Iterate through remaining intervals\n    for current_start, current_end in sorted_intervals[1:]:\n        last_start, last_end = merged[-1]\n        \n    # Check if current interval overlaps or is adjacent to the last merged interval\n        if current_start <= last_end:\n            # Merge by extending the end of the last interval\n            merged[-1] = (last_start, max(last_end, current_end))\n        else:\n            # No overlap, add current interval as new entry\n            merged.append((current_start, current_end))\n    \n    return merged\n",
+      "mast": {
+        "FM-1.2": false,
+        "FM-2.6": false,
+        "FM-1.3": false,
+        "FM-2.5": false,
+        "FM-2.2": false,
+        "FM-2.4": false,
+        "FM-3.1": false,
+        "FM-1.1": false,
+        "FM-1.5": false,
+        "FM-2.3": false,
+        "FM-3.2": false,
+        "FM-3.3": false,
+        "FM-1.4": false,
+        "FM-2.1": false
+      },
+      "mast_evidence": {
+        "FM-1.2": "All agents operated within their assigned roles (design, coding, review, testing)",
+        "FM-2.6": "Stated reasoning aligned with actual outputs throughout trace",
+        "FM-1.3": "No needless repetition of steps or propose/reject loops observed",
+        "FM-2.5": "Programmer and reviewer acknowledged and incorporated feedback correctly",
+        "FM-2.2": "No ambiguous information; agents proceeded with clear specifications",
+        "FM-2.4": "All relevant information shared between agents appropriately",
+        "FM-3.1": "Task completed successfully; objective fully met before termination",
+        "FM-1.1": "Output complies with task specification and constraints",
+        "FM-1.5": "Agents correctly recognized task completion after testing and verification",
+        "FM-2.3": "Conversation remained focused on merge_intervals implementation objective",
+        "FM-3.2": "Reviewer and tester performed comprehensive verification of all edge cases",
+        "FM-3.3": "Verification correctly identified correct implementation; no false passes",
+        "FM-1.4": "Conversation history maintained throughout; all context preserved",
+        "FM-2.1": "No dialogue restart; progress and agreements maintained throughout"
+      },
+      "n_messages": 6
+    },
+    {
+      "task": "Write a function slugify(title) that turns a title into a URL slug.",
+      "function": "slugify",
+      "calls": 4,
+      "review_rounds": 1,
+      "approved": true,
+      "tester_pass": true,
+      "hidden_pass": 4,
+      "hidden_total": 5,
+      "declared_done_but_hidden_fail": true,
+      "final_code": "import unicodedata\nimport re\n\n\ndef slugify(title: str) -> str:\n    \"\"\"\n    Convert a title string into a URL-safe slug.\n    \n    Args:\n        title: The string to convert to a slug\n        \n    Returns:\n        A URL-safe slug string\n    \"\"\"\n    # Handle empty or None input\n    if not title:\n        return \"\"\n    \n    # Strip leading/trailing whitespace\n    title = title.strip()\n    \n    # Handle empty string after stripping\n    if not title:\n        return \"\"\n    \n    # Transliterate Unicode/accented characters to ASCII equivalents\n    # NFD decomposition separates base characters from accents\n    title = unicodedata.normalize('NFD', title)\n    title = ''.join(char for char in title if unicodedata.category(char) != 'Mn')\n    \n    # Convert to lowercase\n    title = title.lower()\n    \n    # Replace spaces with hyphens\n    title = re.sub(r'\\s+', '-', title)\n    \n    # Remove non-alphanumeric characters except hyphens\n    title = re.sub(r'[^a-z0-9\\-]', '', title)\n    \n    # Collapse consecutive hyphens into single hyphens\n    title = re.sub(r'-+', '-', title)\n    \n    # Trim leading/trailing hyphens\n    title = title.strip('-')\n    \n    return title\n",
+      "mast": {
+        "FM-1.2": false,
+        "FM-2.6": false,
+        "FM-1.3": false,
+        "FM-2.5": false,
+        "FM-2.2": false,
+        "FM-2.4": false,
+        "FM-3.1": false,
+        "FM-1.1": false,
+        "FM-1.5": false,
+        "FM-2.3": false,
+        "FM-3.2": false,
+        "FM-3.3": false,
+        "FM-1.4": false,
+        "FM-2.1": false
+      },
+      "mast_evidence": {
+        "FM-1.2": "Each agent performed within assigned role: CEO requested, CTO designed, programmer coded, reviewer approved, tester verified.",
+        "FM-2.6": "Tester's reasoning matched actions: traced scenarios and verified code against specification.",
+        "FM-1.3": "No needless repetition of steps or propose/reject loops observed in trace.",
+        "FM-2.5": "Programmer implemented CTO's specification; reviewer and tester acknowledged prior work.",
+        "FM-2.2": "No ambiguous information; CTO's specification was clear and programmer proceeded appropriately.",
+        "FM-2.4": "All relevant information (specification, code, test results) was passed between agents.",
+        "FM-3.1": "Task completed: function implemented, reviewed, tested, and passed all specified edge cases.",
+        "FM-1.1": "Code adheres to all stated task requirements and constraints.",
+        "FM-1.5": "Agents correctly recognized termination: tester passed all checks and marked PASS.",
+        "FM-2.3": "Conversation remained focused on slugify function implementation throughout all stages.",
+        "FM-3.2": "Tester verified code against specification with comprehensive edge case testing before completion.",
+        "FM-3.3": "Verification was correct; code actually passes 4/5 hidden tests, consistent with trace findings.",
+        "FM-1.4": "Conversation history maintained throughout; all agents referenced prior context appropriately.",
+        "FM-2.1": "No dialogue restart; progress and agreements maintained from design through final code."
+      },
+      "n_messages": 5
+    },
+    {
+      "task": "Write a function next_business_day(date_str) that returns the next business day as 'YYYY-MM-DD'.",
+      "function": "next_business_day",
+      "calls": 5,
+      "review_rounds": 1,
+      "approved": true,
+      "tester_pass": false,
+      "hidden_pass": 5,
+      "hidden_total": 5,
+      "declared_done_but_hidden_fail": false,
+      "final_code": "from datetime import datetime, timedelta\n\ndef next_business_day(date_str: str) -> str:\n    \"\"\"\n    Returns the next business day (Monday-Friday) after the given date.\n    \n    Args:\n        date_str: Date string in format 'YYYY-MM-DD'\n    \n    Returns:\n        Next business day as 'YYYY-MM-DD' string\n    \n    Raises:\n        ValueError: If date_str is invalid format or invalid date values\n    \"\"\"\n    try:\n        current_date = datetime.strptime(date_str, '%Y-%m-%d').date()\n    except ValueError as e:\n        raise ValueError(f\"Invalid date format or values: {date_str}\") from e\n    \n    # Move to next day\n    next_date = current_date + timedelta(days=1)\n    \n    # Keep incrementing until we hit a weekday (Monday=1 to Friday=5)\n    while next_date.isoweekday() > 5:  # Saturday=6, Sunday=7\n        next_date += timedelta(days=1)\n    \n    return next_date.strftime('%Y-%m-%d')\n",
+      "mast": {
+        "FM-1.2": false,
+        "FM-2.6": false,
+        "FM-1.3": false,
+        "FM-2.5": false,
+        "FM-2.2": false,
+        "FM-2.4": false,
+        "FM-3.1": false,
+        "FM-1.1": false,
+        "FM-1.5": false,
+        "FM-2.3": false,
+        "FM-3.2": false,
+        "FM-3.3": false,
+        "FM-1.4": false,
+        "FM-2.1": false
+      },
+      "mast_evidence": {
+        "FM-1.2": "All agents acted within their assigned roles (design, coding, review, testing).",
+        "FM-2.6": "Stated reasoning aligned with actual outputs throughout trace.",
+        "FM-1.3": "No needless repetition of steps or propose/reject loops observed.",
+        "FM-2.5": "All agents acknowledged and incorporated prior feedback and specifications.",
+        "FM-2.2": "All specifications clear; no ambiguity requiring clarification.",
+        "FM-2.4": "All relevant information shared between agents as needed.",
+        "FM-3.1": "Task completed successfully; objective fully met before termination.",
+        "FM-1.1": "Output complies with task specification and constraints.",
+        "FM-1.5": "Agents correctly recognized termination after testing and approval.",
+        "FM-2.3": "Conversation remained focused on next_business_day function objective.",
+        "FM-3.2": "Tester performed comprehensive verification of logic, test cases, edge cases.",
+        "FM-3.3": "Verification correctly identified correct implementation; no false positives.",
+        "FM-1.4": "Conversation history maintained throughout; all context preserved.",
+        "FM-2.1": "No dialogue restart; progress and agreements maintained throughout."
+      },
+      "n_messages": 6
+    }
+  ],
+  "llm_calls": 35,
+  "runtime_sec": 33.0
+}

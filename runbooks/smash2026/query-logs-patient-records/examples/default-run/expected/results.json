@@ -1,0 +1,639 @@
+{
+  "params": {
+    "your_query": "Metastatic renal cell carcinoma, second-line therapy after progression",
+    "your_query_time": "14:15",
+    "corpus": "scifact",
+    "corpus_size": 0,
+    "bit_widths": "2,3,4,6,8",
+    "he_bits": 4,
+    "clip_percentile": 99.9,
+    "embedder": "minishlab/potion-base-8M",
+    "n_appointments": 24,
+    "query_lag_max_min": 15,
+    "seed": 7,
+    "n_check_queries": 20,
+    "runbook_url": ""
+  },
+  "embedder_load_sec": 1.0,
+  "attack": {
+    "n_appointments": 24,
+    "n_patient_queries": 21,
+    "n_background_queries": 2,
+    "dictionary_size": 60,
+    "dictionary_phrasings": 240,
+    "dx_top1": 0.9523809523809523,
+    "dx_top3": 1.0,
+    "dx_top1_quantized": 0.9523809523809523,
+    "link_acc": 1.0,
+    "records_recovered": 20,
+    "chance_top1": 0.016666666666666666,
+    "background_falsely_linked": 1,
+    "lag_sweep": [
+      {
+        "lag_max_min": 5,
+        "link_acc": 1.0
+      },
+      {
+        "lag_max_min": 10,
+        "link_acc": 1.0
+      },
+      {
+        "lag_max_min": 15,
+        "link_acc": 1.0
+      },
+      {
+        "lag_max_min": 20,
+        "link_acc": 1.0
+      },
+      {
+        "lag_max_min": 30,
+        "link_acc": 0.6333333333333333
+      },
+      {
+        "lag_max_min": 45,
+        "link_acc": 0.4708333333333333
+      },
+      {
+        "lag_max_min": 60,
+        "link_acc": 0.33541666666666664
+      }
+    ],
+    "record": [
+      {
+        "time": "08:10",
+        "query": "managing sleep apnea in a patient with renal impairment",
+        "recovered_dx": "sleep apnea",
+        "sim": 0.684,
+        "top3": [
+          "sleep apnea",
+          "chronic kidney disease stage 4",
+          "pulmonary arterial hypertension"
+        ],
+        "recovered_dx_quantized": "sleep apnea",
+        "linked_patient": "MRN-18234",
+        "true_dx": "sleep apnea",
+        "true_patient": "MRN-18234",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "08:26",
+        "query": "long-term outcomes of chronic kidney disease stage 4",
+        "recovered_dx": "chronic kidney disease stage 4",
+        "sim": 0.855,
+        "top3": [
+          "chronic kidney disease stage 4",
+          "polycystic kidney disease",
+          "chronic hepatitis C"
+        ],
+        "recovered_dx_quantized": "chronic kidney disease stage 4",
+        "linked_patient": "MRN-32003",
+        "true_dx": "chronic kidney disease stage 4",
+        "true_patient": "MRN-32003",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "08:50",
+        "query": "idiopathic pulmonary fibrosis with depression: which treatment options?",
+        "recovered_dx": "idiopathic pulmonary fibrosis",
+        "sim": 0.945,
+        "top3": [
+          "idiopathic pulmonary fibrosis",
+          "cystic fibrosis",
+          "atrial fibrillation"
+        ],
+        "recovered_dx_quantized": "idiopathic pulmonary fibrosis",
+        "linked_patient": "MRN-58702",
+        "true_dx": "idiopathic pulmonary fibrosis",
+        "true_patient": "MRN-58702",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "09:02",
+        "query": "hemophilia A with depression: which treatment options?",
+        "recovered_dx": "hemophilia A",
+        "sim": 0.859,
+        "top3": [
+          "hemophilia A",
+          "infertility",
+          "epilepsy"
+        ],
+        "recovered_dx_quantized": "hemophilia A",
+        "linked_patient": "MRN-75410",
+        "true_dx": "hemophilia A",
+        "true_patient": "MRN-75410",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "09:28",
+        "query": "long-term outcomes of erectile dysfunction",
+        "recovered_dx": "erectile dysfunction",
+        "sim": 0.783,
+        "top3": [
+          "erectile dysfunction",
+          "heart failure with reduced ejection fraction",
+          "epilepsy"
+        ],
+        "recovered_dx_quantized": "erectile dysfunction",
+        "linked_patient": "MRN-55698",
+        "true_dx": "erectile dysfunction",
+        "true_patient": "MRN-55698",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "09:48",
+        "query": "managing ankylosing spondylitis in a patient with renal impairment",
+        "recovered_dx": "ankylosing spondylitis",
+        "sim": 0.805,
+        "top3": [
+          "ankylosing spondylitis",
+          "chronic kidney disease stage 4",
+          "polycystic kidney disease"
+        ],
+        "recovered_dx_quantized": "ankylosing spondylitis",
+        "linked_patient": "MRN-65164",
+        "true_dx": "ankylosing spondylitis",
+        "true_patient": "MRN-65164",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "10:08",
+        "query": "managing type 2 diabetes in a patient with renal impairment",
+        "recovered_dx": "type 2 diabetes",
+        "sim": 0.711,
+        "top3": [
+          "type 2 diabetes",
+          "type 1 diabetes",
+          "chronic kidney disease stage 4"
+        ],
+        "recovered_dx_quantized": "type 2 diabetes",
+        "linked_patient": "MRN-88419",
+        "true_dx": "type 2 diabetes",
+        "true_patient": "MRN-88419",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "10:21",
+        "query": "long-term outcomes of atrial fibrillation",
+        "recovered_dx": "atrial fibrillation",
+        "sim": 0.853,
+        "top3": [
+          "atrial fibrillation",
+          "cystic fibrosis",
+          "idiopathic pulmonary fibrosis"
+        ],
+        "recovered_dx_quantized": "atrial fibrillation",
+        "linked_patient": "MRN-71741",
+        "true_dx": "atrial fibrillation",
+        "true_patient": "MRN-71741",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "10:45",
+        "query": "obesity with atrial fibrillation: which treatment options?",
+        "recovered_dx": "atrial fibrillation",
+        "sim": 0.856,
+        "top3": [
+          "atrial fibrillation",
+          "obesity",
+          "idiopathic pulmonary fibrosis"
+        ],
+        "recovered_dx_quantized": "atrial fibrillation",
+        "linked_patient": "MRN-42513",
+        "true_dx": "obesity",
+        "true_patient": "MRN-42513",
+        "dx_correct": false,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": false
+      },
+      {
+        "time": "11:01",
+        "query": "HER2-positive breast cancer in pregnancy: what is safe?",
+        "recovered_dx": "HER2-positive breast cancer",
+        "sim": 0.848,
+        "top3": [
+          "HER2-positive breast cancer",
+          "prostate cancer",
+          "non-small cell lung cancer with EGFR mutation"
+        ],
+        "recovered_dx_quantized": "HER2-positive breast cancer",
+        "linked_patient": "MRN-67891",
+        "true_dx": "HER2-positive breast cancer",
+        "true_patient": "MRN-67891",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "11:26",
+        "query": "diagnostic workup for suspected metastatic renal cell carcinoma",
+        "recovered_dx": "metastatic renal cell carcinoma",
+        "sim": 0.868,
+        "top3": [
+          "metastatic renal cell carcinoma",
+          "metastatic melanoma",
+          "non-small cell lung cancer with EGFR mutation"
+        ],
+        "recovered_dx_quantized": "metastatic renal cell carcinoma",
+        "linked_patient": "MRN-63835",
+        "true_dx": "metastatic renal cell carcinoma",
+        "true_patient": "MRN-63835",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "11:49",
+        "query": "long-term outcomes of sickle cell disease",
+        "recovered_dx": "sickle cell disease",
+        "sim": 0.822,
+        "top3": [
+          "sickle cell disease",
+          "Lyme disease",
+          "chronic kidney disease stage 4"
+        ],
+        "recovered_dx_quantized": "sickle cell disease",
+        "linked_patient": "MRN-19740",
+        "true_dx": "sickle cell disease",
+        "true_patient": "MRN-19740",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "11:52",
+        "query": "recent advances in CRISPR gene therapy",
+        "recovered_dx": "non-small cell lung cancer with EGFR mutation",
+        "sim": 0.329,
+        "top3": [
+          "non-small cell lung cancer with EGFR mutation",
+          "amyotrophic lateral sclerosis",
+          "prostate cancer"
+        ],
+        "recovered_dx_quantized": "non-small cell lung cancer with EGFR mutation",
+        "linked_patient": "MRN-19740",
+        "true_dx": null,
+        "true_patient": null,
+        "dx_correct": false,
+        "dx_top3": false,
+        "link_correct": false,
+        "record_correct": false
+      },
+      {
+        "time": "12:40",
+        "query": "vitamin D supplementation in healthy adults",
+        "recovered_dx": "type 2 diabetes",
+        "sim": 0.306,
+        "top3": [
+          "type 2 diabetes",
+          "type 1 diabetes",
+          "obesity"
+        ],
+        "recovered_dx_quantized": "type 2 diabetes",
+        "linked_patient": null,
+        "true_dx": null,
+        "true_patient": null,
+        "dx_correct": false,
+        "dx_top3": false,
+        "link_correct": false,
+        "record_correct": false
+      },
+      {
+        "time": "13:11",
+        "query": "diagnostic workup for suspected alcoholic cirrhosis",
+        "recovered_dx": "alcoholic cirrhosis",
+        "sim": 0.823,
+        "top3": [
+          "alcoholic cirrhosis",
+          "chronic hepatitis C",
+          "alcohol use disorder"
+        ],
+        "recovered_dx_quantized": "alcoholic cirrhosis",
+        "linked_patient": "MRN-15332",
+        "true_dx": "alcoholic cirrhosis",
+        "true_patient": "MRN-15332",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "13:51",
+        "query": "syphilis in pregnancy: what is safe?",
+        "recovered_dx": "syphilis",
+        "sim": 0.822,
+        "top3": [
+          "syphilis",
+          "gender dysphoria",
+          "psoriasis"
+        ],
+        "recovered_dx_quantized": "syphilis",
+        "linked_patient": "MRN-44886",
+        "true_dx": "syphilis",
+        "true_patient": "MRN-44886",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "14:12",
+        "query": "ulcerative colitis, second-line therapy after progression",
+        "recovered_dx": "ulcerative colitis",
+        "sim": 0.831,
+        "top3": [
+          "ulcerative colitis",
+          "amyotrophic lateral sclerosis",
+          "idiopathic pulmonary fibrosis"
+        ],
+        "recovered_dx_quantized": "ulcerative colitis",
+        "linked_patient": "MRN-63849",
+        "true_dx": "ulcerative colitis",
+        "true_patient": "MRN-63849",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "14:28",
+        "query": "drug interactions between lithium and treatment for alcohol use disorder",
+        "recovered_dx": "alcohol use disorder",
+        "sim": 0.794,
+        "top3": [
+          "alcohol use disorder",
+          "bipolar disorder",
+          "opioid use disorder"
+        ],
+        "recovered_dx_quantized": "alcohol use disorder",
+        "linked_patient": "MRN-39072",
+        "true_dx": "alcohol use disorder",
+        "true_patient": "MRN-39072",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "14:46",
+        "query": "latest guideline recommendations for early-onset Alzheimer disease",
+        "recovered_dx": "early-onset Alzheimer disease",
+        "sim": 0.736,
+        "top3": [
+          "early-onset Alzheimer disease",
+          "Parkinson disease",
+          "Lyme disease"
+        ],
+        "recovered_dx_quantized": "early-onset Alzheimer disease",
+        "linked_patient": "MRN-30308",
+        "true_dx": "early-onset Alzheimer disease",
+        "true_patient": "MRN-30308",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "15:09",
+        "query": "first-line management of pancreatic adenocarcinoma in a 46-year-old",
+        "recovered_dx": "pancreatic adenocarcinoma",
+        "sim": 0.901,
+        "top3": [
+          "pancreatic adenocarcinoma",
+          "preeclampsia",
+          "ectopic pregnancy"
+        ],
+        "recovered_dx_quantized": "pancreatic adenocarcinoma",
+        "linked_patient": "MRN-23517",
+        "true_dx": "pancreatic adenocarcinoma",
+        "true_patient": "MRN-23517",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "15:27",
+        "query": "managing polycystic kidney disease in a patient with renal impairment",
+        "recovered_dx": "polycystic kidney disease",
+        "sim": 0.859,
+        "top3": [
+          "polycystic kidney disease",
+          "chronic kidney disease stage 4",
+          "polycystic ovary syndrome"
+        ],
+        "recovered_dx_quantized": "polycystic kidney disease",
+        "linked_patient": "MRN-44342",
+        "true_dx": "polycystic kidney disease",
+        "true_patient": "MRN-44342",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "16:11",
+        "query": "managing cystic fibrosis in a patient with renal impairment",
+        "recovered_dx": "cystic fibrosis",
+        "sim": 0.821,
+        "top3": [
+          "cystic fibrosis",
+          "idiopathic pulmonary fibrosis",
+          "chronic kidney disease stage 4"
+        ],
+        "recovered_dx_quantized": "cystic fibrosis",
+        "linked_patient": "MRN-46089",
+        "true_dx": "cystic fibrosis",
+        "true_patient": "MRN-46089",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      },
+      {
+        "time": "16:26",
+        "query": "glioblastoma refractory to standard therapy, next steps",
+        "recovered_dx": "glioblastoma",
+        "sim": 0.715,
+        "top3": [
+          "glioblastoma",
+          "multiple myeloma",
+          "metastatic melanoma"
+        ],
+        "recovered_dx_quantized": "glioblastoma",
+        "linked_patient": "MRN-44149",
+        "true_dx": "glioblastoma",
+        "true_patient": "MRN-44149",
+        "dx_correct": true,
+        "dx_top3": true,
+        "link_correct": true,
+        "record_correct": true
+      }
+    ],
+    "your_query": {
+      "time": "14:15",
+      "query": "Metastatic renal cell carcinoma, second-line therapy after progression",
+      "top3": [
+        [
+          "metastatic renal cell carcinoma",
+          0.859
+        ],
+        [
+          "metastatic melanoma",
+          0.516
+        ],
+        [
+          "prostate cancer",
+          0.462
+        ]
+      ],
+      "linked_patient": "MRN-63849",
+      "appointment": "14:00",
+      "recovered_dx_quantized": "metastatic renal cell carcinoma"
+    }
+  },
+  "embed_sec": 2.06,
+  "corpus": "scifact",
+  "corpus_source": "BEIR zip (UKP)",
+  "n_docs": 5183,
+  "n_test_queries": 300,
+  "ndcg10_float": 0.506395439554424,
+  "quant_sweep": [
+    {
+      "bits": 2,
+      "ndcg10": 0.016259412425581418,
+      "retain": 0.0321081335959266,
+      "ndcg10_maxabs": 0.0011873572903600739,
+      "top1_agree_float": 0.013333333333333334
+    },
+    {
+      "bits": 3,
+      "ndcg10": 0.39779656422447623,
+      "retain": 0.7855453133118584,
+      "ndcg10_maxabs": 0.2120993727557009,
+      "top1_agree_float": 0.45666666666666667
+    },
+    {
+      "bits": 4,
+      "ndcg10": 0.4903702945070903,
+      "retain": 0.9683544838764065,
+      "ndcg10_maxabs": 0.43671233616311195,
+      "top1_agree_float": 0.73
+    },
+    {
+      "bits": 6,
+      "ndcg10": 0.5067425333717399,
+      "retain": 1.0006854205038287,
+      "ndcg10_maxabs": 0.5026978563564054,
+      "top1_agree_float": 0.9366666666666666
+    },
+    {
+      "bits": 8,
+      "ndcg10": 0.507495262510929,
+      "retain": 1.0021718658396148,
+      "ndcg10_maxabs": 0.5057027009580574,
+      "top1_agree_float": 0.9633333333333334
+    }
+  ],
+  "dim": 256,
+  "clip_percentile": 99.9,
+  "encrypted": {
+    "scheme": "CKKS (TenSEAL 0.3.18)",
+    "poly_modulus_degree": 8192,
+    "coeff_mod_bit_sizes": [
+      60,
+      40,
+      60
+    ],
+    "scale_bits": 40,
+    "keygen_sec": 0.06637334823608398,
+    "he_bits": 4,
+    "n_check": 20,
+    "scores_exact": 20,
+    "top1_match": 20,
+    "max_abs_ckks_error": 4.14781053450497e-05,
+    "round1": {
+      "encrypt": 0.004457795619964599,
+      "server": 1.2011122822761535,
+      "decrypt": 0.001357567310333252,
+      "up_bytes": 235052.15,
+      "down_bytes": 262434.0
+    },
+    "round2": {
+      "encrypt": 0.0058977603912353516,
+      "server": 13.582501411437988,
+      "decrypt": 0.0007545948028564453,
+      "up_bytes": 470255,
+      "down_bytes": 131217,
+      "prep": 0.23194050788879395
+    },
+    "server_sec_total": 14.783613693714141,
+    "client_sec_total": 0.012467718124389647,
+    "comm_MB": 1.0989581499999999,
+    "plain_score_sec": 0.0030295848846435547,
+    "extrapolation": [
+      {
+        "n_docs": 1000,
+        "server_sec": 2.852327550398252
+      },
+      {
+        "n_docs": 10000,
+        "server_sec": 28.52327550398252
+      },
+      {
+        "n_docs": 100000,
+        "server_sec": 285.23275503982524
+      },
+      {
+        "n_docs": 1000000,
+        "server_sec": 2852.3275503982522
+      }
+    ],
+    "server_min_1M": 47.538792506637535,
+    "cpu_threads": 48
+  },
+  "your_query_retrieval": {
+    "query": "Metastatic renal cell carcinoma, second-line therapy after progression",
+    "top_doc_index": 2301,
+    "top_doc_title": "Immune cell promotion of metastasis",
+    "encrypted_top1_equals_plaintext_quantized": true,
+    "encrypted_top1_equals_float": true,
+    "pir_fetch_exact": true,
+    "fetched_chars": 769,
+    "round1": {
+      "encrypt": 0.002591848373413086,
+      "server": 1.1857421398162842,
+      "decrypt": 0.0008780956268310547,
+      "up_bytes": 235094,
+      "down_bytes": 262434
+    }
+  },
+  "runtime_sec": 48.0
+}

@@ -1,0 +1,98 @@
+{
+  "paper": {
+    "num": 9,
+    "title": "Diagnosing Low-Confidence Patient Profiles via Localized Harmful Covariate Shift Detection",
+    "authors": "Olivier Lefebvre, Hakima Laribi, Dan Poenaru, Martin Valli\u00e8res",
+    "affiliation": "Universit\u00e9 de Sherbrooke \u00b7 Montreal Children's Hospital \u00b7 McGill University"
+  },
+  "inputs": {
+    "dataset": "synthetic",
+    "outcome": "30-day readmission (synthetic MIMIC-like cohort)",
+    "removed from training": "patients under 50",
+    "tree depth": 3,
+    "CDCs": 5,
+    "Detectron sample": 500,
+    "min profile": "5%",
+    "\u03b1": 0.05,
+    "seed": 0
+  },
+  "tiles": [
+    {
+      "label": "Population-level Detectron",
+      "value": "no HCS",
+      "sub": "median p = 0.192 over 5 repeats; CDCs rejected 10% of deployment vs 8% of reference cases",
+      "tone": "neutral"
+    },
+    {
+      "label": "Profiles with a localized HCS",
+      "value": "2 of 5",
+      "sub": "tested profiles (\u2265 5% of patients), covering 47% of the population",
+      "tone": "accent"
+    },
+    {
+      "label": "Worst flagged profile: AUC",
+      "value": "0.69 \u2192 0.64",
+      "sub": "Hb \u2264 11.55 & creat \u2264 1.695 \u00b7 31% of patients \u00b7 sensitivity 0.83 \u2192 0.79",
+      "tone": "accent"
+    },
+    {
+      "label": "Population AUC",
+      "value": "0.75 \u2192 0.73",
+      "sub": "training distribution \u2192 deployment; removed subgroup alone 0.67",
+      "tone": "neutral"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_profiles.png",
+      "title": "Where does the model lose reliability?",
+      "caption": "MED3pa profiles (leaves of the confidence tree), lowest confidence first. Arrow = AUC on held-out training-distribution patients \u2192 deployment patients in the same profile. Right: share of patients, Detectron verdict, and share of the removed subgroup inside the profile (deployment)."
+    },
+    {
+      "path": "fig_detectron.png",
+      "title": "Can disagreement classifiers tell deployment from training cases?",
+      "caption": "Detectron: CDCs copy the BaseModel, must keep agreeing on training-distribution cases, and try to disagree on deployment (Q_S) and reference (P_S^r) cases. Significantly more rejections on Q_S = harmful covariate shift."
+    },
+    {
+      "path": "fig_shift_types.png",
+      "title": "Localized or broad? Three injected shifts",
+      "caption": "The same pipeline with each subgroup removed from training. Left: share of patients in profiles where Detectron flags HCS (n flagged / n tested), and the population-level verdict. Right: population AUC."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "Age shift detected at population level?",
+      "paper": "No, for all three tasks",
+      "yours": "no HCS (median p = 0.192)",
+      "note": ""
+    },
+    {
+      "metric": "Age shift localized to profiles",
+      "paper": "Yes: e.g. readmission profile covering 17.68%",
+      "yours": "2 of 5 profiles (47% of patients)",
+      "note": ""
+    },
+    {
+      "metric": "Sex / race shifts",
+      "paper": "Detected in all (or all but two) profiles: broad, little localizing value",
+      "yours": "sex 7/7 \u00b7 race 5/7 profiles; population HCS / HCS",
+      "note": ""
+    },
+    {
+      "metric": "Degraded profile: AUC / balanced acc. / sensitivity / specificity",
+      "paper": "0.80\u21920.64 / 0.72\u21920.58 / 0.67\u21920.42 / 0.77\u21920.75 (readmission, age shift)",
+      "yours": "0.69\u21920.64 / 0.61\u21920.59 / 0.83\u21920.79 / 0.39\u21920.39",
+      "note": "Hb \u2264 11.55 & creat \u2264 1.695"
+    },
+    {
+      "metric": "Mean age in that profile, training \u2192 deployment",
+      "paper": "73.3 \u2192 67.8",
+      "yours": "68.9 \u2192 61.1",
+      "note": ""
+    }
+  ],
+  "runbook": {
+    "name": "smash-09-low-confidence-profiles",
+    "url": ""
+  }
+}

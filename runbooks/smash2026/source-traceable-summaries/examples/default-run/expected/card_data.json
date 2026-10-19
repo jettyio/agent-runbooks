@@ -1,0 +1,94 @@
+{
+  "paper": {
+    "num": 18,
+    "title": "From Extraction Accuracy to Clinical Usefulness: A Human-Centered Evaluation Framework for Source-Traceable Patient Summaries",
+    "authors": "Alissa Taylor",
+    "affiliation": "Akinox Solutions (CarePath)"
+  },
+  "inputs": {
+    "summarizer": "anthropic/claude-haiku-4.5 · brief prompt",
+    "judge": "anthropic/claude-haiku-4.5",
+    "noise": "conflicting labs, copied-forward note, document ≠ event date, discontinued med, negated finding, resolved diagnosis",
+    "variants": 9,
+    "LLM calls": 18
+  },
+  "tiles": [
+    {
+      "label": "LLM-judge score",
+      "value": "6/10",
+      "sub": "anthropic/claude-haiku-4.5 · holistic quality, as many pipelines report it",
+      "tone": "neutral"
+    },
+    {
+      "label": "Release gates",
+      "value": "FAILED 2 of 8",
+      "sub": "conflicting HbA1c silently resolved to one value; no intended-use / verify-against-source statement",
+      "tone": "accent"
+    },
+    {
+      "label": "Gold claims covered",
+      "value": "100%",
+      "sub": "13 claims · 0% not lexically supported by their cited segment · severity-weighted errors 2",
+      "tone": "neutral"
+    },
+    {
+      "label": "Judged ≥ 7/10 yet a clinical gate failed",
+      "value": "1 of 9",
+      "sub": "e.g. brief prompt on the pack with 3 noise types (up to conflicting labs): judge 9/10, failed contradiction · 4 counting the intended-use gate",
+      "tone": "warn"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_judge_vs_gates.png",
+      "title": "Would a judge ship it, and would the release gates?",
+      "caption": "Left: holistic LLM-judge score for each prompt style on the same pack. Right: the paper's Layer-1 checks — 1 Schema valid; 2 Citation validity & coverage; 3 Negation preserved; 4 Active/resolved/discontinued status; 5 Medication start/stop & current dose; 6 Event date (not document date); 7 Conflict surfaced, both sources cited; 8 Intended-use language."
+    },
+    {
+      "path": "fig_claim_audit.png",
+      "title": "Claim-level audit against provenance-aware gold labels",
+      "caption": "Each planted fact, what your summary said about it (status in brackets), and the deterministic verdict. Capitalised verdicts are gate failures; 'omitted' only lowers recall."
+    },
+    {
+      "path": "fig_degradation.png",
+      "title": "Does quality degrade as documentation noise is added?",
+      "caption": "The same underlying clinical state presented with one more noise type at a time (the paper's controlled-noise design). Failed gates are listed under each point."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "Release gates vs averaged scores",
+      "paper": "“A gain in readability should not offset broken evidence links, a known status inversion, or loss of negation.”",
+      "yours": "brief: judge 6/10, gates FAILED (Conflict surfaced, both sources cited, Intended-use language)",
+      "note": "framework claim; no paper numbers"
+    },
+    {
+      "metric": "Model-as-judge",
+      "paper": "should not serve as the sole evidence of clinical acceptability because judge models may share blind spots with the system being evaluated",
+      "yours": "judge (≥7) and gates agreed on 56% of 9 summaries",
+      "note": "same model family judges itself"
+    },
+    {
+      "metric": "Missing sources",
+      "paper": "“If a claim lacks an accessible source, the presence of other well-supported claims should not compensate for it.”",
+      "yours": "citation gate passed",
+      "note": ""
+    },
+    {
+      "metric": "Severity",
+      "paper": "“Errors should be stratified by likely consequence rather than counted equally.”",
+      "yours": "severity-weighted errors 2 (gold severities 1–3)",
+      "note": ""
+    },
+    {
+      "metric": "Controlled noise",
+      "paper": "duplicate and copied-forward statements, missing fields, conflicting sources, resolved-versus-active ambiguity, medication changes, and differences between document date and clinical-event date",
+      "yours": "6 noise types planted; ladder of 7 packs",
+      "note": "Synthea-style pack written for this runbook"
+    }
+  ],
+  "runbook": {
+    "name": "smash-18-source-traceable-summaries",
+    "url": ""
+  }
+}

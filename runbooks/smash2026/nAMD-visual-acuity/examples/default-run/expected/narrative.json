@@ -1,0 +1,37 @@
+{
+  "headline": "Simulated: a patient with BCVA 50 and SRF present has a 51% predicted chance of gaining ≥10 letters; an automated SRF misread drops this to 33%.",
+  "idea": [
+    "Instead of feeding raw OCT images to an end-to-end deep network, the paper **extracts interpretable clinical biomarkers** (CST, SRF, IRF/IRC, PED, VMT) automatically using deep-learning segmentation models.",
+    "Those biomarkers plus baseline BCVA are fed to an **Explainable Boosting Machine (EBM)** — a glass-box additive model that lets physicians read exactly why each prediction was made, term by term.",
+    "The paper’s key finding: **automated biomarkers predict as well as human-measured ones** (AUC 0.77 vs 0.77), showing that interpretability and automation are compatible in this setting."
+  ],
+  "findings": [
+    "**This patient** (BCVA 50, CST 380 µm, SRF+, IRF+, PED−, VMT−) receives a **51% predicted chance** of gaining ≥10 ETDRS letters at one year — roughly double the cohort base rate of 25%. The largest glass-box contributions are: low BCVA (+0.68 logits, more room to gain since 50 letters is well below the ceiling), SRF present (+0.36 logits, subretinal fluid is a favourable marker in the simulation), and CST 380 µm (+0.23 logits, thicker retina slightly favourable). Among the 55 similar synthetic eyes (BCVA ±5 letters, CST ±50 µm), 49% gained ≥10 letters — consistent with the model’s 51% estimate. Note: these effects were hand-specified in the simulation, so the model recovering them confirms interpretability, not real clinical evidence.",
+    "**Automation misreads matter most for SRF**: if the pipeline incorrectly reads SRF as absent, the predicted chance drops from 51% to 33% — a shift of 18 percentage points. This is the largest single-biomarker swing, highlighting that SRF detection accuracy (paper: 0.91) is the most consequential for this patient profile. CST mis-measurement of ±40 µm moves the prediction by only 2–4 percentage points, consistent with the paper’s minimal CST error.",
+    "**Models**: EBM on automated biomarkers AUC 0.74 ± 0.04, EBM on measured biomarkers 0.75 ± 0.04, gradient boosting 0.72 ± 0.04, BCVA alone (logistic) 0.72 ± 0.03. The glass-box adds modest but consistent value over a BCVA-only baseline on this simulated cohort. The paper reports EBM AUC 0.77 ± 0.07; our simulated result of 0.74 is within one SD. The EBM’s advantage over gradient boosting is smaller here than in the paper’s Table 1 (0.74 vs 0.72, vs paper’s 0.77 vs 0.74), likely because the synthetic effects are simpler than real OCT data.",
+    "**BCVA shape function**: the EBM’s BCVA term shows increasing scores as baseline BCVA falls below ~65 letters, with a plateau at very low acuity and a sharp drop above 75 letters (ceiling effect). This mirrors the paper’s Figure 3b description: ‘improvement starts to decline above 50 letters, with a sharp drop above 75.’ The top three importances are BCVA (0.54), SRF (0.32), and CST (0.19) — matching the paper’s stated top features of ‘baseline VA, CST, and the interaction between these two features.’"
+  ],
+  "try_next": [
+    {
+      "label": "Patient near the ceiling",
+      "why": "BCVA 78 is above the 75-letter ceiling where the paper says improvement drops sharply; expect a much lower predicted chance and smaller contributions from BCVA.",
+      "params": {"patient_bcva": 78, "patient_cst": 380, "patient_srf": 1, "patient_irf": 1, "patient_ped": 0, "patient_vmt": 0, "automation_error_scale": 1, "cst_error_um": 20, "n_patients": 1203, "seed": 5}
+    },
+    {
+      "label": "Much worse automated extraction",
+      "why": "Setting automation_error_scale to 3 triples the paper’s reported flip rates; this should widen the gap between EBM-measured and EBM-automated AUCs and make biomarker misread impacts larger.",
+      "params": {"patient_bcva": 50, "patient_cst": 380, "patient_srf": 1, "patient_irf": 1, "patient_ped": 0, "patient_vmt": 0, "automation_error_scale": 3, "cst_error_um": 20, "n_patients": 1203, "seed": 5}
+    },
+    {
+      "label": "Perfect automated extraction",
+      "why": "Setting automation_error_scale to 0 and cst_error_um to 0 gives the EBM the exact measured biomarkers; the automated and measured EBM AUCs should converge, and misread impact should disappear.",
+      "params": {"patient_bcva": 50, "patient_cst": 380, "patient_srf": 1, "patient_irf": 1, "patient_ped": 0, "patient_vmt": 0, "automation_error_scale": 0, "cst_error_um": 0, "n_patients": 1203, "seed": 5}
+    }
+  ],
+  "caveats": [
+    "**Simulated cohort**: all 1,203 eyes in this run are synthetic. Only the marginals (BCVA distribution, CST distribution, biomarker prevalences, proportion gaining ≥10 letters) come from the paper; the effect sizes and interactions are hand-specified and plausible but not estimated from the authors’ private CHU de Québec data.",
+    "**Not for clinical use**: this card is an interactive companion to the paper and must not be used to counsel real patients or inform clinical decisions.",
+    "**End-to-end pipelines not reproduced**: the ResNet18 baseline and the actual deep-learning biomarker extraction are not run here; automated biomarker errors are simulated from the paper’s reported extraction accuracies (SRF 0.91, IRF 0.88, PED 0.89, VMT 0.82).",
+    "**CST error discrepancy**: the paper reports a CST extraction error of 0.1437 µm, which appears to be a units slip (likely nanometres rather than micrometres, or a different metric). This runbook uses a participant-specified CST error SD of 20 µm instead."
+  ]
+}

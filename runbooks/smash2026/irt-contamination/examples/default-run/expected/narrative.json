@@ -1,0 +1,37 @@
+{
+  "headline": "Confidence detectors collapse from 1.00 to 0.52 AUROC after evasion, while the IRT residual holds unchanged at 0.73.",
+  "idea": [
+    "Current confidence-based detectors (LOSS, ZLIB, Min-K%, Min-K%++) measure how surprised a model is by its own training data — contaminated items have telltale high log-probabilities. An adversary can apply an argmax-preserving transform that reshapes those probabilities to look like unseen items without changing a single benchmark answer, defeating all four detectors at once.",
+    "A performance-based IRT residual detector sidesteps token probabilities entirely: it calibrates item difficulty and discrimination on a population of LLMs, estimates the audited model's ability from held-out items, and flags anything the model answers correctly beyond what its ability predicts. Because it only reads right/wrong, the probability-reshaping transform cannot touch it.",
+    "The fundamental tension the paper reveals: the only way an adversary can lower the IRT signal is to deliberately answer contaminated items wrong — giving back the very benchmark score inflation that motivated contamination in the first place. Robustness comes not from cryptographic hardness but from this unavoidable trade-off between hiding and benefiting."
+  ],
+  "findings": [
+    "**Evasion collapses confidence detectors.** All four confidence detectors started near-perfect (LOSS 1.00, ZLIB 1.00, Min-K% 0.97, Min-K%++ 0.96 AUROC), matching the paper's Table 1 (0.99, 0.99, 0.93, 0.99). After applying the argmax-preserving transform φ, every detector fell to near chance (LOSS 0.52, ZLIB 0.52, Min-K% 0.51, Min-K%++ 0.50 — paper: 0.54, 0.45, 0.54, 0.48). Crucially, `answers_changed_by_evasion` = 0: not one benchmark answer was disturbed.",
+    "**IRT residual is immune by construction — but modest.** The IRT-residual AUROC was 0.73 (p = 0.002) on the contaminated model vs. 0.48 (p = 0.891) on the uncontaminated control, confirming the paper's headline result of 0.68 (Δ = 0.00). The small gap from the paper's 0.68 is expected: AUROC level depends on simulation settings, not methodology. The key point is robustness: the detector's AUROC is unchanged by the evasion, while the control is indistinguishable from chance.",
+    "**Sandbagging: to fool IRT, the adversary must give up most of what it gained.** To push IRT-residual AUROC down to ~0.55 (near chance), the adversary must deliberately give back 70% of its contamination gains — losing 13.1 benchmark accuracy points and retaining only 30% of the score inflation. The contamination started at 62.9% baseline and reached 81.6%; sandbagging to defeat IRT leaves only 68.5%. This is this runbook's extension of the paper's argument, not a reported experimental result.",
+    "**Easy-item blind spot confirmed.** IRT-residual AUROC varies strongly by item difficulty: hard items 0.83, medium 0.66, easy 0.60. On easy items the model already scores near-perfectly from ability alone, so contamination produces negligible residuals — the paper's caveat holds here too."
+  ],
+  "try_next": [
+    {
+      "label": "Light contamination",
+      "why": "With contamination=0.3 (only 30% of wrong member answers become right), the IRT signal should weaken. Tests whether the detector still achieves significance when contamination is modest.",
+      "params": {"contamination": 0.3, "model_ability": 0.3, "memorization_boost": 1.0, "n_member_items": 1200, "n_calibration_items": 3600, "n_population": 102, "seed": 7}
+    },
+    {
+      "label": "Very strong model (most items easy)",
+      "why": "With model_ability=2.0 most items are easy for this model, so contamination residuals are small everywhere — the easy-item blind spot dominates and IRT AUROC should fall toward 0.5 even with strong contamination.",
+      "params": {"contamination": 0.97, "model_ability": 2.0, "memorization_boost": 1.0, "n_member_items": 1200, "n_calibration_items": 3600, "n_population": 102, "seed": 7}
+    },
+    {
+      "label": "Tiny calibration population",
+      "why": "With n_population=20 (vs. paper's 102), item-parameter estimates are noisier, ability estimation is less reliable, and the IRT detector should degrade — showing how sensitive detection is to the breadth of the calibration pool.",
+      "params": {"contamination": 0.97, "model_ability": 0.3, "memorization_boost": 1.0, "n_member_items": 1200, "n_calibration_items": 3600, "n_population": 20, "seed": 7}
+    }
+  ],
+  "caveats": [
+    "This is a fully synthetic re-enactment: the benchmark items, token probability rows, and model population are all simulated with a seeded random number generator — not MMLU questions, not Llama-3.1-8B-Instruct, and not the 102 real LLMs from Fluid Benchmarking used in the paper.",
+    "The sandbagging analysis (what fraction of gains the adversary must surrender to defeat IRT) is this runbook's extension of the paper's argument; it is not a reported experimental result in Tang & Cheung (2026).",
+    "AUROC levels depend on simulation settings (memorization_boost, contamination strength, item difficulty distribution). The IRT-residual AUROC of 0.73 here vs. 0.68 in the paper reflects these differences, not a methodological disagreement.",
+    "The paper's IRT calibration used empirical response data from 102 real language models (Fluid Benchmarking); here it is replaced by a simulated response matrix drawn from the same 2PL model used to generate item parameters, which may overstate calibration quality."
+  ]
+}

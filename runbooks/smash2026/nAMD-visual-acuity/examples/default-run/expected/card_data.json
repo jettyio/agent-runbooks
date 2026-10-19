@@ -1,0 +1,125 @@
+{
+  "paper": {
+    "num": 5,
+    "title": "Visual Acuity Improvement Prediction in Neovascular Age-Related Macular Degeneration",
+    "authors": "Hadi Moazen, Alaa Eddine Ayadi, Audrey Durand, M\u00e9lanie H\u00e9bert, Ali Dirani",
+    "affiliation": "Universit\u00e9 Laval \u00b7 CHU de Qu\u00e9bec \u2013 Universit\u00e9 Laval"
+  },
+  "inputs": {
+    "your patient": "BCVA 50, CST 380 \u00b5m, SRF +, IRF +, PED \u2212, VMT \u2212",
+    "automation error": "\u00d71 paper's error rates",
+    "CST error": "20 \u00b5m",
+    "cohort": "1,203 simulated eyes",
+    "model": "EBM (interpret)",
+    "seed": 5,
+    "data": "SIMULATED, not for clinical use"
+  },
+  "tiles": [
+    {
+      "label": "Your patient's predicted chance",
+      "value": "51%",
+      "sub": "of gaining \u226510 letters at 1 year (BCVA 50, CST 380 \u00b5m, SRF +, IRF +, PED \u2212, VMT \u2212); cohort base rate 25%",
+      "tone": "accent"
+    },
+    {
+      "label": "Biggest single reason",
+      "value": "BCVA +0.68",
+      "sub": "logit contribution in the glass-box model",
+      "tone": "neutral"
+    },
+    {
+      "label": "If the AI misreads one biomarker",
+      "value": "51% \u2192 33%",
+      "sub": "worst case: SRF misread",
+      "tone": "warn"
+    },
+    {
+      "label": "Glass box vs black box",
+      "value": "0.74 vs 0.72",
+      "sub": "CV AUC, EBM vs gradient boosting on automated biomarkers (measured: 0.75; BCVA alone: 0.72)",
+      "tone": "good"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_waterfall.png",
+      "title": "Why this prediction? Every term, in log-odds",
+      "caption": "The glass-box model adds one score per feature (and per learned interaction) to a baseline. Green pushes towards a \u226510-letter gain, orange away from it. Model trained on a simulated cohort."
+    },
+    {
+      "path": "fig_misread.png",
+      "title": "What if the automated pipeline gets one biomarker wrong?",
+      "caption": "Your patient's prediction when one binary biomarker is flipped, or CST is mis-measured by \u00b12\u00d7 the CST error."
+    },
+    {
+      "path": "fig_glassbox.png",
+      "title": "What did the model learn?",
+      "caption": "Left: global term importances. Right: the baseline-BCVA shape function (compare the paper's Figure 3b); the effects were specified by this simulation, so the plot shows the EBM recovering them."
+    },
+    {
+      "path": "fig_roc.png",
+      "title": "Glass box vs black box, measured vs automated",
+      "caption": "Out-of-fold ROC curves (5-fold CV) on the simulated cohort."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "EBM (automated biomarkers) AUC ROC",
+      "paper": "0.77 \u00b1 0.07",
+      "yours": "0.74 \u00b1 0.04",
+      "note": "synthetic cohort"
+    },
+    {
+      "metric": "EBM sensitivity / specificity",
+      "paper": "0.75 \u00b1 0.08 / 0.61 \u00b1 0.03",
+      "yours": "0.72 \u00b1 0.07 / 0.64 \u00b1 0.05",
+      "note": "threshold = prevalence"
+    },
+    {
+      "metric": "EBM F1",
+      "paper": "0.54 \u00b1 0.02",
+      "yours": "0.52 \u00b1 0.04",
+      "note": ""
+    },
+    {
+      "metric": "XGBoost AUC ROC",
+      "paper": "0.74 \u00b1 0.06",
+      "yours": "0.72 \u00b1 0.04",
+      "note": "sklearn gradient boosting stand-in"
+    },
+    {
+      "metric": "EBM on measured vs automated biomarkers",
+      "paper": "AUC = 0.77 vs 0.77",
+      "yours": "0.75 vs 0.74",
+      "note": "error scale \u00d71, CST error 20 \u00b5m"
+    },
+    {
+      "metric": "Top features",
+      "paper": "baseline VA, CST, and the interaction between these two features",
+      "yours": "BCVA, SRF, CST",
+      "note": "built into the simulation"
+    },
+    {
+      "metric": "Eyes gaining \u226510 letters",
+      "paper": "299 (25%)",
+      "yours": "304 (25%)",
+      "note": "calibrated"
+    },
+    {
+      "metric": "Median letters gained",
+      "paper": "2 [-3, 10]",
+      "yours": "3 [-3, 10]",
+      "note": "approximate match"
+    },
+    {
+      "metric": "BCVA at one year",
+      "paper": "68 [57, 76]",
+      "yours": "65 [56, 73]",
+      "note": "not matched exactly"
+    }
+  ],
+  "runbook": {
+    "name": "smash-05-namd-visual-acuity",
+    "url": ""
+  }
+}

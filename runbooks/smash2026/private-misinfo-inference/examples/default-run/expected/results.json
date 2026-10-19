@@ -1,0 +1,403 @@
+{
+  "params": {
+    "claims": "",
+    "features": "hybrid",
+    "text_field": "title+content",
+    "svd_dim": 300,
+    "poly_modulus_degree": 8192,
+    "retrieval_db_size": 0,
+    "C": 1.0,
+    "embedder": "minishlab/potion-base-8M",
+    "seed": 42,
+    "n_encrypted_eval": 0,
+    "naive_items": 200,
+    "runbook_url": ""
+  },
+  "n_rows_raw": 5457,
+  "n_unique": 5398,
+  "n_train": 4318,
+  "n_test": 1080,
+  "n_test_fake": 183,
+  "download_MB": 4.265958,
+  "text_field": "title+content",
+  "features": "hybrid",
+  "svd_dim": 300,
+  "feature_dim": 556,
+  "embed_dim": 256,
+  "ablation": {
+    "tfidf": {
+      "dim": 300,
+      "accuracy": 0.9444444444444444,
+      "macro_f1": 0.8952811893988364,
+      "f1_fake": 0.8235294117647058,
+      "f1_real": 0.967032967032967
+    },
+    "embed": {
+      "dim": 256,
+      "accuracy": 0.9277777777777778,
+      "macro_f1": 0.8664078556748116,
+      "f1_fake": 0.7758620689655172,
+      "f1_real": 0.956953642384106
+    },
+    "hybrid": {
+      "dim": 556,
+      "accuracy": 0.9444444444444444,
+      "macro_f1": 0.8957790515893695,
+      "f1_fake": 0.8245614035087719,
+      "f1_real": 0.966996699669967
+    }
+  },
+  "encrypted": {
+    "n": 1080,
+    "poly_modulus_degree": 8192,
+    "coeff_mod_bit_sizes": [
+      60,
+      40,
+      60
+    ],
+    "scale_bits": 40,
+    "max_abs_logit_diff": 6.016005741571462e-06,
+    "mean_abs_logit_diff": 3.451813102052349e-06,
+    "labels_identical": 1080,
+    "accuracy_plain": 0.9444444444444444,
+    "accuracy_enc": 0.9444444444444444,
+    "macro_f1_plain": 0.8957790515893695,
+    "macro_f1_enc": 0.8957790515893695,
+    "total_he_sec": 20.39821720123291,
+    "per_query_ms": 18.887238149289733,
+    "split_ms": {
+      "encrypt": 2.901684796368634,
+      "server": 15.681039183228105,
+      "decrypt": 0.30451416969299316
+    }
+  },
+  "claims": [
+    {
+      "claim": "Drinking hot water every 15 minutes flushes the coronavirus into the stomach where acid kills it",
+      "z_plain": 8.775465864509064,
+      "z_enc": 8.77546503130107,
+      "abs_diff": 8.332079932671377e-07,
+      "p_fake_plain": 0.9998455469404538,
+      "p_fake_enc": 0.9998455468117823,
+      "label_plain": "fake",
+      "label_enc": "fake",
+      "ms": 18.77570152282715,
+      "query_bytes": 235059,
+      "reply_bytes": 131216
+    },
+    {
+      "claim": "COVID-19 vaccines were tested in phase 3 clinical trials with tens of thousands of volunteers",
+      "z_plain": -6.918471840176225,
+      "z_enc": -6.918474611585262,
+      "abs_diff": 2.7714090373720524e-06,
+      "p_fake_plain": 0.0009883628290426397,
+      "p_fake_enc": 0.0009883600925960291,
+      "label_plain": "real",
+      "label_enc": "real",
+      "ms": 19.526004791259766,
+      "query_bytes": 235118,
+      "reply_bytes": 131216
+    },
+    {
+      "claim": "5G mobile networks spread the coronavirus",
+      "z_plain": 13.87664962487567,
+      "z_enc": 13.87664922856257,
+      "abs_diff": 3.9631309967091966e-07,
+      "p_fake_plain": 0.9999990593084733,
+      "p_fake_enc": 0.9999990593081005,
+      "label_plain": "fake",
+      "label_enc": "fake",
+      "ms": 18.717050552368164,
+      "query_bytes": 235099,
+      "reply_bytes": 131216
+    },
+    {
+      "claim": "Washing your hands with soap for 20 seconds helps prevent the spread of COVID-19",
+      "z_plain": -11.042973223617766,
+      "z_enc": -11.042976309590522,
+      "abs_diff": 3.085972755556554e-06,
+      "p_fake_plain": 1.5998921845237547e-05,
+      "p_fake_enc": 1.599887247386669e-05,
+      "label_plain": "real",
+      "label_enc": "real",
+      "ms": 18.645048141479492,
+      "query_bytes": 235085,
+      "reply_bytes": 131216
+    },
+    {
+      "claim": "Says a photo shows doctors in Italy hugging after curing their last coronavirus patient",
+      "z_plain": 6.971891614800091,
+      "z_enc": 6.971890639730839,
+      "abs_diff": 9.75069252007188e-07,
+      "p_fake_plain": 0.9990630016647355,
+      "p_fake_enc": 0.9990630007519529,
+      "label_plain": "fake",
+      "label_enc": "fake",
+      "ms": 18.596410751342773,
+      "query_bytes": 235119,
+      "reply_bytes": 131216
+    },
+    {
+      "claim": "A Facebook post says washing your hands with soap for 20 seconds helps prevent COVID-19",
+      "z_plain": -7.186135218218696,
+      "z_enc": -7.186138179797265,
+      "abs_diff": 2.96157856904955e-06,
+      "p_fake_plain": 0.0007564365200239539,
+      "p_fake_enc": 0.0007564342814756811,
+      "label_plain": "real",
+      "label_enc": "real",
+      "ms": 18.502473831176758,
+      "query_bytes": 235087,
+      "reply_bytes": 131216
+    }
+  ],
+  "top_terms": {
+    "fake": [
+      [
+        "the",
+        19.32321664907219
+      ],
+      [
+        "was",
+        19.17814099855007
+      ],
+      [
+        "the coronavirus",
+        14.793978493241564
+      ],
+      [
+        "or",
+        14.781206226159295
+      ],
+      [
+        "stimulus",
+        14.667714196692339
+      ],
+      [
+        "that",
+        14.51301569116615
+      ],
+      [
+        "photo",
+        14.026248113803277
+      ],
+      [
+        "positive",
+        13.515367667464275
+      ],
+      [
+        "facebook",
+        13.010024927643816
+      ],
+      [
+        "is",
+        12.754487001487721
+      ]
+    ],
+    "real": [
+      [
+        "new",
+        -21.331623801324948
+      ],
+      [
+        "april",
+        -17.87497586623823
+      ],
+      [
+        "experts",
+        -16.792054667400343
+      ],
+      [
+        "2020",
+        -16.449079569903105
+      ],
+      [
+        "of",
+        -14.401588759560287
+      ],
+      [
+        "kids",
+        -13.790096676748984
+      ],
+      [
+        "cases",
+        -12.350718606959287
+      ],
+      [
+        "researchers",
+        -12.207247407725012
+      ],
+      [
+        "how",
+        -11.68508963953808
+      ],
+      [
+        "antibody",
+        -11.468394016103897
+      ]
+    ]
+  },
+  "latency_bench": [
+    {
+      "N": 8192,
+      "coeff_mod_bit_sizes": [
+        60,
+        40,
+        60
+      ],
+      "ms": 18.540263175964355,
+      "query_MB": 0.235103,
+      "reply_MB": 0.131216,
+      "comm_MB": 0.366319
+    },
+    {
+      "N": 16384,
+      "coeff_mod_bit_sizes": [
+        60,
+        40,
+        40,
+        60
+      ],
+      "ms": 71.24590873718262,
+      "query_MB": 0.65782,
+      "reply_MB": 0.459779,
+      "comm_MB": 1.117599
+    },
+    {
+      "N": 32768,
+      "coeff_mod_bit_sizes": [
+        60,
+        40,
+        40,
+        60
+      ],
+      "ms": 149.22118186950684,
+      "query_MB": 1.31629,
+      "reply_MB": 0.920393,
+      "comm_MB": 2.236683
+    }
+  ],
+  "retrieval": {
+    "db_items": 5168,
+    "dim": 256,
+    "naive_measured_items": 200,
+    "plain_sec": 0.08176314830780029,
+    "packed_sec": 1.2821847597757976,
+    "naive_sec_extrapolated": 33.8595676574707,
+    "speedup": 26.407713396461965,
+    "packed_comm_MB": 0.497533,
+    "naive_comm_MB": 678.359392,
+    "same_top5": 6,
+    "n_claims": 6,
+    "n_ciphertexts_packed": 2,
+    "max_score_err": 1.0314493381624601e-07,
+    "naive_sec_at_7128": 46.699665298461916
+  },
+  "retrieved": [
+    [
+      {
+        "title": "If the coronavirus gets in your mouth, \u00d2drinking water or other liquids will wash them down through your esophagus and into the stomach. On\u2026",
+        "label": "fake",
+        "cos": 0.7639757223214259
+      },
+      {
+        "title": "Cocaine kills the coronavirus.",
+        "label": "fake",
+        "cos": 0.6103770013305427
+      },
+      {
+        "title": "The new coronavirus can be cured by drinking one bowl of freshly boiled garlic water.",
+        "label": "fake",
+        "cos": 0.6093589148293566
+      }
+    ],
+    [
+      {
+        "title": "Two COVID-19 vaccines show promise in hopeful clinical trials",
+        "label": "real",
+        "cos": 0.7401028979778711
+      },
+      {
+        "title": "Trials Test Survivors' Blood as COVID-19 Treatment",
+        "label": "real",
+        "cos": 0.7230096072183052
+      },
+      {
+        "title": "Hopeful COVID-19 research: Testing new vaccines",
+        "label": "real",
+        "cos": 0.7137807889906165
+      }
+    ],
+    [
+      {
+        "title": "How Coronavirus Spreads",
+        "label": "real",
+        "cos": 0.7642844999637257
+      },
+      {
+        "title": "5G technology caused the coronavirus.",
+        "label": "fake",
+        "cos": 0.750941406990763
+      },
+      {
+        "title": "First Spread of Coronavirus in U.S. Confirmed",
+        "label": "real",
+        "cos": 0.7508251488317672
+      }
+    ],
+    [
+      {
+        "title": "Hand-Washing to Prevent Coronavirus Spread",
+        "label": "real",
+        "cos": 0.7160937637152944
+      },
+      {
+        "title": "Help Stop the Spread of COVID-19 in Children",
+        "label": "real",
+        "cos": 0.643344375310678
+      },
+      {
+        "title": "Use of Cloth Face Coverings to Help Slow the Spread of COVID-19",
+        "label": "real",
+        "cos": 0.641913940036713
+      }
+    ],
+    [
+      {
+        "title": "Photo shows coffins from coronavirus outbreak in Italy.",
+        "label": "fake",
+        "cos": 0.6885780771843826
+      },
+      {
+        "title": "Doctors Look to Existing Drugs in Coronavirus Fight",
+        "label": "real",
+        "cos": 0.6492034644750911
+      },
+      {
+        "title": "Coronaviruses and heart health",
+        "label": "real",
+        "cos": 0.6457510979316711
+      }
+    ],
+    [
+      {
+        "title": "7 Tips to Keep Your Skin Healthy While Washing Your Hands Often",
+        "label": "real",
+        "cos": 0.6207422384175785
+      },
+      {
+        "title": "Hand-Washing to Prevent Coronavirus Spread",
+        "label": "real",
+        "cos": 0.6120771923244903
+      },
+      {
+        "title": "Research proves that commercial mouthwash could protect against COVID-19.",
+        "label": "fake",
+        "cos": 0.5741296429932545
+      }
+    ]
+  ],
+  "n_claims_fake": 3,
+  "claims_max_abs_logit_diff": 3.085972755556554e-06,
+  "runtime_sec": 256.7
+}

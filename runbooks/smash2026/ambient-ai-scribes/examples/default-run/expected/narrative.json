@@ -1,0 +1,37 @@
+{
+  "headline": "Generic drafts required 78% word-level edits; at the paper's 0.94% median encounter usage, promised 4,550 h/month collapses to 6.6 h — adoption, not note quality, drives the gap.",
+  "idea": [
+    "Ambient AI scribes are marketed as reducing clinician documentation time — capturing the encounter and drafting the note so the clinician can focus on the patient rather than the keyboard.",
+    "The paper's NASSS-guided mixed-methods interim evaluation found heterogeneous adoption (21 of 43 enrolled used it; median 0.94% of encounters), 88% of survey respondents reporting frequent editing, and EHR data showing longer notes and more editing time rather than less.",
+    "Its lesson: the value of an ambient scribe depends less on its availability and more on effective workflow integration, specialty-specific customization, and removing structural barriers — the scribe being switched on is not enough."
+  ],
+  "findings": [
+    "Generic SOAP drafts needed 78% of their words changed before signing (omissions: 2.3 per note, format errors: 0.8 per note); specialty-customized drafts cut that to 27% (omissions: 0.7, format: 0.3). This mirrors the paper's specialty-mismatch barrier (n=4 respondents) and its 88% reporting frequent editing. LLM judge called 33% of generic drafts as needing substantial editing, vs 17% of customized drafts. All assumptions are stated: synthetic transcripts, LLM scribe, LLM specialist judge.",
+    "At assumed baseline note time of 6 min, generic drafts saved 1.5 min per note (5 of 6 notes faster than writing from scratch); customized drafts saved 3.3 min (all 6 notes faster). The paper's 41% perceiving overall time savings and 29% perceiving reduced documentation time may reflect that low usage and editing overhead eroded per-note gains — its EHR data explicitly showed longer notes and greater editing time, consistent with the 78% edit burden measured here on generic drafts.",
+    "Pilot reality under the paper's adoption funnel: 6.6 h/month saved (90% MC interval 2.7–11.5 h), against the promise scenario of 4,550 h/month. The ladder shows which lever moves it most: specialty customization lifts it to 14.2 h; removing consent/trainee barriers to 19.7 h; activating every enrollee to 40.3 h; full adoption with measured per-note minutes would reach 2,178 h. Adoption dominates the gap — improving notes from 78% to 27% edit rate adds only 7.6 h/month at current usage.",
+    "Under the assumed patient-decline rate (10%) and trainee share (20%), 28 percentage points of unused encounters are explained by these two listed barriers. The remaining 71 percentage points reflect clinician choice, inconvenient workflow, or Epic integration issues — the paper's other top barrier (n=5 Epic integration, n=4 inconvenient workflow)."
+  ],
+  "try_next": [
+    {
+      "label": "Fast note-writer",
+      "why": "A clinician who writes notes in 3 minutes and types slowly will likely see the scribe add net time, consistent with the paper's EHR finding of more time documenting. Edit overhead exceeds the baseline.",
+      "params": {"baseline_doc_minutes": 3, "edit_sec_per_word": 2.5}
+    },
+    {
+      "label": "Psychiatry only",
+      "why": "The paper identifies psychiatry as where specialty-mismatch and personal-style barriers were most prominent. Isolating these two encounters should show the largest generic-vs-custom gap and highest format error counts.",
+      "params": {"specialty": "psychiatry"}
+    },
+    {
+      "label": "Academic clinic with heavy trainee load",
+      "why": "Increasing the trainee share to 50% (academic teaching clinic) reduces eligible encounters substantially, shrinking hours at every rung of the ladder and making the barrier-removal lever especially visible.",
+      "params": {"trainee_share": 0.5}
+    }
+  ],
+  "caveats": [
+    "Synthetic transcripts with an LLM scribe and an LLM 'specialist' reviewer — not Dragon Copilot, not real clinicians. The two share a model family, which may understate disagreement: a real specialist's personal style and specialty standards may diverge more sharply from a generic LLM draft than one LLM diverges from another.",
+    "PDQI-9-style scores and 'substantial editing needed' calls are LLM judge outputs, not the paper's planned expert content analysis. The judge may be more lenient than a board-certified specialist rating their own note.",
+    "Minutes and hours derive from this runbook's stated assumptions (6-min baseline, 1.5 s/word typing, 0.5-min consent/transfer overhead), not from measured Dragon Copilot use; the paper itself did not report per-note time savings in minutes.",
+    "The paper's survey percentages (88%, 41%, 29%, etc.) are perceptions from 17 mid-pilot respondents at one interim point and are not directly comparable to these modelled fractions derived from the runbook's assumptions."
+  ]
+}

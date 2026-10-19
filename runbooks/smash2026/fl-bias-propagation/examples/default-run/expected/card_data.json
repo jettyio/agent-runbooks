@@ -1,0 +1,97 @@
+{
+  "paper": {
+    "num": 16,
+    "title": "Tracing Bias Propagation Across Subgroups in Federated Learning",
+    "authors": "Tirathraj Ramburn, Afaf Ta\u00efk, Farnoosh Ghadiri",
+    "url": "https://drive.google.com/file/d/1aA6Fac9mYYJa1VoylGh4o3GgjQjDeobk/view?usp=sharing",
+    "affiliation": ""
+  },
+  "inputs": {
+    "source error": "30% of A1-B3 positives \u2192 0 at client 0",
+    "clients": 4,
+    "heterogeneity h": 0.0,
+    "\u03b2 (1,Z,R,W1,W2)": "-1,0.85,0.90,-0.70,0.55",
+    "A\u2192R shift": 0.25,
+    "seeds": 20,
+    "analysis": "IID (8 groups, recipients averaged)"
+  },
+  "tiles": [
+    {
+      "label": "Rank agreement (Spearman)",
+      "value": "0.980",
+      "sub": "95% CI [0.974, 0.986] over 20 seeds",
+      "tone": "good"
+    },
+    {
+      "label": "Size agreement (slope c)",
+      "value": "1.002",
+      "sub": "1.0 = measured as large as predicted; CI [0.982, 1.023]",
+      "tone": "good"
+    },
+    {
+      "label": "Most affected recipient",
+      "value": "A1-B4",
+      "sub": "17% more than target A1-B3 (rank 2)",
+      "tone": "warn"
+    },
+    {
+      "label": "Labels changed",
+      "value": "45.5",
+      "sub": "0.379% of 12,000 federation labels; every recipient mean decreased",
+      "tone": "accent"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_pred_vs_meas.png",
+      "title": "Can we predict who gets hurt without retraining?",
+      "caption": "Each point is a recipient subgroup: x = closed-form prediction \u03c1\u00b7\u03bc\u207a\u1d40v_T, y = measured mean logit decrease on unchanged positive test cases after actually retraining (mean and 95% range over seeds)."
+    },
+    {
+      "path": "fig_audit_matrix.png",
+      "title": "Audit without retraining: every possible source error",
+      "caption": "Rows = which subgroup's positives are mislabelled at client 0; columns = recipient subgroups elsewhere. Boxed = most-hit recipient; dotted = the same-named group. Off-diagonal boxes are the paper's warning."
+    },
+    {
+      "path": "fig_sweep_vector.png",
+      "title": "Linearity in \u03c1, and the direction of propagation",
+      "caption": "Left: the measured effect grows \u2248 proportionally with the flipped fraction, as Eq. 3 predicts. Right: the propagation vector; recipients whose positive-case means project further along it lose more."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "Spearman (IID, 30%)",
+      "paper": "A1-B3: 0.975 [0.961, 0.987] \u00b7 A0-B2: 0.968 [0.955, 0.980]",
+      "yours": "0.980 [0.974, 0.986]",
+      "note": "target A1-B3"
+    },
+    {
+      "metric": "Slope c",
+      "paper": "A1-B3: 1.014 \u00b7 A0-B2: 1.016 (h=1: 1.009 / 1.007)",
+      "yours": "1.002",
+      "note": ""
+    },
+    {
+      "metric": "Most affected vs target",
+      "paper": "A1-B3 \u2192 A1-B4 hit 18.2% more \u00b7 A0-B2 \u2192 A1-B1 hit 34.9% more (target ranks 4th)",
+      "yours": "A1-B4, 17.1% more (target rank 2)",
+      "note": ""
+    },
+    {
+      "metric": "Labels changed (30%)",
+      "paper": "A1-B3: 45.25 (0.377%) \u00b7 A0-B2: 27.20 (0.227%)",
+      "yours": "45.50 (0.379%)",
+      "note": ""
+    },
+    {
+      "metric": "Sources whose biggest victim is another group",
+      "paper": "\u2014  (new: audit matrix)",
+      "yours": "5 of 8",
+      "note": "predicted, no retraining"
+    }
+  ],
+  "runbook": {
+    "name": "smash-16-fl-bias-propagation",
+    "url": ""
+  }
+}

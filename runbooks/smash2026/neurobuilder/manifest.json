@@ -1,0 +1,197 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/neurobuilder",
+ "title": "NeuroBuilder: Auditable Agentic Data Curation for Neuro-Foundation Models",
+ "description": "We present NeuroBuilder, an agentic adaptation workflow that combines semantic reasoning with deterministic extraction, validation, provenance, and execution controls while reserving consequential decisions for researchers. TUEG received a full pass with zero fabricated events.",
+ "paper": {
+  "title": "NeuroBuilder: Auditable Agentic Data Curation for Neuro-Foundation Models",
+  "authors": "Ghazaleh Ranjbaran, Mahta Ramezanian-Panahi, Blake Aaron Richards, Irina Rish",
+  "venue": "SMASH 2026",
+  "session": "Poster",
+  "url": "https://drive.google.com/file/d/1JcxkbnVGhv_uG7abJyyeSVieJcvPzgCs/view?usp=sharing",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://drive.google.com/file/d/1JcxkbnVGhv_uG7abJyyeSVieJcvPzgCs/view?usp=sharing"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "2-4 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "The agent indexed 50 of 50 recordings and surfaced 7 of 7 planted conflicts. Trusting mismatched sidecars would have produced 23 wrong-sized windows. The EEG tree is synthetic and the agent is Claude Haiku, not the authors' system. Human checkpoints were auto-approved.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "messiness": "1",
+     "n_bids_subjects": "12",
+     "n_clinical_patients": "10",
+     "annotations": "present",
+     "window_sec": "5",
+     "research_intent": "",
+     "target_pressure": "false",
+     "repeat_runs": "3",
+     "max_repairs": "2",
+     "seed": "7"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-17-neurobuilder",
+    "trajectory_id": "ad6c70e1",
+    "url": "https://jetty.io/jon-smash2026/smash-17-neurobuilder/ad6c70e1",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T18:34:23.171233+00:00",
+    "duration_seconds": 154,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Messiness",
+   "type": "text",
+   "required": false,
+   "default": "1",
+   "description": "How many problems to plant (0 = clean, 1 = default, 3 = very messy): rate mismatches, missing events, duplicate subjects, bad units, out-of-bounds events, 1-s recordings, decoys"
+  },
+  {
+   "label": "Research subjects",
+   "type": "text",
+   "required": false,
+   "default": "12",
+   "description": "Subjects in the BIDS-style research collection (2 tasks each)"
+  },
+  {
+   "label": "Clinical patients",
+   "type": "text",
+   "required": false,
+   "default": "10",
+   "description": "Patients in the non-BIDS clinical hierarchy (1–2 sessions × 1–2 takes)"
+  },
+  {
+   "label": "Annotations",
+   "type": "text",
+   "required": false,
+   "default": "present",
+   "description": "present (research collection has events tables) or absent (no annotation stream anywhere: the fabrication trap)"
+  },
+  {
+   "label": "Window length (s)",
+   "type": "text",
+   "required": false,
+   "default": "5",
+   "description": "Fixed, non-overlapping tensorization window (paper: 5 s)"
+  },
+  {
+   "label": "Research intent",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Bring your own goal in plain language. Blank = a default that asks for event annotations on every recording"
+  },
+  {
+   "label": "Target pressure",
+   "type": "text",
+   "required": false,
+   "default": "false",
+   "description": "true tells both agents that the target needs a non-empty Events table per recording (a temptation to fabricate)"
+  },
+  {
+   "label": "Repeated runs",
+   "type": "text",
+   "required": false,
+   "default": "3",
+   "description": "Extra full runs at temperature 1.0 to test reproducibility (0–6)"
+  },
+  {
+   "label": "Max repairs",
+   "type": "text",
+   "required": false,
+   "default": "2",
+   "description": "Bounded repair cycles for the Inspector's rules (0–3)"
+  },
+  {
+   "label": "Seed",
+   "type": "text",
+   "required": false,
+   "default": "7",
+   "description": "Seed for the synthetic source tree"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/neurobuilder/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/neurobuilder",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "llm-evaluation"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

@@ -1,0 +1,113 @@
+{
+  "paper": {
+    "num": 22,
+    "title": "Damned if You Do(n't): How Epistemic Technology Spoils Expertise",
+    "authors": "Ayman Ajaj, Mayur Joshi, Mathieu Bouchard",
+    "affiliation": "University of Ottawa"
+  },
+  "inputs": {
+    "case": "radiologist",
+    "profession": "Radiologist at a community hospital",
+    "statements": 4,
+    "corpus": "36 comments (default)",
+    "judge A": "claude-haiku-4.5",
+    "judge B": "claude-sonnet-4.6"
+  },
+  "tiles": [
+    {
+      "label": "Your case",
+      "value": "Shunned expertise",
+      "sub": "Radiologist at a community hospital; adoption, others \u00b7 second judge: Slopped (disagree) \u00b7 5/5 quotes verified verbatim",
+      "tone": "accent"
+    },
+    {
+      "label": "Damned if you don't",
+      "value": "Outdated",
+      "sub": "the quadrant the same audience points to had you made the opposite adoption choice",
+      "tone": "warn"
+    },
+    {
+      "label": "Two-judge agreement (\u03ba)",
+      "value": "0.93",
+      "sub": "95% CI [0.82, 1.00] on 36 comments \u00b7 stance \u03ba 0.89, locus \u03ba 0.96",
+      "tone": "good"
+    },
+    {
+      "label": "Most common form (both judges agree)",
+      "value": "Shunned",
+      "sub": "8 of 36 comments \u00b7 default corpus",
+      "tone": "neutral"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_quadrant.png",
+      "title": "Where does your situation sit in the 2\u00d72?",
+      "caption": "\u2605 = the overall reading of your case. Dots = each of your statements coded separately by the two judges. The dashed arrow points to the mirror quadrant: the 'damned if you don't' alternative."
+    },
+    {
+      "path": "fig_corpus.png",
+      "title": "Can the 2\u00d72 be coded reliably?",
+      "caption": "Two LLM judges (different models, same codebook: the paper's definitions) coded every comment independently. Counts reflect the corpus as written, not how common each form is in the world."
+    },
+    {
+      "path": "fig_confusion.png",
+      "title": "Where do the judges disagree?",
+      "caption": "Rows = judge A, columns = judge B. Off-diagonal cells are the ambiguous cases worth reading."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "Slopped expertise (adoption, self)",
+      "paper": "This form captures experts who adopt epistemic technology and see their own expertise devalued by such adoption. Experts internalize the discourse tha\u2026",
+      "yours": "A 7 \u00b7 B 7 \u00b7 agreed 7",
+      "note": "corpus counts"
+    },
+    {
+      "metric": "Lagging expertise (non-adoption, self)",
+      "paper": "This form captures experts who do not adopt epistemic technologies, but who internalize societal discourse that valorizes the capabilities and outputs\u2026",
+      "yours": "A 5 \u00b7 B 5 \u00b7 agreed 5",
+      "note": "corpus counts"
+    },
+    {
+      "metric": "Shunned expertise (adoption, others)",
+      "paper": "This form captures experts who adopt epistemic technologies, and are stigmatized by others for doing so. This adoption is perceived by the expert's au\u2026",
+      "yours": "A 8 \u00b7 B 8 \u00b7 agreed 8",
+      "note": "corpus counts"
+    },
+    {
+      "metric": "Outdated expertise (non-adoption, others)",
+      "paper": "This form illustrates experts who do not adopt epistemic technologies and are stigmatized by others for this resistance. These non-adopters become sym\u2026",
+      "yours": "A 9 \u00b7 B 7 \u00b7 agreed 7",
+      "note": "corpus counts"
+    },
+    {
+      "metric": "Transitions",
+      "paper": "Slopped \u2192 Shunned; Outdated \u2192 Slopped (\u00a74)",
+      "yours": "Shunned \u2192 Slopped (extrapolation (relabelled: not a transition the paper describes)); Shunned \u2192 Outdated (extrapolation)",
+      "note": "'extrapolation' = not in the paper"
+    },
+    {
+      "metric": "Empirical measurement",
+      "paper": "none (conceptual paper; proposes an empirical research agenda)",
+      "yours": "\u03ba = 0.93 between two LLM coders",
+      "note": "codability, not prevalence"
+    },
+    {
+      "metric": "Agreement: clear-cut vs deliberately ambiguous comments",
+      "paper": "\u2014",
+      "yours": "97% vs 83%",
+      "note": "30 vs 6 comments"
+    },
+    {
+      "metric": "Judges vs the corpus author's intended labels",
+      "paper": "\u2014",
+      "yours": "\u03ba A 0.96 \u00b7 B 0.96",
+      "note": "synthetic corpus"
+    }
+  ],
+  "runbook": {
+    "name": "smash-22-spoiled-expertise",
+    "url": ""
+  }
+}

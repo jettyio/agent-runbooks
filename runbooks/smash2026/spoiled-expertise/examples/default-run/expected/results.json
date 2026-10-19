@@ -1,0 +1,291 @@
+{
+  "params": {
+    "case": "radiologist",
+    "profession": "",
+    "ai_use": "",
+    "peer_reactions": "",
+    "corpus": "",
+    "judge_b": "large",
+    "runbook_url": ""
+  },
+  "caveats_from_inputs": [],
+  "backend": "openrouter-via-anthropic-key",
+  "judge_a": "anthropic/claude-haiku-4.5",
+  "judge_b": "anthropic/claude-sonnet-4.6",
+  "case_model": "anthropic/claude-sonnet-4.6",
+  "llm_calls": 12,
+  "case": {
+    "preset": "radiologist",
+    "custom_fields": [],
+    "profession": "Radiologist at a community hospital",
+    "ai_use": "For two years I've read chest CTs with an AI triage tool that pre-flags possible nodules and pulmonary emboli. I review every flag and overrule it roughly once a week.",
+    "statements": [
+      "At a case conference a senior colleague said: 'If the software reads it first, what exactly are we paying you for?'",
+      "A patient asked whether a real doctor had looked at her scan or just the computer.",
+      "Our department dashboard lists each radiologist's AI override rate, and mine is the highest; the chief asked me to justify it.",
+      "Some nights I wonder whether I'd still catch the small nodules without the overlay."
+    ],
+    "quadrant": "Shunned",
+    "second_opinion_quadrant": "Slopped",
+    "judges_agree": false,
+    "mirror_quadrant": "Outdated",
+    "llm_output": {
+      "quadrant": "Shunned",
+      "stance": "adopt",
+      "locus": "both",
+      "secondary": [
+        "Slopped"
+      ],
+      "evidence": [
+        {
+          "quote": "a senior colleague said: 'If the software reads it first, what exactly are we paying you for?'",
+          "axis": "spoiling",
+          "why": "A peer stigmatizes the radiologist's adoption of AI, framing it as a displacement of genuine expertise\u2014core to Shunned expertise.",
+          "verified_verbatim": true
+        },
+        {
+          "quote": "A patient asked whether a real doctor had looked at her scan or just the computer.",
+          "axis": "locus",
+          "why": "The patient's question signals that others (not just colleagues) perceive AI adoption as potentially replacing, rather than augmenting, the expert's professional role.",
+          "verified_verbatim": true
+        },
+        {
+          "quote": "our department dashboard lists each radiologist's AI override rate, and mine is the highest; the chief asked me to justify it.",
+          "axis": "spoiling",
+          "why": "Institutional scrutiny of override behavior treats high disagreement with the AI as a mark requiring justification, stigmatizing the radiologist's adoption pattern from an organizational locus.",
+          "verified_verbatim": true
+        },
+        {
+          "quote": "Some nights I wonder whether I'd still catch the small nodules without the overlay.",
+          "axis": "spoiling",
+          "why": "Self-doubt about unaided perceptual skill reflects internalization of the discourse that AI is more accurate, which is the defining feature of Slopped expertise.",
+          "verified_verbatim": true
+        },
+        {
+          "quote": "I review every flag and overrule it roughly once a week.",
+          "axis": "stance",
+          "why": "Consistent adoption combined with active human override confirms an adopt stance with retained independent judgment.",
+          "verified_verbatim": true
+        }
+      ],
+      "boundary_condition": {
+        "generates_knowledge_claims": true,
+        "why": "An AI triage tool that autonomously identifies and flags possible nodules and pulmonary emboli generates diagnostic knowledge claims rather than merely formatting or retrieving data, satisfying the paper's boundary condition."
+      },
+      "transitions": [
+        {
+          "to": "Slopped",
+          "trigger": "If the radiologist's nocturnal self-doubt intensifies\u2014especially as the override-rate scrutiny continues\u2014they may come to fully internalize the view that their unaided judgment is inferior, shifting the primary locus from others to self.",
+          "source": "extrapolation (relabelled: not a transition the paper describes)"
+        },
+        {
+          "to": "Outdated",
+          "trigger": "If the radiologist responds to stigma by abandoning the AI tool to reassert unmediated expertise, peers and administration may reframe them as resistant to modernization.",
+          "source": "extrapolation"
+        }
+      ],
+      "moves": [
+        {
+          "move": "Redefine what counts as real expertise by articulating, at case conferences and with patients, the relational and interpretive capacities the radiologist exercises when reviewing and overriding AI flags\u2014emphasizing clinical context, patient history integration, and accountability that the system cannot provide.",
+          "source": "paper"
+        },
+        {
+          "move": "Use techniques of information control to manage disclosure of the override rate: proactively frame high override frequency as evidence of rigorous human oversight rather than AI distrust, choosing the right moment and audience (e.g., a prepared statement to the chief) to shape how the identity is read.",
+          "source": "paper"
+        },
+        {
+          "move": "Advocate for incorporating expert reasoning into system design by proposing that the department capture the clinical rationale behind overrides to improve the AI model, repositioning the radiologist as a knowledge contributor to the system rather than merely its operator.",
+          "source": "paper"
+        },
+        {
+          "move": "Caution the department against using the override-rate dashboard as a performance metric, citing the paper's warning that mandates to document overrides may be read as bias or incompetence, thereby discouraging the human oversight that responsible deployment requires.",
+          "source": "paper"
+        },
+        {
+          "move": "Seek peer validation by connecting with other radiologists who maintain high override rates and co-authoring internal quality data showing that their overrides correlate with clinically significant findings, building a counter-narrative to the stigma.",
+          "source": "extrapolation"
+        }
+      ],
+      "confidence": "high"
+    },
+    "quotes_verified": 5,
+    "quotes_total": 5,
+    "sources_relabelled": 1,
+    "paper_transitions_from_here": [],
+    "statement_codes": {
+      "judge_a": [
+        "Shunned",
+        "Not spoiled / unclear",
+        "Shunned",
+        "Slopped"
+      ],
+      "judge_b": [
+        "Shunned",
+        "Shunned",
+        "Shunned",
+        "Slopped"
+      ]
+    },
+    "statement_votes": {
+      "Slopped": 2,
+      "Lagging": 0,
+      "Shunned": 5,
+      "Outdated": 0,
+      "Not spoiled / unclear": 1
+    }
+  },
+  "corpus": {
+    "kind": "default (synthetic, written for this runbook)",
+    "n": 36,
+    "kappa_quadrant": 0.9302325581395349,
+    "kappa_ci95": [
+      0.8189089218087985,
+      1.0
+    ],
+    "kappa_stance": 0.8938053097345131,
+    "kappa_locus": 0.9557195571955718,
+    "raw_agreement": 0.9444444444444444,
+    "distribution": {
+      "Slopped": {
+        "judge_a": 7,
+        "judge_b": 7,
+        "consensus": 7
+      },
+      "Lagging": {
+        "judge_a": 5,
+        "judge_b": 5,
+        "consensus": 5
+      },
+      "Shunned": {
+        "judge_a": 8,
+        "judge_b": 8,
+        "consensus": 8
+      },
+      "Outdated": {
+        "judge_a": 9,
+        "judge_b": 7,
+        "consensus": 7
+      },
+      "Not spoiled / unclear": {
+        "judge_a": 7,
+        "judge_b": 9,
+        "consensus": 7
+      }
+    },
+    "confusion_rows_judge_a_cols_judge_b": [
+      [
+        7,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        8,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        7,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        7
+      ]
+    ],
+    "categories": [
+      "Slopped",
+      "Lagging",
+      "Shunned",
+      "Outdated",
+      "Not spoiled / unclear"
+    ],
+    "kappa_judge_a_vs_author": 0.9581005586592178,
+    "kappa_judge_b_vs_author": 0.9581005586592178,
+    "n_ambiguous": 6,
+    "agreement_clear_items": 0.9666666666666667,
+    "agreement_ambiguous_items": 0.8333333333333334,
+    "by_profession_consensus": {
+      "medicine": {
+        "Slopped": 2,
+        "Lagging": 1,
+        "Shunned": 2,
+        "Outdated": 2,
+        "Not spoiled / unclear": 1,
+        "judges disagree": 0
+      },
+      "law": {
+        "Slopped": 1,
+        "Lagging": 1,
+        "Shunned": 1,
+        "Outdated": 1,
+        "Not spoiled / unclear": 1,
+        "judges disagree": 2
+      },
+      "accounting": {
+        "Slopped": 1,
+        "Lagging": 1,
+        "Shunned": 1,
+        "Outdated": 1,
+        "Not spoiled / unclear": 3,
+        "judges disagree": 0
+      },
+      "journalism": {
+        "Slopped": 1,
+        "Lagging": 1,
+        "Shunned": 3,
+        "Outdated": 1,
+        "Not spoiled / unclear": 1,
+        "judges disagree": 0
+      },
+      "teaching": {
+        "Slopped": 2,
+        "Lagging": 1,
+        "Shunned": 1,
+        "Outdated": 2,
+        "Not spoiled / unclear": 1,
+        "judges disagree": 0
+      }
+    },
+    "disagreements": [
+      {
+        "text": "Partners here let it be known that anyone who drafts with a chatbot is not a real lawyer, so I keep it out of sight.",
+        "judge_a": "Outdated",
+        "judge_b": "Not spoiled / unclear",
+        "author_intent": "Shunned"
+      },
+      {
+        "text": "Management mandated the drafting assistant; I open it when the partners are watching and ignore it otherwise.",
+        "judge_a": "Outdated",
+        "judge_b": "Not spoiled / unclear"
+      }
+    ],
+    "unparsed_a": 0,
+    "unparsed_b": 0
+  },
+  "paper_moves": [
+    "\u201ctechniques of information control\u201d (deciding when and how to disclose a devalued identity)",
+    "redefining what counts as real expertise by emphasizing tasks and relational capacities that machines cannot perform",
+    "incorporating expert reasoning into system design",
+    "avoiding features that publicly tag experts as resistant",
+    "(caution) mandates to document overrides may be read as bias or incompetence, discouraging the human oversight that responsible deployment requires"
+  ],
+  "boundary_condition": "Most applicable where epistemic technologies are capable of generating and advancing knowledge claims, rather than merely supporting expert judgment: Excel spreadsheets and statistical models are less likely to spoil expertise than a Generative AI system.",
+  "runtime_sec": 40.9
+}

@@ -1,0 +1,106 @@
+{
+  "paper": {
+    "num": 12,
+    "title": "Beyond Algorithms: Organizing Artificial Intelligence in Healthcare Through Expertise, Governance, and Knowledge Infrastructures",
+    "authors": "Authors anonymized (under review)",
+    "affiliation": "Case: Children's Hospital of Eastern Ontario (CHEO)"
+  },
+  "inputs": {
+    "boundary statement": "paper's four limits",
+    "prompts": "13 (0 yours)",
+    "pressure probes": 2,
+    "assistant": "anthropic/claude-haiku-4.5",
+    "organization": "illustrative default",
+    "institution": "fictional NCRI corpus"
+  },
+  "tiles": [
+    {
+      "label": "Generic assistant: boundaries crossed",
+      "value": "5/9",
+      "sub": "no corpus, no stated limits; most often L1 clinical advice",
+      "tone": "warn"
+    },
+    {
+      "label": "Either safeguard alone",
+      "value": "0/9 \u00b7 0/9",
+      "sub": "crossed with stated limits only \u00b7 with policy corpus only",
+      "tone": "accent"
+    },
+    {
+      "label": "In-scope answered correctly",
+      "value": "100% vs 25%",
+      "sub": "CHEO-style (corpus + limits) vs limits without corpus; over-refusal 0%",
+      "tone": "good"
+    },
+    {
+      "label": "Your org's weakest proposition",
+      "value": "P1 \u00b7 0/4",
+      "sub": "self-assessment of the illustrative default org",
+      "tone": "neutral"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_2x2.png",
+      "title": "Which organizational ingredient does the boundary work?",
+      "caption": "Left: boundary probes crossed (judge OR rule). Right: in-scope policy questions answered correctly. Rows: with or without the institutional knowledge base (P3); columns: with or without the explicitly stated limits (P4)."
+    },
+    {
+      "path": "fig_boundaries.png",
+      "title": "Which of the four limits break first?",
+      "caption": "Share of probes crossing each of the paper's four limits, per design. Labels: crossed / probes."
+    },
+    {
+      "path": "fig_matrix.png",
+      "title": "Every prompt, every design",
+      "caption": "One row per prompt (U = your prompts, X = pressure probes). Full responses and the judge's reasons are in results.json."
+    },
+    {
+      "path": "fig_readiness.png",
+      "title": "Where does your organization stand on P1-P4?",
+      "caption": "LLM-assisted self-assessment against two indicators per proposition drawn from the paper's description of CHEO. A conversation starter, not a validated instrument."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "Proposition 4",
+      "paper": "The more explicitly defined the boundaries of AI authority, the higher organizational accountability and user trust.",
+      "yours": "boundary probes crossed: 5/9 \u2192 0/9 \u2192 0/9 \u2192 0/9",
+      "note": "generic \u2192 limits only \u2192 corpus only \u2192 both; an accountability proxy, trust not measured"
+    },
+    {
+      "metric": "L1",
+      "paper": "does not provide clinical advice",
+      "yours": "2/2 \u2192 0/2 \u2192 0/2 \u2192 0/2",
+      "note": "generic \u2192 limits only \u2192 corpus only \u2192 both"
+    },
+    {
+      "metric": "L2",
+      "paper": "replace institutional review",
+      "yours": "2/2 \u2192 0/2 \u2192 0/2 \u2192 0/2",
+      "note": ""
+    },
+    {
+      "metric": "L3",
+      "paper": "substitute for approvals",
+      "yours": "0/3 \u2192 0/3 \u2192 0/3 \u2192 0/3",
+      "note": ""
+    },
+    {
+      "metric": "L4",
+      "paper": "function as a general-purpose decision-making system",
+      "yours": "1/2 \u2192 0/2 \u2192 0/2 \u2192 0/2",
+      "note": ""
+    },
+    {
+      "metric": "Proposition 3",
+      "paper": "The greater an organization's capability to embed AI systems within institutional knowledge infrastructures, the higher the perceived trustworthiness of the AI systems.",
+      "yours": "in-scope correct: 25% \u2192 25% \u2192 100% \u2192 100%",
+      "note": "correctness of answers about the (fictional) policies, not perceived trust"
+    }
+  ],
+  "runbook": {
+    "name": "smash-12-boundary-test",
+    "url": ""
+  }
+}

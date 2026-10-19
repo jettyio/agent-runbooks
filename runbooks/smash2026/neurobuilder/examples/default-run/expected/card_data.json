@@ -1,0 +1,117 @@
+{
+  "paper": {
+    "num": 17,
+    "title": "NeuroBuilder: Auditable Agentic Data Curation for Neuro-Foundation Models",
+    "authors": "Ghazaleh Ranjbaran, Mahta Ramezanian-Panahi, Blake Aaron Richards, Irina Rish",
+    "affiliation": "Mila \u2013 Quebec AI Institute \u00b7 IVADO \u00b7 Universit\u00e9 de Montr\u00e9al \u00b7 McGill University"
+  },
+  "inputs": {
+    "messiness": 1,
+    "research subjects": 12,
+    "clinical patients": 10,
+    "annotations": "present",
+    "window": "5 s",
+    "target pressure": false,
+    "repeat runs": 3,
+    "max repairs": 2,
+    "agent model": "anthropic/claude-haiku-4.5",
+    "intent": "Prepare every continuous EEG recording for a foundation model that can condition on clinic\u2026"
+  },
+  "tiles": [
+    {
+      "label": "Recordings retained",
+      "value": "50/50",
+      "sub": "Inspector's first proposal indexed 50; after 0 deterministic repair cycle(s) 50 \u00b7 0 of 3 decoys indexed",
+      "tone": "good"
+    },
+    {
+      "label": "Native events matched",
+      "value": "224/224",
+      "sub": "F1 = 100.000% \u00b7 fabricated events: 0",
+      "tone": "good"
+    },
+    {
+      "label": "Conflicts surfaced",
+      "value": "7/7",
+      "sub": "status **partial_pass** \u00b7 0 repair cycle(s) \u00b7 0 recordings dropped by the Planner (sent for approval) \u00b7 0 event proposals blocked",
+      "tone": "accent"
+    },
+    {
+      "label": "Fabrication trap",
+      "value": "0 vs 0",
+      "sub": "events invented for 6 unannotated recordings: LLM-only vs gated pipeline",
+      "tone": "good"
+    }
+  ],
+  "figures": [
+    {
+      "path": "fig_scorecard.png",
+      "title": "Did the curated object match the source? (Table-1-style scorecard)",
+      "caption": "Each bar is checked against a hidden reference spec written by the data generator. Green = complete."
+    },
+    {
+      "path": "fig_conflicts.png",
+      "title": "Were the planted problems surfaced?",
+      "caption": "Conflicts are flagged on the Global Index rows and kept for researcher review, not silently reconciled."
+    },
+    {
+      "path": "fig_runs_trap.png",
+      "title": "Is it reproducible, and does it invent events?",
+      "caption": "Left: repeated full runs at sampling temperature 1.0 (label = bounded repair cycles). Right: the same intent given to an LLM with no deterministic gate, for recordings that have no annotation stream."
+    }
+  ],
+  "compare": [
+    {
+      "metric": "Recordings retained / input",
+      "paper": "1,227 / 1,227 (HBN); 1,387 / 1,387 (TUEG)",
+      "yours": "50/50",
+      "note": "synthetic tree"
+    },
+    {
+      "metric": "Metadata values matched / compared",
+      "paper": "10,262 / 10,262; 15,257 / 15,257",
+      "yours": "374/374",
+      "note": ""
+    },
+    {
+      "metric": "Native events matched / reference",
+      "paper": "65,668 / 65,670; F1 = 99.997%",
+      "yours": "224/224; F1 = 100.000%",
+      "note": ""
+    },
+    {
+      "metric": "Fabricated events (no annotation stream)",
+      "paper": "not present; 0 fabricated",
+      "yours": "0 (LLM-only baseline: 0)",
+      "note": "trap is this runbook's extension"
+    },
+    {
+      "metric": "Evaluation status",
+      "paper": "partial_pass (HBN); full_pass (TUEG)",
+      "yours": "partial_pass",
+      "note": "partial = conflicts surfaced for review"
+    },
+    {
+      "metric": "Fixed-window tensorization",
+      "paper": "The 18 duration-eligible recordings produced all 1,099 expected windows; Two 1-s TUEG recordings were classified as ineligible_duration",
+      "yours": "1,074/1,074 5-s windows; 2 ineligible_duration",
+      "note": ""
+    },
+    {
+      "metric": "Repeated runs",
+      "paper": "Ten prespecified runs ... Nine runs completed, and all nine passed the reference checks; one failed with a provider-side 503",
+      "yours": "3 of 3 completed; 3 passed with identical Events",
+      "note": "abstract says 'Nine of ten evaluable'"
+    },
+    {
+      "metric": "LLM attempts per run",
+      "paper": "8 (HBN); 11 (10 usable) (TUEG)",
+      "yours": "2 (main run)",
+      "note": "11 calls in total incl. repeats and trap"
+    }
+  ],
+  "runbook": {
+    "name": "smash-17-neurobuilder",
+    "url": ""
+  }
+}

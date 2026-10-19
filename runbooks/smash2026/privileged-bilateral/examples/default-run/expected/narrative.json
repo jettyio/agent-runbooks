@@ -1,0 +1,33 @@
+{
+  "headline": "Across 10 cohorts, the one-eye student's AUROC gained +0.024 on average (8 of 10 improved), whereas this card's split shows -0.010.",
+  "idea": [
+    "A model trained on both eyes can teach a model that sees only one eye.",
+    "The student copies the teacher's internal representation, not only its answers.",
+    "At deployment only one eye image is needed."
+  ],
+  "findings": [
+    "On the detailed split (left eye, AMD preset) AUROC went from 0.711 to 0.702, difference -0.010 [95% CI -0.033, +0.012]. The two-eye teacher reached 0.729. The paper reports AMD left 0.931 (0.846–0.984) → 0.966 (0.936–0.987); this split does not reproduce that gain. ΔCKA +0.118; linear probe 0.718 → 0.706.",
+    "Across 10 cohorts the mean Δ AUROC is +0.024 (SD 0.021), positive in 8 of 10. Across cohorts Δ precision runs from -0.113 to +0.158 and Δ FPR from -0.071 to +0.070, so the sign of the threshold trade-off depends on the split. In the sweep, Δ AUROC peaks at +0.049 near inter-eye correlation 0.4 (α 0.1) and is +0.014 at 0.95 (α 0.1)."
+  ],
+  "try_next": [
+    {
+      "label": "Eyes nearly identical",
+      "why": "The sweep shows the gain falling to +0.014 at inter-eye correlation 0.95; this checks whether a second eye that agrees with the first adds less.",
+      "params": {"inter_eye_corr": 0.95}
+    },
+    {
+      "label": "Noisy deployment eye, clean privileged eye",
+      "why": "The left eye is noisier at inference while the teacher gets a cleaner right eye; tests whether the privileged eye helps more when the deployed image is poor.",
+      "params": {"noise_left": 3.0, "noise_right": 1.0}
+    },
+    {
+      "label": "Common disease (DR preset)",
+      "why": "Same settings with 30% prevalence; compares the detailed-split gain and the FPR and precision trade-off with AMD.",
+      "params": {"task": "dr"}
+    }
+  ],
+  "caveats": [
+    "Toy simulation of 128-d synthetic eye features, not ODIR images or RETFound-Green; magnitudes are not comparable to the paper.",
+    "Sweep is an extension not in the paper, two cohorts per cell; α is on this toy's scale."
+  ]
+}

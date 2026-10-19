@@ -1,0 +1,173 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/irt-contamination",
+ "title": "Towards Robust, Performance-Based Contamination Detection for LLMs",
+ "description": "Our evasion is an argmax-preserving logit transform that makes signals on contaminated items resemble those on unseen items, while leaving every benchmark answer unchanged. We then introduce a detector based on Item Response Theory (IRT) residuals, which calibrates item difficulty on a population of 102 LLMs and flags items where a model outperforms its estimated ability. Because it reads only binary responses, its AUROC is exactly unchanged under the evasion.",
+ "paper": {
+  "title": "Towards Robust, Performance-Based Contamination Detection for LLMs",
+  "authors": "Allenna Tang, Jackie Cheung",
+  "venue": "SMASH 2026",
+  "session": "Poster",
+  "url": "https://drive.google.com/file/d/1eG9T_MAj1dUJLBNzRlAUpSu32xIt5zom/view?usp=sharing",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://drive.google.com/file/d/1eG9T_MAj1dUJLBNzRlAUpSu32xIt5zom/view?usp=sharing"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "2-4 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "The evasion drops the confidence detectors from 1.00 to 0.52 AUROC without changing an answer. The IRT residual detector stays at 0.73. Items, models and token probabilities are simulated. The sandbagging analysis is an extension of the paper.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "contamination": "0.97",
+     "model_ability": "0.3",
+     "memorization_boost": "1.0",
+     "n_member_items": "1200",
+     "n_calibration_items": "3600",
+     "n_population": "102",
+     "seed": "7"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-20-contamination-audit",
+    "trajectory_id": "e88d5283",
+    "url": "https://jetty.io/jon-smash2026/smash-20-contamination-audit/e88d5283",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T18:37:14.409480+00:00",
+    "duration_seconds": 146,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Contamination strength",
+   "type": "text",
+   "required": false,
+   "default": "0.97",
+   "description": "Fraction of the member items the model used to get wrong that contamination makes it answer right (paper: member accuracy 0.60 → 0.99 ≈ 0.97). Try 0.3 for light contamination"
+  },
+  {
+   "label": "Model ability",
+   "type": "text",
+   "required": false,
+   "default": "0.3",
+   "description": "Audited model's true ability θ on the population scale (−2 weak … +2 strong)"
+  },
+  {
+   "label": "Memorization boost",
+   "type": "text",
+   "required": false,
+   "default": "1.0",
+   "description": "How much training sharpens next-token probabilities on member text (drives the confidence detectors)"
+  },
+  {
+   "label": "Member items",
+   "type": "text",
+   "required": false,
+   "default": "1200",
+   "description": "Contaminated items"
+  },
+  {
+   "label": "Calibration items",
+   "type": "text",
+   "required": false,
+   "default": "3600",
+   "description": "Items used only to estimate θ̂"
+  },
+  {
+   "label": "Model population",
+   "type": "text",
+   "required": false,
+   "default": "102",
+   "description": "LLMs used to calibrate the IRT item bank (paper: 102)"
+  },
+  {
+   "label": "Seed",
+   "type": "text",
+   "required": false,
+   "default": "7",
+   "description": "Random seed"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/irt-contamination/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/irt-contamination",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "llm-evaluation"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

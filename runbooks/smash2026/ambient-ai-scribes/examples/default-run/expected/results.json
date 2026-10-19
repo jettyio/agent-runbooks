@@ -1,0 +1,671 @@
+{
+  "params": {
+    "specialty": "mixed",
+    "your_transcript": "",
+    "encounters_per_month": 390,
+    "patient_decline_rate": 0.1,
+    "trainee_share": 0.2,
+    "baseline_doc_minutes": 6,
+    "edit_sec_per_word": 1.5,
+    "promised_minutes_per_note": 5,
+    "seed": 8,
+    "runbook_url": ""
+  },
+  "specialty": "mixed",
+  "n_encounters": 6,
+  "byo_transcript": false,
+  "lab": {
+    "generic": {
+      "n": 6,
+      "edit_rate": 0.7844825983403844,
+      "draft_words": 204.66666666666666,
+      "final_words": 201.33333333333334,
+      "kept_share": 0.5066734531086885,
+      "pdqi_mean": 4.625,
+      "errors_per_note": 3.1666666666666665,
+      "major_per_note": 0.3333333333333333,
+      "substantial_share": 0.3333333333333333,
+      "fact_recall": 1.0,
+      "scribe_minutes": 4.451458333333334,
+      "net_minutes": 1.5485416666666667,
+      "share_saving_time": 0.8333333333333334
+    },
+    "custom": {
+      "n": 6,
+      "edit_rate": 0.2736403429262198,
+      "draft_words": 257.1666666666667,
+      "final_words": 243.66666666666666,
+      "kept_share": 0.8187542371696387,
+      "pdqi_mean": 4.791666666666667,
+      "errors_per_note": 1.0,
+      "major_per_note": 0.16666666666666666,
+      "substantial_share": 0.16666666666666666,
+      "fact_recall": 1.0,
+      "scribe_minutes": 2.675416666666667,
+      "net_minutes": 3.324583333333333,
+      "share_saving_time": 1.0
+    }
+  },
+  "error_types": {
+    "generic": {
+      "omission": 14,
+      "inaccuracy": 0,
+      "hallucination": 0,
+      "format": 5
+    },
+    "custom": {
+      "omission": 4,
+      "inaccuracy": 0,
+      "hallucination": 0,
+      "format": 2
+    }
+  },
+  "edit_rate_generic": 0.7844825983403844,
+  "edit_rate_custom": 0.2736403429262198,
+  "substantial_share_generic": 0.3333333333333333,
+  "substantial_share_custom": 0.16666666666666666,
+  "net_minutes_generic": 1.5485416666666667,
+  "net_minutes_custom": 3.324583333333333,
+  "scribe_minutes_generic": 4.451458333333334,
+  "share_notes_saving_time_generic": 0.8333333333333334,
+  "share_notes_saving_time_custom": 1.0,
+  "fact_recall_generic": 1.0,
+  "fact_recall_custom": 1.0,
+  "assumptions": {
+    "baseline_doc_minutes": 6.0,
+    "edit_sec_per_word": 1.5,
+    "read_wpm": 200.0,
+    "overhead_min": 0.5,
+    "encounters_per_month": 390.0,
+    "patient_decline_rate": 0.1,
+    "trainee_share": 0.2,
+    "promised_minutes_per_note": 5.0
+  },
+  "usage_model": {
+    "lognormal_sigma": 1.8650410990105222,
+    "median_share": 0.0094,
+    "mean_share_active": 0.03125834032473661,
+    "cap": 0.184
+  },
+  "ladder": [
+    {
+      "scenario": "The promise",
+      "hours_per_month": 4550.0,
+      "how": "all 140 clinicians, every encounter, 5 min saved"
+    },
+    {
+      "scenario": "Pilot reality (generic notes)",
+      "hours_per_month": 6.607260990835255,
+      "how": "paper's adoption funnel x lab minutes"
+    },
+    {
+      "scenario": "+ specialty customization",
+      "hours_per_month": 14.185210667529796,
+      "how": "customized drafts"
+    },
+    {
+      "scenario": "+ consent & trainee workflows",
+      "hours_per_month": 19.70168148268027,
+      "how": "listed barriers removed"
+    },
+    {
+      "scenario": "+ every enrollee active",
+      "hours_per_month": 40.34153827405961,
+      "how": "43 of 43 use it"
+    },
+    {
+      "scenario": "Full adoption, measured minutes",
+      "hours_per_month": 2178.2670000000003,
+      "how": "everyone, every eligible encounter"
+    }
+  ],
+  "promise_hours": 4550.0,
+  "reality_hours": 6.607260990835255,
+  "reality_mc": {
+    "p5": 2.6812843749999997,
+    "median": 6.396510416666667,
+    "p95": 11.50185625
+  },
+  "reality_pct_of_promise": 0.1452145272711045,
+  "full_adoption_hours": 2178.2670000000003,
+  "used_share_all_encounters": 0.004688751048710491,
+  "barrier_points": 27.999999999999993,
+  "unexplained_points": 71.06000000000002,
+  "llm_backend": "openrouter-via-anthropic-key",
+  "llm_model": "anthropic/claude-haiku-4.5",
+  "llm_calls": 36,
+  "specialist_retries": 0,
+  "notes": [
+    {
+      "encounter": "PSY-1",
+      "specialty": "psychiatry",
+      "arm": "generic",
+      "draft_words": 241,
+      "final_words": 267,
+      "inserted": 77,
+      "deleted": 51,
+      "substituted": 21,
+      "edit_rate": 0.5580524344569289,
+      "kept_share": 0.7012448132780082,
+      "pdqi": {
+        "accurate": 4.0,
+        "thorough": 4.0,
+        "useful": 4.0,
+        "organized": 2.0,
+        "comprehensible": 5.0,
+        "succinct": 3.0,
+        "synthesized": 4.0,
+        "internally_consistent": 5.0
+      },
+      "pdqi_mean": 3.875,
+      "errors": [
+        {
+          "type": "format",
+          "severity": "major",
+          "what": "Template requires narrative prose without SOAP headings; draft uses SUBJECTIVE/OBJECTIVE/ASSESSMENT/PLAN structure"
+        },
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Appearance and behavior details missing from mental status examination section"
+        },
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Speech characteristics not documented in mental status examination"
+        },
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Perception section (hallucinations, delusions) not addressed in mental status"
+        },
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Judgment assessment not explicitly documented in mental status examination"
+        },
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Identification section lacks patient age, date of visit, or visit context"
+        }
+      ],
+      "n_errors": 6,
+      "n_major": 1,
+      "substantial_editing": true,
+      "fact_recall": 1.0,
+      "facts_missed": [],
+      "scribe_minutes": 4.473750000000001,
+      "net_minutes_saved": 1.5262499999999992,
+      "draft": "**CLINICAL NOTE**\n\n**SUBJECTIVE:**\nMs. Alvarez returns for follow-up after sertraline dose increase to 100 mg six weeks ago. She reports overall improvement in mood compared to initial presentation. She notes persistent morning difficulty with motivation and missed work two days last week due to inability to get out of bed. Sleep is disrupted with early morning awakening at 4 a.m. nightly with inability to return to sleep, though initial sleep onset is normal. Current mood self-rated at 4/10, improved from 2/10 at initial visit. She endorses passive suicidal ideation (\"sometimes I think it would be easier not to wake up\") but denies active intent, plan, or preparatory behaviors. She identifies her children as a protective factor. Substance use limited to one glass of wine on weekends. Initial nausea from sertraline has resolved. Continues weekly therapy.\n\n**OBJECTIVE:**\nVital signs: Not documented in encounter.\nMental status: Patient engaged, communicative, able to articulate mood and suicidal ideation appropriately.\n\n**ASSESSMENT:**\n1. Major Depressive Disorder - partial response to sertraline 100 mg with persistent depressive symptoms including anhedonia, early morning awakening, and passive suicidal ideation without active plan\n2. Passive suicidal ideation - low acute risk given denial of intent/plan and identified protective factors\n\n**PLAN:**\n1. Increase sertraline to 150 mg\n2. Continue weekly psychotherapy\n3. Review safety plan; patient confirmed access to crisis line (number on refrigerator)\n4. Follow-up appointment in 4 weeks; sooner if clinical deterioration\n5. Patient instructed to contact if symptoms worsen",
+      "final": "**PSYCHIATRY FOLLOW-UP NOTE**\n\nI saw Ms. Alvarez for follow-up six weeks after increasing her sertraline to 100 mg. She reports overall improvement in mood compared to her initial presentation, now rating it 4/10 compared to 2/10 at baseline. However, she continues to experience morning difficulty with motivation and missed work two days last week due to inability to get out of bed. Sleep is disrupted with early morning awakening at 4 a.m. nightly and inability to return to sleep, though initial sleep onset is normal. She endorses passive suicidal ideation, stating \"sometimes I think it would be easier not to wake up,\" but denies active intent, plan, or preparatory behaviors. She identifies her children as a protective factor. Substance use is limited to one glass of wine on weekends. Initial nausea from sertraline has resolved. She continues weekly therapy.\n\nOn mental status examination, Ms. Alvarez was engaged and communicative, with appropriate affect and clear thought process; she articulated her mood and passive suicidal ideation appropriately.\n\nRisk assessment reveals static factors including major depressive disorder and passive suicidal ideation, balanced by dynamic protective factors including strong motivation related to her children, denial of intent or plan, and engagement in treatment. Overall risk is LOW.\n\nMs. Alvarez has demonstrated partial response to sertraline 100 mg with persistent depressive symptoms including early morning awakening and passive suicidal ideation. Dose escalation is warranted to optimize treatment response.\n\nPlan: Increase sertraline to 150 mg daily. Continue weekly psychotherapy. Review safety plan; patient confirmed access to crisis line with number posted on refrigerator. Follow-up appointment in 4 weeks, sooner if clinical deterioration occurs."
+    },
+    {
+      "encounter": "PSY-1",
+      "specialty": "psychiatry",
+      "arm": "custom",
+      "draft_words": 422,
+      "final_words": 374,
+      "inserted": 1,
+      "deleted": 49,
+      "substituted": 14,
+      "edit_rate": 0.15165876777251186,
+      "kept_share": 0.8507109004739337,
+      "pdqi": {
+        "accurate": 5.0,
+        "thorough": 5.0,
+        "useful": 5.0,
+        "organized": 5.0,
+        "comprehensible": 5.0,
+        "succinct": 4.0,
+        "synthesized": 5.0,
+        "internally_consistent": 5.0
+      },
+      "pdqi_mean": 4.875,
+      "errors": [
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Template specifies narrative prose without SOAP headings; draft uses section headers."
+        }
+      ],
+      "n_errors": 1,
+      "n_major": 0,
+      "substantial_editing": false,
+      "fact_recall": 1.0,
+      "facts_missed": [],
+      "scribe_minutes": 3.29125,
+      "net_minutes_saved": 2.70875,
+      "draft": "**PSYCHIATRY FOLLOW-UP NOTE**\n\n**Identification and Reason for Visit**\nMs. Alvarez is a patient presenting for follow-up psychiatric evaluation six weeks after sertraline dose increase to 100 mg. She reports partial improvement in depressive symptoms.\n\n**Interval History**\nSince the last visit, the patient has experienced modest improvement in mood and functioning. She reports difficulty with morning motivation, having missed two days of work in the past week due to inability to get out of bed. Sleep initiation is adequate, but she experiences early morning awakening at 4 a.m. nightly with inability to return to sleep. She denies use of alcohol beyond occasional weekend consumption of one glass of wine. She denies other substance use. She tolerates sertraline well with resolution of initial nausea.\n\n**Mental Status Examination**\nThe patient appears appropriately groomed and maintains good eye contact. Her behavior is cooperative and engaged. Speech is clear, coherent, and of normal rate and volume. Mood is described by the patient as \"a four out of ten,\" representing improvement from a baseline of two. Affect is congruent but somewhat restricted. Thought process is logical and goal-directed. Thought content reveals passive suicidal ideation with occasional thoughts that \"it would be easier not to wake up,\" but she explicitly denies any intent, plan, or preparatory behavior. She identifies her children as a protective factor. She denies homicidal ideation or command hallucinations. Perception is intact with no evidence of hallucinations. Insight is good; she recognizes her depression and engages in treatment. Judgment is intact.\n\n**Risk Assessment**\nStatic factors include history of depression. Dynamic factors include current passive suicidal ideation, early morning awakening, anhedonia, and functional impairment with work absences. Protective factors include strong motivation related to her children, engagement in treatment, access to crisis resources, and absence of intent or plan. Overall risk level is low to moderate; close monitoring is warranted given persistent suicidal ideation.\n\n**Formulation**\nMs. Alvarez presents with major depressive disorder showing partial response to sertraline 100 mg, with persistent depressive symptoms including early morning awakening, anhedonia, and passive suicidal ideation without intent or plan. Dose escalation is indicated to optimize therapeutic response. Her engagement in treatment and protective factors support continued outpatient management with close follow-up.\n\n**Plan**\nIncrease sertraline to 150 mg daily. Continue weekly psychotherapy with current therapist. Review safety plan with patient; confirmed she has crisis line number accessible on refrigerator. Patient instructed to contact clinic or crisis services if suicidal ideation becomes active or if symptoms worsen. Follow-up appointment scheduled for four weeks; patient advised to call sooner if clinical deterioration occurs.",
+      "final": "**PSYCHIATRY FOLLOW-UP NOTE**\n\nI saw Ms. Alvarez for follow-up psychiatric evaluation six weeks after sertraline dose increase to 100 mg. She reports partial improvement in depressive symptoms.\n\nSince the last visit, the patient has experienced modest improvement in mood and functioning. She reports difficulty with morning motivation, having missed two days of work in the past week due to inability to get out of bed. Sleep initiation is adequate, but she experiences early morning awakening at 4 a.m. nightly with inability to return to sleep. She denies use of alcohol beyond occasional weekend consumption of one glass of wine. She denies other substance use. She tolerates sertraline well with resolution of initial nausea.\n\nThe patient appears appropriately groomed and maintains good eye contact, is cooperative and engaged, with clear coherent speech; mood is described as \"a four out of ten\" representing improvement from baseline of two, affect is congruent but somewhat restricted, thought process is logical and goal-directed, thought content reveals passive suicidal ideation with occasional thoughts that \"it would be easier not to wake up\" but she explicitly denies any intent, plan, or preparatory behavior and identifies her children as a protective factor, denies homicidal ideation or command hallucinations, perception is intact, insight is good, and judgment is intact.\n\nStatic factors include history of depression. Dynamic factors include current passive suicidal ideation, early morning awakening, anhedonia, and functional impairment with work absences. Protective factors include strong motivation related to her children, engagement in treatment, and access to crisis resources. Overall risk level is MODERATE; close monitoring is warranted given persistent suicidal ideation.\n\nMs. Alvarez presents with major depressive disorder showing partial response to sertraline 100 mg, with persistent depressive symptoms including early morning awakening, anhedonia, and passive suicidal ideation without intent or plan. Dose escalation is indicated to optimize therapeutic response. Her engagement in treatment and protective factors support continued outpatient management with close follow-up.\n\nIncrease sertraline to 150 mg daily. Continue weekly psychotherapy with current therapist. Review safety plan with patient; confirmed she has crisis line number accessible on refrigerator. Patient instructed to contact clinic or crisis services if suicidal ideation becomes active or if symptoms worsen. Follow-up appointment scheduled for four weeks; patient advised to call sooner if clinical deterioration occurs."
+    },
+    {
+      "encounter": "PSY-2",
+      "specialty": "psychiatry",
+      "arm": "generic",
+      "draft_words": 210,
+      "final_words": 316,
+      "inserted": 161,
+      "deleted": 55,
+      "substituted": 37,
+      "edit_rate": 0.8006329113924051,
+      "kept_share": 0.5619047619047619,
+      "pdqi": {
+        "accurate": 5.0,
+        "thorough": 4.0,
+        "useful": 5.0,
+        "organized": 5.0,
+        "comprehensible": 5.0,
+        "succinct": 4.0,
+        "synthesized": 5.0,
+        "internally_consistent": 5.0
+      },
+      "pdqi_mean": 4.75,
+      "errors": [
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Appearance and behavior details not documented (e.g., psychomotor activity, grooming)."
+        },
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Speech characteristics not described (rate, volume, pressured quality)."
+        },
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Perception section missing; only denials documented, not active assessment."
+        },
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Insight and judgment not explicitly addressed as separate MSE components."
+        },
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Safety plan details minimal; credit card management mentioned but no explicit safety contract."
+        }
+      ],
+      "n_errors": 5,
+      "n_major": 0,
+      "substantial_editing": false,
+      "fact_recall": 1.0,
+      "facts_missed": [],
+      "scribe_minutes": 6.84375,
+      "net_minutes_saved": -0.84375,
+      "draft": "**CLINICAL NOTE**\n\n**SUBJECTIVE:**\nPatient presents today at wife's urging. Reports feeling \"better than fine\" with three new business ideas and increased productivity. Denies need for sleep, reporting only 3 hours nightly. Wife concerned about significant spending this month. Patient reports spending $8,000 on equipment for business investments. Admits to discontinuing lithium approximately one month ago, stating it made him feel \"flat.\" Denies suicidal or homicidal ideation. Denies hallucinations or delusions. Reports feeling happy.\n\n**OBJECTIVE:**\nVital signs: Not documented in transcript.\nMental status: Alert, goal-directed, elevated mood, grandiose ideation regarding business ventures.\nPsychiatric history: On lithium for bipolar disorder. Last lithium level in March was 0.8 mEq/L (therapeutic range).\nRecent medication non-compliance: Stopped lithium 1 month ago.\n\n**ASSESSMENT:**\nManic episode, likely bipolar I disorder, precipitated by lithium non-compliance. Clinical features include decreased need for sleep (3 hours), increased goal-directed activity, grandiosity, and excessive spending ($8,000). Patient denies psychotic features and safety concerns.\n\n**PLAN:**\n1. Restart lithium 900 mg at bedtime (previous dose)\n2. Initiate quetiapine 100 mg at bedtime for sleep and mood stabilization\n3. Obtain lithium level and renal function tests in 5 days\n4. Wife to manage credit cards during acute phase\n5. Follow-up appointment in 2 weeks\n6. Provided crisis team contact information",
+      "final": "**PSYCHIATRY FOLLOW-UP NOTE**\n\n**Identification and Reason for Visit**\n\nMr. Chen presents today at his wife's urging. He reports feeling \"better than fine\" with three new business ideas and increased productivity.\n\n**Interval History**\n\nThe patient reports sleeping only three hours nightly and denies needing more sleep. His wife has expressed concern about significant spending this month. The patient reports spending $8,000 on equipment for business investments. He admits to discontinuing lithium approximately one month ago, stating it made him feel \"flat.\" His last lithium level in March was 0.8 mEq/L, which was in therapeutic range. He is on lithium for bipolar disorder.\n\n**Collateral**\n\nWife reports concern about the patient's spending this month and prompted today's visit.\n\n**Mental Status Examination**\n\nThe patient is alert and goal-directed. His mood is elevated, and he reports feeling happy. His affect appears congruent with his reported mood. His thought process is goal-directed. His thought content includes grandiose ideation regarding business ventures. He denies suicidal or homicidal ideation. He denies hallucinations or delusions.\n\n**Risk Assessment**\n\nStatic risk factors include a diagnosis of bipolar I disorder. Dynamic risk factors include recent medication non-compliance, decreased need for sleep, increased goal-directed activity, grandiosity, and excessive spending. Protective factors include family involvement and willingness to engage in treatment. Overall risk level is moderate, with primary concern for continued financial and occupational consequences if the manic episode progresses.\n\n**Formulation**\n\nMr. Chen is experiencing a manic episode precipitated by lithium non-compliance. Clinical features include decreased need for sleep, increased goal-directed activity, grandiosity, and excessive spending. Restarting mood stabilization and addressing medication adherence are essential to prevent further deterioration.\n\n**Plan**\n\nRestart lithium 900 milligrams at bedtime. Initiate quetiapine 100 milligrams at bedtime for sleep and mood stabilization. Obtain lithium level and renal function tests in five days. Wife will manage credit cards during the acute phase. Follow-up appointment in two weeks. Crisis team contact information provided."
+    },
+    {
+      "encounter": "PSY-2",
+      "specialty": "psychiatry",
+      "arm": "custom",
+      "draft_words": 373,
+      "final_words": 384,
+      "inserted": 24,
+      "deleted": 13,
+      "substituted": 3,
+      "edit_rate": 0.10416666666666667,
+      "kept_share": 0.9571045576407506,
+      "pdqi": {
+        "accurate": 5.0,
+        "thorough": 5.0,
+        "useful": 5.0,
+        "organized": 4.0,
+        "comprehensible": 5.0,
+        "succinct": 5.0,
+        "synthesized": 5.0,
+        "internally_consistent": 5.0
+      },
+      "pdqi_mean": 4.875,
+      "errors": [
+        {
+          "type": "format",
+          "severity": "minor",
+          "what": "Template requires narrative prose without section headings; draft uses bold headings."
+        }
+      ],
+      "n_errors": 1,
+      "n_major": 0,
+      "substantial_editing": false,
+      "fact_recall": 1.0,
+      "facts_missed": [],
+      "scribe_minutes": 3.12125,
+      "net_minutes_saved": 2.87875,
+      "draft": "**PSYCHIATRY FOLLOW-UP NOTE**\n\n**Identification and Reason for Visit**\n\nMr. Chen is a patient with bipolar disorder presenting today for follow-up. His wife expressed concern about recent behavioral changes and prompted this visit.\n\n**Interval History**\n\nMr. Chen reports feeling \"better than fine\" with increased goal-directed activity. He has developed three new business ideas and reports increased productivity. Over the past month, he has made an $8,000 investment in equipment. He is sleeping approximately three hours per night and reports not requiring additional sleep. Notably, he discontinued lithium approximately one month ago, stating that the medication made him feel flat. His last lithium level in March was 0.8 mEq/L, which was within therapeutic range.\n\n**Mental Status Examination**\n\nMr. Chen appears well-groomed and engaged. His behavior is goal-directed and energetic. Speech is normal in rate and volume. Mood is described by the patient as happy. Affect appears elevated and congruent with stated mood. Thought process is organized and goal-directed. Thought content reveals grandiose ideation related to business ventures. He denies suicidal ideation and denies homicidal ideation. He denies hallucinations and denies delusions. Insight is limited; he does not recognize the concerning nature of his current presentation. Judgment is impaired, as evidenced by significant financial spending and medication non-adherence.\n\n**Risk Assessment**\n\nStatic risk factors include diagnosis of bipolar disorder. Dynamic risk factors include current manic symptoms, medication non-adherence, decreased need for sleep, increased goal-directed activity, and impulsive financial decisions. Protective factors include supportive wife, engagement with treatment, and willingness to restart medications. Overall risk level is moderate, with primary concern for continued escalation of manic symptoms and financial consequences.\n\n**Formulation**\n\nMr. Chen is presenting with classic features of a manic episode including decreased need for sleep, increased goal-directed activity, grandiose ideation, and impulsive spending, precipitated by discontinuation of lithium. Reinitiation of mood stabilizer therapy with addition of an atypical antipsychotic is indicated to address acute manic symptoms and prevent further deterioration.\n\n**Plan**\n\nRestart lithium 900 mg at bedtime. Add quetiapine 100 mg at bedtime to assist with sleep and provide additional mood stabilization. Obtain lithium level and renal function tests in five days. Wife will manage credit cards as a safety measure. Patient to follow up in two weeks. Crisis team contact information provided to patient.",
+      "final": "**PSYCHIATRY FOLLOW-UP NOTE**\n\nMr. Chen is a patient with bipolar disorder presenting today for follow-up. His wife expressed concern about recent behavioral changes and prompted this visit.\n\nMr. Chen reports feeling \"better than fine\" with increased goal-directed activity. He has developed three new business ideas and reports increased productivity. Over the past month, he has made an $8,000 investment in equipment. He is sleeping approximately three hours per night and reports not requiring additional sleep. Notably, he discontinued lithium approximately one month ago, stating that the medication made him feel flat. His last lithium level in March was 0.8 mEq/L, which was within therapeutic range.\n\n**Collateral**\n\nHis wife expressed concern about recent behavioral changes and reported significant spending this month.\n\nOn mental status examination, Mr. Chen appears well-groomed and engaged. His behavior is goal-directed and energetic. Speech is normal in rate and volume. Mood is described by the patient as happy. Affect appears elevated and congruent with stated mood. Thought process is organized and goal-directed. Thought content reveals grandiose ideation related to business ventures. He denies suicidal ideation and denies homicidal ideation. He denies hallucinations and denies delusions. Insight is limited; he does not recognize the concerning nature of his current presentation. Judgment is impaired, as evidenced by significant financial spending and medication non-adherence.\n\nStatic risk factors include diagnosis of bipolar disorder. Dynamic risk factors include current manic symptoms, medication non-adherence, decreased need for sleep, increased goal-directed activity, and impulsive financial decisions. Protective factors include supportive wife, engagement with treatment, and willingness to restart medications. Overall risk level is moderate, with primary concern for continued escalation of manic symptoms and financial consequences.\n\nMr. Chen is presenting with classic features of a manic episode including decreased need for sleep, increased goal-directed activity, grandiose ideation, and impulsive spending, precipitated by discontinuation of lithium. Reinitiation of mood stabilizer therapy with addition of an atypical antipsychotic is indicated to address acute manic symptoms and prevent further deterioration.\n\nLithium 900 mg at bedtime is restarted. Quetiapine 100 mg at bedtime is added to assist with sleep and provide additional mood stabilization. Lithium level and renal function tests will be obtained in five days. Wife will manage credit cards as a safety measure. Patient will follow up in two weeks. Crisis team contact information has been provided to patient."
+    },
+    {
+      "encounter": "END-1",
+      "specialty": "endocrinology",
+      "arm": "generic",
+      "draft_words": 219,
+      "final_words": 162,
+      "inserted": 82,
+      "deleted": 139,
+      "substituted": 20,
+      "edit_rate": 1.1004566210045663,
+      "kept_share": 0.273972602739726,
+      "pdqi": {
+        "accurate": 5.0,
+        "thorough": 5.0,
+        "useful": 5.0,
+        "organized": 4.0,
+        "comprehensible": 5.0,
+        "succinct": 4.0,
+        "synthesized": 5.0,
+        "internally_consistent": 5.0
+      },
+      "pdqi_mean": 4.75,
+      "errors": [
+        {
+          "type": "format",
+          "severity": "major",
+          "what": "Template requires opening 'Dear Dr <referrer>, I saw <patient> in follow-up for...'; actual opens with summary first"
+        },
+        {
+          "type": "format",
+          "severity": "minor",
+          "what": "Recommendations placed before Diabetes Summary; template specifies Assessment then Recommendations"
+        },
+        {
+          "type": "format",
+          "severity": "minor",
+          "what": "Sections reordered in final letter; should follow: opening, Diabetes summary, Current regimen, Glycemic data, Assessment, Recommendations, Follow-up"
+        }
+      ],
+      "n_errors": 3,
+      "n_major": 1,
+      "substantial_editing": true,
+      "fact_recall": 1.0,
+      "facts_missed": [],
+      "scribe_minutes": 5.01375,
+      "net_minutes_saved": 0.9862500000000001,
+      "draft": "**CLINICAL NOTE**\n\n**SUBJECTIVE:**\nPatient reports blood glucose levels have been \"up and down\" with frequent hyperglycemic episodes noted after dinner. He attributes this to recent dietary changes related to working night shifts and eating later in the evening. Denies nausea with current semaglutide therapy. Denies numbness in feet. Last eye exam was in January of this year with normal results.\n\n**OBJECTIVE:**\n- A1c: 8.4% (increased from 7.6% in spring)\n- Continuous glucose monitor time in range: 52%\n- Time below range: <1%\n- Current medications: Metformin 1000 mg twice daily, glargine 18 units at bedtime, semaglutide 0.5 mg weekly\n- No acute complications noted on review of systems\n\n**ASSESSMENT:**\nType 2 diabetes mellitus with suboptimal glycemic control. A1c elevated from prior visit. Continuous glucose monitoring shows inadequate time in range with postprandial hyperglycemia, particularly in evening hours. Contributing factors include shift work and altered meal timing. No evidence of diabetic complications (neuropathy or retinopathy) at this time.\n\n**PLAN:**\n1. Increase glargine from 18 units to 22 units at bedtime daily, maintaining consistent timing even on shift days\n2. Increase semaglutide from 0.5 mg to 1 mg weekly\n3. Continue metformin 1000 mg twice daily\n4. Obtain A1c and renal function tests in 3 months\n5. Communication sent to Dr. Okafor regarding medication adjustments\n6. Follow-up appointment in 3 months",
+      "final": "Dear Dr. Okafor,\n\nI saw Mr. Singh in follow-up for type 2 diabetes mellitus with suboptimal glycemic control.\n\n**Recommendations:**\n1. Increase glargine from 18 units to 22 units at bedtime daily, maintaining consistent timing even on shift days\n2. Increase semaglutide from 0.5 mg to 1 mg weekly\n3. Continue metformin 1000 mg twice daily\n4. Obtain A1c and renal function tests in 3 months\n\n**Diabetes Summary:**\nType 2 diabetes with recent worsening glycemic control. A1c 8.4% (up from 7.6% in spring). CGM time in range 52% with postprandial hyperglycemia, particularly after dinner. Time below range <1%. No evidence of neuropathy or retinopathy; eye exam normal in January.\n\n**Current Regimen:**\nMetformin 1000 mg twice daily, glargine 18 units at bedtime, semaglutide 0.5 mg weekly. Tolerating semaglutide well without nausea.\n\n**Assessment:**\nSuboptimal glycemic control attributed to shift work and altered meal timing. Inadequate basal insulin dosing and GLP-1 receptor agonist dose.\n\n**Follow-up:**\nReturn in 3 months with repeat labs.\n\nSincerely,\nDr. [Endocrinologist]"
+    },
+    {
+      "encounter": "END-1",
+      "specialty": "endocrinology",
+      "arm": "custom",
+      "draft_words": 190,
+      "final_words": 167,
+      "inserted": 35,
+      "deleted": 58,
+      "substituted": 3,
+      "edit_rate": 0.5052631578947369,
+      "kept_share": 0.6789473684210526,
+      "pdqi": {
+        "accurate": 5.0,
+        "thorough": 4.0,
+        "useful": 5.0,
+        "organized": 3.0,
+        "comprehensible": 5.0,
+        "succinct": 5.0,
+        "synthesized": 4.0,
+        "internally_consistent": 5.0
+      },
+      "pdqi_mean": 4.5,
+      "errors": [
+        {
+          "type": "format",
+          "severity": "major",
+          "what": "Recommendations placed before Diabetes Summary; template requires logical flow after opening"
+        },
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Missing diabetes duration specificity ('several years' is vague; transcript doesn't specify exact duration)"
+        }
+      ],
+      "n_errors": 2,
+      "n_major": 1,
+      "substantial_editing": true,
+      "fact_recall": 1.0,
+      "facts_missed": [],
+      "scribe_minutes": 2.7624999999999997,
+      "net_minutes_saved": 3.2375000000000003,
+      "draft": "Dear Dr. Okafor,\n\nI saw Mr. Singh in follow-up for management of his type 2 diabetes mellitus.\n\n**Diabetes Summary:**\nMr. Singh has type 2 diabetes of several years' duration. Recent eye exam in January was unremarkable. He denies peripheral neuropathy. No other complications documented at this time.\n\n**Current Regimen:**\n- Metformin 1000 mg twice daily\n- Insulin glargine 18 units at bedtime\n- Semaglutide 0.5 mg weekly\n\n**Glycemic Data:**\n- A1c: 8.4% (up from 7.6% in spring)\n- CGM time in range: 52%\n- Hypoglycemia: <1%\n\nMr. Singh reports postprandial hyperglycemia, particularly after dinner, which he attributes to recent schedule changes with night shift work.\n\n**Assessment:**\nSuboptimal glycemic control with worsening A1c and inadequate time in range. Postprandial hyperglycemia is the primary concern. Basal insulin and GLP-1 agonist doses are below target.\n\n**Recommendations:**\n1. Increase insulin glargine to 22 units at bedtime, maintaining consistent timing regardless of shift schedule\n2. Increase semaglutide to 1 mg weekly\n3. Obtain repeat A1c and renal function panel in 3 months\n4. Reinforce importance of consistent insulin timing despite shift work\n\n**Follow-up:**\nMr. Singh will return in 3 months with repeat laboratory work.\n\nSincerely,",
+      "final": "Dear Dr. Okafor,\n\nI saw Mr. Singh in follow-up for management of his type 2 diabetes mellitus.\n\n**Recommendations:**\n1. Increase insulin glargine to 22 units at bedtime, maintaining consistent timing regardless of shift schedule\n2. Increase semaglutide to 1 mg weekly\n3. Obtain repeat A1c and renal function panel in 3 months\n\n**Diabetes Summary:**\nMr. Singh has type 2 diabetes of several years' duration. Recent eye exam in January was unremarkable. He denies peripheral neuropathy.\n\n**Current Regimen:**\n- Metformin 1000 mg twice daily\n- Insulin glargine 18 units at bedtime\n- Semaglutide 0.5 mg weekly\n\n**Glycemic Data:**\n- A1c: 8.4% (up from 7.6% in spring)\n- CGM time in range: 52%\n- Hypoglycemia: <1%\n\nMr. Singh reports postprandial hyperglycemia, particularly after dinner, attributed to recent night shift work.\n\n**Assessment:**\nSuboptimal glycemic control with worsening A1c and inadequate time in range. Postprandial hyperglycemia is the primary concern. Basal insulin and GLP-1 agonist doses require escalation.\n\n**Follow-up:**\nMr. Singh will return in 3 months with repeat laboratory work.\n\nSincerely,"
+    },
+    {
+      "encounter": "END-2",
+      "specialty": "endocrinology",
+      "arm": "generic",
+      "draft_words": 174,
+      "final_words": 165,
+      "inserted": 46,
+      "deleted": 55,
+      "substituted": 15,
+      "edit_rate": 0.6666666666666666,
+      "kept_share": 0.5977011494252873,
+      "pdqi": {
+        "accurate": 5.0,
+        "thorough": 4.0,
+        "useful": 4.0,
+        "organized": 5.0,
+        "comprehensible": 5.0,
+        "succinct": 4.0,
+        "synthesized": 4.0,
+        "internally_consistent": 5.0
+      },
+      "pdqi_mean": 4.5,
+      "errors": [
+        {
+          "type": "format",
+          "severity": "minor",
+          "what": "Template specifies 'follow-up for...' but letter says 'in consultation for'"
+        },
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Diabetes summary section unnecessary; could be omitted entirely for clarity"
+        },
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "No mention of mild Graves ophthalmopathy or need for ophthalmology referral consideration"
+        }
+      ],
+      "n_errors": 3,
+      "n_major": 0,
+      "substantial_editing": false,
+      "fact_recall": 1.0,
+      "facts_missed": [],
+      "scribe_minutes": 3.23875,
+      "net_minutes_saved": 2.76125,
+      "draft": "**CLINICAL NOTE**\n\n**SUBJECTIVE:**\nPatient presents with symptoms of hyperthyroidism including tremor, palpitations, and unintentional weight loss of approximately 5 kg. Reports occasional eye grittiness. Denies plans for pregnancy in the next year.\n\n**OBJECTIVE:**\nVital Signs: Heart rate 112 bpm\nLaboratory Results:\n- TSH: <0.01 mIU/L (suppressed)\n- Free T4: 38 pmol/L (elevated)\n- TSH receptor antibodies: Positive\n\n**ASSESSMENT:**\nGraves disease with clinical and biochemical evidence of thyrotoxicosis, presenting with tachycardia, tremor, weight loss, and mild ocular symptoms.\n\n**PLAN:**\n1. Initiate methimazole 10 mg once daily for thyroid hormone suppression\n2. Initiate propranolol 10 mg up to three times daily for symptomatic management of tachycardia\n3. Patient counseled on rare risk of agranulocytosis with methimazole; instructed to discontinue medication immediately and obtain same-day complete blood count if fever or sore throat develops\n4. Discussed that methimazole is appropriate choice given no pregnancy plans in next year; patient to notify clinic immediately if pregnancy plans change\n5. Repeat thyroid function tests in 6 weeks\n6. Communication to referring physician Dr. Brennan regarding diagnosis and treatment plan",
+      "final": "Dear Dr. Brennan,\n\nI saw Ms. Patel in consultation for hyperthyroidism.\n\n**Diabetes Summary:** Not applicable.\n\n**Thyroid Diagnosis and Presentation:**\nMs. Patel presents with symptoms of thyrotoxicosis including tremor, palpitations, and unintentional weight loss of approximately 5 kg. She reports occasional eye grittiness. Heart rate today is 112 bpm.\n\n**Laboratory Results:**\nTSH <0.01 mIU/L, Free T4 38 pmol/L, TSH receptor antibodies positive.\n\n**Assessment:**\nGraves disease with clinical and biochemical evidence of thyrotoxicosis.\n\n**Recommendations:**\n1. Initiate methimazole 10 mg once daily for thyroid hormone suppression\n2. Initiate propranolol 10 mg up to three times daily for symptomatic management of tachycardia\n3. Repeat thyroid function tests in 6 weeks\n4. Patient to notify clinic immediately if pregnancy plans change\n\n**Follow-up:**\nRepeat thyroid function tests in 6 weeks.\n\nPatient counselled on: rare risk of agranulocytosis with methimazole; to discontinue medication immediately and obtain same-day complete blood count if fever or sore throat develops; methimazole is appropriate given no pregnancy plans in the next year.\n\nYours sincerely,\n\nDr. [Endocrinology Specialist]"
+    },
+    {
+      "encounter": "END-2",
+      "specialty": "endocrinology",
+      "arm": "custom",
+      "draft_words": 184,
+      "final_words": 187,
+      "inserted": 44,
+      "deleted": 41,
+      "substituted": 9,
+      "edit_rate": 0.5026737967914439,
+      "kept_share": 0.7282608695652174,
+      "pdqi": {
+        "accurate": 5.0,
+        "thorough": 4.0,
+        "useful": 4.0,
+        "organized": 5.0,
+        "comprehensible": 5.0,
+        "succinct": 4.0,
+        "synthesized": 4.0,
+        "internally_consistent": 5.0
+      },
+      "pdqi_mean": 4.5,
+      "errors": [
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Agranulocytosis counseling moved to separate paragraph; not integrated into recommendations"
+        },
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Recommendation 1 says 'initiate' but medications already started; should say 'continue'"
+        }
+      ],
+      "n_errors": 2,
+      "n_major": 0,
+      "substantial_editing": false,
+      "fact_recall": 1.0,
+      "facts_missed": [],
+      "scribe_minutes": 3.00125,
+      "net_minutes_saved": 2.99875,
+      "draft": "Dear Dr. Brennan,\n\nI saw Ms. Patel in follow-up for evaluation of hyperthyroidism.\n\n**Clinical Summary:**\nMs. Patel presents with symptoms of thyrotoxicosis including tremor, palpitations, and unintentional weight loss of approximately 5 kg. Laboratory evaluation reveals suppressed TSH (<0.01 mIU/L), elevated free T4 (38 pmol/L), and positive TSH receptor antibodies, consistent with Graves disease. She reports mild ocular symptoms of grittiness. Vital signs show tachycardia with heart rate of 112 bpm.\n\n**Current Regimen:**\n- Methimazole 10 mg once daily\n- Propranolol 10 mg up to three times daily\n\n**Assessment:**\nGraves disease with thyrotoxic symptoms and mild thyroid eye disease.\n\n**Recommendations:**\n1. Initiate methimazole 10 mg daily and propranolol 10 mg TID for symptom management\n2. Counsel patient on agranulocytosis risk; advise to discontinue methimazole immediately and obtain same-day CBC if fever or sore throat develops\n3. Repeat thyroid function tests (TSH, free T4) in 6 weeks\n4. Patient to notify us immediately if pregnancy plans change, as methimazole would require reconsideration\n5. Monitor for progression of thyroid eye disease\n\n**Follow-up:**\nRepeat thyroid function tests in 6 weeks with results to guide further management.\n\nSincerely,",
+      "final": "Dear Dr. Brennan,\n\nI saw Ms. Patel in follow-up for evaluation of hyperthyroidism.\n\n**Clinical Summary:**\nMs. Patel presents with symptoms of thyrotoxicosis including tremor, palpitations, and unintentional weight loss of approximately 5 kg. Laboratory evaluation reveals suppressed TSH (<0.01 mIU/L), elevated free T4 (38 pmol/L), and positive TSH receptor antibodies, consistent with Graves disease. She reports mild ocular symptoms of grittiness. Vital signs show tachycardia with heart rate of 112 bpm.\n\n**Current Regimen:**\n- Methimazole 10 mg once daily\n- Propranolol 10 mg up to three times daily\n\n**Assessment:**\nGraves disease with thyrotoxic symptoms and mild thyroid eye disease.\n\n**Recommendations:**\n1. Continue methimazole 10 mg daily and propranolol 10 mg up to three times daily for symptom management\n2. Repeat thyroid function tests (TSH, free T4) in 6 weeks\n3. Patient to notify us immediately if pregnancy plans change, as methimazole would require reconsideration\n\n**Follow-up:**\nRepeat thyroid function tests in 6 weeks with results to guide further management.\n\nPatient counselled on: agranulocytosis risk with methimazole; to discontinue methimazole immediately and obtain same-day CBC if fever or sore throat develops; notification of any change in pregnancy plans.\n\nSincerely,"
+    },
+    {
+      "encounter": "RHE-1",
+      "specialty": "rheumatology",
+      "arm": "generic",
+      "draft_words": 200,
+      "final_words": 152,
+      "inserted": 44,
+      "deleted": 92,
+      "substituted": 15,
+      "edit_rate": 0.755,
+      "kept_share": 0.46499999999999997,
+      "pdqi": {
+        "accurate": 5.0,
+        "thorough": 5.0,
+        "useful": 5.0,
+        "organized": 5.0,
+        "comprehensible": 5.0,
+        "succinct": 5.0,
+        "synthesized": 5.0,
+        "internally_consistent": NaN
+      },
+      "pdqi_mean": 5.0,
+      "errors": [],
+      "n_errors": 0,
+      "n_major": 0,
+      "substantial_editing": false,
+      "fact_recall": 1.0,
+      "facts_missed": [],
+      "scribe_minutes": 3.55,
+      "net_minutes_saved": 2.45,
+      "draft": "**CLINICAL NOTE**\n\n**SUBJECTIVE:**\nPatient reports improvement in morning stiffness since initiation of methotrexate, now lasting approximately one hour compared to three hours previously. Persistent right wrist swelling noted. Experiences mild nausea the day after methotrexate administration. Rates overall arthritis severity as 5/10.\n\n**OBJECTIVE:**\nPhysical examination reveals four tender joints and three swollen joints, including right wrist and two right hand knuckles. Clinician assessment of disease activity: 4/10. Clinical Disease Activity Index calculated at 16, indicating moderate disease activity. Recent laboratory studies (liver function tests and complete blood count from one month ago) were normal. Current medications: methotrexate 15 mg weekly orally, folic acid 5 mg weekly.\n\n**ASSESSMENT:**\nRheumatoid arthritis, moderate activity, with partial response to current methotrexate therapy. Mild methotrexate-associated nausea.\n\n**PLAN:**\n1. Increase methotrexate to 20 mg weekly, switching from oral to subcutaneous injection formulation to improve tolerability and reduce nausea\n2. Continue folic acid 5 mg weekly\n3. Obtain laboratory work (liver function tests and complete blood count) in 4 weeks, then every 3 months\n4. Administer influenza vaccine and shingles vaccine\n5. Reassess disease activity in 3 months; consider addition of second disease-modifying antirheumatic drug if low disease activity not achieved\n6. Follow-up appointment in 3 months",
+      "final": "**RHEUMATOLOGY CLINIC LETTER**\n\n**DIAGNOSES:**\n\u2022 Rheumatoid arthritis, moderate activity\n\n**CURRENT DMARDs AND DOSES:**\n\u2022 Methotrexate 20 mg weekly subcutaneous (increased from 15 mg oral)\n\u2022 Folic acid 5 mg weekly\n\n**DISEASE ACTIVITY:**\n\u2022 TJC 4/28, SJC 3/28\n\u2022 Patient global: 5/10\n\u2022 Clinician global: 4/10\n\u2022 CDAI: 16 (moderate)\n\u2022 Morning stiffness: ~1 hour (improved from 3 hours)\n\n**RELEVANT LABS:**\n\u2022 Liver function tests and complete blood count from one month ago: normal\n\n**IMPRESSION:**\nRheumatoid arthritis with partial response to methotrexate therapy. Mild methotrexate-associated nausea. Persistent right wrist swelling and right hand joint involvement.\n\n**PLAN:**\n1. Increase methotrexate to 20 mg weekly, switching to subcutaneous injection formulation to improve tolerability\n2. Continue folic acid 5 mg weekly\n3. Obtain liver function tests and complete blood count in 4 weeks, then every 3 months\n4. Administer influenza vaccine and shingles vaccine\n5. Reassess disease activity in 3 months; consider addition of second DMARD if low disease activity not achieved\n\n**FOLLOW-UP:**\n3 months"
+    },
+    {
+      "encounter": "RHE-1",
+      "specialty": "rheumatology",
+      "arm": "custom",
+      "draft_words": 202,
+      "final_words": 186,
+      "inserted": 0,
+      "deleted": 16,
+      "substituted": 4,
+      "edit_rate": 0.09900990099009901,
+      "kept_share": 0.900990099009901,
+      "pdqi": {
+        "accurate": 5.0,
+        "thorough": 5.0,
+        "useful": 5.0,
+        "organized": 5.0,
+        "comprehensible": 5.0,
+        "succinct": 5.0,
+        "synthesized": 5.0,
+        "internally_consistent": NaN
+      },
+      "pdqi_mean": 5.0,
+      "errors": [],
+      "n_errors": 0,
+      "n_major": 0,
+      "substantial_editing": false,
+      "fact_recall": 1.0,
+      "facts_missed": [],
+      "scribe_minutes": 1.7100000000000002,
+      "net_minutes_saved": 4.29,
+      "draft": "**RHEUMATOLOGY CLINIC LETTER**\n\n**DIAGNOSES:**\n- Rheumatoid arthritis\n\n**CURRENT DMARDs AND DOSES:**\n- Methotrexate 20 mg weekly (subcutaneous injection, increased from 15 mg oral)\n- Folic acid 5 mg weekly\n\n**DISEASE ACTIVITY:**\n- Tender joint count: 4\n- Swollen joint count: 3 (right wrist, two right hand knuckles)\n- Patient global assessment: 5/10\n- Clinician global assessment: 4/10\n- Clinical Disease Activity Index (CDAI): 16 (moderate disease activity)\n- Morning stiffness: approximately 1 hour (improved from 3 hours)\n\n**RELEVANT LABS:**\n- Liver function tests: normal (last month)\n- Complete blood count: normal (last month)\n\n**IMPRESSION:**\nPatient demonstrates moderate disease activity with improvement in morning stiffness since initiation of methotrexate. Persistent right wrist and hand swelling noted on examination. Mild nausea reported with oral methotrexate formulation.\n\n**PLAN:**\n1. Increase methotrexate to 20 mg weekly via subcutaneous injection to improve tolerability\n2. Continue folic acid 5 mg weekly\n3. Obtain comprehensive metabolic panel and complete blood count in 4 weeks\n4. Repeat laboratory monitoring every 3 months thereafter\n5. Administer influenza vaccine\n6. Administer shingles vaccine\n7. Reassess disease activity at 3-month follow-up; consider addition of second DMARD if low disease activity not achieved\n8. Return to clinic in 3 months\n\n**FOLLOW-UP INTERVAL:**\n3 months",
+      "final": "**RHEUMATOLOGY CLINIC LETTER**\n\n**DIAGNOSES:**\n- Rheumatoid arthritis\n\n**CURRENT DMARDs AND DOSES:**\n- Methotrexate 20 mg weekly subcutaneous injection (increased from 15 mg oral)\n- Folic acid 5 mg weekly\n\n**DISEASE ACTIVITY:**\n- TJC 4/28, SJC 3/28 (right wrist, two right hand knuckles)\n- Patient global assessment: 5/10\n- Clinician global assessment: 4/10\n- CDAI: 16 (moderate disease activity)\n- Morning stiffness: approximately 1 hour (improved from 3 hours)\n\n**RELEVANT LABS:**\n- Liver function tests: normal (last month)\n- Complete blood count: normal (last month)\n\n**IMPRESSION:**\nPatient demonstrates moderate disease activity with improvement in morning stiffness since initiation of methotrexate. Persistent right wrist and hand swelling noted on examination. Mild nausea reported with oral methotrexate formulation.\n\n**PLAN:**\n1. Increase methotrexate to 20 mg weekly via subcutaneous injection to improve tolerability\n2. Continue folic acid 5 mg weekly\n3. Obtain comprehensive metabolic panel and complete blood count in 4 weeks\n4. Repeat laboratory monitoring every 3 months thereafter\n5. Administer influenza vaccine\n6. Administer shingles vaccine\n7. Reassess disease activity at 3-month follow-up; consider addition of second DMARD if low disease activity not achieved\n\n**FOLLOW-UP INTERVAL:**\n3 months"
+    },
+    {
+      "encounter": "GIM-1",
+      "specialty": "internal_medicine",
+      "arm": "generic",
+      "draft_words": 184,
+      "final_words": 146,
+      "inserted": 49,
+      "deleted": 87,
+      "substituted": 16,
+      "edit_rate": 0.8260869565217391,
+      "kept_share": 0.4402173913043478,
+      "pdqi": {
+        "accurate": 5.0,
+        "thorough": 4.0,
+        "useful": 5.0,
+        "organized": 5.0,
+        "comprehensible": 5.0,
+        "succinct": 5.0,
+        "synthesized": 5.0,
+        "internally_consistent": 5.0
+      },
+      "pdqi_mean": 4.875,
+      "errors": [
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "Medication reconciliation missing topical diclofenac dosage/frequency details"
+        },
+        {
+          "type": "omission",
+          "severity": "minor",
+          "what": "No documentation of patient's concern about cancer or reassurance provided"
+        }
+      ],
+      "n_errors": 2,
+      "n_major": 0,
+      "substantial_editing": false,
+      "fact_recall": 1.0,
+      "facts_missed": [],
+      "scribe_minutes": 3.58875,
+      "net_minutes_saved": 2.41125,
+      "draft": "**CLINICAL NOTE**\n\n**SUBJECTIVE:**\n61-year-old male presents for follow-up. Reports blood pressure is elevated in clinic but states it is approximately 140 at home. Denies black stools or blood in stool. Reports occasional heartburn. Endorses increased fatigue. Continues to have knee arthritis symptoms.\n\n**OBJECTIVE:**\nVital Signs: Blood pressure 152/94 mmHg\n\nLaboratory Results:\n- Hemoglobin: 108 g/L (anemic)\n- Ferritin: 9 mcg/L (low, consistent with iron deficiency)\n\nCurrent Medications: Ramipril 10 mg daily\n\n**ASSESSMENT:**\n1. Hypertension - inadequately controlled on current monotherapy\n2. Iron deficiency anemia - likely secondary to gastrointestinal blood loss requiring investigation\n3. Knee osteoarthritis - stable on current management\n\n**PLAN:**\n1. Hypertension: Add amlodipine 5 mg daily to ramipril 10 mg. Counseled on potential side effect of ankle swelling. Recheck blood pressure in 6 weeks.\n\n2. Iron deficiency anemia: Start ferrous sulfate 300 mg every other day. Refer for colonoscopy and gastroscopy to evaluate for source of gastrointestinal bleeding. Recheck hemoglobin in 6 weeks.\n\n3. Knee arthritis: Continue topical diclofenac and prescribed exercises. Avoid ibuprofen tablets given gastrointestinal symptoms.\n\n4. Follow-up: Recheck blood pressure and hemoglobin in 6 weeks. Coordinate endoscopic procedures.",
+      "final": "**CLINICAL NOTE**\n\n**SUMMARY:** 61-year-old male with inadequately controlled hypertension, iron deficiency anemia requiring GI investigation, and stable knee osteoarthritis.\n\n**ASSESSMENT AND PLAN:**\n\n#1 Hypertension - status: inadequately controlled on monotherapy. Add amlodipine 5 mg daily to ramipril 10 mg. Counseled on potential ankle swelling. Recheck BP in 6 weeks.\n\n#2 Iron deficiency anemia - status: likely secondary to gastrointestinal blood loss. Start ferrous sulfate 300 mg every other day. Refer for colonoscopy and gastroscopy to evaluate for source of bleeding. Recheck hemoglobin in 6 weeks.\n\n#3 Knee osteoarthritis - status: stable. Continue topical diclofenac and prescribed exercises. Avoid ibuprofen tablets given gastrointestinal symptoms.\n\n**MEDICATION RECONCILIATION:**\n- Ramipril 10 mg daily (continue)\n- Topical diclofenac (continue)\n\n**MED CHANGES TODAY:**\n- Start amlodipine 5 mg daily\n- Start ferrous sulfate 300 mg every other day\n\n**FOLLOW-UP:** Recheck blood pressure and hemoglobin in 6 weeks. Coordinate colonoscopy and gastroscopy."
+    },
+    {
+      "encounter": "GIM-1",
+      "specialty": "internal_medicine",
+      "arm": "custom",
+      "draft_words": 172,
+      "final_words": 164,
+      "inserted": 13,
+      "deleted": 21,
+      "substituted": 14,
+      "edit_rate": 0.27906976744186046,
+      "kept_share": 0.7965116279069767,
+      "pdqi": {
+        "accurate": 5.0,
+        "thorough": 5.0,
+        "useful": 5.0,
+        "organized": 5.0,
+        "comprehensible": 5.0,
+        "succinct": 5.0,
+        "synthesized": 5.0,
+        "internally_consistent": NaN
+      },
+      "pdqi_mean": 5.0,
+      "errors": [],
+      "n_errors": 0,
+      "n_major": 0,
+      "substantial_editing": false,
+      "fact_recall": 1.0,
+      "facts_missed": [],
+      "scribe_minutes": 2.1662500000000002,
+      "net_minutes_saved": 3.8337499999999998,
+      "draft": "**PROBLEM-ORIENTED CLINIC NOTE**\n\n**Summary:** 61-year-old male with hypertension above goal, iron deficiency anemia, and knee osteoarthritis.\n\n**ASSESSMENT AND PLAN**\n\n**#1. Hypertension**\nStatus: Suboptimal control on current regimen (BP 152/94 today, home readings ~140).\nPlan: Add amlodipine 5 mg daily to ramipril 10 mg. Counsel on ankle swelling as potential side effect. Recheck BP in 6 weeks.\n\n**#2. Iron Deficiency Anemia**\nStatus: Hemoglobin 108 g/L, ferritin 9 (low). Patient reports increased fatigue. No overt GI bleeding noted, but endorses occasional heartburn.\nPlan: Start ferrous sulfate 300 mg every other day. Refer for colonoscopy and gastroscopy to evaluate for occult GI bleeding source. Recheck hemoglobin in 6 weeks.\n\n**#3. Knee Osteoarthritis**\nStatus: Stable on current management.\nPlan: Continue topical diclofenac and therapeutic exercises. Avoid oral ibuprofen given GI symptoms.\n\n**MEDICATIONS**\n- Ramipril 10 mg daily\n- Amlodipine 5 mg daily (newly added)\n- Ferrous sulfate 300 mg every other day (newly started)\n- Topical diclofenac as needed\n\n**FOLLOW-UP**\nRecheck blood pressure and hemoglobin in 6 weeks. Gastroenterology referral for colonoscopy and gastroscopy.",
+      "final": "**PROBLEM-ORIENTED CLINIC NOTE**\n\n**Summary:** 61-year-old male with hypertension above goal, iron deficiency anemia, and knee osteoarthritis.\n\n**ASSESSMENT AND PLAN**\n\n#1 Hypertension - suboptimal control on current regimen (BP 152/94 today, home readings ~140): Add amlodipine 5 mg daily to ramipril 10 mg; counsel on ankle swelling as potential side effect; recheck BP in 6 weeks.\n\n#2 Iron Deficiency Anemia - hemoglobin 108 g/L, ferritin 9 (low), increased fatigue, occasional heartburn, no overt GI bleeding: Start ferrous sulfate 300 mg every other day; refer for colonoscopy and gastroscopy to evaluate for occult GI bleeding source; recheck hemoglobin in 6 weeks.\n\n#3 Knee Osteoarthritis - stable on current management: Continue topical diclofenac and therapeutic exercises; avoid oral ibuprofen given GI symptoms.\n\n**Medication Reconciliation**\n- Ramipril 10 mg daily\n- Topical diclofenac as needed\n\n**Med changes today:**\n- Add amlodipine 5 mg daily\n- Start ferrous sulfate 300 mg every other day\n\n**Follow-up:** Recheck blood pressure and hemoglobin in 6 weeks. Gastroenterology referral for colonoscopy and gastroscopy."
+    }
+  ],
+  "runtime_sec": 20.2
+}

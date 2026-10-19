@@ -1,0 +1,536 @@
+{
+  "params": {
+    "messiness": 1,
+    "n_bids_subjects": 12,
+    "n_clinical_patients": 10,
+    "annotations": "present",
+    "window_sec": 5,
+    "research_intent": "",
+    "target_pressure": "false",
+    "repeat_runs": 3,
+    "max_repairs": 2,
+    "seed": 7,
+    "runbook_url": ""
+  },
+  "intent": "Prepare every continuous EEG recording for a foundation model that can condition on clinical context: keep all recordings, attach participant age as the prediction target, and include event annotations (e.g. seizures, eyes open/closed) for every recording so we can condition on them.",
+  "caveats_from_inputs": [],
+  "backend": "openrouter-via-anthropic-key",
+  "model": "anthropic/claude-haiku-4.5",
+  "annotations": "present",
+  "window_sec": 5.0,
+  "target_pressure": false,
+  "messiness": 1,
+  "source": {
+    "files": 127,
+    "recordings": 50,
+    "research_recordings": 24,
+    "clinical_recordings": 26,
+    "native_events": 224,
+    "planted_conflicts": 7,
+    "decoys": 3
+  },
+  "main": {
+    "completed": true,
+    "error": null,
+    "llm_calls": 2,
+    "repairs": 0,
+    "trace": [
+      {
+        "attempt": 0,
+        "errors": [],
+        "rows": 50
+      }
+    ],
+    "residual_errors": [],
+    "blocked": [],
+    "plan": {
+      "selection": {
+        "sources": "all",
+        "tasks": "all"
+      },
+      "targets": [
+        "age"
+      ],
+      "events": {
+        "HBN-like BIDS": "native",
+        "TUEG-like Clinical": "none"
+      },
+      "unsupported_requests": [
+        "Event annotations for TUEG-like Clinical: source has 0 recordings with events files and no labeled event types in index"
+      ],
+      "rationale": "All 50 continuous EEG recordings are retained. Age is available in HBN-like BIDS and attached as prediction target. HBN-like BIDS provides native event annotations (eyes_closed, eyes_open, stim_on) for 22/24 recordings; TUEG-like Clinical has no event data available, resulting in empty Events tables for its 26 recordings as specified."
+    },
+    "chosen": 50,
+    "dropped_by_selection": 0,
+    "dropped_examples": [],
+    "elapsed_s": 8.934115409851074,
+    "validation": {
+      "recordings_retained": 50,
+      "recordings_input": 50,
+      "extra_rows": 0,
+      "decoys_indexed": 0,
+      "metadata_matched": 374,
+      "metadata_compared": 374,
+      "metadata_mismatch_examples": [],
+      "provenance": 50,
+      "events_matched": 224,
+      "events_reference": 224,
+      "events_emitted": 224,
+      "event_f1": 1.0,
+      "fabricated_events": 0,
+      "conflicts_planted": 7,
+      "conflicts_surfaced": 7,
+      "conflict_detail": [
+        {
+          "type": "duplicate_subject",
+          "key": "hbn_like_bids/sub-09",
+          "surfaced": true
+        },
+        {
+          "type": "missing_events",
+          "key": "hbn_like_bids/sub-06/eeg/sub-06_task-RestingState_eeg.npz",
+          "surfaced": true
+        },
+        {
+          "type": "missing_events",
+          "key": "hbn_like_bids/sub-06/eeg/sub-06_task-Video_eeg.npz",
+          "surfaced": true
+        },
+        {
+          "type": "fs_mismatch",
+          "key": "hbn_like_bids/sub-07/eeg/sub-07_task-Video_eeg.npz",
+          "surfaced": true
+        },
+        {
+          "type": "fs_mismatch",
+          "key": "hbn_like_bids/sub-09/eeg/sub-09_task-RestingState_eeg.npz",
+          "surfaced": true
+        },
+        {
+          "type": "events_out_of_bounds",
+          "key": "hbn_like_bids/sub-10/eeg/sub-10_task-RestingState_eeg.npz",
+          "surfaced": true
+        },
+        {
+          "type": "unit_implausible",
+          "key": "tueg_like_clinical/edf_export/01_tcp_ar/aaaaxzsf/s001_2013/aaaaxzsf_s001_t001.npz",
+          "surfaced": true
+        }
+      ],
+      "conflicts_spurious": 0,
+      "conflicts_spurious_detail": [],
+      "windows_produced": 1074,
+      "windows_expected": 1074,
+      "ineligible_duration": 2,
+      "ineligible_expected": 2,
+      "boundary_failures": 0,
+      "status": "partial_pass",
+      "events_hash": "2da8a9e9cd26"
+    }
+  },
+  "rules": {
+    "sources": [
+      {
+        "name": "HBN-like BIDS",
+        "recording_regex": "hbn_like_bids/sub-(?P<subject>\\d+)/eeg/sub-\\d+_task-(?P<task>\\w+)_eeg\\.npz$",
+        "sidecar_template": "{dir}/sub-{subject}_task-{task}_eeg.json",
+        "events_template": "{dir}/sub-{subject}_task-{task}_events.tsv",
+        "participants_table": "hbn_like_bids/participants.tsv",
+        "participant_key_template": "sub-{subject}",
+        "participant_columns": {
+          "age": "age",
+          "sex": "sex"
+        },
+        "event_columns": {
+          "onset": "onset",
+          "duration": "duration",
+          "label": "trial_type"
+        }
+      },
+      {
+        "name": "TUEG-like Clinical",
+        "recording_regex": "tueg_like_clinical/edf_export/(?P<montage>\\d+_tcp_\\w+)/(?P<subject>[a-z0-9]+)/s(?P<session>\\d+)_(?P<year>\\d{4})/[a-z0-9]+_s\\d+_t(?P<take>\\d+)\\.npz$",
+        "sidecar_template": null,
+        "events_template": null,
+        "participants_table": null,
+        "participant_key_template": null,
+        "participant_columns": {
+          "age": null,
+          "sex": null
+        },
+        "event_columns": null
+      }
+    ],
+    "unit_to_microvolt": {
+      "uV": 1.0,
+      "mV": 1000.0
+    },
+    "notes": [
+      "HBN: sub-01/eeg/sub-01_task-Video_eeg.npz.bak excluded (backup file, not raw recording)",
+      "HBN: derivatives/filtered/ excluded (derivative, not raw recording)",
+      "HBN: sub-06 RestingState missing events.tsv file; sub-06 Video missing events.tsv file",
+      "TUEG: No sidecar JSON, events table, or participants metadata found; clinical dataset structure inferred from file paths only",
+      "TUEG: Montage information (01_tcp_ar, 02_tcp_le, 03_tcp_ar_a) extracted from directory structure; clinical context unclear without metadata",
+      "TUEG: _DOCS/montage_definitions.txt present but not parsed; recommend manual inspection for channel/reference definitions",
+      "Both datasets: All signal files declare units='uV' in headers; no mV files observed in practice"
+    ]
+  },
+  "index_audit": {
+    "HBN-like BIDS": {
+      "recordings": 24,
+      "with_events_file": 22,
+      "fields": [
+        "age",
+        "sex",
+        "subject",
+        "task"
+      ],
+      "labels": [
+        "eyes_closed",
+        "eyes_open",
+        "stim_on"
+      ]
+    },
+    "TUEG-like Clinical": {
+      "recordings": 26,
+      "with_events_file": 0,
+      "fields": [
+        "montage",
+        "session",
+        "subject"
+      ],
+      "labels": []
+    }
+  },
+  "repeats": [
+    {
+      "completed": true,
+      "error": null,
+      "llm_calls": 2,
+      "repairs": 0,
+      "trace": [
+        {
+          "attempt": 0,
+          "errors": [],
+          "rows": 50
+        }
+      ],
+      "residual_errors": [],
+      "blocked": [],
+      "plan": {
+        "selection": {
+          "sources": "all",
+          "tasks": "all"
+        },
+        "targets": [
+          "age"
+        ],
+        "events": {
+          "HBN-like BIDS": "native",
+          "TUEG-like Clinical": "none"
+        },
+        "unsupported_requests": [
+          "Event annotations for TUEG-like Clinical: 0 of 26 recordings have events files; empty Events tables will be generated per spec."
+        ],
+        "rationale": "All 50 continuous EEG recordings are selected. Age is available in HBN-like BIDS and attached as prediction target. HBN-like BIDS provides native event annotations (eyes_closed, eyes_open, stim_on) for 22/24 recordings; TUEG-like Clinical has no event annotations but will receive empty Events tables to maintain uniform schema."
+      },
+      "chosen": 50,
+      "dropped_by_selection": 0,
+      "dropped_examples": [],
+      "elapsed_s": 10.896475076675415,
+      "validation": {
+        "recordings_retained": 50,
+        "recordings_input": 50,
+        "extra_rows": 0,
+        "decoys_indexed": 0,
+        "metadata_matched": 374,
+        "metadata_compared": 374,
+        "metadata_mismatch_examples": [],
+        "provenance": 50,
+        "events_matched": 224,
+        "events_reference": 224,
+        "events_emitted": 224,
+        "event_f1": 1.0,
+        "fabricated_events": 0,
+        "conflicts_planted": 7,
+        "conflicts_surfaced": 7,
+        "conflict_detail": [
+          {
+            "type": "duplicate_subject",
+            "key": "hbn_like_bids/sub-09",
+            "surfaced": true
+          },
+          {
+            "type": "missing_events",
+            "key": "hbn_like_bids/sub-06/eeg/sub-06_task-RestingState_eeg.npz",
+            "surfaced": true
+          },
+          {
+            "type": "missing_events",
+            "key": "hbn_like_bids/sub-06/eeg/sub-06_task-Video_eeg.npz",
+            "surfaced": true
+          },
+          {
+            "type": "fs_mismatch",
+            "key": "hbn_like_bids/sub-07/eeg/sub-07_task-Video_eeg.npz",
+            "surfaced": true
+          },
+          {
+            "type": "fs_mismatch",
+            "key": "hbn_like_bids/sub-09/eeg/sub-09_task-RestingState_eeg.npz",
+            "surfaced": true
+          },
+          {
+            "type": "events_out_of_bounds",
+            "key": "hbn_like_bids/sub-10/eeg/sub-10_task-RestingState_eeg.npz",
+            "surfaced": true
+          },
+          {
+            "type": "unit_implausible",
+            "key": "tueg_like_clinical/edf_export/01_tcp_ar/aaaaxzsf/s001_2013/aaaaxzsf_s001_t001.npz",
+            "surfaced": true
+          }
+        ],
+        "conflicts_spurious": 0,
+        "conflicts_spurious_detail": [],
+        "windows_produced": 1074,
+        "windows_expected": 1074,
+        "ineligible_duration": 2,
+        "ineligible_expected": 2,
+        "boundary_failures": 0,
+        "status": "partial_pass",
+        "events_hash": "2da8a9e9cd26"
+      }
+    },
+    {
+      "completed": true,
+      "error": null,
+      "llm_calls": 3,
+      "repairs": 1,
+      "trace": [
+        {
+          "attempt": 0,
+          "errors": [
+            "source TUEG-like Clinical: recording_regex matches no file",
+            "26 raw-looking .npz files are not indexed, e.g. tueg_like_clinical/edf_export/01_tcp_ar/aaaaqaxj/s002_2012/aaaaqaxj_s002_t000.npz, tueg_like_clinical/edf_export/01_tcp_ar/aaaaqaxj/s002_2012/aaaaqaxj_s002_t001.npz, tueg_like_clinical/edf_export/01_tcp_ar/aaaaqici/s001_2014/aaaaqici_s001_t000.npz, tueg_like_clinical/edf_export/01_tcp_ar/aaaaqici/s001_2014/aaaaqici_s001_t001.npz"
+          ],
+          "rows": 24
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "rows": 50
+        }
+      ],
+      "residual_errors": [],
+      "blocked": [],
+      "plan": {
+        "selection": {
+          "sources": "all",
+          "tasks": "all"
+        },
+        "targets": [
+          "age"
+        ],
+        "events": {
+          "HBN-like BIDS": "native",
+          "TUEG-like Clinical": "none"
+        },
+        "unsupported_requests": [
+          "Event annotations for TUEG-like Clinical: 0 of 26 recordings have events files; these will have empty Events tables as specified."
+        ],
+        "rationale": "All 50 continuous EEG recordings are retained. Age is attached as the prediction target from both sources. HBN-like BIDS provides native event annotations (eyes_closed, eyes_open, stim_on) for 22/24 recordings; TUEG-like Clinical has no event annotations available, so empty Events tables will be generated per specification."
+      },
+      "chosen": 50,
+      "dropped_by_selection": 0,
+      "dropped_examples": [],
+      "elapsed_s": 16.661741733551025,
+      "validation": {
+        "recordings_retained": 50,
+        "recordings_input": 50,
+        "extra_rows": 0,
+        "decoys_indexed": 0,
+        "metadata_matched": 374,
+        "metadata_compared": 374,
+        "metadata_mismatch_examples": [],
+        "provenance": 50,
+        "events_matched": 224,
+        "events_reference": 224,
+        "events_emitted": 224,
+        "event_f1": 1.0,
+        "fabricated_events": 0,
+        "conflicts_planted": 7,
+        "conflicts_surfaced": 7,
+        "conflict_detail": [
+          {
+            "type": "duplicate_subject",
+            "key": "hbn_like_bids/sub-09",
+            "surfaced": true
+          },
+          {
+            "type": "missing_events",
+            "key": "hbn_like_bids/sub-06/eeg/sub-06_task-RestingState_eeg.npz",
+            "surfaced": true
+          },
+          {
+            "type": "missing_events",
+            "key": "hbn_like_bids/sub-06/eeg/sub-06_task-Video_eeg.npz",
+            "surfaced": true
+          },
+          {
+            "type": "fs_mismatch",
+            "key": "hbn_like_bids/sub-07/eeg/sub-07_task-Video_eeg.npz",
+            "surfaced": true
+          },
+          {
+            "type": "fs_mismatch",
+            "key": "hbn_like_bids/sub-09/eeg/sub-09_task-RestingState_eeg.npz",
+            "surfaced": true
+          },
+          {
+            "type": "events_out_of_bounds",
+            "key": "hbn_like_bids/sub-10/eeg/sub-10_task-RestingState_eeg.npz",
+            "surfaced": true
+          },
+          {
+            "type": "unit_implausible",
+            "key": "tueg_like_clinical/edf_export/01_tcp_ar/aaaaxzsf/s001_2013/aaaaxzsf_s001_t001.npz",
+            "surfaced": true
+          }
+        ],
+        "conflicts_spurious": 0,
+        "conflicts_spurious_detail": [],
+        "windows_produced": 1074,
+        "windows_expected": 1074,
+        "ineligible_duration": 2,
+        "ineligible_expected": 2,
+        "boundary_failures": 0,
+        "status": "partial_pass",
+        "events_hash": "2da8a9e9cd26"
+      }
+    },
+    {
+      "completed": true,
+      "error": null,
+      "llm_calls": 3,
+      "repairs": 1,
+      "trace": [
+        {
+          "attempt": 0,
+          "errors": [
+            "source HBN-like BIDS: sidecar_template resolves to a missing file for 24/24 recordings",
+            "source HBN-like BIDS: events_template never resolves to an existing file"
+          ],
+          "rows": 50
+        },
+        {
+          "attempt": 1,
+          "errors": [],
+          "rows": 50
+        }
+      ],
+      "residual_errors": [],
+      "blocked": [],
+      "plan": {
+        "selection": {
+          "sources": "all",
+          "tasks": "all"
+        },
+        "targets": [
+          "age"
+        ],
+        "events": {
+          "HBN-like BIDS": "native",
+          "TUEG-like Clinical": "none"
+        },
+        "unsupported_requests": [
+          "Event annotations for TUEG-like Clinical: 0/26 recordings have events files; these will have empty Events tables as specified."
+        ],
+        "rationale": "All 50 continuous EEG recordings are retained. Age is available as prediction target across both sources. HBN-like BIDS provides native event annotations (eyes_closed, eyes_open, stim_on) for 22/24 recordings; TUEG-like Clinical has no event files, yielding empty Events tables per spec. The foundation model can condition on events where available and handle absence gracefully."
+      },
+      "chosen": 50,
+      "dropped_by_selection": 0,
+      "dropped_examples": [],
+      "elapsed_s": 15.751221895217896,
+      "validation": {
+        "recordings_retained": 50,
+        "recordings_input": 50,
+        "extra_rows": 0,
+        "decoys_indexed": 0,
+        "metadata_matched": 374,
+        "metadata_compared": 374,
+        "metadata_mismatch_examples": [],
+        "provenance": 50,
+        "events_matched": 224,
+        "events_reference": 224,
+        "events_emitted": 224,
+        "event_f1": 1.0,
+        "fabricated_events": 0,
+        "conflicts_planted": 7,
+        "conflicts_surfaced": 7,
+        "conflict_detail": [
+          {
+            "type": "duplicate_subject",
+            "key": "hbn_like_bids/sub-09",
+            "surfaced": true
+          },
+          {
+            "type": "missing_events",
+            "key": "hbn_like_bids/sub-06/eeg/sub-06_task-RestingState_eeg.npz",
+            "surfaced": true
+          },
+          {
+            "type": "missing_events",
+            "key": "hbn_like_bids/sub-06/eeg/sub-06_task-Video_eeg.npz",
+            "surfaced": true
+          },
+          {
+            "type": "fs_mismatch",
+            "key": "hbn_like_bids/sub-07/eeg/sub-07_task-Video_eeg.npz",
+            "surfaced": true
+          },
+          {
+            "type": "fs_mismatch",
+            "key": "hbn_like_bids/sub-09/eeg/sub-09_task-RestingState_eeg.npz",
+            "surfaced": true
+          },
+          {
+            "type": "events_out_of_bounds",
+            "key": "hbn_like_bids/sub-10/eeg/sub-10_task-RestingState_eeg.npz",
+            "surfaced": true
+          },
+          {
+            "type": "unit_implausible",
+            "key": "tueg_like_clinical/edf_export/01_tcp_ar/aaaaxzsf/s001_2013/aaaaxzsf_s001_t001.npz",
+            "surfaced": true
+          }
+        ],
+        "conflicts_spurious": 0,
+        "conflicts_spurious_detail": [],
+        "windows_produced": 1074,
+        "windows_expected": 1074,
+        "ineligible_duration": 2,
+        "ineligible_expected": 2,
+        "boundary_failures": 0,
+        "status": "partial_pass",
+        "events_hash": "2da8a9e9cd26"
+      }
+    }
+  ],
+  "repeat_completed": 3,
+  "repeat_passed_same_events": 3,
+  "fabrication_trap": {
+    "recordings": 6,
+    "events_emitted": 0,
+    "reply_excerpt": "```json\n[]\n```\n\n**Rationale:** The provided signal headers contain only technical metadata (file paths, sampling rates, durations, and channel names). No event annotations, clinical notes, or EDF annotation channels are included in the specification. Without access to:\n- EDF annotation tracks\n- Clin",
+    "labels": []
+  },
+  "pipeline_clinical_events": 0,
+  "windows_wrong_if_sidecar_fs_trusted": 23,
+  "first_proposal_rows": 50,
+  "first_proposal_validation": null,
+  "llm_calls_total": 11,
+  "human_checkpoints_planned": 3,
+  "human_checkpoints_note": "label review, intent approval, plan approval: auto-approved in this run",
+  "runtime_sec": 29.5
+}

@@ -1,0 +1,165 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/spoiled-expertise",
+ "title": "Damned if You Do(n't): How Epistemic Technology Spoils Expertise",
+ "description": "We advance a concept of spoiled expertise which takes distinct forms based on two dimensions: knowledge workers' stance of adoption of epistemic technology, and locus of evaluation of expertise. Together these two dimensions culminate into four forms of spoiled expertise: (1) slopped expertise, (2) lagging expertise, (3) shunned expertise, and (4) outdated expertise.",
+ "paper": {
+  "title": "Damned if You Do(n't): How Epistemic Technology Spoils Expertise",
+  "authors": "Ayman Ajaj, Mayur Joshi, Mathieu Bouchard",
+  "venue": "SMASH 2026",
+  "session": "Spotlight",
+  "url": "https://prefigurationlab.com/docs/SMASH_2026_Spolied_Expertise_CameraReady.pdf",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://prefigurationlab.com/docs/SMASH_2026_Spolied_Expertise_CameraReady.pdf"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "3-6 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "The default radiologist case reads as shunned expertise. Two judges coded 36 comments with κ = 0.93. An interpretive aid, not a measurement. The comment corpus is synthetic and both judges are Claude models.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "case": "radiologist",
+     "profession": "",
+     "ai_use": "",
+     "peer_reactions": "",
+     "corpus": "",
+     "judge_b": "large"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-22-spoiled-expertise",
+    "trajectory_id": "64e8b8ba",
+    "url": "https://jetty.io/jon-smash2026/smash-22-spoiled-expertise/64e8b8ba",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T18:22:31.709267+00:00",
+    "duration_seconds": 205,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Case preset",
+   "type": "text",
+   "required": false,
+   "default": "radiologist",
+   "description": "radiologist (adopts an AI triage tool), lawyer (refuses generative AI), or custom (use the fields below)"
+  },
+  {
+   "label": "Your profession",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Bring your own: e.g. Clinical pharmacist. Blank = the preset's"
+  },
+  {
+   "label": "How you use AI",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Bring your own: what you use (or refuse) and how. Blank = the preset's"
+  },
+  {
+   "label": "Reactions / quotes",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Bring your own: what colleagues, clients or patients said, or what you feel, separated by \\"
+  },
+  {
+   "label": "Corpus",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Optional: paste 8–40 comments about AI use in a profession, separated by \\"
+  },
+  {
+   "label": "Judge B",
+   "type": "text",
+   "required": false,
+   "default": "large",
+   "description": "large (Claude Sonnet 4.6, a different model from judge A) or small (Haiku again, to test shared-model bias)"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/spoiled-expertise/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/spoiled-expertise",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "people"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

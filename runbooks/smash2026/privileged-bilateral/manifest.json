@@ -1,0 +1,197 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/privileged-bilateral",
+ "title": "Two for One: Privileged Bilateral Learning for Monocular Retinal Disease Classification",
+ "description": "We thus propose a privileged learning framework in which a teacher model has access to bilateral CFP images during training and learns representations informed by information from both eyes, while the student is trained to transfer this knowledge from the bilateral teacher using only a single-eye image as input. At inference, the student operates exclusively on this single-eye input and does not require the contralateral image.",
+ "paper": {
+  "title": "Two for One: Privileged Bilateral Learning for Monocular Retinal Disease Classification",
+  "authors": "Lisa Y.W. Tang",
+  "venue": "SMASH 2026",
+  "session": "Spotlight",
+  "url": "https://drive.google.com/file/d/1RKzJvGv1_Avf2kqHYQFnlwnWD78wedUW/",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://drive.google.com/file/d/1RKzJvGv1_Avf2kqHYQFnlwnWD78wedUW/"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "2-4 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "The student beat the single-eye baseline in 8 of 10 simulated cohorts (mean +0.024 AUROC). On the one split shown in detail it scored slightly lower (0.711 vs 0.702). Simulated eye features replace fundus photographs. A small MLP replaces RETFound-Green.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "task": "amd",
+     "eye": "left",
+     "prevalence": "0",
+     "inter_eye_corr": "0.6",
+     "alpha": "0.03",
+     "noise_left": "2.0",
+     "noise_right": "2.0",
+     "n_patients": "3500",
+     "n_seeds": "10",
+     "seed": "0"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-21-privileged-bilateral",
+    "trajectory_id": "7090c8d0",
+    "url": "https://jetty.io/jon-smash2026/smash-21-privileged-bilateral/7090c8d0",
+    "agent": "claude-code",
+    "model": "anthropic/claude-haiku-5.5",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-19T15:22:30.703310+00:00",
+    "duration_seconds": 154,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Task preset",
+   "type": "text",
+   "required": false,
+   "default": "amd",
+   "description": "amd (rare: 6% prevalence) or dr (common: 30%); sets prevalence when Prevalence is 0"
+  },
+  {
+   "label": "Eye at inference",
+   "type": "text",
+   "required": false,
+   "default": "left",
+   "description": "Which single eye the baseline and student see: left or right"
+  },
+  {
+   "label": "Prevalence",
+   "type": "text",
+   "required": false,
+   "default": "0",
+   "description": "Patient-level disease prevalence; 0 = task preset"
+  },
+  {
+   "label": "Inter-eye correlation",
+   "type": "text",
+   "required": false,
+   "default": "0.6",
+   "description": "How similar the disease signal is in the two eyes (0 = independent, 0.99 = identical)"
+  },
+  {
+   "label": "Distillation weight α",
+   "type": "text",
+   "required": false,
+   "default": "0.03",
+   "description": "Weight of the feature-distillation term; 0 = no distillation"
+  },
+  {
+   "label": "Left-eye noise",
+   "type": "text",
+   "required": false,
+   "default": "2.0",
+   "description": "Eye-specific image noise in the left eye (0.2–4)"
+  },
+  {
+   "label": "Right-eye noise",
+   "type": "text",
+   "required": false,
+   "default": "2.0",
+   "description": "Eye-specific image noise in the right eye (0.2–4); make them differ to mimic an asymmetric camera or eye"
+  },
+  {
+   "label": "Patients",
+   "type": "text",
+   "required": false,
+   "default": "3500",
+   "description": "Simulated patients (ODIR-5K: 3,500)"
+  },
+  {
+   "label": "Cohorts",
+   "type": "text",
+   "required": false,
+   "default": "10",
+   "description": "Independent simulated cohorts and splits (the paper used one split)"
+  },
+  {
+   "label": "Seed",
+   "type": "text",
+   "required": false,
+   "default": "0",
+   "description": "Seed of the cohort shown in detail on the card"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/privileged-bilateral/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/privileged-bilateral",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "clinical"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}

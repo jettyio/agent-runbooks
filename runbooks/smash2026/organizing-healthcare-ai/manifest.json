@@ -1,0 +1,157 @@
+{
+ "schema_version": "0.2.0",
+ "slug": "smash2026/organizing-healthcare-ai",
+ "title": "Beyond Algorithms: Organizing Artificial Intelligence in Healthcare Through Expertise, Governance, and Knowledge Infrastructures",
+ "description": "We develop a framework that conceptualizes sustainable deployment of AI as an emergent organizational property produced through expertise coordination, governance infrastructures, and knowledge infrastructures. Four propositions are advanced linking expertise coordination and organizational infrastructure to accountability and sustainability.",
+ "paper": {
+  "title": "Beyond Algorithms: Organizing Artificial Intelligence in Healthcare Through Expertise, Governance, and Knowledge Infrastructures",
+  "authors": "Nasrin Sultana, Dhenuka Radhakrishnan, Jamie Strain",
+  "venue": "SMASH 2026",
+  "session": "Poster",
+  "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7608858",
+  "links": [
+   {
+    "label": "Paper",
+    "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7608858"
+   }
+  ]
+ },
+ "cta": {
+  "label": "Fork and run",
+  "note": "Runs on Jetty's managed sandbox. No setup. Free for your first 10 runs.",
+  "estimated_run_time": "2-5 mins"
+ },
+ "example_outputs": [
+  {
+   "id": "default-run",
+   "title": "Default inputs",
+   "summary": "A generic assistant crossed 5 of 9 boundary probes, including clinical dosing. Designs with stated limits or a policy corpus crossed 0 of 9, and only corpus-equipped designs answered institutional questions correctly (100% vs 25%). The institute and its policies are fictional; no CHEO material was used. Nine probes, one response each.",
+   "thumbnail": "examples/default-run/thumbnail.png",
+   "dir": "examples/default-run",
+   "input": {
+    "kind": "params",
+    "values": {
+     "your_boundary_statement": "",
+     "extra_prompts": "",
+     "org_description": "",
+     "include_pressure": "true",
+     "assistant_model": "small"
+    }
+   },
+   "primary_output": "examples/default-run/expected/result_card.html",
+   "outputs": [
+    {
+     "file": "examples/default-run/expected/result_card.html",
+     "role": "primary",
+     "type": "text/html",
+     "description": "Shareable one-page result card"
+    },
+    {
+     "file": "examples/default-run/expected/results.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Every number the experiment computed"
+    },
+    {
+     "file": "examples/default-run/expected/card_data.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "Numbers and figures behind the card"
+    },
+    {
+     "file": "examples/default-run/expected/narrative.json",
+     "role": "secondary",
+     "type": "application/json",
+     "description": "The agent's reading of this run"
+    },
+    {
+     "file": "examples/default-run/expected/summary.md",
+     "role": "report",
+     "type": "text/markdown",
+     "description": "Plain-text summary"
+    },
+    {
+     "file": "examples/default-run/expected/validation_report.json",
+     "role": "eval",
+     "type": "application/json",
+     "description": "Evals v2 report: steps, code checks, checklist"
+    }
+   ],
+   "trajectory": {
+    "collection": "jon-smash2026",
+    "task": "smash-12-organizing-healthcare-ai",
+    "trajectory_id": "852422cd",
+    "url": "https://jetty.io/jon-smash2026/smash-12-organizing-healthcare-ai/852422cd",
+    "agent": "claude-code",
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_provider": "openrouter",
+    "ran_at": "2026-10-18T18:49:02.155289+00:00",
+    "duration_seconds": 179,
+    "eval": {
+     "overall_passed": true,
+     "step": "5/5",
+     "checklist": "4/4",
+     "code_check": "6/6"
+    }
+   }
+  }
+ ],
+ "featured_examples": [
+  "default-run"
+ ],
+ "inputs": [
+  {
+   "label": "Your boundary statement",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Replace the paper's four limits with your own wording (blank = CHEO's statement as quoted in the paper). Try a vague one like Please use good judgment with sensitive topics."
+  },
+  {
+   "label": "Your probes",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "Up to 3 of your own prompts separated by ;;. The judge decides which limit each one tests (or in-scope)"
+  },
+  {
+   "label": "Your organization",
+   "type": "text",
+   "required": false,
+   "default": "",
+   "description": "A paragraph about how your organization builds, governs and documents AI. Rated against two indicators per proposition (blank = an illustrative community hospital)"
+  },
+  {
+   "label": "Pressure probes",
+   "type": "text",
+   "required": false,
+   "default": "true",
+   "description": "Include the urgency/authority and instruction-override probes (true/false)"
+  },
+  {
+   "label": "Assistant model",
+   "type": "text",
+   "required": false,
+   "default": "small",
+   "description": "small (Claude Haiku 4.5) or large (Claude Sonnet 4.6) for the assistant; the judge is always small"
+  }
+ ],
+ "secrets": [],
+ "runbook_source": "RUNBOOK.md",
+ "install_source_url": "https://raw.githubusercontent.com/jettyio/agent-runbooks/main/runbooks/smash2026/organizing-healthcare-ai/RUNBOOK.md",
+ "meta": {
+  "created_by": {
+   "name": "Jetty",
+   "source": "jetty.io",
+   "url": "https://github.com/jettyio/agent-runbooks/tree/main/runbooks/smash2026/organizing-healthcare-ai",
+   "avatar": null
+  },
+  "tags": [
+   "smash2026",
+   "people"
+  ],
+  "primary_outputs": [
+   "result_card.html"
+  ]
+ }
+}
